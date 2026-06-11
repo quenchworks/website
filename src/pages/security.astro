@@ -1,0 +1,72 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  {
+    h: 'Zero fixable CVEs, enforced',
+    p: 'Every image goes through a Trivy gate that fails the build on any fixable vulnerability. We rebuild on a schedule, because a clean scan only describes the day it ran. The result is a moving target kept clean, not a one-time audit.',
+  },
+  {
+    h: 'Built from source on Wolfi',
+    p: 'We compile each application from source with melange, then apko assembles a small nonroot image. There are no Dockerfiles and nothing inherited from another distro, so the attack surface is only what the app actually needs.',
+  },
+  {
+    h: 'Signed, keyless',
+    p: 'Each image and each chart is signed with cosign using GitHub OIDC (Sigstore). There is no long-lived key to leak. The signature ties the artifact back to the workflow that built it, and anyone can check it.',
+  },
+  {
+    h: 'Pinned by digest',
+    p: 'Charts reference images by sha256 digest, never a moving tag. What you install is exactly the artifact that passed the gate and was signed, with no room for a tag to drift underneath you.',
+  },
+];
+---
+
+<Base title="Security — Quenchworks" description="How QuenchWorks keeps images at zero fixable CVEs: built from source, signed with cosign, pinned by digest, rebuilt on a schedule.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Security</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Trust you can verify</h1>
+    <p class="mt-4 text-ash">
+      QuenchWorks is built so you never have to take our word for it. Everything below is
+      reproducible and checkable from your own terminal.
+    </p>
+
+    <div class="mt-10 space-y-8">
+      {
+        sections.map((s) => (
+          <section>
+            <h2 class="text-xl font-semibold tracking-tight">{s.h}</h2>
+            <p class="mt-2 leading-relaxed text-ash">{s.p}</p>
+          </section>
+        ))
+      }
+    </div>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold tracking-tight">Verify it yourself</h2>
+      <pre class="mt-3 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirm an image was built and signed by our CI</span>
+cosign verify ghcr.io/quenchworks/images/redis \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+
+<span class="text-ash"># the same works for any chart</span>
+cosign verify ghcr.io/quenchworks/charts/redis@sha256:&lt;digest&gt;</code></pre>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
+      <h2 class="text-lg font-semibold tracking-tight">Reporting a vulnerability</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        Found something? Please follow the disclosure process in our security policy.
+      </p>
+      <a
+        href="https://github.com/quenchworks/.github/blob/main/SECURITY.md"
+        class="mt-4 inline-flex rounded-lg border border-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:bg-ink"
+      >
+        Security policy
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Base>

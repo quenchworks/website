@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { catalog, availableCount } from '../data/catalog';
+
+const available = catalog.filter((e) => e.status === 'available').sort((a, b) => a.name.localeCompare(b.name));
+const tiers: { key: 'critical' | 'standard' | 'low'; label: string }[] = [
+  { key: 'critical', label: 'Critical tier' },
+  { key: 'standard', label: 'Standard tier' },
+  { key: 'low', label: 'Low tier' },
+];
+const planned = (t: string) =>
+  catalog.filter((e) => e.status === 'planned' && e.tier === t).sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Base title="Roadmap — Quenchworks" description="What is available now and what is coming next in the QuenchWorks catalog.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Roadmap</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">What is shipped, what is next</h1>
+    <p class="mt-4 text-ash">
+      We work the catalog in tiers, top to bottom, and ship the single-node chart first. {availableCount} datastores
+      are available now; the rest are queued.
+    </p>
+
+    <section class="mt-10">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Available now</h2>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {
+          available.map((e) => (
+            <li>
+              <a href={`/catalog/${e.slug}`} class="inline-flex items-center gap-2 rounded-lg border border-paper/40 bg-graphite px-3 py-1.5 text-sm transition-colors hover:bg-ink">
+                {e.name}
+                <span class="font-mono text-[10px] uppercase tracking-widest text-ash">{e.tier}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    {
+      tiers.map((t) => {
+        const items = planned(t.key);
+        return items.length > 0 ? (
+          <section class="mt-10">
+            <h2 class="font-mono text-xs uppercase tracking-widest text-ash">{t.label} · queued</h2>
+            <ul class="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {items.map((e) => (
+                <li class="flex items-center justify-between gap-3 rounded-lg border border-line bg-graphite px-3 py-2 text-sm opacity-80">
+                  <span>{e.name}</span>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-ash">{e.category}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null;
+      })
+    }
+
+    <p class="mt-12 text-sm text-ash">
+      Want something prioritized?{' '}
+      <a href="https://github.com/quenchworks/images/issues/new/choose" class="text-paper underline-offset-4 hover:underline">Request an app</a>.
+    </p>
+  </main>
+  <Footer />
+</Base>

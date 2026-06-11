@@ -3,10 +3,9 @@ import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { catalog, ghcr } from '../../data/catalog';
-import { fetchArtifactHub } from '../../data/artifacthub';
+import { fetchPackageDetail } from '../../data/artifacthub';
 
 export function getStaticPaths() {
-  // detail pages only for shipped apps (they have real install commands)
   return catalog
     .filter((e) => e.status === 'available')
     .map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
@@ -14,17 +13,20 @@ export function getStaticPaths() {
 
 const { entry } = Astro.props;
 const image = `${ghcr}/images/${entry.slug}`;
-const chart = `oci://${ghcr}/charts/${entry.slug}`;
 
-// live facts from ArtifactHub at build time (falls back to static values)
-const ah = (await fetchArtifactHub())[entry.slug];
+// live, build-time facts from ArtifactHub (falls back to static catalog values)
+const ah = await fetchPackageDetail(entry.slug);
 const chartVersion = ah?.version;
 const appVersion = ah?.appVersion ?? entry.version;
 const signed = ah?.signed ?? true;
+const installRef = ah?.contentUrl ?? `oci://${ghcr}/charts/${entry.slug}`;
+const pinned = ah?.image; // image@sha256:...
+const sec = ah?.security;
+const total = ah?.securityTotal;
 const lastPublished = ah?.ts ? new Date(ah.ts * 1000).toISOString().slice(0, 10) : undefined;
 
 const blocks = [
-  { label: 'Install the chart', code: `helm install my-${entry.slug} ${chart}` },
+  { label: 'Install the chart', code: `helm install my-${entry.slug} ${installRef.replace(/:[^:]+$/, '')}` },
   { label: 'Pull the image', code: `docker pull ${image}:latest` },
   {
     label: 'Verify the signature (cosign)',
@@ -36,29 +38,38 @@ const facts: [string, string][] = [
   ['Category', entry.category],
   ['Chart version', chartVersion ?? '—'],
   ['App version', appVersion ?? '—'],
-  ['Chart license', 'MIT'],
+  ['Chart license', ah?.chartLicense ?? 'MIT'],
   ['App license', entry.license],
-  ['Signed', signed ? 'cosign (keyless)' : 'no'],
+  ['Signed', signed ? `cosign${ah?.signatures?.length ? ' (keyless)' : ''}` : 'no'],
+  ['Values schema', ah?.hasValuesSchema ? 'yes' : '—'],
   ['Architectures', 'linux/amd64, linux/arm64'],
   ['Runs as', 'nonroot (uid 1001)'],
   ['Root filesystem', 'read-only'],
   ...(lastPublished ? [['Last published', lastPublished] as [string, string]] : []),
 ];
+
+const sevs = sec
+  ? ([
+      ['Critical', sec.critical],
+      ['High', sec.high],
+      ['Medium', sec.medium],
+      ['Low', sec.low],
+      ['Unknown', sec.unknown],
+    ] as [string, number][])
+  : [];
 ---
 
 <Base title={`${entry.name} — Quenchworks`} description={entry.summary}>
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16">
-    <a href="/catalog" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">
-      &larr; Catalog
-    </a>
+    <a href="/catalog" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">&larr; Catalog</a>
 
     <header class="mt-6 flex items-center gap-4">
       <img src="/brand/icon-dark.svg" alt="" class="size-12" width="48" height="48" />
       <div>
         <h1 class="text-4xl font-bold tracking-tight">{entry.name}</h1>
         <p class="mt-1 font-mono text-xs uppercase tracking-widest text-ash">
-          {entry.category} · {entry.tier} · 0 fixable CVEs
+          {entry.category} · {entry.tier}{chartVersion ? ` · chart ${chartVersion}` : ''}
         </p>
       </div>
     </header>
@@ -66,39 +77,72 @@ const facts: [string, string][] = [
     <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
     {entry.note && <p class="mt-2 max-w-2xl text-sm text-ash">{entry.note}</p>}
 
-    <section class="mt-10 grid gap-8 lg:grid-cols-[1fr_280px]">
-      <div class="space-y-5">
-        {
-          blocks.map((b) => (
-            <div>
-              <p class="mb-2 font-mono text-xs uppercase tracking-widest text-ash">{b.label}</p>
-              <pre class="overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code>{b.code}</code></pre>
+    {/* Live security report from ArtifactHub */}
+    {sec && (
+      <section class="mt-8 rounded-xl border border-line bg-graphite p-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="font-mono text-xs uppercase tracking-widest text-ash">Security report (Trivy, via ArtifactHub)</h2>
+          {total === 0 && <span class="font-mono text-xs uppercase tracking-widest text-paper">0 fixable CVEs</span>}
+        </div>
+        <div class="mt-4 grid grid-cols-5 gap-3 text-center">
+          {sevs.map(([k, v]) => (
+            <div class="rounded-lg bg-ink p-3">
+              <div class="text-2xl font-bold tabular-nums">{v}</div>
+              <div class="mt-1 font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
             </div>
-          ))
-        }
-        <p class="text-sm text-ash">
-          For production, pin by digest rather than a tag. The chart already references the image by
-          its signed <code class="font-mono text-paper">sha256</code> digest.
-        </p>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="mt-8 grid gap-8 lg:grid-cols-[1fr_300px]">
+      <div class="space-y-5">
+        {blocks.map((b) => (
+          <div>
+            <p class="mb-2 font-mono text-xs uppercase tracking-widest text-ash">{b.label}</p>
+            <pre class="overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code>{b.code}</code></pre>
+          </div>
+        ))}
+
+        {pinned && (
+          <div>
+            <p class="mb-2 font-mono text-xs uppercase tracking-widest text-ash">Pinned image (by digest)</p>
+            <pre class="overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-xs text-paper"><code>{pinned}</code></pre>
+            <p class="mt-2 text-sm text-ash">The chart deploys exactly this digest — the artifact the factory scanned and signed.</p>
+          </div>
+        )}
       </div>
 
       <aside class="space-y-4">
         <div class="rounded-xl border border-line bg-graphite p-5">
           <dl class="space-y-3 text-sm">
-            {
-              facts.map(([k, v]) => (
-                <div class="flex justify-between gap-3">
-                  <dt class="text-ash">{k}</dt>
-                  <dd class="text-right font-medium">{v}</dd>
-                </div>
-              ))
-            }
+            {facts.map(([k, v]) => (
+              <div class="flex justify-between gap-3">
+                <dt class="text-ash">{k}</dt>
+                <dd class="text-right font-medium">{v}</dd>
+              </div>
+            ))}
           </dl>
         </div>
+
+        {ah?.versions && ah.versions.length > 0 && (
+          <div class="rounded-xl border border-line bg-graphite p-5">
+            <p class="mb-3 font-mono text-xs uppercase tracking-widest text-ash">Versions</p>
+            <ul class="space-y-2 text-sm">
+              {ah.versions.slice(0, 8).map((v) => (
+                <li class="flex justify-between gap-3">
+                  <span class="font-mono">{v.version}</span>
+                  <span class="text-ash">{v.ts ? new Date(v.ts * 1000).toISOString().slice(0, 10) : ''}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <div class="flex flex-col gap-2 font-mono text-xs uppercase tracking-widest">
           {ah?.url && <a href={ah.url} class="rounded-lg border border-paper/40 px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">View on ArtifactHub</a>}
-          <a href={`https://github.com/quenchworks/images`} class="rounded-lg border border-line px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">Image source</a>
-          <a href={`https://github.com/quenchworks/charts`} class="rounded-lg border border-line px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">Chart source</a>
+          <a href="https://github.com/quenchworks/images" class="rounded-lg border border-line px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">Image source</a>
+          <a href="https://github.com/quenchworks/charts" class="rounded-lg border border-line px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">Chart source</a>
           <a href={entry.upstream} class="rounded-lg border border-line px-3.5 py-2 text-center text-ash transition-colors hover:text-paper">Upstream project</a>
         </div>
       </aside>

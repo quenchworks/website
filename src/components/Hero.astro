@@ -1,5 +1,6 @@
 ---
 // Hero — minimal single column, one primary CTA (per MASTER design system).
+import { availableCount } from '../data/catalog';
 ---
 
 <section class="relative overflow-hidden">
@@ -13,7 +14,7 @@
 
   <div class="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
     <p class="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-ash">
-      Open source · Built from source
+      {availableCount} datastores · built from source · 0 fixable CVEs
     </p>
 
     <h1 class="mx-auto max-w-3xl text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
@@ -28,7 +29,7 @@
 
     <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a
-        href="https://artifacthub.io/"
+        href="/catalog"
         class="inline-flex w-full items-center justify-center rounded-lg bg-paper px-5 py-3 text-sm font-semibold text-ink transition-transform duration-200 hover:scale-[1.02] sm:w-auto"
       >
         Browse the catalog
