@@ -39,9 +39,11 @@ consistent. Monochrome only; no color accent.
 
 ## Deploy
 
-Static build (`pnpm build` → `dist/`), deployed to **Cloudflare Pages** at
-`quenchworks.mkabumattar.com`. The `deploy` workflow builds with pnpm + Node 26 and runs
-`wrangler pages deploy dist --project-name=quenchworks`. Needs repo secrets
-`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. (Alternatively, connect the repo directly in
-the Cloudflare Pages dashboard with build command `pnpm build` and output dir `dist` — use one or
-the other, not both.)
+Static build (`pnpm build` → `dist/`), deployed to **Cloudflare Pages** via Cloudflare's Git
+integration (Cloudflare builds on push — no GitHub Actions workflow needed). Project settings:
+
+- Build command: `pnpm build`
+- Build output directory: `dist`
+- Framework preset: Astro
+- Node version: `26` (set `NODE_VERSION=26` in the Pages env, matching `.nvmrc`)
+- Custom domain: `quenchworks.mkabumattar.com`
