@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const layers = [
+  {
+    n: '01',
+    h: 'The image factory',
+    p: 'We compile each application from source with melange, then apko assembles a small nonroot image on top of Wolfi. There are no Dockerfiles and nothing inherited from another distro, so the image carries only what the app needs. A Trivy gate fails the build on any fixable CVE, and a scheduled rebuild keeps the result clean over time.',
+    tags: ['melange', 'apko', 'Wolfi', 'Trivy'],
+  },
+  {
+    n: '02',
+    h: 'Clean-room charts',
+    p: 'Each Helm chart is written from the upstream documentation for that application, never copied from another vendor. A shared library chart provides the labels, hardened security contexts, and a resolver that references images strictly by digest. Charts run nonroot on a read-only root filesystem with all capabilities dropped.',
+    tags: ['Helm', 'quench-common', 'nonroot', 'read-only rootfs'],
+  },
+  {
+    n: '03',
+    h: 'Signed distribution',
+    p: 'Images and charts publish to GHCR as OCI artifacts and are signed with cosign using GitHub OIDC, so there is no long-lived key. When an image is rebuilt, a digest contract updates the chart to the new signed digest automatically. Everything is listed on ArtifactHub, and anyone can verify a signature from their own terminal.',
+    tags: ['GHCR', 'cosign', 'OCI', 'ArtifactHub'],
+  },
+];
+---
+
+<Base title="How it works · Quenchworks" description="The QuenchWorks pipeline: built from source on Wolfi, clean-room charts, signed and distributed as OCI artifacts.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">How it works</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">From source to a signed install</h1>
+    <p class="mt-4 leading-relaxed text-ash">
+      Three independent layers, each with a single job. The contract between them is simple: charts
+      reference images only by digest, never a moving tag.
+    </p>
+
+    <div class="mt-12 space-y-4">
+      {
+        layers.map((l) => (
+          <section class="rounded-2xl border border-line bg-graphite p-6 sm:p-8">
+            <div class="flex items-baseline gap-4">
+              <span class="font-mono text-sm tabular-nums text-ash">{l.n}</span>
+              <h2 class="text-xl font-semibold tracking-tight">{l.h}</h2>
+            </div>
+            <p class="mt-3 leading-relaxed text-ash">{l.p}</p>
+            <div class="mt-5 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+              {l.tags.map((t) => (
+                <span class="rounded bg-ink px-2 py-0.5">{t}</span>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <section class="mt-10 rounded-2xl border border-line bg-graphite px-6 py-8 text-center">
+      <p class="text-ash">
+        See it in practice on any{' '}
+        <a href="/catalog" class="font-medium text-paper underline-offset-4 hover:underline">catalog</a>{' '}
+        page, or read the{' '}
+        <a href="/security" class="font-medium text-paper underline-offset-4 hover:underline">security model</a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Base>

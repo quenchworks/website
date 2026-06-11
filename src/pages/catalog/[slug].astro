@@ -36,12 +36,12 @@ const blocks = [
 
 const facts: [string, string][] = [
   ['Category', entry.category],
-  ['Chart version', chartVersion ?? '—'],
-  ['App version', appVersion ?? '—'],
+  ['Chart version', chartVersion ?? 'n/a'],
+  ['App version', appVersion ?? 'n/a'],
   ['Chart license', ah?.chartLicense ?? 'MIT'],
   ['App license', entry.license],
   ['Signed', signed ? `cosign${ah?.signatures?.length ? ' (keyless)' : ''}` : 'no'],
-  ['Values schema', ah?.hasValuesSchema ? 'yes' : '—'],
+  ['Values schema', ah?.hasValuesSchema ? 'yes' : 'no'],
   ['Architectures', 'linux/amd64, linux/arm64'],
   ['Runs as', 'nonroot (uid 1001)'],
   ['Root filesystem', 'read-only'],
@@ -59,7 +59,7 @@ const sevs = sec
   : [];
 ---
 
-<Base title={`${entry.name} — Quenchworks`} description={entry.summary}>
+<Base title={`${entry.name} · Quenchworks`} description={entry.summary}>
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16">
     <a href="/catalog" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">&larr; Catalog</a>
@@ -108,7 +108,7 @@ const sevs = sec
           <div>
             <p class="mb-2 font-mono text-xs uppercase tracking-widest text-ash">Pinned image (by digest)</p>
             <pre class="overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-xs text-paper"><code>{pinned}</code></pre>
-            <p class="mt-2 text-sm text-ash">The chart deploys exactly this digest — the artifact the factory scanned and signed.</p>
+            <p class="mt-2 text-sm text-ash">The chart deploys exactly this digest, the artifact the factory scanned and signed.</p>
           </div>
         )}
       </div>
