@@ -39,5 +39,9 @@ consistent. Monochrome only; no color accent.
 
 ## Deploy
 
-Static build (`pnpm build` → `dist/`). Intended for GitHub Pages at
-`quenchworks.mkabumattar.com` (CNAME → `quenchworks.github.io`, Enforce HTTPS).
+Static build (`pnpm build` → `dist/`), deployed to **Cloudflare Pages** at
+`quenchworks.mkabumattar.com`. The `deploy` workflow builds with pnpm + Node 26 and runs
+`wrangler pages deploy dist --project-name=quenchworks`. Needs repo secrets
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`. (Alternatively, connect the repo directly in
+the Cloudflare Pages dashboard with build command `pnpm build` and output dir `dist` — use one or
+the other, not both.)
