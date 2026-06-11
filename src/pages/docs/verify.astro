@@ -1,0 +1,27 @@
+---
+import Docs from '../../layouts/Docs.astro';
+---
+
+<Docs title="Verify a signature · Quenchworks" description="Verify a QuenchWorks image or chart signature with cosign. Keyless, no key to distribute.">
+  <h1>Verify a signature</h1>
+  <p class="lead">Every image and chart is signed with cosign using GitHub OIDC. There is no public key to distribute. Verification checks that the artifact was produced by a QuenchWorks GitHub Actions workflow and recorded in the Sigstore transparency log.</p>
+
+  <h2>Install cosign</h2>
+  <p>Use your package manager, or grab a release binary from the cosign project:</p>
+  <pre><code>brew install cosign            # macOS
+go install github.com/sigstore/cosign/v2/cmd/cosign@latest   # from source</code></pre>
+
+  <h2>Verify an image</h2>
+  <p>Point cosign at the image and assert the signer identity:</p>
+  <pre><code>cosign verify ghcr.io/quenchworks/images/redis \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+  <p>A valid result prints the certificate subject, which is the exact workflow that built the image, along with the Rekor log entry. If the signature is missing or the identity does not match, cosign exits non-zero.</p>
+
+  <h2>Verify a chart</h2>
+  <p>Charts are OCI artifacts, so the same command works once you have the digest:</p>
+  <pre><code>cosign verify ghcr.io/quenchworks/charts/redis@sha256:&lt;digest&gt; \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+  <p>See <a href="/docs/pin-by-digest">Pin by digest</a> for how to get that digest.</p>
+</Docs>

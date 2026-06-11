@@ -1,0 +1,80 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+
+const nav = [
+  { label: 'Get started', href: '/docs/get-started' },
+  { label: 'Verify a signature', href: '/docs/verify' },
+  { label: 'Pin by digest', href: '/docs/pin-by-digest' },
+];
+const path = Astro.url.pathname.replace(/\/$/, '');
+---
+
+<Base title={title} description={description}>
+  <Header />
+  <div class="mx-auto max-w-5xl px-5 py-16 lg:grid lg:grid-cols-[210px_1fr] lg:gap-12">
+    <aside class="mb-10 lg:mb-0">
+      <div class="lg:sticky lg:top-24">
+        <a
+          href="/docs"
+          aria-current={path === '/docs' ? 'page' : undefined}
+          class:list={[
+            'font-mono text-xs uppercase tracking-widest transition-colors duration-200',
+            path === '/docs' ? 'text-paper' : 'text-ash hover:text-paper',
+          ]}
+        >
+          Docs
+        </a>
+        <nav class="mt-4 flex flex-col gap-1" aria-label="Docs">
+          {
+            nav.map((n) => (
+              <a
+                href={n.href}
+                aria-current={path === n.href ? 'page' : undefined}
+                class:list={[
+                  'rounded-lg px-3 py-2 text-sm transition-colors duration-200',
+                  path === n.href ? 'bg-graphite font-medium text-paper' : 'text-ash hover:text-paper',
+                ]}
+              >
+                {n.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </aside>
+
+    <main class="doc max-w-2xl">
+      <slot />
+    </main>
+  </div>
+  <Footer />
+
+  <style is:global>
+    .doc h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+    .doc h2 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; margin-top: 2.5rem; }
+    .doc p { color: var(--color-ash); line-height: 1.7; margin-top: 1rem; }
+    .doc h1 + p { margin-top: 1rem; }
+    .doc ul { color: var(--color-ash); margin-top: 1rem; padding-left: 1.1rem; list-style: disc; }
+    .doc li { margin-top: 0.4rem; }
+    .doc a { color: var(--color-paper); text-underline-offset: 4px; }
+    .doc a:hover { text-decoration: underline; }
+    .doc code { font-family: var(--font-mono); font-size: 0.9em; }
+    .doc p code, .doc li code { color: var(--color-paper); background: var(--color-graphite); padding: 0.1rem 0.35rem; border-radius: 4px; }
+    .doc pre {
+      margin-top: 1rem; overflow-x: auto; border-radius: var(--radius-xl);
+      border: 1px solid var(--color-line); background: var(--color-graphite);
+      padding: 1rem; font-family: var(--font-mono); font-size: 0.85rem; color: var(--color-paper);
+      line-height: 1.6;
+    }
+    .doc .lead { color: var(--color-ash); font-size: 1.05rem; }
+    .doc hr { border: 0; border-top: 1px solid var(--color-line); margin: 2.5rem 0; }
+  </style>
+</Base>
