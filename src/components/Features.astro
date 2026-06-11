@@ -3,25 +3,25 @@
 const features = [
   {
     title: 'Built from source',
-    body: 'melange compiles each app from source on Wolfi; apko assembles a minimal, nonroot OCI image. No Dockerfiles, no distro binaries, no vendor lineage.',
+    body: 'We compile each app from source on Wolfi with melange, then apko assembles a small nonroot image. No Dockerfiles, and nothing inherited from another distro.',
     icon: 'cube',
     span: 'sm:col-span-2',
   },
   {
-    title: '0 fixable CVEs — daily',
-    body: 'A Trivy hard gate fails the build on any fixable CVE. Images rebuild every day, because a clean scan only describes the day it ran.',
+    title: '0 fixable CVEs, daily',
+    body: 'A Trivy gate fails the build on any fixable CVE. We rebuild every day, because a clean scan only tells you about the day it ran.',
     icon: 'shield',
     span: '',
   },
   {
-    title: 'Signed & attested',
-    body: 'cosign keyless signatures, SLSA build provenance, and an SPDX SBOM on every image — verifiable by anyone.',
+    title: 'Signed and attested',
+    body: 'Every image gets a cosign keyless signature, build provenance, and an SPDX SBOM. Anyone can verify it.',
     icon: 'badge',
     span: '',
   },
   {
     title: 'Pinned by digest',
-    body: 'Charts reference images only by sha256 digest, never a mutable tag — what you install is exactly what passed the gate.',
+    body: 'Charts point at images by sha256 digest, never a moving tag. What you install is exactly what passed the gate.',
     icon: 'hash',
     span: 'sm:col-span-2',
   },
@@ -31,7 +31,7 @@ const features = [
 <section id="how" class="mx-auto max-w-5xl px-5 py-16 sm:py-24">
   <div class="mb-10 text-center">
     <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">How it works</p>
-    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Hardened, end to end.</h2>
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Hardened from source to install.</h2>
   </div>
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
