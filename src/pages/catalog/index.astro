@@ -1,0 +1,108 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { catalog, availableCount } from '../../data/catalog';
+
+// available first, then by name
+const entries = [...catalog].sort((a, b) => {
+  if (a.status !== b.status) return a.status === 'available' ? -1 : 1;
+  return a.name.localeCompare(b.name);
+});
+
+const filters = [
+  { key: 'all', label: 'All' },
+  { key: 'available', label: 'Available' },
+  { key: 'critical', label: 'Critical' },
+  { key: 'standard', label: 'Standard' },
+  { key: 'low', label: 'Low' },
+];
+---
+
+<Base title="Catalog — Quenchworks" description="Browse the QuenchWorks catalog of hardened, 0-CVE container images and Helm charts.">
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <header class="mb-10">
+      <p class="font-mono text-xs uppercase tracking-widest text-ash">Catalog</p>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Hardened datastores</h1>
+      <p class="mt-4 max-w-2xl text-ash">
+        Every entry is built from source on Wolfi, scanned to zero fixable CVEs, signed with cosign,
+        and pinned by digest. {availableCount} available now, more on the way.
+      </p>
+    </header>
+
+    <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter catalog">
+      {
+        filters.map((f) => (
+          <button
+            data-filter={f.key}
+            class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper aria-pressed:border-paper aria-pressed:text-paper"
+            aria-pressed={f.key === 'all' ? 'true' : 'false'}
+          >
+            {f.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <ul class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        entries.map((e) => {
+          const Tag = e.status === 'available' ? 'a' : 'div';
+          return (
+            <li class="catalog-card" data-status={e.status} data-tier={e.tier}>
+              <Tag
+                {...(e.status === 'available' ? { href: `/catalog/${e.slug}` } : {})}
+                class:list={[
+                  'group flex h-full flex-col rounded-xl border border-line bg-graphite p-5 transition-colors duration-200',
+                  e.status === 'available' ? 'hover:border-paper/40' : 'opacity-55',
+                ]}
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-center gap-3">
+                    <img src="/brand/icon-dark.svg" alt="" class="size-7" width="28" height="28" />
+                    <span class="text-lg font-semibold">{e.name}</span>
+                  </div>
+                  {e.status === 'available' ? (
+                    <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">
+                      0&nbsp;CVE
+                    </span>
+                  ) : (
+                    <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                      Planned
+                    </span>
+                  )}
+                </div>
+                <p class="mt-3 flex-1 text-sm leading-relaxed text-ash">{e.summary}</p>
+                <div class="mt-4 flex flex-wrap items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-ash">
+                  <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+                  <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
+                  <span class="rounded bg-ink px-2 py-0.5">{e.license}</span>
+                </div>
+              </Tag>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </main>
+  <Footer />
+
+  <script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+    const cards = document.querySelectorAll<HTMLElement>('.catalog-card');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.filter;
+        buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+        cards.forEach((card) => {
+          const show =
+            key === 'all' ||
+            (key === 'available' && card.dataset.status === 'available') ||
+            card.dataset.tier === key;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</Base>

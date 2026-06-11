@@ -1,0 +1,107 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { catalog, ghcr } from '../../data/catalog';
+import { fetchArtifactHub } from '../../data/artifacthub';
+
+export function getStaticPaths() {
+  // detail pages only for shipped apps (they have real install commands)
+  return catalog
+    .filter((e) => e.status === 'available')
+    .map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const image = `${ghcr}/images/${entry.slug}`;
+const chart = `oci://${ghcr}/charts/${entry.slug}`;
+
+// live facts from ArtifactHub at build time (falls back to static values)
+const ah = (await fetchArtifactHub())[entry.slug];
+const chartVersion = ah?.version;
+const appVersion = ah?.appVersion ?? entry.version;
+const signed = ah?.signed ?? true;
+const lastPublished = ah?.ts ? new Date(ah.ts * 1000).toISOString().slice(0, 10) : undefined;
+
+const blocks = [
+  { label: 'Install the chart', code: `helm install my-${entry.slug} ${chart}` },
+  { label: 'Pull the image', code: `docker pull ${image}:latest` },
+  {
+    label: 'Verify the signature (cosign)',
+    code: `cosign verify ${image} \\\n  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \\\n  --certificate-oidc-issuer https://token.actions.githubusercontent.com`,
+  },
+];
+
+const facts: [string, string][] = [
+  ['Category', entry.category],
+  ['Chart version', chartVersion ?? '—'],
+  ['App version', appVersion ?? '—'],
+  ['License', entry.license],
+  ['Signed', signed ? 'cosign (keyless)' : 'no'],
+  ['Architectures', 'linux/amd64, linux/arm64'],
+  ['Runs as', 'nonroot (uid 1001)'],
+  ['Root filesystem', 'read-only'],
+  ...(lastPublished ? [['Last published', lastPublished] as [string, string]] : []),
+];
+---
+
+<Base title={`${entry.name} — Quenchworks`} description={entry.summary}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <a href="/catalog" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">
+      &larr; Catalog
+    </a>
+
+    <header class="mt-6 flex items-center gap-4">
+      <img src="/brand/icon-dark.svg" alt="" class="size-12" width="48" height="48" />
+      <div>
+        <h1 class="text-4xl font-bold tracking-tight">{entry.name}</h1>
+        <p class="mt-1 font-mono text-xs uppercase tracking-widest text-ash">
+          {entry.category} · {entry.tier} · 0 fixable CVEs
+        </p>
+      </div>
+    </header>
+
+    <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
+    {entry.note && <p class="mt-2 max-w-2xl text-sm text-ash">{entry.note}</p>}
+
+    <section class="mt-10 grid gap-8 lg:grid-cols-[1fr_280px]">
+      <div class="space-y-5">
+        {
+          blocks.map((b) => (
+            <div>
+              <p class="mb-2 font-mono text-xs uppercase tracking-widest text-ash">{b.label}</p>
+              <pre class="overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code>{b.code}</code></pre>
+            </div>
+          ))
+        }
+        <p class="text-sm text-ash">
+          For production, pin by digest rather than a tag. The chart already references the image by
+          its signed <code class="font-mono text-paper">sha256</code> digest.
+        </p>
+      </div>
+
+      <aside class="space-y-4">
+        <div class="rounded-xl border border-line bg-graphite p-5">
+          <dl class="space-y-3 text-sm">
+            {
+              facts.map(([k, v]) => (
+                <div class="flex justify-between gap-3">
+                  <dt class="text-ash">{k}</dt>
+                  <dd class="text-right font-medium">{v}</dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+        <div class="flex flex-col gap-2 font-mono text-xs uppercase tracking-widest">
+          {ah?.url && <a href={ah.url} class="rounded-lg border border-paper/40 px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">View on ArtifactHub</a>}
+          <a href={`https://github.com/quenchworks/images`} class="rounded-lg border border-line px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">Image source</a>
+          <a href={`https://github.com/quenchworks/charts`} class="rounded-lg border border-line px-3.5 py-2 text-center text-paper transition-colors hover:bg-graphite">Chart source</a>
+          <a href={entry.upstream} class="rounded-lg border border-line px-3.5 py-2 text-center text-ash transition-colors hover:text-paper">Upstream project</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <Footer />
+</Base>
