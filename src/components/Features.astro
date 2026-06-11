@@ -1,0 +1,77 @@
+---
+// Bento feature grid — 4 tiles. SVG icons only (Lucide-style strokes), monochrome.
+const features = [
+  {
+    title: 'Built from source',
+    body: 'melange compiles each app from source on Wolfi; apko assembles a minimal, nonroot OCI image. No Dockerfiles, no distro binaries, no vendor lineage.',
+    icon: 'cube',
+    span: 'sm:col-span-2',
+  },
+  {
+    title: '0 fixable CVEs — daily',
+    body: 'A Trivy hard gate fails the build on any fixable CVE. Images rebuild every day, because a clean scan only describes the day it ran.',
+    icon: 'shield',
+    span: '',
+  },
+  {
+    title: 'Signed & attested',
+    body: 'cosign keyless signatures, SLSA build provenance, and an SPDX SBOM on every image — verifiable by anyone.',
+    icon: 'badge',
+    span: '',
+  },
+  {
+    title: 'Pinned by digest',
+    body: 'Charts reference images only by sha256 digest, never a mutable tag — what you install is exactly what passed the gate.',
+    icon: 'hash',
+    span: 'sm:col-span-2',
+  },
+];
+---
+
+<section id="how" class="mx-auto max-w-5xl px-5 py-16 sm:py-24">
+  <div class="mb-10 text-center">
+    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">How it works</p>
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Hardened, end to end.</h2>
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+    {
+      features.map((f) => (
+        <article
+          class={`group rounded-xl border border-line bg-graphite p-6 transition-colors duration-200 hover:border-ash/50 ${f.span}`}
+        >
+          <div class="mb-4 inline-flex size-10 items-center justify-center rounded-lg border border-line text-paper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">
+              {f.icon === 'cube' && (
+                <>
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+                  <path d="m3.3 7 8.7 5 8.7-5M12 22V12" />
+                </>
+              )}
+              {f.icon === 'shield' && (
+                <>
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                  <path d="m9 12 2 2 4-4" />
+                </>
+              )}
+              {f.icon === 'badge' && (
+                <>
+                  <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                  <path d="M12 2 4 6v6c0 5 8 8 8 8s8-3 8-8V6Z" opacity="0" />
+                  <path d="m7.5 12.5-2 7 2.5-1 1.5 2 2-6M16.5 12.5l2 7-2.5-1-1.5 2-2-6" />
+                </>
+              )}
+              {f.icon === 'hash' && (
+                <>
+                  <path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18" />
+                </>
+              )}
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold tracking-tight">{f.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-ash">{f.body}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

@@ -1,0 +1,60 @@
+---
+// Hero — minimal single column, one primary CTA (per MASTER design system).
+---
+
+<section class="relative overflow-hidden">
+  <!-- subtle layered-cube backdrop motif -->
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 opacity-[0.06]"
+    style="background-image:radial-gradient(var(--color-paper) 1px,transparent 1px);background-size:28px 28px;"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
+    <p class="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-ash">
+      Open source · Built from source
+    </p>
+
+    <h1 class="mx-auto max-w-3xl text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
+      Hardened images. Clean charts.<br class="hidden sm:inline" /> Zero fixable CVEs.
+    </h1>
+
+    <p class="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ash sm:text-lg">
+      Quenchworks rebuilds the infrastructure you run — databases, caches, gateways — as minimal,
+      nonroot container images built from source on Wolfi, signed, and pinned by digest. In the
+      open. For free.
+    </p>
+
+    <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a
+        href="https://artifacthub.io/"
+        class="inline-flex w-full items-center justify-center rounded-lg bg-paper px-5 py-3 text-sm font-semibold text-ink transition-transform duration-200 hover:scale-[1.02] sm:w-auto"
+      >
+        Browse the catalog
+      </a>
+      <a
+        href="https://github.com/quenchworks"
+        class="inline-flex w-full items-center justify-center rounded-lg border border-line px-5 py-3 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-graphite sm:w-auto"
+      >
+        View on GitHub
+      </a>
+    </div>
+
+    <!-- terminal card -->
+    <div class="mx-auto mt-14 max-w-2xl overflow-hidden rounded-xl border border-line bg-graphite text-left">
+      <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+        <span class="size-3 rounded-full border border-line"></span>
+        <span class="size-3 rounded-full border border-line"></span>
+        <span class="size-3 rounded-full border border-line"></span>
+        <span class="ml-2 font-mono text-xs text-ash">install &amp; verify</span>
+      </div>
+      <pre class="overflow-x-auto px-4 py-4 font-mono text-[13px] leading-relaxed text-paper"><code><span class="text-ash"># add the chart (OCI) and install</span>
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis
+
+<span class="text-ash"># verify the image was built &amp; signed by CI before you trust it</span>
+cosign verify ghcr.io/quenchworks/redis \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+    </div>
+  </div>
+</section>
