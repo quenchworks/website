@@ -9,10 +9,22 @@ interface Props {
 }
 const { title, description } = Astro.props;
 
-const nav = [
-  { label: 'Get started', href: '/docs/get-started' },
-  { label: 'Verify a signature', href: '/docs/verify' },
-  { label: 'Pin by digest', href: '/docs/pin-by-digest' },
+const groups = [
+  {
+    title: 'Guides',
+    items: [
+      { label: 'Get started', href: '/docs/get-started' },
+      { label: 'Verify a signature', href: '/docs/verify' },
+      { label: 'Pin by digest', href: '/docs/pin-by-digest' },
+    ],
+  },
+  {
+    title: 'Reference',
+    items: [
+      { label: 'Configuration', href: '/docs/configuration' },
+      { label: 'Licensing', href: '/docs/licensing' },
+    ],
+  },
 ];
 const path = Astro.url.pathname.replace(/\/$/, '');
 ---
@@ -32,19 +44,24 @@ const path = Astro.url.pathname.replace(/\/$/, '');
         >
           Docs
         </a>
-        <nav class="mt-4 flex flex-col gap-1" aria-label="Docs">
+        <nav class="mt-4 flex flex-col gap-5" aria-label="Docs">
           {
-            nav.map((n) => (
-              <a
-                href={n.href}
-                aria-current={path === n.href ? 'page' : undefined}
-                class:list={[
-                  'rounded-lg px-3 py-2 text-sm transition-colors duration-200',
-                  path === n.href ? 'bg-graphite font-medium text-paper' : 'text-ash hover:text-paper',
-                ]}
-              >
-                {n.label}
-              </a>
+            groups.map((g) => (
+              <div class="flex flex-col gap-1">
+                <p class="px-3 font-mono text-[10px] uppercase tracking-widest text-ash/70">{g.title}</p>
+                {g.items.map((n) => (
+                  <a
+                    href={n.href}
+                    aria-current={path === n.href ? 'page' : undefined}
+                    class:list={[
+                      'rounded-lg px-3 py-2 text-sm transition-colors duration-200',
+                      path === n.href ? 'bg-graphite font-medium text-paper' : 'text-ash hover:text-paper',
+                    ]}
+                  >
+                    {n.label}
+                  </a>
+                ))}
+              </div>
             ))
           }
         </nav>
@@ -76,5 +93,9 @@ const path = Astro.url.pathname.replace(/\/$/, '');
     }
     .doc .lead { color: var(--color-ash); font-size: 1.05rem; }
     .doc hr { border: 0; border-top: 1px solid var(--color-line); margin: 2.5rem 0; }
+    .doc table { width: 100%; margin-top: 1.25rem; border-collapse: collapse; font-size: 0.9rem; }
+    .doc th, .doc td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+    .doc th { color: var(--color-paper); font-weight: 600; }
+    .doc td { color: var(--color-ash); line-height: 1.55; }
   </style>
 </Base>

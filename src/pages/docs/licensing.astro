@@ -1,0 +1,37 @@
+---
+import Docs from '../../layouts/Docs.astro';
+---
+
+<Docs title="Licensing · Quenchworks" description="What is OSI-clean in the QuenchWorks catalog, which datastores are source-available (SSPL / BSL), and the truly-open alternative we recommend for each.">
+  <h1>Licensing</h1>
+  <p class="lead">Two licenses are in play: ours and the upstream's. The QuenchWorks tooling (build configs, charts, this site) is MIT. Each image carries its own upstream software's license, recorded in the catalog and the image labels. We lead with the truly-open option in every category and are explicit when something is not.</p>
+
+  <h2>QuenchWorks tooling: MIT</h2>
+  <p>The melange and apko build configs, the Helm charts, and the website are MIT. QuenchWorks is built independently and is not affiliated with any upstream project or vendor.</p>
+
+  <h2>Upstream licenses</h2>
+  <p>Most of the catalog is OSI-approved open source: Apache-2.0, BSD, MIT, MPL-2.0, the PostgreSQL license, and GPL. A handful are <strong>source-available</strong> rather than open source, and we flag those loudly on the chart and image pages and in the chart README and NOTES.</p>
+
+  <h2>The source-available datastores</h2>
+  <p>These are <strong>not</strong> OSI-approved open source. We ship them because people ask for them, with the upstream binary redistributed unmodified, and we name the clean alternative we recommend instead.</p>
+
+  <table>
+    <thead><tr><th>Datastore</th><th>License</th><th>Recommended clean alternative</th></tr></thead>
+    <tbody>
+      <tr><td>MongoDB</td><td>SSPL-1.0</td><td><a href="/charts/ferretdb">FerretDB</a> + <a href="/charts/documentdb">DocumentDB</a>, MongoDB-wire compatible and truly open</td></tr>
+      <tr><td>Elasticsearch</td><td>SSPL-1.0 / Elastic License 2.0</td><td><a href="/charts/opensearch">OpenSearch</a>, the Apache-2.0 drop-in fork</td></tr>
+      <tr><td>CockroachDB</td><td>BSL-1.1</td><td><a href="/charts/postgresql">PostgreSQL</a> for single-region SQL (BSL converts to Apache after three years)</td></tr>
+      <tr><td>Dragonfly</td><td>BSL-1.1</td><td><a href="/charts/valkey">Valkey</a>, the BSD Redis-compatible cache</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What the labels mean</h2>
+  <ul>
+    <li><strong>SSPL-1.0</strong> (Server Side Public License): the OSI explicitly declined it. Not open source.</li>
+    <li><strong>BSL-1.1</strong> (Business Source License): source-available with use restrictions; each version converts to an open license (Apache-2.0) a few years after release.</li>
+    <li><strong>AGPL-3.0</strong> (Redis, ScyllaDB): OSI-approved copyleft. Open source, with strong network-use obligations to understand before you build on it.</li>
+  </ul>
+
+  <h2>How to read a page</h2>
+  <p>Each <a href="/charts">chart</a> and <a href="/images">image</a> detail page shows its license. The four source-available datastores carry an amber banner with the recommended alternative, so the license posture is visible before you install anything.</p>
+</Docs>

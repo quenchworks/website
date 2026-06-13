@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "sync": "node scripts/sync-catalog.mjs",
+    "predev": "node scripts/sync-catalog.mjs",
     "dev": "astro dev",
+    "prebuild": "node scripts/sync-catalog.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
@@ -17,7 +20,8 @@
     "@astrojs/check": "0.9.9",
     "@tailwindcss/vite": "4.3.0",
     "tailwindcss": "4.3.0",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "yaml": "^2.9.0"
   },
   "packageManager": "pnpm@11.5.3",
   "engines": {

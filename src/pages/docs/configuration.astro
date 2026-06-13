@@ -1,0 +1,92 @@
+---
+import Docs from '../../layouts/Docs.astro';
+
+// Code samples contain literal { } (YAML maps), which Astro would otherwise parse as
+// JSX expressions, so they are kept as plain strings and rendered inside <pre>.
+const imageYaml = `image:
+  repository: ghcr.io/quenchworks/images/postgresql
+  digest: "sha256:..."   # set by CI; override to pin a specific build
+  pullPolicy: IfNotPresent`;
+
+const persistenceYaml = `persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: ""          # default class if empty
+  accessModes: ["ReadWriteOnce"]
+  existingClaim: ""         # bind an existing PVC instead`;
+
+const resourcesYaml = `resources:
+  requests: { cpu: 250m, memory: 256Mi }
+  limits:   { cpu: "1",  memory: 1Gi }`;
+
+const extraYaml = `extraEnvVars:
+  - name: MY_FLAG
+    value: "1"
+extraEnvVarsCM: ""          # name of a ConfigMap to envFrom
+extraEnvVarsSecret: ""      # name of a Secret to envFrom
+extraVolumes: []
+extraVolumeMounts: []
+initContainers: []
+sidecars: []`;
+
+const secCtxYaml = `podSecurityContext: {}        # your keys win over the hardened defaults
+containerSecurityContext: {}`;
+
+const probesYaml = `livenessProbe:  { initialDelaySeconds: 30 }   # merge timing overrides
+readinessProbe: { periodSeconds: 10 }
+customLivenessProbe:  {}   # set to replace the probe entirely
+customReadinessProbe: {}
+customStartupProbe:   {}`;
+
+const netYaml = `networkPolicy:
+  enabled: true
+  allowExternal: false      # restrict ingress to same-namespace pods
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+serviceAccount: { create: true, name: "", annotations: {} }
+rbac: { create: false }`;
+
+const showCmds = `helm show values oci://ghcr.io/quenchworks/charts/postgresql
+helm show readme  oci://ghcr.io/quenchworks/charts/postgresql`;
+---
+
+<Docs title="Configuration · Quenchworks" description="The shared values surface every QuenchWorks chart exposes through the quench-common library chart: image, persistence, resources, scheduling, security context, probes, and networking.">
+  <h1>Configuration</h1>
+  <p class="lead">Every chart depends on one library chart, <code>quench-common</code>, so the operational knobs look the same whichever datastore you run. App-specific settings live under a <code>config:</code> (and where relevant <code>auth:</code>) block documented on each <a href="/charts">chart</a> page; everything below is shared.</p>
+
+  <h2>Image (pinned by digest)</h2>
+  <p>The image is referenced by <code>sha256</code> digest, never a tag. <code>quench-common</code> refuses a tag-only reference on purpose, so a chart can never deploy something unpinned. CI rewrites this to the latest signed digest on each image build, so you normally leave it alone.</p>
+  <pre><code>{imageYaml}</code></pre>
+
+  <h2>Persistence</h2>
+  <p>Stateful charts provision a PVC. Turn it off for ephemeral use, size it, choose a class, or bind an existing claim.</p>
+  <pre><code>{persistenceYaml}</code></pre>
+
+  <h2>Resources</h2>
+  <pre><code>{resourcesYaml}</code></pre>
+  <p>A few engines size their heap or memory from these (or from a dedicated value); their chart pages call that out.</p>
+
+  <h2>Scheduling and placement</h2>
+  <p>The usual Kubernetes controls are passed straight through: <code>nodeSelector</code>, <code>affinity</code>, <code>tolerations</code>, <code>topologySpreadConstraints</code>, <code>priorityClassName</code>, <code>schedulerName</code>, <code>terminationGracePeriodSeconds</code>, and <code>updateStrategy</code>.</p>
+
+  <h2>Extra environment and volumes</h2>
+  <p>Inject configuration without forking the chart:</p>
+  <pre><code>{extraYaml}</code></pre>
+
+  <h2>Security context</h2>
+  <p>The hardened defaults come from <code>quench-common</code>: <code>runAsNonRoot</code> (uid/gid/fsGroup 1001), seccomp <code>RuntimeDefault</code>, read-only root filesystem, no privilege escalation, all capabilities dropped. Anything you set merges over the defaults, so you only override what you need.</p>
+  <pre><code>{secCtxYaml}</code></pre>
+
+  <h2>Probes</h2>
+  <p>Each chart ships sensible liveness and readiness probes. Tune the timing, or replace a probe outright.</p>
+  <pre><code>{probesYaml}</code></pre>
+
+  <h2>Networking and availability</h2>
+  <p>A <code>NetworkPolicy</code> is on by default and is the trust boundary for charts that ship without app-level auth. A PodDisruptionBudget guards voluntary disruptions.</p>
+  <pre><code>{netYaml}</code></pre>
+
+  <h2>See the schema</h2>
+  <p>Every chart ships a <code>values.schema.json</code>, so Helm validates what you pass and your editor can autocomplete it. Read a chart's full values inline:</p>
+  <pre><code>{showCmds}</code></pre>
+</Docs>

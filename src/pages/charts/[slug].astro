@@ -1,0 +1,117 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { charts, ghcr } from '../../data/charts';
+import { images } from '../../data/images';
+import { fetchPackageDetail } from '../../data/artifacthub';
+
+export function getStaticPaths() {
+  return charts.map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const hasImage = images.some((i) => i.slug === entry.slug && i.status === 'available');
+
+// live, build-time facts from ArtifactHub (falls back to generated chart facts).
+const ah = await fetchPackageDetail(entry.slug);
+const chartVersion = ah?.version ?? entry.chartVersion;
+const appVersion = ah?.appVersion ?? entry.appVersion;
+const signed = ah?.signed ?? true;
+const installRef = entry.chartRef || `oci://${ghcr}/charts/${entry.slug}`;
+const lastPublished = ah?.ts ? new Date(ah.ts * 1000).toISOString().slice(0, 10) : undefined;
+const pinnedImage = ah?.image ?? (entry.imageDigest ? `${entry.imageRepository}@${entry.imageDigest}` : undefined);
+---
+
+<Base title={`${entry.name} chart · Quenchworks`} description={entry.summary}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <a href="/charts" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">&larr; Charts</a>
+
+    <header class="mt-6 flex items-center gap-4">
+      <img src="/brand/icon-dark.svg" alt="" class="size-12" width="48" height="48" />
+      <div>
+        <h1 class="text-4xl font-bold tracking-tight">{entry.name}</h1>
+        <p class="mt-1 font-mono text-xs uppercase tracking-widest text-ash">
+          Chart · {entry.category} · {entry.tier}{chartVersion ? ` · v${chartVersion}` : ''}
+        </p>
+      </div>
+    </header>
+
+    <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
+
+    {entry.caution && (
+      <aside class="mt-6 rounded-xl border border-amber-500/50 bg-amber-500/5 p-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-amber-400">License caution · {entry.license} is not OSI-approved</p>
+        <p class="mt-2 text-sm leading-relaxed text-paper">
+          {entry.name} is source-available, not open source. The chart carries this note prominently,
+          and we do not represent it as open source.
+        </p>
+        {entry.cleanAlternative && (
+          <p class="mt-2 text-sm leading-relaxed text-ash">
+            Clean alternative: <span class="text-paper">{entry.cleanAlternative}</span>
+          </p>
+        )}
+      </aside>
+    )}
+
+    <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
+      <h2 class="text-xl font-semibold tracking-tight">Install the chart</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        Deploy to Kubernetes with hardened defaults. The chart pins its image by signed digest, so
+        you never track it yourself.
+      </p>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Install</p>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>helm install my-{entry.slug} {installRef}</code></pre>
+
+      {pinnedImage && (
+        <>
+          <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Deploys image (digest-pinned)</p>
+          <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>{pinnedImage}</code></pre>
+        </>
+      )}
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Chart versions</p>
+      {ah?.versions && ah.versions.length > 0 ? (
+        <ul class="mt-2 space-y-1.5 text-sm">
+          {ah.versions.slice(0, 10).map((v, i) => (
+            <li class="flex justify-between gap-3">
+              <span class="font-mono">{v.version}{i === 0 ? ' (latest)' : ''}</span>
+              <span class="text-ash">{v.ts ? new Date(v.ts * 1000).toISOString().slice(0, 10) : ''}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="mt-2 text-sm text-ash">{chartVersion ?? 'n/a'}</p>
+      )}
+
+      <dl class="mt-5 space-y-2.5 text-sm">
+        <div class="flex justify-between gap-3"><dt class="text-ash">Chart version</dt><dd class="font-medium">{chartVersion ?? 'n/a'}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">App version</dt><dd class="font-medium">{appVersion ?? 'n/a'}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Chart license</dt><dd class="font-medium">{ah?.chartLicense ?? 'MIT'}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">App license</dt><dd class:list={['font-medium', entry.caution ? 'text-amber-400' : '']}>{entry.license}</dd></div>
+        {entry.port && <div class="flex justify-between gap-3"><dt class="text-ash">Service port</dt><dd class="font-medium">{entry.port}</dd></div>}
+        <div class="flex justify-between gap-3"><dt class="text-ash">Signed</dt><dd class="font-medium">{signed ? 'cosign (keyless)' : 'no'}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Values schema</dt><dd class="font-medium">{ah?.hasValuesSchema ? 'yes' : 'no'}</dd></div>
+        {lastPublished && <div class="flex justify-between gap-3"><dt class="text-ash">Last published</dt><dd class="font-medium">{lastPublished}</dd></div>}
+      </dl>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Verify the chart</p>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>cosign verify {ghcr}/charts/{entry.slug}@sha256:DIGEST \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+
+      <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
+        {hasImage && <a href={`/images/${entry.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">View the image</a>}
+        {ah?.url && <a href={ah.url} class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">View on ArtifactHub</a>}
+        <a href="https://github.com/quenchworks/charts" class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">Chart source</a>
+      </div>
+    </section>
+
+    <p class="mt-8 text-sm text-ash">
+      Upstream project: <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
+    </p>
+  </main>
+  <Footer />
+</Base>

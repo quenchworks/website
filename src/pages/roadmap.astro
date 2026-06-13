@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { catalog } from '../data/catalog';
+import { images as catalog } from '../data/images';
 
 const total = catalog.length;
 const shipped = catalog.filter((e) => e.status === 'available');
@@ -70,7 +70,7 @@ const queuedTotal = total - shipped.length;
           available.map((e) => (
             <li>
               <a
-                href={`/catalog/${e.slug}`}
+                href={`/charts/${e.slug}`}
                 class="group flex h-full flex-col justify-between gap-5 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
               >
                 <div class="flex items-start justify-between">
@@ -116,7 +116,7 @@ const queuedTotal = total - shipped.length;
                       <span class="size-2 rounded-full border border-ash" aria-hidden="true" />
                     </span>
                     {e.licenseClean === 'caution' && (
-                      <span class="font-mono text-[10px] uppercase tracking-widest text-ash" title={e.note}>caution</span>
+                      <span class="font-mono text-[10px] uppercase tracking-widest text-ash" title={e.cleanAlternative}>caution</span>
                     )}
                   </div>
                   <div>

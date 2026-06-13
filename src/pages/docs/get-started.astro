@@ -6,13 +6,15 @@ import Docs from '../../layouts/Docs.astro';
   <h1>Get started</h1>
   <p class="lead">Everything publishes to GHCR as OCI artifacts. You need Helm for charts and any OCI runtime for images. There is no repository to add and no account to create.</p>
 
+  <p>Browse <a href="/charts">all charts</a> and <a href="/images">all images</a> to find a datastore, then come back here to install it.</p>
+
   <h2>Install a chart</h2>
   <p>Charts install straight from the registry by their OCI reference:</p>
   <pre><code>helm install my-redis oci://ghcr.io/quenchworks/charts/redis</code></pre>
   <p>Auth is on by default and a password is generated into a Secret. To set your own, or to create an application database where the chart supports it, pass values:</p>
   <pre><code>helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
   --set auth.password='change-me'</code></pre>
-  <p>Each chart documents its values on its <a href="/catalog">catalog</a> page, and ships a <code>values.schema.json</code> so Helm validates what you pass.</p>
+  <p>Each chart documents its values on its <a href="/charts">chart</a> page, and ships a <code>values.schema.json</code> so Helm validates what you pass.</p>
 
   <h2>Pull an image</h2>
   <p>The images are usable on their own, outside the charts:</p>
@@ -23,5 +25,6 @@ import Docs from '../../layouts/Docs.astro';
   <ul>
     <li><a href="/docs/verify">Verify a signature</a> before you trust an artifact.</li>
     <li><a href="/docs/pin-by-digest">Pin by digest</a> so what you run is exactly what was scanned and signed.</li>
+    <li><a href="/docs/configuration">Configuration</a> for persistence, resources, scheduling, and security-context overrides.</li>
   </ul>
 </Docs>

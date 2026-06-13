@@ -1,20 +1,46 @@
 ---
 import Docs from '../../layouts/Docs.astro';
 
-const pages = [
+const guarantees = [
+  ['0 fixable CVEs', 'A hard Trivy gate; a fixable CVE fails the build, so nothing ships dirty.'],
+  ['Built from source', 'Compiled on Wolfi with melange + apko. No Dockerfile, nothing inherited.'],
+  ['Nonroot, read-only', 'uid 1001, read-only root filesystem, all capabilities dropped.'],
+  ['Multi-arch', 'linux/amd64 + linux/arm64, one signed index.'],
+  ['Signed', 'cosign keyless, tied to the build workflow and logged in Rekor.'],
+  ['Pinned by digest', 'Charts reference images by sha256, never a moving tag.'],
+];
+
+const guides = [
   { href: '/docs/get-started', h: 'Get started', p: 'Install a chart and pull an image. No repo to add, no account needed.' },
   { href: '/docs/verify', h: 'Verify a signature', p: 'Check an image or chart with cosign. Keyless, tied to the build workflow.' },
   { href: '/docs/pin-by-digest', h: 'Pin by digest', p: 'Run exactly what was scanned and signed, with no moving tag.' },
 ];
+
+const reference = [
+  { href: '/docs/configuration', h: 'Configuration', p: 'The shared values surface every chart exposes through quench-common.' },
+  { href: '/docs/licensing', h: 'Licensing', p: 'What is OSI-clean, what is source-available, and the alternatives we recommend.' },
+];
 ---
 
-<Docs title="Docs · Quenchworks" description="How to install, verify, and pin QuenchWorks images and charts.">
+<Docs title="Docs · Quenchworks" description="How to install, verify, pin, configure, and migrate to QuenchWorks images and charts.">
   <h1>Docs</h1>
-  <p class="lead">Short, practical guides for using the catalog. Install something, check that you can trust it, then pin it.</p>
+  <p class="lead">Short, practical guides for using the catalog. Install something, check that you can trust it, pin it, and tune it.</p>
 
-  <div class="mt-8 grid gap-3 sm:grid-cols-1">
+  <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
     {
-      pages.map((pg) => (
+      guarantees.map(([h, p]) => (
+        <div class="rounded-xl border border-line bg-graphite p-4">
+          <p class="font-mono text-[11px] uppercase tracking-widest text-paper">{h}</p>
+          <p class="mt-1.5 text-sm leading-relaxed">{p}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2>Guides</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      guides.map((pg) => (
         <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
           <div class="flex items-center justify-between gap-3">
             <span class="text-base font-semibold text-paper">{pg.h}</span>
@@ -25,4 +51,23 @@ const pages = [
       ))
     }
   </div>
+
+  <h2>Reference</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      reference.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <p class="mt-10 text-sm">
+    Looking for a specific datastore? Browse <a href="/charts">all charts</a> or <a href="/images">all images</a>.
+  </p>
 </Docs>

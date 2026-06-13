@@ -1,0 +1,139 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { images, ghcr } from '../../data/images';
+import { charts } from '../../data/charts';
+import { fetchPackageDetail } from '../../data/artifacthub';
+
+export function getStaticPaths() {
+  return images
+    .filter((e) => e.status === 'available')
+    .map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const image = entry.image || `${ghcr}/images/${entry.slug}`;
+const hasChart = charts.some((c) => c.slug === entry.slug);
+
+// live, build-time facts from ArtifactHub (Trivy report + the digest the chart deploys).
+const ah = await fetchPackageDetail(entry.slug);
+const appVersion = ah?.appVersion ?? entry.version;
+const pinned = ah?.image; // image@sha256:... (the chart's deployed digest)
+const sec = ah?.security;
+const total = ah?.securityTotal;
+
+const pullTag = appVersion;
+const imageTags = pullTag ? [pullTag, `${pullTag}-amd64`, `${pullTag}-arm64`] : [];
+
+const sevs = sec
+  ? ([
+      ['Critical', sec.critical],
+      ['High', sec.high],
+      ['Medium', sec.medium],
+      ['Low', sec.low],
+      ['Unknown', sec.unknown],
+    ] as [string, number][])
+  : [];
+---
+
+<Base title={`${entry.name} image · Quenchworks`} description={entry.summary}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <a href="/images" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">&larr; Images</a>
+
+    <header class="mt-6 flex items-center gap-4">
+      <img src="/brand/icon-dark.svg" alt="" class="size-12" width="48" height="48" />
+      <div>
+        <h1 class="text-4xl font-bold tracking-tight">{entry.name}</h1>
+        <p class="mt-1 font-mono text-xs uppercase tracking-widest text-ash">
+          Image · {entry.category} · {entry.tier}{appVersion ? ` · v${appVersion}` : ''}
+        </p>
+      </div>
+    </header>
+
+    <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
+
+    {entry.caution && (
+      <aside class="mt-6 rounded-xl border border-amber-500/50 bg-amber-500/5 p-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-amber-400">License caution · {entry.license} is not OSI-approved</p>
+        <p class="mt-2 text-sm leading-relaxed text-paper">
+          {entry.name} is source-available, not open source. We carry it hardened, but do not
+          represent it as open source.
+        </p>
+        {entry.cleanAlternative && (
+          <p class="mt-2 text-sm leading-relaxed text-ash">
+            Clean alternative: <span class="text-paper">{entry.cleanAlternative}</span>
+          </p>
+        )}
+      </aside>
+    )}
+
+    {sec && (
+      <section class="mt-8 rounded-xl border border-line bg-graphite p-5">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="font-mono text-xs uppercase tracking-widest text-ash">Security report (Trivy, via ArtifactHub)</h2>
+          {total === 0 && <span class="font-mono text-xs uppercase tracking-widest text-paper">0 fixable CVEs</span>}
+        </div>
+        <div class="mt-4 grid grid-cols-5 gap-3 text-center">
+          {sevs.map(([k, v]) => (
+            <div class="rounded-lg bg-ink p-3">
+              <div class="text-2xl font-bold tabular-nums">{v}</div>
+              <div class="mt-1 font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
+      <h2 class="text-xl font-semibold tracking-tight">Pull the image</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        Run it directly with Docker, Podman, or any Kubernetes workload. Nonroot, read-only root
+        filesystem, built for amd64 and arm64.
+      </p>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Pull (tag)</p>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>docker pull {pullTag ? `${image}:${pullTag}` : image}</code></pre>
+      {pinned && (
+        <>
+          <p class="mt-4 font-mono text-xs uppercase tracking-widest text-ash">Pinned by digest (recommended)</p>
+          <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>docker pull {pinned}</code></pre>
+        </>
+      )}
+
+      {imageTags.length > 0 && (
+        <>
+          <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Tags</p>
+          <div class="mt-2 flex flex-wrap gap-1.5 font-mono text-[11px] text-paper">
+            {imageTags.map((t) => <span class="rounded bg-ink px-2 py-1">{t}</span>)}
+          </div>
+          <p class="mt-2 text-xs text-ash">Images are tagged by app version (never <code class="font-mono">:latest</code>): a multi-arch index plus per-arch tags.</p>
+        </>
+      )}
+
+      <dl class="mt-5 space-y-2.5 text-sm">
+        <div class="flex justify-between gap-3"><dt class="text-ash">App version</dt><dd class="font-medium">{appVersion ?? 'n/a'}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Architectures</dt><dd class="font-medium">amd64, arm64</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Runs as</dt><dd class="font-medium">nonroot (uid 1001)</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Root filesystem</dt><dd class="font-medium">read-only</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">License</dt><dd class:list={['font-medium', entry.caution ? 'text-amber-400' : '']}>{entry.license}</dd></div>
+      </dl>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Verify the image</p>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>cosign verify {image} \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+
+      <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
+        {hasChart && <a href={`/charts/${entry.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">View the Helm chart</a>}
+        <a href="https://github.com/quenchworks/images" class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">Image source</a>
+      </div>
+    </section>
+
+    <p class="mt-8 text-sm text-ash">
+      Upstream project: <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
+    </p>
+  </main>
+  <Footer />
+</Base>

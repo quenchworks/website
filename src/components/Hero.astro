@@ -1,6 +1,9 @@
 ---
-// Hero — minimal single column, one primary CTA (per MASTER design system).
-import { availableCount } from '../data/catalog';
+// Hero: minimal single column, one primary CTA (per MASTER design system).
+import { availableCount } from '../data/images';
+import { chartCount } from '../data/charts';
+// shipped end-to-end = apps with both an available image and a chart.
+const shipped = Math.min(availableCount, chartCount);
 ---
 
 <section class="relative overflow-hidden">
@@ -14,25 +17,25 @@ import { availableCount } from '../data/catalog';
 
   <div class="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
     <p class="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-ash">
-      {availableCount} datastores · built from source · 0 fixable CVEs
+      {shipped} datastores · image + signed chart · 0 fixable CVEs
     </p>
 
     <h1 class="mx-auto max-w-3xl text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-      Hardened images and clean charts,<br class="hidden sm:inline" /> with zero fixable CVEs.
+      Drop-in hardened replacements<br class="hidden sm:inline" /> for the Bitnami catalog.
     </h1>
 
     <p class="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ash sm:text-lg">
-      Quenchworks rebuilds the infrastructure you actually run, things like databases, caches, and
-      gateways, as small nonroot container images. We build each one from source on Wolfi, sign it,
-      and pin it by digest. All of it is open and free to use.
+      {shipped} datastores, each shipped end-to-end as a small nonroot container image and a signed
+      Helm chart. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed,
+      digest-pinned, and multi-arch (amd64 + arm64). Free and independent.
     </p>
 
     <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a
-        href="/catalog"
+        href="/charts"
         class="inline-flex w-full items-center justify-center rounded-lg bg-paper px-5 py-3 text-sm font-semibold text-ink transition-transform duration-200 hover:scale-[1.02] sm:w-auto"
       >
-        Browse the catalog
+        Browse the charts
       </a>
       <a
         href="https://github.com/quenchworks"
