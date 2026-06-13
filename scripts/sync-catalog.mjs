@@ -51,6 +51,12 @@ const EDITORIAL = {
   nats: { category: 'Messaging', summary: 'Lightweight, high-performance messaging system.' },
   pulsar: { category: 'Messaging', summary: 'Cloud-native distributed messaging and streaming.' },
   nginx: { category: 'Gateway', summary: 'High-performance web server and reverse proxy.' },
+  seaweedfs: { category: 'Object storage', summary: "S3-compatible distributed object store. QuenchWorks' default object-storage pick after MinIO gutted its community edition." },
+  garage: { category: 'Object storage', summary: 'Lightweight S3-compatible object store (AGPL). A self-hosting-friendly alternative to SeaweedFS.' },
+  rustfs: { category: 'Object storage', summary: 'S3-compatible object store written in Rust, a MinIO-style alternative. Beta/preview.' },
+  prometheus: { category: 'Observability', summary: 'Metrics collection, storage, and alerting. The de-facto monitoring TSDB.' },
+  grafana: { category: 'Observability', summary: 'Dashboards and visualization for metrics and logs. OSS edition (AGPL).' },
+  busybox: { category: 'Base image', summary: 'Hardened minimal base/toolbox image. Image only, no chart.' },
   'redis-exporter': { category: 'Metrics/Exporter', summary: 'Prometheus metrics exporter for Redis/Valkey.' },
   'postgres-exporter': { category: 'Metrics/Exporter', summary: 'Prometheus metrics exporter for PostgreSQL.' },
 };
@@ -86,6 +92,12 @@ const UPSTREAM = {
   nats: 'https://github.com/nats-io/nats-server',
   pulsar: 'https://github.com/apache/pulsar',
   nginx: 'https://github.com/nginx/nginx',
+  seaweedfs: 'https://github.com/seaweedfs/seaweedfs',
+  garage: 'https://github.com/deuxfleurs-org/garage',
+  rustfs: 'https://github.com/rustfs/rustfs',
+  prometheus: 'https://github.com/prometheus/prometheus',
+  grafana: 'https://github.com/grafana/grafana',
+  busybox: 'https://busybox.net',
 };
 
 // Caution apps: license is NOT OSI-approved -> loud banner + clean alternative.
@@ -131,7 +143,7 @@ function deriveLicenseClean(license) {
 }
 
 function editorial(slug) {
-  return EDITORIAL[slug] || { category: 'Datastore', summary: `Hardened ${slug} image and chart.` };
+  return EDITORIAL[slug] || { category: 'Datastore', summary: `Hardened ${slug} image, built from source on Wolfi.` };
 }
 
 // Pull the first service port from a chart values doc (best-effort).
