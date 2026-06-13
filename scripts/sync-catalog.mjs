@@ -149,8 +149,26 @@ function servicePort(values) {
 // ──────────────────────────────────────────────────────────────────────────
 const catalogDoc = readYamlSafe(catalogYaml);
 const rows = (catalogDoc && Array.isArray(catalogDoc.catalog)) ? catalogDoc.catalog : [];
+
+// Source-of-truth repos are siblings of the website repo. In a CI/host build (e.g.
+// Cloudflare Pages) only the website repo is checked out, so catalog.yaml is absent.
+// In that case the committed src/data/{charts,images}.json IS the source for the build:
+// keep it, and never overwrite it with empty arrays. Only regenerate when the sibling
+// catalog is actually present (local dev / a checkout that includes the repos).
 if (!rows.length) {
-  console.warn(`! no catalog rows found at ${catalogYaml}`);
+  const have =
+    existsSync(resolve(outDir, 'charts.json')) && existsSync(resolve(outDir, 'images.json'));
+  if (have) {
+    console.warn(
+      `! ${catalogYaml} not found — keeping the committed src/data/{charts,images}.json (this is expected in a website-only/CI build).`,
+    );
+    process.exit(0);
+  }
+  console.error(
+    `✗ ${catalogYaml} not found and no committed src/data/*.json to fall back on. ` +
+      `Run this with the images/ and charts/ repos checked out as siblings.`,
+  );
+  process.exit(1);
 }
 
 const ghcr = 'ghcr.io/quenchworks';
