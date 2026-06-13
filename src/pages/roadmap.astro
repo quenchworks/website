@@ -106,7 +106,9 @@ const nextCount = roadmap.filter((r) => r.priority === 'next').length;
         Candidates, not commitments. <span class="text-paper">next</span> = strongest near-term picks;
         <span class="text-paper">planned</span> and <span class="text-paper">exploring</span> follow. Items
         marked <span class="text-paper">caution</span> are source-available (not OSI) and would ship only with a
-        loud license note and the clean alternative called out.
+        loud license note and the clean alternative called out. Each card also shows how it will
+        ship: <span class="text-paper">image + chart</span> for a deployable service, or
+        <span class="text-paper">image only</span> for a base/CLI/sidecar utility (like busybox).
       </p>
 
       <div class="space-y-10">
@@ -139,6 +141,9 @@ const nextCount = roadmap.filter((r) => r.priority === 'next').length;
                       </p>
                     )}
                     <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                      <span class="rounded border border-line px-2 py-0.5 text-paper/70">
+                        {r.deliverable === 'image' ? 'image only' : 'image + chart'}
+                      </span>
                       <span class="rounded bg-ink px-2 py-0.5">{r.license}</span>
                       {r.licenseClean === 'caution' && (
                         <span class="rounded border border-ash/50 px-2 py-0.5 text-paper/80">caution</span>

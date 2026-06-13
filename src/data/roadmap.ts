@@ -8,6 +8,9 @@
 
 export type LicenseClean = 'clean' | 'agpl' | 'caution';
 export type Priority = 'next' | 'planned' | 'exploring';
+// What we plan to ship for this entry: a deployable service (image + Helm chart)
+// or a base/CLI/sidecar utility that is just an image (like busybox, the exporters).
+export type Deliverable = 'image+chart' | 'image';
 
 export interface RoadmapItem {
   name: string;
@@ -16,6 +19,7 @@ export interface RoadmapItem {
   licenseClean: LicenseClean;
   note: string;
   priority: Priority;
+  deliverable?: Deliverable; // default 'image+chart'
   cleanAlternative?: string;
 }
 
@@ -46,8 +50,10 @@ export const roadmap: RoadmapItem[] = [
   { name: 'Fluent Bit', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'planned', note: 'Lightweight log and metrics shipper.' },
   { name: 'Jaeger', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'End-to-end distributed tracing.' },
   { name: 'VictoriaLogs', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Fast, cost-effective log database from the VictoriaMetrics team.' },
-  { name: 'node-exporter', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'planned', note: 'Host metrics exporter for Prometheus.' },
-  { name: 'blackbox-exporter', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Probe endpoints over HTTP, TCP, ICMP, DNS.' },
+  { name: 'node-exporter', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'planned', deliverable: 'image', note: 'Host metrics exporter for Prometheus.' },
+  { name: 'blackbox-exporter', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', deliverable: 'image', note: 'Probe endpoints over HTTP, TCP, ICMP, DNS.' },
+  { name: 'Graylog', category: 'Observability', license: 'SSPL-1.0', licenseClean: 'caution', priority: 'planned', note: 'Centralized log management and analysis. Source-available, not OSI.', cleanAlternative: 'Loki (AGPL) + OpenSearch (Apache-2.0) for a truly-open logging stack.' },
+  { name: 'Apache SkyWalking', category: 'Observability', license: 'Apache-2.0', licenseClean: 'clean', priority: 'planned', note: 'APM: distributed tracing, metrics, and service-topology analysis.' },
 
   // ── Search & vector ──────────────────────────────────────────────────
   { name: 'Qdrant', category: 'Search & vector', license: 'Apache-2.0', licenseClean: 'clean', priority: 'next', note: 'Vector database for embeddings and similarity search (Rust).' },
@@ -63,6 +69,8 @@ export const roadmap: RoadmapItem[] = [
   { name: 'Apache Flink', category: 'Workflow & data', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Stateful stream processing.' },
   { name: 'Apache Spark', category: 'Workflow & data', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Unified batch and stream analytics engine.' },
   { name: 'Dagster', category: 'Workflow & data', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Data orchestrator for ML and analytics pipelines.' },
+  { name: 'xyops', category: 'Workflow & data', license: 'BSD-3-Clause', licenseClean: 'clean', priority: 'planned', note: 'Workflow automation and server monitoring system.' },
+  { name: 'n8n', category: 'Workflow & data', license: 'Sustainable Use License', licenseClean: 'caution', priority: 'planned', note: 'Fair-code workflow automation with native AI. Source-available, not OSI.', cleanAlternative: 'No drop-in clean equivalent; Temporal (MIT) for code-first orchestration.' },
 
   // ── Messaging & streaming ────────────────────────────────────────────
   { name: 'EMQX', category: 'Messaging & streaming', license: 'Apache-2.0', licenseClean: 'clean', priority: 'planned', note: 'Scalable MQTT broker for IoT.' },
@@ -80,7 +88,7 @@ export const roadmap: RoadmapItem[] = [
   // ── Databases & engines ──────────────────────────────────────────────
   { name: 'TimescaleDB', category: 'Databases & engines', license: 'Apache-2.0', licenseClean: 'clean', priority: 'planned', note: 'PostgreSQL extension for time-series (Apache-2.0 core).' },
   { name: 'QuestDB', category: 'Databases & engines', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'High-performance time-series database with SQL.' },
-  { name: 'DuckDB', category: 'Databases & engines', license: 'MIT', licenseClean: 'clean', priority: 'exploring', note: 'In-process analytical database (OLAP).' },
+  { name: 'DuckDB', category: 'Databases & engines', license: 'MIT', licenseClean: 'clean', priority: 'exploring', deliverable: 'image', note: 'In-process analytical database (OLAP); ships as a CLI/base image.' },
   { name: 'TigerBeetle', category: 'Databases & engines', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Financial accounting database, high-throughput.' },
   { name: 'Vitess', category: 'Databases & engines', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Horizontal sharding for MySQL.' },
   { name: 'PgBouncer', category: 'Databases & engines', license: 'ISC', licenseClean: 'clean', priority: 'next', note: 'Lightweight connection pooler for PostgreSQL (companion to the PG chart).' },
