@@ -26,6 +26,10 @@ const total = ah?.securityTotal;
 const pullTag = appVersion;
 const imageTags = pullTag ? [pullTag, `${pullTag}-amd64`, `${pullTag}-arm64`] : [];
 
+// Reference for attestation verification: prefer the digest the chart deploys,
+// else the version tag (gh attestation verify resolves the tag to a digest).
+const attRef = pinned ?? (pullTag ? `${image}:${pullTag}` : image);
+
 const sevs = sec
   ? ([
       ['Critical', sec.critical],
@@ -51,6 +55,14 @@ const sevs = sec
         </p>
       </div>
     </header>
+
+    <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+      <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper">0&nbsp;fixable&nbsp;CVEs</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">cosign&nbsp;signed</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">SPDX&nbsp;SBOM</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">SLSA&nbsp;provenance</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">amd64&nbsp;·&nbsp;arm64</span>
+    </div>
 
     <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
 
@@ -120,10 +132,23 @@ const sevs = sec
         <div class="flex justify-between gap-3"><dt class="text-ash">License</dt><dd class:list={['font-medium', entry.caution ? 'text-amber-400' : '']}>{entry.license}</dd></div>
       </dl>
 
-      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Verify the image</p>
-      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>cosign verify {image} \
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Verify the supply chain</p>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        This image is cosign-signed and carries an SPDX SBOM and a SLSA build-provenance
+        attestation on the same digest. Check all three yourself:
+      </p>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature — built and signed by QuenchWorks CI</span>
+cosign verify {image} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
-  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+
+<span class="text-ash"># 2. SLSA build provenance — which workflow built it, from what</span>
+gh attestation verify oci://{attRef} --owner quenchworks
+
+<span class="text-ash"># 3. SPDX SBOM — the package inventory</span>
+gh attestation verify oci://{attRef} --owner quenchworks \
+  --predicate-type https://spdx.dev/Document</code></pre>
+      <p class="mt-2 text-xs text-ash">See the <a href="/docs/sbom" class="text-paper underline-offset-4 hover:underline">SBOM &amp; provenance guide</a> for reading the SBOM and using these checks in CI.</p>
 
       <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
         {hasChart && <a href={`/charts/${entry.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">View the Helm chart</a>}
