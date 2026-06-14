@@ -93,6 +93,8 @@ export const roadmap: RoadmapItem[] = [
   { name: 'Woodpecker CI', category: 'Storage & platform', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Simple container-native CI engine.' },
   { name: 'Atlantis', category: 'Storage & platform', license: 'Apache-2.0', licenseClean: 'clean', priority: 'next', deliverable: 'image+chart', note: 'Terraform/OpenTofu pull-request automation: runs plan/apply on PRs via webhooks.' },
   { name: 'SonarQube', category: 'Storage & platform', license: 'LGPL-3.0', licenseClean: 'clean', priority: 'exploring', note: 'Continuous code-quality and security inspection.' },
+  { name: 'Coolify', category: 'Storage & platform', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Self-hostable PaaS (Heroku/Netlify alternative). Platform-scale — multi-service (app + PostgreSQL + Redis + realtime), like the Harbor mini-wave rather than a single image.' },
+  { name: 'Dokploy', category: 'Storage & platform', license: 'DSAL-1.0', licenseClean: 'caution', priority: 'exploring', note: 'Self-hostable PaaS on Docker Swarm. Open-core: most is Apache-2.0 but the /proprietary parts use the source-available Dokploy license (production needs a commercial agreement, no resale).', cleanAlternative: 'Coolify (fully Apache-2.0).' },
 ];
 
 export const roadmapTotal = roadmap.length;

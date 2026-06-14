@@ -2,6 +2,7 @@
 const nav = [
   { label: 'Charts', href: '/charts' },
   { label: 'Images', href: '/images' },
+  { label: 'Roadmap', href: '/roadmap' },
   { label: 'Docs', href: '/docs' },
   { label: 'Security', href: '/security' },
 ];
@@ -26,14 +27,58 @@ const nav = [
       }
     </nav>
 
-    <a
-      href="https://github.com/quenchworks"
-      class="inline-flex items-center gap-2 rounded-lg border border-line px-3.5 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors duration-200 hover:bg-graphite"
-    >
-      <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true">
-        <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.8 18.3 5.1 18.3 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z" />
-      </svg>
-      GitHub
-    </a>
+    <div class="flex items-center gap-2">
+      <a
+        href="https://github.com/quenchworks"
+        class="inline-flex items-center gap-2 rounded-lg border border-line px-3.5 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors duration-200 hover:bg-graphite"
+      >
+        <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true">
+          <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.8 18.3 5.1 18.3 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z" />
+        </svg>
+        GitHub
+      </a>
+
+      <button
+        id="nav-toggle"
+        type="button"
+        class="inline-flex size-11 items-center justify-center rounded-lg border border-line text-paper transition-colors duration-200 hover:bg-graphite sm:hidden"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
   </div>
+
+  <nav
+    id="mobile-nav"
+    class="hidden border-t border-line/80 bg-ink/95 px-5 pb-4 pt-2 backdrop-blur sm:hidden"
+    aria-label="Primary mobile"
+  >
+    {
+      nav.map((item) => (
+        <a
+          href={item.href}
+          class="flex min-h-11 items-center font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+  </nav>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('#nav-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-nav');
+  toggle?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+</script>
