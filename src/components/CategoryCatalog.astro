@@ -1,0 +1,146 @@
+---
+/**
+ * Thin, owned variant of the catalog card grid for the per-category pages.
+ * Reuses the exact card look from CatalogList.astro (which we may not edit) and
+ * a small pager driven by Astro's paginate() page object, so each category is a
+ * real, crawlable, paginated set without the index page's search/filter overlay.
+ */
+import type { Page } from 'astro';
+
+export type CatalogKind = 'charts' | 'images';
+
+interface CardEntry {
+  slug: string;
+  name: string;
+  summary: string;
+  category: string;
+  tier: string;
+  license: string;
+  caution?: boolean;
+  status?: string;
+  version?: string;
+  chartVersion?: string;
+  appVersion?: string;
+}
+
+interface Props {
+  kind: CatalogKind;
+  heading: string;
+  intro: string;
+  count: number;
+  /** Paginated slice from getStaticPaths + paginate(). */
+  page: Page<CardEntry>;
+}
+
+const { kind, heading, intro, count, page } = Astro.props;
+const isImages = kind === 'images';
+const noun = isImages ? 'images' : 'charts';
+
+const BTN_BASE =
+  'inline-flex min-h-9 min-w-9 items-center justify-center rounded-lg border px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-200 focus-visible:outline-2';
+const BTN_IDLE = 'border-line bg-graphite text-ash hover:border-paper/40 hover:text-paper';
+const BTN_DISABLED = 'border-line/60 bg-graphite/50 text-ash/40 cursor-not-allowed';
+---
+
+<header class="max-w-2xl" data-pagefind-body data-pagefind-meta={`title:${heading},type:${isImages ? 'Images' : 'Charts'}`}>
+  <div class="flex flex-wrap items-center gap-3">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">{isImages ? 'Images' : 'Charts'}</p>
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">
+      <span class="text-base font-bold tabular-nums text-paper">{count}</span> {noun}
+    </span>
+  </div>
+  <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{heading}</h1>
+  <p class="mt-4 leading-relaxed text-ash">{intro}</p>
+  <p class="mt-4 font-mono text-xs uppercase tracking-widest text-ash">
+    <a href={isImages ? '/images' : '/charts'} class="transition-colors hover:text-paper">&larr; All {noun}</a>
+  </p>
+</header>
+
+<ul class="mt-10 grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  {page.data.map((e) => {
+    if (isImages) {
+      return (
+        <li>
+          <a
+            href={`/images/${e.slug}`}
+            class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
+          >
+            <div class="flex items-start justify-between gap-3">
+              <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
+                <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
+              </span>
+              <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{e.summary}</p>
+            </div>
+            {e.version && (
+              <p class="font-mono text-[10px] uppercase tracking-widest text-ash">image v{e.version}</p>
+            )}
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+              <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+              <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
+              <span class:list={['rounded bg-ink px-2 py-0.5', e.caution ? 'text-amber-400' : '']}>{e.license}</span>
+            </div>
+          </a>
+        </li>
+      );
+    }
+    return (
+      <li>
+        <a
+          href={`/charts/${e.slug}`}
+          class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
+              <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
+            </span>
+            <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-ash">{e.summary}</p>
+          </div>
+          <p class="font-mono text-[10px] uppercase tracking-widest text-ash">
+            chart v{e.chartVersion ?? '?'}{e.appVersion ? ` · app v${e.appVersion}` : ''}
+          </p>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+            <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+            <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
+            <span class:list={['rounded bg-ink px-2 py-0.5', e.caution ? 'text-amber-400' : '']}>{e.license}</span>
+          </div>
+        </a>
+      </li>
+    );
+  })}
+</ul>
+
+{page.lastPage > 1 && (
+  <nav class="mt-10 flex flex-wrap items-center justify-center gap-1.5" aria-label="Pagination">
+    {page.url.prev ? (
+      <a href={page.url.prev} class={`${BTN_BASE} ${BTN_IDLE}`} aria-label="Previous page" rel="prev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+      </a>
+    ) : (
+      <span class={`${BTN_BASE} ${BTN_DISABLED}`} aria-disabled="true" aria-label="Previous page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+      </span>
+    )}
+
+    <span class={`${BTN_BASE} tabular-nums border-paper bg-paper text-ink`} aria-current="page">
+      {page.currentPage} / {page.lastPage}
+    </span>
+
+    {page.url.next ? (
+      <a href={page.url.next} class={`${BTN_BASE} ${BTN_IDLE}`} aria-label="Next page" rel="next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+      </a>
+    ) : (
+      <span class={`${BTN_BASE} ${BTN_DISABLED}`} aria-disabled="true" aria-label="Next page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+      </span>
+    )}
+  </nav>
+)}
