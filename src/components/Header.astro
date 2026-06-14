@@ -1,30 +1,41 @@
 ---
 import Search from './Search.astro';
 
+// `primary` items show in the desktop bar; the full set shows in the mobile menu
+// (and everything is also linked from the footer). Keeping the desktop bar to six
+// avoids the overflow that 8 uppercase links caused.
 const nav = [
-  { label: 'Charts', href: '/charts' },
-  { label: 'Images', href: '/images' },
-  { label: 'Roadmap', href: '/roadmap' },
-  { label: 'Compare', href: '/compare' },
-  { label: 'Docs', href: '/docs' },
-  { label: 'Security', href: '/security' },
+  { label: 'Charts', href: '/charts', primary: true },
+  { label: 'Images', href: '/images', primary: true },
+  { label: 'Roadmap', href: '/roadmap', primary: true },
+  { label: 'Docs', href: '/docs', primary: true },
+  { label: 'Compare', href: '/compare', primary: true },
+  { label: 'Security', href: '/security', primary: true },
   { label: 'Changelog', href: '/changelog' },
   { label: 'FAQ', href: '/faq' },
 ];
+const primaryNav = nav.filter((n) => n.primary);
+
+const path = Astro.url.pathname.replace(/\/$/, '');
+const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
 ---
 
 <header class="sticky top-0 z-50 border-b border-line/80 bg-ink/80 backdrop-blur">
-  <div class="mx-auto flex h-16 max-w-5xl items-center justify-between px-5">
-    <a href="/" class="flex items-center gap-2" aria-label="Quenchworks home">
+  <div class="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 px-5">
+    <a href="/" class="flex shrink-0 items-center gap-2" aria-label="Quenchworks home">
       <img src="/brand/logo-dark.svg" alt="Quenchworks" class="h-7 w-auto" width="200" height="51" />
     </a>
 
-    <nav class="hidden items-center gap-7 sm:flex" aria-label="Primary">
+    <nav class="hidden items-center gap-6 lg:flex" aria-label="Primary">
       {
-        nav.map((item) => (
+        primaryNav.map((item) => (
           <a
             href={item.href}
-            class="font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class:list={[
+              'whitespace-nowrap font-mono text-xs uppercase tracking-widest transition-colors duration-200 hover:text-paper',
+              isActive(item.href) ? 'text-paper' : 'text-ash',
+            ]}
           >
             {item.label}
           </a>
@@ -33,24 +44,25 @@ const nav = [
     </nav>
 
     <div class="flex items-center gap-2">
-      <div class="hidden sm:block">
+      <div class="hidden lg:block">
         <Search trigger="desktop" />
       </div>
 
       <a
         href="https://github.com/quenchworks"
-        class="inline-flex items-center gap-2 rounded-lg border border-line px-3.5 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors duration-200 hover:bg-graphite"
+        class="hidden items-center gap-2 rounded-lg border border-line px-3.5 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors duration-200 hover:bg-graphite sm:inline-flex"
+        aria-label="QuenchWorks on GitHub"
       >
         <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true">
           <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.8 18.3 5.1 18.3 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z" />
         </svg>
-        GitHub
+        <span class="hidden md:inline">GitHub</span>
       </a>
 
       <button
         id="nav-toggle"
         type="button"
-        class="inline-flex size-11 items-center justify-center rounded-lg border border-line text-paper transition-colors duration-200 hover:bg-graphite sm:hidden"
+        class="inline-flex size-11 items-center justify-center rounded-lg border border-line text-paper transition-colors duration-200 hover:bg-graphite lg:hidden"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-nav"
@@ -66,7 +78,7 @@ const nav = [
 
   <nav
     id="mobile-nav"
-    class="hidden border-t border-line/80 bg-ink/95 px-5 pb-4 pt-2 backdrop-blur sm:hidden"
+    class="hidden border-t border-line/80 bg-ink/95 px-5 pb-4 pt-2 backdrop-blur lg:hidden"
     aria-label="Primary mobile"
   >
     <div class="border-b border-line/60 pb-2">
@@ -76,12 +88,22 @@ const nav = [
       nav.map((item) => (
         <a
           href={item.href}
-          class="flex min-h-11 items-center font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class:list={[
+            'flex min-h-11 items-center font-mono text-xs uppercase tracking-widest transition-colors duration-200 hover:text-paper',
+            isActive(item.href) ? 'text-paper' : 'text-ash',
+          ]}
         >
           {item.label}
         </a>
       ))
     }
+    <a
+      href="https://github.com/quenchworks"
+      class="flex min-h-11 items-center font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+    >
+      GitHub
+    </a>
   </nav>
 </header>
 
