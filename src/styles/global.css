@@ -1,12 +1,15 @@
 @import "tailwindcss";
+/* Self-hosted brand fonts (variable), no third-party CDN request. */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
 
 /* ───────────────────────────────────────────────────────────────────────────
    Quenchworks theme: authoritative tokens (see _plan-artifacts/design-system/MASTER.md)
    Monochrome only: ink + paper + neutral ramp. No color accent.
    ─────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
   --color-ink: #0b0b0c;       /* background            */
   --color-graphite: #141417;  /* surface / cards       */

@@ -72,16 +72,45 @@ const jsonLd = {
     <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
-
-    <!-- Fonts: Inter + JetBrains Mono (brand pairing) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <!-- Fonts (Inter + JetBrains Mono) are self-hosted via @fontsource, imported in global.css. -->
   </head>
   <body class="min-h-dvh antialiased">
     <slot />
+
+    <!-- Copy buttons on every code block. Progressive enhancement: adds a button to
+         each <pre> and copies its text content on click. -->
+    <script>
+      const COPY =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-3.5" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+      const CHECK =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="size-3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+
+      for (const pre of document.querySelectorAll('pre')) {
+        if (pre.dataset.copyReady) continue;
+        pre.dataset.copyReady = '1';
+        pre.classList.add('group', 'relative');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Copy to clipboard');
+        btn.className =
+          'absolute right-2 top-2 inline-flex items-center justify-center rounded-md border border-line bg-graphite p-1.5 text-ash opacity-0 transition-opacity duration-150 hover:text-paper focus-visible:opacity-100 group-hover:opacity-100';
+        btn.innerHTML = COPY;
+        btn.addEventListener('click', async () => {
+          const text = (pre.querySelector('code') ?? pre).textContent ?? '';
+          try {
+            await navigator.clipboard.writeText(text.trim());
+            btn.innerHTML = CHECK;
+            btn.classList.add('text-paper');
+            setTimeout(() => {
+              btn.innerHTML = COPY;
+              btn.classList.remove('text-paper');
+            }, 1500);
+          } catch {
+            /* clipboard unavailable; no-op */
+          }
+        });
+        pre.appendChild(btn);
+      }
+    </script>
   </body>
 </html>
