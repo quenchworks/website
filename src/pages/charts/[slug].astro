@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import { charts, ghcr } from '../../data/charts';
 import { images } from '../../data/images';
 import { fetchPackageDetail } from '../../data/artifacthub';
+import { resolveAlternatives } from '../../data/alternatives';
 
 export function getStaticPaths() {
   return charts.map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
@@ -21,6 +22,13 @@ const signed = ah?.signed ?? true;
 const installRef = entry.chartRef || `oci://${ghcr}/charts/${entry.slug}`;
 const lastPublished = ah?.ts ? new Date(ah.ts * 1000).toISOString().slice(0, 10) : undefined;
 const pinnedImage = ah?.image ?? (entry.imageDigest ? `${entry.imageRepository}@${entry.imageDigest}` : undefined);
+
+// The sha256:... the chart deploys, surfaced as a clean copy-friendly row.
+const imageDigest = pinnedImage?.includes('@') ? pinnedImage.slice(pinnedImage.indexOf('@') + 1) : undefined;
+// The chart's own OCI version (the helm push tag), when ArtifactHub reports it.
+const ociVersion = ah?.version ?? entry.chartVersion;
+
+const alternatives = entry.caution ? resolveAlternatives(entry.cleanAlternative) : [];
 ---
 
 <Base title={`${entry.name} chart · Quenchworks`} description={entry.summary}>
@@ -38,7 +46,49 @@ const pinnedImage = ah?.image ?? (entry.imageDigest ? `${entry.imageRepository}@
       </div>
     </header>
 
+    <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+      <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper">digest&nbsp;pinned</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">cosign&nbsp;signed</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">SPDX&nbsp;SBOM</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">SLSA&nbsp;provenance</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">amd64&nbsp;·&nbsp;arm64</span>
+    </div>
+
     <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
+
+    {(imageDigest || ociVersion) && (
+      <section class="mt-6 rounded-xl border border-line bg-graphite p-5">
+        {imageDigest && (
+          <>
+            <p class="font-mono text-xs uppercase tracking-widest text-ash">Deployed image digest</p>
+            <pre class="mt-2 overflow-x-auto rounded-lg border border-line bg-ink p-3 font-mono text-xs text-paper"><code>{imageDigest}</code></pre>
+          </>
+        )}
+        {ociVersion && (
+          <>
+            <p class="mt-4 font-mono text-xs uppercase tracking-widest text-ash">Chart OCI version</p>
+            <pre class="mt-2 overflow-x-auto rounded-lg border border-line bg-ink p-3 font-mono text-xs text-paper"><code>{installRef}:{ociVersion}</code></pre>
+          </>
+        )}
+        <p class="mt-2 text-xs text-ash">The chart pins its image by this signed digest, so you never track it yourself. Signatures, SBOM, and provenance attach to the same digest.</p>
+      </section>
+    )}
+
+    <section class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {([
+        ['Signed', signed ? 'cosign keyless' : 'no'],
+        ['SBOM', 'SPDX, on image'],
+        ['Provenance', 'SLSA build'],
+        ['Architectures', 'amd64, arm64'],
+        ['Runs as', 'nonroot (uid 1001)'],
+        ['Root filesystem', 'read-only'],
+      ] as [string, string][]).map(([k, v]) => (
+        <div class="rounded-lg border border-line bg-graphite p-3">
+          <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
+          <div class="mt-1 text-sm font-medium text-paper">{v}</div>
+        </div>
+      ))}
+    </section>
 
     {entry.caution && (
       <aside class="mt-6 rounded-xl border border-amber-500/50 bg-amber-500/5 p-5">
@@ -51,6 +101,16 @@ const pinnedImage = ah?.image ?? (entry.imageDigest ? `${entry.imageRepository}@
           <p class="mt-2 text-sm leading-relaxed text-ash">
             Clean alternative: <span class="text-paper">{entry.cleanAlternative}</span>
           </p>
+        )}
+        {alternatives.length > 0 && (
+          <div class="mt-3 flex flex-wrap gap-1.5 font-mono text-[11px] uppercase tracking-widest">
+            {alternatives.map((a) => (
+              <a
+                href={a.hasChart ? `/charts/${a.slug}` : `/images/${a.slug}`}
+                class="rounded border border-line bg-graphite px-2.5 py-1 text-paper transition-colors hover:bg-ink"
+              >{a.name} &rarr;</a>
+            ))}
+          </div>
         )}
       </aside>
     )}
@@ -101,6 +161,11 @@ const pinnedImage = ah?.image ?? (entry.imageDigest ? `${entry.imageRepository}@
       <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>cosign verify {ghcr}/charts/{entry.slug}@sha256:DIGEST \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Transparency</p>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        The chart and the image it deploys both publish their attestations on GitHub (<a href="https://github.com/quenchworks/charts/attestations" class="text-paper underline-offset-4 hover:underline">charts</a>, <a href="https://github.com/quenchworks/images/attestations" class="text-paper underline-offset-4 hover:underline">images</a>) and log them to the Sigstore transparency log (Rekor), which <code class="font-mono">cosign verify</code> checks for you.
+      </p>
 
       <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
         {hasImage && <a href={`/images/${entry.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">View the image</a>}

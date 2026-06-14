@@ -5,6 +5,7 @@ import Footer from '../../components/Footer.astro';
 import { images, ghcr } from '../../data/images';
 import { charts } from '../../data/charts';
 import { fetchPackageDetail } from '../../data/artifacthub';
+import { resolveAlternatives } from '../../data/alternatives';
 
 export function getStaticPaths() {
   return images
@@ -29,6 +30,19 @@ const imageTags = pullTag ? [pullTag, `${pullTag}-amd64`, `${pullTag}-arm64`] : 
 // Reference for attestation verification: prefer the digest the chart deploys,
 // else the version tag (gh attestation verify resolves the tag to a digest).
 const attRef = pinned ?? (pullTag ? `${image}:${pullTag}` : image);
+
+// Just the sha256:... portion, for a clean copy-friendly digest row.
+const digest = pinned?.includes('@') ? pinned.slice(pinned.indexOf('@') + 1) : undefined;
+
+// "Runs as" varies for a couple of Coolify images; default is nonroot uid 1001.
+const runsAs =
+  entry.slug === 'coolify-app'
+    ? 'nonroot (uid 9999)'
+    : entry.slug === 'coolify-helper'
+      ? 'root (by design)'
+      : 'nonroot (uid 1001)';
+
+const alternatives = entry.caution ? resolveAlternatives(entry.cleanAlternative) : [];
 
 const sevs = sec
   ? ([
@@ -66,6 +80,30 @@ const sevs = sec
 
     <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
 
+    {digest && (
+      <section class="mt-6 rounded-xl border border-line bg-graphite p-5">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash">Current digest (deployed by the chart)</p>
+        <pre class="mt-2 overflow-x-auto rounded-lg border border-line bg-ink p-3 font-mono text-xs text-paper"><code>{digest}</code></pre>
+        <p class="mt-2 text-xs text-ash">Signatures, the SBOM, and provenance all attach to this digest. Pin to it for reproducible, tamper-evident pulls.</p>
+      </section>
+    )}
+
+    <section class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {([
+        ['Signed', 'cosign keyless'],
+        ['SBOM', 'SPDX, on digest'],
+        ['Provenance', 'SLSA build'],
+        ['Architectures', 'amd64, arm64'],
+        ['Runs as', runsAs],
+        ['Root filesystem', 'read-only'],
+      ] as [string, string][]).map(([k, v]) => (
+        <div class="rounded-lg border border-line bg-graphite p-3">
+          <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
+          <div class="mt-1 text-sm font-medium text-paper">{v}</div>
+        </div>
+      ))}
+    </section>
+
     {entry.caution && (
       <aside class="mt-6 rounded-xl border border-amber-500/50 bg-amber-500/5 p-5">
         <p class="font-mono text-xs uppercase tracking-widest text-amber-400">License caution · {entry.license} is not OSI-approved</p>
@@ -77,6 +115,16 @@ const sevs = sec
           <p class="mt-2 text-sm leading-relaxed text-ash">
             Clean alternative: <span class="text-paper">{entry.cleanAlternative}</span>
           </p>
+        )}
+        {alternatives.length > 0 && (
+          <div class="mt-3 flex flex-wrap gap-1.5 font-mono text-[11px] uppercase tracking-widest">
+            {alternatives.map((a) => (
+              <a
+                href={a.hasImage ? `/images/${a.slug}` : `/charts/${a.slug}`}
+                class="rounded border border-line bg-graphite px-2.5 py-1 text-paper transition-colors hover:bg-ink"
+              >{a.name} &rarr;</a>
+            ))}
+          </div>
         )}
       </aside>
     )}
@@ -127,7 +175,7 @@ const sevs = sec
       <dl class="mt-5 space-y-2.5 text-sm">
         <div class="flex justify-between gap-3"><dt class="text-ash">App version</dt><dd class="font-medium">{appVersion ?? 'n/a'}</dd></div>
         <div class="flex justify-between gap-3"><dt class="text-ash">Architectures</dt><dd class="font-medium">amd64, arm64</dd></div>
-        <div class="flex justify-between gap-3"><dt class="text-ash">Runs as</dt><dd class="font-medium">nonroot (uid 1001)</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Runs as</dt><dd class="font-medium">{runsAs}</dd></div>
         <div class="flex justify-between gap-3"><dt class="text-ash">Root filesystem</dt><dd class="font-medium">read-only</dd></div>
         <div class="flex justify-between gap-3"><dt class="text-ash">License</dt><dd class:list={['font-medium', entry.caution ? 'text-amber-400' : '']}>{entry.license}</dd></div>
       </dl>
@@ -149,6 +197,11 @@ gh attestation verify oci://{attRef} --owner quenchworks
 gh attestation verify oci://{attRef} --owner quenchworks \
   --predicate-type https://spdx.dev/Document</code></pre>
       <p class="mt-2 text-xs text-ash">See the <a href="/docs/sbom" class="text-paper underline-offset-4 hover:underline">SBOM &amp; provenance guide</a> for reading the SBOM and using these checks in CI.</p>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Transparency</p>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        Every attestation is published on the org's <a href="https://github.com/quenchworks/images/attestations" class="text-paper underline-offset-4 hover:underline">GitHub attestations</a> listing and logged to the Sigstore transparency log (Rekor), which <code class="font-mono">cosign verify</code> and <code class="font-mono">gh attestation verify</code> check for you.
+      </p>
 
       <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
         {hasChart && <a href={`/charts/${entry.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">View the Helm chart</a>}
