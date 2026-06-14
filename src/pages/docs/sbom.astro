@@ -1,0 +1,58 @@
+---
+import Docs from '../../layouts/Docs.astro';
+
+const tree = `cosign tree ghcr.io/quenchworks/images/redis@sha256:<digest>
+# ├── Signatures
+# │   └── ...redis:sha256-<digest>.sig
+# └── Attestations
+#     ├── https://spdx.dev/Document/v2.3        (SBOM)
+#     └── https://slsa.dev/provenance/v1        (build provenance)`;
+
+const verifyProvenance = `gh attestation verify \\
+  oci://ghcr.io/quenchworks/images/redis@sha256:<digest> \\
+  --owner quenchworks`;
+
+const verifySbom = `gh attestation verify \\
+  oci://ghcr.io/quenchworks/images/redis@sha256:<digest> \\
+  --owner quenchworks \\
+  --predicate-type https://spdx.dev/Document`;
+
+const downloadSbom = `gh attestation verify \\
+  oci://ghcr.io/quenchworks/images/redis@sha256:<digest> \\
+  --owner quenchworks \\
+  --predicate-type https://spdx.dev/Document \\
+  --format json | jq '.[0].verificationResult.statement.predicate'`;
+---
+
+<Docs
+  title="SBOM & provenance · Quenchworks"
+  description="Every QuenchWorks image carries an SPDX SBOM and a SLSA build-provenance attestation, signed keyless and attached to the registry. Verify both with cosign or the GitHub CLI."
+>
+  <h1>SBOM & provenance</h1>
+  <p class="lead">Alongside its cosign signature, every image carries two more attestations attached to the same digest: an SPDX software bill of materials, and a SLSA build-provenance statement that records which workflow built it from what. Both are signed keyless through Sigstore and pushed to GHCR as OCI referrers, so you can read and verify them without trusting anything but the transparency log.</p>
+
+  <h2>See what is attached</h2>
+  <p>Cosign lists every referrer on an image: the signature and the two attestations.</p>
+  <pre><code>{tree}</code></pre>
+  <p>Get the digest from the <a href="/docs/pin-by-digest">catalog page or with crane</a>. The attestations are attached to the multi-arch index by digest, the same one the chart pins.</p>
+
+  <h2>Verify the build provenance</h2>
+  <p>The provenance attestation answers "where did this come from?". It binds the image digest to the exact GitHub Actions workflow, commit, and runner that produced it, following the SLSA provenance schema. The GitHub CLI checks it against Sigstore and the owner:</p>
+  <pre><code>{verifyProvenance}</code></pre>
+  <p>A pass means the image was built by a workflow in the <code>quenchworks</code> org and has not been altered since. A non-zero exit means it failed.</p>
+
+  <h2>Verify and read the SBOM</h2>
+  <p>The SBOM lists every package in the image. Verify the SBOM attestation by predicate type:</p>
+  <pre><code>{verifySbom}</code></pre>
+  <p>To pull the SPDX document itself out and inspect it, add <code>--format json</code> and read the predicate:</p>
+  <pre><code>{downloadSbom}</code></pre>
+  <p>In a script or CI step, always pass <code>--format json</code>: the human-readable banner only prints to a terminal, while the exit code is what you gate on.</p>
+
+  <h2>What this gives you</h2>
+  <ul>
+    <li>A package inventory for audit and vulnerability triage, tied to the exact digest you run.</li>
+    <li>A tamper-evident record of how the image was built, with no key to manage on either side.</li>
+    <li>A check you can run yourself, in CI or by hand, rather than a claim you have to take on faith.</li>
+  </ul>
+  <p>Charts are cosign-signed as well; see <a href="/docs/verify">Verify a signature</a> for the chart and image signature checks, and <a href="/docs/pin-by-digest">Pin by digest</a> for getting the digest these commands need.</p>
+</Docs>
