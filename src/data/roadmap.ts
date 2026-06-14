@@ -91,6 +91,7 @@ export const roadmap: RoadmapItem[] = [
   { name: 'Gitea', category: 'Storage & platform', license: 'MIT', licenseClean: 'clean', priority: 'planned', note: 'Lightweight self-hosted Git service.' },
   { name: 'Forgejo', category: 'Storage & platform', license: 'GPL-3.0', licenseClean: 'agpl', priority: 'exploring', note: 'Community Git forge, a Gitea fork.' },
   { name: 'Woodpecker CI', category: 'Storage & platform', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Simple container-native CI engine.' },
+  { name: 'Atlantis', category: 'Storage & platform', license: 'Apache-2.0', licenseClean: 'clean', priority: 'next', deliverable: 'image+chart', note: 'Terraform/OpenTofu pull-request automation: runs plan/apply on PRs via webhooks.' },
   { name: 'SonarQube', category: 'Storage & platform', license: 'LGPL-3.0', licenseClean: 'clean', priority: 'exploring', note: 'Continuous code-quality and security inspection.' },
 ];
 
