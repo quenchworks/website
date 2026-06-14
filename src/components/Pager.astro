@@ -1,0 +1,93 @@
+---
+/**
+ * Server-rendered pagination: real <a href> links to the static paginated
+ * pages. Page 1 lives at the base path (e.g. /charts), pages 2..N at
+ * <base>/page/<n>. Renders a prev link, numbered links with first/last and
+ * ellipsis gaps (delta 1), and a next link. Disabled ends render as a
+ * non-link span. Mirrors the look of the old client paginator, in QW tokens.
+ *
+ * Hidden by the client overlay (id="real-pager") whenever a search query or a
+ * non-"All" filter is active; restored when the catalog is back to All + empty.
+ */
+interface Props {
+  /** Base path with no trailing slash, e.g. "/charts" or "/images". */
+  base: string;
+  /** Current page (1-based). */
+  current: number;
+  /** Total page count. */
+  total: number;
+  /** delta of numbered pages shown either side of the current one. */
+  delta?: number;
+}
+const { base, current, total, delta = 1 } = Astro.props;
+
+type PageToken = number | 'ellipsis';
+
+function generatePageList(cur: number, tot: number, d: number): PageToken[] {
+  if (tot <= 1) return [1];
+  const pages = new Set<number>([1, tot]);
+  for (let p = cur - d; p <= cur + d; p++) {
+    if (p >= 1 && p <= tot) pages.add(p);
+  }
+  const sorted = [...pages].sort((a, b) => a - b);
+  const out: PageToken[] = [];
+  let prev = 0;
+  for (const p of sorted) {
+    if (p - prev > 1) out.push('ellipsis');
+    out.push(p);
+    prev = p;
+  }
+  return out;
+}
+
+/** URL for a page number. Page 1 maps to the base path, not /page/1. */
+const hrefFor = (p: number) => (p <= 1 ? `${base}/` : `${base}/page/${p}/`);
+
+const BTN_BASE =
+  'inline-flex min-h-9 min-w-9 items-center justify-center rounded-lg border px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-200 focus-visible:outline-2';
+const BTN_IDLE = 'border-line bg-graphite text-ash hover:border-paper/40 hover:text-paper';
+const BTN_ACTIVE = 'border-paper bg-paper text-ink';
+const BTN_DISABLED = 'border-line/60 bg-graphite/50 text-ash/40 cursor-not-allowed';
+
+const tokens = generatePageList(current, total, delta);
+const prevDisabled = current <= 1;
+const nextDisabled = current >= total;
+---
+
+{total > 1 && (
+  <nav
+    id="real-pager"
+    class="mt-10 flex flex-wrap items-center justify-center gap-1.5"
+    aria-label="Pagination"
+  >
+    {prevDisabled ? (
+      <span class={`${BTN_BASE} ${BTN_DISABLED}`} aria-disabled="true" aria-label="Previous page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+      </span>
+    ) : (
+      <a href={hrefFor(current - 1)} class={`${BTN_BASE} ${BTN_IDLE}`} aria-label="Previous page" rel="prev">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>
+      </a>
+    )}
+
+    {tokens.map((token) =>
+      token === 'ellipsis' ? (
+        <span class="inline-flex min-h-9 min-w-9 items-center justify-center font-mono text-xs text-ash/60" aria-hidden="true">…</span>
+      ) : token === current ? (
+        <span class={`${BTN_BASE} tabular-nums ${BTN_ACTIVE}`} aria-current="page" aria-label={`Page ${token}`}>{token}</span>
+      ) : (
+        <a href={hrefFor(token)} class={`${BTN_BASE} tabular-nums ${BTN_IDLE}`} aria-label={`Page ${token}`}>{token}</a>
+      )
+    )}
+
+    {nextDisabled ? (
+      <span class={`${BTN_BASE} ${BTN_DISABLED}`} aria-disabled="true" aria-label="Next page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+      </span>
+    ) : (
+      <a href={hrefFor(current + 1)} class={`${BTN_BASE} ${BTN_IDLE}`} aria-label="Next page" rel="next">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>
+      </a>
+    )}
+  </nav>
+)}

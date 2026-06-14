@@ -32,6 +32,9 @@ export const ghcr = 'ghcr.io/quenchworks';
 
 export const charts = data as ChartEntry[];
 
+/** Card count per static catalog page (real URL-based pagination). */
+export const PAGE_SIZE = 12;
+
 export const chartCount = charts.length;
 export const chartCategories = [...new Set(charts.map((c) => c.category))].sort();
 export const chartTiers: Tier[] = ['critical', 'standard', 'low'];

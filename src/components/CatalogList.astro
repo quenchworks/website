@@ -1,0 +1,398 @@
+---
+/**
+ * Shared catalog browser used by the charts + images index and the static
+ * paginated /page/[n] routes. Renders the header, instant-search box, tier/
+ * category (and, for images, status) filter controls, the SERVER-RENDERED
+ * 12-card slice for the current page, and a real <a href> pager (Pager.astro).
+ *
+ * Filter/search is layered on top WITHOUT fake pagination: the full lightweight
+ * dataset is embedded as JSON. When a query or a non-"All" filter is active, the
+ * client hides the server slice + the real pager and renders ALL matching cards
+ * into a results grid (the whole matching set, not a slice). Cleared back to All
+ * + empty query restores the server slice + the real pager (visibility toggle,
+ * no reload). The only URL-based pagination on the site is the real Pager.
+ */
+import Pager from './Pager.astro';
+import type { AhFacts } from '../data/artifacthub';
+
+type ArtifactHubMap = Record<string, AhFacts>;
+
+export type CatalogKind = 'charts' | 'images';
+
+interface Slice {
+  /** The 12 (or fewer on the last page) entries for the current page. */
+  data: any[];
+  current: number;
+  total: number;
+}
+
+interface Props {
+  kind: CatalogKind;
+  /** Base path with no trailing slash, e.g. "/charts". */
+  base: string;
+  /** Full sorted entry list (for the embedded client dataset). */
+  all: any[];
+  /** Live ArtifactHub facts keyed by slug. */
+  ah: ArtifactHubMap;
+  /** The current page slice + page numbers. */
+  page: Slice;
+  /** Total catalog count shown in the header badge. */
+  count: number;
+  /** Sorted category list for the filter row. */
+  categories: string[];
+  /** Tier filters: [{ key, label }]. */
+  tierFilters: { key: string; label: string }[];
+}
+
+const { kind, base, all, ah, page, count, categories, tierFilters } = Astro.props;
+
+const isImages = kind === 'images';
+const noun = isImages ? 'images' : 'charts';
+const inputId = isImages ? 'image-search' : 'chart-search';
+
+const headerTitle = isImages ? 'All images' : 'All charts';
+const headerType = isImages ? 'Images' : 'Charts';
+
+// Lightweight dataset embedded for client-side filtering across the WHOLE
+// catalog (small: a handful of string fields per entry).
+const dataset = all.map((e) => {
+  const live = ah[e.slug];
+  const version = isImages
+    ? (live?.appVersion ?? e.version ?? null)
+    : (live?.version ?? e.chartVersion ?? null);
+  return {
+    slug: e.slug,
+    name: e.name,
+    category: e.category,
+    tier: e.tier,
+    license: e.license,
+    status: e.status ?? 'available',
+    summary: e.summary,
+    version,
+    caution: !!e.caution,
+  };
+});
+
+// Card class helpers reused by server slice + client renderer (kept in sync via
+// a data attribute the script reads).
+---
+
+<header class="max-w-2xl" data-pagefind-body data-pagefind-meta={`title:${headerTitle},type:${headerType}`}>
+  <div class="flex flex-wrap items-center gap-3">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">{headerType}</p>
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">
+      <span class="text-base font-bold tabular-nums text-paper">{count}</span> {noun}
+    </span>
+  </div>
+  {isImages ? (
+    <>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Hardened container images</h1>
+      <p class="mt-4 leading-relaxed text-ash">
+        Every image is built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, and
+        pinned by digest, with an SPDX SBOM and a SLSA build-provenance attestation you can verify.
+        Nonroot, read-only rootfs, amd64 + arm64. {count} available now.
+      </p>
+    </>
+  ) : (
+    <>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Hardened Helm charts</h1>
+      <p class="mt-4 leading-relaxed text-ash">
+        Each chart deploys our hardened image pinned by its signed digest, with sensible production
+        defaults. Cosign-signed and published as an ArtifactHub verified publisher. {count} charts.
+      </p>
+    </>
+  )}
+</header>
+
+<div class="relative mt-8">
+  <label for={inputId} class="sr-only">Search {noun}</label>
+  <svg
+    class="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-ash"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="11" cy="11" r="7"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+  <input
+    id={inputId}
+    type="search"
+    placeholder="Search by name, category, license…"
+    autocomplete="off"
+    class="w-full rounded-lg border border-line bg-graphite py-2.5 pl-10 pr-4 font-mono text-sm text-paper placeholder:text-ash focus:border-paper/40 focus:outline-none"
+  />
+</div>
+
+<div class="mb-8 mt-4 flex flex-wrap gap-2" role="group" aria-label={`Filter ${noun}`}>
+  <button
+    data-filter="all"
+    data-kind="all"
+    class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
+    aria-pressed="true">All</button>
+  {isImages && (
+    <button
+      data-filter="available"
+      data-kind="status"
+      class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
+      aria-pressed="false">Available</button>
+  )}
+  {tierFilters.map((f) => (
+    <button
+      data-filter={f.key}
+      data-kind="tier"
+      class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
+      aria-pressed="false">{f.label}</button>
+  ))}
+  {categories.map((c) => (
+    <button
+      data-filter={c}
+      data-kind="category"
+      class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
+      aria-pressed="false">{c}</button>
+  ))}
+</div>
+
+<div class="mb-4 flex min-h-5 items-center justify-between gap-4">
+  <p class="font-mono text-xs uppercase tracking-widest text-ash" id="result-count"></p>
+  <p class="hidden font-mono text-xs uppercase tracking-widest text-ash" id="no-results">No {noun} match that search.</p>
+</div>
+
+{/* SERVER slice: the real, crawlable 12-card page. Hidden by the client when filtering. */}
+<ul id="server-grid" class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  {page.data.map((e) => {
+    const live = ah[e.slug];
+    if (isImages) {
+      const Tag = e.status === 'available' ? 'a' : 'div';
+      const ver = live?.appVersion ?? e.version;
+      return (
+        <li class="card" data-status={e.status} data-tier={e.tier} data-category={e.category}>
+          <Tag
+            {...(e.status === 'available' ? { href: `/images/${e.slug}` } : {})}
+            class:list={[
+              'group flex h-full flex-col gap-4 rounded-xl border bg-graphite p-5 transition-colors duration-200',
+              e.status === 'available' ? 'border-line hover:border-paper/40' : 'border-line/70 bg-graphite/50',
+            ]}
+          >
+            <div class="flex items-start justify-between gap-3">
+              <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
+                {e.status === 'available' ? (
+                  <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
+                ) : (
+                  <span class="size-2 rounded-full border border-ash" aria-hidden="true" />
+                )}
+              </span>
+              {e.status === 'available' ? (
+                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+              ) : (
+                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">Planned</span>
+              )}
+            </div>
+            <div class="flex-1">
+              <h2 class:list={['text-base font-semibold leading-tight', e.status === 'available' ? '' : 'text-paper/80']}>{e.name}</h2>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{e.summary}</p>
+            </div>
+            {e.status === 'available' && ver && (
+              <p class="font-mono text-[10px] uppercase tracking-widest text-ash">image v{ver}</p>
+            )}
+            <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+              <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+              <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
+              <span class:list={['rounded bg-ink px-2 py-0.5', e.caution ? 'text-amber-400' : '']}>{e.license}</span>
+            </div>
+          </Tag>
+        </li>
+      );
+    }
+    const chartVer = live?.version ?? e.chartVersion;
+    const appVer = live?.appVersion ?? e.appVersion;
+    return (
+      <li class="card" data-tier={e.tier} data-category={e.category}>
+        <a
+          href={`/charts/${e.slug}`}
+          class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
+        >
+          <div class="flex items-start justify-between gap-3">
+            <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
+              <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
+            </span>
+            <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
+            <p class="mt-2 text-sm leading-relaxed text-ash">{e.summary}</p>
+          </div>
+          <p class="font-mono text-[10px] uppercase tracking-widest text-ash">
+            chart v{chartVer ?? '?'}{appVer ? ` · app v${appVer}` : ''}
+          </p>
+          <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+            <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+            <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
+            <span class:list={['rounded bg-ink px-2 py-0.5', e.caution ? 'text-amber-400' : '']}>{e.license}</span>
+          </div>
+        </a>
+      </li>
+    );
+  })}
+</ul>
+
+{/* CLIENT results: filled with the full matching set when filtering. Hidden otherwise. */}
+<ul id="filter-grid" class="hidden grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></ul>
+
+<Pager base={base} current={page.current} total={page.total} />
+
+<script
+  is:inline
+  id="catalog-data"
+  type="application/json"
+  data-kind={kind}
+  set:html={JSON.stringify(dataset)}
+/>
+
+<script>
+  type Entry = {
+    slug: string;
+    name: string;
+    category: string;
+    tier: string;
+    license: string;
+    status: string;
+    summary: string;
+    version: string | null;
+    caution: boolean;
+  };
+
+  const dataEl = document.getElementById('catalog-data');
+  const kind = dataEl?.getAttribute('data-kind') ?? 'charts';
+  const isImages = kind === 'images';
+  const all: Entry[] = dataEl ? JSON.parse(dataEl.textContent || '[]') : [];
+
+  const search = document.querySelector<HTMLInputElement>(isImages ? '#image-search' : '#chart-search');
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const serverGrid = document.getElementById('server-grid');
+  const filterGrid = document.getElementById('filter-grid');
+  const realPager = document.getElementById('real-pager');
+  const noResults = document.getElementById('no-results');
+  const count = document.getElementById('result-count');
+
+  let activeFilter = 'all';
+  let activeKind = 'all';
+
+  const esc = (s: string) =>
+    s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  function cardHTML(e: Entry): string {
+    if (isImages) {
+      const available = e.status === 'available';
+      const tag = available ? 'a' : 'div';
+      const href = available ? ` href="/images/${e.slug}"` : '';
+      const cls = available
+        ? 'group flex h-full flex-col gap-4 rounded-xl border bg-graphite p-5 transition-colors duration-200 border-line hover:border-paper/40'
+        : 'group flex h-full flex-col gap-4 rounded-xl border bg-graphite p-5 transition-colors duration-200 border-line/70 bg-graphite/50';
+      const icon = available
+        ? '<img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />'
+        : '<span class="size-2 rounded-full border border-ash" aria-hidden="true"></span>';
+      const badge = available
+        ? '<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>'
+        : '<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">Planned</span>';
+      const ver = available && e.version
+        ? `<p class="font-mono text-[10px] uppercase tracking-widest text-ash">image v${esc(e.version)}</p>`
+        : '';
+      const h2cls = available ? 'text-base font-semibold leading-tight' : 'text-base font-semibold leading-tight text-paper/80';
+      const licCls = e.caution ? 'rounded bg-ink px-2 py-0.5 text-amber-400' : 'rounded bg-ink px-2 py-0.5';
+      return `<li class="card"><${tag}${href} class="${cls}">
+        <div class="flex items-start justify-between gap-3">
+          <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">${icon}</span>
+          ${badge}
+        </div>
+        <div class="flex-1">
+          <h2 class="${h2cls}">${esc(e.name)}</h2>
+          <p class="mt-2 text-sm leading-relaxed text-ash">${esc(e.summary)}</p>
+        </div>
+        ${ver}
+        <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+          <span class="rounded bg-ink px-2 py-0.5">${esc(e.category)}</span>
+          <span class="rounded bg-ink px-2 py-0.5">${esc(e.tier)}</span>
+          <span class="${licCls}">${esc(e.license)}</span>
+        </div>
+      </${tag}></li>`;
+    }
+    const licCls = e.caution ? 'rounded bg-ink px-2 py-0.5 text-amber-400' : 'rounded bg-ink px-2 py-0.5';
+    const ver = e.version ? `chart v${esc(e.version)}` : 'chart v?';
+    return `<li class="card"><a href="/charts/${e.slug}" class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40">
+      <div class="flex items-start justify-between gap-3">
+        <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink"><img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" /></span>
+        <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+      </div>
+      <div class="flex-1">
+        <h2 class="text-base font-semibold leading-tight">${esc(e.name)}</h2>
+        <p class="mt-2 text-sm leading-relaxed text-ash">${esc(e.summary)}</p>
+      </div>
+      <p class="font-mono text-[10px] uppercase tracking-widest text-ash">${ver}</p>
+      <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+        <span class="rounded bg-ink px-2 py-0.5">${esc(e.category)}</span>
+        <span class="rounded bg-ink px-2 py-0.5">${esc(e.tier)}</span>
+        <span class="${licCls}">${esc(e.license)}</span>
+      </div>
+    </a></li>`;
+  }
+
+  function isFiltering(q: string): boolean {
+    return q !== '' || activeKind !== 'all';
+  }
+
+  function apply() {
+    const q = (search?.value ?? '').trim().toLowerCase();
+
+    if (!isFiltering(q)) {
+      // Restore the real, server-rendered slice + the real URL pager.
+      filterGrid?.classList.add('hidden');
+      if (filterGrid) filterGrid.innerHTML = '';
+      serverGrid?.classList.remove('hidden');
+      realPager?.classList.remove('hidden');
+      noResults?.classList.add('hidden');
+      if (count) count.textContent = '';
+      return;
+    }
+
+    // Filtering: show ALL matches across the whole catalog (no slicing), hide
+    // the server slice and the real pager.
+    const matches = all.filter((e) => {
+      const matchFilter =
+        activeKind === 'all' ||
+        (activeKind === 'status' && e.status === activeFilter) ||
+        (activeKind === 'tier' && e.tier === activeFilter) ||
+        (activeKind === 'category' && e.category === activeFilter);
+      const haystack = `${e.name} ${e.category} ${e.license} ${e.summary}`.toLowerCase();
+      const matchSearch = q === '' || haystack.includes(q);
+      return matchFilter && matchSearch;
+    });
+
+    serverGrid?.classList.add('hidden');
+    realPager?.classList.add('hidden');
+    if (filterGrid) {
+      filterGrid.innerHTML = matches.map(cardHTML).join('');
+      filterGrid.classList.toggle('hidden', matches.length === 0);
+    }
+    noResults?.classList.toggle('hidden', matches.length !== 0);
+    if (count) {
+      const noun = matches.length === 1 ? 'result' : 'results';
+      count.textContent = matches.length === 0 ? '' : `${matches.length} ${noun}`;
+    }
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      activeFilter = btn.dataset.filter ?? 'all';
+      activeKind = btn.dataset.kind ?? 'all';
+      apply();
+    });
+  });
+  search?.addEventListener('input', apply);
+  apply();
+</script>

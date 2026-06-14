@@ -29,6 +29,9 @@ export const ghcr = 'ghcr.io/quenchworks';
 
 export const images = data as ImageEntry[];
 
+/** Card count per static catalog page (real URL-based pagination). */
+export const PAGE_SIZE = 12;
+
 export const availableImages = images.filter((i) => i.status === 'available');
 export const availableCount = availableImages.length;
 
