@@ -6,6 +6,24 @@ import { images, ghcr } from '../../data/images';
 import { charts } from '../../data/charts';
 import { fetchPackageDetail } from '../../data/artifacthub';
 import { resolveAlternatives } from '../../data/alternatives';
+import imageMeta from '../../data/image-meta.json';
+
+// Humanize a byte count into a compact MB/GB string (e.g. "28.4 MB").
+function humanizeBytes(bytes: number): string {
+  if (bytes >= 1e9) return `${(bytes / 1e9).toFixed(1)} GB`;
+  if (bytes >= 1e6) return `${(bytes / 1e6).toFixed(1)} MB`;
+  if (bytes >= 1e3) return `${(bytes / 1e3).toFixed(1)} KB`;
+  return `${bytes} B`;
+}
+
+// Turn a build timestamp into a short, friendly "Rebuilt …" label.
+function freshness(iso: string): { abs: string; rel: string } {
+  const built = new Date(iso);
+  const abs = built.toISOString().slice(0, 10);
+  const days = Math.floor((Date.now() - built.getTime()) / 86_400_000);
+  const rel = days <= 0 ? 'today' : days === 1 ? '1 day ago' : `${days} days ago`;
+  return { abs, rel };
+}
 
 export function getStaticPaths() {
   return images
@@ -44,6 +62,26 @@ const runsAs =
 
 const alternatives = entry.caution ? resolveAlternatives(entry.cleanAlternative) : [];
 
+// Build-time image metadata (committed in image-meta.json). Any field may be absent.
+const meta = (imageMeta as Record<string, { sizeBytes?: number; builtISO?: string; sbomPackages?: number }>)[entry.slug];
+const sizeLabel = meta?.sizeBytes != null ? humanizeBytes(meta.sizeBytes) : undefined;
+const fresh = meta?.builtISO ? freshness(meta.builtISO) : undefined;
+const sbomPackages = meta?.sbomPackages;
+
+// Per-app structured data for search engines and AI crawlers.
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: entry.name,
+  description: entry.summary,
+  applicationCategory: entry.category,
+  operatingSystem: 'Linux',
+  ...(appVersion ? { softwareVersion: appVersion } : {}),
+  isAccessibleForFree: true,
+  license: entry.license,
+  codeRepository: entry.upstream,
+};
+
 const sevs = sec
   ? ([
       ['Critical', sec.critical],
@@ -76,6 +114,9 @@ const sevs = sec
       <span class="rounded border border-line bg-graphite px-2 py-0.5">SPDX&nbsp;SBOM</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">SLSA&nbsp;provenance</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">amd64&nbsp;·&nbsp;arm64</span>
+      {fresh && (
+        <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper" title={`Image rebuilt ${fresh.rel}`}>Rebuilt&nbsp;{fresh.abs}</span>
+      )}
     </div>
 
     <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
@@ -96,6 +137,8 @@ const sevs = sec
         ['Architectures', 'amd64, arm64'],
         ['Runs as', runsAs],
         ['Root filesystem', 'read-only'],
+        ...(sizeLabel ? [['Image size', sizeLabel]] as [string, string][] : []),
+        ...(sbomPackages != null ? [['SBOM packages', String(sbomPackages)]] as [string, string][] : []),
       ] as [string, string][]).map(([k, v]) => (
         <div class="rounded-lg border border-line bg-graphite p-3">
           <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
@@ -213,5 +256,6 @@ gh attestation verify oci://{attRef} --owner quenchworks \
       Upstream project: <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
     </p>
   </main>
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} is:inline />
   <Footer />
 </Base>
