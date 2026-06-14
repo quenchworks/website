@@ -148,7 +148,7 @@ const { trigger = 'desktop' } = Astro.props;
         }
 
         function clearResults() {
-          results.replaceChildren();
+          results!.replaceChildren();
           activeIndex = -1;
           input!.setAttribute('aria-expanded', 'false');
         }
