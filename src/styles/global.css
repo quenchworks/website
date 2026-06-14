@@ -14,7 +14,7 @@
   --color-ink: #0b0b0c;       /* background            */
   --color-graphite: #141417;  /* surface / cards       */
   --color-line: #26262b;      /* borders / dividers    */
-  --color-ash: #9a9aa4;       /* muted / secondary text*/
+  --color-ash: #b0b0ba;       /* muted / secondary text — WCAG AA: 9.15:1 on ink, 8.55:1 on graphite; keeps text-ash/70 >= 4.5:1 */
   --color-paper: #fafafa;     /* primary text / CTA    */
 
   --radius-xl: 16px;
@@ -37,9 +37,17 @@
     color: var(--color-ink);
   }
   :focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--color-paper) 60%, transparent);
+    outline: 2px solid var(--color-paper);
     outline-offset: 2px;
     border-radius: 4px;
+  }
+}
+
+/* Honor OS "increase contrast": push muted text further toward paper. */
+@media (prefers-contrast: more) {
+  :root {
+    --color-ash: #c8c8d0;
+    --color-line: #3a3a42;
   }
 }
 
