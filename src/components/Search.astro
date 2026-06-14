@@ -1,0 +1,330 @@
+---
+/**
+ * Global command-palette search. Brand-styled, not the default PagefindUI.
+ *
+ * - `trigger="desktop"` renders the full button (icon + "Search" + ⌘K hint).
+ * - `trigger="mobile"` renders a full-width row for the mobile menu.
+ * The modal markup + script are rendered once (on the desktop instance) so a
+ * single dialog serves both triggers and the global shortcut.
+ */
+interface Props {
+  trigger?: 'desktop' | 'mobile';
+}
+const { trigger = 'desktop' } = Astro.props;
+---
+
+{
+  trigger === 'desktop' ? (
+    <button
+      type="button"
+      data-search-open
+      class="inline-flex items-center gap-2 rounded-lg border border-line px-3 py-2 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:bg-graphite hover:text-paper"
+      aria-label="Search the catalog and docs"
+      aria-haspopup="dialog"
+    >
+      <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      <span>Search</span>
+      <kbd class="ml-1 hidden rounded border border-line bg-ink px-1.5 py-0.5 text-[10px] leading-none text-ash md:inline-block">⌘K</kbd>
+    </button>
+  ) : (
+    <button
+      type="button"
+      data-search-open
+      class="flex min-h-11 w-full items-center gap-2 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+      aria-label="Search the catalog and docs"
+      aria-haspopup="dialog"
+    >
+      <svg viewBox="0 0 24 24" class="size-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="7" />
+        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+      </svg>
+      Search
+    </button>
+  )
+}
+
+{
+  trigger === 'desktop' && (
+    <div
+      id="search-modal"
+      class="fixed inset-0 z-[100] hidden items-start justify-center px-4 pt-[12vh]"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="search-label"
+    >
+      <div data-search-backdrop class="absolute inset-0 bg-ink/70 backdrop-blur-sm" />
+      <div class="relative w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-graphite shadow-2xl">
+        <label id="search-label" for="search-input" class="sr-only">
+          Search QuenchWorks
+        </label>
+        <div class="flex items-center gap-3 border-b border-line px-4">
+          <svg viewBox="0 0 24 24" class="size-4 shrink-0 text-ash" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            id="search-input"
+            type="search"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck={false}
+            placeholder="Search charts, images, and docs"
+            class="h-14 w-full bg-transparent text-base text-paper outline-none placeholder:text-ash"
+            role="combobox"
+            aria-expanded="false"
+            aria-controls="search-results"
+            aria-autocomplete="list"
+          />
+          <kbd class="hidden rounded border border-line bg-ink px-1.5 py-0.5 font-mono text-[10px] leading-none text-ash sm:inline-block">
+            Esc
+          </kbd>
+        </div>
+        <ul
+          id="search-results"
+          role="listbox"
+          aria-label="Search results"
+          class="max-h-[60vh] overflow-y-auto p-2"
+        />
+        <p data-search-status class="px-4 py-6 text-center font-mono text-xs uppercase tracking-widest text-ash">
+          Type to search.
+        </p>
+      </div>
+    </div>
+  )
+}
+
+{
+  trigger === 'desktop' && (
+    <script>
+      const modal = document.getElementById('search-modal');
+      const input = document.getElementById('search-input') as HTMLInputElement | null;
+      const results = document.getElementById('search-results');
+      const status = document.querySelector<HTMLElement>('[data-search-status]');
+      const backdrop = document.querySelector<HTMLElement>('[data-search-backdrop]');
+
+      if (modal && input && results && status) {
+        type PagefindResult = {
+          id: string;
+          data: () => Promise<{
+            url: string;
+            excerpt: string;
+            meta?: { title?: string; type?: string };
+          }>;
+        };
+        type Pagefind = {
+          search: (q: string) => Promise<{ results: PagefindResult[] }>;
+          init?: () => void;
+        };
+
+        let pagefind: Pagefind | null = null;
+        let loadAttempted = false;
+        let loadFailed = false;
+        let activeIndex = -1;
+        let lastFocused: HTMLElement | null = null;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const setStatus = (text: string, show: boolean) => {
+          status.textContent = text;
+          status.style.display = show ? '' : 'none';
+        };
+
+        async function loadPagefind() {
+          if (pagefind || loadFailed) return;
+          loadAttempted = true;
+          try {
+            // Pagefind's bundle only exists in a built site; dev has no index.
+            const mod = await import(
+              /* @vite-ignore */ `${import.meta.env.BASE_URL || '/'}pagefind/pagefind.js`
+            );
+            pagefind = mod as Pagefind;
+            pagefind.init?.();
+          } catch {
+            loadFailed = true;
+          }
+        }
+
+        function clearResults() {
+          results.replaceChildren();
+          activeIndex = -1;
+          input!.setAttribute('aria-expanded', 'false');
+        }
+
+        function highlight() {
+          const items = Array.from(results!.querySelectorAll<HTMLElement>('[role="option"]'));
+          items.forEach((el, i) => {
+            const active = i === activeIndex;
+            el.setAttribute('aria-selected', String(active));
+            el.classList.toggle('bg-ink', active);
+            if (active) el.scrollIntoView({ block: 'nearest' });
+          });
+        }
+
+        function render(items: { url: string; title: string; excerpt: string; type: string }[]) {
+          clearResults();
+          if (items.length === 0) {
+            setStatus('No results.', true);
+            return;
+          }
+          setStatus('', false);
+          input!.setAttribute('aria-expanded', 'true');
+          items.forEach((r, i) => {
+            const li = document.createElement('li');
+            li.id = `search-opt-${i}`;
+            li.setAttribute('role', 'option');
+            li.setAttribute('aria-selected', 'false');
+            li.className = 'rounded-xl';
+            const a = document.createElement('a');
+            a.href = r.url;
+            a.className =
+              'flex flex-col gap-1 rounded-xl px-3 py-2.5 no-underline transition-colors hover:bg-ink';
+            const top = document.createElement('div');
+            top.className = 'flex items-center justify-between gap-3';
+            const title = document.createElement('span');
+            title.className = 'text-sm font-medium text-paper';
+            title.textContent = r.title;
+            const tag = document.createElement('span');
+            tag.className =
+              'shrink-0 rounded bg-ink px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash';
+            tag.textContent = r.type;
+            top.append(title, tag);
+            const ex = document.createElement('span');
+            ex.className = 'line-clamp-2 text-xs leading-relaxed text-ash';
+            ex.innerHTML = r.excerpt;
+            a.append(top, ex);
+            li.append(a);
+            results!.append(li);
+          });
+        }
+
+        let debounce: ReturnType<typeof setTimeout> | undefined;
+        async function runSearch(q: string) {
+          const query = q.trim();
+          if (!query) {
+            clearResults();
+            setStatus('Type to search.', true);
+            return;
+          }
+          await loadPagefind();
+          if (!pagefind) {
+            clearResults();
+            setStatus(
+              loadFailed && import.meta.env.DEV
+                ? 'Search runs on the built site (pnpm build).'
+                : 'Search is unavailable.',
+              true,
+            );
+            return;
+          }
+          const search = await pagefind.search(query);
+          const data = await Promise.all(search.results.slice(0, 8).map((r) => r.data()));
+          render(
+            data.map((d) => ({
+              url: d.url,
+              title: d.meta?.title || d.url,
+              excerpt: d.excerpt,
+              type: d.meta?.type || 'Page',
+            })),
+          );
+        }
+
+        function openModal() {
+          lastFocused = document.activeElement as HTMLElement;
+          modal!.classList.remove('hidden');
+          modal!.classList.add('flex');
+          document.documentElement.style.overflow = 'hidden';
+          if (!reduceMotion) {
+            modal!.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 120, easing: 'ease-out' });
+          }
+          input!.value = '';
+          clearResults();
+          setStatus('Type to search.', true);
+          input!.focus();
+          // Warm up the index in the background.
+          if (!loadAttempted) loadPagefind();
+        }
+
+        function closeModal() {
+          modal!.classList.add('hidden');
+          modal!.classList.remove('flex');
+          document.documentElement.style.overflow = '';
+          lastFocused?.focus();
+        }
+
+        const isOpen = () => !modal!.classList.contains('hidden');
+
+        for (const btn of document.querySelectorAll('[data-search-open]')) {
+          btn.addEventListener('click', openModal);
+        }
+        backdrop?.addEventListener('click', closeModal);
+
+        input.addEventListener('input', () => {
+          clearTimeout(debounce);
+          debounce = setTimeout(() => runSearch(input.value), 160);
+        });
+
+        input.addEventListener('keydown', (e) => {
+          const options = results.querySelectorAll<HTMLElement>('[role="option"]');
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (options.length) {
+              activeIndex = (activeIndex + 1) % options.length;
+              highlight();
+            }
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (options.length) {
+              activeIndex = (activeIndex - 1 + options.length) % options.length;
+              highlight();
+            }
+          } else if (e.key === 'Enter') {
+            const link = options[activeIndex]?.querySelector('a');
+            if (link) {
+              e.preventDefault();
+              window.location.href = (link as HTMLAnchorElement).href;
+            }
+          }
+        });
+
+        // Global shortcuts + focus trap.
+        document.addEventListener('keydown', (e) => {
+          const k = e.key.toLowerCase();
+          if ((e.metaKey || e.ctrlKey) && k === 'k') {
+            e.preventDefault();
+            isOpen() ? closeModal() : openModal();
+            return;
+          }
+          if (!isOpen()) {
+            const tag = (document.activeElement?.tagName || '').toLowerCase();
+            const typing = tag === 'input' || tag === 'textarea' || (document.activeElement as HTMLElement)?.isContentEditable;
+            if (e.key === '/' && !typing) {
+              e.preventDefault();
+              openModal();
+            }
+            return;
+          }
+          if (e.key === 'Escape') {
+            e.preventDefault();
+            closeModal();
+          } else if (e.key === 'Tab') {
+            // Trap focus: only the input and result links are focusable.
+            const focusables = [input, ...Array.from(results.querySelectorAll<HTMLElement>('a'))];
+            if (focusables.length === 0) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        });
+      }
+    </script>
+  )
+}

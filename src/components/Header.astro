@@ -1,8 +1,11 @@
 ---
+import Search from './Search.astro';
+
 const nav = [
   { label: 'Charts', href: '/charts' },
   { label: 'Images', href: '/images' },
   { label: 'Roadmap', href: '/roadmap' },
+  { label: 'Compare', href: '/compare' },
   { label: 'Docs', href: '/docs' },
   { label: 'Security', href: '/security' },
 ];
@@ -28,6 +31,10 @@ const nav = [
     </nav>
 
     <div class="flex items-center gap-2">
+      <div class="hidden sm:block">
+        <Search trigger="desktop" />
+      </div>
+
       <a
         href="https://github.com/quenchworks"
         class="inline-flex items-center gap-2 rounded-lg border border-line px-3.5 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors duration-200 hover:bg-graphite"
@@ -60,6 +67,9 @@ const nav = [
     class="hidden border-t border-line/80 bg-ink/95 px-5 pb-4 pt-2 backdrop-blur sm:hidden"
     aria-label="Primary mobile"
   >
+    <div class="border-b border-line/60 pb-2">
+      <Search trigger="mobile" />
+    </div>
     {
       nav.map((item) => (
         <a

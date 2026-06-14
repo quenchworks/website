@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const vendors = ['QuenchWorks', 'Bitnami', 'Chainguard'] as const;
+
+// Each cell is { v: short verdict, n?: short note }. Be factual and fair.
+type Cell = { v: string; n?: string };
+type Row = { label: string; cells: [Cell, Cell, Cell] };
+
+const rows: Row[] = [
+  {
+    label: 'Price',
+    cells: [
+      { v: 'Free' },
+      { v: 'Paid', n: 'Free community catalog moved to a paid Tanzu offering; a legacy registry remains' },
+      { v: 'Paid', n: 'Commercial subscription' },
+    ],
+  },
+  {
+    label: 'Built from source on Wolfi',
+    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
+  },
+  {
+    label: '0-CVE goal with daily rebuilds',
+    cells: [
+      { v: 'Yes', n: 'Hard Trivy gate; a fixable CVE fails the build' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+    ],
+  },
+  {
+    label: 'Signed (cosign keyless)',
+    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
+  },
+  {
+    label: 'SBOM (SPDX)',
+    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
+  },
+  {
+    label: 'SLSA build provenance',
+    cells: [{ v: 'Yes' }, { v: 'Partial', n: 'Varies by offering' }, { v: 'Yes' }],
+  },
+  {
+    label: 'Multi-arch (amd64 + arm64)',
+    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
+  },
+  {
+    label: 'Helm charts included',
+    cells: [
+      { v: 'Yes' },
+      { v: 'Yes', n: 'Behind the paid catalog' },
+      { v: 'No', n: 'Images focused' },
+    ],
+  },
+  {
+    label: 'Charts pin images by digest',
+    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'n/a' }],
+  },
+  {
+    label: 'License transparency, clean alternatives flagged',
+    cells: [
+      { v: 'Yes', n: 'Source-available apps are labeled, with an OSI-clean alternative named' },
+      { v: 'Partial' },
+      { v: 'Partial' },
+    ],
+  },
+  {
+    label: 'Open and free to verify',
+    cells: [
+      { v: 'Yes', n: 'Public images, charts, and build workflows' },
+      { v: 'Partial', n: 'Gated behind a subscription' },
+      { v: 'Partial', n: 'Gated behind a subscription' },
+    ],
+  },
+];
+
+// Pick a visual treatment per verdict word without adding any color accent.
+function tone(v: string): string {
+  const yes = v.toLowerCase();
+  if (yes === 'yes' || yes === 'free') return 'text-paper';
+  if (yes === 'no' || yes === 'paid') return 'text-ash';
+  return 'text-ash';
+}
+---
+
+<Base
+  title="QuenchWorks vs Bitnami vs Chainguard · Comparison"
+  description="An honest, factual comparison of QuenchWorks, Bitnami, and Chainguard across price, hardening, signing, SBOMs, provenance, and Helm charts."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:QuenchWorks vs Bitnami vs Chainguard,type:Compare">
+    <header class="max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-widest text-ash">Compare</p>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">QuenchWorks vs Bitnami vs Chainguard</h1>
+      <p class="mt-4 leading-relaxed text-ash">
+        All three build hardened images from source on Wolfi, sign them, and ship SBOMs. The real
+        difference is access. Bitnami moved its free community catalog to a paid Tanzu offering and
+        left a legacy registry behind. Chainguard is a commercial subscription. QuenchWorks is free
+        and independent: public images, signed charts pinned by digest, and build workflows anyone
+        can read. Here are the facts, side by side.
+      </p>
+    </header>
+
+    <!-- Desktop / tablet table -->
+    <div class="mt-12 hidden overflow-hidden rounded-2xl border border-line sm:block">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="border-b border-line bg-graphite">
+            <th class="w-2/5 px-4 py-4 text-left font-mono text-[11px] uppercase tracking-widest text-ash">
+              Capability
+            </th>
+            {
+              vendors.map((v) => (
+                <th
+                  class:list={[
+                    'px-4 py-4 text-left font-mono text-[11px] uppercase tracking-widest',
+                    v === 'QuenchWorks' ? 'text-paper' : 'text-ash',
+                  ]}
+                >
+                  {v}
+                </th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+            rows.map((row) => (
+              <tr class="border-b border-line/70 last:border-0">
+                <td class="px-4 py-4 align-top font-medium text-paper">{row.label}</td>
+                {row.cells.map((cell, i) => (
+                  <td class:list={['px-4 py-4 align-top', i === 0 ? 'bg-graphite/40' : '']}>
+                    <span class:list={['font-medium', tone(cell.v)]}>{cell.v}</span>
+                    {cell.n && <span class="mt-1 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                  </td>
+                ))}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile: stacked cards per capability -->
+    <div class="mt-10 space-y-3 sm:hidden">
+      {
+        rows.map((row) => (
+          <div class="rounded-xl border border-line bg-graphite p-4">
+            <p class="font-medium text-paper">{row.label}</p>
+            <dl class="mt-3 space-y-2">
+              {row.cells.map((cell, i) => (
+                <div class="flex items-baseline justify-between gap-3 border-t border-line/60 pt-2 first:border-0 first:pt-0">
+                  <dt class:list={['font-mono text-[10px] uppercase tracking-widest', vendors[i] === 'QuenchWorks' ? 'text-paper' : 'text-ash']}>
+                    {vendors[i]}
+                  </dt>
+                  <dd class="text-right">
+                    <span class:list={['text-sm font-medium', tone(cell.v)]}>{cell.v}</span>
+                    {cell.n && <span class="mt-0.5 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 max-w-2xl text-sm leading-relaxed text-ash">
+      Bitnami and Chainguard are solid engineering. This page is not a knock on either one. It exists
+      because the free, no-account path that many teams relied on is now a paid path, and QuenchWorks
+      keeps that path open. Verify any claim here against the public images and workflows.
+    </p>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
+      <p class="text-base text-paper">Free, hardened, and yours to verify.</p>
+      <p class="mt-2 text-sm text-ash">Browse the catalog or read the source. No account, no registry to add.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href="/charts" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">Browse charts</a>
+        <a href="/images" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">Browse images</a>
+        <a href="https://github.com/quenchworks" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">GitHub</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
