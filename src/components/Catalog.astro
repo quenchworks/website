@@ -1,0 +1,50 @@
+---
+// Catalog-breadth band: shows how wide the catalog is by category, with live
+// counts derived from the synced data so it never drifts from what shipped.
+import { charts, chartCount } from '../data/charts';
+import { availableCount } from '../data/images';
+
+const counts = charts.reduce<Record<string, number>>((acc, c) => {
+  acc[c.category] = (acc[c.category] ?? 0) + 1;
+  return acc;
+}, {});
+
+const categories = Object.entries(counts)
+  .map(([label, count]) => ({ label, count }))
+  .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+---
+
+<section class="mx-auto max-w-5xl px-5 pb-8">
+  <div class="mb-10 text-center">
+    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">The catalog</p>
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Covers the stack you actually run.</h2>
+    <p class="mx-auto mt-4 max-w-xl text-pretty text-sm leading-relaxed text-ash sm:text-base">
+      <span class="font-semibold text-paper tabular-nums">{availableCount}</span> hardened images and
+      <span class="font-semibold text-paper tabular-nums">{chartCount}</span> signed charts across
+      <span class="font-semibold text-paper tabular-nums">{categories.length}</span> categories: relational
+      and document stores, caches, search, streaming, coordination, observability, object storage,
+      gateways, and a registry.
+    </p>
+  </div>
+
+  <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+    {
+      categories.map((c) => (
+        <li class="flex items-center justify-between gap-3 rounded-xl border border-line bg-graphite px-4 py-3">
+          <span class="text-sm font-medium text-paper">{c.label}</span>
+          <span class="font-mono text-xs tabular-nums text-ash">{c.count}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-8 text-center">
+    <a
+      href="/charts"
+      class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+    >
+      Browse all {chartCount} charts
+      <span aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</section>

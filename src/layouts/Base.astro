@@ -4,14 +4,43 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title = 'Quenchworks: hardened, 0-CVE Helm charts and container images',
   description = 'Hardened, 0-CVE Helm charts and container images, built from source on Wolfi, signed, and pinned by digest. Free and independent.',
+  image = '/og.png',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': new URL('/#org', Astro.site).href,
+      name: 'QuenchWorks',
+      url: new URL('/', Astro.site).href,
+      logo: new URL('/brand/logo.svg', Astro.site).href,
+      description:
+        'A free, independent catalog of hardened, 0-CVE container images and signed Helm charts.',
+      sameAs: [
+        'https://github.com/quenchworks',
+        'https://artifacthub.io/packages/search?org=quenchworks',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': new URL('/#site', Astro.site).href,
+      name: 'QuenchWorks',
+      url: new URL('/', Astro.site).href,
+      publisher: { '@id': new URL('/#org', Astro.site).href },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -20,16 +49,29 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0b0b0c" />
+    <meta name="color-scheme" content="dark" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="QuenchWorks" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="QuenchWorks: the hardened catalog Bitnami left behind." />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
 
     <!-- Fonts: Inter + JetBrains Mono (brand pairing) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

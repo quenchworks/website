@@ -1,0 +1,80 @@
+---
+import Docs from '../../layouts/Docs.astro';
+
+const refTable = `# chart
+oci://registry-1.docker.io/bitnamicharts/redis   ->  oci://ghcr.io/quenchworks/charts/redis
+
+# image
+docker.io/bitnami/redis:7.4                       ->  ghcr.io/quenchworks/images/redis`;
+
+const installCmp = `# before (Bitnami)
+helm install cache oci://registry-1.docker.io/bitnamicharts/redis
+
+# after (QuenchWorks)
+helm install cache oci://ghcr.io/quenchworks/charts/redis`;
+
+const valuesCmp = `# Bitnami shape                      # QuenchWorks shape
+auth:                               auth:
+  password: s3cret                    password: s3cret
+primary:                            persistence:
+  persistence:                        enabled: true
+    enabled: true                     size: 8Gi
+    size: 8Gi                       image:
+image:                                repository: ghcr.io/quenchworks/images/redis
+  registry: docker.io                 digest: "sha256:..."   # set by CI
+  repository: bitnami/redis`;
+---
+
+<Docs
+  title="Migrate from Bitnami · Quenchworks"
+  description="Move from Bitnami charts and images to QuenchWorks: the registry swap, how the values surface differs, what carries over, and how to migrate stateful data safely."
+>
+  <h1>Migrate from Bitnami</h1>
+  <p class="lead">QuenchWorks ships the same upstream software (Redis, PostgreSQL, Kafka, and the rest) compiled from source into hardened, 0-CVE images, with Helm charts written independently from each project's own docs. The image swap is mechanical. The chart values are re-expressed, not copied, because the charts are not derived from Bitnami's.</p>
+
+  <h2>The one thing that always changes: the reference</h2>
+  <p>Everything publishes to GHCR as OCI artifacts under the QuenchWorks org. Most app names match one to one, so the move is usually a find-and-replace on the registry path:</p>
+  <pre><code>{refTable}</code></pre>
+  <p>So a release goes from one line to another with the same release name and namespace:</p>
+  <pre><code>{installCmp}</code></pre>
+
+  <h2>What carries over, and what does not</h2>
+  <p>The image is the same upstream binary, so on-disk data formats match: a PostgreSQL data directory, a Redis RDB/AOF file, or a MongoDB-compatible store written under Bitnami is readable by the QuenchWorks image of the same major version. Match the major version when you switch, exactly as you would for any upstream upgrade.</p>
+  <p>The chart is independent, so your Bitnami <code>values.yaml</code> does not transfer verbatim. The operational knobs are shared across every chart through the <a href="/docs/configuration">quench-common</a> library, so they look the same whichever datastore you run, but the keys differ from Bitnami's.</p>
+
+  <h2>Translating values</h2>
+  <p>Three differences cover most charts:</p>
+  <ul>
+    <li><strong>Persistence is flat.</strong> Bitnami nests storage under <code>primary.persistence</code> (and <code>readReplicas</code>, <code>secondary</code>, and so on). QuenchWorks exposes a single <code>persistence</code> block; replication, where a chart supports it, has its own value documented on the chart page.</li>
+    <li><strong>The image is pinned by digest.</strong> There is no <code>image.registry</code> or <code>image.tag</code>. The chart references a <code>sha256</code> digest that CI keeps current, and quench-common refuses a tag-only reference on purpose. You normally leave the image block alone.</li>
+    <li><strong>No <code>global</code> Bitnami toggles.</strong> Knobs like <code>global.imageRegistry</code>, <code>global.security.allowInsecureImages</code>, and the Bitnami debug/volume-permissions init containers do not exist. The images already run nonroot on a read-only root filesystem with all capabilities dropped, so the permission shims they patched around are not needed.</li>
+  </ul>
+  <pre><code>{valuesCmp}</code></pre>
+  <p>Authentication is on by default, the same as Bitnami: set <code>auth.password</code> (or let the chart generate one into a Secret). Run <code>helm show values oci://ghcr.io/quenchworks/charts/&lt;app&gt;</code> to see the full surface, and read the per-app <code>config:</code> and <code>auth:</code> notes on each <a href="/charts">chart</a> page.</p>
+
+  <h2>Bundled databases</h2>
+  <p>Where an app needs a database (Keycloak, Gitea, Temporal), the chart bundles the QuenchWorks PostgreSQL chart as a dependency, the same idea as Bitnami's bundled subcharts. Point it at an external database instead through the chart's <code>externalDatabase</code> values, documented on the chart page.</p>
+
+  <h2>Migrating stateful data</h2>
+  <p>For anything holding data, treat the switch as a version migration rather than an in-place swap:</p>
+  <ul>
+    <li>Take a backup with the engine's own tool (<code>pg_dump</code>, <code>mongodump</code>, <code>redis-cli --rdb</code>, and so on).</li>
+    <li>Install the QuenchWorks chart at the matching major version into a new release.</li>
+    <li>Restore into it, confirm the app reads the data, then cut traffic over.</li>
+  </ul>
+  <p>To reuse an existing PersistentVolumeClaim directly, bind it with <code>persistence.existingClaim</code>, but only when the major version and the volume layout match what that claim already holds.</p>
+
+  <h2>Source-available apps</h2>
+  <p>A few datastores people ran on Bitnami are source-available rather than open source. QuenchWorks ships them and names a truly-open alternative for each, so a migration can also be a chance to move off a restrictive license. See <a href="/docs/licensing">Licensing</a> for the MongoDB, Elasticsearch, CockroachDB, and Dragonfly alternatives.</p>
+
+  <h2>After you switch</h2>
+  <ul>
+    <li><a href="/docs/verify">Verify the signature</a> so you know the artifact came from QuenchWorks CI.</li>
+    <li><a href="/docs/pin-by-digest">Pin by digest</a> to run exactly what was scanned and signed.</li>
+    <li><a href="/docs/sbom">Check the SBOM and provenance</a> if you need a supply-chain record for audit.</li>
+  </ul>
+
+  <p class="mt-10 text-sm">
+    Missing an app you ran on Bitnami? <a href="https://github.com/quenchworks/images/issues/new/choose">Request it</a> or check the <a href="/roadmap">roadmap</a>.
+  </p>
+</Docs>
