@@ -107,7 +107,13 @@ const sevs = isLatest && sec
 <Base title={`${entry.name}${titleSuffix} image · Quenchworks`} description={entry.summary} image={`/og/${entry.slug}.png`}>
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta={`title:${entry.name} image,type:Image`}>
-    <a href="/images" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">&larr; Images</a>
+    <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-widest text-ash" aria-label="Breadcrumb">
+      <a href="/images" class="transition-colors hover:text-paper">Images</a>
+      <span class="text-line" aria-hidden="true">/</span>
+      <a href={`/images/category/${categorySlug}`} class="rounded border border-line bg-graphite px-2 py-0.5 text-paper transition-colors hover:border-paper/40">{entry.category}</a>
+      <span class="text-line" aria-hidden="true">/</span>
+      <span class="text-paper">{entry.name}{isLatest ? '' : ` ${version}`}</span>
+    </nav>
 
     <header class="mt-6 flex items-center gap-4">
       <img src="/brand/icon-dark.svg" alt="" class="size-12" width="48" height="48" />
