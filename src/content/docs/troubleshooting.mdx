@@ -64,4 +64,6 @@ Charts publish to GHCR as public OCI artifacts, so no login is needed for the of
 
 ## An ArtifactHub security tab shows a scan error
 
+<Notice type="info">
 ArtifactHub runs its own scanner, which occasionally fails to download Trivy's Java vulnerability database for JVM-based images. That is an ArtifactHub-side infrastructure issue, not a problem with the image: our CI gate scans every build to zero fixable CVEs, and you can confirm it yourself with `trivy image <ref>` or by checking the SBOM. It usually clears on the next scan.
+</Notice>

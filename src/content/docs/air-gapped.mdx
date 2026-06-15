@@ -7,6 +7,15 @@ order: 6
 
 Everything lives at `ghcr.io/quenchworks` as standard OCI artifacts, so any registry or pull-through cache can hold a copy. Mirror what you need, repoint the charts, and the signatures and attestations come along so you keep verifying inside the perimeter.
 
+The whole procedure is four moves; each one is spelled out below.
+
+<Steps>
+1. Mirror the image with `cosign copy` so the signature and attestations travel with it.
+2. Mirror the chart with `helm pull` and `helm push`.
+3. Repoint the chart at your registry with `--set image.repository=...`, keeping the pinned digest.
+4. Verify inside the perimeter against your own registry.
+</Steps>
+
 ## Mirror an image
 
 Use `cosign copy` so the signature and the SBOM and provenance attestations travel with the image, not just the layers:

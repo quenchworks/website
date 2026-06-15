@@ -1,0 +1,79 @@
+---
+/**
+ * Notice — a bordered callout for docs MDX.
+ *
+ * Usage (no import needed; auto-imported):
+ *   <Notice type="warning">Never pin to :latest.</Notice>
+ *
+ * `note` / `info` / `tip` stay monochrome (paper label, ash body, left line accent).
+ * `warning` borrows the amber license-caution treatment used on the chart/image pages.
+ */
+interface Props {
+  type?: 'note' | 'info' | 'tip' | 'warning';
+}
+const { type = 'note' } = Astro.props;
+
+const labels = {
+  note: 'Note',
+  info: 'Info',
+  tip: 'Tip',
+  warning: 'Heads up',
+} as const;
+
+// Small, single-path inline icons keep this self-contained (no icon dependency).
+const icons = {
+  // i in a circle
+  note: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12" y2="8"/>',
+  info: '<circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="12" y1="8" x2="12" y2="8"/>',
+  // lightbulb
+  tip: '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 2Z"/>',
+  // triangle bang
+  warning: '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12" y2="17"/>',
+} as const;
+
+const isWarning = type === 'warning';
+---
+
+<aside
+  class:list={[
+    'doc-notice mt-5 rounded-xl border bg-graphite p-4',
+    isWarning ? 'border-amber-500/50 bg-amber-500/5' : 'border-line',
+  ]}
+  role={isWarning ? 'alert' : 'note'}
+>
+  <p
+    class:list={[
+      'flex items-center gap-2 font-mono text-xs uppercase tracking-widest',
+      isWarning ? 'text-amber-400' : 'text-paper',
+    ]}
+  >
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="size-4 shrink-0"
+      aria-hidden="true"
+      set:html={icons[type]}
+    />
+    {labels[type]}
+  </p>
+  <div class="doc-notice-body mt-2 text-sm text-ash">
+    <slot />
+  </div>
+</aside>
+
+<style is:global>
+  /* The slot holds markdown; keep its first/last paragraphs tight to the box. */
+  .doc-notice-body > :first-child { margin-top: 0; }
+  .doc-notice-body p { margin-top: 0.5rem; color: var(--color-ash); line-height: 1.6; }
+  .doc-notice-body p:first-child { margin-top: 0; }
+  .doc-notice-body a { color: var(--color-paper); text-underline-offset: 4px; }
+  .doc-notice-body a:hover { text-decoration: underline; }
+  .doc-notice-body code {
+    font-family: var(--font-mono); font-size: 0.9em; color: var(--color-paper);
+    background: var(--color-ink); padding: 0.1rem 0.35rem; border-radius: 4px;
+  }
+</style>

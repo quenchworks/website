@@ -1,0 +1,120 @@
+---
+/**
+ * Tabs — shows one <Tab> panel at a time with an accessible tablist.
+ *
+ * Self-contained: a small custom element reads its child `[data-tab]` panels,
+ * builds the tab buttons from each panel's `data-label`, wires roles
+ * (tablist / tab / tabpanel), arrow-key navigation, and toggles `hidden`.
+ * First tab is active. With no JS, all panels stay visible and legible.
+ */
+---
+
+<qw-tabs class="doc-tabs mt-5 block">
+  <slot />
+</qw-tabs>
+
+<style is:global>
+  .doc-tabs .doc-tablist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    border-bottom: 1px solid var(--color-line);
+    margin-bottom: 1rem;
+  }
+  .doc-tabs .doc-tab-btn {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    padding: 0.4rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ash);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .doc-tabs .doc-tab-btn:hover { color: var(--color-paper); }
+  .doc-tabs .doc-tab-btn[aria-selected="true"] {
+    color: var(--color-paper);
+    border-bottom-color: var(--color-paper);
+  }
+  .doc-tabs .doc-tab > :first-child { margin-top: 0; }
+  /* Before enhancement, separate stacked panels with a hairline for legibility. */
+  .doc-tabs:not(:defined) .doc-tab + .doc-tab {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-line);
+  }
+</style>
+
+<script>
+  class QwTabs extends HTMLElement {
+    connectedCallback() {
+      const panels = Array.from(
+        this.querySelectorAll<HTMLElement>(':scope > [data-tab]'),
+      );
+      if (panels.length === 0) return;
+
+      const list = document.createElement('div');
+      list.className = 'doc-tablist';
+      list.setAttribute('role', 'tablist');
+
+      const buttons: HTMLButtonElement[] = [];
+      const uid = Math.random().toString(36).slice(2, 8);
+
+      panels.forEach((panel, i) => {
+        const label = panel.dataset.label ?? `Tab ${i + 1}`;
+        const tabId = `qw-tab-${uid}-${i}`;
+        const panelId = `qw-panel-${uid}-${i}`;
+
+        panel.id = panelId;
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('aria-labelledby', tabId);
+        panel.setAttribute('tabindex', '0');
+        panel.hidden = i !== 0;
+
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'doc-tab-btn';
+        btn.id = tabId;
+        btn.textContent = label;
+        btn.setAttribute('role', 'tab');
+        btn.setAttribute('aria-controls', panelId);
+        btn.setAttribute('aria-selected', String(i === 0));
+        btn.tabIndex = i === 0 ? 0 : -1;
+
+        btn.addEventListener('click', () => select(i));
+        btn.addEventListener('keydown', (e) => {
+          let next = -1;
+          if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % buttons.length;
+          else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + buttons.length) % buttons.length;
+          else if (e.key === 'Home') next = 0;
+          else if (e.key === 'End') next = buttons.length - 1;
+          if (next < 0) return;
+          e.preventDefault();
+          select(next);
+          buttons[next].focus();
+        });
+
+        buttons.push(btn);
+        list.appendChild(btn);
+      });
+
+      const select = (active: number) => {
+        panels.forEach((p, i) => (p.hidden = i !== active));
+        buttons.forEach((b, i) => {
+          const on = i === active;
+          b.setAttribute('aria-selected', String(on));
+          b.tabIndex = on ? 0 : -1;
+        });
+      };
+
+      this.prepend(list);
+    }
+  }
+
+  if (!customElements.get('qw-tabs')) customElements.define('qw-tabs', QwTabs);
+</script>

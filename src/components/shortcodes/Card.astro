@@ -1,0 +1,56 @@
+---
+/**
+ * Card — a bordered hover card, optionally a link.
+ *
+ * Usage:
+ *   <Card title="Verify a signature" href="/docs/verify">
+ *     Check an artifact before you trust it.
+ *   </Card>
+ *
+ * Mirrors the docs index cards: rounded-xl, border-line, bg-graphite, and a
+ * border-paper/40 hover. Pass an `icon` (single inline-SVG path data) to show a
+ * small glyph in the heading.
+ */
+interface Props {
+  title: string;
+  href?: string;
+  icon?: string;
+}
+const { title, href, icon } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag
+  href={href}
+  class="doc-card group block rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40"
+>
+  <div class="flex items-center justify-between gap-3">
+    <span class="flex items-center gap-2 text-base font-semibold text-paper">
+      {
+        icon && (
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="size-4 shrink-0 text-ash"
+            aria-hidden="true"
+            set:html={icon}
+          />
+        )
+      }
+      {title}
+    </span>
+    {href && <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>}
+  </div>
+  <div class="doc-card-body mt-1 text-sm text-ash">
+    <slot />
+  </div>
+</Tag>
+
+<style is:global>
+  .doc-card-body > :first-child { margin-top: 0; }
+  .doc-card-body p { margin-top: 0.35rem; color: var(--color-ash); line-height: 1.6; }
+</style>

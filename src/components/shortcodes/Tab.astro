@@ -1,0 +1,24 @@
+---
+/**
+ * Tab — a single labelled panel inside <Tabs>.
+ *
+ * Usage:
+ *   <Tabs>
+ *     <Tab label="cosign">...</Tab>
+ *     <Tab label="gh attestation">...</Tab>
+ *   </Tabs>
+ *
+ * The panel carries its label on `data-label`; the parent <Tabs> reads it to
+ * build the tablist client-side. Hidden by default so it stays collapsed if JS
+ * never runs would be wrong — instead we leave them visible until enhanced
+ * (progressive enhancement: the script shows only the first once it runs).
+ */
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+---
+
+<div class="doc-tab" data-tab data-label={label}>
+  <slot />
+</div>

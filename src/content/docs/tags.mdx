@@ -17,7 +17,11 @@ ghcr.io/quenchworks/images/redis:8.8.0-amd64    # single arch
 ghcr.io/quenchworks/images/redis:8.8.0-arm64    # single arch
 ```
 
-There is no `:latest`. A bare reference like `docker pull ghcr.io/quenchworks/images/redis` resolves to `:latest` and fails with `MANIFEST_UNKNOWN`. Always pull a version tag. The current version is shown on every [image](/images) page, or you can list the tags yourself:
+<Notice type="warning">
+There is no `:latest`. A bare reference like `docker pull ghcr.io/quenchworks/images/redis` resolves to `:latest` and fails with `MANIFEST_UNKNOWN`. Always pull a version tag.
+</Notice>
+
+The current version is shown on every [image](/images) page, or you can list the tags yourself:
 
 ```bash
 crane ls ghcr.io/quenchworks/images/redis

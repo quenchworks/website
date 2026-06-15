@@ -1,0 +1,67 @@
+---
+/**
+ * Steps — turns a normal markdown ordered list into numbered steps.
+ *
+ * Usage (no import needed):
+ *   <Steps>
+ *   1. Do the first thing.
+ *   2. Then the next.
+ *   </Steps>
+ *
+ * A CSS counter draws mono step numbers in line/graphite circles; the author
+ * just writes a `1./2./3.` list inside.
+ */
+---
+
+<div class="doc-steps mt-5">
+  <slot />
+</div>
+
+<style is:global>
+  .doc-steps ol {
+    list-style: none;
+    counter-reset: doc-step;
+    margin-top: 0;
+    padding-left: 0;
+  }
+  .doc-steps ol > li {
+    counter-increment: doc-step;
+    position: relative;
+    margin-top: 0;
+    padding: 0 0 1.5rem 3rem;
+    color: var(--color-ash);
+    line-height: 1.7;
+  }
+  .doc-steps ol > li:last-child { padding-bottom: 0; }
+  /* The connector line runs between the numbered markers. */
+  .doc-steps ol > li::after {
+    content: "";
+    position: absolute;
+    left: 0.875rem;
+    top: 2rem;
+    bottom: -0.25rem;
+    width: 1px;
+    background: var(--color-line);
+  }
+  .doc-steps ol > li:last-child::after { display: none; }
+  .doc-steps ol > li::before {
+    content: counter(doc-step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border: 1px solid var(--color-line);
+    border-radius: 999px;
+    background: var(--color-graphite);
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  /* Nested content (paragraphs, code blocks, sub-lists) sits inside the step. */
+  .doc-steps ol > li > :first-child { margin-top: 0; }
+  .doc-steps ol > li p { margin-top: 0.5rem; color: var(--color-ash); }
+</style>

@@ -1,0 +1,23 @@
+---
+/**
+ * Badge — a small inline mono label, e.g. <Badge>OCI</Badge>.
+ *
+ * `variant="paper"` inverts to a solid paper chip for emphasis; the default is
+ * an outlined chip (border-line) that stays quiet inline with text.
+ */
+interface Props {
+  variant?: 'default' | 'paper';
+}
+const { variant = 'default' } = Astro.props;
+---
+
+<span
+  class:list={[
+    'inline-flex items-center rounded border px-1.5 py-0.5 align-middle font-mono text-[0.65rem] uppercase tracking-widest leading-none',
+    variant === 'paper'
+      ? 'border-paper bg-paper text-ink'
+      : 'border-line bg-graphite text-ash',
+  ]}
+>
+  <slot />
+</span>

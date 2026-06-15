@@ -1,0 +1,49 @@
+---
+/**
+ * FileTree — renders a nested markdown list as a monospace directory tree.
+ *
+ * Usage (a normal nested list inside):
+ *   <FileTree>
+ *   - charts/
+ *     - redis/
+ *       - Chart.yaml
+ *       - values.yaml
+ *   </FileTree>
+ *
+ * Styling only: mono font, clean indentation, and a subtle guide line per
+ * nesting level. A trailing `/` reads as a directory; nothing else is required.
+ */
+---
+
+<div class="doc-filetree mt-5 rounded-xl border border-line bg-graphite p-4">
+  <slot />
+</div>
+
+<style is:global>
+  .doc-filetree ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    font-family: var(--font-mono);
+    font-size: 0.825rem;
+    line-height: 1.7;
+    color: var(--color-paper);
+  }
+  .doc-filetree li {
+    margin: 0;
+    position: relative;
+  }
+  /* Nested levels indent and carry a faint vertical guide. */
+  .doc-filetree li ul {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--color-line);
+    margin-left: 0.25rem;
+  }
+  .doc-filetree code {
+    font-family: var(--font-mono);
+    background: transparent;
+    padding: 0;
+    color: inherit;
+  }
+  .doc-filetree a { color: var(--color-paper); }
+</style>
