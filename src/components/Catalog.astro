@@ -2,7 +2,7 @@
 // Catalog-breadth band: shows how wide the catalog is by category, with live
 // counts derived from the synced data so it never drifts from what shipped.
 import { charts, chartCount } from '../data/charts';
-import { availableCount } from '../data/images';
+import { availableCount, runtimeCount } from '../data/images';
 
 const counts = charts.reduce<Record<string, number>>((acc, c) => {
   acc[c.category] = (acc[c.category] ?? 0) + 1;
@@ -23,7 +23,9 @@ const categories = Object.entries(counts)
       <span class="font-semibold text-paper tabular-nums">{chartCount}</span> signed charts across
       <span class="font-semibold text-paper tabular-nums">{categories.length}</span> categories: relational
       and document stores, caches, search, streaming, coordination, observability, object storage,
-      gateways, and a registry.
+      gateways, and a registry. Plus
+      <span class="font-semibold text-paper tabular-nums">{runtimeCount}</span> hardened base images
+      to build FROM under <a href="/runtimes" class="text-paper underline-offset-4 hover:underline">runtimes</a>.
     </p>
   </div>
 

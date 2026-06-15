@@ -4,6 +4,17 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import AutoImport from 'astro-auto-import';
 import astroExpressiveCode from 'astro-expressive-code';
+import images from './src/data/images.json' with { type: 'json' };
+
+// The runtime/base/tool images moved out of /images into /runtimes. Keep every
+// old per-image link alive by mapping /images/<slug> -> /runtimes/<slug> for each
+// moved slug. Built from the catalog data so it never drifts from the move.
+const RUNTIME_CATEGORIES = new Set(['Language runtime', 'Runtime base', 'Build tool']);
+const runtimeRedirects = Object.fromEntries(
+  images
+    .filter((i) => RUNTIME_CATEGORIES.has(i.category) && i.status === 'available')
+    .map((i) => [`/images/${i.slug}`, `/runtimes/${i.slug}`]),
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -38,6 +49,7 @@ export default defineConfig({
   redirects: {
     '/catalog': '/charts',
     '/catalog/[slug]': '/charts/[slug]',
+    ...runtimeRedirects,
   },
   vite: {
     plugins: [tailwindcss()],

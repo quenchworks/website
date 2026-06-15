@@ -4,13 +4,13 @@ import Base from '../../../../layouts/Base.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import CategoryCatalog from '../../../../components/CategoryCatalog.astro';
-import { images, PAGE_SIZE, type ImageEntry } from '../../../../data/images';
+import { serviceImages, PAGE_SIZE, type ImageEntry } from '../../../../data/images';
 
 export const getStaticPaths = (async ({ paginate }) => {
   /** "Object storage" -> "object-storage". */
   const slugify = (s: string): string =>
     s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-  const available = images.filter((i) => i.status === 'available');
+  const available = serviceImages.filter((i) => i.status === 'available');
   const imageCategories = [...new Set(available.map((i) => i.category))].sort();
   return imageCategories.flatMap((category) => {
     const entries = available
@@ -30,7 +30,7 @@ interface Props {
 }
 const { page, category } = Astro.props as Props;
 
-const count = images.filter((i) => i.status === 'available' && i.category === category).length;
+const count = serviceImages.filter((i) => i.status === 'available' && i.category === category).length;
 const heading = `${category} images`;
 const intro = `Hardened container images in the ${category.toLowerCase()} category. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, and pinned by digest.`;
 ---

@@ -30,12 +30,25 @@ const skipSbom = args.includes('--no-sbom');
 const OWNER = 'quenchworks';
 const SPDX = 'https://spdx.dev/Document';
 
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+// Registry + sigstore calls are flaky under concurrency (GHCR throttling,
+// transient TLS resets). Retry a few times with backoff before giving up.
 async function run(cmd, cmdArgs, timeoutMs = 120000) {
-  const { stdout } = await execFileP(cmd, cmdArgs, {
-    timeout: timeoutMs,
-    maxBuffer: 64 * 1024 * 1024,
-  });
-  return stdout;
+  let lastErr;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const { stdout } = await execFileP(cmd, cmdArgs, {
+        timeout: timeoutMs,
+        maxBuffer: 64 * 1024 * 1024,
+      });
+      return stdout;
+    } catch (err) {
+      lastErr = err;
+      if (attempt < 4) await sleep(attempt * 1500);
+    }
+  }
+  throw lastErr;
 }
 
 // Raw manifest/blob fetch. Works for the OCI index, a per-arch manifest, and the
@@ -45,9 +58,21 @@ async function raw(ref) {
   return JSON.parse(out);
 }
 
+// The `version` field may list several tags (e.g. "8, 9, 10", catalog order is
+// ascending). Metadata is fetched for one representative tag: the newest.
+function primaryTag(version) {
+  if (!version) return null;
+  const tags = String(version)
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return tags.length ? tags[tags.length - 1] : null;
+}
+
 async function fetchOne(entry) {
   const repo = entry.image || `ghcr.io/quenchworks/images/${entry.slug}`;
-  const ref = entry.version ? `${repo}:${entry.version}` : repo;
+  const tag = primaryTag(entry.version);
+  const ref = tag ? `${repo}:${tag}` : repo;
   const meta = {};
 
   // 1. Resolve the OCI index, then the amd64 manifest within it.
@@ -133,11 +158,19 @@ async function main() {
   if (onlySlug) available = available.filter((i) => i.slug === onlySlug);
 
   console.log(`Fetching metadata for ${available.length} available image(s)...`);
-  const out = {};
+
+  // Seed from the existing file so a partial run (some images throttled) never
+  // drops metadata we already had; successful fetches overwrite their entry.
+  let out = {};
+  try {
+    out = JSON.parse(await readFile(join(root, 'src/data/image-meta.json'), 'utf8'));
+  } catch {
+    out = {};
+  }
   const failed = [];
 
-  // Modest concurrency: registry + gh tolerate a few parallel calls fine.
-  const CONCURRENCY = 4;
+  // Modest concurrency: registry + gh throttle if pushed too hard.
+  const CONCURRENCY = 3;
   let idx = 0;
   async function worker() {
     while (idx < available.length) {

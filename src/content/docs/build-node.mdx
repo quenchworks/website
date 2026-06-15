@@ -69,17 +69,17 @@ CMD ["node", "dist/server.js"]
 </Tab>
 <Tab label="yarn">
 ```dockerfile
-# Yarn is preinstalled on the yarn base image.
-FROM ghcr.io/quenchworks/images/yarn:4 AS build
+# Yarn (Classic) is preinstalled on the yarn base image.
+FROM ghcr.io/quenchworks/images/yarn:1 AS build
 WORKDIR /app
 
 # Production dependencies only.
 COPY package.json yarn.lock ./
-RUN ["yarn", "workspaces", "focus", "--production"]
+RUN ["yarn", "install", "--frozen-lockfile", "--production"]
 RUN ["cp", "-r", "node_modules", "/prod_modules"]
 
 # Full install (incl. dev deps) and build.
-RUN ["yarn", "install", "--immutable"]
+RUN ["yarn", "install", "--frozen-lockfile"]
 COPY . .
 RUN ["yarn", "build"]
 

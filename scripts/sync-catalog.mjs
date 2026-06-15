@@ -136,9 +136,10 @@ const CAUTION = {
   elasticsearch: { cleanAlternative: 'OpenSearch (Apache-2.0) — the open drop-in fork of Elasticsearch.' },
 };
 
-// These are infrastructure/sidecar pieces, not user-facing datastore products.
-// We exclude them from both indexes (they have no standalone chart anyway).
-const EXCLUDE = new Set(['redis-exporter', 'postgres-exporter', 'quench-common']);
+// quench-common is a Helm library chart, not an image, so it never belongs in
+// either index. The exporters DO ship as hardened images (Metrics/Exporter
+// sidecars), so they stay in images.json; only the library chart is excluded.
+const EXCLUDE = new Set(['quench-common']);
 
 // status -> published? built/done/pilot all mean "an image exists".
 const PUBLISHED = new Set(['built', 'done', 'pilot']);
