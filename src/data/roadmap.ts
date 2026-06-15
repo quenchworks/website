@@ -73,6 +73,7 @@ export const roadmap: RoadmapItem[] = [
 
   // ── Coordination & mesh ──────────────────────────────────────────────
   { name: 'CoreDNS', category: 'Coordination & mesh', license: 'Apache-2.0', licenseClean: 'clean', priority: 'planned', note: 'Flexible, pluggable DNS server.' },
+  { name: 'Istio', category: 'Coordination & mesh', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Service mesh built on Envoy: traffic management, mTLS, and observability. Platform-scale, a multi-image wave (istiod control plane plus Envoy sidecars and gateways) rather than a single image.' },
   { name: 'Linkerd', category: 'Coordination & mesh', license: 'Apache-2.0', licenseClean: 'clean', priority: 'exploring', note: 'Lightweight service mesh.' },
   { name: 'Consul', category: 'Coordination & mesh', license: 'BUSL-1.1', licenseClean: 'caution', priority: 'exploring', note: 'Service discovery and mesh. Source-available, not OSI.', cleanAlternative: 'etcd (Apache-2.0) for KV/coordination, already shipped.' },
   { name: 'Nomad', category: 'Coordination & mesh', license: 'BUSL-1.1', licenseClean: 'caution', priority: 'exploring', note: 'Workload scheduler. Source-available, not OSI.' },
