@@ -59,6 +59,15 @@ const EDITORIAL = {
   busybox: { category: 'Base image', summary: 'Hardened minimal base/toolbox image. Image only, no chart.' },
   'redis-exporter': { category: 'Metrics/Exporter', summary: 'Prometheus metrics exporter for Redis/Valkey.' },
   'postgres-exporter': { category: 'Metrics/Exporter', summary: 'Prometheus metrics exporter for PostgreSQL.' },
+  // Language runtimes — hardened, 0-CVE, signed base images you FROM (like Chainguard's), latest 3 stable each.
+  python: { category: 'Language runtime', summary: 'Hardened CPython interpreter + pip. A 0-CVE, signed, nonroot base image for Python apps. Latest 3 stable minors (no :latest).' },
+  node: { category: 'Language runtime', summary: 'Hardened Node.js runtime + npm. Active LTS lines (20/22/24).' },
+  dotnet: { category: 'Language runtime', summary: 'Hardened .NET SDK (build and run). Latest 3 stable, including LTS (8/9/10).' },
+  jdk: { category: 'Language runtime', summary: 'Hardened OpenJDK with javac. LTS lines 17/21/25.' },
+  ruby: { category: 'Language runtime', summary: 'Hardened Ruby interpreter + bundler. Latest 3 stable (3.2/3.3/3.4).' },
+  php: { category: 'Language runtime', summary: 'Hardened PHP cli + common extensions. Latest 3 stable (8.3/8.4/8.5).' },
+  go: { category: 'Language runtime', summary: 'Hardened Go toolchain for builds; pair with a minimal base for the runtime. Latest 3 stable (1.24/1.25/1.26).' },
+  rust: { category: 'Language runtime', summary: 'Hardened Rust toolchain (cargo + rustc). Latest 3 stable (1.94/1.95/1.96).' },
 };
 
 // Upstream repo per slug (catalog.yaml `source` may be a tarball URL, not a repo).

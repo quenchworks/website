@@ -184,6 +184,20 @@
     "image": "ghcr.io/quenchworks/images/documentdb"
   },
   {
+    "slug": "dotnet",
+    "name": "dotnet",
+    "category": "Language runtime",
+    "summary": "Hardened .NET SDK (build and run). Latest 3 stable, including LTS (8/9/10).",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "8, 9, 10",
+    "upstream": "https://github.com/dotnet/runtime",
+    "source": "https://github.com/dotnet/runtime",
+    "image": "ghcr.io/quenchworks/images/dotnet"
+  },
+  {
     "slug": "dragonfly",
     "name": "Dragonfly",
     "category": "Cache",
@@ -284,6 +298,20 @@
     "upstream": "https://github.com/go-gitea/gitea",
     "source": "https://github.com/go-gitea/gitea",
     "image": "ghcr.io/quenchworks/images/gitea"
+  },
+  {
+    "slug": "go",
+    "name": "go",
+    "category": "Language runtime",
+    "summary": "Hardened Go toolchain for builds; pair with a minimal base for the runtime. Latest 3 stable (1.24/1.25/1.26).",
+    "tier": "standard",
+    "status": "available",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "version": "1.24, 1.25, 1.26",
+    "upstream": "https://github.com/golang/go",
+    "source": "https://github.com/golang/go",
+    "image": "ghcr.io/quenchworks/images/go"
   },
   {
     "slug": "grafana",
@@ -424,6 +452,20 @@
     "upstream": "https://github.com/influxdata/influxdb",
     "source": "https://github.com/influxdata/influxdb",
     "image": "ghcr.io/quenchworks/images/influxdb"
+  },
+  {
+    "slug": "jdk",
+    "name": "jdk",
+    "category": "Language runtime",
+    "summary": "Hardened OpenJDK with javac. LTS lines 17/21/25.",
+    "tier": "standard",
+    "status": "available",
+    "license": "GPL-2.0-with-classpath-exception",
+    "licenseClean": "clean",
+    "version": "17, 21, 25",
+    "upstream": "https://openjdk.org",
+    "source": "https://openjdk.org",
+    "image": "ghcr.io/quenchworks/images/jdk"
   },
   {
     "slug": "kafka",
@@ -582,6 +624,20 @@
     "image": "ghcr.io/quenchworks/images/nginx"
   },
   {
+    "slug": "node",
+    "name": "node",
+    "category": "Language runtime",
+    "summary": "Hardened Node.js runtime + npm. Active LTS lines (20/22/24).",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "20, 22, 24",
+    "upstream": "https://github.com/nodejs/node",
+    "source": "https://github.com/nodejs/node",
+    "image": "ghcr.io/quenchworks/images/node"
+  },
+  {
     "slug": "node-exporter",
     "name": "node-exporter",
     "category": "Datastore",
@@ -650,6 +706,20 @@
     "upstream": "https://github.com/pgbouncer/pgbouncer",
     "source": "https://github.com/pgbouncer/pgbouncer",
     "image": "ghcr.io/quenchworks/images/pgbouncer"
+  },
+  {
+    "slug": "php",
+    "name": "php",
+    "category": "Language runtime",
+    "summary": "Hardened PHP cli + common extensions. Latest 3 stable (8.3/8.4/8.5).",
+    "tier": "standard",
+    "status": "available",
+    "license": "PHP-3.01",
+    "licenseClean": "clean",
+    "version": "8.3, 8.4, 8.5",
+    "upstream": "https://github.com/php/php-src",
+    "source": "https://github.com/php/php-src",
+    "image": "ghcr.io/quenchworks/images/php"
   },
   {
     "slug": "postgresql",
@@ -722,6 +792,20 @@
     "image": "ghcr.io/quenchworks/images/pulsar"
   },
   {
+    "slug": "python",
+    "name": "python",
+    "category": "Language runtime",
+    "summary": "Hardened CPython interpreter + pip. A 0-CVE, signed, nonroot base image for Python apps. Latest 3 stable minors (no :latest).",
+    "tier": "standard",
+    "status": "available",
+    "license": "PSF-2.0",
+    "licenseClean": "clean",
+    "version": "3.12, 3.13, 3.14",
+    "upstream": "https://www.python.org",
+    "source": "https://www.python.org",
+    "image": "ghcr.io/quenchworks/images/python"
+  },
+  {
     "slug": "qdrant",
     "name": "qdrant",
     "category": "Datastore",
@@ -762,6 +846,34 @@
     "upstream": "https://github.com/redis/redis",
     "source": "https://download.redis.io/releases/redis-8.8.0.tar.gz",
     "image": "ghcr.io/quenchworks/images/redis"
+  },
+  {
+    "slug": "ruby",
+    "name": "ruby",
+    "category": "Language runtime",
+    "summary": "Hardened Ruby interpreter + bundler. Latest 3 stable (3.2/3.3/3.4).",
+    "tier": "standard",
+    "status": "available",
+    "license": "Ruby",
+    "licenseClean": "clean",
+    "version": "3.2, 3.3, 3.4",
+    "upstream": "https://github.com/ruby/ruby",
+    "source": "https://github.com/ruby/ruby",
+    "image": "ghcr.io/quenchworks/images/ruby"
+  },
+  {
+    "slug": "rust",
+    "name": "rust",
+    "category": "Language runtime",
+    "summary": "Hardened Rust toolchain (cargo + rustc). Latest 3 stable (1.94/1.95/1.96).",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT OR Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.94, 1.95, 1.96",
+    "upstream": "https://github.com/rust-lang/rust",
+    "source": "https://github.com/rust-lang/rust",
+    "image": "ghcr.io/quenchworks/images/rust"
   },
   {
     "slug": "rustfs",
