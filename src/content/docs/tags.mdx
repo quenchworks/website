@@ -1,0 +1,51 @@
+---
+title: Tags & versions
+description: "How QuenchWorks images and charts are versioned: app-version tags, no :latest, multi-arch indexes, chart semver, and sha256 digests."
+group: Reference
+order: 1
+---
+
+Images are tagged by app version, never `:latest`. Charts use their own semver. Everything is also addressable by `sha256` digest, which is what the charts pin.
+
+## Image tags
+
+Each image is tagged with the upstream app version it ships, for example `redis:8.8.0`. That tag is a multi-arch index covering both architectures, alongside per-arch tags:
+
+```text
+ghcr.io/quenchworks/images/redis:8.8.0          # multi-arch index (amd64 + arm64)
+ghcr.io/quenchworks/images/redis:8.8.0-amd64    # single arch
+ghcr.io/quenchworks/images/redis:8.8.0-arm64    # single arch
+```
+
+There is no `:latest`. A bare reference like `docker pull ghcr.io/quenchworks/images/redis` resolves to `:latest` and fails with `MANIFEST_UNKNOWN`. Always pull a version tag. The current version is shown on every [image](/images) page, or you can list the tags yourself:
+
+```bash
+crane ls ghcr.io/quenchworks/images/redis
+```
+
+## Digests
+
+Every tag resolves to an immutable `sha256` digest. Because the images are rebuilt from source daily and from-source builds are not bit-for-bit reproducible, the same version tag points at a new digest after each rebuild. The signature, SBOM, and SLSA provenance attach to the digest, and old digests stay published with their attestations intact, so a digest you pinned yesterday keeps verifying.
+
+For a build that never moves under you, pin by digest. See [Pin by digest](/docs/pin-by-digest).
+
+## Chart versions
+
+Charts are OCI artifacts tagged by chart semver, for example `redis:0.0.5`. Installing without a version resolves the highest published version; pass `--version` to pin one:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis              # latest chart
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+The chart version is independent of the app version. A chart references its image strictly by digest, so installing a chart always deploys the exact image build that was scanned and signed, whatever its tag.
+
+## Which reference to use
+
+| You want to | Use |
+| --- | --- |
+| Run or verify the current build | the version tag, e.g. `redis:8.8.0` |
+| Pin an exact, immutable build | the `@sha256:...` digest |
+| Install a specific chart release | `helm ... --version <chart-version>` |
+
+To check signatures and attestations against any of these, see [Verify a signature](/docs/verify) and [SBOM & provenance](/docs/sbom).

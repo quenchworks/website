@@ -1,5 +1,6 @@
 ---
 import Docs from '../../layouts/Docs.astro';
+import { getCollection } from 'astro:content';
 
 const guarantees = [
   ['0 fixable CVEs', 'A hard Trivy gate; a fixable CVE fails the build, so nothing ships dirty.'],
@@ -10,21 +11,17 @@ const guarantees = [
   ['Pinned by digest', 'Charts reference images by sha256, never a moving tag.'],
 ];
 
-const guides = [
-  { href: '/docs/get-started', h: 'Get started', p: 'Install a chart and pull an image. No repo to add, no account needed.' },
-  { href: '/docs/migrate', h: 'Migrate from Bitnami', p: 'Swap the registry, translate the values, and move stateful data safely.' },
-  { href: '/docs/verify', h: 'Verify a signature', p: 'Check an image or chart with cosign. Keyless, tied to the build workflow.' },
-  { href: '/docs/sbom', h: 'SBOM & provenance', p: 'Read and verify the SPDX SBOM and SLSA build provenance on any image.' },
-  { href: '/docs/pin-by-digest', h: 'Pin by digest', p: 'Run exactly what was scanned and signed, with no moving tag.' },
-  { href: '/docs/air-gapped', h: 'Air-gapped install', p: 'Mirror images and charts to a private registry and keep verifying inside the perimeter.' },
-];
+// The guide and reference cards are driven by the docs collection, so adding an
+// MDX file under src/content/docs/ surfaces it here automatically.
+const docs = await getCollection('docs');
+const cardsFor = (group: 'Guides' | 'Reference') =>
+  docs
+    .filter((d) => d.data.group === group)
+    .sort((a, b) => a.data.order - b.data.order)
+    .map((d) => ({ href: `/docs/${d.id}`, h: d.data.title, p: d.data.description }));
 
-const reference = [
-  { href: '/docs/tags', h: 'Tags & versions', p: 'App-version tags, no :latest, chart semver, and how digests fit in.' },
-  { href: '/docs/configuration', h: 'Configuration', p: 'The shared values surface every chart exposes through quench-common.' },
-  { href: '/docs/licensing', h: 'Licensing', p: 'What is OSI-clean, what is source-available, and the alternatives we recommend.' },
-  { href: '/docs/troubleshooting', h: 'Troubleshooting', p: 'The :latest tag, nonroot and read-only gotchas, volume permissions, and verify errors.' },
-];
+const guides = cardsFor('Guides');
+const reference = cardsFor('Reference');
 ---
 
 <Docs title="Docs · Quenchworks" description="How to install, verify, pin, configure, and migrate to QuenchWorks images and charts.">

@@ -1,0 +1,64 @@
+---
+title: SBOM & provenance
+description: Every QuenchWorks image carries an SPDX SBOM and a SLSA build-provenance attestation, signed keyless and attached to the registry. Verify both with cosign or the GitHub CLI.
+group: Guides
+order: 4
+---
+
+Alongside its cosign signature, every image carries two more attestations attached to the same digest: an SPDX software bill of materials, and a SLSA build-provenance statement that records which workflow built it from what. Both are signed keyless through Sigstore and pushed to GHCR as OCI referrers, so you can read and verify them without trusting anything but the transparency log.
+
+## See what is attached
+
+Cosign lists every referrer on an image: the signature and the two attestations. Use the image's version tag (shown on its [page](/images)); it resolves to the current multi-arch index, where the attestations are attached. Swap `redis:8.8.0` for any image and version.
+
+```bash
+cosign tree ghcr.io/quenchworks/images/redis:8.8.0
+# └── Attestations
+#     ├── https://spdx.dev/Document/v2.3        (SBOM)
+#     └── https://slsa.dev/provenance/v1        (build provenance)
+```
+
+The version tag always points at the latest rebuild, which is the one that carries attestations. To check a specific build, use its `@sha256:...` [digest](/docs/pin-by-digest) instead.
+
+## Verify the build provenance
+
+The provenance attestation answers "where did this come from?". It binds the image digest to the exact GitHub Actions workflow, commit, and runner that produced it, following the SLSA provenance schema. The GitHub CLI checks it against Sigstore and the owner:
+
+```bash
+gh attestation verify \
+  oci://ghcr.io/quenchworks/images/redis:8.8.0 \
+  --owner quenchworks
+```
+
+A pass means the image was built by a workflow in the `quenchworks` org and has not been altered since. A non-zero exit means it failed.
+
+## Verify and read the SBOM
+
+The SBOM lists every package in the image. Verify the SBOM attestation by predicate type:
+
+```bash
+gh attestation verify \
+  oci://ghcr.io/quenchworks/images/redis:8.8.0 \
+  --owner quenchworks \
+  --predicate-type https://spdx.dev/Document
+```
+
+To pull the SPDX document itself out and inspect it, add `--format json` and read the predicate:
+
+```bash
+gh attestation verify \
+  oci://ghcr.io/quenchworks/images/redis:8.8.0 \
+  --owner quenchworks \
+  --predicate-type https://spdx.dev/Document \
+  --format json | jq '.[0].verificationResult.statement.predicate'
+```
+
+In a script or CI step, always pass `--format json`: the human-readable banner only prints to a terminal, while the exit code is what you gate on.
+
+## What this gives you
+
+- A package inventory for audit and vulnerability triage, tied to the exact digest you run.
+- A tamper-evident record of how the image was built, with no key to manage on either side.
+- A check you can run yourself, in CI or by hand, rather than a claim you have to take on faith.
+
+Charts are cosign-signed as well; see [Verify a signature](/docs/verify) for the chart and image signature checks, and [Pin by digest](/docs/pin-by-digest) for getting the digest these commands need.

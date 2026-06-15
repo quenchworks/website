@@ -1,0 +1,47 @@
+---
+title: Pin by digest
+description: Pin QuenchWorks images by sha256 digest so what you run is exactly what was scanned and signed.
+group: Guides
+order: 5
+---
+
+A tag like `:latest` can move. A digest cannot. Pinning by `sha256` digest means the artifact you run is exactly the one that passed the 0-CVE gate and was signed, with no chance of a tag drifting underneath you.
+
+## The charts already do this
+
+Each chart references its image by digest in `values.yaml`, never a tag, so you get digest pinning by default:
+
+```yaml
+image:
+  repository: ghcr.io/quenchworks/images/redis
+  digest: "sha256:38a0c67..."
+```
+
+When the factory rebuilds an image, a digest contract updates the chart to the new signed digest and re-releases it, so the pin stays current without you chasing tags.
+
+## Find a digest
+
+Resolve a tag to its digest with crane, or read it off the catalog page:
+
+```bash
+crane digest ghcr.io/quenchworks/images/redis:8.8.0
+# sha256:38a0c67...
+```
+
+## Pin your own deployment
+
+If you run an image directly, resolve the tag to a digest once, then reference that digest. This runs as-is:
+
+```bash
+DIGEST=$(crane digest ghcr.io/quenchworks/images/redis:8.8.0)
+docker pull ghcr.io/quenchworks/images/redis@$DIGEST
+```
+
+To pin a chart to a specific image build, override the digest at install time:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
+  --set image.digest="$DIGEST"
+```
+
+Then [verify](/docs/verify) that digest before you ship it.

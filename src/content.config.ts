@@ -13,4 +13,17 @@ const changelog = defineCollection({
   }),
 });
 
-export const collections = { changelog };
+// Docs: one MDX file per page under src/content/docs/, rendered through the
+// custom Docs.astro layout and the /docs/[...slug] route. Sidebar grouping and
+// ordering are driven by the group + order fields below.
+const docs = defineCollection({
+  loader: glob({ pattern: '**/*.mdx', base: './src/content/docs' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    group: z.enum(['Guides', 'Reference']),
+    order: z.number(),
+  }),
+});
+
+export const collections = { changelog, docs };

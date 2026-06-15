@@ -1,11 +1,12 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://quenchworks.mkabumattar.com',
-  integrations: [sitemap()],
+  integrations: [mdx(), sitemap()],
   // Prefetch internal links on hover so navigation across the catalog feels instant.
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
   // The combined /catalog section is retired in favour of dedicated /charts + /images.

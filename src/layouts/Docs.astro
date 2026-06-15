@@ -2,42 +2,38 @@
 import Base from './Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   title?: string;
   description?: string;
+  // The collection id of the current doc, e.g. 'get-started'. Omitted on the
+  // /docs landing page, which renders its own <h1> inside the slot.
+  slug?: string;
 }
-const { title, description } = Astro.props;
+const { title, description, slug } = Astro.props;
 
-const groups = [
-  {
-    title: 'Guides',
-    items: [
-      { label: 'Get started', href: '/docs/get-started' },
-      { label: 'Migrate from Bitnami', href: '/docs/migrate' },
-      { label: 'Verify a signature', href: '/docs/verify' },
-      { label: 'SBOM & provenance', href: '/docs/sbom' },
-      { label: 'Pin by digest', href: '/docs/pin-by-digest' },
-      { label: 'Air-gapped install', href: '/docs/air-gapped' },
-    ],
-  },
-  {
-    title: 'Reference',
-    items: [
-      { label: 'Tags & versions', href: '/docs/tags' },
-      { label: 'Configuration', href: '/docs/configuration' },
-      { label: 'Licensing', href: '/docs/licensing' },
-      { label: 'Troubleshooting', href: '/docs/troubleshooting' },
-    ],
-  },
-];
+// Build the sidebar from the docs collection: Guides first, then Reference,
+// each sorted by its `order` field. Labels are the doc titles.
+const docs = await getCollection('docs');
+const order = ['Guides', 'Reference'] as const;
+const groups = order.map((g) => ({
+  title: g,
+  items: docs
+    .filter((d) => d.data.group === g)
+    .sort((a, b) => a.data.order - b.data.order)
+    .map((d) => ({ label: d.data.title, href: `/docs/${d.id}` })),
+}));
+
 const path = Astro.url.pathname.replace(/\/$/, '');
 
-// Derive the GitHub source path for this page from the URL.
-// /docs -> src/pages/docs/index.astro, /docs/verify -> src/pages/docs/verify.astro
-const slug = path === '/docs' ? 'index' : path.replace(/^\/docs\//, '');
-const sourcePath = `src/pages/docs/${slug}.astro`;
-const editUrl = `https://github.com/quenchworks/website/edit/main/${sourcePath}`;
+// The GitHub source for a doc page is its MDX file; the landing page is index.astro.
+const editUrl = slug
+  ? `https://github.com/quenchworks/website/edit/main/src/content/docs/${slug}.mdx`
+  : `https://github.com/quenchworks/website/edit/main/src/pages/docs/index.astro`;
+
+// The h1 of a doc page comes from the collection; the landing page renders its own.
+const docTitle = slug ? docs.find((d) => d.id === slug)?.data.title : undefined;
 
 // Flattened, ordered list of all docs pages: the top-level index first,
 // then Guides and Reference items in their declared order.
@@ -88,6 +84,7 @@ const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : nul
 
     <main class="max-w-2xl" data-pagefind-body data-pagefind-meta="type:Docs">
       <div class="doc">
+        {docTitle && <h1>{docTitle}</h1>}
         <slot />
       </div>
 
@@ -139,6 +136,7 @@ const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : nul
     .doc h2 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; margin-top: 2.5rem; }
     .doc p { color: var(--color-ash); line-height: 1.7; margin-top: 1rem; }
     .doc h1 + p { margin-top: 1rem; }
+    .doc > p:first-of-type { color: var(--color-ash); font-size: 1.05rem; }
     .doc ul { color: var(--color-ash); margin-top: 1rem; padding-left: 1.1rem; list-style: disc; }
     .doc li { margin-top: 0.4rem; }
     .doc a { color: var(--color-paper); text-underline-offset: 4px; }

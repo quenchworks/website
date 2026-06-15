@@ -1,0 +1,43 @@
+---
+title: Get started
+description: Install a QuenchWorks chart and pull an image. Everything ships to GHCR as an OCI artifact.
+group: Guides
+order: 1
+---
+
+Everything publishes to GHCR as OCI artifacts. You need Helm for charts and any OCI runtime for images. There is no repository to add and no account to create.
+
+Browse [all charts](/charts) and [all images](/images) to find a datastore, then come back here to install it.
+
+## Install a chart
+
+Charts install straight from the registry by their OCI reference:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis
+```
+
+Auth is on by default and a password is generated into a Secret. To set your own, or to create an application database where the chart supports it, pass values:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
+  --set auth.password='change-me'
+```
+
+Each chart documents its values on its [chart](/charts) page, and ships a `values.schema.json` so Helm validates what you pass.
+
+## Pull an image
+
+The images are usable on their own, outside the charts. They are tagged by app version (there is no `:latest`), so always pull a version tag, shown on each [image](/images) page:
+
+```bash
+docker pull ghcr.io/quenchworks/images/redis:8.8.0
+```
+
+Each image runs as a nonroot user (uid 1001) on a read-only root filesystem with all Linux capabilities dropped, so it sits cleanly under a restricted PodSecurity policy. Both amd64 and arm64 are built.
+
+## Next steps
+
+- [Verify a signature](/docs/verify) before you trust an artifact.
+- [Pin by digest](/docs/pin-by-digest) so what you run is exactly what was scanned and signed.
+- [Configuration](/docs/configuration) for persistence, resources, scheduling, and security-context overrides.

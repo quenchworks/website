@@ -1,0 +1,85 @@
+---
+title: Migrate from Bitnami
+description: "Move from Bitnami charts and images to QuenchWorks: the registry swap, how the values surface differs, what carries over, and how to migrate stateful data safely."
+group: Guides
+order: 2
+---
+
+QuenchWorks ships the same upstream software (Redis, PostgreSQL, Kafka, and the rest) compiled from source into hardened, 0-CVE images, with Helm charts written independently from each project's own docs. The image swap is mechanical. The chart values are re-expressed, not copied, because the charts are not derived from Bitnami's.
+
+## The one thing that always changes: the reference
+
+Everything publishes to GHCR as OCI artifacts under the QuenchWorks org. Most app names match one to one, so the move is usually a find-and-replace on the registry path:
+
+```text
+# chart
+oci://registry-1.docker.io/bitnamicharts/redis   ->  oci://ghcr.io/quenchworks/charts/redis
+
+# image
+docker.io/bitnami/redis:7.4                       ->  ghcr.io/quenchworks/images/redis
+```
+
+So a release goes from one line to another with the same release name and namespace:
+
+```bash
+# before (Bitnami)
+helm install cache oci://registry-1.docker.io/bitnamicharts/redis
+
+# after (QuenchWorks)
+helm install cache oci://ghcr.io/quenchworks/charts/redis
+```
+
+## What carries over, and what does not
+
+The image is the same upstream binary, so on-disk data formats match: a PostgreSQL data directory, a Redis RDB/AOF file, or a MongoDB-compatible store written under Bitnami is readable by the QuenchWorks image of the same major version. Match the major version when you switch, exactly as you would for any upstream upgrade.
+
+The chart is independent, so your Bitnami `values.yaml` does not transfer verbatim. The operational knobs are shared across every chart through the [quench-common](/docs/configuration) library, so they look the same whichever datastore you run, but the keys differ from Bitnami's.
+
+## Translating values
+
+Three differences cover most charts:
+
+- **Persistence is flat.** Bitnami nests storage under `primary.persistence` (and `readReplicas`, `secondary`, and so on). QuenchWorks exposes a single `persistence` block; replication, where a chart supports it, has its own value documented on the chart page.
+- **The image is pinned by digest.** There is no `image.registry` or `image.tag`. The chart references a `sha256` digest that CI keeps current, and quench-common refuses a tag-only reference on purpose. You normally leave the image block alone.
+- **No `global` Bitnami toggles.** Knobs like `global.imageRegistry`, `global.security.allowInsecureImages`, and the Bitnami debug/volume-permissions init containers do not exist. The images already run nonroot on a read-only root filesystem with all capabilities dropped, so the permission shims they patched around are not needed.
+
+```yaml
+# Bitnami shape                      # QuenchWorks shape
+auth:                               auth:
+  password: s3cret                    password: s3cret
+primary:                            persistence:
+  persistence:                        enabled: true
+    enabled: true                     size: 8Gi
+    size: 8Gi                       image:
+image:                                repository: ghcr.io/quenchworks/images/redis
+  registry: docker.io                 digest: "sha256:..."   # set by CI
+  repository: bitnami/redis
+```
+
+Authentication is on by default, the same as Bitnami: set `auth.password` (or let the chart generate one into a Secret). Run `helm show values oci://ghcr.io/quenchworks/charts/<app>` to see the full surface, and read the per-app `config:` and `auth:` notes on each [chart](/charts) page.
+
+## Bundled databases
+
+Where an app needs a database (Keycloak, Gitea, Temporal), the chart bundles the QuenchWorks PostgreSQL chart as a dependency, the same idea as Bitnami's bundled subcharts. Point it at an external database instead through the chart's `externalDatabase` values, documented on the chart page.
+
+## Migrating stateful data
+
+For anything holding data, treat the switch as a version migration rather than an in-place swap:
+
+- Take a backup with the engine's own tool (`pg_dump`, `mongodump`, `redis-cli --rdb`, and so on).
+- Install the QuenchWorks chart at the matching major version into a new release.
+- Restore into it, confirm the app reads the data, then cut traffic over.
+
+To reuse an existing PersistentVolumeClaim directly, bind it with `persistence.existingClaim`, but only when the major version and the volume layout match what that claim already holds.
+
+## Source-available apps
+
+A few datastores people ran on Bitnami are source-available rather than open source. QuenchWorks ships them and names a truly-open alternative for each, so a migration can also be a chance to move off a restrictive license. See [Licensing](/docs/licensing) for the MongoDB, Elasticsearch, CockroachDB, and Dragonfly alternatives.
+
+## After you switch
+
+- [Verify the signature](/docs/verify) so you know the artifact came from QuenchWorks CI.
+- [Pin by digest](/docs/pin-by-digest) to run exactly what was scanned and signed.
+- [Check the SBOM and provenance](/docs/sbom) if you need a supply-chain record for audit.
+
+Missing an app you ran on Bitnami? [Request it](https://github.com/quenchworks/images/issues/new/choose) or check the [roadmap](/roadmap).

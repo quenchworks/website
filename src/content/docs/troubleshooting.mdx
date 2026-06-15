@@ -1,0 +1,67 @@
+---
+title: Troubleshooting
+description: "Common issues running QuenchWorks images and charts: the missing :latest tag, nonroot and read-only filesystem behavior, volume permissions, and signature verification."
+group: Reference
+order: 4
+---
+
+Most surprises come from the hardening: images run nonroot on a read-only root filesystem and are tagged by version, not `:latest`. Here is what each one looks like and how to handle it.
+
+## MANIFEST_UNKNOWN or "tag not found: latest"
+
+Images have no `:latest` tag. A bare reference resolves to `:latest` and fails:
+
+```bash
+docker pull ghcr.io/quenchworks/images/redis          # error: latest not found
+docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works
+```
+
+Always use a version tag (shown on each [image](/images) page) or a digest. See [Tags & versions](/docs/tags).
+
+## cosign or gh attestation verify returns 404
+
+Attestations attach to the digest of a specific build. Verifying a stale digest, or one from before a rebuild, finds nothing. Verify the version tag instead, which resolves to the current attested digest:
+
+```bash
+gh attestation verify oci://ghcr.io/quenchworks/images/redis:8.8.0 --owner quenchworks
+```
+
+See [Verify a signature](/docs/verify) and [SBOM & provenance](/docs/sbom).
+
+## Container exits writing to its filesystem
+
+The root filesystem is read-only. Apps that need to write should write to a volume or to `/tmp` (provided as writable). The charts already mount what the app needs; for extra writable paths, add a volume rather than disabling the read-only setting:
+
+```yaml
+extraVolumes:
+  - name: scratch
+    emptyDir: {}
+extraVolumeMounts:
+  - name: scratch
+    mountPath: /var/scratch
+```
+
+## Permission denied on a mounted volume
+
+Containers run as nonroot (uid 1001 for most images; the chart documents any exception). A freshly provisioned PersistentVolume can be owned by root, which the nonroot process cannot write. Set `fsGroup` so the volume is group-owned by the runtime user:
+
+```yaml
+podSecurityContext:
+  fsGroup: 1001        # let the nonroot user own mounted volumes
+```
+
+## Pod rejected by Pod Security Admission
+
+The images already satisfy the `restricted` Pod Security Standard: nonroot, no privilege escalation, all capabilities dropped, seccomp `RuntimeDefault`, read-only root filesystem. If a pod is still rejected, the cause is usually an override you passed (a custom `securityContext`, a host mount, or an added capability). Remove the override and let the hardened defaults from `quench-common` apply. See [Configuration](/docs/configuration).
+
+## Wrong architecture
+
+Images are built for `linux/amd64` and `linux/arm64`. The version tag is a multi-arch index, so the runtime pulls the right one automatically. Other architectures are not published.
+
+## Helm cannot pull the chart
+
+Charts publish to GHCR as public OCI artifacts, so no login is needed for the official registry. If you mirrored to a private registry, run `helm registry login` against it first, and see [Air-gapped install](/docs/air-gapped).
+
+## An ArtifactHub security tab shows a scan error
+
+ArtifactHub runs its own scanner, which occasionally fails to download Trivy's Java vulnerability database for JVM-based images. That is an ArtifactHub-side infrastructure issue, not a problem with the image: our CI gate scans every build to zero fixable CVEs, and you can confirm it yourself with `trivy image <ref>` or by checking the SBOM. It usually clears on the next scan.

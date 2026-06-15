@@ -1,0 +1,66 @@
+---
+title: Air-gapped install
+description: Mirror QuenchWorks images and charts into a private or air-gapped registry, repoint the charts, and keep verifying signatures and attestations.
+group: Guides
+order: 6
+---
+
+Everything lives at `ghcr.io/quenchworks` as standard OCI artifacts, so any registry or pull-through cache can hold a copy. Mirror what you need, repoint the charts, and the signatures and attestations come along so you keep verifying inside the perimeter.
+
+## Mirror an image
+
+Use `cosign copy` so the signature and the SBOM and provenance attestations travel with the image, not just the layers:
+
+```bash
+# copies the image, its cosign signature, and the SBOM + provenance attestations
+cosign copy \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  registry.internal/quenchworks/redis:8.8.0
+```
+
+If you only need the bits and will verify before the copy, `crane` or `skopeo` also work and preserve the multi-arch index:
+
+```bash
+# image only (no signature/attestations); preserves the multi-arch index
+crane copy \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  registry.internal/quenchworks/redis:8.8.0
+```
+
+Pin by digest where you can. The version tag is convenient, but a digest is what guarantees the mirrored bytes match what was scanned and signed. Resolve one with `crane digest` (see [Pin by digest](/docs/pin-by-digest)).
+
+## Mirror a chart
+
+Charts are OCI artifacts too. Pull a version, then push it to your registry:
+
+```bash
+helm pull oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm push redis-0.0.5.tgz oci://registry.internal/charts
+```
+
+## Repoint the chart at your registry
+
+A chart references its image by digest under a configurable repository. Override the repository to your mirror at install time, keeping the same digest:
+
+```bash
+helm install my-redis oci://registry.internal/charts/redis --version 0.0.5 \
+  --set image.repository=registry.internal/quenchworks/redis
+```
+
+The `quench-common` library refuses a tag-only image reference on purpose, so your mirror must carry the digest the chart pins. Mirroring by digest (or mirroring the exact tag the chart resolves) keeps that contract intact.
+
+## Verify inside the perimeter
+
+The signer identity does not change when you mirror, so the same check works against your registry:
+
+```bash
+cosign verify registry.internal/quenchworks/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+Verification still contacts the public Sigstore transparency log (Rekor) and Fulcio roots. In a fully disconnected network, verify on the way in (at the mirror boundary, where you have egress) rather than at deploy time, or run an internal Rekor mirror. See [Verify a signature](/docs/verify) and [SBOM & provenance](/docs/sbom).
+
+## Pull-through cache
+
+If your registry supports it, a pull-through cache pointed at `ghcr.io` avoids copying anything by hand: pulls populate the cache on first use and serve from it afterward. Pin by digest so a cached entry is never ambiguous.

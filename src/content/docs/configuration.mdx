@@ -1,0 +1,107 @@
+---
+title: Configuration
+description: "The shared values surface every QuenchWorks chart exposes through the quench-common library chart: image, persistence, resources, scheduling, security context, probes, and networking."
+group: Reference
+order: 2
+---
+
+Every chart depends on one library chart, `quench-common`, so the operational knobs look the same whichever datastore you run. App-specific settings live under a `config:` (and where relevant `auth:`) block documented on each [chart](/charts) page; everything below is shared.
+
+## Image (pinned by digest)
+
+The image is referenced by `sha256` digest, never a tag. `quench-common` refuses a tag-only reference on purpose, so a chart can never deploy something unpinned. CI rewrites this to the latest signed digest on each image build, so you normally leave it alone.
+
+```yaml
+image:
+  repository: ghcr.io/quenchworks/images/postgresql
+  digest: "sha256:..."   # set by CI; override to pin a specific build
+  pullPolicy: IfNotPresent
+```
+
+## Persistence
+
+Stateful charts provision a PVC. Turn it off for ephemeral use, size it, choose a class, or bind an existing claim.
+
+```yaml
+persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: ""          # default class if empty
+  accessModes: ["ReadWriteOnce"]
+  existingClaim: ""         # bind an existing PVC instead
+```
+
+## Resources
+
+```yaml
+resources:
+  requests: { cpu: 250m, memory: 256Mi }
+  limits:   { cpu: "1",  memory: 1Gi }
+```
+
+A few engines size their heap or memory from these (or from a dedicated value); their chart pages call that out.
+
+## Scheduling and placement
+
+The usual Kubernetes controls are passed straight through: `nodeSelector`, `affinity`, `tolerations`, `topologySpreadConstraints`, `priorityClassName`, `schedulerName`, `terminationGracePeriodSeconds`, and `updateStrategy`.
+
+## Extra environment and volumes
+
+Inject configuration without forking the chart:
+
+```yaml
+extraEnvVars:
+  - name: MY_FLAG
+    value: "1"
+extraEnvVarsCM: ""          # name of a ConfigMap to envFrom
+extraEnvVarsSecret: ""      # name of a Secret to envFrom
+extraVolumes: []
+extraVolumeMounts: []
+initContainers: []
+sidecars: []
+```
+
+## Security context
+
+The hardened defaults come from `quench-common`: `runAsNonRoot` (uid/gid/fsGroup 1001), seccomp `RuntimeDefault`, read-only root filesystem, no privilege escalation, all capabilities dropped. Anything you set merges over the defaults, so you only override what you need.
+
+```yaml
+podSecurityContext: {}        # your keys win over the hardened defaults
+containerSecurityContext: {}
+```
+
+## Probes
+
+Each chart ships sensible liveness and readiness probes. Tune the timing, or replace a probe outright.
+
+```yaml
+livenessProbe:  { initialDelaySeconds: 30 }   # merge timing overrides
+readinessProbe: { periodSeconds: 10 }
+customLivenessProbe:  {}   # set to replace the probe entirely
+customReadinessProbe: {}
+customStartupProbe:   {}
+```
+
+## Networking and availability
+
+A `NetworkPolicy` is on by default and is the trust boundary for charts that ship without app-level auth. A PodDisruptionBudget guards voluntary disruptions.
+
+```yaml
+networkPolicy:
+  enabled: true
+  allowExternal: false      # restrict ingress to same-namespace pods
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+serviceAccount: { create: true, name: "", annotations: {} }
+rbac: { create: false }
+```
+
+## See the schema
+
+Every chart ships a `values.schema.json`, so Helm validates what you pass and your editor can autocomplete it. Read a chart's full values inline:
+
+```bash
+helm show values oci://ghcr.io/quenchworks/charts/postgresql
+helm show readme  oci://ghcr.io/quenchworks/charts/postgresql
+```
