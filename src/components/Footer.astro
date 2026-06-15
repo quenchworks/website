@@ -1,4 +1,5 @@
 ---
+import { githubStars } from '../data/github';
 const year = new Date().getFullYear();
 const links = [
   { label: 'Charts', href: '/charts' },
@@ -38,6 +39,20 @@ const links = [
       }
     </nav>
   </div>
+
+  {
+    githubStars !== null && (
+      <div class="border-t border-line/60 py-4 text-center">
+        <a
+          href="https://github.com/quenchworks"
+          class="font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+        >
+          <span class="text-paper" aria-hidden="true">★</span>{' '}
+          <span class="font-bold tabular-nums text-paper">{githubStars}</span> on GitHub
+        </a>
+      </div>
+    )
+  }
 
   <div class="border-t border-line/60 py-5 text-center">
     <p class="font-mono text-xs text-ash">
