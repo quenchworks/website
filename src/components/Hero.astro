@@ -1,6 +1,6 @@
 ---
 // Hero: minimal single column, one primary CTA (per MASTER design system).
-import { availableCount } from '../data/images';
+import { availableCount, runtimeCount } from '../data/images';
 import { chartCount } from '../data/charts';
 import { githubStars } from '../data/github';
 // shipped end-to-end = apps with both an available image and a chart.
@@ -19,6 +19,7 @@ const shipped = Math.min(availableCount, chartCount);
   <div class="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
     <p class="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-ash">
       <span class="font-bold tabular-nums text-paper">{availableCount}</span> hardened images ·
+      <span class="font-bold tabular-nums text-paper">{runtimeCount}</span> runtimes ·
       <span class="font-bold tabular-nums text-paper">{chartCount}</span> signed charts · 0 fixable CVEs{
         githubStars !== null && (
           <>
