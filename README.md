@@ -1,6 +1,6 @@
 # QuenchWorks website
 
-The marketing site and live catalog for [QuenchWorks](https://github.com/quenchworks), the 0-CVE hardened replacement for the Bitnami catalog. It's the front door at [quenchworks.mkabumattar.com](https://quenchworks.mkabumattar.com), and the browsable index of every image and chart we ship.
+The marketing site and live catalog for [QuenchWorks](https://github.com/quenchworks), the 0-CVE hardened replacement for the Bitnami catalog. It's the front door at [quench-works.com](https://quench-works.com), and the browsable index of every image and chart we ship.
 
 Built with **Astro 5 · Tailwind CSS v4 · TypeScript**, managed with **pnpm**, on Node **26** (see `.nvmrc`). Monochrome by design (ink/paper), Inter + JetBrains Mono. The theme is enforced through design tokens, not hardcoded hex.
 
@@ -54,4 +54,4 @@ Static build (`pnpm build` → `dist/`), deployed to **Cloudflare Pages** via th
 - Build output directory: `dist`
 - Framework preset: Astro
 - Node version: `26` (set `NODE_VERSION=26` in the Pages env, matching `.nvmrc`)
-- Custom domain: `quenchworks.mkabumattar.com`
+- Custom domain: `quench-works.com`

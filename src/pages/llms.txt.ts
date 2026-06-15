@@ -4,7 +4,7 @@ import { serviceImages, runtimeImages, availableCount, runtimeCount } from '../d
 
 // /llms.txt — a machine-readable map of the site for LLMs (https://llmstxt.org).
 // Generated from the catalog data so it never drifts from what actually shipped.
-const SITE = 'https://quenchworks.mkabumattar.com';
+const SITE = 'https://quench-works.com';
 
 function byCategory<T extends { category: string; name: string }>(items: T[]) {
   const groups = new Map<string, T[]>();

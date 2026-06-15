@@ -18,7 +18,7 @@ const runtimeRedirects = Object.fromEntries(
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://quenchworks.mkabumattar.com',
+  site: 'https://quench-works.com',
   integrations: [
     // Auto-import the docs shortcodes so MDX can use them without per-file
     // import lines. AutoImport MUST come before mdx() so the imports are

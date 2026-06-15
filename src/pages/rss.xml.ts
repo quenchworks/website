@@ -12,7 +12,7 @@ export async function GET(context: APIContext) {
     title: 'QuenchWorks Changelog',
     description:
       'What shipped in the QuenchWorks catalog: new hardened images, signed charts, and supply-chain changes.',
-    site: context.site ?? 'https://quenchworks.mkabumattar.com',
+    site: context.site ?? 'https://quench-works.com',
     items: entries.map((entry) => ({
       title: entry.data.title,
       description: entry.data.summary,
