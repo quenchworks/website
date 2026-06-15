@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 import AutoImport from 'astro-auto-import';
+import astroExpressiveCode from 'astro-expressive-code';
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,6 +25,9 @@ export default defineConfig({
         './src/components/shortcodes/Badge.astro',
       ],
     }),
+    // Expressive Code must precede mdx() so it can pre-process fenced code
+    // blocks before MDX compiles each page. Config lives in ec.config.mjs.
+    astroExpressiveCode(),
     mdx(),
     sitemap(),
   ],
@@ -37,5 +41,8 @@ export default defineConfig({
   },
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      external: ['@xt0rted/expressive-code-file-icons'],
+    },
   },
 });

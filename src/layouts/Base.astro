@@ -86,6 +86,9 @@ const jsonLd = {
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="size-3.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
 
       for (const pre of document.querySelectorAll('pre')) {
+        // Expressive Code blocks render their own copy button; skip them so we
+        // don't end up with two buttons on fenced MDX/MD code blocks.
+        if (pre.closest('.expressive-code')) continue;
         if (pre.dataset.copyReady) continue;
         pre.dataset.copyReady = '1';
         pre.classList.add('group', 'relative');
