@@ -32,6 +32,19 @@ const groups = [
   },
 ];
 const path = Astro.url.pathname.replace(/\/$/, '');
+
+// Derive the GitHub source path for this page from the URL.
+// /docs -> src/pages/docs/index.astro, /docs/verify -> src/pages/docs/verify.astro
+const slug = path === '/docs' ? 'index' : path.replace(/^\/docs\//, '');
+const sourcePath = `src/pages/docs/${slug}.astro`;
+const editUrl = `https://github.com/quenchworks/website/edit/main/${sourcePath}`;
+
+// Flattened, ordered list of all docs pages: the top-level index first,
+// then Guides and Reference items in their declared order.
+const flat = [{ label: 'Docs', href: '/docs' }, ...groups.flatMap((g) => g.items)];
+const current = flat.findIndex((n) => n.href === path);
+const prev = current > 0 ? flat[current - 1] : null;
+const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : null;
 ---
 
 <Base title={title} description={description}>
@@ -73,8 +86,50 @@ const path = Astro.url.pathname.replace(/\/$/, '');
       </div>
     </aside>
 
-    <main class="doc max-w-2xl" data-pagefind-body data-pagefind-meta="type:Docs">
-      <slot />
+    <main class="max-w-2xl" data-pagefind-body data-pagefind-meta="type:Docs">
+      <div class="doc">
+        <slot />
+      </div>
+
+      <div class="mt-16 border-t border-line pt-5" data-pagefind-ignore>
+        <a
+          href={editUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+        >
+          Edit this page on GitHub
+        </a>
+      </div>
+
+      {
+        (prev || next) && (
+          <nav class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-stretch sm:justify-between" aria-label="Pagination">
+            {prev ? (
+              <a
+                href={prev.href}
+                class="group flex flex-1 flex-col gap-1 rounded-xl border border-line px-4 py-3 transition-colors duration-200 hover:border-ash/40"
+              >
+                <span class="font-mono text-[10px] uppercase tracking-widest text-ash/70">Previous</span>
+                <span class="text-sm text-ash transition-colors duration-200 group-hover:text-paper">&larr; {prev.label}</span>
+              </a>
+            ) : (
+              <span class="hidden flex-1 sm:block" />
+            )}
+            {next ? (
+              <a
+                href={next.href}
+                class="group flex flex-1 flex-col gap-1 rounded-xl border border-line px-4 py-3 text-right transition-colors duration-200 hover:border-ash/40"
+              >
+                <span class="font-mono text-[10px] uppercase tracking-widest text-ash/70">Next</span>
+                <span class="text-sm text-ash transition-colors duration-200 group-hover:text-paper">{next.label} &rarr;</span>
+              </a>
+            ) : (
+              <span class="hidden flex-1 sm:block" />
+            )}
+          </nav>
+        )
+      }
     </main>
   </div>
   <Footer />
