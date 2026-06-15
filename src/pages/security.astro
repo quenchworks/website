@@ -46,13 +46,15 @@ const sections = [
 
     <section class="mt-10">
       <h2 class="text-xl font-semibold tracking-tight">Verify it yourself</h2>
-      <pre class="mt-3 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirm an image was built and signed by our CI</span>
-cosign verify ghcr.io/quenchworks/images/redis \
+      <pre class="mt-3 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirm an image was built and signed by our CI (images have no :latest)</span>
+cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
-<span class="text-ash"># the same works for any chart</span>
-cosign verify ghcr.io/quenchworks/charts/redis@sha256:&lt;digest&gt;</code></pre>
+<span class="text-ash"># the same works for any chart, by its version tag</span>
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">

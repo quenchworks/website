@@ -17,8 +17,8 @@ import Docs from '../../layouts/Docs.astro';
   <p>Each chart documents its values on its <a href="/charts">chart</a> page, and ships a <code>values.schema.json</code> so Helm validates what you pass.</p>
 
   <h2>Pull an image</h2>
-  <p>The images are usable on their own, outside the charts:</p>
-  <pre><code>docker pull ghcr.io/quenchworks/images/redis</code></pre>
+  <p>The images are usable on their own, outside the charts. They are tagged by app version (there is no <code>:latest</code>), so always pull a version tag, shown on each <a href="/images">image</a> page:</p>
+  <pre><code>docker pull ghcr.io/quenchworks/images/redis:8.8.0</code></pre>
   <p>Each image runs as a nonroot user (uid 1001) on a read-only root filesystem with all Linux capabilities dropped, so it sits cleanly under a restricted PodSecurity policy. Both amd64 and arm64 are built.</p>
 
   <h2>Next steps</h2>

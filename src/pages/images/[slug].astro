@@ -45,9 +45,10 @@ const total = ah?.securityTotal;
 const pullTag = appVersion;
 const imageTags = pullTag ? [pullTag, `${pullTag}-amd64`, `${pullTag}-arm64`] : [];
 
-// Reference for attestation verification: prefer the digest the chart deploys,
-// else the version tag (gh attestation verify resolves the tag to a digest).
-const attRef = pinned ?? (pullTag ? `${image}:${pullTag}` : image);
+// Verify against the version tag: it always resolves to the current, attested
+// digest. (The chart's pinned digest can lag behind the daily rebuild, and an
+// old digest has no attestation, so verifying it would 404.)
+const verifyRef = pullTag ? `${image}:${pullTag}` : image;
 
 // Just the sha256:... portion, for a clean copy-friendly digest row.
 const digest = pinned?.includes('@') ? pinned.slice(pinned.indexOf('@') + 1) : undefined;
@@ -229,15 +230,15 @@ const sevs = sec
         attestation on the same digest. Check all three yourself:
       </p>
       <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature — built and signed by QuenchWorks CI</span>
-cosign verify {image} \
+cosign verify {verifyRef} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># 2. SLSA build provenance — which workflow built it, from what</span>
-gh attestation verify oci://{attRef} --owner quenchworks
+gh attestation verify oci://{verifyRef} --owner quenchworks
 
 <span class="text-ash"># 3. SPDX SBOM — the package inventory</span>
-gh attestation verify oci://{attRef} --owner quenchworks \
+gh attestation verify oci://{verifyRef} --owner quenchworks \
   --predicate-type https://spdx.dev/Document</code></pre>
       <p class="mt-2 text-xs text-ash">See the <a href="/docs/sbom" class="text-paper underline-offset-4 hover:underline">SBOM &amp; provenance guide</a> for reading the SBOM and using these checks in CI.</p>
 

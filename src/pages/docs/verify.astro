@@ -12,16 +12,16 @@ import Docs from '../../layouts/Docs.astro';
 go install github.com/sigstore/cosign/v2/cmd/cosign@latest   # from source</code></pre>
 
   <h2>Verify an image</h2>
-  <p>Point cosign at the image and assert the signer identity:</p>
-  <pre><code>cosign verify ghcr.io/quenchworks/images/redis \
+  <p>Point cosign at the image by its version tag (images have no <code>:latest</code>) and assert the signer identity. Swap <code>redis:8.8.0</code> for any image and the version shown on its <a href="/images">page</a>:</p>
+  <pre><code>cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
   <p>A valid result prints the certificate subject, which is the exact workflow that built the image, along with the Rekor log entry. If the signature is missing or the identity does not match, cosign exits non-zero.</p>
 
   <h2>Verify a chart</h2>
-  <p>Charts are OCI artifacts, so the same command works once you have the digest:</p>
-  <pre><code>cosign verify ghcr.io/quenchworks/charts/redis@sha256:&lt;digest&gt; \
+  <p>Charts are OCI artifacts, so the same command works against the chart's version tag:</p>
+  <pre><code>cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
-  <p>See <a href="/docs/pin-by-digest">Pin by digest</a> for how to get that digest.</p>
+  <p>To verify a specific build instead of the tag, pass an <code>@sha256:...</code> digest. See <a href="/docs/pin-by-digest">Pin by digest</a> for how to resolve one.</p>
 </Docs>

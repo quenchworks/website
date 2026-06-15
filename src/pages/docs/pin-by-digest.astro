@@ -19,10 +19,11 @@ import Docs from '../../layouts/Docs.astro';
 # sha256:38a0c67...</code></pre>
 
   <h2>Pin your own deployment</h2>
-  <p>If you run an image directly, reference it by digest instead of a tag:</p>
-  <pre><code>docker pull ghcr.io/quenchworks/images/redis@sha256:&lt;digest&gt;</code></pre>
+  <p>If you run an image directly, resolve the tag to a digest once, then reference that digest. This runs as-is:</p>
+  <pre><code>DIGEST=$(crane digest ghcr.io/quenchworks/images/redis:8.8.0)
+docker pull ghcr.io/quenchworks/images/redis@$DIGEST</code></pre>
   <p>To pin a chart to a specific image build, override the digest at install time:</p>
   <pre><code>helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
-  --set image.digest='sha256:&lt;digest&gt;'</code></pre>
+  --set image.digest="$DIGEST"</code></pre>
   <p>Then <a href="/docs/verify">verify</a> that digest before you ship it.</p>
 </Docs>

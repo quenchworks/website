@@ -1,24 +1,22 @@
 ---
 import Docs from '../../layouts/Docs.astro';
 
-const tree = `cosign tree ghcr.io/quenchworks/images/redis@sha256:<digest>
-# ├── Signatures
-# │   └── ...redis:sha256-<digest>.sig
+const tree = `cosign tree ghcr.io/quenchworks/images/redis:8.8.0
 # └── Attestations
 #     ├── https://spdx.dev/Document/v2.3        (SBOM)
 #     └── https://slsa.dev/provenance/v1        (build provenance)`;
 
 const verifyProvenance = `gh attestation verify \\
-  oci://ghcr.io/quenchworks/images/redis@sha256:<digest> \\
+  oci://ghcr.io/quenchworks/images/redis:8.8.0 \\
   --owner quenchworks`;
 
 const verifySbom = `gh attestation verify \\
-  oci://ghcr.io/quenchworks/images/redis@sha256:<digest> \\
+  oci://ghcr.io/quenchworks/images/redis:8.8.0 \\
   --owner quenchworks \\
   --predicate-type https://spdx.dev/Document`;
 
 const downloadSbom = `gh attestation verify \\
-  oci://ghcr.io/quenchworks/images/redis@sha256:<digest> \\
+  oci://ghcr.io/quenchworks/images/redis:8.8.0 \\
   --owner quenchworks \\
   --predicate-type https://spdx.dev/Document \\
   --format json | jq '.[0].verificationResult.statement.predicate'`;
@@ -32,9 +30,9 @@ const downloadSbom = `gh attestation verify \\
   <p class="lead">Alongside its cosign signature, every image carries two more attestations attached to the same digest: an SPDX software bill of materials, and a SLSA build-provenance statement that records which workflow built it from what. Both are signed keyless through Sigstore and pushed to GHCR as OCI referrers, so you can read and verify them without trusting anything but the transparency log.</p>
 
   <h2>See what is attached</h2>
-  <p>Cosign lists every referrer on an image: the signature and the two attestations.</p>
+  <p>Cosign lists every referrer on an image: the signature and the two attestations. Use the image's version tag (shown on its <a href="/images">page</a>); it resolves to the current multi-arch index, where the attestations are attached. Swap <code>redis:8.8.0</code> for any image and version.</p>
   <pre><code>{tree}</code></pre>
-  <p>Get the digest from the <a href="/docs/pin-by-digest">catalog page or with crane</a>. The attestations are attached to the multi-arch index by digest, the same one the chart pins.</p>
+  <p>The version tag always points at the latest rebuild, which is the one that carries attestations. To check a specific build, use its <code>@sha256:...</code> <a href="/docs/pin-by-digest">digest</a> instead.</p>
 
   <h2>Verify the build provenance</h2>
   <p>The provenance attestation answers "where did this come from?". It binds the image digest to the exact GitHub Actions workflow, commit, and runner that produced it, following the SLSA provenance schema. The GitHub CLI checks it against Sigstore and the owner:</p>

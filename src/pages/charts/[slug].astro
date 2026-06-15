@@ -201,7 +201,7 @@ const ld = {
       </dl>
 
       <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Verify the chart</p>
-      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>cosign verify {ghcr}/charts/{entry.slug}@sha256:DIGEST \
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>cosign verify {ghcr}/charts/{entry.slug}:{chartVersion} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
 
