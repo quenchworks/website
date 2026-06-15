@@ -1,0 +1,224 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import VersionSwitcher from '../components/VersionSwitcher.astro';
+import { Code } from 'astro-expressive-code/components';
+import { ghcr, type ImageEntry } from '../data/images';
+import { fetchPackageDetail } from '../data/artifacthub';
+import { dockerfileFor } from '../data/dockerfiles';
+import { slugify } from '../data/slugify';
+import imageMeta from '../data/image-meta.json';
+
+interface Props {
+  /** The runtime catalog entry. */
+  entry: ImageEntry;
+  /** The version this page renders (must be one of the slug's tags). */
+  version: string;
+}
+
+const { entry, version } = Astro.props;
+const image = entry.image || `${ghcr}/images/${entry.slug}`;
+
+// Humanize a byte count into a compact MB/GB string (e.g. "28.4 MB").
+function humanizeBytes(bytes: number): string {
+  if (bytes >= 1e9) return `${(bytes / 1e9).toFixed(1)} GB`;
+  if (bytes >= 1e6) return `${(bytes / 1e6).toFixed(1)} MB`;
+  if (bytes >= 1e3) return `${(bytes / 1e3).toFixed(1)} KB`;
+  return `${bytes} B`;
+}
+
+// Turn a build timestamp into a short, friendly label.
+function freshness(iso: string): { abs: string; rel: string } {
+  const built = new Date(iso);
+  const abs = built.toISOString().slice(0, 10);
+  const days = Math.floor((Date.now() - built.getTime()) / 86_400_000);
+  const rel = days <= 0 ? 'today' : days === 1 ? '1 day ago' : `${days} days ago`;
+  return { abs, rel };
+}
+
+// Map each runtime slug to the build guide that covers its ecosystem.
+const BUILD_GUIDE: Record<string, { slug: string; label: string }> = {
+  node: { slug: 'build-node', label: 'Build a Node app' },
+  bun: { slug: 'build-node', label: 'Build a Node app' },
+  deno: { slug: 'build-node', label: 'Build a Node app' },
+  pnpm: { slug: 'build-node', label: 'Build a Node app' },
+  yarn: { slug: 'build-node', label: 'Build a Node app' },
+  python: { slug: 'build-python', label: 'Build a Python app' },
+  uv: { slug: 'build-python', label: 'Build a Python app' },
+  poetry: { slug: 'build-python', label: 'Build a Python app' },
+  go: { slug: 'build-go', label: 'Build a Go or Rust binary' },
+  rust: { slug: 'build-go', label: 'Build a Go or Rust binary' },
+  static: { slug: 'build-go', label: 'Build a Go or Rust binary' },
+  jdk: { slug: 'build-java', label: 'Build a Java app' },
+  jre: { slug: 'build-java', label: 'Build a Java app' },
+  maven: { slug: 'build-java', label: 'Build a Java app' },
+  gradle: { slug: 'build-java', label: 'Build a Java app' },
+  dotnet: { slug: 'build-dotnet', label: 'Build a .NET app' },
+  'dotnet-runtime': { slug: 'build-dotnet', label: 'Build a .NET app' },
+  aspnet: { slug: 'build-dotnet', label: 'Build a .NET app' },
+};
+
+// live, build-time facts from ArtifactHub.
+const ah = await fetchPackageDetail(entry.slug);
+const appVersion = ah?.appVersion ?? entry.version;
+
+const guide = BUILD_GUIDE[entry.slug] ?? { slug: 'build-images', label: 'Build hardened images' };
+
+// One Dockerfile per supported version (newest-first). The version list driving
+// this whole page comes from the dockerfile variants (= the slug's image-meta
+// tags). Pick the variant that matches the selected version.
+const dockerfile = dockerfileFor(entry.slug);
+const variants = dockerfile?.variants ?? [];
+const versions = variants.map((v) => v.version);
+const selected = variants.find((v) => v.version === version) ?? variants[0];
+
+// Build-time image metadata, nested per version tag.
+type ImgMeta = { sizeBytes?: number; builtISO?: string; sbomPackages?: number };
+const metaByTag = (imageMeta as Record<string, Record<string, ImgMeta>>)[entry.slug] ?? {};
+const m = metaByTag[version];
+const sizeLabel = m?.sizeBytes != null ? humanizeBytes(m.sizeBytes) : undefined;
+const fresh = m?.builtISO ? freshness(m.builtISO) : undefined;
+const sbomPackages = m?.sbomPackages;
+
+// Every reference on this page is pinned to the selected version's tag.
+const ref = `${image}:${version}`;
+
+const categorySlug = slugify(entry.category);
+const isLatest = versions[0] === version;
+const titleSuffix = isLatest ? '' : ` ${version}`;
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: entry.name,
+  description: entry.summary,
+  applicationCategory: entry.category,
+  operatingSystem: 'Linux',
+  softwareVersion: version,
+  isAccessibleForFree: true,
+  license: entry.license,
+  codeRepository: entry.upstream,
+};
+---
+
+<Base title={`${entry.name}${titleSuffix} base image · Quenchworks`} description={entry.summary} image={`/og/${entry.slug}.png`}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta={`title:${entry.name} runtime,type:Runtime`}>
+    <a href="/runtimes" class="font-mono text-xs uppercase tracking-widest text-ash transition-colors hover:text-paper">&larr; Runtimes</a>
+
+    <header class="mt-6 flex items-center gap-4">
+      <img src="/brand/icon-dark.svg" alt="" class="size-12" width="48" height="48" />
+      <div>
+        <h1 class="text-4xl font-bold tracking-tight">{entry.name}{isLatest ? '' : ` ${version}`}</h1>
+        <p class="mt-1 font-mono text-xs uppercase tracking-widest text-ash">
+          Runtime · <a href={`/runtimes#${categorySlug}`} class="underline-offset-4 transition-colors hover:text-paper hover:underline">{entry.category}</a> · {entry.tier} · v{version}
+        </p>
+      </div>
+    </header>
+
+    <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+      <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper">0&nbsp;fixable&nbsp;CVEs</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">nonroot</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">cosign&nbsp;signed</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">SPDX&nbsp;SBOM</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">SLSA&nbsp;provenance</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">amd64&nbsp;·&nbsp;arm64</span>
+    </div>
+
+    <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
+
+    <VersionSwitcher section="runtimes" slug={entry.slug} versions={versions} current={version} label="Version line" />
+
+    <section class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+      {([
+        ['Image', `${image}:${version}`],
+        ['Signed', 'cosign keyless'],
+        ['SBOM', 'SPDX, on digest'],
+        ['Provenance', 'SLSA build'],
+        ['Architectures', 'amd64, arm64'],
+        ['Runs as', 'nonroot (uid 1001)'],
+        ...(sizeLabel ? [['Image size', sizeLabel]] as [string, string][] : []),
+        ...(sbomPackages != null ? [['SBOM packages', String(sbomPackages)]] as [string, string][] : []),
+        ...(fresh ? [['Last rebuilt', fresh.abs]] as [string, string][] : []),
+      ] as [string, string][]).map(([k, v]) => (
+        <div class="rounded-lg border border-line bg-graphite p-3">
+          <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
+          <div class="mt-1 break-all text-sm font-medium text-paper">{v}</div>
+        </div>
+      ))}
+    </section>
+
+    <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
+      <h2 class="text-xl font-semibold tracking-tight">Use it as a base image</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        Reference it in the <code class="font-mono">FROM</code> line of your Dockerfile. Nonroot, read-only
+        root filesystem, built for amd64 and arm64.
+      </p>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>FROM {ref}</code></pre>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Or pull it directly</p>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>docker pull {ref}</code></pre>
+
+      <dl class="mt-5 space-y-2.5 text-sm">
+        <div class="flex justify-between gap-3"><dt class="text-ash">Version line</dt><dd class="font-medium">{version}</dd></div>
+        {appVersion && <div class="flex justify-between gap-3"><dt class="text-ash">Latest line</dt><dd class="font-medium">{appVersion}</dd></div>}
+        <div class="flex justify-between gap-3"><dt class="text-ash">Architectures</dt><dd class="font-medium">amd64, arm64</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Runs as</dt><dd class="font-medium">nonroot (uid 1001)</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">Root filesystem</dt><dd class="font-medium">read-only</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">License</dt><dd class:list={['font-medium', entry.caution ? 'text-amber-400' : '']}>{entry.license}</dd></div>
+      </dl>
+
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Verify the supply chain</p>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        This image is cosign-signed and carries an SPDX SBOM and a SLSA build-provenance
+        attestation on the same digest. Check all three before you build on it:
+      </p>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature — built and signed by QuenchWorks CI</span>
+cosign verify {ref} \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+
+<span class="text-ash"># 2. SLSA build provenance — which workflow built it, from what</span>
+gh attestation verify oci://{ref} --owner quenchworks
+
+<span class="text-ash"># 3. SPDX SBOM — the package inventory</span>
+gh attestation verify oci://{ref} --owner quenchworks \
+  --predicate-type https://spdx.dev/Document</code></pre>
+      <p class="mt-2 text-xs text-ash">See the <a href="/docs/sbom" class="text-paper underline-offset-4 hover:underline">SBOM &amp; provenance guide</a> for reading the SBOM and using these checks in CI.</p>
+
+      <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href={`/docs/${guide.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">{guide.label} &rarr;</a>
+        <a href="https://github.com/quenchworks/images" class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">Image source</a>
+      </div>
+    </section>
+
+    {selected && (
+      <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
+        <h2 class="text-xl font-semibold tracking-tight">Best-practice Dockerfile for {version}</h2>
+        <p class="mt-2 text-sm leading-relaxed text-ash">{dockerfile?.note}</p>
+        <div class="mt-4">
+          <div class="mb-3 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+            <span class="rounded border border-line bg-ink px-2 py-0.5 text-paper">{ref}</span>
+            {sizeLabel && <span class="rounded border border-line bg-ink px-2 py-0.5">{sizeLabel}</span>}
+            {fresh && <span class="rounded border border-line bg-ink px-2 py-0.5">rebuilt&nbsp;{fresh.rel}</span>}
+            {sbomPackages != null && <span class="rounded border border-line bg-ink px-2 py-0.5">{sbomPackages}&nbsp;SBOM&nbsp;pkgs</span>}
+          </div>
+          <Code code={selected.code} lang="dockerfile" />
+        </div>
+        <p class="mt-4 text-xs text-ash">
+          This Dockerfile is pinned to the {version} line. For the line-by-line walkthrough and
+          ecosystem variants (npm/Yarn, pip/uv/Poetry, Maven/Gradle), see the
+          <a href={`/docs/${guide.slug}`} class="text-paper underline-offset-4 hover:underline"> {guide.label}</a> guide.
+        </p>
+      </section>
+    )}
+
+    <p class="mt-8 text-sm text-ash">
+      Upstream project: <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
+    </p>
+  </main>
+  <script type="application/ld+json" set:html={JSON.stringify(ld)} is:inline />
+  <Footer />
+</Base>

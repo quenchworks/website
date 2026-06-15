@@ -5,11 +5,9 @@ import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import CategoryCatalog from '../../../../components/CategoryCatalog.astro';
 import { serviceImages, PAGE_SIZE, type ImageEntry } from '../../../../data/images';
+import { slugify } from '../../../../data/slugify';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  /** "Object storage" -> "object-storage". */
-  const slugify = (s: string): string =>
-    s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   const available = serviceImages.filter((i) => i.status === 'available');
   const imageCategories = [...new Set(available.map((i) => i.category))].sort();
   return imageCategories.flatMap((category) => {
@@ -33,6 +31,13 @@ const { page, category } = Astro.props as Props;
 const count = serviceImages.filter((i) => i.status === 'available' && i.category === category).length;
 const heading = `${category} images`;
 const intro = `Hardened container images in the ${category.toLowerCase()} category. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, and pinned by digest.`;
+
+// Sibling categories so users can hop between them without going back out.
+const available = serviceImages.filter((i) => i.status === 'available');
+const categories = [...new Set(available.map((i) => i.category))]
+  .sort()
+  .map((c) => ({ label: c, slug: slugify(c) }));
+const currentCategory = slugify(category);
 ---
 
 <Base
@@ -47,6 +52,8 @@ const intro = `Hardened container images in the ${category.toLowerCase()} catego
       intro={intro}
       count={count}
       page={page}
+      categories={categories}
+      currentCategory={currentCategory}
     />
   </main>
   <Footer />

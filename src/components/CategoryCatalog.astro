@@ -30,9 +30,13 @@ interface Props {
   count: number;
   /** Paginated slice from getStaticPaths + paginate(). */
   page: Page<CardEntry>;
+  /** All sibling categories for the hop-between-categories chip row. */
+  categories?: { label: string; slug: string }[];
+  /** Slug of the category being shown, so its chip is highlighted. */
+  currentCategory?: string;
 }
 
-const { kind, heading, intro, count, page } = Astro.props;
+const { kind, heading, intro, count, page, categories = [], currentCategory } = Astro.props;
 const isImages = kind === 'images';
 const noun = isImages ? 'images' : 'charts';
 
@@ -54,6 +58,26 @@ const BTN_DISABLED = 'border-line/60 bg-graphite/50 text-ash/40 cursor-not-allow
   <p class="mt-4 font-mono text-xs uppercase tracking-widest text-ash">
     <a href={isImages ? '/images' : '/charts'} class="transition-colors hover:text-paper">&larr; All {noun}</a>
   </p>
+
+  {categories.length > 1 && (
+    <nav class="mt-4 flex flex-wrap gap-1.5 font-mono text-[11px]" aria-label="Categories">
+      {categories.map((c) => {
+        const isCurrent = c.slug === currentCategory;
+        return (
+          <a
+            href={`/${noun}/category/${c.slug}`}
+            aria-current={isCurrent ? 'page' : undefined}
+            class:list={[
+              'rounded px-2 py-1 transition-colors',
+              isCurrent
+                ? 'border border-paper bg-paper text-ink'
+                : 'border border-line bg-graphite text-paper hover:border-paper/40',
+            ]}
+          >{c.label}</a>
+        );
+      })}
+    </nav>
+  )}
 </header>
 
 <ul class="mt-10 grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">

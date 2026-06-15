@@ -6,11 +6,9 @@ import Footer from '../../../../components/Footer.astro';
 import CategoryCatalog from '../../../../components/CategoryCatalog.astro';
 import { charts, chartCategories, PAGE_SIZE, type ChartEntry } from '../../../../data/charts';
 import { fetchArtifactHub } from '../../../../data/artifacthub';
+import { slugify } from '../../../../data/slugify';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  /** "Object storage" -> "object-storage". */
-  const slugify = (s: string): string =>
-    s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   return chartCategories.flatMap((category) => {
     const entries = charts
       .filter((c) => c.category === category)
@@ -42,6 +40,10 @@ const data = page.data.map((e) => {
 const count = charts.filter((c) => c.category === category).length;
 const heading = `${category} charts`;
 const intro = `Hardened Helm charts in the ${category.toLowerCase()} category. Each deploys our hardened image pinned by its signed digest, with production defaults.`;
+
+// Sibling categories so users can hop between them without going back out.
+const categories = chartCategories.map((c) => ({ label: c, slug: slugify(c) }));
+const currentCategory = slugify(category);
 ---
 
 <Base
@@ -56,6 +58,8 @@ const intro = `Hardened Helm charts in the ${category.toLowerCase()} category. E
       intro={intro}
       count={count}
       page={{ ...page, data } as Page}
+      categories={categories}
+      currentCategory={currentCategory}
     />
   </main>
   <Footer />

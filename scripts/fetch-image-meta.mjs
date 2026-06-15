@@ -59,19 +59,19 @@ async function raw(ref) {
 }
 
 // The `version` field may list several tags (e.g. "8, 9, 10", catalog order is
-// ascending). Metadata is fetched for one representative tag: the newest.
-function primaryTag(version) {
-  if (!version) return null;
+// ascending). Metadata is captured per tag, so split into the full list. An
+// image with no version field falls back to a single untagged pull.
+function tagsOf(version) {
+  if (!version) return [null];
   const tags = String(version)
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
-  return tags.length ? tags[tags.length - 1] : null;
+  return tags.length ? tags : [null];
 }
 
-async function fetchOne(entry) {
-  const repo = entry.image || `ghcr.io/quenchworks/images/${entry.slug}`;
-  const tag = primaryTag(entry.version);
+// Fetch metadata for one specific tag of one repo.
+async function fetchTag(repo, tag) {
   const ref = tag ? `${repo}:${tag}` : repo;
   const meta = {};
 
@@ -106,7 +106,7 @@ async function fetchOne(entry) {
       if (config.created) meta.builtISO = config.created;
     } catch (err) {
       // non-fatal: keep size, skip timestamp
-      console.warn(`  ${entry.slug}: config fetch failed (${err.message})`);
+      console.warn(`  ${ref}: config fetch failed (${err.message})`);
     }
   }
 
@@ -132,7 +132,7 @@ async function fetchOne(entry) {
       const pkgs = atts?.[0]?.verificationResult?.statement?.predicate?.packages;
       if (Array.isArray(pkgs) && pkgs.length > 0) meta.sbomPackages = pkgs.length;
     } catch (err) {
-      console.warn(`  ${entry.slug}: SBOM skipped (${err.message.split('\n')[0]})`);
+      console.warn(`  ${ref}: SBOM skipped (${err.message.split('\n')[0]})`);
     }
   }
 
@@ -157,13 +157,22 @@ async function main() {
   let available = images.filter((i) => i.status === 'available');
   if (onlySlug) available = available.filter((i) => i.slug === onlySlug);
 
-  console.log(`Fetching metadata for ${available.length} available image(s)...`);
+  // One task per (image, tag): metadata is captured separately for every
+  // published version tag, so the result is nested slug -> tag -> meta.
+  const tasks = available.flatMap((entry) => {
+    const repo = entry.image || `ghcr.io/quenchworks/images/${entry.slug}`;
+    return tagsOf(entry.version).map((tag) => ({ slug: entry.slug, repo, tag }));
+  });
+  console.log(`Fetching metadata for ${available.length} image(s), ${tasks.length} tag(s)...`);
 
-  // Seed from the existing file so a partial run (some images throttled) never
+  // Seed from the existing file so a partial run (some tags throttled) never
   // drops metadata we already had; successful fetches overwrite their entry.
   let out = {};
   try {
     out = JSON.parse(await readFile(join(root, 'src/data/image-meta.json'), 'utf8'));
+    // Discard a legacy flat file (slug -> {sizeBytes}); we now nest slug -> tag.
+    const looksFlat = Object.values(out).some((v) => v && typeof v.sizeBytes === 'number');
+    if (looksFlat) out = {};
   } catch {
     out = {};
   }
@@ -173,31 +182,37 @@ async function main() {
   const CONCURRENCY = 3;
   let idx = 0;
   async function worker() {
-    while (idx < available.length) {
-      const entry = available[idx++];
+    while (idx < tasks.length) {
+      const { slug, repo, tag } = tasks[idx++];
+      const key = tag ?? 'latest';
       try {
-        const meta = await fetchOne(entry);
-        out[entry.slug] = meta;
+        const meta = await fetchTag(repo, tag);
+        (out[slug] ||= {})[key] = meta;
         const parts = [];
         if (meta.sizeBytes != null) parts.push(`${(meta.sizeBytes / 1e6).toFixed(1)}MB`);
         if (meta.builtISO) parts.push(meta.builtISO.slice(0, 10));
         if (meta.sbomPackages != null) parts.push(`${meta.sbomPackages} pkgs`);
-        console.log(`  ok  ${entry.slug.padEnd(22)} ${parts.join('  ')}`);
+        console.log(`  ok  ${`${slug}:${key}`.padEnd(26)} ${parts.join('  ')}`);
       } catch (err) {
-        failed.push(entry.slug);
-        console.warn(`  FAIL ${entry.slug}: ${err.message.split('\n')[0]}`);
+        failed.push(`${slug}:${key}`);
+        console.warn(`  FAIL ${slug}:${key}: ${err.message.split('\n')[0]}`);
       }
     }
   }
   await Promise.all(Array.from({ length: CONCURRENCY }, worker));
 
-  // Stable key order for clean diffs.
+  // Stable key order (slugs, then version tags within each) for clean diffs.
   const sorted = {};
-  for (const k of Object.keys(out).sort()) sorted[k] = out[k];
+  for (const k of Object.keys(out).sort()) {
+    const inner = out[k];
+    sorted[k] = {};
+    for (const v of Object.keys(inner).sort()) sorted[k][v] = inner[v];
+  }
 
   const dest = join(root, 'src/data/image-meta.json');
   await writeFile(dest, JSON.stringify(sorted, null, 2) + '\n');
-  console.log(`\nWrote ${Object.keys(sorted).length} entries to src/data/image-meta.json`);
+  const tagCount = Object.values(sorted).reduce((n, m) => n + Object.keys(m).length, 0);
+  console.log(`\nWrote ${Object.keys(sorted).length} images / ${tagCount} tags to src/data/image-meta.json`);
   if (failed.length) console.warn(`Could not fetch: ${failed.join(', ')}`);
 }
 

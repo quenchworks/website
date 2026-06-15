@@ -69,8 +69,24 @@ export interface AhDetail {
   url?: string; // ArtifactHub page
 }
 
+// Build-time memo: every detail page (chart base, chart per-version, image,
+// runtime) calls fetchPackageDetail for the same slug, and the per-version chart
+// route would otherwise fan out one request per chart all at once. Caching the
+// in-flight promise per slug collapses that to a single request per slug for the
+// whole build, which also avoids ArtifactHub rate-limiting that would drop the
+// version history (and leave the switcher pointing at non-existent pages).
+const detailCache = new Map<string, Promise<AhDetail | null>>();
+
 // Rich: full per-package endpoint for one chart's detail page.
-export async function fetchPackageDetail(slug: string): Promise<AhDetail | null> {
+export function fetchPackageDetail(slug: string): Promise<AhDetail | null> {
+  const cached = detailCache.get(slug);
+  if (cached) return cached;
+  const p = fetchPackageDetailUncached(slug);
+  detailCache.set(slug, p);
+  return p;
+}
+
+async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null> {
   const repo = repoOf(slug);
   try {
     const res = await fetch(`${API}/packages/helm/${repo}/${slug}`, {

@@ -1,0 +1,25 @@
+---
+// Per-version runtime pages: /runtimes/<slug>/<version>. Emits every version
+// EXCEPT the newest — the newest lives only at the base /runtimes/<slug> page,
+// so there's no duplicate content and the switcher's latest chip points there.
+import RuntimeDetail from '../../../components/RuntimeDetail.astro';
+import { runtimeImages } from '../../../data/images';
+import { dockerfileFor } from '../../../data/dockerfiles';
+
+export function getStaticPaths() {
+  return runtimeImages
+    .filter((e) => e.status === 'available')
+    .flatMap((e) => {
+      const versions = (dockerfileFor(e.slug)?.variants ?? []).map((v) => v.version);
+      // Skip the newest (index 0): that's the base page.
+      return versions.slice(1).map((version) => ({
+        params: { slug: e.slug, version },
+        props: { entry: e, version },
+      }));
+    });
+}
+
+const { entry, version } = Astro.props;
+---
+
+<RuntimeDetail entry={entry} version={version} />

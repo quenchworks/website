@@ -1,0 +1,49 @@
+---
+/**
+ * A row of monochrome version chips, shown only when a slug has more than one
+ * version. The newest version is the canonical base page (`/<section>/<slug>`);
+ * every other version links to its dedicated page (`/<section>/<slug>/<version>`).
+ * The current chip is highlighted and carries aria-current.
+ */
+interface Props {
+  /** URL section, e.g. "runtimes" | "images" | "charts". */
+  section: string;
+  slug: string;
+  /** All versions, newest-first. The first entry is the latest (base page). */
+  versions: string[];
+  /** The version this page renders. */
+  current: string;
+  /** Optional label above the chips. */
+  label?: string;
+}
+
+const { section, slug, versions, current, label = 'Version' } = Astro.props;
+const latest = versions[0];
+const hrefFor = (v: string) => (v === latest ? `/${section}/${slug}` : `/${section}/${slug}/${v}`);
+---
+
+{versions.length > 1 && (
+  <section class="mt-6 rounded-xl border border-line bg-graphite p-5">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">{label}</p>
+    <div class="mt-2 flex flex-wrap gap-1.5 font-mono text-[11px]">
+      {versions.map((v) => {
+        const isCurrent = v === current;
+        return (
+          <a
+            href={hrefFor(v)}
+            aria-current={isCurrent ? 'page' : undefined}
+            class:list={[
+              'rounded px-2 py-1 transition-colors',
+              isCurrent
+                ? 'border border-paper bg-paper text-ink'
+                : 'border border-line bg-ink text-paper hover:border-paper/40',
+            ]}
+          >{v}{v === latest ? ' · latest' : ''}</a>
+        );
+      })}
+    </div>
+    <p class="mt-2 text-xs text-ash">
+      The latest line lives at the base page; older lines have their own page so you can pin and verify exactly that version.
+    </p>
+  </section>
+)}
