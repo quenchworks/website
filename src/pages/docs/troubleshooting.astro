@@ -1,0 +1,52 @@
+---
+import Docs from '../../layouts/Docs.astro';
+
+const fsGroup = `podSecurityContext:
+  fsGroup: 1001        # let the nonroot user own mounted volumes`;
+
+const writable = `extraVolumes:
+  - name: scratch
+    emptyDir: {}
+extraVolumeMounts:
+  - name: scratch
+    mountPath: /var/scratch`;
+---
+
+<Docs
+  title="Troubleshooting · Quenchworks"
+  description="Common issues running QuenchWorks images and charts: the missing :latest tag, nonroot and read-only filesystem behavior, volume permissions, and signature verification."
+>
+  <h1>Troubleshooting</h1>
+  <p class="lead">Most surprises come from the hardening: images run nonroot on a read-only root filesystem and are tagged by version, not <code>:latest</code>. Here is what each one looks like and how to handle it.</p>
+
+  <h2>MANIFEST_UNKNOWN or "tag not found: latest"</h2>
+  <p>Images have no <code>:latest</code> tag. A bare reference resolves to <code>:latest</code> and fails:</p>
+  <pre><code>docker pull ghcr.io/quenchworks/images/redis          # error: latest not found
+docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works</code></pre>
+  <p>Always use a version tag (shown on each <a href="/images">image</a> page) or a digest. See <a href="/docs/tags">Tags &amp; versions</a>.</p>
+
+  <h2>cosign or gh attestation verify returns 404</h2>
+  <p>Attestations attach to the digest of a specific build. Verifying a stale digest, or one from before a rebuild, finds nothing. Verify the version tag instead, which resolves to the current attested digest:</p>
+  <pre><code>gh attestation verify oci://ghcr.io/quenchworks/images/redis:8.8.0 --owner quenchworks</code></pre>
+  <p>See <a href="/docs/verify">Verify a signature</a> and <a href="/docs/sbom">SBOM &amp; provenance</a>.</p>
+
+  <h2>Container exits writing to its filesystem</h2>
+  <p>The root filesystem is read-only. Apps that need to write should write to a volume or to <code>/tmp</code> (provided as writable). The charts already mount what the app needs; for extra writable paths, add a volume rather than disabling the read-only setting:</p>
+  <pre><code>{writable}</code></pre>
+
+  <h2>Permission denied on a mounted volume</h2>
+  <p>Containers run as nonroot (uid 1001 for most images; the chart documents any exception). A freshly provisioned PersistentVolume can be owned by root, which the nonroot process cannot write. Set <code>fsGroup</code> so the volume is group-owned by the runtime user:</p>
+  <pre><code>{fsGroup}</code></pre>
+
+  <h2>Pod rejected by Pod Security Admission</h2>
+  <p>The images already satisfy the <code>restricted</code> Pod Security Standard: nonroot, no privilege escalation, all capabilities dropped, seccomp <code>RuntimeDefault</code>, read-only root filesystem. If a pod is still rejected, the cause is usually an override you passed (a custom <code>securityContext</code>, a host mount, or an added capability). Remove the override and let the hardened defaults from <code>quench-common</code> apply. See <a href="/docs/configuration">Configuration</a>.</p>
+
+  <h2>Wrong architecture</h2>
+  <p>Images are built for <code>linux/amd64</code> and <code>linux/arm64</code>. The version tag is a multi-arch index, so the runtime pulls the right one automatically. Other architectures are not published.</p>
+
+  <h2>Helm cannot pull the chart</h2>
+  <p>Charts publish to GHCR as public OCI artifacts, so no login is needed for the official registry. If you mirrored to a private registry, run <code>helm registry login</code> against it first, and see <a href="/docs/air-gapped">Air-gapped install</a>.</p>
+
+  <h2>An ArtifactHub security tab shows a scan error</h2>
+  <p>ArtifactHub runs its own scanner, which occasionally fails to download Trivy's Java vulnerability database for JVM-based images. That is an ArtifactHub-side infrastructure issue, not a problem with the image: our CI gate scans every build to zero fixable CVEs, and you can confirm it yourself with <code>trivy image &lt;ref&gt;</code> or by checking the SBOM. It usually clears on the next scan.</p>
+</Docs>
