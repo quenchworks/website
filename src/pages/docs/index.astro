@@ -14,13 +14,14 @@ const guarantees = [
 // The guide and reference cards are driven by the docs collection, so adding an
 // MDX file under src/content/docs/ surfaces it here automatically.
 const docs = await getCollection('docs');
-const cardsFor = (group: 'Guides' | 'Reference') =>
+const cardsFor = (group: 'Guides' | 'Build images' | 'Reference') =>
   docs
     .filter((d) => d.data.group === group)
     .sort((a, b) => a.data.order - b.data.order)
     .map((d) => ({ href: `/docs/${d.id}`, h: d.data.title, p: d.data.description }));
 
 const guides = cardsFor('Guides');
+const buildImages = cardsFor('Build images');
 const reference = cardsFor('Reference');
 ---
 
@@ -43,6 +44,21 @@ const reference = cardsFor('Reference');
   <div class="mt-4 grid gap-3">
     {
       guides.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <h2>Build images</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      buildImages.map((pg) => (
         <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
           <div class="flex items-center justify-between gap-3">
             <span class="text-base font-semibold text-paper">{pg.h}</span>

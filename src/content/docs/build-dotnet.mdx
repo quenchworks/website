@@ -1,0 +1,76 @@
+---
+title: Build a .NET app
+description: "A hardened multi-stage Dockerfile for .NET on QuenchWorks: publish with the dotnet SDK image, then run on the slim aspnet base for web apps or dotnet-runtime for console apps, as nonroot."
+group: Build images
+order: 6
+---
+
+A published .NET app does not need the SDK at runtime, only the matching runtime. So `dotnet publish` in the build stage with the SDK image, then run the published output on the slim runtime base: `aspnet` for web apps and APIs, `dotnet-runtime` for console and worker apps. The SDK and the NuGet cache stay behind in the build stage.
+
+These build on `ghcr.io/quenchworks/images/dotnet:10` (the SDK), then run on `ghcr.io/quenchworks/images/aspnet:10` or `ghcr.io/quenchworks/images/dotnet-runtime:10`. Keep the runtime line matched to the SDK you built with.
+
+## The multi-stage Dockerfile
+
+<Tabs>
+<Tab label="aspnet (web)">
+```dockerfile
+# Build stage: restore, then publish the app.
+FROM ghcr.io/quenchworks/images/dotnet:10 AS build
+WORKDIR /src
+
+# Restore first so the layer caches when only code changes.
+COPY ["App.csproj", "./"]
+RUN ["dotnet", "restore", "App.csproj"]
+COPY . .
+RUN ["dotnet", "publish", "App.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
+
+# Runtime stage: ASP.NET Core runtime, nonroot.
+FROM ghcr.io/quenchworks/images/aspnet:10 AS runtime
+WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:8080
+COPY --from=build /app/publish ./
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "App.dll"]
+```
+</Tab>
+<Tab label="dotnet-runtime (console)">
+```dockerfile
+# Build stage: restore, then publish the worker/console app.
+FROM ghcr.io/quenchworks/images/dotnet:10 AS build
+WORKDIR /src
+
+COPY ["Worker.csproj", "./"]
+RUN ["dotnet", "restore", "Worker.csproj"]
+COPY . .
+RUN ["dotnet", "publish", "Worker.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
+
+# Runtime stage: the plain .NET runtime, no ASP.NET Core stack.
+FROM ghcr.io/quenchworks/images/dotnet-runtime:10 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish ./
+USER 1001
+ENTRYPOINT ["dotnet", "Worker.dll"]
+```
+</Tab>
+</Tabs>
+
+## What each stage does
+
+<Steps>
+1. **Build.** The `dotnet` image is the full SDK. Restore before copying the rest of the source so that layer caches, then `dotnet publish` in Release to a fixed folder. The SDK, the NuGet cache, and the source stay in this stage.
+2. **Runtime.** Start from `aspnet` (for web) or `dotnet-runtime` (for console), copy in the publish output, drop to `uid 1001`, and run the entry assembly. No SDK ships.
+</Steps>
+
+<Notice type="tip">
+With BuildKit you can keep the NuGet cache warm between builds with a cache mount instead of re-restoring each time: `RUN --mount=type=cache,target=/root/.nuget/packages dotnet restore`. The cache mount is build-time only and never reaches the image.
+</Notice>
+
+<Notice type="warning">
+The base images are shell-less, so the `dotnet` build steps and the `ENTRYPOINT` are exec form (a JSON array). The runtime runs as `USER 1001` on a read-only root filesystem, so bind to a non-privileged port (8080 here, not 80) and point any writes at `/tmp` or a mounted volume. Set `DOTNET_CLI_TELEMETRY_OPTOUT=1` if you want the runtime to skip telemetry.
+</Notice>
+
+## Next
+
+- For the smallest footprint, publish a self-contained, trimmed app and run it on a runtime base, or AOT-compile a console app to a native binary and ship it on [`static`](/docs/build-go).
+- [Pin by digest](/docs/pin-by-digest) so each build runs exactly the base that was scanned and signed.

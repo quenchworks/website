@@ -1,0 +1,110 @@
+---
+title: Build a Python app
+description: "A hardened multi-stage Dockerfile for Python on the QuenchWorks python, uv, and poetry base images: build a virtualenv with all the build dependencies in one stage, then copy it onto a slim python base that runs nonroot."
+group: Build images
+order: 3
+---
+
+Python's wheels and build tooling make a clean split worthwhile. Compile and install everything into a self-contained virtualenv in the build stage, then copy that one directory onto a slim `python` base for the runtime. The compilers and headers some packages need at install time never reach the image you deploy.
+
+These build on `ghcr.io/quenchworks/images/python:3.13`. For dependency resolution there is `ghcr.io/quenchworks/images/uv` (a fast installer and resolver) and `ghcr.io/quenchworks/images/poetry`.
+
+## The multi-stage Dockerfile
+
+<Tabs>
+<Tab label="pip">
+```dockerfile
+# Build stage: build a venv with everything installed into it.
+FROM ghcr.io/quenchworks/images/python:3.13 AS build
+WORKDIR /app
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH"
+
+RUN ["python", "-m", "venv", "/opt/venv"]
+COPY requirements.txt ./
+RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
+COPY . .
+
+# Runtime stage: copy the venv onto a clean python base, run nonroot.
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /opt/venv /opt/venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+<Tab label="uv">
+```dockerfile
+# Build stage: uv resolves and installs into a project venv, fast.
+FROM ghcr.io/quenchworks/images/uv:0.11 AS build
+WORKDIR /app
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv \
+    UV_COMPILE_BYTECODE=1
+
+# Install dependencies first (cached) from the lockfile, then the project.
+COPY pyproject.toml uv.lock ./
+RUN ["uv", "sync", "--frozen", "--no-install-project", "--no-dev"]
+COPY . .
+RUN ["uv", "sync", "--frozen", "--no-dev"]
+
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV PATH="/opt/venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /opt/venv /opt/venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+<Tab label="poetry">
+```dockerfile
+# Build stage: Poetry installs into a venv at a known path.
+FROM ghcr.io/quenchworks/images/poetry:2 AS build
+WORKDIR /app
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_NO_INTERACTION=1
+
+COPY pyproject.toml poetry.lock ./
+RUN ["poetry", "install", "--only", "main", "--no-root"]
+COPY . .
+RUN ["poetry", "install", "--only", "main"]
+
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV PATH="/app/.venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /app/.venv /app/.venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+</Tabs>
+
+## What each stage does
+
+<Steps>
+1. **Build.** Create a virtualenv at a fixed path and install every dependency into it. This stage carries the resolver, any build backends, and the wheels' build dependencies. Installing dependencies before copying the rest of the source keeps that layer cached when only your code changes.
+2. **Runtime.** Start fresh from `python:3.13`, copy the venv and the app in, put the venv on the `PATH`, drop to `uid 1001`, and start. Nothing from the build toolchain ships.
+</Steps>
+
+<Notice type="info">
+Most popular packages publish prebuilt wheels for glibc, so a copied venv runs on the runtime base without recompiling. Things like pydantic-core or other native extensions resolve to a manylinux wheel that matches the runtime's glibc, so no compiler is needed at runtime. If a dependency has no wheel and must build from source, that build happens in the build stage, where the toolchain lives, and only the resulting venv is copied forward.
+</Notice>
+
+<Notice type="warning">
+The base images are shell-less, so each `pip` / `uv` / `poetry` call is exec form (a JSON array), and a `&&` chain will not work. The runtime stage runs as `USER 1001` on a read-only root filesystem: set a writable cache and config home (`ENV XDG_CACHE_HOME=/tmp` and similar) if a library writes at runtime, and write app data to `/tmp` or a mounted volume rather than into the image.
+</Notice>
+
+## Next
+
+- Serving with a WSGI/ASGI server? Put it in the venv (gunicorn, uvicorn) and call it directly in exec form: `CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8000"]`.
+- [Pin by digest](/docs/pin-by-digest) so each build runs exactly the base that was scanned and signed.

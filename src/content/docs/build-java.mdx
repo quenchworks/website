@@ -1,0 +1,76 @@
+---
+title: Build a Java app
+description: "A hardened multi-stage Dockerfile for Java on QuenchWorks: build the jar with the maven or gradle image, then run it on the slim jre base as nonroot. Maven and Gradle variants."
+group: Build images
+order: 5
+---
+
+A Java service does not need a full JDK to run, only a JRE. So build the jar with the toolchain in one stage, then run it on the slim `jre` base in the next. The compiler, the build tool, and the dependency cache stay in the build stage, and the final image carries the runtime and your jar.
+
+These build on `ghcr.io/quenchworks/images/maven:3.9` or `ghcr.io/quenchworks/images/gradle:9`, then run on `ghcr.io/quenchworks/images/jre:21`. Match the JRE line to the Java version you compiled for.
+
+## The multi-stage Dockerfile
+
+<Tabs>
+<Tab label="maven">
+```dockerfile
+# Build stage: resolve dependencies, then package the jar.
+FROM ghcr.io/quenchworks/images/maven:3.9 AS build
+WORKDIR /app
+
+# Resolve dependencies first so the layer caches when only code changes.
+COPY pom.xml ./
+RUN ["mvn", "-B", "dependency:go-offline"]
+COPY src ./src
+RUN ["mvn", "-B", "-o", "package", "-DskipTests"]
+
+# Runtime stage: run the jar on the slim JRE base, nonroot.
+FROM ghcr.io/quenchworks/images/jre:21 AS runtime
+WORKDIR /app
+COPY --from=build /app/target/*.jar /app/app.jar
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+```
+</Tab>
+<Tab label="gradle">
+```dockerfile
+# Build stage: build the jar with Gradle.
+FROM ghcr.io/quenchworks/images/gradle:9 AS build
+WORKDIR /app
+
+# Cache dependencies before copying the full source.
+COPY build.gradle.kts settings.gradle.kts ./
+RUN ["gradle", "dependencies", "--no-daemon"]
+COPY src ./src
+RUN ["gradle", "bootJar", "--no-daemon", "-x", "test"]
+
+FROM ghcr.io/quenchworks/images/jre:21 AS runtime
+WORKDIR /app
+COPY --from=build /app/build/libs/*.jar /app/app.jar
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+```
+</Tab>
+</Tabs>
+
+## What each stage does
+
+<Steps>
+1. **Build.** The `maven` or `gradle` image carries the JDK and the build tool. Resolve dependencies before copying the source so that layer caches across builds, then package the jar. The dependency cache and the compiler stay in this stage.
+2. **Runtime.** Start from `jre:21`, copy the one jar in, drop to `uid 1001`, and run it. No JDK, no build tool, no source.
+</Steps>
+
+<Notice type="tip">
+With BuildKit you can keep the local repository cache warm between builds with a cache mount, instead of re-downloading dependencies each time. For Maven: `RUN --mount=type=cache,target=/root/.m2 mvn -B package -DskipTests`. For Gradle, mount `/home/gradle/.gradle`. The cache mount is build-time only and does not end up in the image.
+</Notice>
+
+<Notice type="warning">
+The base images are shell-less, so the build `RUN` steps and the `ENTRYPOINT` are exec form (a JSON array). The runtime runs as `USER 1001` on a read-only root filesystem, so set the JVM's temp directory to a writable path if needed (`-Djava.io.tmpdir=/tmp`) and write application data to `/tmp` or a mounted volume.
+</Notice>
+
+## Next
+
+- Building a self-contained jar (Spring Boot, Quarkus, a shaded jar) keeps the runtime stage to a single `COPY`; multi-jar layouts work too, just copy the dependency and app layers.
+- [Pin by digest](/docs/pin-by-digest) so each build runs exactly the base that was scanned and signed.

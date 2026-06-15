@@ -1,0 +1,118 @@
+---
+title: Build a Node app
+description: "A hardened multi-stage Dockerfile for Node on the QuenchWorks node and pnpm base images: a prod-deps stage, a build stage, and a slim final stage that ships only production dependencies and the built output. pnpm, npm, and Yarn variants."
+group: Build images
+order: 2
+---
+
+The goal for a Node service is a final image that carries your built output and your production `node_modules`, and nothing else. No dev dependencies, no source you do not ship, no package-manager cache. A three-stage build gets you there: resolve production dependencies once, build with the full dependency set in parallel, then assemble a clean runtime stage from the two.
+
+These build on `ghcr.io/quenchworks/images/node:24`. There is also `ghcr.io/quenchworks/images/pnpm:10`, a node base with pnpm already enabled through corepack, which saves the `corepack enable` step in the pnpm variant.
+
+## The multi-stage Dockerfile
+
+<Tabs>
+<Tab label="pnpm">
+```dockerfile
+# Build stage: pnpm is already enabled on the pnpm base image.
+FROM ghcr.io/quenchworks/images/pnpm:10 AS build
+WORKDIR /app
+
+# Resolve production dependencies on their own so the runtime stage can
+# copy just these. A cache mount keeps the pnpm store warm across builds.
+COPY package.json pnpm-lock.yaml ./
+RUN ["pnpm", "install", "--prod", "--frozen-lockfile"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Now install everything (incl. dev deps) and build.
+RUN ["pnpm", "install", "--frozen-lockfile"]
+COPY . .
+RUN ["pnpm", "run", "build"]
+
+# Runtime stage: a slim node base, nonroot, with only prod deps + dist.
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+<Tab label="npm">
+```dockerfile
+FROM ghcr.io/quenchworks/images/node:24 AS build
+WORKDIR /app
+
+# Production dependencies only, into their own copy.
+COPY package.json package-lock.json ./
+RUN ["npm", "ci", "--omit=dev"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Full install (incl. dev deps) and build.
+RUN ["npm", "ci"]
+COPY . .
+RUN ["npm", "run", "build"]
+
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+<Tab label="yarn">
+```dockerfile
+# Yarn is preinstalled on the yarn base image.
+FROM ghcr.io/quenchworks/images/yarn:4 AS build
+WORKDIR /app
+
+# Production dependencies only.
+COPY package.json yarn.lock ./
+RUN ["yarn", "workspaces", "focus", "--production"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Full install (incl. dev deps) and build.
+RUN ["yarn", "install", "--immutable"]
+COPY . .
+RUN ["yarn", "build"]
+
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+</Tabs>
+
+## What each stage does
+
+<Steps>
+1. **Prod-deps.** Install only production dependencies, then copy them to a fixed path (`/prod_modules`). This is the set the final image needs, kept apart from the dev dependencies the build pulls in next.
+2. **Build.** Install the full dependency set, copy the source, and run the build. This stage holds the compiler, the dev dependencies, and the source, none of which ship.
+3. **Runtime.** Start fresh from `node:24`, copy in the production `node_modules` and the built `dist/`, drop to `uid 1001`, and start. The toolchain stays behind.
+</Steps>
+
+<Notice type="tip">
+With BuildKit you can keep the package-manager cache between builds with a cache mount, which is faster than re-downloading every time. For pnpm: `RUN --mount=type=cache,target=/pnpm/store pnpm install --frozen-lockfile`. The cache mount is a build-time feature and does not end up in the image, so it does not affect the read-only runtime.
+</Notice>
+
+<Notice type="warning">
+The base images are shell-less, so every `RUN`, `CMD`, and `ENTRYPOINT` here is in exec form (a JSON array). A line like `RUN npm ci && npm run build` would need a shell and will fail; split it into two exec-form `RUN` steps as shown. The runtime stage runs as `USER 1001` on a read-only root filesystem, so if your app writes anything, point it at `/tmp` or a mounted volume.
+</Notice>
+
+## Next
+
+- Running a static frontend instead of a Node server? Build with `node`, then serve the built assets from `nginx`, or ship a self-contained binary onto [`static`](/docs/build-go).
+- [Pin by digest](/docs/pin-by-digest) once you settle on a base, so every build runs exactly what was scanned and signed.

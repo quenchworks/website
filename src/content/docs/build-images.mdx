@@ -1,0 +1,74 @@
+---
+title: Build on the base images
+description: "QuenchWorks ships hardened language runtimes, slim runtime bases, and build-tool images you FROM in your own Dockerfile. Build with the SDK, run on a slim base, and keep the two hardening rules in mind: the images are shell-less and run nonroot read-only."
+group: Build images
+order: 1
+---
+
+Alongside the datastores and apps, QuenchWorks ships a set of base images you build your own apps on: hardened language runtimes, slim runtime bases for the final stage, and build-tool images. They are the same kind of artifact as everything else in the catalog. 0-CVE, cosign-signed, built nonroot on a read-only root filesystem, multi-arch, with an SBOM and SLSA provenance attached. You just FROM them in your Dockerfile instead of pulling them as a server.
+
+## Three families
+
+<CardGrid>
+  <Card title="Language runtimes" href="/images/category/language-runtime">
+    Interpreters and SDKs you build with: Python, Node, Go, Rust, .NET, the JDK, Ruby, PHP, Bun, Deno, Erlang, Elixir, and Perl. Each ships its latest stable lines, no `:latest`.
+  </Card>
+  <Card title="Runtime bases" href="/images/category/runtime-base">
+    The slim final stage you copy a built app onto: `static` for self-contained binaries, `jre` for jars, and `dotnet-runtime` / `aspnet` for .NET.
+  </Card>
+  <Card title="Build tools" href="/images/category/build-tool">
+    Language bases with a package or build tool preinstalled: pnpm, Yarn, Composer, Maven, Gradle, uv, and Poetry.
+  </Card>
+  <Card title="Browse every image" href="/images">
+    The full catalog, with the version tags, license, and digest for each image.
+  </Card>
+</CardGrid>
+
+## The multi-stage idea
+
+The pattern that gets you a small, clean production image is the same everywhere: build in one stage, run in another.
+
+<Steps>
+1. **Build stage.** Start FROM the SDK or build-tool image (`node`, `go`, `maven`, and so on). Install every dependency, including the dev and build ones, and produce your artifact: a compiled binary, a built `dist/`, a jar, a published folder.
+2. **Runtime stage.** Start FROM a slim base (`static`, `jre`, `python`, `dotnet-runtime`). Copy over only the built output and the production dependencies. Leave the compiler, the dev dependencies, and the package caches behind in the build stage.
+</Steps>
+
+The result ships only what runs in production. The toolchain stays out of the image you deploy, which means a smaller image and a smaller attack surface.
+
+## Two hardening rules
+
+These images are not the usual Debian-slim bases, so two habits from ordinary Dockerfiles will trip you up. Both have a clean fix.
+
+<Notice type="warning">
+**The images are shell-less.** There is no `/bin/sh`, so the shell form of `RUN`, `CMD`, and `ENTRYPOINT` cannot work. Write them in **exec form**, as a JSON array: `RUN ["go", "build", "./..."]`, `CMD ["node", "server.js"]`. Anything that needs a shell (a `&&` chain, a `$VAR` expansion, a pipe) belongs in a script you COPY in and call, or it should be split across multi-stage steps. The runtime-base images often have no build tools at all, which is one more reason to do that work in the build stage.
+</Notice>
+
+<Notice type="warning">
+**The images run nonroot on a read-only root filesystem.** The default user is `uid 1001`. If a build step needs to write outside the app directory (a global install, a system package), switch to `USER root` for that stage, then drop back with `USER 1001` for the runtime stage so the running container is never root. At runtime the root filesystem is read-only, so write only to `/tmp` or a mounted volume, and point caches there (`GOCACHE`, `XDG_CACHE_HOME`, npm's cache) when a tool insists on writing.
+</Notice>
+
+<Notice type="tip">
+Pin every base by version, never `:latest`. The one exception is `static`, which is tagged `:latest` on purpose because it carries no language version. For the strongest guarantee, pin by digest the same way the charts do; see [Pin by digest](/docs/pin-by-digest).
+</Notice>
+
+## Per-ecosystem guides
+
+Each guide leads with a full, copy-able multi-stage Dockerfile that already reflects the shell-less, nonroot reality.
+
+<CardGrid>
+  <Card title="Node and pnpm" href="/docs/build-node">
+    Multi-stage with a prod-deps stage; pnpm, npm, and Yarn variants.
+  </Card>
+  <Card title="Python" href="/docs/build-python">
+    Build a venv in one stage, run it on the slim `python` base; pip, uv, and Poetry.
+  </Card>
+  <Card title="Go" href="/docs/build-go">
+    The classic two-stage build onto `static` for a tiny final image.
+  </Card>
+  <Card title="Java" href="/docs/build-java">
+    Build the jar with Maven or Gradle, run it on `jre`.
+  </Card>
+  <Card title=".NET" href="/docs/build-dotnet">
+    `dotnet publish` on the SDK, run on `aspnet` or `dotnet-runtime`.
+  </Card>
+</CardGrid>

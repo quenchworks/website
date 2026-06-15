@@ -13,10 +13,10 @@ interface Props {
 }
 const { title, description, slug } = Astro.props;
 
-// Build the sidebar from the docs collection: Guides first, then Reference,
-// each sorted by its `order` field. Labels are the doc titles.
+// Build the sidebar from the docs collection: Guides, then Build images, then
+// Reference, each sorted by its `order` field. Labels are the doc titles.
 const docs = await getCollection('docs');
-const order = ['Guides', 'Reference'] as const;
+const order = ['Guides', 'Build images', 'Reference'] as const;
 const groups = order.map((g) => ({
   title: g,
   items: docs

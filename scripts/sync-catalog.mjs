@@ -68,6 +68,25 @@ const EDITORIAL = {
   php: { category: 'Language runtime', summary: 'Hardened PHP cli + common extensions. Latest 3 stable (8.3/8.4/8.5).' },
   go: { category: 'Language runtime', summary: 'Hardened Go toolchain for builds; pair with a minimal base for the runtime. Latest 3 stable (1.24/1.25/1.26).' },
   rust: { category: 'Language runtime', summary: 'Hardened Rust toolchain (cargo + rustc). Latest 3 stable (1.94/1.95/1.96).' },
+  // More language runtimes — same hardened, 0-CVE, signed, nonroot base-image story.
+  bun: { category: 'Language runtime', summary: 'Hardened Bun runtime and toolkit for JavaScript and TypeScript. Latest stable (1).' },
+  deno: { category: 'Language runtime', summary: 'Hardened Deno runtime for JavaScript and TypeScript, secure by default. Latest stable (2).' },
+  erlang: { category: 'Language runtime', summary: 'Hardened Erlang/OTP runtime on the BEAM. Latest stable lines (27/28/29).' },
+  elixir: { category: 'Language runtime', summary: 'Hardened Elixir runtime on the BEAM, built on Erlang/OTP. Latest stable (1.18).' },
+  perl: { category: 'Language runtime', summary: 'Hardened Perl interpreter for scripts and tooling. Latest stable (5).' },
+  // Runtime bases — the slim final stage you copy your built app onto.
+  static: { category: 'Runtime base', summary: 'Tiny static base for self-contained binaries (Go, Rust). Nonroot, no shell, no package manager. The only image tagged :latest.' },
+  jre: { category: 'Runtime base', summary: 'Hardened Java runtime (JRE) for running a built jar. Pair it with the jdk, maven, or gradle build image. LTS lines 17/21/25.' },
+  'dotnet-runtime': { category: 'Runtime base', summary: 'Hardened .NET runtime for console and worker apps, no SDK. Build on the dotnet image, run here. Lines 8/9/10.' },
+  aspnet: { category: 'Runtime base', summary: 'Hardened ASP.NET Core runtime for web apps and APIs. Build on the dotnet image, run here. Lines 8/9/10.' },
+  // Build tools — language base images with a package or build tool preinstalled.
+  pnpm: { category: 'Build tool', summary: 'Node base with pnpm preinstalled via corepack. Use it as the build stage for pnpm projects. Lines 10/11.' },
+  yarn: { category: 'Build tool', summary: 'Node base with Yarn preinstalled. Use it as the build stage for Yarn projects. Lines 1 (classic) and 4 (berry).' },
+  composer: { category: 'Build tool', summary: 'PHP base with the Composer dependency manager. Use it as the build stage for PHP projects. Line 2.' },
+  maven: { category: 'Build tool', summary: 'JDK base with Apache Maven. Use it as the build stage for Maven projects, then run the jar on jre. Line 3.9.' },
+  gradle: { category: 'Build tool', summary: 'JDK base with Gradle. Use it as the build stage for Gradle projects, then run the jar on jre. Line 9.' },
+  uv: { category: 'Build tool', summary: 'Python base with uv, a fast installer and resolver. Use it as the build stage for Python projects. Line 0.11.' },
+  poetry: { category: 'Build tool', summary: 'Python base with Poetry for dependency management. Use it as the build stage for Python projects. Line 2.' },
 };
 
 // Upstream repo per slug (catalog.yaml `source` may be a tarball URL, not a repo).

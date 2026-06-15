@@ -22,7 +22,7 @@ const docs = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    group: z.enum(['Guides', 'Reference']),
+    group: z.enum(['Guides', 'Build images', 'Reference']),
     order: z.number(),
   }),
 });

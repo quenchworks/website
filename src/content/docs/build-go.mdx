@@ -1,0 +1,58 @@
+---
+title: Build a Go app
+description: "The classic two-stage Go build on QuenchWorks: compile a static binary with CGO disabled on the go image, then copy it onto the tiny static base for a final image that is little more than your binary."
+group: Build images
+order: 4
+---
+
+Go is the cleanest case for multi-stage builds. A Go program compiles to a single static binary, so the runtime image needs nothing but that file. Build on the `go` image, copy the binary onto `static`, and the final image is little more than your program: no toolchain, no shell, no package manager.
+
+This builds on `ghcr.io/quenchworks/images/go:1.25` and `ghcr.io/quenchworks/images/static`. The `static` image is the one image in the catalog tagged `:latest`, because it carries no language version of its own.
+
+## The two-stage Dockerfile
+
+```dockerfile
+# Build stage: compile a fully static binary.
+FROM ghcr.io/quenchworks/images/go:1.25 AS build
+WORKDIR /src
+
+# CGO off makes the binary static so it runs on the static base with no libc.
+# The root filesystem is read-only, so point the build caches at /tmp.
+ENV CGO_ENABLED=0 \
+    GOOS=linux \
+    GOCACHE=/tmp/gocache \
+    GOMODCACHE=/tmp/gomodcache
+
+# Download modules first so the layer caches when only code changes.
+COPY go.mod go.sum ./
+RUN ["go", "mod", "download"]
+COPY . .
+RUN ["go", "build", "-trimpath", "-ldflags=-s -w", "-o", "/out/app", "./cmd/app"]
+
+# Runtime stage: just the binary on the tiny static base.
+FROM ghcr.io/quenchworks/images/static
+COPY --from=build /out/app /app
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["/app"]
+```
+
+## Why this stays tiny
+
+<Steps>
+1. **Build.** The `go` image has the full toolchain. `CGO_ENABLED=0` produces a static binary with no dynamic libc dependency, which is exactly what the `static` base needs. The caches go to `/tmp` because the build runs on a read-only root filesystem.
+2. **Runtime.** `static` is a minimal base with a nonroot user and CA certificates, and not much else. Copy the one binary in, set the entrypoint, and you are done. There is no compiler and no shell to leave behind.
+</Steps>
+
+<Notice type="tip">
+`-trimpath` and `-ldflags=-s -w` strip absolute paths and debug symbols, which shrinks the binary and keeps build paths out of the image. With BuildKit you can also cache the module and build caches between builds: `RUN --mount=type=cache,target=/tmp/gocache --mount=type=cache,target=/tmp/gomodcache go build ...`.
+</Notice>
+
+<Notice type="warning">
+The `static` base is shell-less and runs nonroot, so the `ENTRYPOINT` is exec form (a JSON array) and the container runs as `uid 1001` on a read-only root filesystem. If your service needs scratch space, write to `/tmp` or mount a volume. If you genuinely need CGO, drop the static base and run on a glibc runtime base instead, since a CGO binary is not static.
+</Notice>
+
+## Next
+
+- The same `static` base works for any language that compiles to a static binary, Rust included; build with `ghcr.io/quenchworks/images/rust` and copy the binary over.
+- [Pin by digest](/docs/pin-by-digest) so each build runs exactly the base that was scanned and signed.
