@@ -3,48 +3,93 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const vendors = ['QuenchWorks', 'Bitnami', 'Chainguard'] as const;
+// Vendor order; QuenchWorks stays first so it keeps the highlighted column.
+// Each `cells` array below has one entry per vendor, in this same order.
+const vendors: string[] = ['QuenchWorks', 'Bitnami', 'Chainguard', 'Docker', 'RapidFort', 'Minimus'];
 
-// Each cell is { v: short verdict, n?: short note }. Be factual and fair.
+// Each cell is { v: short verdict, n?: short note }. Be factual, conservative, and fair.
+// Where a fact could not be confirmed from a primary source, the verdict is hedged
+// ("Varies", "Partial", "—") with a neutral note rather than a hard claim.
 type Cell = { v: string; n?: string };
-type Row = { label: string; cells: [Cell, Cell, Cell] };
+type Row = { label: string; cells: Cell[] };
 
 const rows: Row[] = [
   {
-    label: 'Price',
+    label: 'Price / free tier',
     cells: [
       { v: 'Free' },
-      { v: 'Paid', n: 'Free community catalog moved to a paid Tanzu offering; a legacy registry remains' },
-      { v: 'Paid', n: 'Commercial subscription' },
+      { v: 'Paid', n: 'Bitnami Secure Images is commercial; a latest-only hardened community set and a frozen legacy registry remain' },
+      { v: 'Freemium', n: 'A small set of Starter images is free; the full catalog is a paid subscription' },
+      { v: 'Free', n: 'Docker Hardened Images opened as free, Apache-2.0 open source in Dec 2025' },
+      { v: 'Varies', n: 'Commercial platform; public pricing for image access is not published' },
+      { v: 'Paid', n: 'Commercial; a free open-source program exists for eligible projects' },
     ],
   },
   {
     label: 'Built from source on Wolfi',
-    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
+    cells: [
+      { v: 'Yes' },
+      { v: 'No', n: 'Debian-based hardening, not Wolfi' },
+      { v: 'Yes', n: 'Wolfi-based' },
+      { v: 'No', n: 'Built on Debian and Alpine' },
+      { v: 'No', n: 'Curated / optimized upstream images, not a Wolfi rebuild' },
+      { v: 'No', n: 'Proprietary from-source build, not Wolfi' },
+    ],
   },
   {
     label: '0-CVE goal with daily rebuilds',
     cells: [
       { v: 'Yes', n: 'Hard Trivy gate; a fixable CVE fails the build' },
+      { v: 'Yes', n: 'Near-zero-CVE goal; cadence not publicly specified here' },
+      { v: 'Yes', n: 'Near-zero-CVE goal with frequent rebuilds' },
+      { v: 'Yes', n: 'Near-zero-CVE goal; paid tiers add a remediation SLA' },
+      { v: 'Yes', n: 'Near-zero-CVE goal via continuous hardening' },
+      { v: 'Yes', n: 'Near-zero-CVE goal; paid tiers add a remediation SLA' },
+    ],
+  },
+  {
+    label: 'Signed (cosign keyless)',
+    cells: [
+      { v: 'Yes' },
+      { v: 'Yes', n: 'Signed images' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes', n: 'Cryptographic signing' },
+      { v: 'Yes', n: 'Cosign signatures' },
+    ],
+  },
+  {
+    label: 'SBOM (SPDX or CycloneDX)',
+    cells: [
+      { v: 'Yes', n: 'SPDX' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes', n: 'SPDX and CycloneDX' },
       { v: 'Yes' },
       { v: 'Yes' },
     ],
   },
   {
-    label: 'Signed (cosign keyless)',
-    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
-  },
-  {
-    label: 'SBOM (SPDX)',
-    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
-  },
-  {
     label: 'SLSA build provenance',
-    cells: [{ v: 'Yes' }, { v: 'Partial', n: 'Varies by offering' }, { v: 'Yes' }],
+    cells: [
+      { v: 'Yes' },
+      { v: 'Partial', n: 'Attestations vary by offering' },
+      { v: 'Yes', n: 'SLSA Build Level 2' },
+      { v: 'Yes', n: 'SLSA Build Level 3' },
+      { v: 'Yes', n: 'SLSA Level 3 (per vendor)' },
+      { v: 'Yes', n: 'SLSA Level 3-aligned (per vendor)' },
+    ],
   },
   {
     label: 'Multi-arch (amd64 + arm64)',
-    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'Yes' }],
+    cells: [
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Varies', n: 'Not confirmed across the catalog' },
+      { v: 'Varies', n: 'Not confirmed from a primary source' },
+    ],
   },
   {
     label: 'Helm charts included',
@@ -52,16 +97,29 @@ const rows: Row[] = [
       { v: 'Yes' },
       { v: 'Yes', n: 'Behind the paid catalog' },
       { v: 'No', n: 'Images focused' },
+      { v: 'Yes' },
+      { v: 'Partial', n: 'Charts-compatible images; integrates with existing charts' },
+      { v: 'Yes', n: 'Helm charts offered' },
     ],
   },
   {
     label: 'Charts pin images by digest',
-    cells: [{ v: 'Yes' }, { v: 'Yes' }, { v: 'n/a' }],
+    cells: [
+      { v: 'Yes' },
+      { v: 'Varies', n: 'Not confirmed here' },
+      { v: 'n/a' },
+      { v: 'Varies', n: 'Not confirmed here' },
+      { v: 'n/a', n: 'No first-party charts' },
+      { v: 'Varies', n: 'Not confirmed here' },
+    ],
   },
   {
     label: 'License transparency, clean alternatives flagged',
     cells: [
       { v: 'Yes', n: 'Source-available apps are labeled, with an OSI-clean alternative named' },
+      { v: 'Partial' },
+      { v: 'Partial' },
+      { v: 'Partial' },
       { v: 'Partial' },
       { v: 'Partial' },
     ],
@@ -70,8 +128,11 @@ const rows: Row[] = [
     label: 'Open and free to verify',
     cells: [
       { v: 'Yes', n: 'Public images, charts, and build workflows' },
-      { v: 'Partial', n: 'Gated behind a subscription' },
-      { v: 'Partial', n: 'Gated behind a subscription' },
+      { v: 'Partial', n: 'Full catalog gated behind a subscription' },
+      { v: 'Partial', n: 'Full catalog gated behind a subscription' },
+      { v: 'Yes', n: 'Free, open-source catalog with public attestations' },
+      { v: 'Partial', n: 'Commercial platform; not a fully open catalog' },
+      { v: 'Partial', n: 'Commercial; open-source program for eligible projects' },
     ],
   },
 ];
@@ -80,35 +141,39 @@ const rows: Row[] = [
 function tone(v: string): string {
   const yes = v.toLowerCase();
   if (yes === 'yes' || yes === 'free') return 'text-paper';
-  if (yes === 'no' || yes === 'paid') return 'text-ash';
+  // Everything else (No, Paid, Partial, Varies, Freemium, n/a, —) is muted.
   return 'text-ash';
 }
 ---
 
 <Base
-  title="QuenchWorks vs Bitnami vs Chainguard · Comparison"
-  description="An honest, factual comparison of QuenchWorks, Bitnami, and Chainguard across price, hardening, signing, SBOMs, provenance, and Helm charts."
+  title="QuenchWorks vs the hardened-image providers · Comparison"
+  description="A factual, conservative comparison of QuenchWorks against Bitnami, Chainguard, Docker Hardened Images, RapidFort, and Minimus across price, hardening, signing, SBOMs, provenance, and Helm charts."
 >
   <Header />
-  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:QuenchWorks vs Bitnami vs Chainguard,type:Compare">
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:QuenchWorks vs Bitnami, Chainguard, Docker, RapidFort, Minimus,type:Compare">
     <header class="max-w-2xl">
       <p class="font-mono text-xs uppercase tracking-widest text-ash">Compare</p>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">QuenchWorks vs Bitnami vs Chainguard</h1>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">QuenchWorks vs the hardened-image providers</h1>
       <p class="mt-4 leading-relaxed text-ash">
-        All three build hardened images from source on Wolfi, sign them, and ship SBOMs. The real
-        difference is access. Bitnami moved its free community catalog to a paid Tanzu offering and
-        left a legacy registry behind. Chainguard is a commercial subscription. QuenchWorks is free
-        and independent: public images, signed charts pinned by digest, and build workflows anyone
-        can read. Here are the facts, side by side.
+        Hardened, low-CVE container images are now a crowded field: Bitnami (Broadcom), Chainguard,
+        Docker Hardened Images, RapidFort, and Minimus all ship signed, minimal images with SBOMs and
+        provenance. The differences are in access and approach. Bitnami moved its catalog to a
+        commercial offering and froze a legacy registry; Chainguard gives a small free set and gates
+        the rest behind a subscription; Docker opened its Hardened Images as free, Apache-2.0 source
+        in late 2025; RapidFort and Minimus are commercial platforms. QuenchWorks is free, Wolfi-built,
+        and fully public: images, signed charts pinned by digest, and build workflows anyone can read.
+        The table below is conservative on purpose. Where we could not confirm a competitor fact from a
+        primary source, we mark it "Varies" or "Partial" rather than guess. Verify every claim yourself.
       </p>
     </header>
 
     <!-- Desktop / tablet table -->
-    <div class="mt-12 hidden overflow-hidden rounded-2xl border border-line sm:block">
-      <table class="w-full border-collapse text-sm">
+    <div class="mt-12 hidden overflow-x-auto rounded-2xl border border-line sm:block">
+      <table class="w-full min-w-[56rem] border-collapse text-sm">
         <thead>
           <tr class="border-b border-line bg-graphite">
-            <th class="w-2/5 px-4 py-4 text-left font-mono text-[11px] uppercase tracking-widest text-ash">
+            <th class="w-1/4 min-w-[12rem] px-4 py-4 text-left font-mono text-[11px] uppercase tracking-widest text-ash">
               Capability
             </th>
             {
@@ -168,15 +233,24 @@ function tone(v: string): string {
     </div>
 
     <p class="mt-8 max-w-2xl text-sm leading-relaxed text-ash">
-      Bitnami and Chainguard are solid engineering. This page is not a knock on either one. It exists
-      because the free, no-account path that many teams relied on is now a paid path, and QuenchWorks
-      keeps that path open. Verify any claim here against the public images and workflows.
+      Bitnami, Chainguard, Docker, RapidFort, and Minimus are all serious engineering, and this page
+      is not a knock on any of them. Several of them ship excellent free options too. QuenchWorks
+      exists to keep a fully free, fully public, no-account path open, with everything from images to
+      charts to build workflows out in the open. Verify any claim here against each provider's own
+      public sources before you rely on it.
+    </p>
+
+    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
+      Two related projects sit slightly outside this table: Google Distroless ships minimal,
+      language-runtime base images (no app catalog or Helm charts), and Red Hat UBI provides
+      redistributable enterprise base images (a base layer rather than ready-to-run app images). Both
+      are worth knowing about, but they solve a different problem than a hardened application catalog.
     </p>
 
     <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
       QuenchWorks is independent and is not affiliated with, endorsed by, or sponsored by Bitnami,
-      Broadcom, or Chainguard. All product names and trademarks are the property of their respective
-      owners.
+      Broadcom, Chainguard, Docker, RapidFort, Minimus, Google, or Red Hat. All product names and
+      trademarks are the property of their respective owners.
     </p>
 
     <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
