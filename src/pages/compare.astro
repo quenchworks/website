@@ -137,6 +137,25 @@ const rows: Row[] = [
   },
 ];
 
+// Group the flat capability list into thematic sections so the table reads as
+// a structured comparison, not one long list. Mapping is by row label, so the
+// row data above stays the single source of truth.
+const groupOrder = ['Access & cost', 'Build & hardening', 'Supply chain', 'Charts & licensing'] as const;
+const rowGroup: Record<string, (typeof groupOrder)[number]> = {
+  'Price / free tier': 'Access & cost',
+  'Open and free to verify': 'Access & cost',
+  'Built from source on Wolfi': 'Build & hardening',
+  '0-CVE goal with daily rebuilds': 'Build & hardening',
+  'Multi-arch (amd64 + arm64)': 'Build & hardening',
+  'Signed (cosign keyless)': 'Supply chain',
+  'SBOM (SPDX or CycloneDX)': 'Supply chain',
+  'SLSA build provenance': 'Supply chain',
+  'Helm charts included': 'Charts & licensing',
+  'Charts pin images by digest': 'Charts & licensing',
+  'License transparency, clean alternatives flagged': 'Charts & licensing',
+};
+const groupedRows = groupOrder.map((title) => ({ title, rows: rows.filter((r) => rowGroup[r.label] === title) }));
+
 // Pick a visual treatment per verdict word without adding any color accent.
 function tone(v: string): string {
   const yes = v.toLowerCase();
@@ -251,41 +270,57 @@ function pillTone(tier: string): string {
         </thead>
         <tbody>
           {
-            rows.map((row) => (
-              <tr class="border-b border-line/70 last:border-0">
-                <td class="px-4 py-4 align-top font-medium text-paper">{row.label}</td>
-                {row.cells.map((cell, i) => (
-                  <td class:list={['px-4 py-4 align-top', i === 0 ? 'bg-graphite/40' : '']}>
-                    <span class:list={['font-medium', tone(cell.v)]}>{cell.v}</span>
-                    {cell.n && <span class="mt-1 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+            groupedRows.map((group) => (
+              <Fragment>
+                <tr class="border-b border-line bg-graphite/60">
+                  <td colspan={vendors.length + 1} class="px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-ash">
+                    {group.title}
                   </td>
+                </tr>
+                {group.rows.map((row) => (
+                  <tr class="border-b border-line/70">
+                    <td class="px-4 py-4 align-top font-medium text-paper">{row.label}</td>
+                    {row.cells.map((cell, i) => (
+                      <td class:list={['px-4 py-4 align-top', i === 0 ? 'bg-graphite/40' : '']}>
+                        <span class:list={['font-medium', tone(cell.v)]}>{cell.v}</span>
+                        {cell.n && <span class="mt-1 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                      </td>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
+              </Fragment>
             ))
           }
         </tbody>
       </table>
     </div>
 
-    <!-- Mobile: stacked cards per capability -->
-    <div class="mt-10 space-y-3 sm:hidden">
+    <!-- Mobile: stacked cards per capability, grouped by category -->
+    <div class="mt-4 space-y-8 sm:hidden">
       {
-        rows.map((row) => (
-          <div class="rounded-xl border border-line bg-graphite p-4">
-            <p class="font-medium text-paper">{row.label}</p>
-            <dl class="mt-3 space-y-2">
-              {row.cells.map((cell, i) => (
-                <div class="flex items-baseline justify-between gap-3 border-t border-line/60 pt-2 first:border-0 first:pt-0">
-                  <dt class:list={['font-mono text-[10px] uppercase tracking-widest', vendors[i] === 'QuenchWorks' ? 'text-paper' : 'text-ash']}>
-                    {vendors[i]}
-                  </dt>
-                  <dd class="text-right">
-                    <span class:list={['text-sm font-medium', tone(cell.v)]}>{cell.v}</span>
-                    {cell.n && <span class="mt-0.5 block text-xs leading-relaxed text-ash">{cell.n}</span>}
-                  </dd>
+        groupedRows.map((group) => (
+          <div>
+            <h3 class="font-mono text-[10px] uppercase tracking-[0.2em] text-ash">{group.title}</h3>
+            <div class="mt-3 space-y-3">
+              {group.rows.map((row) => (
+                <div class="rounded-xl border border-line bg-graphite p-4">
+                  <p class="font-medium text-paper">{row.label}</p>
+                  <dl class="mt-3 space-y-2">
+                    {row.cells.map((cell, i) => (
+                      <div class="flex items-baseline justify-between gap-3 border-t border-line/60 pt-2 first:border-0 first:pt-0">
+                        <dt class:list={['font-mono text-[10px] uppercase tracking-widest', vendors[i] === 'QuenchWorks' ? 'text-paper' : 'text-ash']}>
+                          {vendors[i]}
+                        </dt>
+                        <dd class="text-right">
+                          <span class:list={['text-sm font-medium', tone(cell.v)]}>{cell.v}</span>
+                          {cell.n && <span class="mt-0.5 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
                 </div>
               ))}
-            </dl>
+            </div>
           </div>
         ))
       }
