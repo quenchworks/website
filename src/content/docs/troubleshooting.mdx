@@ -18,12 +18,14 @@ docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works
 
 Always use a version tag (shown on each [image](/images) page) or a digest. See [Tags & versions](/docs/tags).
 
-## cosign or gh attestation verify returns 404
+## cosign verify or verify-attestation returns 404
 
 Attestations attach to the digest of a specific build. Verifying a stale digest, or one from before a rebuild, finds nothing. Verify the version tag instead, which resolves to the current attested digest:
 
 ```bash
-gh attestation verify oci://ghcr.io/quenchworks/images/redis:8.8.0 --owner quenchworks
+cosign verify-attestation --type spdxjson ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
 
 See [Verify a signature](/docs/verify) and [SBOM & provenance](/docs/sbom).

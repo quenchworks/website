@@ -1,6 +1,6 @@
 ---
 title: SBOM & provenance
-description: Every QuenchWorks image carries an SPDX SBOM and a SLSA build-provenance attestation, signed keyless and attached to the registry. Verify both with cosign or the GitHub CLI.
+description: Every QuenchWorks image carries an SPDX SBOM and a SLSA build-provenance attestation, signed keyless and attached to the registry. Verify both with cosign.
 group: Guides
 order: 4
 ---
@@ -22,38 +22,39 @@ The version tag always points at the latest rebuild, which is the one that carri
 
 ## Verify the build provenance
 
-The provenance attestation answers "where did this come from?". It binds the image digest to the exact GitHub Actions workflow, commit, and runner that produced it, following the SLSA provenance schema. The GitHub CLI checks it against Sigstore and the owner:
+The provenance attestation answers "where did this come from?". It binds the image digest to the exact GitHub Actions workflow, commit, and runner that produced it, following the SLSA provenance schema. Cosign checks it against Sigstore and the signer identity:
 
 ```bash
-gh attestation verify \
-  oci://ghcr.io/quenchworks/images/redis:8.8.0 \
-  --owner quenchworks
+cosign verify-attestation --type slsaprovenance \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
 
 A pass means the image was built by a workflow in the `quenchworks` org and has not been altered since. A non-zero exit means it failed.
 
 ## Verify and read the SBOM
 
-The SBOM lists every package in the image. Verify the SBOM attestation by predicate type:
+The SBOM lists every package in the image. Verify the SBOM attestation by its type:
 
 ```bash
-gh attestation verify \
-  oci://ghcr.io/quenchworks/images/redis:8.8.0 \
-  --owner quenchworks \
-  --predicate-type https://spdx.dev/Document
+cosign verify-attestation --type spdxjson \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
 
-To pull the SPDX document itself out and inspect it, add `--format json` and read the predicate:
+To pull the SPDX document itself out and inspect it, decode the verified payload and read the predicate:
 
 ```bash
-gh attestation verify \
-  oci://ghcr.io/quenchworks/images/redis:8.8.0 \
-  --owner quenchworks \
-  --predicate-type https://spdx.dev/Document \
-  --format json | jq '.[0].verificationResult.statement.predicate'
+cosign verify-attestation --type spdxjson \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  | jq -r '.payload | @base64d | fromjson | .predicate'
 ```
 
-In a script or CI step, always pass `--format json`: the human-readable banner only prints to a terminal, while the exit code is what you gate on.
+In a script or CI step, the exit code is what you gate on: a non-zero exit means verification failed, so check it before trusting any decoded payload.
 
 ## What this gives you
 

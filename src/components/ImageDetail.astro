@@ -259,11 +259,14 @@ cosign verify {verifyRef} \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># 2. SLSA build provenance — which workflow built it, from what</span>
-gh attestation verify oci://{verifyRef} --owner quenchworks
+cosign verify-attestation --type slsaprovenance {verifyRef} \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># 3. SPDX SBOM — the package inventory</span>
-gh attestation verify oci://{verifyRef} --owner quenchworks \
-  --predicate-type https://spdx.dev/Document</code></pre>
+cosign verify-attestation --type spdxjson {verifyRef} \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
       <p class="mt-2 text-xs text-ash">See the <a href="/docs/sbom" class="text-paper underline-offset-4 hover:underline">SBOM &amp; provenance guide</a> for reading the SBOM and using these checks in CI.</p>
 
       <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Transparency</p>

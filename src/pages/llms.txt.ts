@@ -45,7 +45,7 @@ export const GET: APIRoute = () => {
   lines.push(
     `Everything publishes to GitHub Container Registry (ghcr.io/quenchworks) as OCI artifacts. ` +
       `Charts install from oci://ghcr.io/quenchworks/charts/<name>; images run from ` +
-      `ghcr.io/quenchworks/images/<name>. Verify with cosign and \`gh attestation verify\`.`,
+      `ghcr.io/quenchworks/images/<name>. Verify with \`cosign verify\` and \`cosign verify-attestation\`.`,
   );
   lines.push('');
 
