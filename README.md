@@ -1,6 +1,10 @@
 # QuenchWorks website
 
-The marketing site and live catalog for [QuenchWorks](https://github.com/quenchworks), the 0-CVE hardened replacement for the Bitnami catalog. It's the front door at [quench-works.com](https://quench-works.com), and the browsable index of every image and chart we ship.
+The marketing site and live catalog for [QuenchWorks](https://github.com/quenchworks), a free, 0-CVE hardened catalog of container images and signed Helm charts. It's the front door at [quench-works.com](https://quench-works.com), and the browsable index of every image and chart we ship.
+
+<p align="center">
+  <a href="https://quench-works.com"><img src="https://raw.githubusercontent.com/quenchworks/.github/main/profile/assets/demo.gif" alt="QuenchWorks in a terminal: run a 0-CVE image, verify it with cosign, deploy the Helm chart, and watch the pod reach Running." width="760"></a>
+</p>
 
 Built with **Astro 5 · Tailwind CSS v4 · TypeScript**, managed with **pnpm**, on Node **26** (see `.nvmrc`). Monochrome by design (ink/paper), Inter + JetBrains Mono. The theme is enforced through design tokens, not hardcoded hex.
 
