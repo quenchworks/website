@@ -63,6 +63,9 @@ const imageTags = pullTag ? [pullTag, `${pullTag}-amd64`, `${pullTag}-arm64`] : 
 // Verify against the version tag: it always resolves to the current, attested digest.
 const verifyRef = pullTag ? `${image}:${pullTag}` : image;
 
+// Public GHCR package page (the images repo is private; the package is public).
+const pkgUrl = `https://github.com/orgs/quenchworks/packages/container/package/images%2F${entry.slug}`;
+
 // The chart's digest only lines up with the latest line; show it only there.
 const isLatest = versions.length === 0 || versions[0] === version;
 const digest = isLatest && pinned?.includes('@') ? pinned.slice(pinned.indexOf('@') + 1) : undefined;
@@ -150,6 +153,7 @@ const sevs = isLatest && sec
 
     <section class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
       {([
+        ['Image', `${image}:${pullTag}`],
         ['Signed', 'cosign keyless'],
         ['SBOM', 'SPDX, on digest'],
         ['Provenance', 'SLSA build'],
@@ -161,7 +165,9 @@ const sevs = isLatest && sec
       ] as [string, string][]).map(([k, v]) => (
         <div class="rounded-lg border border-line bg-graphite p-3">
           <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
-          <div class="mt-1 text-sm font-medium text-paper">{v}</div>
+          <div class="mt-1 break-all text-sm font-medium text-paper">
+            {k === 'Image' ? <a href={pkgUrl} class="underline-offset-4 transition-colors hover:text-ash hover:underline">{v}</a> : v}
+          </div>
         </div>
       ))}
     </section>

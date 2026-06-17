@@ -84,6 +84,9 @@ const sbomPackages = m?.sbomPackages;
 // Every reference on this page is pinned to the selected version's tag.
 const ref = `${image}:${version}`;
 
+// Public GHCR package page (the images repo is private; the package is public).
+const pkgUrl = `https://github.com/orgs/quenchworks/packages/container/package/images%2F${entry.slug}`;
+
 const categorySlug = slugify(entry.category);
 const isLatest = versions[0] === version;
 const titleSuffix = isLatest ? '' : ` ${version}`;
@@ -150,7 +153,9 @@ const ld = {
       ] as [string, string][]).map(([k, v]) => (
         <div class="rounded-lg border border-line bg-graphite p-3">
           <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
-          <div class="mt-1 break-all text-sm font-medium text-paper">{v}</div>
+          <div class="mt-1 break-all text-sm font-medium text-paper">
+            {k === 'Image' ? <a href={pkgUrl} class="underline-offset-4 transition-colors hover:text-ash hover:underline">{v}</a> : v}
+          </div>
         </div>
       ))}
     </section>
