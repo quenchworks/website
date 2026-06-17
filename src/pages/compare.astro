@@ -144,6 +144,29 @@ function tone(v: string): string {
   // Everything else (No, Paid, Partial, Varies, Freemium, n/a, —) is muted.
   return 'text-ash';
 }
+
+// The handful of things that set QuenchWorks apart, called out above the grid.
+const differentiators: { label: string; body: string }[] = [
+  { label: 'Free, no account', body: 'Pull images and deploy charts with no subscription, no login, and no registry to add.' },
+  { label: 'Fully public, verifiable', body: 'Images, charts, and the proof (SBOM and SLSA provenance) are public for anyone to check.' },
+  { label: 'Charts pinned by digest', body: 'Signed Helm charts reference their image by sha256, never a moving tag.' },
+  { label: 'License honesty', body: 'Source-available apps are labeled as such, each with an OSI-clean alternative named.' },
+];
+
+// One-line, neutral snapshot per vendor (same order as `vendors`); tier drives the pill.
+const vendorMeta: { name: string; tier: string; blurb: string }[] = [
+  { name: 'QuenchWorks', tier: 'Free', blurb: 'Independent, fully public hardened catalog. Wolfi-built images and signed Helm charts pinned by digest, no account needed.' },
+  { name: 'Bitnami', tier: 'Paid', blurb: "Broadcom's commercial Bitnami Secure Images. The free community catalog was retired, leaving a frozen legacy registry behind." },
+  { name: 'Chainguard', tier: 'Freemium', blurb: 'Premium Wolfi-based minimal images. A small Starter set is free; the full catalog is a paid subscription.' },
+  { name: 'Docker', tier: 'Free', blurb: 'Docker Hardened Images, opened as a free, Apache-2.0 open-source catalog in late 2025. Built on Debian and Alpine.' },
+  { name: 'RapidFort', tier: 'Varies', blurb: 'Curated, optimized images that strip attack surface from upstream containers. Commercial platform.' },
+  { name: 'Minimus', tier: 'Paid', blurb: 'Proprietary from-source minimal images. Commercial, with a free program for eligible open-source projects.' },
+];
+
+// Pill treatment for a price tier; monochrome, with Free carrying the emphasis.
+function pillTone(tier: string): string {
+  return tier === 'Free' ? 'border-paper/40 text-paper' : 'border-line text-ash';
+}
 ---
 
 <Base
@@ -168,8 +191,44 @@ function tone(v: string): string {
       </p>
     </header>
 
+    <!-- Where QuenchWorks is different -->
+    <section class="mt-12">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-ash">Where QuenchWorks is different</h2>
+      <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          differentiators.map((d) => (
+            <div class="rounded-xl border border-line bg-graphite p-5">
+              <p class="text-sm font-semibold text-paper">{d.label}</p>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{d.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- The providers at a glance -->
+    <section class="mt-12">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-ash">The providers at a glance</h2>
+      <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          vendorMeta.map((v) => (
+            <div class:list={['rounded-xl border bg-graphite p-5', v.name === 'QuenchWorks' ? 'border-paper/40' : 'border-line']}>
+              <div class="flex items-center justify-between gap-3">
+                <p class="text-base font-semibold text-paper">{v.name}</p>
+                <span class:list={['shrink-0 rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest', pillTone(v.tier)]}>{v.tier}</span>
+              </div>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{v.blurb}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Feature-by-feature deep dive -->
+    <h2 class="mt-14 font-mono text-xs uppercase tracking-widest text-ash">Feature by feature</h2>
+
     <!-- Desktop / tablet table -->
-    <div class="mt-12 hidden overflow-x-auto rounded-2xl border border-line sm:block">
+    <div class="mt-4 hidden overflow-x-auto rounded-2xl border border-line sm:block">
       <table class="w-full min-w-[56rem] border-collapse text-sm">
         <thead>
           <tr class="border-b border-line bg-graphite">
