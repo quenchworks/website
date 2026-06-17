@@ -1,5 +1,5 @@
 # Base: a common starting point for the dependency and build stages.
-FROM ghcr.io/quenchworks/images/node:20 AS base
+FROM ghcr.io/quenchworks/images/node:22.22.3 AS base
 WORKDIR /app
 ENV PNPM_HOME=/tmp/pnpm \
     npm_config_cache=/tmp/npm
@@ -19,7 +19,7 @@ COPY . .
 RUN ["pnpm", "run", "build"]
 
 # final: prod node_modules + built dist on a clean node base, nonroot.
-FROM ghcr.io/quenchworks/images/node:20 AS final
+FROM ghcr.io/quenchworks/images/node:22.22.3 AS final
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=prod-deps /app/node_modules ./node_modules
