@@ -224,13 +224,13 @@ const ld = {
 
       <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Transparency</p>
       <p class="mt-2 text-sm leading-relaxed text-ash">
-        The chart and the image it deploys both publish their attestations on GitHub (<a href="https://github.com/quenchworks/charts/attestations" class="text-paper underline-offset-4 hover:underline">charts</a>, <a href="https://github.com/quenchworks/images/attestations" class="text-paper underline-offset-4 hover:underline">images</a>) and log them to the Sigstore transparency log (Rekor), which <code class="font-mono">cosign verify</code> checks for you.
+        The chart publishes its <a href="https://github.com/quenchworks/charts/attestations" class="text-paper underline-offset-4 hover:underline">attestations on GitHub</a>, and the image it deploys carries its own on the same digest, publicly verifiable with the commands above. Both log to the Sigstore transparency log (Rekor), which <code class="font-mono">cosign verify</code> checks for you.
       </p>
 
       <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
         {hasImage && <a href={`/images/${entry.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">View the image</a>}
         {ah?.url && <a href={ah.url} class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">View on ArtifactHub</a>}
-        <a href="https://github.com/quenchworks/charts" class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">Chart source</a>
+        <a href={`https://github.com/quenchworks/charts/tree/main/quench/${entry.slug}`} class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">Chart source</a>
       </div>
     </section>
 

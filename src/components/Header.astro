@@ -2,17 +2,17 @@
 import Search from './Search.astro';
 
 // `primary` items show in the desktop bar; the full set shows in the mobile menu
-// (and everything is also linked from the footer). Keeping the desktop bar to six
-// avoids the overflow that 8 uppercase links caused, so Roadmap drops to the
-// mobile/footer set now that Runtimes shares the bar with Charts and Images.
+// (and everything is also linked from the footer). The desktop bar carries the
+// core sections, with Roadmap back in the bar after Compare. Changelog and FAQ
+// stay in the mobile/footer set.
 const nav = [
   { label: 'Charts', href: '/charts', primary: true },
   { label: 'Images', href: '/images', primary: true },
   { label: 'Runtimes', href: '/runtimes', primary: true },
   { label: 'Docs', href: '/docs', primary: true },
   { label: 'Compare', href: '/compare', primary: true },
+  { label: 'Roadmap', href: '/roadmap', primary: true },
   { label: 'Security', href: '/security', primary: true },
-  { label: 'Roadmap', href: '/roadmap' },
   { label: 'Changelog', href: '/changelog' },
   { label: 'FAQ', href: '/faq' },
 ];

@@ -262,12 +262,12 @@ gh attestation verify oci://{verifyRef} --owner quenchworks \
 
       <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Transparency</p>
       <p class="mt-2 text-sm leading-relaxed text-ash">
-        Every attestation is published on the org's <a href="https://github.com/quenchworks/images/attestations" class="text-paper underline-offset-4 hover:underline">GitHub attestations</a> listing and logged to the Sigstore transparency log (Rekor), which <code class="font-mono">cosign verify</code> and <code class="font-mono">gh attestation verify</code> check for you.
+        Every image carries its SBOM and provenance as attestations on the same digest, publicly verifiable with the commands above (they check the package and the Sigstore transparency log, Rekor).
       </p>
 
       <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
         {hasChart && <a href={`/charts/${entry.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">View the Helm chart</a>}
-        <a href="https://github.com/quenchworks/images" class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">Image source</a>
+        <a href={`https://github.com/orgs/quenchworks/packages/container/package/images%2F${entry.slug}`} class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">View package</a>
       </div>
     </section>
 

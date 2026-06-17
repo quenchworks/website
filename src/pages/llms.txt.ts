@@ -37,8 +37,8 @@ export const GET: APIRoute = () => {
   lines.push(
     `> Free, independent catalog of hardened, 0-CVE container images and signed Helm charts. ` +
       `Built from source on Wolfi, cosign-signed, and pinned by digest, with an SPDX SBOM and a ` +
-      `SLSA build-provenance attestation on every image that anyone can verify. A drop-in ` +
-      `replacement for the Bitnami catalog. ${availableCount} hardened service images, ${runtimeCount} ` +
+      `SLSA build-provenance attestation on every image that anyone can verify. ` +
+      `${availableCount} hardened service images, ${runtimeCount} ` +
       `hardened base/runtime images to build FROM, and ${chartCount} signed charts.`,
   );
   lines.push('');
