@@ -12,7 +12,7 @@ RUN ["pnpm", "run", "build"]
 RUN ["pnpm", "install", "--prod", "--frozen-lockfile"]
 
 # Runtime stage: prod node_modules + built dist on a slim node base, nonroot.
-FROM ghcr.io/quenchworks/images/node:24 AS runtime
+FROM ghcr.io/quenchworks/images/node:26.3.1 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=build /app/node_modules ./node_modules

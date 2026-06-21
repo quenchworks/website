@@ -107,10 +107,10 @@ function compareVersionsDesc(a: string, b: string): number {
 /**
  * The best-practice Dockerfile(s) for a runtime slug, or null if none is defined.
  *
- * Purely file-driven: the variants are exactly the per-version files on disk
- * under ./dockerfiles/<slug>/, ordered newest-first via a version-aware
- * descending compare (so e.g. python yields 3.14, 3.13, 3.12 and yarn yields
- * just 1). The catalog is never consulted for the tabs.
+ * File-driven: the variants are exactly the per-version files on disk under
+ * ./dockerfiles/<slug>/, newest first. The files are generated (one per canonical
+ * published version, with full-version FROM tags) by scripts/gen-dockerfiles.mjs,
+ * so the tabs match the version pages and every FROM tag resolves to a real image.
  */
 export function dockerfileFor(slug: string): DockerfileEntry | null {
   const files = bodies[slug];
@@ -120,10 +120,6 @@ export function dockerfileFor(slug: string): DockerfileEntry | null {
   const versions = Object.keys(files).sort(compareVersionsDesc);
   if (versions.length === 0) return null;
 
-  const variants = versions.map((version) => ({
-    version,
-    code: files[version],
-  }));
-
+  const variants = versions.map((version) => ({ version, code: files[version] }));
   return { note, variants };
 }

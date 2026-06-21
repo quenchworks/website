@@ -3,16 +3,14 @@
 // component renders one selected version; here we pass the newest one (the first
 // dockerfile variant). Older versions live at /runtimes/<slug>/<version>.
 import RuntimeDetail from '../../components/RuntimeDetail.astro';
-import { runtimeImages } from '../../data/images';
-import { dockerfileFor } from '../../data/dockerfiles';
+import { runtimeImages, canonicalTags } from '../../data/images';
 
 export function getStaticPaths() {
   return runtimeImages
     .filter((e) => e.status === 'available')
     .map((e) => {
-      const variants = dockerfileFor(e.slug)?.variants ?? [];
-      // Newest version drives the base page; fall back to the catalog version.
-      const latest = variants[0]?.version ?? (e.version ?? '').split(',')[0].trim();
+      // Newest published version drives the base page; fall back to the catalog version.
+      const latest = canonicalTags(e.versions)[0] ?? (e.version ?? '').split(',')[0].trim();
       return { params: { slug: e.slug }, props: { entry: e, version: latest } };
     });
 }

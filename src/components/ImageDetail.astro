@@ -3,13 +3,11 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import VersionSwitcher from '../components/VersionSwitcher.astro';
-import { ghcr, type ImageEntry } from '../data/images';
+import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { charts } from '../data/charts';
 import { fetchPackageDetail } from '../data/artifacthub';
 import { resolveAlternatives } from '../data/alternatives';
 import { slugify } from '../data/slugify';
-import { compareVersionsDesc } from '../data/versions';
-import imageMeta from '../data/image-meta.json';
 
 interface Props {
   entry: ImageEntry;
@@ -20,14 +18,6 @@ interface Props {
 const { entry, version } = Astro.props;
 const image = entry.image || `${ghcr}/images/${entry.slug}`;
 const hasChart = charts.some((c) => c.slug === entry.slug);
-
-// Humanize a byte count into a compact MB/GB string (e.g. "28.4 MB").
-function humanizeBytes(bytes: number): string {
-  if (bytes >= 1e9) return `${(bytes / 1e9).toFixed(1)} GB`;
-  if (bytes >= 1e6) return `${(bytes / 1e6).toFixed(1)} MB`;
-  if (bytes >= 1e3) return `${(bytes / 1e3).toFixed(1)} KB`;
-  return `${bytes} B`;
-}
 
 // Turn a build timestamp into a short, friendly "Rebuilt …" label.
 function freshness(iso: string): { abs: string; rel: string } {
@@ -45,16 +35,15 @@ const pinned = ah?.image; // image@sha256:... (the chart's deployed digest)
 const sec = ah?.security;
 const total = ah?.securityTotal;
 
-// Build-time image metadata, nested per version tag. The version list is the
-// image's tags, newest-first (numeric-aware, with non-numeric last).
-type ImgMeta = { sizeBytes?: number; builtISO?: string; sbomPackages?: number };
-const metaByTag = (imageMeta as Record<string, Record<string, ImgMeta>>)[entry.slug] ?? {};
-const versions = Object.keys(metaByTag).sort(compareVersionsDesc);
+// Per-version data from images.json (the catalog lock): full X.Y.Z leaf tags,
+// newest first, with alias tags (e.g. "21" when "21.0.11" exists) dropped.
+const allVersions = canonicalVersions(entry.versions);
+const versions = allVersions.map((v) => v.version);
+const newest = versions[0];
 
-const m = metaByTag[version] ?? Object.values(metaByTag)[0];
-const sizeLabel = m?.sizeBytes != null ? humanizeBytes(m.sizeBytes) : undefined;
-const fresh = m?.builtISO ? freshness(m.builtISO) : undefined;
-const sbomPackages = m?.sbomPackages;
+const vmeta = allVersions.find((v) => v.version === version) ?? allVersions[0];
+const sizeLabel = vmeta?.size;
+const fresh = vmeta?.published ? freshness(vmeta.published) : undefined;
 
 // All pull/tag/verify references use the selected version's tag.
 const pullTag = version || appVersion;
@@ -161,7 +150,6 @@ const sevs = isLatest && sec
         ['Runs as', runsAs],
         ['Root filesystem', 'read-only'],
         ...(sizeLabel ? [['Image size', sizeLabel]] as [string, string][] : []),
-        ...(sbomPackages != null ? [['SBOM packages', String(sbomPackages)]] as [string, string][] : []),
       ] as [string, string][]).map(([k, v]) => (
         <div class="rounded-lg border border-line bg-graphite p-3">
           <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
@@ -171,6 +159,48 @@ const sevs = isLatest && sec
         </div>
       ))}
     </section>
+
+    {allVersions.length > 0 && (
+      <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="text-xl font-semibold tracking-tight">Published versions</h2>
+          <span class="font-mono text-xs uppercase tracking-widest text-ash">{allVersions.length} {allVersions.length === 1 ? 'tag' : 'tags'}</span>
+        </div>
+        <p class="mt-2 text-sm leading-relaxed text-ash">
+          Each tag is a multi-arch index (amd64 + arm64) pinned by digest. Tagged by version, never <code class="font-mono">:latest</code>.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full min-w-[34rem] text-left text-sm">
+            <thead>
+              <tr class="border-b border-line font-mono text-[10px] uppercase tracking-widest text-ash">
+                <th scope="col" class="py-2 pr-4 font-medium">Version</th>
+                <th scope="col" class="py-2 pr-4 font-medium">Size</th>
+                <th scope="col" class="py-2 pr-4 font-medium">Published</th>
+                <th scope="col" class="py-2 font-medium">Digest</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line/60">
+              {allVersions.map((v) => (
+                <tr>
+                  <td class="py-2.5 pr-4">
+                    <a
+                      href={v.version === newest ? `/images/${entry.slug}` : `/images/${entry.slug}/${v.version}`}
+                      class:list={['font-mono tabular-nums underline-offset-4 transition-colors hover:underline', v.version === version ? 'text-paper' : 'text-paper/90 hover:text-paper']}
+                    >{v.version}</a>
+                    {v.version === newest && (
+                      <span class="ml-2 rounded border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] uppercase tracking-widest text-ash">latest</span>
+                    )}
+                  </td>
+                  <td class="py-2.5 pr-4 tabular-nums text-ash">{v.size ?? '—'}</td>
+                  <td class="py-2.5 pr-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : '—'}</td>
+                  <td class="py-2.5 font-mono text-xs text-ash" title={v.digest}>{v.digest ? `${v.digest.slice(0, 19)}…` : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
 
     {entry.caution && (
       <aside class="mt-6 rounded-xl border border-amber-500/50 bg-amber-500/5 p-5">

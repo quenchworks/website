@@ -14,6 +14,7 @@
  */
 import Pager from './Pager.astro';
 import type { AhFacts } from '../data/artifacthub';
+import { canonicalVersions } from '../data/images';
 
 type ArtifactHubMap = Record<string, AhFacts>;
 
@@ -55,6 +56,9 @@ const headerType = isImages ? 'Images' : 'Charts';
 
 // Lightweight dataset embedded for client-side filtering across the WHOLE
 // catalog (small: a handful of string fields per entry).
+// Canonical versions for an image entry (semver order, alias tags dropped).
+const canon = (e: any) => canonicalVersions(e.versions);
+
 const dataset = all.map((e) => {
   const live = ah[e.slug];
   const version = isImages
@@ -70,6 +74,11 @@ const dataset = all.map((e) => {
     summary: e.summary,
     version,
     caution: !!e.caution,
+    // images only: newest canonical tag (semver, alias tags dropped), its size,
+    // and how many canonical tags exist.
+    latest: isImages ? (canon(e)[0]?.version ?? null) : null,
+    size: isImages ? (canon(e)[0]?.size ?? null) : null,
+    versionCount: isImages ? canon(e).length : 0,
   };
 });
 
@@ -168,7 +177,10 @@ const dataset = all.map((e) => {
     const live = ah[e.slug];
     if (isImages) {
       const Tag = e.status === 'available' ? 'a' : 'div';
-      const ver = live?.appVersion ?? e.version;
+      const cv = canon(e);
+      const latest = cv[0]?.version ?? live?.appVersion ?? e.version;
+      const size = cv[0]?.size;
+      const count = cv.length;
       return (
         <li class="card" data-status={e.status} data-tier={e.tier} data-category={e.category}>
           <Tag
@@ -196,8 +208,12 @@ const dataset = all.map((e) => {
               <h2 class:list={['text-base font-semibold leading-tight', e.status === 'available' ? '' : 'text-paper/80']}>{e.name}</h2>
               <p class="mt-2 text-sm leading-relaxed text-ash">{e.summary}</p>
             </div>
-            {e.status === 'available' && ver && (
-              <p class="font-mono text-[10px] uppercase tracking-widest text-ash">image v{ver}</p>
+            {e.status === 'available' && latest && (
+              <p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-widest text-ash">
+                <span class="text-paper">v{latest}</span>
+                {size && <><span class="text-line" aria-hidden="true">·</span><span class="tabular-nums">{size}</span></>}
+                {count > 1 && <><span class="text-line" aria-hidden="true">·</span><span class="tabular-nums">{count} versions</span></>}
+              </p>
             )}
             <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
               <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
@@ -264,6 +280,9 @@ const dataset = all.map((e) => {
     summary: string;
     version: string | null;
     caution: boolean;
+    latest: string | null;
+    size: string | null;
+    versionCount: number;
   };
 
   const dataEl = document.getElementById('catalog-data');
@@ -299,8 +318,14 @@ const dataset = all.map((e) => {
       const badge = available
         ? '<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>'
         : '<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">Planned</span>';
-      const ver = available && e.version
-        ? `<p class="font-mono text-[10px] uppercase tracking-widest text-ash">image v${esc(e.version)}</p>`
+      const latest = e.latest ?? e.version;
+      const verParts = available && latest
+        ? [`<span class="text-paper">v${esc(latest)}</span>`]
+            .concat(e.size ? [`<span class="text-line">·</span><span class="tabular-nums">${esc(e.size)}</span>`] : [])
+            .concat(e.versionCount > 1 ? [`<span class="text-line">·</span><span class="tabular-nums">${e.versionCount} versions</span>`] : [])
+        : [];
+      const ver = verParts.length
+        ? `<p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-widest text-ash">${verParts.join('')}</p>`
         : '';
       const h2cls = available ? 'text-base font-semibold leading-tight' : 'text-base font-semibold leading-tight text-paper/80';
       const licCls = e.caution ? 'rounded bg-ink px-2 py-0.5 text-amber-400' : 'rounded bg-ink px-2 py-0.5';

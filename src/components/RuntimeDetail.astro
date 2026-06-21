@@ -4,11 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import VersionSwitcher from '../components/VersionSwitcher.astro';
 import { Code } from 'astro-expressive-code/components';
-import { ghcr, type ImageEntry } from '../data/images';
+import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { fetchPackageDetail } from '../data/artifacthub';
 import { dockerfileFor } from '../data/dockerfiles';
 import { slugify } from '../data/slugify';
-import imageMeta from '../data/image-meta.json';
 
 interface Props {
   /** The runtime catalog entry. */
@@ -19,14 +18,6 @@ interface Props {
 
 const { entry, version } = Astro.props;
 const image = entry.image || `${ghcr}/images/${entry.slug}`;
-
-// Humanize a byte count into a compact MB/GB string (e.g. "28.4 MB").
-function humanizeBytes(bytes: number): string {
-  if (bytes >= 1e9) return `${(bytes / 1e9).toFixed(1)} GB`;
-  if (bytes >= 1e6) return `${(bytes / 1e6).toFixed(1)} MB`;
-  if (bytes >= 1e3) return `${(bytes / 1e3).toFixed(1)} KB`;
-  return `${bytes} B`;
-}
 
 // Turn a build timestamp into a short, friendly label.
 function freshness(iso: string): { abs: string; rel: string } {
@@ -65,21 +56,21 @@ const appVersion = ah?.appVersion ?? entry.version;
 
 const guide = BUILD_GUIDE[entry.slug] ?? { slug: 'build-images', label: 'Build hardened images' };
 
-// One Dockerfile per supported version (newest-first). The version list driving
-// this whole page comes from the dockerfile variants (= the slug's image-meta
-// tags). Pick the variant that matches the selected version.
+// The version list driving the page is the published canonical tags (full
+// X.Y.Z leaves, newest first), same as the routes — so the switcher, table, and
+// generated pages all line up. The Dockerfile is best-effort per version: pick
+// the variant matching the selected version, else the newest variant.
+const allVersions = canonicalVersions(entry.versions);
+const versions = allVersions.map((v) => v.version);
+const newest = versions[0];
 const dockerfile = dockerfileFor(entry.slug);
 const variants = dockerfile?.variants ?? [];
-const versions = variants.map((v) => v.version);
 const selected = variants.find((v) => v.version === version) ?? variants[0];
 
-// Build-time image metadata, nested per version tag.
-type ImgMeta = { sizeBytes?: number; builtISO?: string; sbomPackages?: number };
-const metaByTag = (imageMeta as Record<string, Record<string, ImgMeta>>)[entry.slug] ?? {};
-const m = metaByTag[version];
-const sizeLabel = m?.sizeBytes != null ? humanizeBytes(m.sizeBytes) : undefined;
-const fresh = m?.builtISO ? freshness(m.builtISO) : undefined;
-const sbomPackages = m?.sbomPackages;
+// Per-version size/published from the catalog lock.
+const vmeta = allVersions.find((v) => v.version === version) ?? allVersions[0];
+const sizeLabel = vmeta?.size;
+const fresh = vmeta?.published ? freshness(vmeta.published) : undefined;
 
 // Every reference on this page is pinned to the selected version's tag.
 const ref = `${image}:${version}`;
@@ -148,7 +139,6 @@ const ld = {
         ['Architectures', 'amd64, arm64'],
         ['Runs as', 'nonroot (uid 1001)'],
         ...(sizeLabel ? [['Image size', sizeLabel]] as [string, string][] : []),
-        ...(sbomPackages != null ? [['SBOM packages', String(sbomPackages)]] as [string, string][] : []),
         ...(fresh ? [['Last rebuilt', fresh.abs]] as [string, string][] : []),
       ] as [string, string][]).map(([k, v]) => (
         <div class="rounded-lg border border-line bg-graphite p-3">
@@ -159,6 +149,48 @@ const ld = {
         </div>
       ))}
     </section>
+
+    {allVersions.length > 0 && (
+      <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="text-xl font-semibold tracking-tight">Published versions</h2>
+          <span class="font-mono text-xs uppercase tracking-widest text-ash">{allVersions.length} {allVersions.length === 1 ? 'tag' : 'tags'}</span>
+        </div>
+        <p class="mt-2 text-sm leading-relaxed text-ash">
+          Each tag is a multi-arch index (amd64 + arm64) pinned by digest. Tagged by version, never <code class="font-mono">:latest</code>.
+        </p>
+        <div class="mt-4 overflow-x-auto">
+          <table class="w-full min-w-[34rem] text-left text-sm">
+            <thead>
+              <tr class="border-b border-line font-mono text-[10px] uppercase tracking-widest text-ash">
+                <th scope="col" class="py-2 pr-4 font-medium">Version</th>
+                <th scope="col" class="py-2 pr-4 font-medium">Size</th>
+                <th scope="col" class="py-2 pr-4 font-medium">Published</th>
+                <th scope="col" class="py-2 font-medium">Digest</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line/60">
+              {allVersions.map((v) => (
+                <tr>
+                  <td class="py-2.5 pr-4">
+                    <a
+                      href={v.version === newest ? `/runtimes/${entry.slug}` : `/runtimes/${entry.slug}/${v.version}`}
+                      class:list={['font-mono tabular-nums underline-offset-4 transition-colors hover:underline', v.version === version ? 'text-paper' : 'text-paper/90 hover:text-paper']}
+                    >{v.version}</a>
+                    {v.version === newest && (
+                      <span class="ml-2 rounded border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] uppercase tracking-widest text-ash">latest</span>
+                    )}
+                  </td>
+                  <td class="py-2.5 pr-4 tabular-nums text-ash">{v.size ?? '—'}</td>
+                  <td class="py-2.5 pr-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : '—'}</td>
+                  <td class="py-2.5 font-mono text-xs text-ash" title={v.digest}>{v.digest ? `${v.digest.slice(0, 19)}…` : '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
 
     <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
       <h2 class="text-xl font-semibold tracking-tight">Use it as a base image</h2>
@@ -217,7 +249,6 @@ cosign verify-attestation --type spdxjson {ref} \
             <span class="rounded border border-line bg-ink px-2 py-0.5 text-paper">{ref}</span>
             {sizeLabel && <span class="rounded border border-line bg-ink px-2 py-0.5">{sizeLabel}</span>}
             {fresh && <span class="rounded border border-line bg-ink px-2 py-0.5">rebuilt&nbsp;{fresh.rel}</span>}
-            {sbomPackages != null && <span class="rounded border border-line bg-ink px-2 py-0.5">{sbomPackages}&nbsp;SBOM&nbsp;pkgs</span>}
           </div>
           <Code code={selected.code} lang="dockerfile" />
         </div>

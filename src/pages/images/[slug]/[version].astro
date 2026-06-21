@@ -1,18 +1,15 @@
 ---
 // Per-version image pages: /images/<slug>/<version>. Only images with more than
-// one tag in image-meta generate any pages here, and the newest tag is skipped
+// one published tag generate any pages here, and the newest tag is skipped
 // (it lives at the base /images/<slug> page) to avoid duplicate content.
 import ImageDetail from '../../../components/ImageDetail.astro';
-import { serviceImages } from '../../../data/images';
-import imageMeta from '../../../data/image-meta.json';
-import { compareVersionsDesc } from '../../../data/versions';
+import { serviceImages, canonicalTags } from '../../../data/images';
 
 export function getStaticPaths() {
-  const meta = imageMeta as Record<string, Record<string, unknown>>;
   return serviceImages
     .filter((e) => e.status === 'available')
     .flatMap((e) => {
-      const tags = Object.keys(meta[e.slug] ?? {}).sort(compareVersionsDesc);
+      const tags = canonicalTags(e.versions);
       // Skip the newest (index 0): that's the base page. Single-version images
       // emit nothing.
       return tags.slice(1).map((version) => ({
