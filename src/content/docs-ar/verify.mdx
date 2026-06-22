@@ -1,0 +1,49 @@
+---
+title: التحقّق من توقيع
+description: تحقّق من توقيع صورة أو مخطط QuenchWorks باستخدام cosign. بدون مفتاح، ولا مفتاح لتوزيعه.
+group: Guides
+order: 3
+---
+
+كل صورة ومخطط موقّعان بـ cosign باستخدام GitHub OIDC. لا يوجد مفتاح عام لتوزيعه. يتحقّق التحقّق من أن الأداة أُنتجت بواسطة مسار عمل GitHub Actions تابع لـ QuenchWorks وأنها مُسجّلة في سجلّ شفافية Sigstore.
+
+## تثبيت cosign
+
+استخدم مدير الحزم لديك، أو احصل على ملف تنفيذي من إصدارات مشروع cosign:
+
+<Tabs>
+<Tab label="macOS">
+```bash
+brew install cosign            # macOS
+```
+</Tab>
+<Tab label="From source">
+```bash
+go install github.com/sigstore/cosign/v2/cmd/cosign@latest   # from source
+```
+</Tab>
+</Tabs>
+
+## التحقّق من صورة
+
+وجّه cosign إلى الصورة عبر وسم إصدارها (الصور لا تحمل `:latest`) وأكّد هوية الموقّع. استبدل `redis:8.8.0` بأي صورة وبالإصدار المعروض في صفحتها [page](/ar/images):
+
+```bash
+cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+النتيجة الصالحة تطبع موضوع الشهادة، وهو مسار العمل الذي بنى الصورة بالضبط، إلى جانب مدخل سجلّ Rekor. إذا كان التوقيع مفقودًا أو لم تتطابق الهوية، يخرج cosign بقيمة غير صفرية.
+
+## التحقّق من مخطط
+
+المخططات أدوات OCI، لذا يعمل الأمر نفسه على وسم إصدار المخطط:
+
+```bash
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+للتحقّق من بناء معيّن بدلًا من الوسم، مرّر بصمة `@sha256:...`. راجع [التثبيت بالبصمة الرقمية](/ar/docs/pin-by-digest) لمعرفة كيفية استخراج واحدة.

@@ -1,0 +1,66 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import Base from '../../../../../layouts/Base.astro';
+import Header from '../../../../../components/Header.astro';
+import Footer from '../../../../../components/Footer.astro';
+import CategoryCatalog from '../../../../../components/CategoryCatalog.astro';
+import { charts, chartCategories, PAGE_SIZE, type ChartEntry } from '../../../../../data/charts';
+import { fetchArtifactHub } from '../../../../../data/artifacthub';
+import { slugify } from '../../../../../data/slugify';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return chartCategories.flatMap((category) => {
+    const entries = charts
+      .filter((c) => c.category === category)
+      .sort((a, b) => a.name.localeCompare(b.name));
+    return paginate(entries, {
+      params: { category: slugify(category) },
+      props: { category },
+      pageSize: PAGE_SIZE,
+    });
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<ChartEntry>;
+  category: string;
+}
+const { page, category } = Astro.props as Props;
+
+// Live chart + app versions at build time; falls back to generated facts.
+const ah = await fetchArtifactHub();
+const data = page.data.map((e) => {
+  const live = ah[e.slug];
+  return {
+    ...e,
+    chartVersion: live?.version ?? e.chartVersion,
+    appVersion: live?.appVersion ?? e.appVersion,
+  };
+});
+const count = charts.filter((c) => c.category === category).length;
+const heading = `${category} charts`;
+const intro = `Hardened Helm charts in the ${category.toLowerCase()} category. Each deploys our hardened image pinned by its signed digest, with production defaults.`;
+
+// Sibling categories so users can hop between them without going back out.
+const categories = chartCategories.map((c) => ({ label: c, slug: slugify(c) }));
+const currentCategory = slugify(category);
+---
+
+<Base
+  title={`${category} charts · Quenchworks`}
+  description={`Hardened, 0-CVE Helm charts in the ${category} category, cosign-signed and digest-pinned.`}
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <CategoryCatalog
+      kind="charts"
+      heading={heading}
+      intro={intro}
+      count={count}
+      page={{ ...page, data } as Page}
+      categories={categories}
+      currentCategory={currentCategory}
+    />
+  </main>
+  <Footer />
+</Base>

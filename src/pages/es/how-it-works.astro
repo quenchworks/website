@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+
+const layers = [
+  {
+    n: '01',
+    h: 'La fábrica de imágenes',
+    p: 'Compilamos cada aplicación desde el código fuente con melange, y luego apko ensambla una imagen pequeña sin root sobre Wolfi. No hay Dockerfiles ni nada heredado de otra distribución, así que la imagen solo lleva lo que la aplicación necesita. Una puerta de control de Trivy hace fallar la compilación ante cualquier CVE corregible, y una reconstrucción programada mantiene el resultado limpio con el tiempo.',
+    tags: ['melange', 'apko', 'Wolfi', 'Trivy'],
+  },
+  {
+    n: '02',
+    h: 'Charts de sala limpia',
+    p: 'Cada chart de Helm se escribe a partir de la documentación oficial de esa aplicación, nunca copiado de otro proveedor. Un chart de biblioteca compartido aporta las etiquetas, los contextos de seguridad reforzados y un resolutor que referencia las imágenes estrictamente por digest. Los charts se ejecutan sin root, sobre un sistema de archivos raíz de solo lectura y con todas las capacidades eliminadas.',
+    tags: ['Helm', 'quench-common', 'nonroot', 'read-only rootfs'],
+  },
+  {
+    n: '03',
+    h: 'Distribución firmada',
+    p: 'Las imágenes y los charts se publican en GHCR como artefactos OCI y se firman con cosign usando GitHub OIDC, de modo que no hay ninguna clave de larga duración. Cuando una imagen se reconstruye, un contrato de digest actualiza el chart al nuevo digest firmado automáticamente. Todo está listado en ArtifactHub, y cualquiera puede verificar una firma desde su propia terminal.',
+    tags: ['GHCR', 'cosign', 'OCI', 'ArtifactHub'],
+  },
+];
+---
+
+<Base title="Cómo funciona · Quenchworks" description="El pipeline de QuenchWorks: compilado desde el código fuente en Wolfi, charts de sala limpia, firmado y distribuido como artefactos OCI.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Cómo funciona</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Del código fuente a una instalación firmada</h1>
+    <p class="mt-4 leading-relaxed text-ash">
+      Tres capas independientes, cada una con un único cometido. El contrato entre ellas es
+      sencillo: los charts referencian las imágenes solo por digest, nunca por una etiqueta móvil.
+    </p>
+
+    <div class="mt-12 space-y-4">
+      {
+        layers.map((l) => (
+          <section class="rounded-2xl border border-line bg-graphite p-6 sm:p-8">
+            <div class="flex items-baseline gap-4">
+              <span class="font-mono text-sm tabular-nums text-ash">{l.n}</span>
+              <h2 class="text-xl font-semibold tracking-tight">{l.h}</h2>
+            </div>
+            <p class="mt-3 leading-relaxed text-ash">{l.p}</p>
+            <div class="mt-5 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+              {l.tags.map((t) => (
+                <span class="rounded bg-ink px-2 py-0.5">{t}</span>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <section class="mt-10 rounded-2xl border border-line bg-graphite px-6 py-8 text-center">
+      <p class="text-ash">
+        Míralo en práctica en la página de cualquier{' '}
+        <a href={l('/charts')} class="font-medium text-paper underline-offset-4 hover:underline">chart</a>{' '}
+        , o lee el{' '}
+        <a href={l('/security')} class="font-medium text-paper underline-offset-4 hover:underline">modelo de seguridad</a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Base>

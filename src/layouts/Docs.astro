@@ -3,6 +3,7 @@ import Base from './Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -13,21 +14,33 @@ interface Props {
 }
 const { title, description, slug } = Astro.props;
 
+// Locale-aware: derive the active language from the URL, pick the matching docs
+// collection (en -> docs, ar -> docsAr, es -> docsEs), translate the static
+// chrome, and localize every internal link so navigation stays in-locale. For
+// `en` localizeUrl is a no-op and the chrome strings are verbatim English, so
+// the English /docs output is unchanged.
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const l = (p: string) => localizeUrl(lang, p);
+const collectionName = lang === 'ar' ? 'docsAr' : lang === 'es' ? 'docsEs' : 'docs';
+
 // Build the sidebar from the docs collection: Guides, then Build images, then
 // Reference, each sorted by its `order` field. Labels are the doc titles.
-const docs = await getCollection('docs');
+const docs = await getCollection(collectionName);
 const order = ['Guides', 'Build images', 'Reference'] as const;
 const groups = order.map((g) => ({
-  title: g,
+  title: t(`docs.group.${g}` as Parameters<typeof t>[0]),
   items: docs
     .filter((d) => d.data.group === g)
     .sort((a, b) => a.data.order - b.data.order)
-    .map((d) => ({ label: d.data.title, href: `/docs/${d.id}` })),
+    .map((d) => ({ label: d.data.title, href: l(`/docs/${d.id}`) })),
 }));
 
 const path = Astro.url.pathname.replace(/\/$/, '');
+const docsHref = l('/docs');
 
-// The GitHub source for a doc page is its MDX file; the landing page is index.astro.
+// The GitHub source for a doc page is always the English MDX / index (the
+// canonical source that gets edited), regardless of the rendered locale.
 const editUrl = slug
   ? `https://github.com/quenchworks/website/edit/main/src/content/docs/${slug}.mdx`
   : `https://github.com/quenchworks/website/edit/main/src/pages/docs/index.astro`;
@@ -37,7 +50,7 @@ const docTitle = slug ? docs.find((d) => d.id === slug)?.data.title : undefined;
 
 // Flattened, ordered list of all docs pages: the top-level index first,
 // then Guides and Reference items in their declared order.
-const flat = [{ label: 'Docs', href: '/docs' }, ...groups.flatMap((g) => g.items)];
+const flat = [{ label: t('docs.index'), href: docsHref }, ...groups.flatMap((g) => g.items)];
 const current = flat.findIndex((n) => n.href === path);
 const prev = current > 0 ? flat[current - 1] : null;
 const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : null;
@@ -49,14 +62,14 @@ const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : nul
     <aside class="mb-10 lg:mb-0">
       <div class="lg:sticky lg:top-24">
         <a
-          href="/docs"
-          aria-current={path === '/docs' ? 'page' : undefined}
+          href={docsHref}
+          aria-current={path === docsHref ? 'page' : undefined}
           class:list={[
             'font-mono text-xs uppercase tracking-widest transition-colors duration-200',
-            path === '/docs' ? 'text-paper' : 'text-ash hover:text-paper',
+            path === docsHref ? 'text-paper' : 'text-ash hover:text-paper',
           ]}
         >
-          Docs
+          {t('docs.index')}
         </a>
         <nav class="mt-4 flex flex-col gap-5" aria-label="Docs">
           {
@@ -95,7 +108,7 @@ const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : nul
           rel="noopener noreferrer"
           class="font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
         >
-          Edit this page on GitHub
+          {t('docs.edit')}
         </a>
       </div>
 
@@ -107,7 +120,7 @@ const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : nul
                 href={prev.href}
                 class="group flex flex-1 flex-col gap-1 rounded-xl border border-line px-4 py-3 transition-colors duration-200 hover:border-ash/40"
               >
-                <span class="font-mono text-[10px] uppercase tracking-widest text-ash/70">Previous</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-ash/70">{t('docs.prev')}</span>
                 <span class="text-sm text-ash transition-colors duration-200 group-hover:text-paper">&larr; {prev.label}</span>
               </a>
             ) : (
@@ -116,9 +129,9 @@ const next = current >= 0 && current < flat.length - 1 ? flat[current + 1] : nul
             {next ? (
               <a
                 href={next.href}
-                class="group flex flex-1 flex-col gap-1 rounded-xl border border-line px-4 py-3 text-right transition-colors duration-200 hover:border-ash/40"
+                class="group flex flex-1 flex-col gap-1 rounded-xl border border-line px-4 py-3 text-end transition-colors duration-200 hover:border-ash/40"
               >
-                <span class="font-mono text-[10px] uppercase tracking-widest text-ash/70">Next</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-ash/70">{t('docs.next')}</span>
                 <span class="text-sm text-ash transition-colors duration-200 group-hover:text-paper">{next.label} &rarr;</span>
               </a>
             ) : (

@@ -1,0 +1,58 @@
+---
+title: Construir una aplicación Go
+description: "La clásica construcción Go de dos etapas en QuenchWorks: compila un binario estático con CGO desactivado sobre la imagen go, luego cópialo sobre la diminuta base static para una imagen final que es poco más que tu binario."
+group: Build images
+order: 4
+---
+
+Go es el caso más limpio para las construcciones multi-etapa. Un programa Go compila a un único binario estático, así que la imagen de runtime no necesita nada más que ese archivo. Construye sobre la imagen `go`, copia el binario sobre `static`, y la imagen final es poco más que tu programa: sin conjunto de herramientas, sin shell, sin gestor de paquetes.
+
+Esto construye sobre `ghcr.io/quenchworks/images/go:1.25` y `ghcr.io/quenchworks/images/static`. La imagen `static` es la única imagen del catálogo etiquetada con `:latest`, porque no lleva ninguna versión de lenguaje propia.
+
+## El Dockerfile de dos etapas
+
+```dockerfile
+# Build stage: compile a fully static binary.
+FROM ghcr.io/quenchworks/images/go:1.25 AS build
+WORKDIR /src
+
+# CGO off makes the binary static so it runs on the static base with no libc.
+# The root filesystem is read-only, so point the build caches at /tmp.
+ENV CGO_ENABLED=0 \
+    GOOS=linux \
+    GOCACHE=/tmp/gocache \
+    GOMODCACHE=/tmp/gomodcache
+
+# Download modules first so the layer caches when only code changes.
+COPY go.mod go.sum ./
+RUN ["go", "mod", "download"]
+COPY . .
+RUN ["go", "build", "-trimpath", "-ldflags=-s -w", "-o", "/out/app", "./cmd/app"]
+
+# Runtime stage: just the binary on the tiny static base.
+FROM ghcr.io/quenchworks/images/static
+COPY --from=build /out/app /app
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["/app"]
+```
+
+## Por qué esto se mantiene diminuto
+
+<Steps>
+1. **Construcción.** La imagen `go` tiene el conjunto de herramientas completo. `CGO_ENABLED=0` produce un binario estático sin dependencia dinámica de libc, que es exactamente lo que la base `static` necesita. Las cachés van a `/tmp` porque la construcción se ejecuta sobre un sistema de archivos raíz de solo lectura.
+2. **Runtime.** `static` es una base mínima con un usuario nonroot y certificados CA, y poco más. Copia el único binario, establece el entrypoint y ya está. No hay compilador ni shell que dejar atrás.
+</Steps>
+
+<Notice type="tip">
+`-trimpath` y `-ldflags=-s -w` eliminan las rutas absolutas y los símbolos de depuración, lo que reduce el binario y mantiene las rutas de construcción fuera de la imagen. Con BuildKit también puedes cachear los módulos y las cachés de construcción entre construcciones: `RUN --mount=type=cache,target=/tmp/gocache --mount=type=cache,target=/tmp/gomodcache go build ...`.
+</Notice>
+
+<Notice type="warning">
+La base `static` no tiene shell y se ejecuta como nonroot, así que el `ENTRYPOINT` está en forma exec (un array JSON) y el contenedor se ejecuta como `uid 1001` sobre un sistema de archivos raíz de solo lectura. Si tu servicio necesita espacio temporal, escribe en `/tmp` o monta un volumen. Si realmente necesitas CGO, abandona la base static y ejecuta sobre una base de runtime con glibc, ya que un binario CGO no es estático.
+</Notice>
+
+## Siguiente
+
+- La misma base `static` funciona para cualquier lenguaje que compile a un binario estático, Rust incluido; construye con `ghcr.io/quenchworks/images/rust` y copia el binario.
+- [Fija por digest](/es/docs/pin-by-digest) para que cada construcción ejecute exactamente la base que se escaneó y firmó.

@@ -1,0 +1,55 @@
+---
+title: Etiquetas y versiones
+description: "Cómo se versionan las imágenes y los charts de QuenchWorks: etiquetas de versión de la aplicación, sin :latest, índices multi-arch, semver de los charts y digests sha256."
+group: Reference
+order: 1
+---
+
+Las imágenes se etiquetan por versión de la aplicación, nunca con `:latest`. Los charts usan su propio semver. Todo es también direccionable por digest `sha256`, que es lo que los charts fijan.
+
+## Etiquetas de imagen
+
+Cada imagen se etiqueta con la versión upstream de la aplicación que entrega, por ejemplo `redis:8.8.0`. Esa etiqueta es un índice multi-arch que cubre ambas arquitecturas, junto a las etiquetas por arquitectura:
+
+```text
+ghcr.io/quenchworks/images/redis:8.8.0          # multi-arch index (amd64 + arm64)
+ghcr.io/quenchworks/images/redis:8.8.0-amd64    # single arch
+ghcr.io/quenchworks/images/redis:8.8.0-arm64    # single arch
+```
+
+<Notice type="warning">
+No existe `:latest`. Una referencia sin etiqueta como `docker pull ghcr.io/quenchworks/images/redis` se resuelve a `:latest` y falla con `MANIFEST_UNKNOWN`. Descarga siempre una etiqueta de versión.
+</Notice>
+
+La versión actual se muestra en la página de cada [imagen](/es/images), o puedes listar las etiquetas tú mismo:
+
+```bash
+crane ls ghcr.io/quenchworks/images/redis
+```
+
+## Digests
+
+Cada etiqueta se resuelve a un digest `sha256` inmutable. Como las imágenes se reconstruyen desde el código fuente a diario y las construcciones desde fuente no son reproducibles bit a bit, la misma etiqueta de versión apunta a un nuevo digest después de cada reconstrucción. La firma, el SBOM y la procedencia SLSA se adjuntan al digest, y los digests antiguos permanecen publicados con sus atestaciones intactas, así que un digest que fijaste ayer sigue verificándose.
+
+Para una construcción que nunca se mueva por debajo de ti, fija por digest. Consulta [Fijar por digest](/es/docs/pin-by-digest).
+
+## Versiones de los charts
+
+Los charts son artefactos OCI etiquetados por el semver del chart, por ejemplo `redis:0.0.5`. Instalar sin una versión resuelve la versión publicada más alta; pasa `--version` para fijar una:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis              # latest chart
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+La versión del chart es independiente de la versión de la aplicación. Un chart referencia su imagen estrictamente por digest, así que instalar un chart siempre despliega la construcción de imagen exacta que se escaneó y firmó, sea cual sea su etiqueta.
+
+## Qué referencia usar
+
+| Lo que quieres | Usa |
+| --- | --- |
+| Ejecutar o verificar la construcción actual | la etiqueta de versión, p. ej. `redis:8.8.0` |
+| Fijar una construcción exacta e inmutable | el digest `@sha256:...` |
+| Instalar una versión específica del chart | `helm ... --version <chart-version>` |
+
+Para comprobar firmas y atestaciones contra cualquiera de estas, consulta [Verificar una firma](/es/docs/verify) y [SBOM y procedencia](/es/docs/sbom).

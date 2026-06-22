@@ -1,0 +1,39 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import CatalogList from '../../../components/CatalogList.astro';
+import { charts, chartCount, chartTiers, PAGE_SIZE } from '../../../data/charts';
+import { fetchArtifactHub } from '../../../data/artifacthub';
+
+// live chart + app versions at build time; falls back gracefully if AH is unreachable.
+const ah = await fetchArtifactHub();
+
+const entries = [...charts].sort((a, b) => a.name.localeCompare(b.name));
+const categories = [...new Set(charts.map((e) => e.category))].sort();
+const tierFilters = chartTiers.map((t) => ({ key: t, label: t[0].toUpperCase() + t.slice(1) }));
+
+// Page 1 lives here at /ar/charts. Pages 2..N are static routes under page/[page].
+const total = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
+const slice = entries.slice(0, PAGE_SIZE);
+---
+
+<Base
+  title="المخططات · Quenchworks"
+  description="تصفّح مخططات Helm المُحصّنة من QuenchWorks — مثبّتة بالبصمة الرقمية إلى صور خالية من الثغرات، وموقّعة بـ cosign، وناشر موثّق على ArtifactHub."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <CatalogList
+      kind="charts"
+      base="/charts"
+      all={entries}
+      ah={ah}
+      page={{ data: slice, current: 1, total }}
+      count={chartCount}
+      categories={categories}
+      tierFilters={tierFilters}
+    />
+  </main>
+  <Footer />
+</Base>

@@ -1,0 +1,118 @@
+---
+title: Construir una aplicación Node
+description: "Un Dockerfile multi-etapa endurecido para Node sobre las imágenes base node y pnpm de QuenchWorks: una etapa de dependencias de producción, una etapa de construcción y una etapa final ligera que entrega solo las dependencias de producción y la salida construida. Variantes pnpm, npm y Yarn."
+group: Build images
+order: 2
+---
+
+El objetivo para un servicio Node es una imagen final que lleve tu salida construida y tus `node_modules` de producción, y nada más. Sin dependencias de desarrollo, sin código fuente que no envías, sin caché del gestor de paquetes. Una construcción de tres etapas te lleva ahí: resuelve las dependencias de producción una vez, construye con el conjunto completo de dependencias en paralelo y luego ensambla una etapa de runtime limpia a partir de las dos.
+
+Estas construyen sobre `ghcr.io/quenchworks/images/node:24`. También existe `ghcr.io/quenchworks/images/pnpm:10`, una base node con pnpm ya habilitado a través de corepack, que ahorra el paso `corepack enable` en la variante pnpm.
+
+## El Dockerfile multi-etapa
+
+<Tabs>
+<Tab label="pnpm">
+```dockerfile
+# Build stage: pnpm is already enabled on the pnpm base image.
+FROM ghcr.io/quenchworks/images/pnpm:10 AS build
+WORKDIR /app
+
+# Resolve production dependencies on their own so the runtime stage can
+# copy just these. A cache mount keeps the pnpm store warm across builds.
+COPY package.json pnpm-lock.yaml ./
+RUN ["pnpm", "install", "--prod", "--frozen-lockfile"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Now install everything (incl. dev deps) and build.
+RUN ["pnpm", "install", "--frozen-lockfile"]
+COPY . .
+RUN ["pnpm", "run", "build"]
+
+# Runtime stage: a slim node base, nonroot, with only prod deps + dist.
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+<Tab label="npm">
+```dockerfile
+FROM ghcr.io/quenchworks/images/node:24 AS build
+WORKDIR /app
+
+# Production dependencies only, into their own copy.
+COPY package.json package-lock.json ./
+RUN ["npm", "ci", "--omit=dev"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Full install (incl. dev deps) and build.
+RUN ["npm", "ci"]
+COPY . .
+RUN ["npm", "run", "build"]
+
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+<Tab label="yarn">
+```dockerfile
+# Yarn (Classic) is preinstalled on the yarn base image.
+FROM ghcr.io/quenchworks/images/yarn:1 AS build
+WORKDIR /app
+
+# Production dependencies only.
+COPY package.json yarn.lock ./
+RUN ["yarn", "install", "--frozen-lockfile", "--production"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Full install (incl. dev deps) and build.
+RUN ["yarn", "install", "--frozen-lockfile"]
+COPY . .
+RUN ["yarn", "build"]
+
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+</Tabs>
+
+## Qué hace cada etapa
+
+<Steps>
+1. **Dependencias de producción.** Instala solo las dependencias de producción y luego cópialas a una ruta fija (`/prod_modules`). Este es el conjunto que la imagen final necesita, mantenido aparte de las dependencias de desarrollo que la construcción incorpora a continuación.
+2. **Construcción.** Instala el conjunto completo de dependencias, copia el código fuente y ejecuta la construcción. Esta etapa contiene el compilador, las dependencias de desarrollo y el código fuente, ninguno de los cuales se entrega.
+3. **Runtime.** Empieza de nuevo desde `node:24`, copia los `node_modules` de producción y el `dist/` construido, baja a `uid 1001` y arranca. El conjunto de herramientas se queda atrás.
+</Steps>
+
+<Notice type="tip">
+Con BuildKit puedes mantener la caché del gestor de paquetes entre construcciones con un montaje de caché, lo que es más rápido que volver a descargar cada vez. Para pnpm: `RUN --mount=type=cache,target=/pnpm/store pnpm install --frozen-lockfile`. El montaje de caché es una característica de tiempo de construcción y no acaba en la imagen, así que no afecta al runtime de solo lectura.
+</Notice>
+
+<Notice type="warning">
+Las imágenes base no tienen shell, así que cada `RUN`, `CMD` y `ENTRYPOINT` aquí está en forma exec (un array JSON). Una línea como `RUN npm ci && npm run build` necesitaría un shell y fallará; divídela en dos pasos `RUN` en forma exec como se muestra. La etapa de runtime se ejecuta como `USER 1001` sobre un sistema de archivos raíz de solo lectura, así que si tu aplicación escribe algo, apúntalo a `/tmp` o a un volumen montado.
+</Notice>
+
+## Siguiente
+
+- ¿Ejecutas un frontend estático en lugar de un servidor Node? Construye con `node`, luego sirve los recursos construidos desde `nginx`, o entrega un binario autocontenido sobre [`static`](/es/docs/build-go).
+- [Fija por digest](/es/docs/pin-by-digest) una vez que te decidas por una base, para que cada construcción ejecute exactamente lo que se escaneó y firmó.

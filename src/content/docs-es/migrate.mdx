@@ -1,0 +1,85 @@
+---
+title: Migrar desde Bitnami
+description: "Pasa de los charts e imágenes de Bitnami a QuenchWorks: el cambio de registro, en qué difiere la superficie de valores, qué se conserva y cómo migrar datos con estado de forma segura."
+group: Guides
+order: 2
+---
+
+QuenchWorks entrega el mismo software upstream (Redis, PostgreSQL, Kafka y el resto) compilado desde el código fuente en imágenes endurecidas, 0-CVE, con charts de Helm escritos de forma independiente a partir de la documentación de cada proyecto. El cambio de imagen es mecánico. Los valores de los charts se reexpresan, no se copian, porque los charts no derivan de los de Bitnami.
+
+## Lo único que siempre cambia: la referencia
+
+Todo se publica en GHCR como artefactos OCI bajo la organización QuenchWorks. La mayoría de los nombres de aplicación coinciden uno a uno, así que el cambio suele ser un buscar-y-reemplazar en la ruta del registro:
+
+```text
+# chart
+oci://registry-1.docker.io/bitnamicharts/redis   ->  oci://ghcr.io/quenchworks/charts/redis
+
+# image
+docker.io/bitnami/redis:7.4                       ->  ghcr.io/quenchworks/images/redis
+```
+
+Así, un release pasa de una línea a otra con el mismo nombre de release y el mismo namespace:
+
+```bash
+# before (Bitnami)
+helm install cache oci://registry-1.docker.io/bitnamicharts/redis
+
+# after (QuenchWorks)
+helm install cache oci://ghcr.io/quenchworks/charts/redis
+```
+
+## Qué se conserva y qué no
+
+La imagen es el mismo binario upstream, así que los formatos de datos en disco coinciden: un directorio de datos de PostgreSQL, un archivo RDB/AOF de Redis o un almacén compatible con MongoDB escrito bajo Bitnami es legible por la imagen de QuenchWorks de la misma versión mayor. Haz coincidir la versión mayor cuando hagas el cambio, exactamente como harías en cualquier actualización upstream.
+
+El chart es independiente, así que tu `values.yaml` de Bitnami no se transfiere literalmente. Los controles operativos se comparten entre todos los charts a través de la biblioteca [quench-common](/es/docs/configuration), así que lucen igual sea cual sea el almacén de datos que ejecutes, pero las claves difieren de las de Bitnami.
+
+## Traducir los valores
+
+Tres diferencias cubren la mayoría de los charts:
+
+- **La persistencia es plana.** Bitnami anida el almacenamiento bajo `primary.persistence` (y `readReplicas`, `secondary`, etcétera). QuenchWorks expone un único bloque `persistence`; la replicación, cuando un chart la admite, tiene su propio valor documentado en la página del chart.
+- **La imagen se fija por digest.** No hay `image.registry` ni `image.tag`. El chart referencia un digest `sha256` que CI mantiene al día, y quench-common rechaza a propósito una referencia que solo tenga etiqueta. Normalmente dejas el bloque de la imagen tal cual.
+- **Sin interruptores `global` de Bitnami.** Controles como `global.imageRegistry`, `global.security.allowInsecureImages` y los init containers de depuración/permisos de volumen de Bitnami no existen. Las imágenes ya se ejecutan como nonroot sobre un sistema de archivos raíz de solo lectura con todas las capacidades eliminadas, así que los parches de permisos que ellos sorteaban no son necesarios.
+
+```yaml
+# Bitnami shape                      # QuenchWorks shape
+auth:                               auth:
+  password: s3cret                    password: s3cret
+primary:                            persistence:
+  persistence:                        enabled: true
+    enabled: true                     size: 8Gi
+    size: 8Gi                       image:
+image:                                repository: ghcr.io/quenchworks/images/redis
+  registry: docker.io                 digest: "sha256:..."   # set by CI
+  repository: bitnami/redis
+```
+
+La autenticación está activada de forma predeterminada, igual que en Bitnami: establece `auth.password` (o deja que el chart genere una dentro de un Secret). Ejecuta `helm show values oci://ghcr.io/quenchworks/charts/<app>` para ver la superficie completa, y lee las notas de `config:` y `auth:` específicas de cada aplicación en la página de cada [chart](/es/charts).
+
+## Bases de datos integradas
+
+Cuando una aplicación necesita una base de datos (Keycloak, Gitea, Temporal), el chart incluye el chart de PostgreSQL de QuenchWorks como dependencia, la misma idea que los subcharts integrados de Bitnami. En su lugar, apúntalo a una base de datos externa mediante los valores `externalDatabase` del chart, documentados en la página del chart.
+
+## Migrar datos con estado
+
+Para cualquier cosa que contenga datos, trata el cambio como una migración de versión en lugar de un reemplazo en sitio:
+
+- Haz una copia de seguridad con la propia herramienta del motor (`pg_dump`, `mongodump`, `redis-cli --rdb`, etcétera).
+- Instala el chart de QuenchWorks en la versión mayor coincidente en un release nuevo.
+- Restaura en él, confirma que la aplicación lee los datos y luego redirige el tráfico.
+
+Para reutilizar directamente un PersistentVolumeClaim existente, vincúlalo con `persistence.existingClaim`, pero solo cuando la versión mayor y la disposición del volumen coincidan con lo que ese claim ya contiene.
+
+## Aplicaciones source-available
+
+Algunos almacenes de datos que la gente ejecutaba en Bitnami son source-available en lugar de código abierto. QuenchWorks los entrega y nombra una alternativa verdaderamente abierta para cada uno, así que una migración también puede ser una oportunidad para abandonar una licencia restrictiva. Consulta [Licencias](/es/docs/licensing) para las alternativas a MongoDB, Elasticsearch, CockroachDB y Dragonfly.
+
+## Después de cambiar
+
+- [Verifica la firma](/es/docs/verify) para saber que el artefacto vino del CI de QuenchWorks.
+- [Fija por digest](/es/docs/pin-by-digest) para ejecutar exactamente lo que se escaneó y firmó.
+- [Comprueba el SBOM y la procedencia](/es/docs/sbom) si necesitas un registro de la cadena de suministro para auditoría.
+
+¿Te falta una aplicación que ejecutabas en Bitnami? [Solicítala](mailto:info@quench-works.com?subject=App%20request) o consulta la [hoja de ruta](/es/roadmap).

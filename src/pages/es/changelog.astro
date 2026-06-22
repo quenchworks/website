@@ -1,0 +1,65 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const entries = (await getCollection('changelogEs')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+const iso = (d: Date) => d.toISOString().slice(0, 10);
+---
+
+<Base
+  title="Registro de cambios · Quenchworks"
+  description="Lo que se publicó en el catálogo de QuenchWorks: nuevas imágenes reforzadas, charts firmados y cambios en la cadena de suministro, lo más reciente primero."
+>
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Changelog,type:Page">
+    <header class="max-w-2xl">
+      <div class="flex flex-wrap items-center gap-3">
+        <p class="font-mono text-xs uppercase tracking-widest text-ash">Registro de cambios</p>
+        <a
+          href="/rss.xml"
+          class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" class="size-3" aria-hidden="true"><path d="M4 11a9 9 0 0 1 9 9h2.5A11.5 11.5 0 0 0 4 8.5V11Zm0 5a3 3 0 0 1 3 3h2.5A5.5 5.5 0 0 0 4 13.5V16Zm1.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"/></svg>
+          RSS
+        </a>
+      </div>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Registro de cambios</h1>
+      <p class="mt-4 leading-relaxed text-ash">
+        Lo que se publicó en el catálogo, lo más reciente primero. Nuevas imágenes reforzadas,
+        charts firmados y cambios en cómo se construye y verifica todo. Síguelo por RSS.
+      </p>
+    </header>
+
+    <ol class="mt-12 space-y-10">
+      {
+        entries.map((entry) => (
+          <li class="border-s border-line ps-6">
+            <time
+              datetime={iso(entry.data.date)}
+              class="font-mono text-xs uppercase tracking-widest text-ash"
+            >
+              {fmt(entry.data.date)}
+            </time>
+            <h2 class="mt-2 text-xl font-semibold tracking-tight">{entry.data.title}</h2>
+            <p class="mt-2 leading-relaxed text-ash">{entry.data.summary}</p>
+            {entry.data.tags && entry.data.tags.length > 0 && (
+              <div class="mt-3 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                {entry.data.tags.map((t) => (
+                  <span class="rounded bg-graphite px-2 py-0.5">{t}</span>
+                ))}
+              </div>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </main>
+  <Footer />
+</Base>

@@ -1,0 +1,24 @@
+---
+// Per-version image pages: /images/<slug>/<version>. Only images with more than
+// one published tag generate any pages here, and the newest tag is skipped
+// (it lives at the base /images/<slug> page) to avoid duplicate content.
+import ImageDetail from '../../../../components/ImageDetail.astro';
+import RuntimeDetail from '../../../../components/RuntimeDetail.astro';
+import { availableImages, canonicalTags, isRuntime } from '../../../../data/images';
+
+export function getStaticPaths() {
+  return availableImages.flatMap((e) => {
+    const tags = canonicalTags(e.versions);
+    // Skip the newest (index 0): that's the base page. Single-version images
+    // emit nothing.
+    return tags.slice(1).map((version) => ({
+      params: { slug: e.slug, version },
+      props: { entry: e, version },
+    }));
+  });
+}
+
+const { entry, version } = Astro.props;
+---
+
+{isRuntime(entry) ? <RuntimeDetail entry={entry} version={version} /> : <ImageDetail entry={entry} version={version} />}

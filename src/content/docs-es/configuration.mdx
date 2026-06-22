@@ -1,0 +1,107 @@
+---
+title: Configuración
+description: "La superficie de valores compartida que cada chart de QuenchWorks expone a través del chart de biblioteca quench-common: imagen, persistencia, recursos, planificación, contexto de seguridad, sondas y red."
+group: Reference
+order: 2
+---
+
+Cada chart depende de un único chart de biblioteca, `quench-common`, así que los controles operativos lucen igual sea cual sea el almacén de datos que ejecutes. Los ajustes específicos de cada aplicación viven bajo un bloque `config:` (y, cuando corresponde, `auth:`) documentado en la página de cada [chart](/es/charts); todo lo de abajo es compartido.
+
+## Imagen (fijada por digest)
+
+La imagen se referencia mediante el digest `sha256`, nunca por una etiqueta. `quench-common` rechaza a propósito una referencia que solo tenga etiqueta, de modo que un chart nunca pueda desplegar algo sin fijar. CI reescribe esto al último digest firmado en cada construcción de imagen, así que normalmente lo dejas tal cual.
+
+```yaml
+image:
+  repository: ghcr.io/quenchworks/images/postgresql
+  digest: "sha256:..."   # set by CI; override to pin a specific build
+  pullPolicy: IfNotPresent
+```
+
+## Persistencia
+
+Los charts con estado aprovisionan un PVC. Desactívalo para uso efímero, dimensiónalo, elige una clase o vincula un claim existente.
+
+```yaml
+persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: ""          # default class if empty
+  accessModes: ["ReadWriteOnce"]
+  existingClaim: ""         # bind an existing PVC instead
+```
+
+## Recursos
+
+```yaml
+resources:
+  requests: { cpu: 250m, memory: 256Mi }
+  limits:   { cpu: "1",  memory: 1Gi }
+```
+
+Algunos motores dimensionan su heap o su memoria a partir de estos valores (o de un valor dedicado); las páginas de sus charts lo señalan.
+
+## Planificación y ubicación
+
+Los controles habituales de Kubernetes se pasan directamente: `nodeSelector`, `affinity`, `tolerations`, `topologySpreadConstraints`, `priorityClassName`, `schedulerName`, `terminationGracePeriodSeconds` y `updateStrategy`.
+
+## Entorno y volúmenes adicionales
+
+Inyecta configuración sin bifurcar el chart:
+
+```yaml
+extraEnvVars:
+  - name: MY_FLAG
+    value: "1"
+extraEnvVarsCM: ""          # name of a ConfigMap to envFrom
+extraEnvVarsSecret: ""      # name of a Secret to envFrom
+extraVolumes: []
+extraVolumeMounts: []
+initContainers: []
+sidecars: []
+```
+
+## Contexto de seguridad
+
+Los valores predeterminados endurecidos provienen de `quench-common`: `runAsNonRoot` (uid/gid/fsGroup 1001), seccomp `RuntimeDefault`, sistema de archivos raíz de solo lectura, sin escalada de privilegios y todas las capacidades eliminadas. Cualquier cosa que establezcas se fusiona sobre los valores predeterminados, así que solo anulas lo que necesitas.
+
+```yaml
+podSecurityContext: {}        # your keys win over the hardened defaults
+containerSecurityContext: {}
+```
+
+## Sondas
+
+Cada chart incluye sondas de liveness y readiness razonables. Ajusta los tiempos, o reemplaza una sonda por completo.
+
+```yaml
+livenessProbe:  { initialDelaySeconds: 30 }   # merge timing overrides
+readinessProbe: { periodSeconds: 10 }
+customLivenessProbe:  {}   # set to replace the probe entirely
+customReadinessProbe: {}
+customStartupProbe:   {}
+```
+
+## Red y disponibilidad
+
+Una `NetworkPolicy` está activada de forma predeterminada y es el límite de confianza para los charts que se entregan sin autenticación a nivel de aplicación. Un PodDisruptionBudget protege frente a las interrupciones voluntarias.
+
+```yaml
+networkPolicy:
+  enabled: true
+  allowExternal: false      # restrict ingress to same-namespace pods
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+serviceAccount: { create: true, name: "", annotations: {} }
+rbac: { create: false }
+```
+
+## Consulta el esquema
+
+Cada chart incluye un `values.schema.json`, así que Helm valida lo que pasas y tu editor puede autocompletarlo. Lee los valores completos de un chart en línea:
+
+```bash
+helm show values oci://ghcr.io/quenchworks/charts/postgresql
+helm show readme  oci://ghcr.io/quenchworks/charts/postgresql
+```

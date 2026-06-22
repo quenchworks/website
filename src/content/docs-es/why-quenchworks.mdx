@@ -1,0 +1,43 @@
+---
+title: Por qué QuenchWorks
+description: El problema que resuelve QuenchWorks, lo que te ofrece cada artefacto y para quién es.
+group: Guides
+order: 0.5
+---
+
+QuenchWorks es un catálogo gratuito e independiente de imágenes de contenedor endurecidas y charts de Helm. Cada imagen se compila desde el código fuente sobre Wolfi, se escanea hasta cero CVE corregibles, se firma y se fija por digest. Cada chart se reescribe desde cero sobre una biblioteca compartida y despliega esas imágenes exactas.
+
+## El problema
+
+Muchos equipos se construyeron sobre el catálogo gratuito de Bitnami: imágenes y charts `bitnami/*` para Redis, PostgreSQL, Kafka y docenas más. Ese catálogo gratuito se está retirando, y las construcciones endurecidas y siempre parcheadas quedan ahora detrás de una suscripción de pago. Si dependías de esas imágenes, te quedan tres opciones: pagar, fijarte a una etiqueta sin mantenimiento que deja de recibir correcciones de CVE, o reconstruir el endurecimiento tú mismo para cada almacén de datos que ejecutes.
+
+QuenchWorks es la cuarta opción. Es una fuente mantenida y gratuita del mismo tipo de artefacto: una imagen endurecida más un chart que la despliega, para las aplicaciones que los equipos realmente ejecutan en producción.
+
+## Lo que obtienes
+
+Cada imagen del catálogo es:
+
+- **Compilada desde el código fuente sobre Wolfi**, así que el conjunto de paquetes es mínimo y actual, no heredado de una imagen base grande.
+- **Escaneada hasta cero CVE corregibles** con Trivy en cada construcción. El escaneo se ejecuta contra el digest que se entrega.
+- **Firmada con cosign** usando GitHub OIDC, así que no hay ninguna clave que distribuir y puedes demostrar qué flujo de trabajo la construyó.
+- **Entregada con un SBOM y procedencia de construcción SLSA** como attestations, así que puedes inventariar el contenido y rastrear la construcción.
+- **Sin privilegios de root sobre un sistema de archivos raíz de solo lectura** con todas las capacidades de Linux eliminadas, así que se ejecuta bajo una política PodSecurity restringida sin configuración adicional.
+- **Multiarquitectura**, construida tanto para amd64 como para arm64.
+
+Los charts fijan por digest la imagen que despliegan, así que una instalación nueva siempre ejecuta la construcción actual y atestiguada.
+
+## Para quién es
+
+- Equipos que migran del catálogo gratuito de Bitnami y quieren un reemplazo directo y mantenido.
+- Cualquiera que necesite pasar una verificación de CVE o una auditoría de la cadena de suministro sin endurecer a mano cada dependencia.
+- Equipos de plataforma que quieren artefactos firmados y fijados por digest que puedan verificar en CI antes de desplegar.
+
+## Lo que no es
+
+QuenchWorks es un proyecto de sala limpia (clean-room). No está afiliado con Bitnami, VMware ni Broadcom, y los charts no se copian de los suyos. Los valores y las disposiciones diferirán, así que una migración es un movimiento real, no un cambio de nombre. La [guía de migración](/es/docs/migrate) lo recorre paso a paso.
+
+## Próximos pasos
+
+- [Primeros pasos](/es/docs/get-started): instala un chart y descarga una imagen.
+- [Migrar desde Bitnami](/es/docs/migrate): mapea tus valores existentes.
+- [Verificar una firma](/es/docs/verify): demuestra un artefacto antes de confiar en él.

@@ -1,0 +1,49 @@
+---
+title: Verificar una firma
+description: Verifica la firma de una imagen o chart de QuenchWorks con cosign. Sin clave, no hay clave que distribuir.
+group: Guides
+order: 3
+---
+
+Cada imagen y cada chart se firma con cosign usando GitHub OIDC. No hay ninguna clave pública que distribuir. La verificación comprueba que el artefacto fue producido por un flujo de trabajo de GitHub Actions de QuenchWorks y registrado en el registro de transparencia de Sigstore.
+
+## Instalar cosign
+
+Usa tu gestor de paquetes, o descarga un binario de versión del proyecto cosign:
+
+<Tabs>
+<Tab label="macOS">
+```bash
+brew install cosign            # macOS
+```
+</Tab>
+<Tab label="Desde el código fuente">
+```bash
+go install github.com/sigstore/cosign/v2/cmd/cosign@latest   # from source
+```
+</Tab>
+</Tabs>
+
+## Verificar una imagen
+
+Apunta cosign a la imagen por su etiqueta de versión (las imágenes no tienen `:latest`) y comprueba la identidad del firmante. Sustituye `redis:8.8.0` por cualquier imagen y la versión mostrada en su [página](/es/images):
+
+```bash
+cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+Un resultado válido imprime el sujeto del certificado, que es el flujo de trabajo exacto que construyó la imagen, junto con la entrada del registro Rekor. Si falta la firma o la identidad no coincide, cosign sale con un código distinto de cero.
+
+## Verificar un chart
+
+Los charts son artefactos OCI, así que el mismo comando funciona contra la etiqueta de versión del chart:
+
+```bash
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+Para verificar una construcción específica en lugar de la etiqueta, pasa un digest `@sha256:...`. Consulta [Fijar por digest](/es/docs/pin-by-digest) para saber cómo resolver uno.

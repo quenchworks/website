@@ -1,0 +1,110 @@
+---
+title: Construir una aplicación Python
+description: "Un Dockerfile multi-etapa endurecido para Python sobre las imágenes base python, uv y poetry de QuenchWorks: construye un virtualenv con todas las dependencias de construcción en una etapa, luego cópialo sobre una base python ligera que se ejecuta como nonroot."
+group: Build images
+order: 3
+---
+
+Los wheels y el instrumental de construcción de Python hacen que valga la pena una separación limpia. Compila e instala todo en un virtualenv autocontenido en la etapa de construcción y luego copia ese único directorio sobre una base `python` ligera para el runtime. Los compiladores y las cabeceras que algunos paquetes necesitan en el momento de la instalación nunca llegan a la imagen que despliegas.
+
+Estas construyen sobre `ghcr.io/quenchworks/images/python:3.13`. Para la resolución de dependencias está `ghcr.io/quenchworks/images/uv` (un instalador y resolvedor rápido) y `ghcr.io/quenchworks/images/poetry`.
+
+## El Dockerfile multi-etapa
+
+<Tabs>
+<Tab label="pip">
+```dockerfile
+# Build stage: build a venv with everything installed into it.
+FROM ghcr.io/quenchworks/images/python:3.13 AS build
+WORKDIR /app
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH"
+
+RUN ["python", "-m", "venv", "/opt/venv"]
+COPY requirements.txt ./
+RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
+COPY . .
+
+# Runtime stage: copy the venv onto a clean python base, run nonroot.
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /opt/venv /opt/venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+<Tab label="uv">
+```dockerfile
+# Build stage: uv resolves and installs into a project venv, fast.
+FROM ghcr.io/quenchworks/images/uv:0.11 AS build
+WORKDIR /app
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv \
+    UV_COMPILE_BYTECODE=1
+
+# Install dependencies first (cached) from the lockfile, then the project.
+COPY pyproject.toml uv.lock ./
+RUN ["uv", "sync", "--frozen", "--no-install-project", "--no-dev"]
+COPY . .
+RUN ["uv", "sync", "--frozen", "--no-dev"]
+
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV PATH="/opt/venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /opt/venv /opt/venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+<Tab label="poetry">
+```dockerfile
+# Build stage: Poetry installs into a venv at a known path.
+FROM ghcr.io/quenchworks/images/poetry:2 AS build
+WORKDIR /app
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_NO_INTERACTION=1
+
+COPY pyproject.toml poetry.lock ./
+RUN ["poetry", "install", "--only", "main", "--no-root"]
+COPY . .
+RUN ["poetry", "install", "--only", "main"]
+
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV PATH="/app/.venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /app/.venv /app/.venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+</Tabs>
+
+## Qué hace cada etapa
+
+<Steps>
+1. **Construcción.** Crea un virtualenv en una ruta fija e instala cada dependencia en él. Esta etapa carga el resolvedor, cualquier backend de construcción y las dependencias de construcción de los wheels. Instalar las dependencias antes de copiar el resto del código fuente mantiene esa capa cacheada cuando solo cambia tu código.
+2. **Runtime.** Empieza de nuevo desde `python:3.13`, copia el venv y la aplicación, pon el venv en el `PATH`, baja a `uid 1001` y arranca. Nada del conjunto de herramientas de construcción se entrega.
+</Steps>
+
+<Notice type="info">
+La mayoría de los paquetes populares publican wheels precompilados para glibc, así que un venv copiado se ejecuta sobre la base de runtime sin recompilar. Cosas como pydantic-core u otras extensiones nativas se resuelven a un wheel manylinux que coincide con la glibc del runtime, así que no se necesita compilador en tiempo de ejecución. Si una dependencia no tiene wheel y debe compilarse desde el código fuente, esa compilación ocurre en la etapa de construcción, donde vive el conjunto de herramientas, y solo se reenvía el venv resultante.
+</Notice>
+
+<Notice type="warning">
+Las imágenes base no tienen shell, así que cada llamada a `pip` / `uv` / `poetry` está en forma exec (un array JSON), y una cadena con `&&` no funcionará. La etapa de runtime se ejecuta como `USER 1001` sobre un sistema de archivos raíz de solo lectura: establece una caché y un directorio de configuración escribibles (`ENV XDG_CACHE_HOME=/tmp` y similares) si una biblioteca escribe en tiempo de ejecución, y escribe los datos de la aplicación en `/tmp` o en un volumen montado en lugar de en la imagen.
+</Notice>
+
+## Siguiente
+
+- ¿Sirves con un servidor WSGI/ASGI? Ponlo en el venv (gunicorn, uvicorn) e invócalo directamente en forma exec: `CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8000"]`.
+- [Fija por digest](/es/docs/pin-by-digest) para que cada construcción ejecute exactamente la base que se escaneó y firmó.

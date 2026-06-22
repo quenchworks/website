@@ -1,0 +1,75 @@
+---
+title: Instalación air-gapped
+description: Replica las imágenes y los charts de QuenchWorks en un registro privado o air-gapped, redirige los charts y sigue verificando firmas y atestaciones.
+group: Guides
+order: 6
+---
+
+Todo vive en `ghcr.io/quenchworks` como artefactos OCI estándar, así que cualquier registro o caché de paso (pull-through) puede albergar una copia. Replica lo que necesites, redirige los charts, y las firmas y atestaciones vienen con ello para que sigas verificando dentro del perímetro.
+
+Todo el procedimiento son cuatro pasos; cada uno se detalla abajo.
+
+<Steps>
+1. Replica la imagen con `cosign copy` para que la firma y las atestaciones viajen con ella.
+2. Replica el chart con `helm pull` y `helm push`.
+3. Redirige el chart a tu registro con `--set image.repository=...`, conservando el digest fijado.
+4. Verifica dentro del perímetro contra tu propio registro.
+</Steps>
+
+## Replicar una imagen
+
+Usa `cosign copy` para que la firma y las atestaciones de SBOM y procedencia viajen con la imagen, no solo las capas:
+
+```bash
+# copies the image, its cosign signature, and the SBOM + provenance attestations
+cosign copy \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  registry.internal/quenchworks/redis:8.8.0
+```
+
+Si solo necesitas los bits y vas a verificar antes de la copia, `crane` o `skopeo` también funcionan y conservan el índice multi-arch:
+
+```bash
+# image only (no signature/attestations); preserves the multi-arch index
+crane copy \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  registry.internal/quenchworks/redis:8.8.0
+```
+
+Fija por digest cuando puedas. La etiqueta de versión es cómoda, pero un digest es lo que garantiza que los bytes replicados coinciden con lo que se escaneó y firmó. Resuelve uno con `crane digest` (consulta [Fijar por digest](/es/docs/pin-by-digest)).
+
+## Replicar un chart
+
+Los charts también son artefactos OCI. Descarga una versión y luego súbela a tu registro:
+
+```bash
+helm pull oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm push redis-0.0.5.tgz oci://registry.internal/charts
+```
+
+## Redirigir el chart a tu registro
+
+Un chart referencia su imagen por digest bajo un repositorio configurable. Anula el repositorio para que apunte a tu réplica en el momento de la instalación, conservando el mismo digest:
+
+```bash
+helm install my-redis oci://registry.internal/charts/redis --version 0.0.5 \
+  --set image.repository=registry.internal/quenchworks/redis
+```
+
+La biblioteca `quench-common` rechaza a propósito una referencia de imagen que solo tenga etiqueta, así que tu réplica debe llevar el digest que el chart fija. Replicar por digest (o replicar la etiqueta exacta a la que resuelve el chart) mantiene ese contrato intacto.
+
+## Verificar dentro del perímetro
+
+La identidad del firmante no cambia cuando replicas, así que la misma comprobación funciona contra tu registro:
+
+```bash
+cosign verify registry.internal/quenchworks/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+La verificación sigue contactando con el registro de transparencia público de Sigstore (Rekor) y las raíces de Fulcio. En una red totalmente desconectada, verifica a la entrada (en el límite de la réplica, donde tienes salida a internet) en lugar de en el momento del despliegue, o ejecuta una réplica interna de Rekor. Consulta [Verificar una firma](/es/docs/verify) y [SBOM y procedencia](/es/docs/sbom).
+
+## Caché de paso (pull-through)
+
+Si tu registro lo admite, una caché de paso apuntada a `ghcr.io` evita copiar nada a mano: las descargas pueblan la caché en el primer uso y la sirven después. Fija por digest para que una entrada en caché nunca sea ambigua.

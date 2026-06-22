@@ -1,5 +1,5 @@
 // Thin loader for the best-practice, runtime-specific Dockerfiles shown on the
-// /runtimes/<slug> detail pages. The Dockerfile bodies live as real, lintable,
+// /images/<slug> detail pages. The Dockerfile bodies live as real, lintable,
 // syntax-highlightable files under ./dockerfiles/<slug>.dockerfile; this module
 // only pairs each one with a one-line note and exposes a lookup.
 

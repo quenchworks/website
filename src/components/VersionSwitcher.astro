@@ -5,6 +5,8 @@
  * every other version links to its dedicated page (`/<section>/<slug>/<version>`).
  * The current chip is highlighted and carries aria-current.
  */
+import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
+
 interface Props {
   /** URL section, e.g. "runtimes" | "images" | "charts". */
   section: string;
@@ -17,9 +19,12 @@ interface Props {
   label?: string;
 }
 
-const { section, slug, versions, current, label = 'Version' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { section, slug, versions, current, label = t('versions.label') } = Astro.props;
 const latest = versions[0];
-const hrefFor = (v: string) => (v === latest ? `/${section}/${slug}` : `/${section}/${slug}/${v}`);
+const hrefFor = (v: string) => localizeUrl(lang, v === latest ? `/${section}/${slug}` : `/${section}/${slug}/${v}`);
 ---
 
 {versions.length > 1 && (
@@ -38,12 +43,12 @@ const hrefFor = (v: string) => (v === latest ? `/${section}/${slug}` : `/${secti
                 ? 'border border-paper bg-paper text-ink'
                 : 'border border-line bg-ink text-paper hover:border-paper/40',
             ]}
-          >{v}{v === latest ? ' · latest' : ''}</a>
+          >{v}{v === latest ? t('versions.latestSuffix') : ''}</a>
         );
       })}
     </div>
     <p class="mt-2 text-xs text-ash">
-      The latest line lives at the base page; older lines have their own page so you can pin and verify exactly that version.
+      {t('versions.note')}
     </p>
   </section>
 )}

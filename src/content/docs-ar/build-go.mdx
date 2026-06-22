@@ -1,0 +1,58 @@
+---
+title: بناء تطبيق Go
+description: "بناء Go الكلاسيكي ذو المرحلتين على QuenchWorks: جمّع ملفًا ثنائيًا ساكنًا مع تعطيل CGO على صورة go، ثم انسخه إلى أساس static الصغير لتحصل على صورة نهائية لا تزيد كثيرًا عن ملفك الثنائي."
+group: Build images
+order: 4
+---
+
+Go هي أنظف حالة للبناء المتعدد المراحل. يُجمَّع برنامج Go إلى ملف ثنائي ساكن واحد، فلا تحتاج صورة التشغيل إلى شيء سوى ذلك الملف. ابنِ على صورة `go`، وانسخ الملف الثنائي إلى `static`، فتكون الصورة النهائية لا تزيد كثيرًا عن برنامجك: لا سلسلة أدوات، ولا غلاف، ولا مدير حزم.
+
+يبني هذا على `ghcr.io/quenchworks/images/go:1.25` و`ghcr.io/quenchworks/images/static`. صورة `static` هي الصورة الوحيدة في الكتالوج الموسومة بـ `:latest`، لأنها لا تحمل إصدار لغة خاصًّا بها.
+
+## ملف Dockerfile ذو المرحلتين
+
+```dockerfile
+# Build stage: compile a fully static binary.
+FROM ghcr.io/quenchworks/images/go:1.25 AS build
+WORKDIR /src
+
+# CGO off makes the binary static so it runs on the static base with no libc.
+# The root filesystem is read-only, so point the build caches at /tmp.
+ENV CGO_ENABLED=0 \
+    GOOS=linux \
+    GOCACHE=/tmp/gocache \
+    GOMODCACHE=/tmp/gomodcache
+
+# Download modules first so the layer caches when only code changes.
+COPY go.mod go.sum ./
+RUN ["go", "mod", "download"]
+COPY . .
+RUN ["go", "build", "-trimpath", "-ldflags=-s -w", "-o", "/out/app", "./cmd/app"]
+
+# Runtime stage: just the binary on the tiny static base.
+FROM ghcr.io/quenchworks/images/static
+COPY --from=build /out/app /app
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["/app"]
+```
+
+## لماذا تبقى هذه صغيرة
+
+<Steps>
+1. **البناء.** تحمل صورة `go` سلسلة الأدوات الكاملة. ينتج `CGO_ENABLED=0` ملفًا ثنائيًا ساكنًا بلا اعتماد ديناميكي على libc، وهذا بالضبط ما يحتاجه أساس `static`. تذهب الذاكرات إلى `/tmp` لأن البناء يجري على نظام ملفات جذر للقراءة فقط.
+2. **التشغيل.** `static` أساس أدنى به مستخدم بدون صلاحيات الجذر وشهادات CA، وليس بكثير غير ذلك. انسخ الملف الثنائي الواحد، واضبط نقطة الدخول، وتكون قد انتهيت. لا مُجمِّع ولا غلاف لتتركه خلفك.
+</Steps>
+
+<Notice type="tip">
+يزيل `-trimpath` و`-ldflags=-s -w` المسارات المطلقة ورموز التنقيح، ما يصغّر الملف الثنائي ويُبقي مسارات البناء خارج الصورة. مع BuildKit يمكنك أيضًا تخزين ذاكرات الوحدات والبناء بين عمليات البناء: `RUN --mount=type=cache,target=/tmp/gocache --mount=type=cache,target=/tmp/gomodcache go build ...`.
+</Notice>
+
+<Notice type="warning">
+أساس `static` بلا غلاف ويعمل بدون صلاحيات الجذر، لذا فإن `ENTRYPOINT` بصيغة exec (مصفوفة JSON) وتعمل الحاوية كـ `uid 1001` على نظام ملفات جذر للقراءة فقط. إذا احتاجت خدمتك إلى مساحة عمل، اكتب إلى `/tmp` أو ركّب وحدة تخزين. إذا احتجت فعلًا إلى CGO، فأسقِط أساس static وشغّل على أساس تشغيل بـ glibc بدلًا من ذلك، لأن ملف CGO الثنائي ليس ساكنًا.
+</Notice>
+
+## التالي
+
+- يعمل أساس `static` نفسه مع أي لغة تُجمَّع إلى ملف ثنائي ساكن، Rust منها؛ ابنِ بـ `ghcr.io/quenchworks/images/rust` وانسخ الملف الثنائي.
+- [ثبّت بالبصمة الرقمية](/ar/docs/pin-by-digest) ليجري كل بناء بالضبط على الأساس الذي جرى فحصه وتوقيعه.

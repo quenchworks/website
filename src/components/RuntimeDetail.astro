@@ -8,6 +8,8 @@ import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { fetchPackageDetail } from '../data/artifacthub';
 import { dockerfileFor } from '../data/dockerfiles';
 import { slugify } from '../data/slugify';
+import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
+import { localizedSummary } from '../i18n/content';
 
 interface Props {
   /** The runtime catalog entry. */
@@ -17,6 +19,10 @@ interface Props {
 }
 
 const { entry, version } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const l = (p: string) => localizeUrl(lang, p);
+const summary = localizedSummary(lang, 'images', entry.slug, entry.summary);
 const image = entry.image || `${ghcr}/images/${entry.slug}`;
 
 // Turn a build timestamp into a short, friendly label.
@@ -30,31 +36,31 @@ function freshness(iso: string): { abs: string; rel: string } {
 
 // Map each runtime slug to the build guide that covers its ecosystem.
 const BUILD_GUIDE: Record<string, { slug: string; label: string }> = {
-  node: { slug: 'build-node', label: 'Build a Node app' },
-  bun: { slug: 'build-node', label: 'Build a Node app' },
-  deno: { slug: 'build-node', label: 'Build a Node app' },
-  pnpm: { slug: 'build-node', label: 'Build a Node app' },
-  yarn: { slug: 'build-node', label: 'Build a Node app' },
-  python: { slug: 'build-python', label: 'Build a Python app' },
-  uv: { slug: 'build-python', label: 'Build a Python app' },
-  poetry: { slug: 'build-python', label: 'Build a Python app' },
-  go: { slug: 'build-go', label: 'Build a Go or Rust binary' },
-  rust: { slug: 'build-go', label: 'Build a Go or Rust binary' },
-  static: { slug: 'build-go', label: 'Build a Go or Rust binary' },
-  jdk: { slug: 'build-java', label: 'Build a Java app' },
-  jre: { slug: 'build-java', label: 'Build a Java app' },
-  maven: { slug: 'build-java', label: 'Build a Java app' },
-  gradle: { slug: 'build-java', label: 'Build a Java app' },
-  dotnet: { slug: 'build-dotnet', label: 'Build a .NET app' },
-  'dotnet-runtime': { slug: 'build-dotnet', label: 'Build a .NET app' },
-  aspnet: { slug: 'build-dotnet', label: 'Build a .NET app' },
+  node: { slug: 'build-node', label: t('runtime.guide.buildNode') },
+  bun: { slug: 'build-node', label: t('runtime.guide.buildNode') },
+  deno: { slug: 'build-node', label: t('runtime.guide.buildNode') },
+  pnpm: { slug: 'build-node', label: t('runtime.guide.buildNode') },
+  yarn: { slug: 'build-node', label: t('runtime.guide.buildNode') },
+  python: { slug: 'build-python', label: t('runtime.guide.buildPython') },
+  uv: { slug: 'build-python', label: t('runtime.guide.buildPython') },
+  poetry: { slug: 'build-python', label: t('runtime.guide.buildPython') },
+  go: { slug: 'build-go', label: t('runtime.guide.buildGoRust') },
+  rust: { slug: 'build-go', label: t('runtime.guide.buildGoRust') },
+  static: { slug: 'build-go', label: t('runtime.guide.buildGoRust') },
+  jdk: { slug: 'build-java', label: t('runtime.guide.buildJava') },
+  jre: { slug: 'build-java', label: t('runtime.guide.buildJava') },
+  maven: { slug: 'build-java', label: t('runtime.guide.buildJava') },
+  gradle: { slug: 'build-java', label: t('runtime.guide.buildJava') },
+  dotnet: { slug: 'build-dotnet', label: t('runtime.guide.buildDotnet') },
+  'dotnet-runtime': { slug: 'build-dotnet', label: t('runtime.guide.buildDotnet') },
+  aspnet: { slug: 'build-dotnet', label: t('runtime.guide.buildDotnet') },
 };
 
 // live, build-time facts from ArtifactHub.
 const ah = await fetchPackageDetail(entry.slug);
 const appVersion = ah?.appVersion ?? entry.version;
 
-const guide = BUILD_GUIDE[entry.slug] ?? { slug: 'build-images', label: 'Build hardened images' };
+const guide = BUILD_GUIDE[entry.slug] ?? { slug: 'build-images', label: t('runtime.guide.buildImages') };
 
 // The version list driving the page is the published canonical tags (full
 // X.Y.Z leaves, newest first), same as the routes — so the switcher, table, and
@@ -86,7 +92,7 @@ const ld = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: entry.name,
-  description: entry.summary,
+  description: summary,
   applicationCategory: entry.category,
   operatingSystem: 'Linux',
   softwareVersion: version,
@@ -96,13 +102,13 @@ const ld = {
 };
 ---
 
-<Base title={`${entry.name}${titleSuffix} base image · Quenchworks`} description={entry.summary} image={`/og/${entry.slug}.png`}>
+<Base title={`${entry.name}${titleSuffix} base image · Quenchworks`} description={summary} image={`/og/${entry.slug}.png`}>
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta={`title:${entry.name} runtime,type:Runtime`}>
     <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-widest text-ash" aria-label="Breadcrumb">
-      <a href="/runtimes" class="transition-colors hover:text-paper">Runtimes</a>
+      <a href={l('/images')} class="transition-colors hover:text-paper">{t('detail.breadcrumb.images')}</a>
       <span class="text-line" aria-hidden="true">/</span>
-      <a href={`/runtimes#${categorySlug}`} class="rounded border border-line bg-graphite px-2 py-0.5 text-paper transition-colors hover:border-paper/40">{entry.category}</a>
+      <a href={l(`/images/category/${categorySlug}`)} class="rounded border border-line bg-graphite px-2 py-0.5 text-paper transition-colors hover:border-paper/40">{entry.category}</a>
       <span class="text-line" aria-hidden="true">/</span>
       <span class="text-paper">{entry.name}{isLatest ? '' : ` ${version}`}</span>
     </nav>
@@ -112,39 +118,39 @@ const ld = {
       <div>
         <h1 class="text-4xl font-bold tracking-tight">{entry.name}{isLatest ? '' : ` ${version}`}</h1>
         <p class="mt-1 font-mono text-xs uppercase tracking-widest text-ash">
-          Runtime · <a href={`/runtimes#${categorySlug}`} class="underline-offset-4 transition-colors hover:text-paper hover:underline">{entry.category}</a> · {entry.tier} · v{version}
+          {t('detail.label.runtime')} · <a href={l(`/images/category/${categorySlug}`)} class="underline-offset-4 transition-colors hover:text-paper hover:underline">{entry.category}</a> · {entry.tier} · v{version}
         </p>
       </div>
     </header>
 
     <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-      <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper">0&nbsp;fixable&nbsp;CVEs</span>
-      <span class="rounded border border-line bg-graphite px-2 py-0.5">nonroot</span>
-      <span class="rounded border border-line bg-graphite px-2 py-0.5">cosign&nbsp;signed</span>
-      <span class="rounded border border-line bg-graphite px-2 py-0.5">SPDX&nbsp;SBOM</span>
-      <span class="rounded border border-line bg-graphite px-2 py-0.5">SLSA&nbsp;provenance</span>
-      <span class="rounded border border-line bg-graphite px-2 py-0.5">amd64&nbsp;·&nbsp;arm64</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper">{t('detail.badge.fixableCves')}</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.nonroot')}</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.cosignSigned')}</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.spdxSbom')}</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.slsaProvenance')}</span>
+      <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.arch')}</span>
     </div>
 
-    <p class="mt-6 max-w-2xl text-ash">{entry.summary}</p>
+    <p class="mt-6 max-w-2xl text-ash">{summary}</p>
 
-    <VersionSwitcher section="runtimes" slug={entry.slug} versions={versions} current={version} label="Version line" />
+    <VersionSwitcher section="images" slug={entry.slug} versions={versions} current={version} label={t('versions.lineLabel')} />
 
     <section class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
       {([
-        ['Image', `${image}:${version}`],
-        ['Signed', 'cosign keyless'],
-        ['SBOM', 'SPDX, on digest'],
-        ['Provenance', 'SLSA build'],
-        ['Architectures', 'amd64, arm64'],
-        ['Runs as', 'nonroot (uid 1001)'],
-        ...(sizeLabel ? [['Image size', sizeLabel]] as [string, string][] : []),
-        ...(fresh ? [['Last rebuilt', fresh.abs]] as [string, string][] : []),
-      ] as [string, string][]).map(([k, v]) => (
+        [t('detail.meta.image'), `${image}:${version}`, true],
+        [t('detail.meta.signed'), t('detail.meta.signedValue'), false],
+        [t('detail.meta.sbom'), t('detail.meta.sbomOnDigest'), false],
+        [t('detail.meta.provenance'), t('detail.meta.provenanceValue'), false],
+        [t('detail.meta.architectures'), t('detail.meta.archValue'), false],
+        [t('detail.meta.runsAs'), 'nonroot (uid 1001)', false],
+        ...(sizeLabel ? [[t('detail.meta.imageSize'), sizeLabel, false]] as [string, string, boolean][] : []),
+        ...(fresh ? [[t('detail.meta.lastRebuilt'), fresh.abs, false]] as [string, string, boolean][] : []),
+      ] as [string, string, boolean][]).map(([k, v, isImg]) => (
         <div class="rounded-lg border border-line bg-graphite p-3">
           <div class="font-mono text-[10px] uppercase tracking-widest text-ash">{k}</div>
           <div class="mt-1 break-all text-sm font-medium text-paper">
-            {k === 'Image' ? <a href={pkgUrl} class="underline-offset-4 transition-colors hover:text-ash hover:underline">{v}</a> : v}
+            {isImg ? <a href={pkgUrl} class="underline-offset-4 transition-colors hover:text-ash hover:underline">{v}</a> : v}
           </div>
         </div>
       ))}
@@ -153,36 +159,36 @@ const ld = {
     {allVersions.length > 0 && (
       <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
         <div class="flex flex-wrap items-baseline justify-between gap-2">
-          <h2 class="text-xl font-semibold tracking-tight">Published versions</h2>
-          <span class="font-mono text-xs uppercase tracking-widest text-ash">{allVersions.length} {allVersions.length === 1 ? 'tag' : 'tags'}</span>
+          <h2 class="text-xl font-semibold tracking-tight">{t('detail.versions.heading')}</h2>
+          <span class="font-mono text-xs uppercase tracking-widest text-ash">{allVersions.length} {allVersions.length === 1 ? t('detail.versions.tagOne') : t('detail.versions.tagMany')}</span>
         </div>
         <p class="mt-2 text-sm leading-relaxed text-ash">
-          Each tag is a multi-arch index (amd64 + arm64) pinned by digest. Tagged by version, never <code class="font-mono">:latest</code>.
+          {t('detail.versions.intro')} <code class="font-mono">:latest</code>.
         </p>
         <div class="mt-4 overflow-x-auto">
-          <table class="w-full min-w-[34rem] text-left text-sm">
+          <table class="w-full min-w-[34rem] text-start text-sm">
             <thead>
               <tr class="border-b border-line font-mono text-[10px] uppercase tracking-widest text-ash">
-                <th scope="col" class="py-2 pr-4 font-medium">Version</th>
-                <th scope="col" class="py-2 pr-4 font-medium">Size</th>
-                <th scope="col" class="py-2 pr-4 font-medium">Published</th>
-                <th scope="col" class="py-2 font-medium">Digest</th>
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.versions.colVersion')}</th>
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.versions.colSize')}</th>
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.versions.colPublished')}</th>
+                <th scope="col" class="py-2 font-medium">{t('detail.versions.colDigest')}</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-line/60">
               {allVersions.map((v) => (
                 <tr>
-                  <td class="py-2.5 pr-4">
+                  <td class="py-2.5 pe-4">
                     <a
-                      href={v.version === newest ? `/runtimes/${entry.slug}` : `/runtimes/${entry.slug}/${v.version}`}
+                      href={v.version === newest ? `/images/${entry.slug}` : `/images/${entry.slug}/${v.version}`}
                       class:list={['font-mono tabular-nums underline-offset-4 transition-colors hover:underline', v.version === version ? 'text-paper' : 'text-paper/90 hover:text-paper']}
                     >{v.version}</a>
                     {v.version === newest && (
-                      <span class="ml-2 rounded border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] uppercase tracking-widest text-ash">latest</span>
+                      <span class="ms-2 rounded border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] uppercase tracking-widest text-ash">{t('detail.versions.latest')}</span>
                     )}
                   </td>
-                  <td class="py-2.5 pr-4 tabular-nums text-ash">{v.size ?? '—'}</td>
-                  <td class="py-2.5 pr-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : '—'}</td>
+                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.size ?? '—'}</td>
+                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : '—'}</td>
                   <td class="py-2.5 font-mono text-xs text-ash" title={v.digest}>{v.digest ? `${v.digest.slice(0, 19)}…` : '—'}</td>
                 </tr>
               ))}
@@ -193,30 +199,28 @@ const ld = {
     )}
 
     <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
-      <h2 class="text-xl font-semibold tracking-tight">Use it as a base image</h2>
+      <h2 class="text-xl font-semibold tracking-tight">{t('runtime.base.heading')}</h2>
       <p class="mt-2 text-sm leading-relaxed text-ash">
-        Reference it in the <code class="font-mono">FROM</code> line of your Dockerfile. Nonroot, read-only
-        root filesystem, built for amd64 and arm64.
+        {t('runtime.base.intro')}
       </p>
 
       <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>FROM {ref}</code></pre>
 
-      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Or pull it directly</p>
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('runtime.base.orPull')}</p>
       <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>docker pull {ref}</code></pre>
 
       <dl class="mt-5 space-y-2.5 text-sm">
-        <div class="flex justify-between gap-3"><dt class="text-ash">Version line</dt><dd class="font-medium">{version}</dd></div>
-        {appVersion && <div class="flex justify-between gap-3"><dt class="text-ash">Latest line</dt><dd class="font-medium">{appVersion}</dd></div>}
-        <div class="flex justify-between gap-3"><dt class="text-ash">Architectures</dt><dd class="font-medium">amd64, arm64</dd></div>
-        <div class="flex justify-between gap-3"><dt class="text-ash">Runs as</dt><dd class="font-medium">nonroot (uid 1001)</dd></div>
-        <div class="flex justify-between gap-3"><dt class="text-ash">Root filesystem</dt><dd class="font-medium">read-only</dd></div>
-        <div class="flex justify-between gap-3"><dt class="text-ash">License</dt><dd class:list={['font-medium', entry.caution ? 'text-amber-400' : '']}>{entry.license}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">{t('runtime.field.versionLine')}</dt><dd class="font-medium">{version}</dd></div>
+        {appVersion && <div class="flex justify-between gap-3"><dt class="text-ash">{t('runtime.field.latestLine')}</dt><dd class="font-medium">{appVersion}</dd></div>}
+        <div class="flex justify-between gap-3"><dt class="text-ash">{t('detail.meta.architectures')}</dt><dd class="font-medium">amd64, arm64</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">{t('detail.meta.runsAs')}</dt><dd class="font-medium">nonroot (uid 1001)</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">{t('detail.meta.rootFs')}</dt><dd class="font-medium">{t('detail.meta.rootFsValue')}</dd></div>
+        <div class="flex justify-between gap-3"><dt class="text-ash">{t('detail.field.license')}</dt><dd class:list={['font-medium', entry.caution ? 'text-amber-400' : '']}>{entry.license}</dd></div>
       </dl>
 
-      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">Verify the supply chain</p>
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('detail.verify.heading')}</p>
       <p class="mt-2 text-sm leading-relaxed text-ash">
-        This image is cosign-signed and carries an SPDX SBOM and a SLSA build-provenance
-        attestation on the same digest. Check all three before you build on it:
+        {t('detail.verify.introBuild')}
       </p>
       <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature — built and signed by QuenchWorks CI</span>
 cosign verify {ref} \
@@ -224,44 +228,43 @@ cosign verify {ref} \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># 2. SLSA build provenance — which workflow built it, from what</span>
-cosign verify-attestation --type slsaprovenance {ref} \
+cosign verify-attestation --type https://slsa.dev/provenance/v1 {ref} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># 3. SPDX SBOM — the package inventory</span>
-cosign verify-attestation --type spdxjson {ref} \
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 {ref} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
-      <p class="mt-2 text-xs text-ash">See the <a href="/docs/sbom" class="text-paper underline-offset-4 hover:underline">SBOM &amp; provenance guide</a> for reading the SBOM and using these checks in CI.</p>
+      <p class="mt-2 text-xs text-ash">{t('detail.verify.guidePre')} <a href={l('/docs/sbom')} class="text-paper underline-offset-4 hover:underline">{t('detail.verify.guideLink')}</a> {t('detail.verify.guidePost')}</p>
 
       <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
-        <a href={`/docs/${guide.slug}`} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">{guide.label} &rarr;</a>
-        <a href={`https://github.com/orgs/quenchworks/packages/container/package/images%2F${entry.slug}`} class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">View package</a>
+        <a href={l(`/docs/${guide.slug}`)} class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">{guide.label} &rarr;</a>
+        <a href={`https://github.com/orgs/quenchworks/packages/container/package/images%2F${entry.slug}`} class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">{t('detail.action.viewPackage')}</a>
       </div>
     </section>
 
     {selected && (
       <section class="mt-8 rounded-2xl border border-line bg-graphite p-6">
-        <h2 class="text-xl font-semibold tracking-tight">Best-practice Dockerfile for {version}</h2>
+        <h2 class="text-xl font-semibold tracking-tight">{t('runtime.dockerfile.heading')} {version}</h2>
         <p class="mt-2 text-sm leading-relaxed text-ash">{dockerfile?.note}</p>
         <div class="mt-4">
           <div class="mb-3 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
             <span class="rounded border border-line bg-ink px-2 py-0.5 text-paper">{ref}</span>
             {sizeLabel && <span class="rounded border border-line bg-ink px-2 py-0.5">{sizeLabel}</span>}
-            {fresh && <span class="rounded border border-line bg-ink px-2 py-0.5">rebuilt&nbsp;{fresh.rel}</span>}
+            {fresh && <span class="rounded border border-line bg-ink px-2 py-0.5">{t('runtime.dockerfile.rebuilt')}{fresh.rel}</span>}
           </div>
           <Code code={selected.code} lang="dockerfile" />
         </div>
         <p class="mt-4 text-xs text-ash">
-          This Dockerfile is pinned to the {version} line. For the line-by-line walkthrough and
-          ecosystem variants (npm/Yarn, pip/uv/Poetry, Maven/Gradle), see the
-          <a href={`/docs/${guide.slug}`} class="text-paper underline-offset-4 hover:underline"> {guide.label}</a> guide.
+          {t('runtime.dockerfile.notePre')} {version} {t('runtime.dockerfile.notePost')}
+          <a href={l(`/docs/${guide.slug}`)} class="text-paper underline-offset-4 hover:underline"> {guide.label}</a>{t('runtime.dockerfile.guideSuffix')}
         </p>
       </section>
     )}
 
     <p class="mt-8 text-sm text-ash">
-      Upstream project: <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
+      {t('detail.upstream')} <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
     </p>
   </main>
   <script type="application/ld+json" set:html={JSON.stringify(ld)} is:inline />

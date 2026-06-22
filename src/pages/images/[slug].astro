@@ -4,18 +4,17 @@
 // versions[], falling back to the catalog/app version). Multi-version images
 // get extra pages at /images/<slug>/<version>.
 import ImageDetail from '../../components/ImageDetail.astro';
-import { serviceImages, canonicalTags } from '../../data/images';
+import RuntimeDetail from '../../components/RuntimeDetail.astro';
+import { availableImages, canonicalTags, isRuntime } from '../../data/images';
 
 export function getStaticPaths() {
-  return serviceImages
-    .filter((e) => e.status === 'available')
-    .map((e) => {
-      const version = canonicalTags(e.versions)[0] ?? (e.version ?? '');
-      return { params: { slug: e.slug }, props: { entry: e, version } };
-    });
+  return availableImages.map((e) => {
+    const version = canonicalTags(e.versions)[0] ?? (e.version ?? '');
+    return { params: { slug: e.slug }, props: { entry: e, version } };
+  });
 }
 
 const { entry, version } = Astro.props;
 ---
 
-<ImageDetail entry={entry} version={version} />
+{isRuntime(entry) ? <RuntimeDetail entry={entry} version={version} /> : <ImageDetail entry={entry} version={version} />}

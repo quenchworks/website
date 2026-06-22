@@ -1,0 +1,88 @@
+---
+title: Instalar un chart con Helm
+description: Instala, configura, actualiza y elimina un chart de QuenchWorks. Los charts se instalan directamente desde el registro, sin ningún repositorio que añadir.
+group: Guides
+order: 1.5
+---
+
+Los charts de QuenchWorks se publican en GHCR como artefactos OCI. No hay ningún repositorio de Helm que añadir ni ninguna cuenta que crear. Necesitas Helm 3.8 o más reciente (el soporte OCI está activado de forma predeterminada desde la 3.8.0).
+
+## Instalar
+
+Instala un chart por su referencia OCI. Sustituye `redis` por cualquier chart y la versión mostrada en su [página](/es/charts):
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis
+```
+
+Fija la versión del chart para que una actualización sea algo que hagas a propósito, no una sorpresa:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+## Configurar
+
+La autenticación está activada de forma predeterminada. El chart genera una contraseña dentro de un Secret en la primera instalación. Para establecer la tuya propia, o para crear una base de datos de aplicación donde el chart lo admita, pasa valores:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
+  --set auth.password='change-me'
+```
+
+Para cualquier cosa más allá de uno o dos valores, usa un archivo:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis -f my-values.yaml
+```
+
+Cada chart incluye un `values.schema.json`, así que Helm valida lo que pasas antes de renderizar nada. Consulta [Configuración](/es/docs/configuration) para las claves de persistencia, recursos, planificación y contexto de seguridad que comparten todos los charts.
+
+## Inspeccionar antes de instalar
+
+Descarga los valores y los manifiestos renderizados sin tocar el clúster:
+
+```bash
+helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+## Verificar antes de instalar
+
+Los charts son artefactos OCI, así que cosign los verifica por etiqueta de la misma forma que verifica una imagen:
+
+```bash
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+Un resultado válido imprime el flujo de trabajo que construyó el chart y su entrada en el registro Rekor. Para verificar una construcción específica en lugar de la etiqueta, pasa un digest `@sha256:...`. Consulta [Verificar una firma](/es/docs/verify) y [Fijar por digest](/es/docs/pin-by-digest).
+
+## Actualizar y revertir
+
+Actualiza a una versión más reciente del chart con la misma referencia:
+
+```bash
+helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.6
+```
+
+Si algo parece estar mal, revierte a la revisión anterior:
+
+```bash
+helm rollback my-redis
+```
+
+## Desinstalar
+
+```bash
+helm uninstall my-redis
+```
+
+Helm deja atrás los PersistentVolumeClaims a propósito para que tus datos sobrevivan a una reinstalación. Elimínalos a mano si quieres recuperar el almacenamiento.
+
+## Próximos pasos
+
+- [Configuración](/es/docs/configuration): persistencia, recursos, planificación y contexto de seguridad.
+- [Fijar por digest](/es/docs/pin-by-digest): ejecuta exactamente lo que se escaneó y firmó.
+- [Instalación air-gapped](/es/docs/air-gapped): reubica charts e imágenes en un registro privado.

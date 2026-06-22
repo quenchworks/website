@@ -1,0 +1,75 @@
+---
+title: التثبيت في بيئة معزولة
+description: انسخ صور ومخططات QuenchWorks إلى سجلّ خاص أو معزول، وأعِد توجيه المخططات، وواصِل التحقّق من التوقيعات والشهادات.
+group: Guides
+order: 6
+---
+
+كل شيء موجود في `ghcr.io/quenchworks` كأدوات OCI قياسية، فيستطيع أي سجلّ أو ذاكرة تخزين مؤقت تمريرية الاحتفاظ بنسخة. انسخ ما تحتاجه، وأعِد توجيه المخططات، وتأتي معها التوقيعات والشهادات فتواصل التحقّق داخل المحيط.
+
+الإجراء كله أربع خطوات؛ كلّ واحدة موضّحة أدناه.
+
+<Steps>
+1. انسخ الصورة بـ `cosign copy` لينتقل معها التوقيع والشهادات.
+2. انسخ المخطط بـ `helm pull` و`helm push`.
+3. أعِد توجيه المخطط إلى سجلّك بـ `--set image.repository=...`، مع الإبقاء على البصمة المثبّتة.
+4. تحقّق داخل المحيط مقابل سجلّك الخاص.
+</Steps>
+
+## نسخ صورة
+
+استخدم `cosign copy` لينتقل التوقيع وشهادتا قائمة المكوّنات والمنشأ مع الصورة، لا الطبقات وحدها:
+
+```bash
+# copies the image, its cosign signature, and the SBOM + provenance attestations
+cosign copy \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  registry.internal/quenchworks/redis:8.8.0
+```
+
+إذا كنت تحتاج إلى البتّات فقط وستتحقّق قبل النسخ، فإن `crane` أو `skopeo` يعملان أيضًا ويحافظان على الفهرس المتعدد المعماريات:
+
+```bash
+# image only (no signature/attestations); preserves the multi-arch index
+crane copy \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  registry.internal/quenchworks/redis:8.8.0
+```
+
+ثبّت بالبصمة حيثما استطعت. وسم الإصدار مريح، لكن البصمة هي ما يضمن أن البتّات المنسوخة تطابق ما جرى فحصه وتوقيعه. حُلّ واحدةً بـ `crane digest` (راجع [التثبيت بالبصمة الرقمية](/ar/docs/pin-by-digest)).
+
+## نسخ مخطط
+
+المخططات أدوات OCI أيضًا. اسحب إصدارًا، ثم ادفعه إلى سجلّك:
+
+```bash
+helm pull oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm push redis-0.0.5.tgz oci://registry.internal/charts
+```
+
+## إعادة توجيه المخطط إلى سجلّك
+
+يشير المخطط إلى صورته بالبصمة تحت مستودع قابل للضبط. تجاوز المستودع إلى نسختك المنسوخة عند التثبيت، مع الإبقاء على البصمة نفسها:
+
+```bash
+helm install my-redis oci://registry.internal/charts/redis --version 0.0.5 \
+  --set image.repository=registry.internal/quenchworks/redis
+```
+
+ترفض مكتبة `quench-common` المرجع المعتمد على وسم وحده عن قصد، لذا يجب أن تحمل نسختك المنسوخة البصمة التي يثبّتها المخطط. النسخ بالبصمة (أو نسخ الوسم الدقيق الذي يَحُلّه المخطط) يُبقي ذلك العقد سليمًا.
+
+## التحقّق داخل المحيط
+
+لا تتغيّر هوية الموقّع عند النسخ، فيعمل الفحص نفسه مقابل سجلّك:
+
+```bash
+cosign verify registry.internal/quenchworks/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+ما زال التحقّق يتّصل بسجلّ شفافية Sigstore العام (Rekor) وبجذور Fulcio. في شبكة منفصلة كليًّا، تحقّق عند الدخول (عند حدّ النسخ، حيث لديك منفذ خروج) لا عند النشر، أو شغّل نسخة Rekor داخلية. راجع [التحقّق من توقيع](/ar/docs/verify) و[SBOM والمنشأ](/ar/docs/sbom).
+
+## ذاكرة التخزين المؤقت التمريرية
+
+إذا دعم سجلّك ذلك، فإن ذاكرة تخزين مؤقت تمريرية موجّهة إلى `ghcr.io` تُغنيك عن نسخ أي شيء يدويًا: تملأ عمليات السحب الذاكرة عند أول استخدام وتخدم منها بعد ذلك. ثبّت بالبصمة كي لا يكون أي مدخل مخزّن غامضًا أبدًا.

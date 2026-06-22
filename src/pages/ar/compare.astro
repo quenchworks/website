@@ -1,0 +1,375 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+
+// Vendor order; QuenchWorks stays first so it keeps the highlighted column.
+// Each `cells` array below has one entry per vendor, in this same order.
+const vendors: string[] = ['QuenchWorks', 'Bitnami', 'Chainguard', 'Docker', 'RapidFort', 'Minimus'];
+
+// Each cell is { v: short verdict, n?: short note }. `v` stays in English because
+// it doubles as a semantic key for tone() + the verdict label map; the displayed
+// text comes from `verdictLabel`. Notes are translated prose.
+type Cell = { v: string; n?: string };
+type Row = { label: string; cells: Cell[] };
+
+// Display label per verdict key (Arabic).
+const verdictLabel: Record<string, string> = {
+  Free: 'مجاني',
+  Paid: 'مدفوع',
+  Freemium: 'مجاني-جزئيًا',
+  Varies: 'يختلف',
+  Yes: 'نعم',
+  No: 'لا',
+  Partial: 'جزئي',
+  'n/a': 'غير منطبق',
+};
+const vt = (v: string): string => verdictLabel[v] ?? v;
+
+const rows: Row[] = [
+  {
+    label: 'السعر / الطبقة المجانية',
+    cells: [
+      { v: 'Free' },
+      { v: 'Paid', n: 'Bitnami Secure Images تجاري؛ تبقى مجموعة مجتمعية مُحصّنة بأحدث إصدار فقط وسجلّ قديم مجمّد' },
+      { v: 'Freemium', n: 'مجموعة صغيرة من صور Starter مجانية؛ الكتالوج الكامل اشتراك مدفوع' },
+      { v: 'Free', n: 'فُتحت Docker Hardened Images مجانًا مفتوحة المصدر بترخيص Apache-2.0 في ديسمبر 2025' },
+      { v: 'Varies', n: 'منصّة تجارية؛ تسعير الوصول إلى الصور غير منشور علنًا' },
+      { v: 'Paid', n: 'تجاري؛ يوجد برنامج مجاني مفتوح المصدر للمشاريع المؤهّلة' },
+    ],
+  },
+  {
+    label: 'مبني من المصدر على Wolfi',
+    cells: [
+      { v: 'Yes' },
+      { v: 'No', n: 'تحصين قائم على Debian، لا Wolfi' },
+      { v: 'Yes', n: 'قائم على Wolfi' },
+      { v: 'No', n: 'مبني على Debian وAlpine' },
+      { v: 'No', n: 'صور رسمية مُنسّقة/مُحسّنة، لا إعادة بناء على Wolfi' },
+      { v: 'No', n: 'بناء مملوك من المصدر، لا Wolfi' },
+    ],
+  },
+  {
+    label: 'هدف صفر ثغرات مع إعادة بناء يومية',
+    cells: [
+      { v: 'Yes', n: 'بوابة Trivy صارمة؛ ثغرة قابلة للإصلاح تُفشل البناء' },
+      { v: 'Yes', n: 'هدف شبه صفر ثغرات؛ الوتيرة غير محدّدة علنًا هنا' },
+      { v: 'Yes', n: 'هدف شبه صفر ثغرات مع إعادة بناء متكرّرة' },
+      { v: 'Yes', n: 'هدف شبه صفر ثغرات؛ الطبقات المدفوعة تضيف اتفاقية مستوى خدمة للمعالجة' },
+      { v: 'Yes', n: 'هدف شبه صفر ثغرات عبر تحصين مستمر' },
+      { v: 'Yes', n: 'هدف شبه صفر ثغرات؛ الطبقات المدفوعة تضيف اتفاقية مستوى خدمة للمعالجة' },
+    ],
+  },
+  {
+    label: 'موقّع (cosign دون مفتاح)',
+    cells: [
+      { v: 'Yes' },
+      { v: 'Yes', n: 'صور موقّعة' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes', n: 'توقيع تشفيري' },
+      { v: 'Yes', n: 'توقيعات cosign' },
+    ],
+  },
+  {
+    label: 'SBOM (SPDX أو CycloneDX)',
+    cells: [
+      { v: 'Yes', n: 'SPDX' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes', n: 'SPDX وCycloneDX' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+    ],
+  },
+  {
+    label: 'منشأ بناء SLSA',
+    cells: [
+      { v: 'Yes' },
+      { v: 'Partial', n: 'تختلف الشهادات حسب العرض' },
+      { v: 'Yes', n: 'SLSA Build Level 2' },
+      { v: 'Yes', n: 'SLSA Build Level 3' },
+      { v: 'Yes', n: 'SLSA Level 3 (حسب المورّد)' },
+      { v: 'Yes', n: 'متوائم مع SLSA Level 3 (حسب المورّد)' },
+    ],
+  },
+  {
+    label: 'متعدد المعماريات (amd64 + arm64)',
+    cells: [
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Yes' },
+      { v: 'Varies', n: 'غير مؤكّد عبر الكتالوج' },
+      { v: 'Varies', n: 'غير مؤكّد من مصدر أولي' },
+    ],
+  },
+  {
+    label: 'مخططات Helm مُضمّنة',
+    cells: [
+      { v: 'Yes' },
+      { v: 'Yes', n: 'خلف الكتالوج المدفوع' },
+      { v: 'No', n: 'مُركّز على الصور' },
+      { v: 'Yes' },
+      { v: 'Partial', n: 'صور متوافقة مع المخططات؛ تتكامل مع المخططات الموجودة' },
+      { v: 'Yes', n: 'مخططات Helm مُتاحة' },
+    ],
+  },
+  {
+    label: 'المخططات تثبّت الصور بالبصمة الرقمية',
+    cells: [
+      { v: 'Yes' },
+      { v: 'Varies', n: 'غير مؤكّد هنا' },
+      { v: 'n/a' },
+      { v: 'Varies', n: 'غير مؤكّد هنا' },
+      { v: 'n/a', n: 'لا مخططات من الطرف الأول' },
+      { v: 'Varies', n: 'غير مؤكّد هنا' },
+    ],
+  },
+  {
+    label: 'شفافية الترخيص، مع تمييز البدائل النظيفة',
+    cells: [
+      { v: 'Yes', n: 'التطبيقات متاحة المصدر مُعلّمة، مع ذِكر بديل نظيف OSI' },
+      { v: 'Partial' },
+      { v: 'Partial' },
+      { v: 'Partial' },
+      { v: 'Partial' },
+      { v: 'Partial' },
+    ],
+  },
+  {
+    label: 'مفتوح ومجاني للتحقّق',
+    cells: [
+      { v: 'Yes', n: 'صور ومخططات ومسارات بناء عامة' },
+      { v: 'Partial', n: 'الكتالوج الكامل محجوب خلف اشتراك' },
+      { v: 'Partial', n: 'الكتالوج الكامل محجوب خلف اشتراك' },
+      { v: 'Yes', n: 'كتالوج مجاني مفتوح المصدر مع شهادات عامة' },
+      { v: 'Partial', n: 'منصّة تجارية؛ ليست كتالوجًا مفتوحًا بالكامل' },
+      { v: 'Partial', n: 'تجاري؛ برنامج مفتوح المصدر للمشاريع المؤهّلة' },
+    ],
+  },
+];
+
+// Group the flat capability list into thematic sections. Mapping is by row label.
+const groupOrder = ['الوصول والتكلفة', 'البناء والتحصين', 'سلسلة التوريد', 'المخططات والترخيص'] as const;
+const rowGroup: Record<string, (typeof groupOrder)[number]> = {
+  'السعر / الطبقة المجانية': 'الوصول والتكلفة',
+  'مفتوح ومجاني للتحقّق': 'الوصول والتكلفة',
+  'مبني من المصدر على Wolfi': 'البناء والتحصين',
+  'هدف صفر ثغرات مع إعادة بناء يومية': 'البناء والتحصين',
+  'متعدد المعماريات (amd64 + arm64)': 'البناء والتحصين',
+  'موقّع (cosign دون مفتاح)': 'سلسلة التوريد',
+  'SBOM (SPDX أو CycloneDX)': 'سلسلة التوريد',
+  'منشأ بناء SLSA': 'سلسلة التوريد',
+  'مخططات Helm مُضمّنة': 'المخططات والترخيص',
+  'المخططات تثبّت الصور بالبصمة الرقمية': 'المخططات والترخيص',
+  'شفافية الترخيص، مع تمييز البدائل النظيفة': 'المخططات والترخيص',
+};
+const groupedRows = groupOrder.map((title) => ({ title, rows: rows.filter((r) => rowGroup[r.label] === title) }));
+
+// Pick a visual treatment per verdict word without adding any color accent.
+function tone(v: string): string {
+  const yes = v.toLowerCase();
+  if (yes === 'yes' || yes === 'free') return 'text-paper';
+  // Everything else (No, Paid, Partial, Varies, Freemium, n/a) is muted.
+  return 'text-ash';
+}
+
+// The handful of things that set QuenchWorks apart, called out above the grid.
+const differentiators: { label: string; body: string }[] = [
+  { label: 'مجاني، دون حساب', body: 'اسحب الصور وانشر المخططات دون اشتراك ودون تسجيل دخول ودون سجلّ لإضافته.' },
+  { label: 'عام بالكامل، قابل للتحقّق', body: 'الصور والمخططات والإثبات (SBOM ومنشأ SLSA) عامة ليفحصها أي شخص.' },
+  { label: 'مخططات مثبّتة بالبصمة الرقمية', body: 'تشير مخططات Helm الموقّعة إلى صورتها عبر sha256، لا عبر وسم متغيّر.' },
+  { label: 'صدق الترخيص', body: 'التطبيقات متاحة المصدر مُعلّمة كذلك، ولكلٍّ منها بديل نظيف OSI مذكور.' },
+];
+
+// One-line, neutral snapshot per vendor (same order as `vendors`); tier drives the pill.
+const vendorMeta: { name: string; tier: string; tierLabel: string; blurb: string }[] = [
+  { name: 'QuenchWorks', tier: 'Free', tierLabel: 'مجاني', blurb: 'كتالوج مُحصّن مستقل وعام بالكامل. صور مبنية على Wolfi ومخططات Helm موقّعة مثبّتة بالبصمة الرقمية، دون حاجة إلى حساب.' },
+  { name: 'Bitnami', tier: 'Paid', tierLabel: 'مدفوع', blurb: 'Bitnami Secure Images التجاري من Broadcom. سُحب كتالوج المجتمع المجاني، تاركًا وراءه سجلًّا قديمًا مجمّدًا.' },
+  { name: 'Chainguard', tier: 'Freemium', tierLabel: 'مجاني-جزئيًا', blurb: 'صور مصغّرة متميّزة قائمة على Wolfi. مجموعة Starter صغيرة مجانية؛ الكتالوج الكامل اشتراك مدفوع.' },
+  { name: 'Docker', tier: 'Free', tierLabel: 'مجاني', blurb: 'Docker Hardened Images، فُتحت ككتالوج مجاني مفتوح المصدر بترخيص Apache-2.0 أواخر 2025. مبنية على Debian وAlpine.' },
+  { name: 'RapidFort', tier: 'Varies', tierLabel: 'يختلف', blurb: 'صور مُنسّقة ومُحسّنة تُزيل سطح الهجوم من الحاويات الرسمية. منصّة تجارية.' },
+  { name: 'Minimus', tier: 'Paid', tierLabel: 'مدفوع', blurb: 'صور مصغّرة مملوكة من المصدر. تجارية، مع برنامج مجاني للمشاريع المؤهّلة مفتوحة المصدر.' },
+];
+
+// Pill treatment for a price tier; monochrome, with Free carrying the emphasis.
+function pillTone(tier: string): string {
+  return tier === 'Free' ? 'border-paper/40 text-paper' : 'border-line text-ash';
+}
+---
+
+<Base
+  title="QuenchWorks مقابل مزوّدي الصور المُحصّنة · مقارنة"
+  description="مقارنة واقعية ومحافظة بين QuenchWorks وBitnami وChainguard وDocker Hardened Images وRapidFort وMinimus عبر السعر والتحصين والتوقيع وقوائم SBOM والمنشأ ومخططات Helm."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:QuenchWorks vs Bitnami, Chainguard, Docker, RapidFort, Minimus,type:Compare">
+    <header class="max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-widest text-ash">المقارنة</p>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">QuenchWorks مقابل مزوّدي الصور المُحصّنة</h1>
+      <p class="mt-4 leading-relaxed text-ash">
+        صار مجال الصور المُحصّنة منخفضة الثغرات مزدحمًا الآن: Bitnami (Broadcom) وChainguard
+        وDocker Hardened Images وRapidFort وMinimus جميعها تطرح صورًا موقّعة ومصغّرة مع قوائم
+        SBOM ومنشأ. الفروق في الوصول والمنهج. نقلت Bitnami كتالوجها إلى عرض تجاري وجمّدت سجلًّا
+        قديمًا؛ وتُتيح Chainguard مجموعة صغيرة مجانية وتحجب البقية خلف اشتراك؛ وفتحت Docker صور
+        Hardened Images مجانًا بمصدر Apache-2.0 أواخر 2025؛ وRapidFort وMinimus منصّتان تجاريتان.
+        QuenchWorks مجاني، ومبني على Wolfi، وعام بالكامل: صور، ومخططات موقّعة مثبّتة بالبصمة
+        الرقمية، ومسارات بناء يمكن لأي شخص قراءتها. الجدول أدناه محافظ عن قصد. وحيث لم نتمكّن من
+        تأكيد حقيقة عن منافس من مصدر أولي، نُعلّمها "يختلف" أو "جزئي" بدل التخمين. تحقّق من كل
+        ادّعاء بنفسك.
+      </p>
+    </header>
+
+    <!-- Where QuenchWorks is different -->
+    <section class="mt-12">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-ash">أين يختلف QuenchWorks</h2>
+      <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          differentiators.map((d) => (
+            <div class="rounded-xl border border-line bg-graphite p-5">
+              <p class="text-sm font-semibold text-paper">{d.label}</p>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{d.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- The providers at a glance -->
+    <section class="mt-12">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-ash">المزوّدون في لمحة</h2>
+      <div class="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          vendorMeta.map((v) => (
+            <div class:list={['rounded-xl border bg-graphite p-5', v.name === 'QuenchWorks' ? 'border-paper/40' : 'border-line']}>
+              <div class="flex items-center justify-between gap-3">
+                <p class="text-base font-semibold text-paper">{v.name}</p>
+                <span class:list={['shrink-0 rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest', pillTone(v.tier)]}>{v.tierLabel}</span>
+              </div>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{v.blurb}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Feature-by-feature deep dive -->
+    <h2 class="mt-14 font-mono text-xs uppercase tracking-widest text-ash">ميزة بميزة</h2>
+
+    <!-- Desktop / tablet table -->
+    <div class="mt-4 hidden overflow-x-auto rounded-2xl border border-line sm:block">
+      <table class="w-full min-w-[56rem] border-collapse text-sm">
+        <thead>
+          <tr class="border-b border-line bg-graphite">
+            <th class="w-1/4 min-w-[12rem] px-4 py-4 text-start font-mono text-[11px] uppercase tracking-widest text-ash">
+              القدرة
+            </th>
+            {
+              vendors.map((v) => (
+                <th
+                  class:list={[
+                    'px-4 py-4 text-start font-mono text-[11px] uppercase tracking-widest',
+                    v === 'QuenchWorks' ? 'text-paper' : 'text-ash',
+                  ]}
+                >
+                  {v}
+                </th>
+              ))
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+            groupedRows.map((group) => (
+              <Fragment>
+                <tr class="border-b border-line bg-graphite/60">
+                  <td colspan={vendors.length + 1} class="px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.2em] text-ash">
+                    {group.title}
+                  </td>
+                </tr>
+                {group.rows.map((row) => (
+                  <tr class="border-b border-line/70">
+                    <td class="px-4 py-4 align-top font-medium text-paper">{row.label}</td>
+                    {row.cells.map((cell, i) => (
+                      <td class:list={['px-4 py-4 align-top', i === 0 ? 'bg-graphite/40' : '']}>
+                        <span class:list={['font-medium', tone(cell.v)]}>{vt(cell.v)}</span>
+                        {cell.n && <span class="mt-1 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </Fragment>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mobile: stacked cards per capability, grouped by category -->
+    <div class="mt-4 space-y-8 sm:hidden">
+      {
+        groupedRows.map((group) => (
+          <div>
+            <h3 class="font-mono text-[10px] uppercase tracking-[0.2em] text-ash">{group.title}</h3>
+            <div class="mt-3 space-y-3">
+              {group.rows.map((row) => (
+                <div class="rounded-xl border border-line bg-graphite p-4">
+                  <p class="font-medium text-paper">{row.label}</p>
+                  <dl class="mt-3 space-y-2">
+                    {row.cells.map((cell, i) => (
+                      <div class="flex items-baseline justify-between gap-3 border-t border-line/60 pt-2 first:border-0 first:pt-0">
+                        <dt class:list={['font-mono text-[10px] uppercase tracking-widest', vendors[i] === 'QuenchWorks' ? 'text-paper' : 'text-ash']}>
+                          {vendors[i]}
+                        </dt>
+                        <dd class="text-end">
+                          <span class:list={['text-sm font-medium', tone(cell.v)]}>{vt(cell.v)}</span>
+                          {cell.n && <span class="mt-0.5 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-8 max-w-2xl text-sm leading-relaxed text-ash">
+      Bitnami وChainguard وDocker وRapidFort وMinimus كلها هندسة جادّة، وهذه الصفحة ليست انتقاصًا
+      من أيٍّ منها. يطرح عدد منها خيارات مجانية ممتازة أيضًا. وُجد QuenchWorks ليُبقي مسارًا مجانيًا
+      بالكامل وعامًا بالكامل ودون حساب مفتوحًا، مع كل شيء من الصور إلى المخططات إلى مسارات البناء في
+      العلن. تحقّق من أي ادّعاء هنا مقابل المصادر العامة لكل مزوّد قبل أن تعتمد عليه.
+    </p>
+
+    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
+      مشروعان مرتبطان يقعان قليلًا خارج هذا الجدول: تطرح Google Distroless صور أساس مصغّرة لبيئات
+      تشغيل اللغات (دون كتالوج تطبيقات أو مخططات Helm)، ويوفّر Red Hat UBI صور أساس مؤسسية قابلة لإعادة
+      التوزيع (طبقة أساس بدل صور تطبيقات جاهزة للتشغيل). كلاهما يستحقّ المعرفة، لكنهما يحلّان مشكلة
+      مختلفة عن كتالوج تطبيقات مُحصّن.
+    </p>
+
+    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
+      QuenchWorks مستقل وغير تابع لـ Bitnami أو Broadcom أو Chainguard أو Docker أو RapidFort أو
+      Minimus أو Google أو Red Hat، ولا معتمد منها ولا برعايتها. جميع أسماء المنتجات والعلامات التجارية
+      مِلك لأصحابها.
+    </p>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
+      <p class="text-base text-paper">مجاني، ومُحصّن، ولك أن تتحقّق منه.</p>
+      <p class="mt-2 text-sm text-ash">تصفّح الكتالوج أو اقرأ المصدر. دون حساب، ودون سجلّ لإضافته.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href={l('/charts')} class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">تصفّح المخططات</a>
+        <a href={l('/images')} class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">تصفّح الصور</a>
+        <a href="https://github.com/quenchworks" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">GitHub</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

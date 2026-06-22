@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
 import { charts, chartCount } from '../data/charts';
-import { serviceImages, runtimeImages, availableCount, runtimeCount } from '../data/images';
+import { availableImages, availableCount } from '../data/images';
 
 // /llms.txt — a machine-readable map of the site for LLMs (https://llmstxt.org).
 // Generated from the catalog data so it never drifts from what actually shipped.
@@ -18,8 +18,7 @@ function byCategory<T extends { category: string; name: string }>(items: T[]) {
 
 export const GET: APIRoute = () => {
   const chartList = [...charts];
-  const imageList = serviceImages.filter((i) => i.status === 'available');
-  const runtimeList = runtimeImages.filter((i) => i.status === 'available');
+  const imageList = availableImages;
 
   const docs = [
     ['Get started', '/docs/get-started', 'Install a chart and pull an image. No repo to add, no account needed.'],
@@ -38,8 +37,8 @@ export const GET: APIRoute = () => {
     `> Free, independent catalog of hardened, 0-CVE container images and signed Helm charts. ` +
       `Built from source on Wolfi, cosign-signed, and pinned by digest, with an SPDX SBOM and a ` +
       `SLSA build-provenance attestation on every image that anyone can verify. ` +
-      `${availableCount} hardened service images, ${runtimeCount} ` +
-      `hardened base/runtime images to build FROM, and ${chartCount} signed charts.`,
+      `${availableCount} hardened, 0-CVE container images (including base/runtime ` +
+      `images to build FROM) and ${chartCount} signed charts.`,
   );
   lines.push('');
   lines.push(
@@ -55,8 +54,7 @@ export const GET: APIRoute = () => {
 
   lines.push('## Catalog');
   lines.push(`- [All charts](${SITE}/charts): ${chartCount} hardened, signed Helm charts`);
-  lines.push(`- [All images](${SITE}/images): ${availableCount} hardened, 0-CVE service container images`);
-  lines.push(`- [All runtimes](${SITE}/runtimes): ${runtimeCount} hardened, 0-CVE base images to build FROM and run on`);
+  lines.push(`- [All images](${SITE}/images): ${availableCount} hardened, 0-CVE container images, including base images to build FROM`);
   lines.push('');
 
   lines.push('## Helm charts');
@@ -70,13 +68,6 @@ export const GET: APIRoute = () => {
   for (const [cat, list] of byCategory(imageList)) {
     lines.push(`### ${cat}`);
     for (const i of list) lines.push(`- [${i.name}](${SITE}/images/${i.slug}): ${i.summary}`);
-    lines.push('');
-  }
-
-  lines.push('## Runtimes (base images to build FROM)');
-  for (const [cat, list] of byCategory(runtimeList)) {
-    lines.push(`### ${cat}`);
-    for (const i of list) lines.push(`- [${i.name}](${SITE}/runtimes/${i.slug}): ${i.summary}`);
     lines.push('');
   }
 

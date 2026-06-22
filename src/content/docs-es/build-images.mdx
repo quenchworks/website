@@ -1,0 +1,74 @@
+---
+title: Construir sobre las imágenes base
+description: "QuenchWorks entrega runtimes de lenguajes endurecidos, bases de runtime ligeras e imágenes de herramientas de construcción que usas con FROM en tu propio Dockerfile. Construye con el SDK, ejecuta sobre una base ligera y ten presentes las dos reglas de endurecimiento: las imágenes no tienen shell y se ejecutan como nonroot en solo lectura."
+group: Build images
+order: 1
+---
+
+Junto a los almacenes de datos y las aplicaciones, QuenchWorks entrega un conjunto de imágenes base sobre las que construyes tus propias aplicaciones: runtimes de lenguajes endurecidos, bases de runtime ligeras para la etapa final e imágenes de herramientas de construcción. Son el mismo tipo de artefacto que todo lo demás del catálogo. 0-CVE, firmadas con cosign, construidas como nonroot sobre un sistema de archivos raíz de solo lectura, multi-arch, con un SBOM y procedencia SLSA adjuntos. Simplemente las usas con FROM en tu Dockerfile en lugar de descargarlas como un servidor.
+
+## Tres familias
+
+<CardGrid>
+  <Card title="Runtimes de lenguajes" href="/es/images/category/language-runtime">
+    Intérpretes y SDKs con los que construyes: Python, Node, Go, Rust, .NET, el JDK, Ruby, PHP, Bun, Deno, Erlang, Elixir y Perl. Cada uno entrega sus líneas estables más recientes, sin `:latest`.
+  </Card>
+  <Card title="Bases de runtime" href="/es/images/category/runtime-base">
+    La etapa final ligera sobre la que copias una aplicación ya construida: `static` para binarios autocontenidos, `jre` para jars y `dotnet-runtime` / `aspnet` para .NET.
+  </Card>
+  <Card title="Herramientas de construcción" href="/es/images/category/build-tool">
+    Bases de lenguaje con un gestor de paquetes o una herramienta de construcción preinstalada: pnpm, Yarn, Composer, Maven, Gradle, uv y Poetry.
+  </Card>
+  <Card title="Explora todas las imágenes" href="/es/images">
+    El catálogo completo, con las etiquetas de versión, la licencia y el digest de cada imagen.
+  </Card>
+</CardGrid>
+
+## La idea multi-etapa
+
+El patrón que te da una imagen de producción pequeña y limpia es el mismo en todas partes: construye en una etapa, ejecuta en otra.
+
+<Steps>
+1. **Etapa de construcción.** Empieza con FROM la imagen del SDK o de la herramienta de construcción (`node`, `go`, `maven`, etcétera). Instala todas las dependencias, incluidas las de desarrollo y de construcción, y produce tu artefacto: un binario compilado, un `dist/` construido, un jar, una carpeta publicada.
+2. **Etapa de runtime.** Empieza con FROM una base ligera (`static`, `jre`, `python`, `dotnet-runtime`). Copia únicamente la salida construida y las dependencias de producción. Deja el compilador, las dependencias de desarrollo y las cachés de paquetes atrás, en la etapa de construcción.
+</Steps>
+
+El resultado entrega solo lo que se ejecuta en producción. El conjunto de herramientas queda fuera de la imagen que despliegas, lo que significa una imagen más pequeña y una superficie de ataque más reducida.
+
+## Dos reglas de endurecimiento
+
+Estas imágenes no son las habituales bases Debian-slim, así que dos costumbres de los Dockerfiles ordinarios te harán tropezar. Ambas tienen una solución limpia.
+
+<Notice type="warning">
+**Las imágenes no tienen shell.** No hay `/bin/sh`, así que la forma de shell de `RUN`, `CMD` y `ENTRYPOINT` no puede funcionar. Escríbelas en **forma exec**, como un array JSON: `RUN ["go", "build", "./..."]`, `CMD ["node", "server.js"]`. Cualquier cosa que necesite un shell (una cadena con `&&`, una expansión de `$VAR`, una tubería) pertenece a un script que copias con COPY e invocas, o debe dividirse en pasos multi-etapa. Las imágenes de base de runtime a menudo no tienen herramientas de construcción en absoluto, una razón más para hacer ese trabajo en la etapa de construcción.
+</Notice>
+
+<Notice type="warning">
+**Las imágenes se ejecutan como nonroot sobre un sistema de archivos raíz de solo lectura.** El usuario predeterminado es `uid 1001`. Si un paso de construcción necesita escribir fuera del directorio de la aplicación (una instalación global, un paquete del sistema), cambia a `USER root` para esa etapa y luego vuelve con `USER 1001` para la etapa de runtime, de modo que el contenedor en ejecución nunca sea root. En tiempo de ejecución el sistema de archivos raíz es de solo lectura, así que escribe solo en `/tmp` o en un volumen montado, y apunta las cachés allí (`GOCACHE`, `XDG_CACHE_HOME`, la caché de npm) cuando una herramienta insista en escribir.
+</Notice>
+
+<Notice type="tip">
+Fija cada base por versión, nunca con `:latest`. La única excepción es `static`, que se etiqueta con `:latest` a propósito porque no lleva ninguna versión de lenguaje. Para la garantía más fuerte, fija por digest del mismo modo que hacen los charts; consulta [Fijar por digest](/es/docs/pin-by-digest).
+</Notice>
+
+## Guías por ecosistema
+
+Cada guía encabeza con un Dockerfile multi-etapa completo y copiable que ya refleja la realidad sin shell y nonroot.
+
+<CardGrid>
+  <Card title="Node y pnpm" href="/es/docs/build-node">
+    Multi-etapa con una etapa de dependencias de producción; variantes pnpm, npm y Yarn.
+  </Card>
+  <Card title="Python" href="/es/docs/build-python">
+    Construye un venv en una etapa, ejecútalo sobre la base ligera `python`; pip, uv y Poetry.
+  </Card>
+  <Card title="Go" href="/es/docs/build-go">
+    La clásica construcción de dos etapas sobre `static` para una imagen final diminuta.
+  </Card>
+  <Card title="Java" href="/es/docs/build-java">
+    Construye el jar con Maven o Gradle, ejecútalo sobre `jre`.
+  </Card>
+  <Card title=".NET" href="/es/docs/build-dotnet">
+    `dotnet publish` sobre el SDK, ejecuta sobre `aspnet` o `dotnet-runtime`.
+  </Card>
+</CardGrid>

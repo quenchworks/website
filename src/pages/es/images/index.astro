@@ -1,0 +1,43 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import CatalogList from '../../../components/CatalogList.astro';
+import { images, availableCount, imageTiers, PAGE_SIZE } from '../../../data/images';
+import { fetchArtifactHub } from '../../../data/artifacthub';
+
+// live image (app) versions at build time; falls back gracefully if AH is unreachable.
+const ah = await fetchArtifactHub();
+
+const entries = [...images].sort((a, b) => {
+  if (a.status !== b.status) return a.status === 'available' ? -1 : 1;
+  return a.name.localeCompare(b.name);
+});
+
+const categories = [...new Set(images.map((e) => e.category))].sort();
+const tierFilters = imageTiers.map((t) => ({ key: t, label: t[0].toUpperCase() + t.slice(1) }));
+
+// Page 1 lives here at /es/images. Pages 2..N are static routes under page/[page].
+const total = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
+const slice = entries.slice(0, PAGE_SIZE);
+---
+
+<Base
+  title="Imágenes · Quenchworks"
+  description="Explora las imágenes de contenedor reforzadas y sin CVE de QuenchWorks — compiladas desde el código fuente en Wolfi, firmadas con cosign, fijadas por digest, multiarquitectura."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <CatalogList
+      kind="images"
+      base="/images"
+      all={entries}
+      ah={ah}
+      page={{ data: slice, current: 1, total }}
+      count={availableCount}
+      categories={categories}
+      tierFilters={tierFilters}
+    />
+  </main>
+  <Footer />
+</Base>

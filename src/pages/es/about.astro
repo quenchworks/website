@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+---
+
+<Base title="Acerca de · Quenchworks" description="Por qué existe QuenchWorks: un catálogo libre e independiente de imágenes de contenedor y charts de Helm reforzados y sin CVE.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Acerca de</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Endurecimiento gratuito, mantenido independiente</h1>
+
+    <div class="mt-6 space-y-5 leading-relaxed text-ash">
+      <p>
+        Durante años, los equipos se apoyaron en un catálogo gratuito de imágenes y charts
+        comunitarios para las bases de datos, cachés y brokers que ejecutan a diario. Cuando
+        las versiones reforzadas y de bajo CVE pasaron tras un nivel de pago y el catálogo
+        gratuito quedó relegado, se perdió buena parte de ese terreno.
+      </p>
+      <p>
+        QuenchWorks reconstruye ese terreno en abierto. Es un catálogo de los mismos tipos de
+        almacenes de datos, cada uno compilado desde el código fuente en Wolfi en una imagen
+        pequeña sin root, analizado hasta cero CVE corregibles, firmado y fijado por digest.
+        Todo es libre de usar y libre de verificar.
+      </p>
+      <p>
+        También es deliberadamente independiente. Los charts se escriben a partir de la propia
+        documentación oficial de cada proyecto, no adaptados de ningún otro proveedor, y las
+        imágenes llevan nuestras propias ilustraciones, no marcas de nadie más. El objetivo es
+        una cadena de suministro limpia y honesta que puedas comprobar tú mismo.
+      </p>
+    </div>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite p-6 sm:p-8">
+      <p class="font-mono text-xs uppercase tracking-widest text-ash">Responsable</p>
+      <h2 class="mt-3 text-xl font-semibold tracking-tight">Mohammad Abu Mattar</h2>
+      <p class="mt-2 leading-relaxed text-ash">
+        Cloud and DevOps Manager en Motory, con alrededor de ocho años en ingeniería full-stack,
+        backend y de plataforma. En el día a día, eso es Kubernetes multinube en AWS, Huawei Cloud
+        y Hetzner, infraestructura como código con Terraform y CI/CD en Jenkins y ArgoCD.
+        QuenchWorks lleva ese mismo hábito de endurecimiento a un catálogo libre y abierto.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href="https://mkabumattar.com/" class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">mkabumattar.com</a>
+        <a href="https://github.com/MKAbuMattar" class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">GitHub</a>
+        <a href="https://github.com/quenchworks" class="rounded-lg border border-line px-3.5 py-2 text-ash transition-colors hover:text-paper">Organización QuenchWorks</a>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-line bg-graphite px-6 py-8 text-center">
+      <p class="text-ash">
+        ¿Quieres priorizar un almacén de datos?{' '}
+        <a href="mailto:info@quench-works.com?subject=App%20request" class="font-medium text-paper underline-offset-4 hover:underline">Solicita una aplicación</a>{' '}
+        o explora la{' '}
+        <a href={l('/roadmap')} class="font-medium text-paper underline-offset-4 hover:underline">hoja de ruta</a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Base>

@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, rtlLangs } from '../i18n/ui';
 
 interface Props {
   title?: string;
@@ -12,6 +14,17 @@ const {
   description = 'Hardened, 0-CVE Helm charts and container images, built from source on Wolfi, signed, and pinned by digest. Free and independent.',
   image = '/og.png',
 } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const dir = rtlLangs.includes(lang) ? 'rtl' : 'ltr';
+
+// Path with the locale prefix stripped, so we can build the same page under
+// each locale for the hreflang alternates.
+const basePath = Astro.url.pathname.replace(/^\/(ar|es)(?=\/|$)/, '') || '/';
+const alternates = (['en', 'ar', 'es'] as const).map((l) => ({
+  lang: l,
+  href: new URL(getRelativeLocaleUrl(l, basePath), Astro.site).href,
+}));
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
@@ -44,7 +57,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang} dir={dir}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -54,6 +67,8 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -96,7 +111,7 @@ const jsonLd = {
         btn.type = 'button';
         btn.setAttribute('aria-label', 'Copy to clipboard');
         btn.className =
-          'absolute right-2 top-2 inline-flex items-center justify-center rounded-md border border-line bg-graphite p-1.5 text-ash opacity-0 transition-opacity duration-150 hover:text-paper focus-visible:opacity-100 group-hover:opacity-100';
+          'absolute end-2 top-2 inline-flex items-center justify-center rounded-md border border-line bg-graphite p-1.5 text-ash opacity-0 transition-opacity duration-150 hover:text-paper focus-visible:opacity-100 group-hover:opacity-100';
         btn.innerHTML = COPY;
         btn.addEventListener('click', async () => {
           const text = (pre.querySelector('code') ?? pre).textContent ?? '';

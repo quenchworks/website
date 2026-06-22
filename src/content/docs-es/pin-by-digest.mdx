@@ -1,0 +1,47 @@
+---
+title: Fijar por digest
+description: Fija las imágenes de QuenchWorks por digest sha256 para que lo que ejecutas sea exactamente lo que se escaneó y firmó.
+group: Guides
+order: 5
+---
+
+Una etiqueta como `:latest` puede moverse. Un digest no. Fijar por digest `sha256` significa que el artefacto que ejecutas es exactamente el que superó la puerta de 0-CVE y fue firmado, sin posibilidad de que una etiqueta derive por debajo de ti.
+
+## Los charts ya hacen esto
+
+Cada chart referencia su imagen por digest en `values.yaml`, nunca por una etiqueta, así que obtienes el fijado por digest de forma predeterminada:
+
+```yaml
+image:
+  repository: ghcr.io/quenchworks/images/redis
+  digest: "sha256:38a0c67..."
+```
+
+Cuando la fábrica reconstruye una imagen, un contrato de digest actualiza el chart al nuevo digest firmado y vuelve a publicarlo, de modo que el fijado se mantiene al día sin que persigas etiquetas.
+
+## Encontrar un digest
+
+Resuelve una etiqueta a su digest con crane, o léelo en la página del catálogo:
+
+```bash
+crane digest ghcr.io/quenchworks/images/redis:8.8.0
+# sha256:38a0c67...
+```
+
+## Fija tu propio despliegue
+
+Si ejecutas una imagen directamente, resuelve la etiqueta a un digest una vez y luego referencia ese digest. Esto se ejecuta tal cual:
+
+```bash
+DIGEST=$(crane digest ghcr.io/quenchworks/images/redis:8.8.0)
+docker pull ghcr.io/quenchworks/images/redis@$DIGEST
+```
+
+Para fijar un chart a una construcción de imagen específica, anula el digest en el momento de la instalación:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
+  --set image.digest="$DIGEST"
+```
+
+Luego [verifica](/es/docs/verify) ese digest antes de enviarlo a producción.

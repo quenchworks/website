@@ -1,27 +1,31 @@
 ---
 // Bento feature grid, 4 tiles. SVG icons only (Lucide-style strokes), monochrome.
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
 const features = [
   {
-    title: 'Built from source',
-    body: 'We compile each app from source on Wolfi with melange, then apko assembles a small nonroot image. No Dockerfiles, and nothing inherited from another distro.',
+    title: t('features.builtFromSource.title'),
+    body: t('features.builtFromSource.body'),
     icon: 'cube',
     span: 'sm:col-span-2',
   },
   {
-    title: '0 fixable CVEs, daily',
-    body: 'A Trivy gate fails the build on any fixable CVE. We rebuild every day, because a clean scan only tells you about the day it ran.',
+    title: t('features.zeroCve.title'),
+    body: t('features.zeroCve.body'),
     icon: 'shield',
     span: '',
   },
   {
-    title: 'Signed and attested',
-    body: 'Every image is cosign-signed, with an SLSA build-provenance attestation and an SPDX SBOM attached to the same digest. Verify all three from your own terminal.',
+    title: t('features.signed.title'),
+    body: t('features.signed.body'),
     icon: 'badge',
     span: '',
   },
   {
-    title: 'Pinned by digest',
-    body: 'Charts point at images by sha256 digest, never a moving tag. What you install is exactly what passed the gate.',
+    title: t('features.pinned.title'),
+    body: t('features.pinned.body'),
     icon: 'hash',
     span: 'sm:col-span-2',
   },
@@ -30,8 +34,8 @@ const features = [
 
 <section id="how" class="mx-auto max-w-5xl px-5 py-16 sm:py-24">
   <div class="mb-10 text-center">
-    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">How it works</p>
-    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Hardened from source to install.</h2>
+    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">{t('features.eyebrow')}</p>
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{t('features.title')}</h2>
   </div>
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">

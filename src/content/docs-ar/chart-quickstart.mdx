@@ -1,0 +1,88 @@
+---
+title: تثبيت مخطط باستخدام Helm
+description: ثبّت مخطط QuenchWorks واضبطه ورقِّه واحذفه. تُثبَّت المخططات مباشرة من السجلّ، دون مستودع لإضافته.
+group: Guides
+order: 1.5
+---
+
+تُنشَر مخططات QuenchWorks إلى GHCR كأدوات OCI. لا يوجد مستودع Helm لإضافته ولا حساب لإنشائه. تحتاج إلى Helm 3.8 أو أحدث (دعم OCI مفعّل افتراضيًا منذ 3.8.0).
+
+## التثبيت
+
+ثبّت مخططًا عبر مرجع OCI الخاص به. استبدل `redis` بأي مخطط والإصدار المعروض في [صفحته](/ar/charts):
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis
+```
+
+ثبّت إصدار المخطط ليكون الترقية شيئًا تفعله عن قصد لا مفاجأةً:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+## الضبط
+
+المصادقة مفعّلة افتراضيًا. يولّد المخطط كلمة مرور داخل Secret عند أول تثبيت. لضبط كلمة المرور الخاصة بك، أو لإنشاء قاعدة بيانات للتطبيق حيثما يدعم المخطط ذلك، مرّر القيم:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
+  --set auth.password='change-me'
+```
+
+لأي شيء يتجاوز قيمة أو اثنتين، استخدم ملفًا:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis -f my-values.yaml
+```
+
+يأتي كل مخطط مع ملف `values.schema.json`، فيتحقّق Helm ممّا تمرّره قبل أن يصيّر أي شيء. راجع [الضبط](/ar/docs/configuration) لمفاتيح الاستمرارية والموارد والجدولة وسياق الأمان التي يتشاركها كل مخطط.
+
+## افحص قبل أن تثبّت
+
+اسحب القيم والبيانات المُصيَّرة دون أن تلمس العنقود:
+
+```bash
+helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+## تحقّق قبل أن تثبّت
+
+المخططات أدوات OCI، فيتحقّق منها cosign عبر الوسم بالطريقة نفسها التي يتحقّق بها من صورة:
+
+```bash
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+النتيجة الصالحة تطبع مسار العمل الذي بنى المخطط ومدخل سجلّ Rekor الخاص به. للتحقّق من بناء معيّن بدلًا من الوسم، مرّر بصمة `@sha256:...`. راجع [التحقّق من توقيع](/ar/docs/verify) و[التثبيت بالبصمة الرقمية](/ar/docs/pin-by-digest).
+
+## الترقية والتراجع
+
+رقِّ إلى إصدار مخطط أحدث بالمرجع نفسه:
+
+```bash
+helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.6
+```
+
+إن بدا شيء خاطئًا، تراجع إلى المراجعة السابقة:
+
+```bash
+helm rollback my-redis
+```
+
+## إلغاء التثبيت
+
+```bash
+helm uninstall my-redis
+```
+
+يترك Helm كائنات PersistentVolumeClaims خلفه عن قصد لتبقى بياناتك بعد إعادة التثبيت. احذفها يدويًا إن أردت استرجاع التخزين.
+
+## الخطوات التالية
+
+- [الضبط](/ar/docs/configuration): الاستمرارية والموارد والجدولة وسياق الأمان.
+- [التثبيت بالبصمة الرقمية](/ar/docs/pin-by-digest): شغّل بالضبط ما جرى فحصه وتوقيعه.
+- [التثبيت في بيئة معزولة](/ar/docs/air-gapped): انقل المخططات والصور إلى سجلّ خاص.

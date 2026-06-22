@@ -1,0 +1,110 @@
+---
+title: بناء تطبيق Python
+description: "ملف Dockerfile مُحصّن متعدد المراحل لـ Python على صور أساس python و uv و poetry من QuenchWorks: ابنِ بيئة افتراضية (virtualenv) بكل اعتماديات البناء في مرحلة، ثم انسخها إلى أساس python نحيل يعمل بدون صلاحيات الجذر."
+group: Build images
+order: 3
+---
+
+تجعل عجلات Python (wheels) وأدوات البناء التقسيم النظيف يستحقّ العناء. جمّع وثبّت كل شيء في بيئة افتراضية مكتفية ذاتيًا في مرحلة البناء، ثم انسخ ذلك الدليل الواحد إلى أساس `python` نحيل للتشغيل. لا تصل المُجمِّعات والترويسات التي تحتاجها بعض الحزم عند التثبيت إلى الصورة التي تنشرها.
+
+يبني هذا على `ghcr.io/quenchworks/images/python:3.13`. ولحلّ الاعتماديات هناك `ghcr.io/quenchworks/images/uv` (مثبّت وحلّال سريع) و`ghcr.io/quenchworks/images/poetry`.
+
+## ملف Dockerfile المتعدد المراحل
+
+<Tabs>
+<Tab label="pip">
+```dockerfile
+# Build stage: build a venv with everything installed into it.
+FROM ghcr.io/quenchworks/images/python:3.13 AS build
+WORKDIR /app
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH"
+
+RUN ["python", "-m", "venv", "/opt/venv"]
+COPY requirements.txt ./
+RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
+COPY . .
+
+# Runtime stage: copy the venv onto a clean python base, run nonroot.
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV VIRTUAL_ENV=/opt/venv \
+    PATH="/opt/venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /opt/venv /opt/venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+<Tab label="uv">
+```dockerfile
+# Build stage: uv resolves and installs into a project venv, fast.
+FROM ghcr.io/quenchworks/images/uv:0.11 AS build
+WORKDIR /app
+ENV UV_PROJECT_ENVIRONMENT=/opt/venv \
+    UV_COMPILE_BYTECODE=1
+
+# Install dependencies first (cached) from the lockfile, then the project.
+COPY pyproject.toml uv.lock ./
+RUN ["uv", "sync", "--frozen", "--no-install-project", "--no-dev"]
+COPY . .
+RUN ["uv", "sync", "--frozen", "--no-dev"]
+
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV PATH="/opt/venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /opt/venv /opt/venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+<Tab label="poetry">
+```dockerfile
+# Build stage: Poetry installs into a venv at a known path.
+FROM ghcr.io/quenchworks/images/poetry:2 AS build
+WORKDIR /app
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
+    POETRY_NO_INTERACTION=1
+
+COPY pyproject.toml poetry.lock ./
+RUN ["poetry", "install", "--only", "main", "--no-root"]
+COPY . .
+RUN ["poetry", "install", "--only", "main"]
+
+FROM ghcr.io/quenchworks/images/python:3.13 AS runtime
+WORKDIR /app
+ENV PATH="/app/.venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
+COPY --from=build /app/.venv /app/.venv
+COPY --from=build /app /app
+USER 1001
+EXPOSE 8000
+CMD ["python", "-m", "app"]
+```
+</Tab>
+</Tabs>
+
+## ماذا تفعل كل مرحلة
+
+<Steps>
+1. **البناء.** أنشئ بيئة افتراضية في مسار ثابت وثبّت كل اعتمادية داخلها. تحمل هذه المرحلة الحلّال، وأي خلفيات بناء، واعتماديات بناء العجلات. تثبيت الاعتماديات قبل نسخ بقية المصدر يُبقي تلك الطبقة مخزّنة حين يتغيّر كودك وحده.
+2. **التشغيل.** ابدأ من جديد من `python:3.13`، وانسخ البيئة الافتراضية والتطبيق، وضع البيئة الافتراضية على `PATH`، وانزل إلى `uid 1001`، وابدأ. لا شيء من سلسلة أدوات البناء يُشحن.
+</Steps>
+
+<Notice type="info">
+تنشر معظم الحزم الشائعة عجلات مبنية مسبقًا لـ glibc، فتعمل بيئة افتراضية منسوخة على أساس التشغيل دون إعادة تجميع. أشياء مثل pydantic-core أو امتدادات أصلية أخرى تُحَلّ إلى عجلة manylinux تطابق glibc الخاصة بالتشغيل، فلا حاجة إلى مُجمِّع عند التشغيل. إذا لم يكن لاعتمادية عجلة ووجب بناؤها من المصدر، فإن ذلك البناء يجري في مرحلة البناء، حيث تعيش سلسلة الأدوات، ولا تُنقَل إلا البيئة الافتراضية الناتجة.
+</Notice>
+
+<Notice type="warning">
+الصور الأساس بلا غلاف، لذا فإن كل استدعاء `pip` / `uv` / `poetry` بصيغة exec (مصفوفة JSON)، وسلسلة `&&` لن تعمل. تعمل مرحلة التشغيل كـ `USER 1001` على نظام ملفات جذر للقراءة فقط: اضبط ذاكرة قابلة للكتابة وموطن إعدادات (`ENV XDG_CACHE_HOME=/tmp` وما شابه) إن كانت مكتبة تكتب عند التشغيل، واكتب بيانات التطبيق إلى `/tmp` أو إلى وحدة تخزين مركّبة بدلًا من الكتابة داخل الصورة.
+</Notice>
+
+## التالي
+
+- تخدم بخادم WSGI/ASGI؟ ضعه في البيئة الافتراضية (gunicorn و uvicorn) واستدعِه مباشرة بصيغة exec: `CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:8000"]`.
+- [ثبّت بالبصمة الرقمية](/ar/docs/pin-by-digest) ليجري كل بناء بالضبط على الأساس الذي جرى فحصه وتوقيعه.

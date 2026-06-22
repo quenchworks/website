@@ -1,0 +1,37 @@
+---
+title: Licencias
+description: Qué es OSI-limpio en el catálogo de QuenchWorks, qué almacenes de datos son source-available (SSPL / BSL) y la alternativa verdaderamente abierta que recomendamos para cada uno.
+group: Reference
+order: 3
+---
+
+Hay dos licencias en juego: la nuestra y la del upstream. El instrumental de QuenchWorks (configuraciones de construcción, charts, este sitio) es MIT. Cada imagen lleva la licencia de su propio software upstream, registrada en el catálogo y en las etiquetas de la imagen. Encabezamos con la opción verdaderamente abierta en cada categoría y somos explícitos cuando algo no lo es.
+
+## Instrumental de QuenchWorks: MIT
+
+Las configuraciones de construcción de melange y apko, los charts de Helm y el sitio web son MIT. QuenchWorks se desarrolla de forma independiente y no está afiliado a ningún proyecto o proveedor upstream.
+
+## Licencias upstream
+
+La mayor parte del catálogo es código abierto aprobado por la OSI: Apache-2.0, BSD, MIT, MPL-2.0, la licencia de PostgreSQL y GPL. Un puñado son **source-available** en lugar de código abierto, y los señalamos de forma destacada en las páginas de chart y de imagen, así como en el README y las NOTES del chart.
+
+## Los almacenes de datos source-available
+
+Estos **no** son código abierto aprobado por la OSI. Los entregamos porque la gente los pide, con el binario upstream redistribuido sin modificar, y nombramos la alternativa limpia que recomendamos en su lugar.
+
+| Almacén de datos | Licencia | Alternativa limpia recomendada |
+| --- | --- | --- |
+| MongoDB | SSPL-1.0 | [FerretDB](/es/charts/ferretdb) + [DocumentDB](/es/charts/documentdb), compatible con el protocolo de MongoDB y verdaderamente abierto |
+| Elasticsearch | SSPL-1.0 / Elastic License 2.0 | [OpenSearch](/es/charts/opensearch), el fork de reemplazo directo con Apache-2.0 |
+| CockroachDB | BSL-1.1 | [PostgreSQL](/es/charts/postgresql) para SQL de una sola región (BSL se convierte a Apache después de tres años) |
+| Dragonfly | BSL-1.1 | [Valkey](/es/charts/valkey), la caché BSD compatible con Redis |
+
+## Qué significan las etiquetas
+
+- **SSPL-1.0** (Server Side Public License): la OSI la rechazó explícitamente. No es código abierto.
+- **BSL-1.1** (Business Source License): source-available con restricciones de uso; cada versión se convierte a una licencia abierta (Apache-2.0) unos años después de su lanzamiento.
+- **AGPL-3.0** (Redis, ScyllaDB): copyleft aprobado por la OSI. Código abierto, con fuertes obligaciones de uso en red que debes comprender antes de construir sobre él.
+
+## Cómo leer una página
+
+La página de detalle de cada [chart](/es/charts) e [imagen](/es/images) muestra su licencia. Los cuatro almacenes de datos source-available llevan un banner ámbar con la alternativa recomendada, de modo que la postura de licencia es visible antes de que instales nada.

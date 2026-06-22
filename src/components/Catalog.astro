@@ -2,7 +2,13 @@
 // Catalog-breadth band: shows how wide the catalog is by category, with live
 // counts derived from the synced data so it never drifts from what shipped.
 import { charts, chartCount } from '../data/charts';
-import { availableCount, runtimeCount } from '../data/images';
+import { availableCount } from '../data/images';
+import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
+import { categoryName } from '../i18n/categories';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const l = (p: string) => localizeUrl(lang, p);
 
 const counts = charts.reduce<Record<string, number>>((acc, c) => {
   acc[c.category] = (acc[c.category] ?? 0) + 1;
@@ -16,16 +22,13 @@ const categories = Object.entries(counts)
 
 <section class="mx-auto max-w-5xl px-5 pb-8">
   <div class="mb-10 text-center">
-    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">The catalog</p>
-    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Covers the stack you actually run.</h2>
+    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">{t('catalog.eyebrow')}</p>
+    <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{t('catalog.title')}</h2>
     <p class="mx-auto mt-4 max-w-xl text-pretty text-sm leading-relaxed text-ash sm:text-base">
-      <span class="font-semibold text-paper tabular-nums">{availableCount}</span> hardened images and
-      <span class="font-semibold text-paper tabular-nums">{chartCount}</span> signed charts across
-      <span class="font-semibold text-paper tabular-nums">{categories.length}</span> categories: relational
-      and document stores, caches, search, streaming, coordination, observability, object storage,
-      gateways, and a registry. Plus
-      <span class="font-semibold text-paper tabular-nums">{runtimeCount}</span> hardened base images
-      to build FROM under <a href="/runtimes" class="text-paper underline-offset-4 hover:underline">runtimes</a>.
+      <span class="font-semibold text-paper tabular-nums">{availableCount}</span> {t('catalog.bodyPre')}
+      <span class="font-semibold text-paper tabular-nums">{chartCount}</span> {t('catalog.bodyMid')}
+      <span class="font-semibold text-paper tabular-nums">{categories.length}</span> {t('catalog.bodyPost')}
+      <a href={l('/images')} class="text-paper underline-offset-4 hover:underline">{t('catalog.bodyImages')}</a>.
     </p>
   </div>
 
@@ -33,7 +36,7 @@ const categories = Object.entries(counts)
     {
       categories.map((c) => (
         <li class="flex items-center justify-between gap-3 rounded-xl border border-line bg-graphite px-4 py-3">
-          <span class="text-sm font-medium text-paper">{c.label}</span>
+          <span class="text-sm font-medium text-paper">{categoryName(lang, c.label)}</span>
           <span class="font-mono text-xs tabular-nums text-ash">{c.count}</span>
         </li>
       ))
@@ -42,10 +45,10 @@ const categories = Object.entries(counts)
 
   <div class="mt-8 text-center">
     <a
-      href="/charts"
+      href={l('/charts')}
       class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
     >
-      Browse all {chartCount} charts
+      {t('catalog.browsePre')} {chartCount} {t('catalog.browsePost')}
       <span aria-hidden="true">&rarr;</span>
     </a>
   </div>

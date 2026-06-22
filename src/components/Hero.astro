@@ -1,10 +1,16 @@
 ---
 // Hero: minimal single column, one primary CTA (per MASTER design system).
-import { availableCount, runtimeCount } from '../data/images';
+import { availableCount } from '../data/images';
 import { chartCount } from '../data/charts';
 import { githubStars } from '../data/github';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
 // shipped end-to-end = apps with both an available image and a chart.
 const shipped = Math.min(availableCount, chartCount);
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const chartsHref = getRelativeLocaleUrl(lang, '/charts');
 ---
 
 <section class="relative overflow-hidden">
@@ -18,9 +24,8 @@ const shipped = Math.min(availableCount, chartCount);
 
   <div class="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
     <p class="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-ash">
-      <span class="font-bold tabular-nums text-paper">{availableCount}</span> hardened images ·
-      <span class="font-bold tabular-nums text-paper">{runtimeCount}</span> runtimes ·
-      <span class="font-bold tabular-nums text-paper">{chartCount}</span> signed charts · 0 fixable CVEs{
+      <span class="font-bold tabular-nums text-paper">{availableCount}</span> {t('hero.statImages')} ·
+      <span class="font-bold tabular-nums text-paper">{chartCount}</span> {t('hero.statCharts')} · {t('hero.statCves')}{
         githubStars !== null && (
           <>
             {' '}· <span class="text-paper" aria-hidden="true">★</span>{' '}
@@ -31,37 +36,35 @@ const shipped = Math.min(availableCount, chartCount);
     </p>
 
     <h1 class="mx-auto max-w-3xl text-balance text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
-      Hardened, zero-CVE images and charts<br class="hidden sm:inline" /> for the infrastructure you run.
+      {t('hero.title')}
     </h1>
 
     <p class="mx-auto mt-6 max-w-xl text-pretty text-base leading-relaxed text-ash sm:text-lg">
-      {shipped} datastores, each shipped end-to-end as a small nonroot container image and a signed
-      Helm chart. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed,
-      digest-pinned, and multi-arch (amd64 + arm64). Free and independent.
+      <span class="font-bold tabular-nums text-paper">{shipped}</span> {t('hero.subtitle')}
     </p>
 
     <div class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a
-        href="/charts"
+        href={chartsHref}
         class="inline-flex w-full items-center justify-center rounded-lg bg-paper px-5 py-3 text-sm font-semibold text-ink transition-transform duration-200 hover:scale-[1.02] sm:w-auto"
       >
-        Browse the charts
+        {t('hero.cta.primary')}
       </a>
       <a
         href="https://github.com/quenchworks"
         class="inline-flex w-full items-center justify-center rounded-lg border border-line px-5 py-3 text-sm font-semibold text-paper transition-colors duration-200 hover:bg-graphite sm:w-auto"
       >
-        View on GitHub
+        {t('hero.cta.secondary')}
       </a>
     </div>
 
     <!-- terminal card -->
-    <div class="mx-auto mt-14 max-w-2xl overflow-hidden rounded-xl border border-line bg-graphite text-left">
+    <div class="mx-auto mt-14 max-w-2xl overflow-hidden rounded-xl border border-line bg-graphite text-start">
       <div class="flex items-center gap-2 border-b border-line px-4 py-3">
         <span class="size-3 rounded-full border border-line"></span>
         <span class="size-3 rounded-full border border-line"></span>
         <span class="size-3 rounded-full border border-line"></span>
-        <span class="ml-2 font-mono text-xs text-ash">install &amp; verify</span>
+        <span class="ms-2 font-mono text-xs text-ash">install &amp; verify</span>
       </div>
       <pre class="overflow-x-auto px-4 py-4 font-mono text-[13px] leading-relaxed text-paper"><code><span class="text-ash"># add the chart (OCI) and install</span>
 helm install my-redis oci://ghcr.io/quenchworks/charts/redis

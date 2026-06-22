@@ -1,0 +1,107 @@
+---
+title: الضبط
+description: "سطح القيم المشترك الذي يكشفه كل مخطط QuenchWorks عبر مخطط مكتبة quench-common: الصورة، والاستمرارية، والموارد، والجدولة، وسياق الأمان، والفحوص، والشبكات."
+group: Reference
+order: 2
+---
+
+يعتمد كل مخطط على مخطط مكتبة واحد، هو `quench-common`، فتبدو المقابض التشغيلية متشابهة أيًّا كانت قاعدة البيانات التي تُشغّلها. تعيش الإعدادات الخاصة بالتطبيق ضمن كتلة `config:` (وحيثما يلزم `auth:`) موثّقة في صفحة كل [مخطط](/ar/charts)؛ وكل ما يلي مشترك.
+
+## الصورة (مثبّتة بالبصمة الرقمية)
+
+يُشار إلى الصورة ببصمة `sha256`، لا بوسم. يرفض `quench-common` المرجع المعتمد على وسم وحده عن قصد، فلا يمكن لمخطط أبدًا أن ينشر شيئًا غير مثبّت. يعيد التكامل المستمر (CI) كتابة هذا إلى أحدث بصمة موقّعة عند كل بناء للصورة، لذا تتركه عادةً كما هو.
+
+```yaml
+image:
+  repository: ghcr.io/quenchworks/images/postgresql
+  digest: "sha256:..."   # set by CI; override to pin a specific build
+  pullPolicy: IfNotPresent
+```
+
+## الاستمرارية
+
+تُوفّر المخططات الحالة (Stateful) مطالبة PVC. عطّلها للاستخدام العابر، أو حدّد حجمها، أو اختر صنفًا، أو اربط مطالبة قائمة.
+
+```yaml
+persistence:
+  enabled: true
+  size: 8Gi
+  storageClass: ""          # default class if empty
+  accessModes: ["ReadWriteOnce"]
+  existingClaim: ""         # bind an existing PVC instead
+```
+
+## الموارد
+
+```yaml
+resources:
+  requests: { cpu: 250m, memory: 256Mi }
+  limits:   { cpu: "1",  memory: 1Gi }
+```
+
+تحدّد بعض المحرّكات حجم كومتها (heap) أو ذاكرتها من هذه القيم (أو من قيمة مخصّصة)؛ وتشير صفحات مخططاتها إلى ذلك.
+
+## الجدولة والتوزيع
+
+تمرّ ضوابط Kubernetes المعتادة مباشرةً: `nodeSelector` و`affinity` و`tolerations` و`topologySpreadConstraints` و`priorityClassName` و`schedulerName` و`terminationGracePeriodSeconds` و`updateStrategy`.
+
+## بيئة ووحدات تخزين إضافية
+
+احقن الإعدادات دون تفريع المخطط:
+
+```yaml
+extraEnvVars:
+  - name: MY_FLAG
+    value: "1"
+extraEnvVarsCM: ""          # name of a ConfigMap to envFrom
+extraEnvVarsSecret: ""      # name of a Secret to envFrom
+extraVolumes: []
+extraVolumeMounts: []
+initContainers: []
+sidecars: []
+```
+
+## سياق الأمان
+
+تأتي الإعدادات الافتراضية المُحصّنة من `quench-common`: `runAsNonRoot` (uid/gid/fsGroup 1001)، وseccomp `RuntimeDefault`، ونظام ملفات جذر للقراءة فقط، ومنع تصعيد الصلاحيات، وإسقاط جميع الصلاحيات. أي شيء تضبطه يندمج فوق الإعدادات الافتراضية، فلا تتجاوز إلا ما تحتاج إليه.
+
+```yaml
+podSecurityContext: {}        # your keys win over the hardened defaults
+containerSecurityContext: {}
+```
+
+## الفحوص
+
+يأتي كل مخطط مع فحوص حيوية وجاهزية معقولة. اضبط التوقيت، أو استبدل فحصًا كليًّا.
+
+```yaml
+livenessProbe:  { initialDelaySeconds: 30 }   # merge timing overrides
+readinessProbe: { periodSeconds: 10 }
+customLivenessProbe:  {}   # set to replace the probe entirely
+customReadinessProbe: {}
+customStartupProbe:   {}
+```
+
+## الشبكات والإتاحة
+
+تكون `NetworkPolicy` مفعّلة افتراضيًا وهي حدّ الثقة للمخططات التي تأتي دون مصادقة على مستوى التطبيق. ويحرس PodDisruptionBudget الاضطرابات الطوعية.
+
+```yaml
+networkPolicy:
+  enabled: true
+  allowExternal: false      # restrict ingress to same-namespace pods
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+serviceAccount: { create: true, name: "", annotations: {} }
+rbac: { create: false }
+```
+
+## اطّلع على المخطط (schema)
+
+يأتي كل مخطط مع ملف `values.schema.json`، فيتحقّق Helm ممّا تمرّره ويستطيع محرّرك إكماله تلقائيًا. اقرأ قيم مخطط كاملة في السطر:
+
+```bash
+helm show values oci://ghcr.io/quenchworks/charts/postgresql
+helm show readme  oci://ghcr.io/quenchworks/charts/postgresql
+```

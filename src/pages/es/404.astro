@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const links = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Charts', href: '/charts' },
+  { label: 'Imágenes', href: '/images' },
+  { label: 'Documentación', href: '/docs' },
+];
+---
+
+<Base
+  title="No encontrado · Quenchworks"
+  description="No se pudo encontrar esa página. Vuelve al catálogo de QuenchWorks de imágenes y charts reforzados y sin CVE."
+>
+  <Header />
+  <main class="mx-auto flex min-h-[60vh] max-w-3xl flex-col items-center justify-center px-5 py-24 text-center">
+    <p class="font-mono text-xs uppercase tracking-[0.25em] text-ash">Error</p>
+    <p class="mt-4 font-mono text-7xl font-bold tracking-tight tabular-nums text-paper sm:text-8xl">404</p>
+    <p class="mx-auto mt-6 max-w-md text-pretty text-base leading-relaxed text-ash sm:text-lg">
+      Esta página tiró de una etiqueta que no existe. El enlace está roto o la página se movió.
+    </p>
+
+    <nav class="mt-9 flex flex-wrap items-center justify-center gap-2 font-mono text-xs uppercase tracking-widest" aria-label="Enlaces de recuperación">
+      {
+        links.map((l, i) => (
+          <a
+            href={l.href}
+            class={
+              i === 0
+                ? 'rounded-lg bg-paper px-3.5 py-2 font-semibold text-ink transition-transform duration-200 hover:scale-[1.02]'
+                : 'rounded-lg border border-line px-3.5 py-2 text-paper transition-colors duration-200 hover:bg-graphite'
+            }
+          >
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+  </main>
+  <Footer />
+</Base>

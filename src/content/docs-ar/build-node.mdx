@@ -1,0 +1,118 @@
+---
+title: بناء تطبيق Node
+description: "ملف Dockerfile مُحصّن متعدد المراحل لـ Node على صور أساس node و pnpm من QuenchWorks: مرحلة اعتماديات إنتاج، ومرحلة بناء، ومرحلة نهائية نحيلة تشحن اعتماديات الإنتاج والمخرجات المبنية فقط. متغيّرات pnpm و npm و Yarn."
+group: Build images
+order: 2
+---
+
+الهدف لخدمة Node هو صورة نهائية تحمل مخرجاتك المبنية و`node_modules` الإنتاجية، ولا شيء غير ذلك. لا اعتماديات تطوير، ولا مصدرًا لا تشحنه، ولا ذاكرة مدير حزم. يوصلك بناء ذو ثلاث مراحل إلى هناك: حُلّ اعتماديات الإنتاج مرة، وابنِ بمجموعة الاعتماديات الكاملة بالتوازي، ثم جمّع مرحلة تشغيل نظيفة من الاثنين.
+
+يبني هذا على `ghcr.io/quenchworks/images/node:24`. وهناك أيضًا `ghcr.io/quenchworks/images/pnpm:10`، وهو أساس node مفعّل فيه pnpm أصلًا عبر corepack، ما يوفّر خطوة `corepack enable` في متغيّر pnpm.
+
+## ملف Dockerfile المتعدد المراحل
+
+<Tabs>
+<Tab label="pnpm">
+```dockerfile
+# Build stage: pnpm is already enabled on the pnpm base image.
+FROM ghcr.io/quenchworks/images/pnpm:10 AS build
+WORKDIR /app
+
+# Resolve production dependencies on their own so the runtime stage can
+# copy just these. A cache mount keeps the pnpm store warm across builds.
+COPY package.json pnpm-lock.yaml ./
+RUN ["pnpm", "install", "--prod", "--frozen-lockfile"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Now install everything (incl. dev deps) and build.
+RUN ["pnpm", "install", "--frozen-lockfile"]
+COPY . .
+RUN ["pnpm", "run", "build"]
+
+# Runtime stage: a slim node base, nonroot, with only prod deps + dist.
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+<Tab label="npm">
+```dockerfile
+FROM ghcr.io/quenchworks/images/node:24 AS build
+WORKDIR /app
+
+# Production dependencies only, into their own copy.
+COPY package.json package-lock.json ./
+RUN ["npm", "ci", "--omit=dev"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Full install (incl. dev deps) and build.
+RUN ["npm", "ci"]
+COPY . .
+RUN ["npm", "run", "build"]
+
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+<Tab label="yarn">
+```dockerfile
+# Yarn (Classic) is preinstalled on the yarn base image.
+FROM ghcr.io/quenchworks/images/yarn:1 AS build
+WORKDIR /app
+
+# Production dependencies only.
+COPY package.json yarn.lock ./
+RUN ["yarn", "install", "--frozen-lockfile", "--production"]
+RUN ["cp", "-r", "node_modules", "/prod_modules"]
+
+# Full install (incl. dev deps) and build.
+RUN ["yarn", "install", "--frozen-lockfile"]
+COPY . .
+RUN ["yarn", "build"]
+
+FROM ghcr.io/quenchworks/images/node:24 AS runtime
+WORKDIR /app
+ENV NODE_ENV=production
+COPY --from=build /prod_modules ./node_modules
+COPY --from=build /app/dist ./dist
+COPY --from=build /app/package.json ./package.json
+USER 1001
+EXPOSE 3000
+CMD ["node", "dist/server.js"]
+```
+</Tab>
+</Tabs>
+
+## ماذا تفعل كل مرحلة
+
+<Steps>
+1. **اعتماديات الإنتاج.** ثبّت اعتماديات الإنتاج فقط، ثم انسخها إلى مسار ثابت (`/prod_modules`). هذه هي المجموعة التي تحتاجها الصورة النهائية، محفوظة بمعزل عن اعتماديات التطوير التي يجلبها البناء لاحقًا.
+2. **البناء.** ثبّت مجموعة الاعتماديات الكاملة، وانسخ المصدر، وشغّل البناء. تحمل هذه المرحلة المُجمِّع واعتماديات التطوير والمصدر، ولا يُشحن أيٌّ منها.
+3. **التشغيل.** ابدأ من جديد من `node:24`، وانسخ `node_modules` الإنتاجية و`dist/` المبني، وانزل إلى `uid 1001`، وابدأ. تبقى سلسلة الأدوات خلفك.
+</Steps>
+
+<Notice type="tip">
+مع BuildKit يمكنك الإبقاء على ذاكرة مدير الحزم بين عمليات البناء عبر تركيب ذاكرة، وهو أسرع من إعادة التنزيل في كل مرة. لـ pnpm: `RUN --mount=type=cache,target=/pnpm/store pnpm install --frozen-lockfile`. تركيب الذاكرة ميزة وقت بناء ولا ينتهي في الصورة، فلا يؤثّر في التشغيل للقراءة فقط.
+</Notice>
+
+<Notice type="warning">
+الصور الأساس بلا غلاف، لذا فإن كل `RUN` و`CMD` و`ENTRYPOINT` هنا بصيغة exec (مصفوفة JSON). سطر مثل `RUN npm ci && npm run build` يحتاج إلى غلاف وسيفشل؛ قسّمه إلى خطوتي `RUN` بصيغة exec كما هو معروض. تعمل مرحلة التشغيل كـ `USER 1001` على نظام ملفات جذر للقراءة فقط، فإن كان تطبيقك يكتب أي شيء، وجّهه إلى `/tmp` أو إلى وحدة تخزين مركّبة.
+</Notice>
+
+## التالي
+
+- تشغّل واجهة أمامية ساكنة بدلًا من خادم Node؟ ابنِ بـ `node`، ثم اخدم الأصول المبنية من `nginx`، أو اشحن ملفًا ثنائيًا مكتفيًا ذاتيًا إلى [`static`](/ar/docs/build-go).
+- [ثبّت بالبصمة الرقمية](/ar/docs/pin-by-digest) متى استقرّيت على أساس، ليجري كل بناء بالضبط على ما جرى فحصه وتوقيعه.

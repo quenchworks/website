@@ -1,0 +1,76 @@
+---
+title: Construir una aplicación .NET
+description: "Un Dockerfile multi-etapa endurecido para .NET en QuenchWorks: publica con la imagen del SDK dotnet, luego ejecuta sobre la base ligera aspnet para aplicaciones web o dotnet-runtime para aplicaciones de consola, como nonroot."
+group: Build images
+order: 6
+---
+
+Una aplicación .NET publicada no necesita el SDK en tiempo de ejecución, solo el runtime correspondiente. Así que ejecuta `dotnet publish` en la etapa de construcción con la imagen del SDK, y luego ejecuta la salida publicada sobre la base de runtime ligera: `aspnet` para aplicaciones web y APIs, `dotnet-runtime` para aplicaciones de consola y de worker. El SDK y la caché de NuGet se quedan atrás en la etapa de construcción.
+
+Estas construyen sobre `ghcr.io/quenchworks/images/dotnet:10` (el SDK), y luego se ejecutan sobre `ghcr.io/quenchworks/images/aspnet:10` o `ghcr.io/quenchworks/images/dotnet-runtime:10`. Mantén la línea del runtime acorde con el SDK con el que construiste.
+
+## El Dockerfile multi-etapa
+
+<Tabs>
+<Tab label="aspnet (web)">
+```dockerfile
+# Build stage: restore, then publish the app.
+FROM ghcr.io/quenchworks/images/dotnet:10 AS build
+WORKDIR /src
+
+# Restore first so the layer caches when only code changes.
+COPY ["App.csproj", "./"]
+RUN ["dotnet", "restore", "App.csproj"]
+COPY . .
+RUN ["dotnet", "publish", "App.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
+
+# Runtime stage: ASP.NET Core runtime, nonroot.
+FROM ghcr.io/quenchworks/images/aspnet:10 AS runtime
+WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:8080
+COPY --from=build /app/publish ./
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "App.dll"]
+```
+</Tab>
+<Tab label="dotnet-runtime (console)">
+```dockerfile
+# Build stage: restore, then publish the worker/console app.
+FROM ghcr.io/quenchworks/images/dotnet:10 AS build
+WORKDIR /src
+
+COPY ["Worker.csproj", "./"]
+RUN ["dotnet", "restore", "Worker.csproj"]
+COPY . .
+RUN ["dotnet", "publish", "Worker.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
+
+# Runtime stage: the plain .NET runtime, no ASP.NET Core stack.
+FROM ghcr.io/quenchworks/images/dotnet-runtime:10 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish ./
+USER 1001
+ENTRYPOINT ["dotnet", "Worker.dll"]
+```
+</Tab>
+</Tabs>
+
+## Qué hace cada etapa
+
+<Steps>
+1. **Construcción.** La imagen `dotnet` es el SDK completo. Restaura antes de copiar el resto del código fuente para que esa capa se cachee, y luego ejecuta `dotnet publish` en Release a una carpeta fija. El SDK, la caché de NuGet y el código fuente se quedan en esta etapa.
+2. **Runtime.** Empieza desde `aspnet` (para web) o `dotnet-runtime` (para consola), copia la salida de publish, baja a `uid 1001` y ejecuta el ensamblado de entrada. No se entrega ningún SDK.
+</Steps>
+
+<Notice type="tip">
+Con BuildKit puedes mantener caliente la caché de NuGet entre construcciones con un montaje de caché en lugar de volver a restaurar cada vez: `RUN --mount=type=cache,target=/root/.nuget/packages dotnet restore`. El montaje de caché es solo de tiempo de construcción y nunca llega a la imagen.
+</Notice>
+
+<Notice type="warning">
+Las imágenes base no tienen shell, así que los pasos de construcción `dotnet` y el `ENTRYPOINT` están en forma exec (un array JSON). El runtime se ejecuta como `USER 1001` sobre un sistema de archivos raíz de solo lectura, así que enlaza a un puerto no privilegiado (8080 aquí, no 80) y apunta cualquier escritura a `/tmp` o a un volumen montado. Establece `DOTNET_CLI_TELEMETRY_OPTOUT=1` si quieres que el runtime omita la telemetría.
+</Notice>
+
+## Siguiente
+
+- Para la huella más pequeña, publica una aplicación autocontenida y recortada y ejecútala sobre una base de runtime, o compila por AOT una aplicación de consola a un binario nativo y entrégala sobre [`static`](/es/docs/build-go).
+- [Fija por digest](/es/docs/pin-by-digest) para que cada construcción ejecute exactamente la base que se escaneó y firmó.

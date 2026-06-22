@@ -1,0 +1,43 @@
+---
+title: Primeros pasos
+description: Instala un chart de QuenchWorks y descarga una imagen. Todo se publica en GHCR como un artefacto OCI.
+group: Guides
+order: 1
+---
+
+Todo se publica en GHCR como artefactos OCI. Necesitas Helm para los charts y cualquier runtime OCI para las imágenes. No hay ningún repositorio que añadir ni ninguna cuenta que crear.
+
+Explora [todos los charts](/es/charts) y [todas las imágenes](/es/images) para encontrar un almacén de datos, y luego vuelve aquí para instalarlo.
+
+## Instalar un chart
+
+Los charts se instalan directamente desde el registro mediante su referencia OCI:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis
+```
+
+La autenticación está activada de forma predeterminada y se genera una contraseña dentro de un Secret. Para establecer la tuya propia, o para crear una base de datos de aplicación donde el chart lo admita, pasa valores:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
+  --set auth.password='change-me'
+```
+
+Cada chart documenta sus valores en su página de [chart](/es/charts), e incluye un `values.schema.json` para que Helm valide lo que pasas.
+
+## Descargar una imagen
+
+Las imágenes se pueden usar por sí solas, fuera de los charts. Están etiquetadas por versión de la aplicación (no existe `:latest`), así que descarga siempre una etiqueta de versión, mostrada en la página de cada [imagen](/es/images):
+
+```bash
+docker pull ghcr.io/quenchworks/images/redis:8.8.0
+```
+
+Cada imagen se ejecuta como un usuario sin privilegios de root (uid 1001) sobre un sistema de archivos raíz de solo lectura, con todas las capacidades de Linux eliminadas, de modo que encaja limpiamente bajo una política PodSecurity restringida. Se construyen tanto para amd64 como para arm64.
+
+## Próximos pasos
+
+- [Verifica una firma](/es/docs/verify) antes de confiar en un artefacto.
+- [Fija por digest](/es/docs/pin-by-digest) para que lo que ejecutas sea exactamente lo que se escaneó y firmó.
+- [Configuración](/es/docs/configuration) para la persistencia, los recursos, la planificación y las anulaciones del contexto de seguridad.

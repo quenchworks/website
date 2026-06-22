@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+---
+
+<Base title="حول · Quenchworks" description="لماذا وُجد QuenchWorks: كتالوج مجاني ومستقل من صور الحاويات ومخططات Helm المُحصّنة والخالية من الثغرات.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">حول</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">تحصين مجاني، يبقى مستقلًا</h1>
+
+    <div class="mt-6 space-y-5 leading-relaxed text-ash">
+      <p>
+        لسنوات، اعتمدت الفِرق على كتالوج مجاني من صور المجتمع ومخططاته لقواعد البيانات
+        وذاكرات التخزين المؤقت ووسطاء الرسائل التي تُشغّلها كل يوم. وحين انتقلت النسخ
+        المُحصّنة منخفضة الثغرات إلى طبقة مدفوعة وتُرك الكتالوج المجاني جانبًا، ضاع الكثير
+        من ذلك المكتسب.
+      </p>
+      <p>
+        يُعيد QuenchWorks بناء ذلك المكتسب في العلن. إنه كتالوج لنفس أنواع قواعد البيانات،
+        كلٌّ منها مُجمّع من المصدر على Wolfi في صورة صغيرة تعمل بدون صلاحيات الجذر، ومفحوص
+        حتى صفر ثغرات قابلة للإصلاح، وموقّع، ومثبّت بالبصمة الرقمية. كل شيء مجاني للاستخدام
+        ومجاني للتحقّق منه.
+      </p>
+      <p>
+        وهو أيضًا مستقل عن قصد. تُكتب المخططات من توثيق كل مشروع الرسمي نفسه، لا مأخوذة عن أي
+        مورّد آخر، وتحمل الصور أعمالنا الفنية الخاصة، لا علامات أي طرف آخر التجارية. الهدف
+        سلسلة توريد نظيفة وصادقة يمكنك التحقّق منها بنفسك.
+      </p>
+    </div>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite p-6 sm:p-8">
+      <p class="font-mono text-xs uppercase tracking-widest text-ash">المسؤول عن الصيانة</p>
+      <h2 class="mt-3 text-xl font-semibold tracking-tight">محمد أبو مطر</h2>
+      <p class="mt-2 leading-relaxed text-ash">
+        مدير السحابة وDevOps في Motory، بخبرة تقارب ثماني سنوات عبر هندسة المكدّس الكامل
+        والواجهة الخلفية والمنصّات. يومًا بيوم، هذا يعني Kubernetes متعدّد السحابات على AWS
+        وHuawei Cloud وHetzner، والبنية التحتية ككود باستخدام Terraform، وتكامل/تسليم مستمر
+        على Jenkins وArgoCD. يجلب QuenchWorks عادة التحصين نفسها إلى كتالوج مجاني ومفتوح.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href="https://mkabumattar.com/" class="rounded-lg border border-paper/40 px-3.5 py-2 text-paper transition-colors hover:bg-ink">mkabumattar.com</a>
+        <a href="https://github.com/MKAbuMattar" class="rounded-lg border border-line px-3.5 py-2 text-paper transition-colors hover:bg-ink">GitHub</a>
+        <a href="https://github.com/quenchworks" class="rounded-lg border border-line px-3.5 py-2 text-ash transition-colors hover:text-paper">منظّمة QuenchWorks</a>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-line bg-graphite px-6 py-8 text-center">
+      <p class="text-ash">
+        تريد إعطاء قاعدة بيانات أولوية؟{' '}
+        <a href="mailto:info@quench-works.com?subject=App%20request" class="font-medium text-paper underline-offset-4 hover:underline">اطلب تطبيقًا</a>{' '}
+        أو تصفّح{' '}
+        <a href={l('/roadmap')} class="font-medium text-paper underline-offset-4 hover:underline">خارطة الطريق</a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Base>

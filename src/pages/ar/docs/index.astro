@@ -1,0 +1,95 @@
+---
+import Docs from '../../../layouts/Docs.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, localizeUrl } from '../../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+
+const guarantees = [
+  ['صفر ثغرات قابلة للإصلاح', 'بوابة Trivy صارمة؛ أي ثغرة قابلة للإصلاح تُفشل البناء، فلا يُطرح شيء غير نظيف.'],
+  ['مبنية من المصدر', 'مُجمّعة على Wolfi بـ melange + apko. لا Dockerfile، ولا شيء موروث.'],
+  ['بدون صلاحيات الجذر، للقراءة فقط', 'uid 1001، ونظام ملفات جذر للقراءة فقط، وإسقاط جميع الصلاحيات.'],
+  ['متعددة المعماريات', 'linux/amd64 + linux/arm64، فهرس موقّع واحد.'],
+  ['موقّعة', 'cosign دون مفتاح، مربوطة بمسار عمل البناء ومُسجّلة في Rekor.'],
+  ['مثبّتة بالبصمة الرقمية', 'تشير المخططات إلى الصور عبر sha256، لا عبر وسم متغيّر.'],
+];
+
+// The guide and reference cards are driven by the docs collection, so adding an
+// MDX file under src/content/docs/ surfaces it here automatically.
+const docs = await getCollection('docsAr');
+const cardsFor = (group: 'Guides' | 'Build images' | 'Reference') =>
+  docs
+    .filter((d) => d.data.group === group)
+    .sort((a, b) => a.data.order - b.data.order)
+    .map((d) => ({ href: l(`/docs/${d.id}`), h: d.data.title, p: d.data.description }));
+
+const guides = cardsFor('Guides');
+const buildImages = cardsFor('Build images');
+const reference = cardsFor('Reference');
+---
+
+<Docs title="التوثيق · Quenchworks" description="كيف تثبّت صور ومخططات QuenchWorks وتتحقّق منها وتثبّتها بالبصمة وتضبطها وتهاجر إليها.">
+  <h1>التوثيق</h1>
+  <p class="lead">أدلّة قصيرة وعملية لاستخدام الكتالوج. ثبّت شيئًا، وتأكّد أنك تستطيع الوثوق به، وثبّته بالبصمة، واضبطه.</p>
+
+  <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+    {
+      guarantees.map(([h, p]) => (
+        <div class="rounded-xl border border-line bg-graphite p-4">
+          <p class="font-mono text-[11px] uppercase tracking-widest text-paper">{h}</p>
+          <p class="mt-1.5 text-sm leading-relaxed">{p}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2>الأدلّة</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      guides.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <h2>بناء الصور</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      buildImages.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <h2>المرجع</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      reference.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <p class="mt-10 text-sm">
+    تبحث عن قاعدة بيانات بعينها؟ تصفّح <a href={l('/charts')}>كل المخططات</a> أو <a href={l('/images')}>كل الصور</a>.
+  </p>
+</Docs>

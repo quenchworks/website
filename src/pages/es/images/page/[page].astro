@@ -1,0 +1,61 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import CatalogList from '../../../../components/CatalogList.astro';
+import { images, availableCount, imageTiers, PAGE_SIZE } from '../../../../data/images';
+import { fetchArtifactHub } from '../../../../data/artifacthub';
+
+// Static pages 2..N. Page 1 lives at /images (index.astro), so it is NOT
+// emitted here. This two-segment route (page/[page]) does not collide with the
+// one-segment detail route ([slug].astro).
+const sortImages = (list: typeof images) =>
+  [...list].sort((a, b) => {
+    if (a.status !== b.status) return a.status === 'available' ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
+
+export function getStaticPaths() {
+  const entries = [...images].sort((a, b) => {
+    if (a.status !== b.status) return a.status === 'available' ? -1 : 1;
+    return a.name.localeCompare(b.name);
+  });
+  const total = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
+  const paths = [];
+  for (let page = 2; page <= total; page++) {
+    const start = (page - 1) * PAGE_SIZE;
+    paths.push({
+      params: { page: String(page) },
+      props: { slice: entries.slice(start, start + PAGE_SIZE), current: page, total },
+    });
+  }
+  return paths;
+}
+
+const { slice, current, total } = Astro.props;
+const ah = await fetchArtifactHub();
+
+const entries = sortImages(images);
+const categories = [...new Set(images.map((e) => e.category))].sort();
+const tierFilters = imageTiers.map((t) => ({ key: t, label: t[0].toUpperCase() + t.slice(1) }));
+---
+
+<Base
+  title={`Images · Page ${current} · Quenchworks`}
+  description="Browse QuenchWorks hardened, 0-CVE container images — built from source on Wolfi, cosign-signed, digest-pinned, multi-arch."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <CatalogList
+      kind="images"
+      base="/images"
+      all={entries}
+      ah={ah}
+      page={{ data: slice, current, total }}
+      count={availableCount}
+      categories={categories}
+      tierFilters={tierFilters}
+    />
+  </main>
+  <Footer />
+</Base>

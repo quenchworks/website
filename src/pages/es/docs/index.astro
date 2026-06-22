@@ -1,0 +1,95 @@
+---
+import Docs from '../../../layouts/Docs.astro';
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, localizeUrl } from '../../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+
+const guarantees = [
+  ['Cero CVE corregibles', 'Una puerta de control estricta de Trivy; un CVE corregible hace fallar la compilación, así que nada sale sucio.'],
+  ['Compilado desde el código fuente', 'Compilado en Wolfi con melange + apko. Sin Dockerfile, nada heredado.'],
+  ['Sin root, solo lectura', 'uid 1001, sistema de archivos raíz de solo lectura, todas las capacidades eliminadas.'],
+  ['Multiarquitectura', 'linux/amd64 + linux/arm64, un único índice firmado.'],
+  ['Firmado', 'cosign sin clave, vinculado al flujo de trabajo de compilación y registrado en Rekor.'],
+  ['Fijado por digest', 'Los charts referencian las imágenes por sha256, nunca por una etiqueta móvil.'],
+];
+
+// The guide and reference cards are driven by the docs collection, so adding an
+// MDX file under src/content/docs/ surfaces it here automatically.
+const docs = await getCollection('docsEs');
+const cardsFor = (group: 'Guides' | 'Build images' | 'Reference') =>
+  docs
+    .filter((d) => d.data.group === group)
+    .sort((a, b) => a.data.order - b.data.order)
+    .map((d) => ({ href: l(`/docs/${d.id}`), h: d.data.title, p: d.data.description }));
+
+const guides = cardsFor('Guides');
+const buildImages = cardsFor('Build images');
+const reference = cardsFor('Reference');
+---
+
+<Docs title="Documentación · Quenchworks" description="Cómo instalar, verificar, fijar, configurar y migrar a las imágenes y charts de QuenchWorks.">
+  <h1>Documentación</h1>
+  <p class="lead">Guías breves y prácticas para usar el catálogo. Instala algo, comprueba que puedes confiar en ello, fíjalo y ajústalo.</p>
+
+  <div class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3">
+    {
+      guarantees.map(([h, p]) => (
+        <div class="rounded-xl border border-line bg-graphite p-4">
+          <p class="font-mono text-[11px] uppercase tracking-widest text-paper">{h}</p>
+          <p class="mt-1.5 text-sm leading-relaxed">{p}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <h2>Guías</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      guides.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <h2>Construir imágenes</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      buildImages.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <h2>Referencia</h2>
+  <div class="mt-4 grid gap-3">
+    {
+      reference.map((pg) => (
+        <a href={pg.href} class="group rounded-xl border border-line bg-graphite p-5 no-underline transition-colors duration-200 hover:border-paper/40">
+          <div class="flex items-center justify-between gap-3">
+            <span class="text-base font-semibold text-paper">{pg.h}</span>
+            <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+          </div>
+          <p class="mt-1">{pg.p}</p>
+        </a>
+      ))
+    }
+  </div>
+
+  <p class="mt-10 text-sm">
+    ¿Buscas un almacén de datos específico? Explora <a href={l('/charts')}>todos los charts</a> o <a href={l('/images')}>todas las imágenes</a>.
+  </p>
+</Docs>

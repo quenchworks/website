@@ -1,0 +1,71 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+
+const layers = [
+  {
+    n: '01',
+    h: 'مصنع الصور',
+    p: 'نُجمّع كل تطبيق من المصدر باستخدام melange، ثم يجمّع apko صورة صغيرة تعمل بدون صلاحيات الجذر فوق Wolfi. لا توجد ملفات Dockerfile ولا شيء موروث من توزيعة أخرى، فلا تحمل الصورة إلا ما يحتاجه التطبيق. تُفشل بوابة Trivy عملية البناء عند أي ثغرة قابلة للإصلاح، وتُبقي إعادة بناء مجدولة النتيجة نظيفة مع مرور الوقت.',
+    tags: ['melange', 'apko', 'Wolfi', 'Trivy'],
+  },
+  {
+    n: '02',
+    h: 'مخططات من غرفة نظيفة',
+    p: 'يُكتب كل مخطط Helm من توثيق التطبيق الرسمي نفسه، ولا يُنسخ أبدًا من مورّد آخر. يوفّر مخطط مكتبة مشترك التسميات وسياقات الأمان المُحصّنة ومُحلّلًا يشير إلى الصور حصرًا عبر البصمة الرقمية. تعمل المخططات بدون صلاحيات الجذر على نظام ملفات جذر للقراءة فقط مع إسقاط جميع الصلاحيات.',
+    tags: ['Helm', 'quench-common', 'nonroot', 'read-only rootfs'],
+  },
+  {
+    n: '03',
+    h: 'توزيع موقّع',
+    p: 'تُنشر الصور والمخططات إلى GHCR كقطع أثرية OCI وتُوقّع بـ cosign باستخدام GitHub OIDC، فلا يوجد مفتاح طويل الأمد. عند إعادة بناء صورة، يُحدّث عقد بصمة رقمية المخطط تلقائيًا إلى البصمة الموقّعة الجديدة. كل شيء مُدرَج على ArtifactHub، ويمكن لأي شخص التحقّق من التوقيع من طرفيته الخاصة.',
+    tags: ['GHCR', 'cosign', 'OCI', 'ArtifactHub'],
+  },
+];
+---
+
+<Base title="كيف تعمل · Quenchworks" description="مسار QuenchWorks: مبني من المصدر على Wolfi، ومخططات من غرفة نظيفة، وموقّع وموزّع كقطع أثرية OCI.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">كيف تعمل</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">من المصدر إلى تثبيت موقّع</h1>
+    <p class="mt-4 leading-relaxed text-ash">
+      ثلاث طبقات مستقلة، لكل منها مهمة واحدة. العقد بينها بسيط: تشير المخططات إلى الصور
+      عبر البصمة الرقمية فقط، لا عبر وسم متغيّر.
+    </p>
+
+    <div class="mt-12 space-y-4">
+      {
+        layers.map((l) => (
+          <section class="rounded-2xl border border-line bg-graphite p-6 sm:p-8">
+            <div class="flex items-baseline gap-4">
+              <span class="font-mono text-sm tabular-nums text-ash">{l.n}</span>
+              <h2 class="text-xl font-semibold tracking-tight">{l.h}</h2>
+            </div>
+            <p class="mt-3 leading-relaxed text-ash">{l.p}</p>
+            <div class="mt-5 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+              {l.tags.map((t) => (
+                <span class="rounded bg-ink px-2 py-0.5">{t}</span>
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+
+    <section class="mt-10 rounded-2xl border border-line bg-graphite px-6 py-8 text-center">
+      <p class="text-ash">
+        شاهدها عمليًا في أي صفحة{' '}
+        <a href={l('/charts')} class="font-medium text-paper underline-offset-4 hover:underline">مخطط</a>{' '}
+        ، أو اقرأ{' '}
+        <a href={l('/security')} class="font-medium text-paper underline-offset-4 hover:underline">نموذج الأمان</a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Base>

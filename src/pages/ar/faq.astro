@@ -1,0 +1,135 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { chartCategories } from '../../data/charts';
+import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
+import { categoryName } from '../../i18n/categories';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+
+function slugify(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+// Plain-text answers, reused for the visible Q&A and the FAQPage JSON-LD so the
+// two never drift.
+const faqs: { q: string; a: string }[] = [
+  {
+    q: 'هل هو مجاني فعلًا؟',
+    a: 'نعم. الصور والمخططات مرخّصة بموجب MIT ومنشورة إلى GitHub Container Registry تحت ghcr.io/quenchworks. لا حساب لإنشائه، ولا مستودع لإضافته، ولا طبقة مدفوعة. تسحب ما تحتاجه وتشغّله.',
+  },
+  {
+    q: 'بماذا يختلف هذا عن Bitnami؟',
+    a: 'نقلت Bitnami كتالوجها المدعوم والمُحدّث بانتظام إلى Tanzu Application Catalog المدفوع، وأصبحت صورها العامة المجانية الآن في سجلّ قديم لم يعد يحصل على التحديثات نفسها. QuenchWorks إعادة بناء مستقلة من المصدر: مُحصّنة، ومفحوصة حتى صفر ثغرات قابلة للإصلاح، وموقّعة، ومثبّتة بالبصمة الرقمية، تُبقى حديثة ومجانية. وهو غير تابع لـ Bitnami ولا يُعيد استخدام مخططاتها.',
+  },
+  {
+    q: 'بماذا يختلف هذا عن Chainguard؟',
+    a: 'تقدّم Chainguard صورًا مُحصّنة، لكن النسخ المصانة والحديثة تقع خلف اشتراك مدفوع. ينشر QuenchWorks صوره ومخططاته المُحصّنة والحديثة مجانًا. والاثنان غير مرتبطين.',
+  },
+  {
+    q: 'كيف أثق بما أسحبه وأتحقّق منه؟',
+    a: 'كل صورة مبنية من المصدر على Wolfi، وموقّعة بـ cosign دون مفتاح عبر Sigstore، ومثبّتة بالبصمة الرقمية. تحمل كل واحدة أيضًا قائمة مكوّنات برمجية SPDX وشهادة منشأ بناء SLSA على البصمة الرقمية نفسها، يمكنك التحقّق منها بنفسك عبر GitHub CLI. يُثبت التوقيع مَن بناها، ويُثبت المنشأ كيف بُنيت، وتُخبرك قائمة المكوّنات بما بداخلها. راجع توثيق SBOM والمنشأ وصفحة الأمان للأوامر الدقيقة.',
+  },
+  {
+    q: 'وماذا عن الترخيص؟',
+    a: 'تغليف QuenchWorks مرخّص بموجب MIT. يحتفظ البرنامج داخل كل صورة بترخيصه الرسمي الخاص، المعروض في كل صفحة كتالوج. وحيث يكون التطبيق متاح المصدر بدل أن يكون نظيف OSI، يُشير الكتالوج إلى ذلك ويوجّه إلى بديل نظيف. يشرح توثيق الترخيص ما يُعدّ نظيفًا، وما يُعدّ متاح المصدر، والبدائل المُوصى بها.',
+  },
+  {
+    q: 'هل هناك دعم؟',
+    a: 'الدعم مجتمعي وببذل الجهد عبر مستودعات GitHub: افتح مشكلة لعلّة، أو ثغرة، أو طلب تطبيق جديد. لا يوجد عقد دعم مدفوع. يُصان الكتالوج نفسه بنشاط، ويُسجّل سجلّ التغييرات ما يُطرح.',
+  },
+  {
+    q: 'كم مرة يُعاد بناء كل شيء؟',
+    a: 'يوميًا. يُعيد المسار البناء من المصدر ويُعيد الفحص بوتيرة يومية، فحين تُصلِح حزمة رسمية ثغرة تلتقطها الصورة المُحصّنة دون انتظارك دورة إصدار. تتغيّر البصمة الرقمية حين يتغيّر المحتوى، ويُثبّت المخطط البصمة الجديدة.',
+  },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const categoryLinks = chartCategories.map((c) => ({ label: c, slug: slugify(c) }));
+---
+
+<Base
+  title="الأسئلة الشائعة · Quenchworks"
+  description="أسئلة شائعة حول QuenchWorks: هل هو مجاني، وكيف يقارن بـ Bitnami وChainguard، وكيف تتحقّق مما تسحبه، والترخيص، والدعم، ووتيرة إعادة البناء."
+>
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:FAQ,type:Page">
+    <header class="max-w-2xl">
+      <p class="font-mono text-xs uppercase tracking-widest text-ash">الأسئلة الشائعة</p>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">أسئلة، مُجابة</h1>
+      <p class="mt-4 leading-relaxed text-ash">
+        أكثر ما يسأل عنه الناس بشأن كتالوج مجاني ومُحصّن: كم يكلّف، وكيف يقارن، وكيف يمكنك
+        فحص كل شيء بنفسك.
+      </p>
+    </header>
+
+    <dl class="mt-12 space-y-4">
+      {
+        faqs.map((f) => (
+          <div class="rounded-xl border border-line bg-graphite">
+            <details class="group">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 text-base font-semibold leading-tight marker:content-none [&::-webkit-details-marker]:hidden">
+                <dt>{f.q}</dt>
+                <svg
+                  class="size-4 shrink-0 text-ash transition-transform duration-200 group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </summary>
+              <dd class="px-5 pb-5 leading-relaxed text-ash">{f.a}</dd>
+            </details>
+          </div>
+        ))
+      }
+    </dl>
+
+    <section class="mt-16 border-t border-line pt-10">
+      <h2 class="text-xl font-semibold tracking-tight">تصفّح حسب الفئة</h2>
+      <p class="mt-2 leading-relaxed text-ash">
+        انتقل مباشرةً إلى شريحة من الكتالوج. كل فئة مجموعة مستقلّة قابلة للزحف ومُقسّمة إلى صفحات.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-2">
+        {
+          categoryLinks.map((c) => (
+            <a
+              href={l(`/charts/category/${c.slug}/`)}
+              class="rounded-lg border border-line bg-graphite px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"
+            >
+              {categoryName(lang, c.label)}
+            </a>
+          ))
+        }
+      </div>
+      <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">
+        <a href={l('/images')} class="transition-colors hover:text-paper">الصور حسب الفئة &rarr;</a>
+      </p>
+    </section>
+
+    <p class="mt-12 leading-relaxed text-ash">
+      ما زلت غير متأكّد؟ تُظهر صفحتا <a href={l('/docs/sbom')} class="text-paper/90 underline decoration-line underline-offset-4 hover:decoration-paper">SBOM والمنشأ</a>
+      و<a href={l('/security')} class="text-paper/90 underline decoration-line underline-offset-4 hover:decoration-paper">الأمان</a>
+      كيف تتحقّق من عملية سحب، ويغطّي توثيق <a href={l('/docs/licensing')} class="text-paper/90 underline decoration-line underline-offset-4 hover:decoration-paper">الترخيص</a>
+      ما هو نظيف وما هو متاح المصدر.
+    </p>
+  </main>
+  <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</Base>

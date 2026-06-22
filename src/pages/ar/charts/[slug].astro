@@ -1,0 +1,19 @@
+---
+// The base chart detail page IS the latest release, with the full live
+// ArtifactHub detail. ChartDetail renders one version; here it's the newest
+// (ah.versions[0]). Older releases live at /charts/<slug>/<version>.
+import ChartDetail from '../../../components/ChartDetail.astro';
+import { charts } from '../../../data/charts';
+import { fetchPackageDetail } from '../../../data/artifacthub';
+
+export function getStaticPaths() {
+  return charts.map((e) => ({ params: { slug: e.slug }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const ah = await fetchPackageDetail(entry.slug);
+// Latest version: prefer the live ArtifactHub history, fall back to catalog facts.
+const version = ah?.versions?.[0]?.version ?? ah?.version ?? entry.chartVersion ?? '';
+---
+
+<ChartDetail entry={entry} version={version} ah={ah} versionTs={ah?.ts} />

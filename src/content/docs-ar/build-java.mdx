@@ -1,0 +1,76 @@
+---
+title: بناء تطبيق Java
+description: "ملف Dockerfile مُحصّن متعدد المراحل لـ Java على QuenchWorks: ابنِ ملف jar بصورة maven أو gradle، ثم شغّله على أساس jre النحيل بدون صلاحيات الجذر. متغيّرا Maven و Gradle."
+group: Build images
+order: 5
+---
+
+لا تحتاج خدمة Java إلى JDK كامل لتعمل، بل إلى JRE فقط. فابنِ ملف jar بسلسلة الأدوات في مرحلة، ثم شغّله على أساس `jre` النحيل في المرحلة التالية. يبقى المُجمِّع وأداة البناء وذاكرة الاعتماديات في مرحلة البناء، وتحمل الصورة النهائية بيئة التشغيل وملف jar الخاص بك.
+
+يبني هذا على `ghcr.io/quenchworks/images/maven:3.9` أو `ghcr.io/quenchworks/images/gradle:9`، ثم يشغّل على `ghcr.io/quenchworks/images/jre:21`. طابِق خط JRE مع إصدار Java الذي جمّعت من أجله.
+
+## ملف Dockerfile المتعدد المراحل
+
+<Tabs>
+<Tab label="maven">
+```dockerfile
+# Build stage: resolve dependencies, then package the jar.
+FROM ghcr.io/quenchworks/images/maven:3.9 AS build
+WORKDIR /app
+
+# Resolve dependencies first so the layer caches when only code changes.
+COPY pom.xml ./
+RUN ["mvn", "-B", "dependency:go-offline"]
+COPY src ./src
+RUN ["mvn", "-B", "-o", "package", "-DskipTests"]
+
+# Runtime stage: run the jar on the slim JRE base, nonroot.
+FROM ghcr.io/quenchworks/images/jre:21 AS runtime
+WORKDIR /app
+COPY --from=build /app/target/*.jar /app/app.jar
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+```
+</Tab>
+<Tab label="gradle">
+```dockerfile
+# Build stage: build the jar with Gradle.
+FROM ghcr.io/quenchworks/images/gradle:9 AS build
+WORKDIR /app
+
+# Cache dependencies before copying the full source.
+COPY build.gradle.kts settings.gradle.kts ./
+RUN ["gradle", "dependencies", "--no-daemon"]
+COPY src ./src
+RUN ["gradle", "bootJar", "--no-daemon", "-x", "test"]
+
+FROM ghcr.io/quenchworks/images/jre:21 AS runtime
+WORKDIR /app
+COPY --from=build /app/build/libs/*.jar /app/app.jar
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+```
+</Tab>
+</Tabs>
+
+## ماذا تفعل كل مرحلة
+
+<Steps>
+1. **البناء.** تحمل صورة `maven` أو `gradle` الـ JDK وأداة البناء. حُلّ الاعتماديات قبل نسخ المصدر كي تُخزَّن تلك الطبقة عبر عمليات البناء، ثم احزم ملف jar. تبقى ذاكرة الاعتماديات والمُجمِّع في هذه المرحلة.
+2. **التشغيل.** ابدأ من `jre:21`، وانسخ ملف jar الواحد، وانزل إلى `uid 1001`، وشغّله. لا JDK، ولا أداة بناء، ولا مصدر.
+</Steps>
+
+<Notice type="tip">
+مع BuildKit يمكنك الإبقاء على ذاكرة المستودع المحلي بين عمليات البناء عبر تركيب ذاكرة، بدلًا من إعادة تنزيل الاعتماديات في كل مرة. لـ Maven: `RUN --mount=type=cache,target=/root/.m2 mvn -B package -DskipTests`. ولـ Gradle، ركّب `/home/gradle/.gradle`. تركيب الذاكرة وقت بناء فقط ولا ينتهي في الصورة.
+</Notice>
+
+<Notice type="warning">
+الصور الأساس بلا غلاف، لذا فإن خطوات البناء `RUN` و`ENTRYPOINT` بصيغة exec (مصفوفة JSON). تعمل مرحلة التشغيل كـ `USER 1001` على نظام ملفات جذر للقراءة فقط، فاضبط دليل JVM المؤقت إلى مسار قابل للكتابة عند الحاجة (`-Djava.io.tmpdir=/tmp`) واكتب بيانات التطبيق إلى `/tmp` أو إلى وحدة تخزين مركّبة.
+</Notice>
+
+## التالي
+
+- بناء ملف jar مكتفٍ ذاتيًا (Spring Boot، أو Quarkus، أو jar مظلّل) يُبقي مرحلة التشغيل عند `COPY` واحد؛ وتخطيطات jar المتعددة تعمل أيضًا، فقط انسخ طبقتي الاعتماديات والتطبيق.
+- [ثبّت بالبصمة الرقمية](/ar/docs/pin-by-digest) ليجري كل بناء بالضبط على الأساس الذي جرى فحصه وتوقيعه.

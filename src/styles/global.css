@@ -1,7 +1,9 @@
 @import "tailwindcss";
-/* Self-hosted brand fonts (variable), no third-party CDN request. */
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/jetbrains-mono";
+/* Self-hosted brand fonts (variable), no third-party CDN request.
+   wght-only: we style no italics and no optical-size axis, so the bare import's
+   italic + opsz faces ship as dead weight. ponytail: drops the unused woff2. */
+@import "@fontsource-variable/inter/wght.css";
+@import "@fontsource-variable/jetbrains-mono/wght.css";
 
 /* ───────────────────────────────────────────────────────────────────────────
    Quenchworks theme: authoritative tokens (see _plan-artifacts/design-system/MASTER.md)

@@ -25,7 +25,7 @@ The version tag always points at the latest rebuild, which is the one that carri
 The provenance attestation answers "where did this come from?". It binds the image digest to the exact GitHub Actions workflow, commit, and runner that produced it, following the SLSA provenance schema. Cosign checks it against Sigstore and the signer identity:
 
 ```bash
-cosign verify-attestation --type slsaprovenance \
+cosign verify-attestation --type https://slsa.dev/provenance/v1 \
   ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
@@ -38,7 +38,7 @@ A pass means the image was built by a workflow in the `quenchworks` org and has 
 The SBOM lists every package in the image. Verify the SBOM attestation by its type:
 
 ```bash
-cosign verify-attestation --type spdxjson \
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
   ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
@@ -47,7 +47,7 @@ cosign verify-attestation --type spdxjson \
 To pull the SPDX document itself out and inspect it, decode the verified payload and read the predicate:
 
 ```bash
-cosign verify-attestation --type spdxjson \
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
   ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \

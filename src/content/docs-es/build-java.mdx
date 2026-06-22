@@ -1,0 +1,76 @@
+---
+title: Construir una aplicación Java
+description: "Un Dockerfile multi-etapa endurecido para Java en QuenchWorks: construye el jar con la imagen maven o gradle, luego ejecútalo sobre la base ligera jre como nonroot. Variantes Maven y Gradle."
+group: Build images
+order: 5
+---
+
+Un servicio Java no necesita un JDK completo para ejecutarse, solo un JRE. Así que construye el jar con el conjunto de herramientas en una etapa y luego ejecútalo sobre la base ligera `jre` en la siguiente. El compilador, la herramienta de construcción y la caché de dependencias se quedan en la etapa de construcción, y la imagen final lleva el runtime y tu jar.
+
+Estas construyen sobre `ghcr.io/quenchworks/images/maven:3.9` o `ghcr.io/quenchworks/images/gradle:9`, y luego se ejecutan sobre `ghcr.io/quenchworks/images/jre:21`. Haz coincidir la línea del JRE con la versión de Java para la que compilaste.
+
+## El Dockerfile multi-etapa
+
+<Tabs>
+<Tab label="maven">
+```dockerfile
+# Build stage: resolve dependencies, then package the jar.
+FROM ghcr.io/quenchworks/images/maven:3.9 AS build
+WORKDIR /app
+
+# Resolve dependencies first so the layer caches when only code changes.
+COPY pom.xml ./
+RUN ["mvn", "-B", "dependency:go-offline"]
+COPY src ./src
+RUN ["mvn", "-B", "-o", "package", "-DskipTests"]
+
+# Runtime stage: run the jar on the slim JRE base, nonroot.
+FROM ghcr.io/quenchworks/images/jre:21 AS runtime
+WORKDIR /app
+COPY --from=build /app/target/*.jar /app/app.jar
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+```
+</Tab>
+<Tab label="gradle">
+```dockerfile
+# Build stage: build the jar with Gradle.
+FROM ghcr.io/quenchworks/images/gradle:9 AS build
+WORKDIR /app
+
+# Cache dependencies before copying the full source.
+COPY build.gradle.kts settings.gradle.kts ./
+RUN ["gradle", "dependencies", "--no-daemon"]
+COPY src ./src
+RUN ["gradle", "bootJar", "--no-daemon", "-x", "test"]
+
+FROM ghcr.io/quenchworks/images/jre:21 AS runtime
+WORKDIR /app
+COPY --from=build /app/build/libs/*.jar /app/app.jar
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+```
+</Tab>
+</Tabs>
+
+## Qué hace cada etapa
+
+<Steps>
+1. **Construcción.** La imagen `maven` o `gradle` lleva el JDK y la herramienta de construcción. Resuelve las dependencias antes de copiar el código fuente para que esa capa se cachee entre construcciones, y luego empaqueta el jar. La caché de dependencias y el compilador se quedan en esta etapa.
+2. **Runtime.** Empieza desde `jre:21`, copia el único jar, baja a `uid 1001` y ejecútalo. Sin JDK, sin herramienta de construcción, sin código fuente.
+</Steps>
+
+<Notice type="tip">
+Con BuildKit puedes mantener caliente la caché del repositorio local entre construcciones con un montaje de caché, en lugar de volver a descargar las dependencias cada vez. Para Maven: `RUN --mount=type=cache,target=/root/.m2 mvn -B package -DskipTests`. Para Gradle, monta `/home/gradle/.gradle`. El montaje de caché es solo de tiempo de construcción y no acaba en la imagen.
+</Notice>
+
+<Notice type="warning">
+Las imágenes base no tienen shell, así que los pasos `RUN` de construcción y el `ENTRYPOINT` están en forma exec (un array JSON). El runtime se ejecuta como `USER 1001` sobre un sistema de archivos raíz de solo lectura, así que establece el directorio temporal de la JVM en una ruta escribible si hace falta (`-Djava.io.tmpdir=/tmp`) y escribe los datos de la aplicación en `/tmp` o en un volumen montado.
+</Notice>
+
+## Siguiente
+
+- Construir un jar autocontenido (Spring Boot, Quarkus, un jar empaquetado) mantiene la etapa de runtime en un único `COPY`; las disposiciones de varios jars también funcionan, basta con copiar las capas de dependencias y de la aplicación.
+- [Fija por digest](/es/docs/pin-by-digest) para que cada construcción ejecute exactamente la base que se escaneó y firmó.

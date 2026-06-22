@@ -1,0 +1,43 @@
+---
+// Per-version chart pages: /charts/<slug>/<version>. Emits every release EXCEPT
+// the newest (which lives at the base /charts/<slug> page). These show the
+// pinned --version install, the release date, and the standard verify block —
+// no per-version ArtifactHub fetch, so build time stays flat. getStaticPaths
+// calls fetchPackageDetail once per chart to read the version history.
+import ChartDetail from '../../../../components/ChartDetail.astro';
+import { charts, type ChartEntry } from '../../../../data/charts';
+import { fetchPackageDetail, type AhDetail } from '../../../../data/artifacthub';
+
+type VersionPath = {
+  params: { slug: string; version: string };
+  props: { entry: ChartEntry; version: string; ah: AhDetail | null; versionTs?: number };
+};
+
+export async function getStaticPaths() {
+  // Resolve the chart histories in small batches. Firing all of them at once
+  // gets rate-limited by ArtifactHub, which drops the version history and would
+  // leave the switcher's older-version chips pointing at pages we never built.
+  const CONCURRENCY = 6;
+  const out: VersionPath[] = [];
+  for (let i = 0; i < charts.length; i += CONCURRENCY) {
+    const batch = charts.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map(async (e) => {
+        const ah = await fetchPackageDetail(e.slug);
+        const versions = ah?.versions ?? [];
+        // Skip the newest (index 0): that's the base page.
+        return versions.slice(1).map((v) => ({
+          params: { slug: e.slug, version: v.version },
+          props: { entry: e, version: v.version, ah, versionTs: v.ts },
+        }));
+      }),
+    );
+    for (const r of results) out.push(...r);
+  }
+  return out;
+}
+
+const { entry, version, ah, versionTs } = Astro.props;
+---
+
+<ChartDetail entry={entry} version={version} ah={ah} versionTs={versionTs} />

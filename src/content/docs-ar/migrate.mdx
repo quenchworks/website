@@ -1,0 +1,85 @@
+---
+title: الانتقال من Bitnami
+description: "انتقل من مخططات وصور Bitnami إلى QuenchWorks: مبادلة السجلّ، وكيف يختلف سطح القيم، وما الذي ينتقل معك، وكيف تنقل البيانات ذات الحالة بأمان."
+group: Guides
+order: 2
+---
+
+تحمل QuenchWorks البرمجية المنبع نفسها (Redis و PostgreSQL و Kafka وبقيتها) مُجمَّعة من المصدر إلى صور مُحصّنة وخالية من الثغرات (0-CVE)، مع مخططات Helm مكتوبة بشكل مستقل عن توثيق كل مشروع. مبادلة الصورة عملية آلية. أمّا قيم المخطط فهي مُعاد التعبير عنها لا منسوخة، لأن المخططات ليست مشتقّة من مخططات Bitnami.
+
+## الشيء الوحيد الذي يتغيّر دائمًا: المرجع
+
+كل شيء يُنشر إلى GHCR كأدوات OCI تحت منظمة QuenchWorks. تتطابق معظم أسماء التطبيقات واحدًا لواحد، فيكون الانتقال عادةً عملية بحث واستبدال على مسار السجلّ:
+
+```text
+# chart
+oci://registry-1.docker.io/bitnamicharts/redis   ->  oci://ghcr.io/quenchworks/charts/redis
+
+# image
+docker.io/bitnami/redis:7.4                       ->  ghcr.io/quenchworks/images/redis
+```
+
+فيتحوّل الإصدار من سطر إلى آخر باسم الإصدار ومساحة الأسماء نفسيهما:
+
+```bash
+# before (Bitnami)
+helm install cache oci://registry-1.docker.io/bitnamicharts/redis
+
+# after (QuenchWorks)
+helm install cache oci://ghcr.io/quenchworks/charts/redis
+```
+
+## ما الذي ينتقل معك، وما الذي لا ينتقل
+
+الصورة هي الملف الثنائي المنبع نفسه، فتتطابق صيغ البيانات على القرص: دليل بيانات PostgreSQL، أو ملف RDB/AOF لـ Redis، أو مخزن متوافق مع MongoDB مكتوب تحت Bitnami، يكون قابلًا للقراءة بواسطة صورة QuenchWorks من الإصدار الرئيسي نفسه. طابِق الإصدار الرئيسي عند التبديل، تمامًا كما تفعل في أي ترقية منبع.
+
+المخطط مستقلّ، فلا ينتقل ملف `values.yaml` الخاص بـ Bitnami حرفيًا. المقابض التشغيلية مشتركة عبر كل مخطط من خلال مكتبة [quench-common](/ar/docs/configuration)، فتبدو متشابهة أيًّا كانت قاعدة البيانات التي تُشغّلها، لكن المفاتيح تختلف عن مفاتيح Bitnami.
+
+## ترجمة القيم
+
+ثلاثة فروق تغطّي معظم المخططات:
+
+- **الاستمرارية مسطّحة.** يُداخل Bitnami التخزين تحت `primary.persistence` (و`readReplicas` و`secondary` وهكذا). تكشف QuenchWorks كتلة `persistence` واحدة؛ والنسخ المتماثل، حيث يدعمه مخطط، له قيمته الخاصة الموثّقة في صفحة المخطط.
+- **الصورة مثبّتة بالبصمة.** لا يوجد `image.registry` ولا `image.tag`. يشير المخطط إلى بصمة `sha256` يُبقيها التكامل المستمر محدّثة، ويرفض quench-common المرجع المعتمد على وسم وحده عن قصد. تترك كتلة الصورة وشأنها عادةً.
+- **لا مفاتيح `global` خاصة بـ Bitnami.** مقابض مثل `global.imageRegistry` و`global.security.allowInsecureImages` وحاويات init الخاصة بـ Bitnami للتنقيح/أذونات وحدات التخزين غير موجودة. الصور تعمل أصلًا بدون صلاحيات الجذر على نظام ملفات جذر للقراءة فقط مع إسقاط جميع الصلاحيات، فالترقيعات التي حلّوا بها تلك المشكلات غير لازمة.
+
+```yaml
+# Bitnami shape                      # QuenchWorks shape
+auth:                               auth:
+  password: s3cret                    password: s3cret
+primary:                            persistence:
+  persistence:                        enabled: true
+    enabled: true                     size: 8Gi
+    size: 8Gi                       image:
+image:                                repository: ghcr.io/quenchworks/images/redis
+  registry: docker.io                 digest: "sha256:..."   # set by CI
+  repository: bitnami/redis
+```
+
+المصادقة مفعّلة افتراضيًا، تمامًا مثل Bitnami: اضبط `auth.password` (أو دَع المخطط يولّد واحدة داخل Secret). شغّل `helm show values oci://ghcr.io/quenchworks/charts/<app>` لرؤية السطح كاملًا، واقرأ ملاحظات `config:` و`auth:` الخاصة بكل تطبيق في صفحة كل [مخطط](/ar/charts).
+
+## قواعد البيانات المُضمَّنة
+
+حيث يحتاج تطبيق إلى قاعدة بيانات (Keycloak و Gitea و Temporal)، يُضمّن المخطط مخطط PostgreSQL من QuenchWorks كاعتمادية، وهي الفكرة نفسها للمخططات الفرعية المُضمَّنة في Bitnami. وجّهه إلى قاعدة بيانات خارجية بدلًا من ذلك عبر قيم `externalDatabase` في المخطط، الموثّقة في صفحة المخطط.
+
+## نقل البيانات ذات الحالة
+
+لأي شيء يحمل بيانات، عامل التبديل كهجرة إصدار لا كمبادلة في الموضع:
+
+- خُذ نسخة احتياطية بأداة المحرّك نفسه (`pg_dump` و`mongodump` و`redis-cli --rdb` وهكذا).
+- ثبّت مخطط QuenchWorks بالإصدار الرئيسي المطابق في إصدار جديد.
+- استعِد إليه، وتأكّد أن التطبيق يقرأ البيانات، ثم حوّل حركة المرور إليه.
+
+لإعادة استخدام PersistentVolumeClaim قائمة مباشرة، اربطها بـ `persistence.existingClaim`، لكن فقط عندما يطابق الإصدار الرئيسي وتخطيط وحدة التخزين ما تحمله تلك المطالبة أصلًا.
+
+## التطبيقات متاحة المصدر
+
+قليل من قواعد البيانات التي شغّلها الناس على Bitnami متاحة المصدر لا مفتوحة المصدر. تحملها QuenchWorks وتُسمّي بديلًا مفتوحًا حقًّا لكلٍّ منها، فيمكن أن تكون الهجرة فرصةً للابتعاد عن ترخيص مقيِّد. راجع [الترخيص](/ar/docs/licensing) لبدائل MongoDB و Elasticsearch و CockroachDB و Dragonfly.
+
+## بعد أن تبدّل
+
+- [تحقّق من التوقيع](/ar/docs/verify) لتعرف أن الأداة جاءت من تكامل QuenchWorks المستمر.
+- [ثبّت بالبصمة الرقمية](/ar/docs/pin-by-digest) لتشغّل بالضبط ما جرى فحصه وتوقيعه.
+- [افحص قائمة المكوّنات والمنشأ](/ar/docs/sbom) إن احتجت إلى سجلّ سلسلة توريد للتدقيق.
+
+تفتقد تطبيقًا شغّلته على Bitnami؟ [اطلبه](mailto:info@quench-works.com?subject=App%20request) أو تحقّق من [خارطة الطريق](/ar/roadmap).

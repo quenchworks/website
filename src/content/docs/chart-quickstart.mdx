@@ -1,0 +1,88 @@
+---
+title: Install a chart with Helm
+description: Install, configure, upgrade, and remove a QuenchWorks chart. Charts install straight from the registry, no repo to add.
+group: Guides
+order: 1.5
+---
+
+QuenchWorks charts publish to GHCR as OCI artifacts. There is no Helm repository to add and no account to create. You need Helm 3.8 or newer (OCI support is on by default from 3.8.0).
+
+## Install
+
+Install a chart by its OCI reference. Swap `redis` for any chart and the version shown on its [page](/charts):
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis
+```
+
+Pin the chart version so an upgrade is something you do on purpose, not a surprise:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+## Configure
+
+Auth is on by default. The chart generates a password into a Secret on first install. To set your own, or to create an application database where the chart supports it, pass values:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis \
+  --set auth.password='change-me'
+```
+
+For anything beyond a value or two, use a file:
+
+```bash
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis -f my-values.yaml
+```
+
+Each chart ships a `values.schema.json`, so Helm validates what you pass before it renders anything. See [Configuration](/docs/configuration) for the persistence, resources, scheduling, and security-context keys that every chart shares.
+
+## Inspect before you install
+
+Pull the values and the rendered manifests without touching the cluster:
+
+```bash
+helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+```
+
+## Verify before you install
+
+Charts are OCI artifacts, so cosign verifies them by tag the same way it verifies an image:
+
+```bash
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+A valid result prints the workflow that built the chart and its Rekor log entry. To verify a specific build instead of the tag, pass an `@sha256:...` digest. See [Verify a signature](/docs/verify) and [Pin by digest](/docs/pin-by-digest).
+
+## Upgrade and roll back
+
+Upgrade to a newer chart version with the same reference:
+
+```bash
+helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.6
+```
+
+If something looks wrong, roll back to the previous revision:
+
+```bash
+helm rollback my-redis
+```
+
+## Uninstall
+
+```bash
+helm uninstall my-redis
+```
+
+Helm leaves PersistentVolumeClaims behind on purpose so your data survives a reinstall. Delete them by hand if you want the storage back.
+
+## Next steps
+
+- [Configuration](/docs/configuration): persistence, resources, scheduling, and security context.
+- [Pin by digest](/docs/pin-by-digest): run exactly what was scanned and signed.
+- [Air-gapped install](/docs/air-gapped): relocate charts and images into a private registry.

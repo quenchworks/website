@@ -1,0 +1,65 @@
+---
+title: SBOM y procedencia
+description: Cada imagen de QuenchWorks lleva un SBOM SPDX y una atestación de procedencia de construcción SLSA, firmados sin clave y adjuntos al registro. Verifica ambos con cosign.
+group: Guides
+order: 4
+---
+
+Junto a su firma de cosign, cada imagen lleva dos atestaciones más adjuntas al mismo digest: una lista de materiales de software (SBOM) en SPDX y una declaración de procedencia de construcción SLSA que registra qué flujo de trabajo la construyó y a partir de qué. Ambas se firman sin clave a través de Sigstore y se publican en GHCR como referrers OCI, así que puedes leerlas y verificarlas sin confiar en nada salvo en el registro de transparencia.
+
+## Ver qué hay adjunto
+
+Cosign lista cada referrer de una imagen: la firma y las dos atestaciones. Usa la etiqueta de versión de la imagen (mostrada en su [página](/es/images)); se resuelve al índice multi-arch actual, donde están adjuntas las atestaciones. Sustituye `redis:8.8.0` por cualquier imagen y versión.
+
+```bash
+cosign tree ghcr.io/quenchworks/images/redis:8.8.0
+# └── Attestations
+#     ├── https://spdx.dev/Document/v2.3        (SBOM)
+#     └── https://slsa.dev/provenance/v1        (build provenance)
+```
+
+La etiqueta de versión siempre apunta a la última reconstrucción, que es la que lleva las atestaciones. Para comprobar una construcción específica, usa en su lugar su [digest](/es/docs/pin-by-digest) `@sha256:...`.
+
+## Verificar la procedencia de construcción
+
+La atestación de procedencia responde a "¿de dónde vino esto?". Vincula el digest de la imagen al flujo de trabajo de GitHub Actions, el commit y el runner exactos que la produjeron, siguiendo el esquema de procedencia SLSA. Cosign la comprueba contra Sigstore y la identidad del firmante:
+
+```bash
+cosign verify-attestation --type https://slsa.dev/provenance/v1 \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+Un resultado exitoso significa que la imagen fue construida por un flujo de trabajo en la organización `quenchworks` y no ha sido alterada desde entonces. Una salida distinta de cero significa que falló.
+
+## Verificar y leer el SBOM
+
+El SBOM lista cada paquete de la imagen. Verifica la atestación del SBOM por su tipo:
+
+```bash
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+Para extraer el documento SPDX en sí e inspeccionarlo, decodifica el payload verificado y lee el predicado:
+
+```bash
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  | jq -r '.payload | @base64d | fromjson | .predicate'
+```
+
+En un script o un paso de CI, el código de salida es lo que controlas: una salida distinta de cero significa que la verificación falló, así que compruébalo antes de confiar en cualquier payload decodificado.
+
+## Qué te aporta esto
+
+- Un inventario de paquetes para auditoría y triaje de vulnerabilidades, ligado al digest exacto que ejecutas.
+- Un registro a prueba de manipulaciones de cómo se construyó la imagen, sin ninguna clave que gestionar por ninguna de las partes.
+- Una comprobación que puedes ejecutar tú mismo, en CI o a mano, en lugar de una afirmación que tienes que aceptar por fe.
+
+Los charts también están firmados con cosign; consulta [Verificar una firma](/es/docs/verify) para las comprobaciones de firma del chart y de la imagen, y [Fijar por digest](/es/docs/pin-by-digest) para obtener el digest que estos comandos necesitan.

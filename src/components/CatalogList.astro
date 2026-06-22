@@ -15,6 +15,9 @@
 import Pager from './Pager.astro';
 import type { AhFacts } from '../data/artifacthub';
 import { canonicalVersions } from '../data/images';
+import { getLangFromUrl, localizeUrl, useTranslations } from '../i18n/ui';
+import { localizedSummary } from '../i18n/content';
+import { categoryName } from '../i18n/categories';
 
 type ArtifactHubMap = Record<string, AhFacts>;
 
@@ -51,8 +54,15 @@ const isImages = kind === 'images';
 const noun = isImages ? 'images' : 'charts';
 const inputId = isImages ? 'image-search' : 'chart-search';
 
-const headerTitle = isImages ? 'All images' : 'All charts';
-const headerType = isImages ? 'Images' : 'Charts';
+// Keep links in the active locale: detail cards -> /<lang>/<noun>/<slug>, and the
+// pager base -> /<lang>/<base>. The client renderer gets the prefix via a data attr.
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const headerTitle = isImages ? t('catalog.list.headerImages') : t('catalog.list.headerCharts');
+const headerType = isImages ? t('catalog.list.typeImages') : t('catalog.list.typeCharts');
+const itemBase = localizeUrl(lang, `/${noun}`);
+const pagerBase = localizeUrl(lang, base);
 
 // Lightweight dataset embedded for client-side filtering across the WHOLE
 // catalog (small: a handful of string fields per entry).
@@ -68,10 +78,11 @@ const dataset = all.map((e) => {
     slug: e.slug,
     name: e.name,
     category: e.category,
+    categoryLabel: categoryName(lang, e.category),
     tier: e.tier,
     license: e.license,
     status: e.status ?? 'available',
-    summary: e.summary,
+    summary: localizedSummary(lang, kind, e.slug, e.summary),
     version,
     caution: !!e.caution,
     // images only: newest canonical tag (semver, alias tags dropped), its size,
@@ -95,28 +106,25 @@ const dataset = all.map((e) => {
   </div>
   {isImages ? (
     <>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Hardened container images</h1>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{t('catalog.list.titleImages')}</h1>
       <p class="mt-4 leading-relaxed text-ash">
-        Every image is built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, and
-        pinned by digest, with an SPDX SBOM and a SLSA build-provenance attestation you can verify.
-        Nonroot, read-only rootfs, amd64 + arm64. {count} available now.
+        {t('catalog.list.descImages')} {count} {t('catalog.list.descImagesAvailable')}
       </p>
     </>
   ) : (
     <>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Hardened Helm charts</h1>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{t('catalog.list.titleCharts')}</h1>
       <p class="mt-4 leading-relaxed text-ash">
-        Each chart deploys our hardened image pinned by its signed digest, with sensible production
-        defaults. Cosign-signed and published as an ArtifactHub verified publisher. {count} charts.
+        {t('catalog.list.descCharts')} {count} {t('catalog.list.descChartsCount')}
       </p>
     </>
   )}
 </header>
 
 <div class="relative mt-8">
-  <label for={inputId} class="sr-only">Search {noun}</label>
+  <label for={inputId} class="sr-only">{isImages ? t('catalog.list.searchImages') : t('catalog.list.searchCharts')}</label>
   <svg
-    class="pointer-events-none absolute left-3.5 top-1/2 size-4 -translate-y-1/2 text-ash"
+    class="pointer-events-none absolute start-3.5 top-1/2 size-4 -translate-y-1/2 text-ash"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
@@ -131,24 +139,24 @@ const dataset = all.map((e) => {
   <input
     id={inputId}
     type="search"
-    placeholder="Search by name, category, license…"
+    placeholder={t('catalog.list.searchPlaceholder')}
     autocomplete="off"
-    class="w-full rounded-lg border border-line bg-graphite py-2.5 pl-10 pr-4 font-mono text-sm text-paper placeholder:text-ash focus:border-paper/40 focus:outline-none"
+    class="w-full rounded-lg border border-line bg-graphite py-2.5 ps-10 pe-4 font-mono text-sm text-paper placeholder:text-ash focus:border-paper/40 focus:outline-none"
   />
 </div>
 
-<div class="mb-8 mt-4 flex flex-wrap gap-2" role="group" aria-label={`Filter ${noun}`}>
+<div class="mb-8 mt-4 flex flex-wrap gap-2" role="group" aria-label={isImages ? t('catalog.list.filterImages') : t('catalog.list.filterCharts')}>
   <button
     data-filter="all"
     data-kind="all"
     class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
-    aria-pressed="true">All</button>
+    aria-pressed="true">{t('catalog.list.filterAll')}</button>
   {isImages && (
     <button
       data-filter="available"
       data-kind="status"
       class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
-      aria-pressed="false">Available</button>
+      aria-pressed="false">{t('catalog.list.filterAvailable')}</button>
   )}
   {tierFilters.map((f) => (
     <button
@@ -162,13 +170,13 @@ const dataset = all.map((e) => {
       data-filter={c}
       data-kind="category"
       class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
-      aria-pressed="false">{c}</button>
+      aria-pressed="false">{categoryName(lang, c)}</button>
   ))}
 </div>
 
 <div class="mb-4 flex min-h-5 items-center justify-between gap-4">
   <p class="font-mono text-xs uppercase tracking-widest text-ash" id="result-count"></p>
-  <p class="hidden font-mono text-xs uppercase tracking-widest text-ash" id="no-results">No {noun} match that search.</p>
+  <p class="hidden font-mono text-xs uppercase tracking-widest text-ash" id="no-results">{isImages ? t('catalog.list.noMatchImages') : t('catalog.list.noMatchCharts')}</p>
 </div>
 
 {/* SERVER slice: the real, crawlable 12-card page. Hidden by the client when filtering. */}
@@ -184,7 +192,7 @@ const dataset = all.map((e) => {
       return (
         <li class="card" data-status={e.status} data-tier={e.tier} data-category={e.category}>
           <Tag
-            {...(e.status === 'available' ? { href: `/images/${e.slug}` } : {})}
+            {...(e.status === 'available' ? { href: `${itemBase}/${e.slug}` } : {})}
             class:list={[
               'group flex h-full flex-col gap-4 rounded-xl border bg-graphite p-5 transition-colors duration-200',
               e.status === 'available' ? 'border-line hover:border-paper/40' : 'border-line/70 bg-graphite/50',
@@ -201,22 +209,22 @@ const dataset = all.map((e) => {
               {e.status === 'available' ? (
                 <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
               ) : (
-                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">Planned</span>
+                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">{t('catalog.list.badgePlanned')}</span>
               )}
             </div>
             <div class="flex-1">
               <h2 class:list={['text-base font-semibold leading-tight', e.status === 'available' ? '' : 'text-paper/80']}>{e.name}</h2>
-              <p class="mt-2 text-sm leading-relaxed text-ash">{e.summary}</p>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{localizedSummary(lang, kind, e.slug, e.summary)}</p>
             </div>
             {e.status === 'available' && latest && (
               <p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-widest text-ash">
                 <span class="text-paper">v{latest}</span>
                 {size && <><span class="text-line" aria-hidden="true">·</span><span class="tabular-nums">{size}</span></>}
-                {count > 1 && <><span class="text-line" aria-hidden="true">·</span><span class="tabular-nums">{count} versions</span></>}
+                {count > 1 && <><span class="text-line" aria-hidden="true">·</span><span class="tabular-nums">{count} {t('catalog.list.versions')}</span></>}
               </p>
             )}
             <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-              <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+              <span class="rounded bg-ink px-2 py-0.5">{categoryName(lang, e.category)}</span>
               <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
               <span class:list={['rounded bg-ink px-2 py-0.5', e.caution ? 'text-amber-400' : '']}>{e.license}</span>
             </div>
@@ -229,7 +237,7 @@ const dataset = all.map((e) => {
     return (
       <li class="card" data-tier={e.tier} data-category={e.category}>
         <a
-          href={`/charts/${e.slug}`}
+          href={`${itemBase}/${e.slug}`}
           class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
         >
           <div class="flex items-start justify-between gap-3">
@@ -240,13 +248,13 @@ const dataset = all.map((e) => {
           </div>
           <div class="flex-1">
             <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
-            <p class="mt-2 text-sm leading-relaxed text-ash">{e.summary}</p>
+            <p class="mt-2 text-sm leading-relaxed text-ash">{localizedSummary(lang, kind, e.slug, e.summary)}</p>
           </div>
           <p class="font-mono text-[10px] uppercase tracking-widest text-ash">
-            chart v{chartVer ?? '?'}{appVer ? ` · app v${appVer}` : ''}
+            {t('catalog.list.chartV')}{chartVer ?? '?'}{appVer ? ` · ${t('catalog.list.appV')}${appVer}` : ''}
           </p>
           <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-            <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+            <span class="rounded bg-ink px-2 py-0.5">{categoryName(lang, e.category)}</span>
             <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
             <span class:list={['rounded bg-ink px-2 py-0.5', e.caution ? 'text-amber-400' : '']}>{e.license}</span>
           </div>
@@ -259,13 +267,19 @@ const dataset = all.map((e) => {
 {/* CLIENT results: filled with the full matching set when filtering. Hidden otherwise. */}
 <ul id="filter-grid" class="hidden grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></ul>
 
-<Pager base={base} current={page.current} total={page.total} />
+<Pager base={pagerBase} current={page.current} total={page.total} />
 
 <script
   is:inline
   id="catalog-data"
   type="application/json"
   data-kind={kind}
+  data-itembase={itemBase}
+  data-planned={t('catalog.list.badgePlanned')}
+  data-versions={t('catalog.list.versions')}
+  data-chartv={t('catalog.list.chartV')}
+  data-result-one={t('catalog.list.resultOne')}
+  data-result-many={t('catalog.list.resultMany')}
   set:html={JSON.stringify(dataset)}
 />
 
@@ -274,6 +288,7 @@ const dataset = all.map((e) => {
     slug: string;
     name: string;
     category: string;
+    categoryLabel: string;
     tier: string;
     license: string;
     status: string;
@@ -287,6 +302,12 @@ const dataset = all.map((e) => {
 
   const dataEl = document.getElementById('catalog-data');
   const kind = dataEl?.getAttribute('data-kind') ?? 'charts';
+  const itemBase = dataEl?.getAttribute('data-itembase') ?? `/${kind}`;
+  const tPlanned = dataEl?.getAttribute('data-planned') ?? 'Planned';
+  const tVersions = dataEl?.getAttribute('data-versions') ?? 'versions';
+  const tChartV = dataEl?.getAttribute('data-chartv') ?? 'chart v';
+  const tResultOne = dataEl?.getAttribute('data-result-one') ?? 'result';
+  const tResultMany = dataEl?.getAttribute('data-result-many') ?? 'results';
   const isImages = kind === 'images';
   const all: Entry[] = dataEl ? JSON.parse(dataEl.textContent || '[]') : [];
 
@@ -308,7 +329,7 @@ const dataset = all.map((e) => {
     if (isImages) {
       const available = e.status === 'available';
       const tag = available ? 'a' : 'div';
-      const href = available ? ` href="/images/${e.slug}"` : '';
+      const href = available ? ` href="${itemBase}/${e.slug}"` : '';
       const cls = available
         ? 'group flex h-full flex-col gap-4 rounded-xl border bg-graphite p-5 transition-colors duration-200 border-line hover:border-paper/40'
         : 'group flex h-full flex-col gap-4 rounded-xl border bg-graphite p-5 transition-colors duration-200 border-line/70 bg-graphite/50';
@@ -317,12 +338,12 @@ const dataset = all.map((e) => {
         : '<span class="size-2 rounded-full border border-ash" aria-hidden="true"></span>';
       const badge = available
         ? '<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>'
-        : '<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">Planned</span>';
+        : `<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">${esc(tPlanned)}</span>`;
       const latest = e.latest ?? e.version;
       const verParts = available && latest
         ? [`<span class="text-paper">v${esc(latest)}</span>`]
             .concat(e.size ? [`<span class="text-line">·</span><span class="tabular-nums">${esc(e.size)}</span>`] : [])
-            .concat(e.versionCount > 1 ? [`<span class="text-line">·</span><span class="tabular-nums">${e.versionCount} versions</span>`] : [])
+            .concat(e.versionCount > 1 ? [`<span class="text-line">·</span><span class="tabular-nums">${e.versionCount} ${esc(tVersions)}</span>`] : [])
         : [];
       const ver = verParts.length
         ? `<p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-widest text-ash">${verParts.join('')}</p>`
@@ -340,15 +361,15 @@ const dataset = all.map((e) => {
         </div>
         ${ver}
         <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-          <span class="rounded bg-ink px-2 py-0.5">${esc(e.category)}</span>
+          <span class="rounded bg-ink px-2 py-0.5">${esc(e.categoryLabel)}</span>
           <span class="rounded bg-ink px-2 py-0.5">${esc(e.tier)}</span>
           <span class="${licCls}">${esc(e.license)}</span>
         </div>
       </${tag}></li>`;
     }
     const licCls = e.caution ? 'rounded bg-ink px-2 py-0.5 text-amber-400' : 'rounded bg-ink px-2 py-0.5';
-    const ver = e.version ? `chart v${esc(e.version)}` : 'chart v?';
-    return `<li class="card"><a href="/charts/${e.slug}" class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40">
+    const ver = e.version ? `${esc(tChartV)}${esc(e.version)}` : `${esc(tChartV)}?`;
+    return `<li class="card"><a href="${itemBase}/${e.slug}" class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40">
       <div class="flex items-start justify-between gap-3">
         <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink"><img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" /></span>
         <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
@@ -359,7 +380,7 @@ const dataset = all.map((e) => {
       </div>
       <p class="font-mono text-[10px] uppercase tracking-widest text-ash">${ver}</p>
       <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-        <span class="rounded bg-ink px-2 py-0.5">${esc(e.category)}</span>
+        <span class="rounded bg-ink px-2 py-0.5">${esc(e.categoryLabel)}</span>
         <span class="rounded bg-ink px-2 py-0.5">${esc(e.tier)}</span>
         <span class="${licCls}">${esc(e.license)}</span>
       </div>
@@ -405,7 +426,7 @@ const dataset = all.map((e) => {
     }
     noResults?.classList.toggle('hidden', matches.length !== 0);
     if (count) {
-      const noun = matches.length === 1 ? 'result' : 'results';
+      const noun = matches.length === 1 ? tResultOne : tResultMany;
       count.textContent = matches.length === 0 ? '' : `${matches.length} ${noun}`;
     }
   }

@@ -1,0 +1,65 @@
+---
+title: SBOM والمنشأ
+description: تحمل كل صورة QuenchWorks قائمة مكوّنات SPDX SBOM وشهادة منشأ بناء SLSA، موقّعتين بلا مفتاح ومرفقتين بالسجلّ. تحقّق من كليهما بـ cosign.
+group: Guides
+order: 4
+---
+
+إلى جانب توقيع cosign الخاص بها، تحمل كل صورة شهادتين إضافيتين مرفقتين بالبصمة نفسها: قائمة مكوّنات برمجية بصيغة SPDX، وبيان منشأ بناء SLSA يسجّل أيّ مسار عمل بناها ومن أيّ شيء. كلتاهما موقّعتان بلا مفتاح عبر Sigstore ومدفوعتان إلى GHCR كمراجع OCI، فتستطيع قراءتهما والتحقّق منهما دون أن تثق بأيّ شيء سوى سجلّ الشفافية.
+
+## اطّلع على ما هو مرفق
+
+يسرد cosign كل مرجع على صورة: التوقيع والشهادتين. استخدم وسم إصدار الصورة (المعروض في صفحتها [page](/ar/images))؛ فهو يُحَلّ إلى الفهرس الحالي المتعدد المعماريات حيث تُرفَق الشهادات. استبدل `redis:8.8.0` بأي صورة وإصدار.
+
+```bash
+cosign tree ghcr.io/quenchworks/images/redis:8.8.0
+# └── Attestations
+#     ├── https://spdx.dev/Document/v2.3        (SBOM)
+#     └── https://slsa.dev/provenance/v1        (build provenance)
+```
+
+يشير وسم الإصدار دائمًا إلى أحدث إعادة بناء، وهي التي تحمل الشهادات. للتحقّق من بناء معيّن، استخدم بصمته [digest](/ar/docs/pin-by-digest) بصيغة `@sha256:...` بدلًا من ذلك.
+
+## التحقّق من منشأ البناء
+
+تجيب شهادة المنشأ عن سؤال "من أين جاء هذا؟". تربط بصمة الصورة بمسار عمل GitHub Actions، والالتزام (commit)، والمنفّذ (runner) الذي أنتجها بالضبط، متّبعةً مخطط منشأ SLSA. يفحصها cosign مقابل Sigstore وهوية الموقّع:
+
+```bash
+cosign verify-attestation --type https://slsa.dev/provenance/v1 \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+النجاح يعني أن الصورة بُنيت بواسطة مسار عمل في منظمة `quenchworks` ولم تُعدَّل منذ ذلك الحين. الخروج بقيمة غير صفرية يعني أنها فشلت.
+
+## التحقّق من قائمة المكوّنات (SBOM) وقراءتها
+
+تسرد قائمة المكوّنات كل حزمة في الصورة. تحقّق من شهادة قائمة المكوّنات حسب نوعها:
+
+```bash
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+لاستخراج مستند SPDX نفسه وفحصه، فُكّ ترميز الحمولة التي جرى التحقّق منها واقرأ المُسنَد (predicate):
+
+```bash
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
+  ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  | jq -r '.payload | @base64d | fromjson | .predicate'
+```
+
+في سكربت أو خطوة تكامل مستمر، فإن رمز الخروج هو ما تعتمد عليه في البوابة: الخروج بقيمة غير صفرية يعني فشل التحقّق، لذا افحصه قبل أن تثق بأي حمولة مفكوكة الترميز.
+
+## ما يمنحك ذلك
+
+- جردًا للحزم لأجل التدقيق وفرز الثغرات، مرتبطًا بالبصمة التي تُشغّلها بالضبط.
+- سجلًّا مقاومًا للعبث لكيفية بناء الصورة، دون مفتاح لإدارته على أيٍّ من الطرفين.
+- فحصًا تستطيع إجراءه بنفسك، في التكامل المستمر أو يدويًا، بدلًا من ادّعاء عليك أن تأخذه على عِلّاته.
+
+المخططات موقّعة بـ cosign أيضًا؛ راجع [التحقّق من توقيع](/ar/docs/verify) لفحوص توقيع المخطط والصورة، و[التثبيت بالبصمة الرقمية](/ar/docs/pin-by-digest) للحصول على البصمة التي تحتاجها هذه الأوامر.

@@ -1,0 +1,803 @@
+// i18n dictionary for the shared chrome (header/footer) + the homepage hero.
+//
+// NOTE: The Arabic (ar) and Spanish (es) strings below are INITIAL translations
+// and should be reviewed by a native speaker before launch. Only the shared
+// chrome and the homepage are covered here; deeper page/doc copy is still in
+// English and will be translated in a later incremental pass.
+
+export const languages = { en: 'English', ar: 'العربية', es: 'Español' } as const;
+
+export const defaultLang = 'en' as const;
+
+export type Lang = keyof typeof languages;
+
+export const rtlLangs: Lang[] = ['ar'];
+
+export const ui = {
+  en: {
+    'nav.charts': 'Charts',
+    'nav.images': 'Images',
+    'nav.runtimes': 'Runtimes',
+    'nav.docs': 'Docs',
+    'nav.api': 'API',
+    'nav.compare': 'Compare',
+    'nav.roadmap': 'Roadmap',
+    'nav.security': 'Security',
+    'nav.changelog': 'Changelog',
+    'nav.faq': 'FAQ',
+    'nav.about': 'About',
+    'lang.label': 'Language',
+    'cta.browse': 'Browse the catalog',
+    'cta.docs': 'Read the docs',
+    'cta.github': 'View on GitHub',
+    'footer.resources': 'Resources',
+    'footer.developers': 'Developers',
+    'footer.tagline':
+      'MIT licensed. Built independently, not affiliated with any upstream vendor.',
+    'hero.title':
+      'Hardened, zero-CVE images and charts for the infrastructure you run.',
+    'hero.subtitle':
+      'datastores shipped end-to-end as small nonroot container images and signed Helm charts. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, digest-pinned, and multi-arch. Free and independent.',
+    'hero.cta.primary': 'Browse the charts',
+    'hero.cta.secondary': 'View on GitHub',
+    'hero.statImages': 'hardened images',
+    'hero.statCharts': 'signed charts',
+    'hero.statCves': '0 fixable CVEs',
+    'footer.builtBy': 'Built by',
+    // --- Homepage sections (Demo, Features, Catalog, Cta) ---
+    // INITIAL translations for review.
+    'demo.eyebrow': 'See it work',
+    'demo.title': 'Pull, verify, deploy. No account.',
+    'demo.body':
+      'A real terminal, end to end: run a 0-CVE image, check its cosign signature, install the Helm chart, and watch the workload reach Running.',
+    'demo.alt':
+      'Terminal: docker runs a QuenchWorks Python image and prints its version, cosign verifies the image signature, helm installs the Valkey chart, the pod reaches Running, and Valkey replies PONG.',
+    'features.eyebrow': 'How it works',
+    'features.title': 'Hardened from source to install.',
+    'features.builtFromSource.title': 'Built from source',
+    'features.builtFromSource.body':
+      'We compile each app from source on Wolfi with melange, then apko assembles a small nonroot image. No Dockerfiles, and nothing inherited from another distro.',
+    'features.zeroCve.title': '0 fixable CVEs, daily',
+    'features.zeroCve.body':
+      'A Trivy gate fails the build on any fixable CVE. We rebuild every day, because a clean scan only tells you about the day it ran.',
+    'features.signed.title': 'Signed and attested',
+    'features.signed.body':
+      'Every image is cosign-signed, with an SLSA build-provenance attestation and an SPDX SBOM attached to the same digest. Verify all three from your own terminal.',
+    'features.pinned.title': 'Pinned by digest',
+    'features.pinned.body':
+      'Charts point at images by sha256 digest, never a moving tag. What you install is exactly what passed the gate.',
+    'catalog.eyebrow': 'The catalog',
+    'catalog.title': 'Covers the stack you actually run.',
+    'catalog.bodyPre': 'hardened images and',
+    'catalog.bodyMid': 'signed charts across',
+    'catalog.bodyPost':
+      'categories: relational and document stores, caches, search, streaming, coordination, observability, object storage, gateways, and a registry — plus hardened base images to build FROM, all under',
+    'catalog.bodyImages': 'images',
+    'catalog.browsePre': 'Browse all',
+    'catalog.browsePost': 'charts',
+    'cta.title': 'Free, independent, and yours to verify.',
+    'cta.body':
+      'No paywall and no lock-in. Pull an image, check the signature yourself, then install the chart. You never have to take our word for it.',
+    'cta.primary': 'Browse the charts',
+    'cta.request': 'Request an app',
+    // --- Catalog list (CatalogList.astro) ---
+    'catalog.list.headerImages': 'All images',
+    'catalog.list.headerCharts': 'All charts',
+    'catalog.list.typeImages': 'Images',
+    'catalog.list.typeCharts': 'Charts',
+    'catalog.list.titleImages': 'Hardened container images',
+    'catalog.list.titleCharts': 'Hardened Helm charts',
+    'catalog.list.descImages':
+      'Every image is built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, and pinned by digest, with an SPDX SBOM and a SLSA build-provenance attestation you can verify. Nonroot, read-only rootfs, amd64 + arm64.',
+    'catalog.list.descImagesAvailable': 'available now.',
+    'catalog.list.descCharts':
+      'Each chart deploys our hardened image pinned by its signed digest, with sensible production defaults. Cosign-signed and published as an ArtifactHub verified publisher.',
+    'catalog.list.descChartsCount': 'charts.',
+    'catalog.list.searchPlaceholder': 'Search by name, category, license…',
+    'catalog.list.searchImages': 'Search images',
+    'catalog.list.searchCharts': 'Search charts',
+    'catalog.list.filterImages': 'Filter images',
+    'catalog.list.filterCharts': 'Filter charts',
+    'catalog.list.filterAll': 'All',
+    'catalog.list.filterAvailable': 'Available',
+    'catalog.list.noMatchImages': 'No images match that search.',
+    'catalog.list.noMatchCharts': 'No charts match that search.',
+    'catalog.list.badgeCve': '0 CVE',
+    'catalog.list.badgePlanned': 'Planned',
+    'catalog.list.versions': 'versions',
+    'catalog.list.resultOne': 'result',
+    'catalog.list.resultMany': 'results',
+    'catalog.list.chartV': 'chart v',
+    'catalog.list.appV': 'app v',
+    // --- Detail pages (ImageDetail / RuntimeDetail / ChartDetail) ---
+    'detail.breadcrumb.images': 'Images',
+    'detail.breadcrumb.charts': 'Charts',
+    'detail.label.image': 'Image',
+    'detail.label.runtime': 'Runtime',
+    'detail.label.chart': 'Chart',
+    'detail.badge.fixableCves': '0 fixable CVEs',
+    'detail.badge.cosignSigned': 'cosign signed',
+    'detail.badge.spdxSbom': 'SPDX SBOM',
+    'detail.badge.slsaProvenance': 'SLSA provenance',
+    'detail.badge.arch': 'amd64 · arm64',
+    'detail.badge.nonroot': 'nonroot',
+    'detail.badge.digestPinned': 'digest pinned',
+    'detail.badge.rebuilt': 'Rebuilt ',
+    'detail.rebuiltTitle': 'Image rebuilt',
+    'detail.digest.heading': 'Current digest (deployed by the chart)',
+    'detail.digest.note':
+      'Signatures, the SBOM, and provenance all attach to this digest. Pin to it for reproducible, tamper-evident pulls.',
+    'detail.meta.image': 'Image',
+    'detail.meta.signed': 'Signed',
+    'detail.meta.signedValue': 'cosign keyless',
+    'detail.meta.sbom': 'SBOM',
+    'detail.meta.sbomOnDigest': 'SPDX, on digest',
+    'detail.meta.sbomOnImage': 'SPDX, on image',
+    'detail.meta.provenance': 'Provenance',
+    'detail.meta.provenanceValue': 'SLSA build',
+    'detail.meta.architectures': 'Architectures',
+    'detail.meta.archValue': 'amd64, arm64',
+    'detail.meta.runsAs': 'Runs as',
+    'detail.meta.rootFs': 'Root filesystem',
+    'detail.meta.rootFsValue': 'read-only',
+    'detail.meta.imageSize': 'Image size',
+    'detail.meta.lastRebuilt': 'Last rebuilt',
+    'detail.versions.heading': 'Published versions',
+    'detail.versions.tagOne': 'tag',
+    'detail.versions.tagMany': 'tags',
+    'detail.versions.intro':
+      'Each tag is a multi-arch index (amd64 + arm64) pinned by digest. Tagged by version, never',
+    'detail.versions.colVersion': 'Version',
+    'detail.versions.colSize': 'Size',
+    'detail.versions.colPublished': 'Published',
+    'detail.versions.colDigest': 'Digest',
+    'detail.versions.latest': 'latest',
+    'detail.caution.heading': 'License caution ·',
+    'detail.caution.notOsi': 'is not OSI-approved',
+    'detail.caution.bodyImage':
+      'is source-available, not open source. We carry it hardened, but do not represent it as open source.',
+    'detail.caution.bodyChart':
+      'is source-available, not open source. The chart carries this note prominently, and we do not represent it as open source.',
+    'detail.caution.cleanAlt': 'Clean alternative:',
+    'detail.security.heading': 'Security report (Trivy, via ArtifactHub)',
+    'detail.security.zeroFixable': '0 fixable CVEs',
+    'detail.security.critical': 'Critical',
+    'detail.security.high': 'High',
+    'detail.security.medium': 'Medium',
+    'detail.security.low': 'Low',
+    'detail.security.unknown': 'Unknown',
+    'detail.pull.heading': 'Pull the image',
+    'detail.pull.intro':
+      'Run it directly with Docker, Podman, or any Kubernetes workload. Nonroot, read-only root filesystem, built for amd64 and arm64.',
+    'detail.pull.tag': 'Pull (tag)',
+    'detail.pull.pinned': 'Pinned by digest (recommended)',
+    'detail.pull.tags': 'Tags',
+    'detail.pull.tagsNote':
+      'Images are tagged by app version (never',
+    'detail.pull.tagsNoteEnd':
+      '): a multi-arch index plus per-arch tags.',
+    'detail.field.appVersion': 'App version',
+    'detail.field.license': 'License',
+    'detail.verify.heading': 'Verify the supply chain',
+    'detail.verify.introBuild':
+      'This image is cosign-signed and carries an SPDX SBOM and a SLSA build-provenance attestation on the same digest. Check all three before you build on it:',
+    'detail.verify.introPull':
+      'This image is cosign-signed and carries an SPDX SBOM and a SLSA build-provenance attestation on the same digest. Check all three yourself:',
+    'detail.verify.guidePre': 'See the',
+    'detail.verify.guideLink': 'SBOM & provenance guide',
+    'detail.verify.guidePost': 'for reading the SBOM and using these checks in CI.',
+    'detail.transparency.heading': 'Transparency',
+    'detail.transparency.bodyImage':
+      'Every image carries its SBOM and provenance as attestations on the same digest, publicly verifiable with the commands above (they check the package and the Sigstore transparency log, Rekor).',
+    'detail.action.viewChart': 'View the Helm chart',
+    'detail.action.viewImage': 'View the image',
+    'detail.action.viewPackage': 'View package',
+    'detail.action.viewArtifactHub': 'View on ArtifactHub',
+    'detail.action.chartSource': 'Chart source',
+    'detail.upstream': 'Upstream project:',
+    // Runtime-specific
+    'runtime.base.heading': 'Use it as a base image',
+    'runtime.base.intro':
+      'Reference it in the FROM line of your Dockerfile. Nonroot, read-only root filesystem, built for amd64 and arm64.',
+    'runtime.base.orPull': 'Or pull it directly',
+    'runtime.field.versionLine': 'Version line',
+    'runtime.field.latestLine': 'Latest line',
+    'runtime.dockerfile.heading': 'Best-practice Dockerfile for',
+    'runtime.dockerfile.rebuilt': 'rebuilt ',
+    'runtime.dockerfile.notePre': 'This Dockerfile is pinned to the',
+    'runtime.dockerfile.notePost':
+      'line. For the line-by-line walkthrough and ecosystem variants (npm/Yarn, pip/uv/Poetry, Maven/Gradle), see the',
+    'runtime.dockerfile.guideSuffix': 'guide.',
+    'runtime.guide.buildNode': 'Build a Node app',
+    'runtime.guide.buildPython': 'Build a Python app',
+    'runtime.guide.buildGoRust': 'Build a Go or Rust binary',
+    'runtime.guide.buildJava': 'Build a Java app',
+    'runtime.guide.buildDotnet': 'Build a .NET app',
+    'runtime.guide.buildImages': 'Build hardened images',
+    // Chart-specific
+    'chart.released.heading': 'Released version',
+    'chart.released.bodyPre': 'This is the',
+    'chart.released.bodyMid': 'release of the',
+    'chart.released.bodyChart': 'chart',
+    'chart.released.published': ', published',
+    'chart.released.bodyEnd':
+      'For the live security report and the currently deployed image digest, see the',
+    'chart.released.latestLink': 'latest release',
+    'chart.deployedDigest.heading': 'Deployed image digest',
+    'chart.ociVersion.heading': 'Chart OCI version',
+    'chart.deployNote':
+      'The chart pins its image by this signed digest, so you never track it yourself. Signatures, SBOM, and provenance attach to the same digest.',
+    'chart.install.heading': 'Install the chart',
+    'chart.install.intro':
+      'Deploy to Kubernetes with hardened defaults. The chart pins its image by signed digest, so you never track it yourself.',
+    'chart.install.labelLatest': 'Install (latest)',
+    'chart.install.labelPinnedPre': 'Install (pinned to',
+    'chart.install.deploys': 'Deploys image (digest-pinned)',
+    'chart.field.chartVersion': 'Chart version',
+    'chart.field.appVersion': 'App version',
+    'chart.field.chartLicense': 'Chart license',
+    'chart.field.appLicense': 'App license',
+    'chart.field.servicePort': 'Service port',
+    'chart.field.signed': 'Signed',
+    'chart.field.signedKeyless': 'cosign (keyless)',
+    'chart.field.signedNo': 'no',
+    'chart.field.valuesSchema': 'Values schema',
+    'chart.field.yes': 'yes',
+    'chart.field.no': 'no',
+    'chart.field.lastPublished': 'Last published',
+    'chart.field.released': 'Released',
+    'chart.verify.heading': 'Verify the chart',
+    'chart.transparency.pre': 'The chart publishes its',
+    'chart.transparency.attestLink': 'attestations on GitHub',
+    'chart.transparency.post':
+      'and the image it deploys carries its own on the same digest, publicly verifiable with the commands above. Both log to the Sigstore transparency log (Rekor), which',
+    'chart.transparency.postEnd': 'checks for you.',
+    // VersionSwitcher
+    'versions.label': 'Version',
+    'versions.lineLabel': 'Version line',
+    'versions.latestSuffix': ' · latest',
+    'versions.note':
+      'The latest line lives at the base page; older lines have their own page so you can pin and verify exactly that version.',
+    // --- Docs chrome (Docs.astro sidebar + page nav) ---
+    'docs.index': 'Docs',
+    'docs.group.Guides': 'Guides',
+    'docs.group.Build images': 'Build images',
+    'docs.group.Reference': 'Reference',
+    'docs.edit': 'Edit this page on GitHub',
+    'docs.prev': 'Previous',
+    'docs.next': 'Next',
+  },
+  ar: {
+    'nav.charts': 'المخططات',
+    'nav.images': 'الصور',
+    'nav.runtimes': 'بيئات التشغيل',
+    'nav.docs': 'التوثيق',
+    'nav.api': 'واجهة البرمجة',
+    'nav.compare': 'المقارنة',
+    'nav.roadmap': 'خارطة الطريق',
+    'nav.security': 'الأمان',
+    'nav.changelog': 'سجل التغييرات',
+    'nav.faq': 'الأسئلة الشائعة',
+    'nav.about': 'حول',
+    'lang.label': 'اللغة',
+    'cta.browse': 'تصفّح الكتالوج',
+    'cta.docs': 'اقرأ التوثيق',
+    'cta.github': 'اعرض على GitHub',
+    'footer.resources': 'الموارد',
+    'footer.developers': 'المطوّرون',
+    'footer.tagline':
+      'مرخّص بموجب MIT. مبني بشكل مستقل وغير تابع لأي مورّد خارجي.',
+    'hero.title': 'صور ومخططات مُحصّنة وخالية من الثغرات للبنية التحتية التي تُشغّلها.',
+    'hero.subtitle':
+      'قواعد بيانات تُسلّم بالكامل كصور حاويات صغيرة تعمل بدون صلاحيات الجذر ومخططات Helm موقّعة. مبنية من المصدر على Wolfi، ومفحوصة حتى صفر ثغرات قابلة للإصلاح، وموقّعة بـ cosign، ومثبّتة بالبصمة الرقمية، ومتعددة المعماريات. مجانية ومستقلة.',
+    'hero.cta.primary': 'تصفّح المخططات',
+    'hero.cta.secondary': 'اعرض على GitHub',
+    'hero.statImages': 'صورة محصّنة',
+    'hero.statCharts': 'مخطط موقّع',
+    'hero.statCves': '0 ثغرة قابلة للإصلاح',
+    'footer.builtBy': 'بناه',
+    // --- أقسام الصفحة الرئيسية (عرض، مزايا، كتالوج، دعوة لاتخاذ إجراء) ---
+    // ترجمات أولية للمراجعة.
+    'demo.eyebrow': 'شاهدها تعمل',
+    'demo.title': 'اسحب، تحقّق، انشر. دون حساب.',
+    'demo.body':
+      'طرفية حقيقية من البداية إلى النهاية: شغّل صورة خالية من الثغرات، وتحقّق من توقيعها بـ cosign، وثبّت مخطط Helm، وراقب وصول عبء العمل إلى حالة التشغيل.',
+    'demo.alt':
+      'الطرفية: يشغّل docker صورة Python من QuenchWorks ويطبع إصدارها، ويتحقّق cosign من توقيع الصورة، ويثبّت helm مخطط Valkey، وتصل الحاوية إلى حالة التشغيل، ويردّ Valkey بـ PONG.',
+    'features.eyebrow': 'كيف تعمل',
+    'features.title': 'مُحصّنة من المصدر حتى التثبيت.',
+    'features.builtFromSource.title': 'مبنية من المصدر',
+    'features.builtFromSource.body':
+      'نُجمّع كل تطبيق من المصدر على Wolfi باستخدام melange، ثم يجمّع apko صورة صغيرة تعمل بدون صلاحيات الجذر. دون ملفات Dockerfile، ودون أي شيء موروث من توزيعة أخرى.',
+    'features.zeroCve.title': 'صفر ثغرات قابلة للإصلاح، يوميًا',
+    'features.zeroCve.body':
+      'تُفشل بوابة Trivy عملية البناء عند وجود أي ثغرة قابلة للإصلاح. نُعيد البناء كل يوم، لأن الفحص النظيف لا يخبرك إلا عن اليوم الذي جرى فيه.',
+    'features.signed.title': 'موقّعة ومُوثّقة',
+    'features.signed.body':
+      'كل صورة موقّعة بـ cosign، مع شهادة منشأ بناء SLSA وقائمة مكوّنات SPDX SBOM مرفقة بالبصمة الرقمية نفسها. تحقّق من الثلاثة جميعها من طرفيتك الخاصة.',
+    'features.pinned.title': 'مثبّتة بالبصمة الرقمية',
+    'features.pinned.body':
+      'تشير المخططات إلى الصور عبر بصمة sha256، لا عبر وسم متغيّر. ما تُثبّته هو بالضبط ما اجتاز البوابة.',
+    'catalog.eyebrow': 'الكتالوج',
+    'catalog.title': 'يغطّي المنظومة التي تُشغّلها فعلًا.',
+    'catalog.bodyPre': 'صورة مُحصّنة و',
+    'catalog.bodyMid': 'مخطط موقّع عبر',
+    'catalog.bodyPost':
+      'فئات: مخازن علائقية ومستندية، وذاكرات تخزين مؤقت، وبحث، وبث، وتنسيق، ومراقبة، وتخزين كائنات، وبوابات، وسجلّ — إضافة إلى صور أساس مُحصّنة للبناء منها (FROM)، وكلها ضمن',
+    'catalog.bodyImages': 'الصور',
+    'catalog.browsePre': 'تصفّح كل',
+    'catalog.browsePost': 'مخطط',
+    'cta.title': 'مجانية، ومستقلة، ولك أن تتحقّق منها.',
+    'cta.body':
+      'دون جدار دفع ودون احتكار. اسحب صورة، وتحقّق من التوقيع بنفسك، ثم ثبّت المخطط. لا داعي لأن تأخذ كلامنا على عِلّاته.',
+    'cta.primary': 'تصفّح المخططات',
+    'cta.request': 'اطلب تطبيقًا',
+    // --- قائمة الكتالوج (CatalogList.astro) ---
+    'catalog.list.headerImages': 'جميع الصور',
+    'catalog.list.headerCharts': 'جميع المخططات',
+    'catalog.list.typeImages': 'الصور',
+    'catalog.list.typeCharts': 'المخططات',
+    'catalog.list.titleImages': 'صور حاويات مُحصّنة',
+    'catalog.list.titleCharts': 'مخططات Helm مُحصّنة',
+    'catalog.list.descImages':
+      'كل صورة مبنية من المصدر على Wolfi، ومفحوصة حتى صفر ثغرات قابلة للإصلاح، وموقّعة بـ cosign، ومثبّتة بالبصمة الرقمية، مع قائمة مكوّنات SPDX SBOM وشهادة منشأ بناء SLSA يمكنك التحقق منها. تعمل بدون صلاحيات الجذر، بنظام ملفات جذر للقراءة فقط، amd64 + arm64.',
+    'catalog.list.descImagesAvailable': 'متاحة الآن.',
+    'catalog.list.descCharts':
+      'يَنشُر كل مخطط صورتنا المُحصّنة المثبّتة ببصمتها الموقّعة، مع إعدادات إنتاجية افتراضية معقولة. موقّعة بـ cosign ومنشورة كناشر موثّق على ArtifactHub.',
+    'catalog.list.descChartsCount': 'مخطط.',
+    'catalog.list.searchPlaceholder': 'ابحث بالاسم أو الفئة أو الرخصة…',
+    'catalog.list.searchImages': 'ابحث في الصور',
+    'catalog.list.searchCharts': 'ابحث في المخططات',
+    'catalog.list.filterImages': 'تصفية الصور',
+    'catalog.list.filterCharts': 'تصفية المخططات',
+    'catalog.list.filterAll': 'الكل',
+    'catalog.list.filterAvailable': 'متاح',
+    'catalog.list.noMatchImages': 'لا توجد صور تطابق هذا البحث.',
+    'catalog.list.noMatchCharts': 'لا توجد مخططات تطابق هذا البحث.',
+    'catalog.list.badgeCve': '0 CVE',
+    'catalog.list.badgePlanned': 'مخطّط له',
+    'catalog.list.versions': 'إصدارات',
+    'catalog.list.resultOne': 'نتيجة',
+    'catalog.list.resultMany': 'نتائج',
+    'catalog.list.chartV': 'مخطط v',
+    'catalog.list.appV': 'تطبيق v',
+    // --- صفحات التفاصيل (ImageDetail / RuntimeDetail / ChartDetail) ---
+    'detail.breadcrumb.images': 'الصور',
+    'detail.breadcrumb.charts': 'المخططات',
+    'detail.label.image': 'صورة',
+    'detail.label.runtime': 'بيئة تشغيل',
+    'detail.label.chart': 'مخطط',
+    'detail.badge.fixableCves': '0 ثغرة قابلة للإصلاح',
+    'detail.badge.cosignSigned': 'موقّعة بـ cosign',
+    'detail.badge.spdxSbom': 'SPDX SBOM',
+    'detail.badge.slsaProvenance': 'منشأ SLSA',
+    'detail.badge.arch': 'amd64 · arm64',
+    'detail.badge.nonroot': 'بدون صلاحيات الجذر',
+    'detail.badge.digestPinned': 'مثبّتة بالبصمة',
+    'detail.badge.rebuilt': 'أُعيد بناؤها ',
+    'detail.rebuiltTitle': 'أُعيد بناء الصورة',
+    'detail.digest.heading': 'البصمة الحالية (التي ينشرها المخطط)',
+    'detail.digest.note':
+      'تُرفَق التواقيع وقائمة المكوّنات والمنشأ جميعها بهذه البصمة. ثبّت عليها لعمليات سحب قابلة للتكرار ومقاومة للعبث.',
+    'detail.meta.image': 'الصورة',
+    'detail.meta.signed': 'موقّعة',
+    'detail.meta.signedValue': 'cosign بدون مفتاح',
+    'detail.meta.sbom': 'SBOM',
+    'detail.meta.sbomOnDigest': 'SPDX، على البصمة',
+    'detail.meta.sbomOnImage': 'SPDX، على الصورة',
+    'detail.meta.provenance': 'المنشأ',
+    'detail.meta.provenanceValue': 'بناء SLSA',
+    'detail.meta.architectures': 'المعماريات',
+    'detail.meta.archValue': 'amd64، arm64',
+    'detail.meta.runsAs': 'تعمل كـ',
+    'detail.meta.rootFs': 'نظام الملفات الجذر',
+    'detail.meta.rootFsValue': 'للقراءة فقط',
+    'detail.meta.imageSize': 'حجم الصورة',
+    'detail.meta.lastRebuilt': 'آخر إعادة بناء',
+    'detail.versions.heading': 'الإصدارات المنشورة',
+    'detail.versions.tagOne': 'وسم',
+    'detail.versions.tagMany': 'وسوم',
+    'detail.versions.intro':
+      'كل وسم هو فهرس متعدد المعماريات (amd64 + arm64) مثبّت بالبصمة. موسوم بالإصدار، وليس أبدًا',
+    'detail.versions.colVersion': 'الإصدار',
+    'detail.versions.colSize': 'الحجم',
+    'detail.versions.colPublished': 'النشر',
+    'detail.versions.colDigest': 'البصمة',
+    'detail.versions.latest': 'الأحدث',
+    'detail.caution.heading': 'تنبيه الترخيص ·',
+    'detail.caution.notOsi': 'غير معتمد من OSI',
+    'detail.caution.bodyImage':
+      'متاح المصدر، وليس مفتوح المصدر. نحمله مُحصّنًا، لكننا لا نقدّمه على أنه مفتوح المصدر.',
+    'detail.caution.bodyChart':
+      'متاح المصدر، وليس مفتوح المصدر. يحمل المخطط هذا التنبيه بوضوح، ولا نقدّمه على أنه مفتوح المصدر.',
+    'detail.caution.cleanAlt': 'بديل نظيف:',
+    'detail.security.heading': 'تقرير الأمان (Trivy، عبر ArtifactHub)',
+    'detail.security.zeroFixable': '0 ثغرة قابلة للإصلاح',
+    'detail.security.critical': 'حرجة',
+    'detail.security.high': 'عالية',
+    'detail.security.medium': 'متوسطة',
+    'detail.security.low': 'منخفضة',
+    'detail.security.unknown': 'غير معروفة',
+    'detail.pull.heading': 'اسحب الصورة',
+    'detail.pull.intro':
+      'شغّلها مباشرة باستخدام Docker أو Podman أو أي عبء عمل في Kubernetes. تعمل بدون صلاحيات الجذر، بنظام ملفات جذر للقراءة فقط، ومبنية لـ amd64 و arm64.',
+    'detail.pull.tag': 'اسحب (وسم)',
+    'detail.pull.pinned': 'مثبّتة بالبصمة (موصى به)',
+    'detail.pull.tags': 'الوسوم',
+    'detail.pull.tagsNote':
+      'الصور موسومة بإصدار التطبيق (وليس أبدًا',
+    'detail.pull.tagsNoteEnd':
+      '): فهرس متعدد المعماريات إضافة إلى وسوم لكل معمارية.',
+    'detail.field.appVersion': 'إصدار التطبيق',
+    'detail.field.license': 'الرخصة',
+    'detail.verify.heading': 'تحقّق من سلسلة التوريد',
+    'detail.verify.introBuild':
+      'هذه الصورة موقّعة بـ cosign وتحمل قائمة مكوّنات SPDX SBOM وشهادة منشأ بناء SLSA على البصمة نفسها. تحقّق من الثلاثة جميعها قبل أن تبني عليها:',
+    'detail.verify.introPull':
+      'هذه الصورة موقّعة بـ cosign وتحمل قائمة مكوّنات SPDX SBOM وشهادة منشأ بناء SLSA على البصمة نفسها. تحقّق من الثلاثة جميعها بنفسك:',
+    'detail.verify.guidePre': 'راجع',
+    'detail.verify.guideLink': 'دليل SBOM والمنشأ',
+    'detail.verify.guidePost': 'لقراءة قائمة المكوّنات واستخدام هذه الفحوص في التكامل المستمر.',
+    'detail.transparency.heading': 'الشفافية',
+    'detail.transparency.bodyImage':
+      'تحمل كل صورة قائمة مكوّناتها ومنشأها كشهادات على البصمة نفسها، قابلة للتحقق علنًا بالأوامر أعلاه (تفحص الحزمة وسجلّ شفافية Sigstore، وهو Rekor).',
+    'detail.action.viewChart': 'اعرض مخطط Helm',
+    'detail.action.viewImage': 'اعرض الصورة',
+    'detail.action.viewPackage': 'اعرض الحزمة',
+    'detail.action.viewArtifactHub': 'اعرض على ArtifactHub',
+    'detail.action.chartSource': 'مصدر المخطط',
+    'detail.upstream': 'المشروع المنبع:',
+    // خاص ببيئة التشغيل
+    'runtime.base.heading': 'استخدمها كصورة أساس',
+    'runtime.base.intro':
+      'أشِر إليها في سطر FROM داخل ملف Dockerfile. تعمل بدون صلاحيات الجذر، بنظام ملفات جذر للقراءة فقط، ومبنية لـ amd64 و arm64.',
+    'runtime.base.orPull': 'أو اسحبها مباشرة',
+    'runtime.field.versionLine': 'خط الإصدار',
+    'runtime.field.latestLine': 'الخط الأحدث',
+    'runtime.dockerfile.heading': 'أفضل ممارسة لملف Dockerfile لـ',
+    'runtime.dockerfile.rebuilt': 'أُعيد بناؤها ',
+    'runtime.dockerfile.notePre': 'هذا الملف Dockerfile مثبّت على خط',
+    'runtime.dockerfile.notePost':
+      '. للاطّلاع على شرح سطرًا بسطر وعلى متغيّرات المنظومات (npm/Yarn، pip/uv/Poetry، Maven/Gradle)، راجع دليل',
+    'runtime.dockerfile.guideSuffix': '.',
+    'runtime.guide.buildNode': 'ابنِ تطبيق Node',
+    'runtime.guide.buildPython': 'ابنِ تطبيق Python',
+    'runtime.guide.buildGoRust': 'ابنِ ملفًا تنفيذيًا بـ Go أو Rust',
+    'runtime.guide.buildJava': 'ابنِ تطبيق Java',
+    'runtime.guide.buildDotnet': 'ابنِ تطبيق ‎.NET‎',
+    'runtime.guide.buildImages': 'ابنِ صورًا مُحصّنة',
+    // خاص بالمخطط
+    'chart.released.heading': 'إصدار صادر',
+    'chart.released.bodyPre': 'هذا هو إصدار',
+    'chart.released.bodyMid': 'من مخطط',
+    'chart.released.bodyChart': '',
+    'chart.released.published': '، نُشر بتاريخ',
+    'chart.released.bodyEnd':
+      'للاطّلاع على تقرير الأمان الحي وبصمة الصورة المنشورة حاليًا، راجع',
+    'chart.released.latestLink': 'أحدث إصدار',
+    'chart.deployedDigest.heading': 'بصمة الصورة المنشورة',
+    'chart.ociVersion.heading': 'إصدار OCI للمخطط',
+    'chart.deployNote':
+      'يثبّت المخطط صورته بهذه البصمة الموقّعة، فلا تتعقّبها بنفسك أبدًا. تُرفَق التواقيع وقائمة المكوّنات والمنشأ بالبصمة نفسها.',
+    'chart.install.heading': 'ثبّت المخطط',
+    'chart.install.intro':
+      'انشر إلى Kubernetes بإعدادات افتراضية مُحصّنة. يثبّت المخطط صورته ببصمة موقّعة، فلا تتعقّبها بنفسك أبدًا.',
+    'chart.install.labelLatest': 'تثبيت (الأحدث)',
+    'chart.install.labelPinnedPre': 'تثبيت (مثبّت على',
+    'chart.install.deploys': 'يَنشُر الصورة (مثبّتة بالبصمة)',
+    'chart.field.chartVersion': 'إصدار المخطط',
+    'chart.field.appVersion': 'إصدار التطبيق',
+    'chart.field.chartLicense': 'رخصة المخطط',
+    'chart.field.appLicense': 'رخصة التطبيق',
+    'chart.field.servicePort': 'منفذ الخدمة',
+    'chart.field.signed': 'موقّع',
+    'chart.field.signedKeyless': 'cosign (بدون مفتاح)',
+    'chart.field.signedNo': 'لا',
+    'chart.field.valuesSchema': 'مخطط القيم',
+    'chart.field.yes': 'نعم',
+    'chart.field.no': 'لا',
+    'chart.field.lastPublished': 'آخر نشر',
+    'chart.field.released': 'صدر',
+    'chart.verify.heading': 'تحقّق من المخطط',
+    'chart.transparency.pre': 'يَنشُر المخطط',
+    'chart.transparency.attestLink': 'شهاداته على GitHub',
+    'chart.transparency.post':
+      '، والصورة التي ينشرها تحمل شهاداتها على البصمة نفسها، قابلة للتحقق علنًا بالأوامر أعلاه. كلاهما يُسجَّل في سجلّ شفافية Sigstore (Rekor)، الذي يفحصه',
+    'chart.transparency.postEnd': 'نيابةً عنك.',
+    // مبدّل الإصدارات
+    'versions.label': 'الإصدار',
+    'versions.lineLabel': 'خط الإصدار',
+    'versions.latestSuffix': ' · الأحدث',
+    'versions.note':
+      'يعيش الخط الأحدث في الصفحة الأساسية؛ وللخطوط الأقدم صفحاتها الخاصة لتتمكّن من تثبيت ذلك الإصدار بالضبط والتحقق منه.',
+    // --- توثيق: عناصر الواجهة (شريط جانبي + تنقّل الصفحة) ---
+    'docs.index': 'التوثيق',
+    'docs.group.Guides': 'الأدلّة',
+    'docs.group.Build images': 'بناء الصور',
+    'docs.group.Reference': 'المرجع',
+    'docs.edit': 'حرّر هذه الصفحة على GitHub',
+    'docs.prev': 'السابق',
+    'docs.next': 'التالي',
+  },
+  es: {
+    'nav.charts': 'Charts',
+    'nav.images': 'Imágenes',
+    'nav.runtimes': 'Entornos de ejecución',
+    'nav.docs': 'Documentación',
+    'nav.api': 'API',
+    'nav.compare': 'Comparar',
+    'nav.roadmap': 'Hoja de ruta',
+    'nav.security': 'Seguridad',
+    'nav.changelog': 'Registro de cambios',
+    'nav.faq': 'Preguntas frecuentes',
+    'nav.about': 'Acerca de',
+    'lang.label': 'Idioma',
+    'cta.browse': 'Explorar el catálogo',
+    'cta.docs': 'Leer la documentación',
+    'cta.github': 'Ver en GitHub',
+    'footer.resources': 'Recursos',
+    'footer.developers': 'Desarrolladores',
+    'footer.tagline':
+      'Con licencia MIT. Desarrollado de forma independiente, sin afiliación con ningún proveedor.',
+    'hero.title':
+      'Imágenes y charts reforzados y sin CVE para la infraestructura que ejecutas.',
+    'hero.subtitle':
+      'bases de datos entregadas de extremo a extremo como pequeñas imágenes de contenedor sin root y charts de Helm firmados. Compiladas desde el código fuente en Wolfi, analizadas hasta cero CVE corregibles, firmadas con cosign, fijadas por digest y multiarquitectura. Libre e independiente.',
+    'hero.cta.primary': 'Explorar los charts',
+    'hero.cta.secondary': 'Ver en GitHub',
+    'hero.statImages': 'imágenes endurecidas',
+    'hero.statCharts': 'charts firmados',
+    'hero.statCves': '0 CVE corregibles',
+    'footer.builtBy': 'Hecho por',
+    // --- Secciones de la página de inicio (Demo, Features, Catalog, Cta) ---
+    // Traducciones iniciales para revisión.
+    'demo.eyebrow': 'Míralo en acción',
+    'demo.title': 'Descarga, verifica, despliega. Sin cuenta.',
+    'demo.body':
+      'Una terminal real, de extremo a extremo: ejecuta una imagen sin CVE, comprueba su firma de cosign, instala el chart de Helm y observa cómo la carga de trabajo llega a Running.',
+    'demo.alt':
+      'Terminal: docker ejecuta una imagen de Python de QuenchWorks e imprime su versión, cosign verifica la firma de la imagen, helm instala el chart de Valkey, el pod llega a Running y Valkey responde PONG.',
+    'features.eyebrow': 'Cómo funciona',
+    'features.title': 'Reforzado desde el código fuente hasta la instalación.',
+    'features.builtFromSource.title': 'Compilado desde el código fuente',
+    'features.builtFromSource.body':
+      'Compilamos cada aplicación desde el código fuente en Wolfi con melange, y luego apko ensambla una imagen pequeña sin root. Sin Dockerfiles y sin nada heredado de otra distribución.',
+    'features.zeroCve.title': '0 CVE corregibles, a diario',
+    'features.zeroCve.body':
+      'Una puerta de control de Trivy hace fallar la compilación ante cualquier CVE corregible. Reconstruimos cada día, porque un análisis limpio solo te dice cómo estaba el día en que se ejecutó.',
+    'features.signed.title': 'Firmado y certificado',
+    'features.signed.body':
+      'Cada imagen está firmada con cosign, con una atestación de procedencia de compilación SLSA y un SBOM SPDX adjuntos al mismo digest. Verifica los tres desde tu propia terminal.',
+    'features.pinned.title': 'Fijado por digest',
+    'features.pinned.body':
+      'Los charts apuntan a las imágenes por digest sha256, nunca por una etiqueta móvil. Lo que instalas es exactamente lo que pasó la puerta de control.',
+    'catalog.eyebrow': 'El catálogo',
+    'catalog.title': 'Cubre el stack que de verdad ejecutas.',
+    'catalog.bodyPre': 'imágenes reforzadas y',
+    'catalog.bodyMid': 'charts firmados en',
+    'catalog.bodyPost':
+      'categorías: almacenes relacionales y documentales, cachés, búsqueda, streaming, coordinación, observabilidad, almacenamiento de objetos, gateways y un registro, además de imágenes base reforzadas para construir FROM, todo dentro de',
+    'catalog.bodyImages': 'imágenes',
+    'catalog.browsePre': 'Explorar los',
+    'catalog.browsePost': 'charts',
+    'cta.title': 'Libre, independiente y tuyo para verificar.',
+    'cta.body':
+      'Sin muro de pago y sin dependencia forzosa. Descarga una imagen, comprueba tú mismo la firma y luego instala el chart. Nunca tienes que fiarte de nuestra palabra.',
+    'cta.primary': 'Explorar los charts',
+    'cta.request': 'Solicitar una aplicación',
+    // --- Lista del catálogo (CatalogList.astro) ---
+    'catalog.list.headerImages': 'Todas las imágenes',
+    'catalog.list.headerCharts': 'Todos los charts',
+    'catalog.list.typeImages': 'Imágenes',
+    'catalog.list.typeCharts': 'Charts',
+    'catalog.list.titleImages': 'Imágenes de contenedor reforzadas',
+    'catalog.list.titleCharts': 'Charts de Helm reforzados',
+    'catalog.list.descImages':
+      'Cada imagen se compila desde el código fuente en Wolfi, se analiza hasta cero CVE corregibles, se firma con cosign y se fija por digest, con un SBOM SPDX y una atestación de procedencia de compilación SLSA que puedes verificar. Sin root, rootfs de solo lectura, amd64 + arm64.',
+    'catalog.list.descImagesAvailable': 'disponibles ahora.',
+    'catalog.list.descCharts':
+      'Cada chart despliega nuestra imagen reforzada fijada por su digest firmado, con valores predeterminados de producción sensatos. Firmado con cosign y publicado como editor verificado de ArtifactHub.',
+    'catalog.list.descChartsCount': 'charts.',
+    'catalog.list.searchPlaceholder': 'Buscar por nombre, categoría, licencia…',
+    'catalog.list.searchImages': 'Buscar imágenes',
+    'catalog.list.searchCharts': 'Buscar charts',
+    'catalog.list.filterImages': 'Filtrar imágenes',
+    'catalog.list.filterCharts': 'Filtrar charts',
+    'catalog.list.filterAll': 'Todos',
+    'catalog.list.filterAvailable': 'Disponibles',
+    'catalog.list.noMatchImages': 'Ninguna imagen coincide con esa búsqueda.',
+    'catalog.list.noMatchCharts': 'Ningún chart coincide con esa búsqueda.',
+    'catalog.list.badgeCve': '0 CVE',
+    'catalog.list.badgePlanned': 'Planificado',
+    'catalog.list.versions': 'versiones',
+    'catalog.list.resultOne': 'resultado',
+    'catalog.list.resultMany': 'resultados',
+    'catalog.list.chartV': 'chart v',
+    'catalog.list.appV': 'app v',
+    // --- Páginas de detalle (ImageDetail / RuntimeDetail / ChartDetail) ---
+    'detail.breadcrumb.images': 'Imágenes',
+    'detail.breadcrumb.charts': 'Charts',
+    'detail.label.image': 'Imagen',
+    'detail.label.runtime': 'Entorno de ejecución',
+    'detail.label.chart': 'Chart',
+    'detail.badge.fixableCves': '0 CVE corregibles',
+    'detail.badge.cosignSigned': 'firmada con cosign',
+    'detail.badge.spdxSbom': 'SPDX SBOM',
+    'detail.badge.slsaProvenance': 'procedencia SLSA',
+    'detail.badge.arch': 'amd64 · arm64',
+    'detail.badge.nonroot': 'sin root',
+    'detail.badge.digestPinned': 'fijado por digest',
+    'detail.badge.rebuilt': 'Reconstruida ',
+    'detail.rebuiltTitle': 'Imagen reconstruida',
+    'detail.digest.heading': 'Digest actual (desplegado por el chart)',
+    'detail.digest.note':
+      'Las firmas, el SBOM y la procedencia se adjuntan a este digest. Fíjate a él para descargas reproducibles y a prueba de manipulaciones.',
+    'detail.meta.image': 'Imagen',
+    'detail.meta.signed': 'Firmada',
+    'detail.meta.signedValue': 'cosign sin llave',
+    'detail.meta.sbom': 'SBOM',
+    'detail.meta.sbomOnDigest': 'SPDX, en el digest',
+    'detail.meta.sbomOnImage': 'SPDX, en la imagen',
+    'detail.meta.provenance': 'Procedencia',
+    'detail.meta.provenanceValue': 'compilación SLSA',
+    'detail.meta.architectures': 'Arquitecturas',
+    'detail.meta.archValue': 'amd64, arm64',
+    'detail.meta.runsAs': 'Se ejecuta como',
+    'detail.meta.rootFs': 'Sistema de archivos raíz',
+    'detail.meta.rootFsValue': 'solo lectura',
+    'detail.meta.imageSize': 'Tamaño de la imagen',
+    'detail.meta.lastRebuilt': 'Última reconstrucción',
+    'detail.versions.heading': 'Versiones publicadas',
+    'detail.versions.tagOne': 'etiqueta',
+    'detail.versions.tagMany': 'etiquetas',
+    'detail.versions.intro':
+      'Cada etiqueta es un índice multiarquitectura (amd64 + arm64) fijado por digest. Etiquetada por versión, nunca',
+    'detail.versions.colVersion': 'Versión',
+    'detail.versions.colSize': 'Tamaño',
+    'detail.versions.colPublished': 'Publicada',
+    'detail.versions.colDigest': 'Digest',
+    'detail.versions.latest': 'última',
+    'detail.caution.heading': 'Advertencia de licencia ·',
+    'detail.caution.notOsi': 'no está aprobada por la OSI',
+    'detail.caution.bodyImage':
+      'es de código disponible, no de código abierto. La distribuimos reforzada, pero no la presentamos como código abierto.',
+    'detail.caution.bodyChart':
+      'es de código disponible, no de código abierto. El chart lleva esta nota de forma destacada y no lo presentamos como código abierto.',
+    'detail.caution.cleanAlt': 'Alternativa limpia:',
+    'detail.security.heading': 'Informe de seguridad (Trivy, vía ArtifactHub)',
+    'detail.security.zeroFixable': '0 CVE corregibles',
+    'detail.security.critical': 'Crítica',
+    'detail.security.high': 'Alta',
+    'detail.security.medium': 'Media',
+    'detail.security.low': 'Baja',
+    'detail.security.unknown': 'Desconocida',
+    'detail.pull.heading': 'Descarga la imagen',
+    'detail.pull.intro':
+      'Ejecútala directamente con Docker, Podman o cualquier carga de trabajo de Kubernetes. Sin root, sistema de archivos raíz de solo lectura, compilada para amd64 y arm64.',
+    'detail.pull.tag': 'Descargar (etiqueta)',
+    'detail.pull.pinned': 'Fijada por digest (recomendado)',
+    'detail.pull.tags': 'Etiquetas',
+    'detail.pull.tagsNote':
+      'Las imágenes se etiquetan por versión de la app (nunca',
+    'detail.pull.tagsNoteEnd':
+      '): un índice multiarquitectura más etiquetas por arquitectura.',
+    'detail.field.appVersion': 'Versión de la app',
+    'detail.field.license': 'Licencia',
+    'detail.verify.heading': 'Verifica la cadena de suministro',
+    'detail.verify.introBuild':
+      'Esta imagen está firmada con cosign y lleva un SBOM SPDX y una atestación de procedencia de compilación SLSA en el mismo digest. Comprueba las tres antes de construir sobre ella:',
+    'detail.verify.introPull':
+      'Esta imagen está firmada con cosign y lleva un SBOM SPDX y una atestación de procedencia de compilación SLSA en el mismo digest. Comprueba las tres tú mismo:',
+    'detail.verify.guidePre': 'Consulta la',
+    'detail.verify.guideLink': 'guía de SBOM y procedencia',
+    'detail.verify.guidePost': 'para leer el SBOM y usar estas comprobaciones en CI.',
+    'detail.transparency.heading': 'Transparencia',
+    'detail.transparency.bodyImage':
+      'Cada imagen lleva su SBOM y su procedencia como atestaciones en el mismo digest, verificables públicamente con los comandos anteriores (comprueban el paquete y el registro de transparencia de Sigstore, Rekor).',
+    'detail.action.viewChart': 'Ver el chart de Helm',
+    'detail.action.viewImage': 'Ver la imagen',
+    'detail.action.viewPackage': 'Ver el paquete',
+    'detail.action.viewArtifactHub': 'Ver en ArtifactHub',
+    'detail.action.chartSource': 'Código del chart',
+    'detail.upstream': 'Proyecto original:',
+    // Específico del entorno de ejecución
+    'runtime.base.heading': 'Úsala como imagen base',
+    'runtime.base.intro':
+      'Refiérela en la línea FROM de tu Dockerfile. Sin root, sistema de archivos raíz de solo lectura, compilada para amd64 y arm64.',
+    'runtime.base.orPull': 'O descárgala directamente',
+    'runtime.field.versionLine': 'Línea de versión',
+    'runtime.field.latestLine': 'Línea más reciente',
+    'runtime.dockerfile.heading': 'Dockerfile recomendado para',
+    'runtime.dockerfile.rebuilt': 'reconstruida ',
+    'runtime.dockerfile.notePre': 'Este Dockerfile está fijado a la línea',
+    'runtime.dockerfile.notePost':
+      '. Para el recorrido línea por línea y las variantes de ecosistema (npm/Yarn, pip/uv/Poetry, Maven/Gradle), consulta la guía',
+    'runtime.dockerfile.guideSuffix': '.',
+    'runtime.guide.buildNode': 'Crear una app de Node',
+    'runtime.guide.buildPython': 'Crear una app de Python',
+    'runtime.guide.buildGoRust': 'Crear un binario de Go o Rust',
+    'runtime.guide.buildJava': 'Crear una app de Java',
+    'runtime.guide.buildDotnet': 'Crear una app de .NET',
+    'runtime.guide.buildImages': 'Crear imágenes reforzadas',
+    // Específico del chart
+    'chart.released.heading': 'Versión publicada',
+    'chart.released.bodyPre': 'Esta es la versión',
+    'chart.released.bodyMid': 'del chart de',
+    'chart.released.bodyChart': '',
+    'chart.released.published': ', publicada el',
+    'chart.released.bodyEnd':
+      'Para el informe de seguridad en vivo y el digest de imagen desplegado actualmente, consulta la',
+    'chart.released.latestLink': 'versión más reciente',
+    'chart.deployedDigest.heading': 'Digest de imagen desplegado',
+    'chart.ociVersion.heading': 'Versión OCI del chart',
+    'chart.deployNote':
+      'El chart fija su imagen por este digest firmado, así que nunca tienes que rastrearlo tú mismo. Las firmas, el SBOM y la procedencia se adjuntan al mismo digest.',
+    'chart.install.heading': 'Instala el chart',
+    'chart.install.intro':
+      'Despliega en Kubernetes con valores predeterminados reforzados. El chart fija su imagen por digest firmado, así que nunca tienes que rastrearlo tú mismo.',
+    'chart.install.labelLatest': 'Instalar (última)',
+    'chart.install.labelPinnedPre': 'Instalar (fijado a',
+    'chart.install.deploys': 'Despliega la imagen (fijada por digest)',
+    'chart.field.chartVersion': 'Versión del chart',
+    'chart.field.appVersion': 'Versión de la app',
+    'chart.field.chartLicense': 'Licencia del chart',
+    'chart.field.appLicense': 'Licencia de la app',
+    'chart.field.servicePort': 'Puerto del servicio',
+    'chart.field.signed': 'Firmado',
+    'chart.field.signedKeyless': 'cosign (sin llave)',
+    'chart.field.signedNo': 'no',
+    'chart.field.valuesSchema': 'Esquema de valores',
+    'chart.field.yes': 'sí',
+    'chart.field.no': 'no',
+    'chart.field.lastPublished': 'Última publicación',
+    'chart.field.released': 'Publicado',
+    'chart.verify.heading': 'Verifica el chart',
+    'chart.transparency.pre': 'El chart publica sus',
+    'chart.transparency.attestLink': 'atestaciones en GitHub',
+    'chart.transparency.post':
+      'y la imagen que despliega lleva las suyas en el mismo digest, verificables públicamente con los comandos anteriores. Ambos se registran en el registro de transparencia de Sigstore (Rekor), que',
+    'chart.transparency.postEnd': 'comprueba por ti.',
+    // Selector de versiones
+    'versions.label': 'Versión',
+    'versions.lineLabel': 'Línea de versión',
+    'versions.latestSuffix': ' · última',
+    'versions.note':
+      'La línea más reciente vive en la página base; las líneas más antiguas tienen su propia página para que puedas fijar y verificar exactamente esa versión.',
+    // --- Documentación: chrome (barra lateral + navegación de página) ---
+    'docs.index': 'Documentación',
+    'docs.group.Guides': 'Guías',
+    'docs.group.Build images': 'Crear imágenes',
+    'docs.group.Reference': 'Referencia',
+    'docs.edit': 'Editar esta página en GitHub',
+    'docs.prev': 'Anterior',
+    'docs.next': 'Siguiente',
+  },
+} as const;
+
+/** Pull the active locale from the first path segment. Defaults to `en`. */
+export function getLangFromUrl(url: URL): Lang {
+  const [, seg] = url.pathname.split('/');
+  if (seg in ui) return seg as Lang;
+  return defaultLang;
+}
+
+/** Returns a translator that falls back to the default language per key. */
+export function useTranslations(lang: Lang) {
+  return function t(key: keyof (typeof ui)[typeof defaultLang]): string {
+    return ui[lang][key] ?? ui[defaultLang][key];
+  };
+}
+
+/**
+ * Prefix an internal, root-relative path with the active locale so links inside
+ * /ar and /es pages stay in-locale. Leaves `en` (default, no prefix), external
+ * URLs, anchors, and mailto/tel untouched. Use it on every internal href in a
+ * page/component that can render under a locale:
+ *   const l = localizeUrl.bind(null, lang);  href={l('/docs/sbom')}
+ */
+export function localizeUrl(lang: Lang, path: string): string {
+  if (lang === defaultLang) return path;
+  if (!path.startsWith('/') || path.startsWith('//')) return path; // external / anchor / relative
+  if (path === `/${lang}` || path.startsWith(`/${lang}/`)) return path; // already localized
+  return `/${lang}${path}`;
+}

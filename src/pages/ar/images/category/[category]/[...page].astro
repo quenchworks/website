@@ -1,0 +1,60 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import Base from '../../../../../layouts/Base.astro';
+import Header from '../../../../../components/Header.astro';
+import Footer from '../../../../../components/Footer.astro';
+import CategoryCatalog from '../../../../../components/CategoryCatalog.astro';
+import { images, PAGE_SIZE, type ImageEntry } from '../../../../../data/images';
+import { slugify } from '../../../../../data/slugify';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const available = images.filter((i) => i.status === 'available');
+  const imageCategories = [...new Set(available.map((i) => i.category))].sort();
+  return imageCategories.flatMap((category) => {
+    const entries = available
+      .filter((i) => i.category === category)
+      .sort((a, b) => a.name.localeCompare(b.name));
+    return paginate(entries, {
+      params: { category: slugify(category) },
+      props: { category },
+      pageSize: PAGE_SIZE,
+    });
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  page: Page<ImageEntry>;
+  category: string;
+}
+const { page, category } = Astro.props as Props;
+
+const count = images.filter((i) => i.status === 'available' && i.category === category).length;
+const heading = `${category} images`;
+const intro = `Hardened container images in the ${category.toLowerCase()} category. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, and pinned by digest.`;
+
+// Sibling categories so users can hop between them without going back out.
+const available = images.filter((i) => i.status === 'available');
+const categories = [...new Set(available.map((i) => i.category))]
+  .sort()
+  .map((c) => ({ label: c, slug: slugify(c) }));
+const currentCategory = slugify(category);
+---
+
+<Base
+  title={`${category} images · Quenchworks`}
+  description={`Hardened, 0-CVE container images in the ${category} category, cosign-signed and digest-pinned.`}
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <CategoryCatalog
+      kind="images"
+      heading={heading}
+      intro={intro}
+      count={count}
+      page={page}
+      categories={categories}
+      currentCategory={currentCategory}
+    />
+  </main>
+  <Footer />
+</Base>

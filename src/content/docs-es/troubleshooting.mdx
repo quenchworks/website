@@ -1,0 +1,71 @@
+---
+title: Resolución de problemas
+description: "Problemas comunes al ejecutar imágenes y charts de QuenchWorks: la etiqueta :latest ausente, el comportamiento nonroot y de sistema de archivos de solo lectura, los permisos de volumen y la verificación de firmas."
+group: Reference
+order: 4
+---
+
+La mayoría de las sorpresas vienen del endurecimiento: las imágenes se ejecutan como nonroot sobre un sistema de archivos raíz de solo lectura y se etiquetan por versión, no con `:latest`. Aquí tienes cómo se ve cada caso y cómo manejarlo.
+
+## MANIFEST_UNKNOWN o "tag not found: latest"
+
+Las imágenes no tienen etiqueta `:latest`. Una referencia sin etiqueta se resuelve a `:latest` y falla:
+
+```bash
+docker pull ghcr.io/quenchworks/images/redis          # error: latest not found
+docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works
+```
+
+Usa siempre una etiqueta de versión (mostrada en la página de cada [imagen](/es/images)) o un digest. Consulta [Etiquetas y versiones](/es/docs/tags).
+
+## cosign verify o verify-attestation devuelve 404
+
+Las atestaciones se adjuntan al digest de una construcción específica. Verificar un digest obsoleto, o uno anterior a una reconstrucción, no encuentra nada. Verifica en su lugar la etiqueta de versión, que se resuelve al digest atestado actual:
+
+```bash
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+```
+
+Consulta [Verificar una firma](/es/docs/verify) y [SBOM y procedencia](/es/docs/sbom).
+
+## El contenedor termina al escribir en su sistema de archivos
+
+El sistema de archivos raíz es de solo lectura. Las aplicaciones que necesitan escribir deben escribir en un volumen o en `/tmp` (provisto como escribible). Los charts ya montan lo que la aplicación necesita; para rutas escribibles adicionales, añade un volumen en lugar de desactivar el ajuste de solo lectura:
+
+```yaml
+extraVolumes:
+  - name: scratch
+    emptyDir: {}
+extraVolumeMounts:
+  - name: scratch
+    mountPath: /var/scratch
+```
+
+## Permiso denegado en un volumen montado
+
+Los contenedores se ejecutan como nonroot (uid 1001 para la mayoría de las imágenes; el chart documenta cualquier excepción). Un PersistentVolume recién aprovisionado puede pertenecer a root, en el que el proceso nonroot no puede escribir. Establece `fsGroup` para que el volumen sea propiedad de grupo del usuario de ejecución:
+
+```yaml
+podSecurityContext:
+  fsGroup: 1001        # let the nonroot user own mounted volumes
+```
+
+## Pod rechazado por Pod Security Admission
+
+Las imágenes ya satisfacen el Pod Security Standard `restricted`: nonroot, sin escalada de privilegios, todas las capacidades eliminadas, seccomp `RuntimeDefault`, sistema de archivos raíz de solo lectura. Si un pod aún así es rechazado, la causa suele ser una anulación que pasaste (un `securityContext` personalizado, un montaje de host o una capacidad añadida). Elimina la anulación y deja que apliquen los valores predeterminados endurecidos de `quench-common`. Consulta [Configuración](/es/docs/configuration).
+
+## Arquitectura incorrecta
+
+Las imágenes se construyen para `linux/amd64` y `linux/arm64`. La etiqueta de versión es un índice multi-arch, así que el runtime descarga la correcta automáticamente. Otras arquitecturas no se publican.
+
+## Helm no puede descargar el chart
+
+Los charts se publican en GHCR como artefactos OCI públicos, así que no se necesita inicio de sesión para el registro oficial. Si los replicaste a un registro privado, ejecuta primero `helm registry login` contra él, y consulta [Instalación air-gapped](/es/docs/air-gapped).
+
+## Una pestaña de seguridad de ArtifactHub muestra un error de escaneo
+
+<Notice type="info">
+ArtifactHub ejecuta su propio escáner, que ocasionalmente no consigue descargar la base de datos de vulnerabilidades de Java de Trivy para las imágenes basadas en JVM. Eso es un problema de infraestructura del lado de ArtifactHub, no un problema de la imagen: nuestra puerta de CI escanea cada construcción hasta cero CVEs corregibles, y puedes confirmarlo tú mismo con `trivy image <ref>` o comprobando el SBOM. Suele resolverse en el siguiente escaneo.
+</Notice>

@@ -1,0 +1,76 @@
+---
+title: بناء تطبيق .NET
+description: "ملف Dockerfile مُحصّن متعدد المراحل لـ .NET على QuenchWorks: انشر بصورة dotnet SDK، ثم شغّل على أساس aspnet النحيل لتطبيقات الويب أو على dotnet-runtime لتطبيقات سطر الأوامر، بدون صلاحيات الجذر."
+group: Build images
+order: 6
+---
+
+لا يحتاج تطبيق .NET المنشور إلى الـ SDK عند التشغيل، بل إلى بيئة التشغيل المطابقة فقط. لذا نفّذ `dotnet publish` في مرحلة البناء بصورة الـ SDK، ثم شغّل المخرجات المنشورة على أساس التشغيل النحيل: `aspnet` لتطبيقات الويب وواجهات البرمجة، و`dotnet-runtime` لتطبيقات سطر الأوامر والعُمّال. يبقى الـ SDK وذاكرة NuGet خلفهما في مرحلة البناء.
+
+يبني هذا على `ghcr.io/quenchworks/images/dotnet:10` (الـ SDK)، ثم يشغّل على `ghcr.io/quenchworks/images/aspnet:10` أو `ghcr.io/quenchworks/images/dotnet-runtime:10`. أبقِ خط التشغيل مطابقًا للـ SDK الذي بنيت به.
+
+## ملف Dockerfile المتعدد المراحل
+
+<Tabs>
+<Tab label="aspnet (web)">
+```dockerfile
+# Build stage: restore, then publish the app.
+FROM ghcr.io/quenchworks/images/dotnet:10 AS build
+WORKDIR /src
+
+# Restore first so the layer caches when only code changes.
+COPY ["App.csproj", "./"]
+RUN ["dotnet", "restore", "App.csproj"]
+COPY . .
+RUN ["dotnet", "publish", "App.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
+
+# Runtime stage: ASP.NET Core runtime, nonroot.
+FROM ghcr.io/quenchworks/images/aspnet:10 AS runtime
+WORKDIR /app
+ENV ASPNETCORE_URLS=http://+:8080
+COPY --from=build /app/publish ./
+USER 1001
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "App.dll"]
+```
+</Tab>
+<Tab label="dotnet-runtime (console)">
+```dockerfile
+# Build stage: restore, then publish the worker/console app.
+FROM ghcr.io/quenchworks/images/dotnet:10 AS build
+WORKDIR /src
+
+COPY ["Worker.csproj", "./"]
+RUN ["dotnet", "restore", "Worker.csproj"]
+COPY . .
+RUN ["dotnet", "publish", "Worker.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
+
+# Runtime stage: the plain .NET runtime, no ASP.NET Core stack.
+FROM ghcr.io/quenchworks/images/dotnet-runtime:10 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish ./
+USER 1001
+ENTRYPOINT ["dotnet", "Worker.dll"]
+```
+</Tab>
+</Tabs>
+
+## ماذا تفعل كل مرحلة
+
+<Steps>
+1. **البناء.** صورة `dotnet` هي الـ SDK الكامل. استعِد قبل نسخ بقية المصدر كي تُخزَّن تلك الطبقة، ثم نفّذ `dotnet publish` بوضع Release إلى مجلّد ثابت. يبقى الـ SDK وذاكرة NuGet والمصدر في هذه المرحلة.
+2. **التشغيل.** ابدأ من `aspnet` (للويب) أو `dotnet-runtime` (لسطر الأوامر)، وانسخ مخرجات النشر، وانزل إلى `uid 1001`، وشغّل تجميعة الدخول. لا يُشحن أي SDK.
+</Steps>
+
+<Notice type="tip">
+مع BuildKit يمكنك الإبقاء على ذاكرة NuGet دافئة بين عمليات البناء عبر تركيب ذاكرة بدلًا من إعادة الاستعادة في كل مرة: `RUN --mount=type=cache,target=/root/.nuget/packages dotnet restore`. تركيب الذاكرة وقت بناء فقط ولا يصل إلى الصورة أبدًا.
+</Notice>
+
+<Notice type="warning">
+الصور الأساس بلا غلاف، لذا فإن خطوات بناء `dotnet` و`ENTRYPOINT` بصيغة exec (مصفوفة JSON). تعمل بيئة التشغيل كـ `USER 1001` على نظام ملفات جذر للقراءة فقط، فاربط بمنفذ غير محظور (8080 هنا، لا 80) ووجّه أي كتابة إلى `/tmp` أو إلى وحدة تخزين مركّبة. اضبط `DOTNET_CLI_TELEMETRY_OPTOUT=1` إن أردت أن تتخطّى بيئة التشغيل القياس عن بعد.
+</Notice>
+
+## التالي
+
+- لأصغر بصمة، انشر تطبيقًا مكتفيًا ذاتيًا ومقلّمًا وشغّله على أساس تشغيل، أو جمّع تطبيق سطر أوامر بـ AOT إلى ملف ثنائي أصلي واشحنه على [`static`](/ar/docs/build-go).
+- [ثبّت بالبصمة الرقمية](/ar/docs/pin-by-digest) ليجري كل بناء بالضبط على الأساس الذي جرى فحصه وتوقيعه.

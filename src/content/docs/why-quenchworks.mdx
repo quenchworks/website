@@ -1,0 +1,43 @@
+---
+title: Why QuenchWorks
+description: The problem QuenchWorks solves, what every artifact gives you, and who it is for.
+group: Guides
+order: 0.5
+---
+
+QuenchWorks is a free, independent catalog of hardened container images and Helm charts. Every image is built from source on Wolfi, scanned to zero fixable CVEs, signed, and pinned by digest. Every chart is rewritten from scratch on a shared library and deploys those exact images.
+
+## The problem
+
+A lot of teams built on the free Bitnami catalog: `bitnami/*` images and charts for Redis, PostgreSQL, Kafka, and dozens more. That free catalog is being wound down, and the hardened, always-patched builds now sit behind a paid subscription. If you depended on those images, you are left with three options: pay, pin to an unmaintained tag that stops getting CVE fixes, or rebuild the hardening yourself for every datastore you run.
+
+QuenchWorks is the fourth option. It is a maintained, free source of the same kind of artifact: a hardened image plus a chart that deploys it, for the apps teams actually run in production.
+
+## What you get
+
+Every image in the catalog is:
+
+- **Built from source on Wolfi**, so the package set is minimal and current, not inherited from a large base image.
+- **Scanned to zero fixable CVEs** with Trivy on every build. The scan runs against the digest that ships.
+- **Signed with cosign** using GitHub OIDC, so there is no key to distribute and you can prove which workflow built it.
+- **Shipped with an SBOM and SLSA build provenance** as attestations, so you can inventory the contents and trace the build.
+- **Nonroot on a read-only root filesystem** with all Linux capabilities dropped, so it runs under a restricted PodSecurity policy without extra config.
+- **Multi-arch**, built for both amd64 and arm64.
+
+Charts pin the image they deploy by digest, so a fresh install always runs the current, attested build.
+
+## Who it is for
+
+- Teams migrating off the free Bitnami catalog who want a drop-in, maintained replacement.
+- Anyone who needs to pass a CVE gate or a supply-chain audit without hand-hardening every dependency.
+- Platform teams who want signed, digest-pinned artifacts they can verify in CI before they deploy.
+
+## What it is not
+
+QuenchWorks is a clean-room project. It is not affiliated with Bitnami, VMware, or Broadcom, and the charts are not copied from theirs. Values and layouts will differ, so a migration is a real move, not a rename. The [migration guide](/docs/migrate) walks through it.
+
+## Next steps
+
+- [Get started](/docs/get-started): install a chart and pull an image.
+- [Migrate from Bitnami](/docs/migrate): map your existing values across.
+- [Verify a signature](/docs/verify): prove an artifact before you trust it.

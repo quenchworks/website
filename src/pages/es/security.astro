@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const sections = [
+  {
+    h: 'Cero CVE corregibles, aplicado',
+    p: 'Cada imagen pasa por una puerta de control de Trivy que hace fallar la compilación ante cualquier vulnerabilidad corregible. Reconstruimos de forma programada, porque un análisis limpio solo describe el día en que se ejecutó. El resultado es un objetivo móvil mantenido limpio, no una auditoría puntual.',
+  },
+  {
+    h: 'Compilado desde el código fuente en Wolfi',
+    p: 'Compilamos cada aplicación desde el código fuente con melange, y luego apko ensambla una imagen pequeña sin root. No hay Dockerfiles ni nada heredado de otra distribución, así que la superficie de ataque es solo lo que la aplicación necesita.',
+  },
+  {
+    h: 'Firmado, sin clave',
+    p: 'Cada imagen y cada chart se firma con cosign usando GitHub OIDC (Sigstore). No hay ninguna clave de larga duración que pueda filtrarse. La firma vincula el artefacto al flujo de trabajo que lo construyó, y cualquiera puede comprobarlo.',
+  },
+  {
+    h: 'Fijado por digest',
+    p: 'Los charts referencian las imágenes por digest sha256, nunca por una etiqueta móvil. Lo que instalas es exactamente el artefacto que pasó la puerta de control y fue firmado, sin margen para que una etiqueta se desplace por debajo.',
+  },
+];
+---
+
+<Base title="Seguridad · Quenchworks" description="Cómo QuenchWorks mantiene las imágenes en cero CVE corregibles: compiladas desde el código fuente, firmadas con cosign, fijadas por digest y reconstruidas de forma programada.">
+  <Header />
+  <main class="mx-auto max-w-3xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Seguridad</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Confianza que puedes verificar</h1>
+    <p class="mt-4 text-ash">
+      QuenchWorks está construido para que nunca tengas que fiarte de nuestra palabra. Todo lo
+      que sigue es reproducible y comprobable desde tu propia terminal.
+    </p>
+
+    <div class="mt-10 space-y-8">
+      {
+        sections.map((s) => (
+          <section>
+            <h2 class="text-xl font-semibold tracking-tight">{s.h}</h2>
+            <p class="mt-2 leading-relaxed text-ash">{s.p}</p>
+          </section>
+        ))
+      }
+    </div>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold tracking-tight">Verifícalo tú mismo</h2>
+      <pre class="mt-3 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirma que una imagen fue construida y firmada por nuestro CI (las imágenes no tienen :latest)</span>
+cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com
+
+<span class="text-ash"># lo mismo funciona para cualquier chart, por su etiqueta de versión</span>
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+  --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
+      <h2 class="text-lg font-semibold tracking-tight">Reportar una vulnerabilidad</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        ¿Encontraste algo? Sigue el proceso de divulgación de nuestra política de seguridad.
+      </p>
+      <a
+        href="https://github.com/quenchworks/.github/blob/main/SECURITY.md"
+        class="mt-4 inline-flex rounded-lg border border-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:bg-ink"
+      >
+        Política de seguridad
+      </a>
+    </section>
+  </main>
+  <Footer />
+</Base>
