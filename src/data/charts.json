@@ -229,6 +229,29 @@
     ]
   },
   {
+    "slug": "dex",
+    "name": "dex",
+    "category": "Identity",
+    "summary": "Federated OpenID Connect (OIDC) identity provider. Acts as a portal to other identity providers (LDAP, SAML, GitHub, Google, OIDC) and issues OIDC tokens to apps and Kubernetes.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.45.1",
+    "description": "Dex, the CNCF OpenID Connect (OIDC) identity provider and federated SSO gateway with pluggable connectors (LDAP, SAML, GitHub, Google, OIDC). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/dex",
+    "imageDigest": "sha256:c53ce214bd8ea81dd829c008ac8b2f290024ac8fc96832958afa1ac58fcb7986",
+    "repositoryID": "0744381b-8579-4b27-b25d-35e351f8a87a",
+    "upstream": "https://dexidp.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/dex",
+    "images": [
+      {
+        "name": "dex",
+        "image": "ghcr.io/quenchworks/images/dex@sha256:c53ce214bd8ea81dd829c008ac8b2f290024ac8fc96832958afa1ac58fcb7986"
+      }
+    ]
+  },
+  {
     "slug": "distribution",
     "name": "distribution",
     "category": "Registry",
@@ -1128,6 +1151,30 @@
       "https://github.com/kubernetes/kube-state-metrics",
       "https://github.com/prometheus/node_exporter",
       "https://github.com/google/cadvisor"
+    ]
+  },
+  {
+    "slug": "ollama",
+    "name": "ollama",
+    "category": "Machine learning & AI",
+    "summary": "Local LLM runtime that pulls, runs, and serves open models (Llama, Gemma, Qwen, DeepSeek, and more) behind a simple REST API. CPU-only image; the chart mounts a writable volume for the model store.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.30.10",
+    "description": "Ollama, the local large-language-model runtime that pulls and serves open models (Llama, Mistral, Gemma, Qwen, ...) over a simple REST API. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image, cosign-signed and pinned by digest. CPU-only; runs as a StatefulSet with a persistent /models volume.",
+    "imageRepository": "ghcr.io/quenchworks/images/ollama",
+    "imageDigest": "sha256:c063461e020cc92cdf3d00aa5ad8c8cf126c1486b0abb1acf3f9831638af0669",
+    "repositoryID": "519e0ec6-71ee-4015-9a03-73b8bf208cde",
+    "port": 11434,
+    "upstream": "https://ollama.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ollama",
+    "images": [
+      {
+        "name": "ollama",
+        "image": "ghcr.io/quenchworks/images/ollama@sha256:c063461e020cc92cdf3d00aa5ad8c8cf126c1486b0abb1acf3f9831638af0669"
+      }
     ]
   },
   {
