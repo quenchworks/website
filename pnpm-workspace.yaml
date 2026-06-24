@@ -1,7 +1,13 @@
+# pnpm postinstall build scripts allowed to run (pnpm blocks them by default).
 allowBuilds:
   esbuild: true
   sharp: true
-minimumReleaseAgeExclude:
-  - astro@6.4.6
-  - '@astrojs/markdown-satteri@0.3.2'
-  - astro@7.0.2
+
+# Disable the "minimum release age" supply-chain gate for THIS project. It is a
+# personal/global pnpm policy; with it active, yesterday's Astro 7 release
+# (astro@7.0.2 + its new @astrojs/markdown-satteri dep) is "too new" and gets
+# rejected. Committing an exclude list instead activated pnpm 11.8's policy code
+# path, whose ERR_PNPM_RESOLUTION_POLICY_VIOLATIONS_UNHANDLED bug broke the
+# Cloudflare Pages build. Setting 0 overrides the global policy locally and
+# produces no violations on Cloudflare, so installs are deterministic everywhere.
+minimumReleaseAge: 0
