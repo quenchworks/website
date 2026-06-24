@@ -1285,7 +1285,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: Gitea + Atlantis — self-hosted Git + Terraform GitOps. Needs a gitea-actions-runner image first."
+    "note": "Umbrella: Gitea + Atlantis + Terralist — self-hosted Git, Terraform/OpenTofu GitOps, and a private module/provider registry. Gitea+Atlantis charts built; needs a Terralist image and a gitea-actions-runner image (or ship runner-less)."
   },
   {
     "name": "messaging-stack",
@@ -1318,5 +1318,29 @@
     "licenseClean": "clean",
     "priority": "exploring",
     "note": "Umbrella: Temporal + Elasticsearch for advanced visibility. Marginal — the Temporal chart already bundles its own PostgreSQL, so a stack only adds optional ES visibility search."
+  },
+  {
+    "name": "Terralist",
+    "category": "CI/CD & registry",
+    "license": "MPL-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Private Terraform/OpenTofu registry for modules and providers (Go). Hardenable as a normal nonroot server image; unlocks the gitops-stack and registry-stack."
+  },
+  {
+    "name": "Tiny RDM",
+    "category": "Databases & engines",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "exploring",
+    "note": "Modern Redis/Valkey desktop GUI (Wails/Go+Vue). A desktop client, not a deployable server, so it falls outside the hardened in-cluster image model — a web Redis UI (e.g. redis-commander) would be the cache-stack UI instead."
+  },
+  {
+    "name": "registry-stack",
+    "category": "Stacks",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Umbrella: Harbor (container images + OCI Helm charts + Trivy scanning) + Terralist (Terraform/OpenTofu modules & providers) — one self-hosted artifact registry for every kind of artifact. Harbor chart built; needs a Terralist image+chart."
   }
 ]
