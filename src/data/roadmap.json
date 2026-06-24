@@ -1285,7 +1285,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: a Git backend (choose Gitea — default, lightweight and clean — or GitLab CE — heavier, mixed license) + Atlantis + Terralist, for Terraform/OpenTofu GitOps with a private module/provider registry. Atlantis + Gitea charts built; needs a Terralist image, plus a gitea-actions-runner (or runner-less) — or GitLab images if that backend is chosen."
+    "note": "Umbrella: a pluggable Git backend + Atlantis + Terralist for Terraform/OpenTofu GitOps with a private module/provider registry. Pick your forge: Gitea (default, built) or Forgejo / Gogs (lightweight, clean) / OneDev (all-in-one) / GitLab CE (heavy, mixed license). Atlantis + Gitea charts built; needs a Terralist image, the chosen forge's image, and a runner (or runner-less)."
   },
   {
     "name": "messaging-stack",
@@ -1351,5 +1351,21 @@
     "priority": "exploring",
     "note": "Full DevOps platform (Git forge + CI/CD + registry). Heavy fit: a large Ruby monolith that bundles PostgreSQL, Redis, Gitaly, Sidekiq and Workhorse, and the gitlab-org/gitlab repo is mostly EE-proprietary — only the CE-flagged code is MIT. Far from the minimal one-purpose hardened model.",
     "cleanAlternative": "Gitea or Forgejo — lightweight, fully-open Git forges that drop straight into the gitops-stack."
+  },
+  {
+    "name": "Gogs",
+    "category": "CI/CD & registry",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "The original minimal Go Git service that Gitea forked from. Very small single-binary forge; an even lighter gitops-stack backend option."
+  },
+  {
+    "name": "OneDev",
+    "category": "CI/CD & registry",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option."
   }
 ]
