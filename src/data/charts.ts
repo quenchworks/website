@@ -18,7 +18,7 @@ export interface ChartEntry {
   chartVersion?: string;
   appVersion?: string;
   description?: string;
-  imageRepository: string;
+  imageRepository?: string; // single-app charts only; undefined for umbrella stacks
   imageDigest?: string;
   repositoryID?: string;
   port?: number | string;
@@ -26,6 +26,8 @@ export interface ChartEntry {
   chartRef: string; // oci://ghcr.io/quenchworks/charts/<slug>
   caution?: boolean;
   cleanAlternative?: string;
+  stack?: boolean; // umbrella chart over several component charts
+  components?: string[]; // for stacks: the bundled component chart names
 }
 
 export const ghcr = 'ghcr.io/quenchworks';

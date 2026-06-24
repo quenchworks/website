@@ -163,24 +163,41 @@ for (const slug of chartDirs.sort()) {
   const licenseClean = deriveLicenseClean(license);
   const img = valuesYaml?.image || {};
   const newestVer = a.versions?.[0]?.version;
+  const desc = chartYaml?.description ? String(chartYaml.description) : undefined;
+
+  // A "stack" is an umbrella chart over several component charts — it has no
+  // single backing image, so it must NOT get an imageRepository/digest/port or
+  // the generic "hardened image" summary. Detected by the `-stack` naming
+  // convention. Its components are listed from the chart's OCI dependencies.
+  const isStack = slug.endsWith('-stack');
+  const components = isStack
+    ? (Array.isArray(chartYaml?.dependencies) ? chartYaml.dependencies : [])
+        .map((d) => d?.name)
+        .filter((n) => n && n !== 'quench-common')
+    : undefined;
 
   const entry = {
     slug,
     name: prettyName(chartYaml?.name || slug),
-    category: a.category || 'Datastore',
-    summary: a.summary || `Hardened ${slug} image, built from source on Wolfi.`,
+    category: isStack ? 'Stacks' : (a.category || 'Datastore'),
+    summary:
+      a.summary ||
+      (isStack && desc ? desc.split('. ')[0].replace(/\.$/, '') + '.' : `Hardened ${slug} image, built from source on Wolfi.`),
     tier: String(a.tier || 'standard'),
     license,
     licenseClean,
     chartVersion: chartYaml?.version != null ? String(chartYaml.version) : undefined,
     appVersion: chartYaml?.appVersion != null ? String(chartYaml.appVersion) : (newestVer ?? undefined),
-    description: chartYaml?.description ? String(chartYaml.description) : undefined,
-    imageRepository: img.repository ? String(img.repository) : `${ghcr}/images/${slug}`,
-    imageDigest: img.digest ? String(img.digest) : undefined,
+    description: desc,
+    // image facts only for single-app charts; stacks are chart-only umbrellas.
+    imageRepository: isStack ? undefined : img.repository ? String(img.repository) : `${ghcr}/images/${slug}`,
+    imageDigest: isStack ? undefined : img.digest ? String(img.digest) : undefined,
     repositoryID: ahRepo?.repositoryID ? String(ahRepo.repositoryID) : undefined,
-    port: servicePort(valuesYaml),
+    port: isStack ? undefined : servicePort(valuesYaml),
     upstream: a.upstream || a.source || '',
     chartRef: `oci://${ghcr}/charts/${slug}`,
+    stack: isStack || undefined,
+    components: components && components.length ? components : undefined,
   };
   if (licenseClean === 'caution') {
     entry.caution = true;
