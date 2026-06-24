@@ -1367,5 +1367,62 @@
     "licenseClean": "clean",
     "priority": "exploring",
     "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option."
+  },
+  {
+    "name": "CloudNativePG",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kubernetes operator for PostgreSQL HA: streaming replication, automated failover, and backups/PITR to object storage, all via CRDs. CNCF project; the modern operator behind the pg-ha-stack."
+  },
+  {
+    "name": "MariaDB Operator",
+    "category": "Databases & engines",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kubernetes operator for MariaDB/MySQL: provisioning, Galera multi-primary HA, replication, backups, and user/grant management via CRDs."
+  },
+  {
+    "name": "Percona XtraDB Cluster Operator",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery."
+  },
+  {
+    "name": "MongoDB Community Operator",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "MongoDB Community Kubernetes Operator: replica-set HA, automated failover, and TLS via CRDs. The operator is Apache-2.0; note the MongoDB server it deploys is SSPL (not OSI)."
+  },
+  {
+    "name": "pg-ha-stack",
+    "category": "Stacks",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Operator-based HA PostgreSQL: CloudNativePG + PgBouncer + postgres-exporter — streaming replication, automated failover, and backups/PITR to object storage. NOTE: unlike the operator-free observability stacks, this is CRD-driven (it installs the CloudNativePG operator). Needs a CloudNativePG image first."
+  },
+  {
+    "name": "mysql-ha-stack",
+    "category": "Stacks",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Operator-based HA MySQL: a MySQL operator (Percona XtraDB Cluster, or MariaDB Operator with Galera) + a metrics exporter — synchronous multi-primary replication and backups. CRD-driven. Needs the chosen operator image first."
+  },
+  {
+    "name": "mongodb-ha-stack",
+    "category": "Stacks",
+    "license": "SSPL-1.0",
+    "licenseClean": "caution",
+    "priority": "exploring",
+    "note": "Operator-based HA MongoDB: MongoDB Community Operator + a metrics exporter — replica-set failover. CRD-driven. The operator is Apache-2.0, but MongoDB itself is SSPL (not OSI), so the stack inherits that caution.",
+    "cleanAlternative": "FerretDB (Apache-2.0) on the pg-ha-stack — a MongoDB-compatible, fully-open document database over PostgreSQL."
   }
 ]
