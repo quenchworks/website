@@ -79,7 +79,7 @@ const ld = {
   ...(appVersion ? { softwareVersion: appVersion } : {}),
   isAccessibleForFree: true,
   license: entry.license,
-  codeRepository: entry.upstream,
+  codeRepository: entry.upstream || entry.upstreams?.[0] || '',
 };
 ---
 
@@ -194,10 +194,26 @@ const ld = {
       <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{isLatest ? t('chart.install.labelLatest') : `${t('chart.install.labelPinnedPre')} ${version})`}</p>
       <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>helm install my-{entry.slug} {installRef} --version {version}</code></pre>
 
-      {isLatest && pinnedImage && (
+      {isLatest && entry.images?.length ? (
+        <>
+          <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('chart.install.deploys')}</p>
+          <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>{entry.images.map((i) => i.image).join('\n')}</code></pre>
+        </>
+      ) : isLatest && pinnedImage ? (
         <>
           <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('chart.install.deploys')}</p>
           <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>{pinnedImage}</code></pre>
+        </>
+      ) : null}
+
+      {entry.components?.length && (
+        <>
+          <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('detail.chartsUsed')}</p>
+          <div class="mt-2 flex flex-wrap gap-1.5 font-mono text-[11px] uppercase tracking-widest">
+            {entry.components.map((c) => (
+              <a href={l(`/charts/${c}`)} class="rounded border border-line bg-graphite px-2.5 py-1 text-paper transition-colors hover:bg-ink">{c} &rarr;</a>
+            ))}
+          </div>
         </>
       )}
 
@@ -229,9 +245,20 @@ const ld = {
       </div>
     </section>
 
-    <p class="mt-8 text-sm text-ash">
-      {t('detail.upstream')} <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
-    </p>
+    {entry.upstreams?.length ? (
+      <div class="mt-8 text-sm text-ash">
+        <p>{t('detail.upstream')}</p>
+        <ul class="mt-2 space-y-1">
+          {entry.upstreams.map((u) => (
+            <li><a href={u} class="text-paper underline-offset-4 hover:underline">{u}</a></li>
+          ))}
+        </ul>
+      </div>
+    ) : entry.upstream ? (
+      <p class="mt-8 text-sm text-ash">
+        {t('detail.upstream')} <a href={entry.upstream} class="text-paper underline-offset-4 hover:underline">{entry.upstream}</a>
+      </p>
+    ) : null}
   </main>
   <script type="application/ld+json" set:html={JSON.stringify(ld)} is:inline />
   <Footer />

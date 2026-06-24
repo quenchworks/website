@@ -176,6 +176,27 @@ for (const slug of chartDirs.sort()) {
         .filter((n) => n && n !== 'quench-common')
     : undefined;
 
+  // Every image the chart deploys, from the artifacthub.io/images annotation
+  // (a YAML string). Stacks bundle many; single-app charts list their 1-2.
+  let chartImages;
+  try {
+    const raw = chartYaml?.annotations?.['artifacthub.io/images'];
+    const parsed = raw ? parseYaml(String(raw)) : null;
+    if (Array.isArray(parsed)) {
+      chartImages = parsed
+        .map((i) => ({ name: String(i?.name || ''), image: String(i?.image || '') }))
+        .filter((i) => i.image);
+    }
+  } catch (err) {
+    console.warn(`! ${slug}: could not parse artifacthub.io/images: ${err.message}`);
+  }
+
+  // Stacks have no single upstream — list the bundled components' upstream
+  // projects from Chart.yaml sources (drop the quenchworks self-refs).
+  const upstreams = isStack && Array.isArray(chartYaml?.sources)
+    ? chartYaml.sources.map(String).filter((s) => !/github\.com\/quenchworks/i.test(s))
+    : undefined;
+
   const entry = {
     slug,
     name: prettyName(chartYaml?.name || slug),
@@ -198,6 +219,8 @@ for (const slug of chartDirs.sort()) {
     chartRef: `oci://${ghcr}/charts/${slug}`,
     stack: isStack || undefined,
     components: components && components.length ? components : undefined,
+    images: chartImages && chartImages.length ? chartImages : undefined,
+    upstreams: upstreams && upstreams.length ? upstreams : undefined,
   };
   if (licenseClean === 'caution') {
     entry.caution = true;

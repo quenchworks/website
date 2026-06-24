@@ -195,6 +195,7 @@ export const ui = {
     'detail.action.viewArtifactHub': 'View on ArtifactHub',
     'detail.action.chartSource': 'Chart source',
     'detail.upstream': 'Upstream project:',
+    'detail.chartsUsed': 'Charts used:',
     // Runtime-specific
     'runtime.base.heading': 'Use it as a base image',
     'runtime.base.intro':
@@ -447,6 +448,7 @@ export const ui = {
     'detail.action.viewArtifactHub': 'اعرض على ArtifactHub',
     'detail.action.chartSource': 'مصدر المخطط',
     'detail.upstream': 'المشروع المنبع:',
+    'detail.chartsUsed': 'المخططات المستخدمة:',
     // خاص ببيئة التشغيل
     'runtime.base.heading': 'استخدمها كصورة أساس',
     'runtime.base.intro':
@@ -700,6 +702,7 @@ export const ui = {
     'detail.action.viewArtifactHub': 'Ver en ArtifactHub',
     'detail.action.chartSource': 'Código del chart',
     'detail.upstream': 'Proyecto original:',
+    'detail.chartsUsed': 'Charts utilizados:',
     // Específico del entorno de ejecución
     'runtime.base.heading': 'Úsala como imagen base',
     'runtime.base.intro':

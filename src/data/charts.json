@@ -15,7 +15,13 @@
     "repositoryID": "ec60d3e2-eb6a-497b-b02f-f590e9844186",
     "port": 9093,
     "upstream": "https://github.com/prometheus/alertmanager",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/alertmanager"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/alertmanager",
+    "images": [
+      {
+        "name": "alertmanager",
+        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:862b251add3271174a224ebdad736056162ebfe4eb55318a013aa89c50304f33"
+      }
+    ]
   },
   {
     "slug": "atlantis",
@@ -33,7 +39,13 @@
     "repositoryID": "c0d03a91-0b40-4726-8301-affbc45a972f",
     "port": 4141,
     "upstream": "https://github.com/runatlantis/atlantis",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/atlantis"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/atlantis",
+    "images": [
+      {
+        "name": "atlantis",
+        "image": "ghcr.io/quenchworks/images/atlantis@sha256:73c6abdc7cdb6764f956d5810292776318651887521fdc07c11c84c2bf7f67c5"
+      }
+    ]
   },
   {
     "slug": "caddy",
@@ -51,7 +63,13 @@
     "repositoryID": "0f266320-b1d0-4ec0-a9b0-0b5dd5a71f9e",
     "port": 8080,
     "upstream": "https://github.com/caddyserver/caddy",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/caddy"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/caddy",
+    "images": [
+      {
+        "name": "caddy",
+        "image": "ghcr.io/quenchworks/images/caddy@sha256:b967922800f850ead7ad4c4c115ac2e5cb0fcc142ca0d263221cf9f876c1ca6a"
+      }
+    ]
   },
   {
     "slug": "cassandra",
@@ -68,7 +86,13 @@
     "imageDigest": "sha256:744ffdf675805a0344776f4ce25dd4b513cf46f41f5f90799d1e661fa777cf72",
     "repositoryID": "a2c07ae3-ae2a-421e-9013-f3495d338e09",
     "upstream": "https://github.com/apache/cassandra",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/cassandra"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/cassandra",
+    "images": [
+      {
+        "name": "cassandra",
+        "image": "ghcr.io/quenchworks/images/cassandra@sha256:744ffdf675805a0344776f4ce25dd4b513cf46f41f5f90799d1e661fa777cf72"
+      }
+    ]
   },
   {
     "slug": "clickhouse",
@@ -85,7 +109,13 @@
     "imageDigest": "sha256:4a84bee0f23c0805a3a0442d64008690e27f37fd2a540ebc848395a8f98e6004",
     "repositoryID": "1ad6f385-dcc4-4892-b1f9-f3fb12a906e0",
     "upstream": "https://github.com/ClickHouse/ClickHouse",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/clickhouse"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/clickhouse",
+    "images": [
+      {
+        "name": "clickhouse",
+        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:4a84bee0f23c0805a3a0442d64008690e27f37fd2a540ebc848395a8f98e6004"
+      }
+    ]
   },
   {
     "slug": "cockroachdb",
@@ -103,6 +133,12 @@
     "repositoryID": "5920d963-0c6f-4c4b-9ece-d3056bc50ef9",
     "upstream": "https://github.com/cockroachdb/cockroach",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cockroachdb",
+    "images": [
+      {
+        "name": "cockroachdb",
+        "image": "ghcr.io/quenchworks/images/cockroachdb@sha256:ae9726365f7684e710aefc8a214b641e5c788b79993a0b4b30777377b6e38cd2"
+      }
+    ],
     "caution": true,
     "cleanAlternative": "No in-catalog clean substitute yet — evaluate PostgreSQL for single-region SQL."
   },
@@ -120,7 +156,29 @@
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
     "repositoryID": "afdd5b2a-d315-4342-a18d-24bc4677497b",
     "upstream": "",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/coolify"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/coolify",
+    "images": [
+      {
+        "name": "coolify-app",
+        "image": "ghcr.io/quenchworks/images/coolify-app@sha256:60eeb0ba9a288708742238dd615322c4563d2c623279beb5daf9b46e0c03152e"
+      },
+      {
+        "name": "coolify-realtime",
+        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:a8b07376a2b5ad79f649d660cfcfac408219f6ebc48f745f376717878be982a3"
+      },
+      {
+        "name": "coolify-helper",
+        "image": "ghcr.io/quenchworks/images/coolify-helper@sha256:fd897b2dd0e103ac3b1edb56f34145c8f844ed17b045771516441b49995d9eaa"
+      },
+      {
+        "name": "postgresql-15",
+        "image": "ghcr.io/quenchworks/images/postgresql-15@sha256:5529b416dfbafc531bb7b11fe243c180396cf9372a4966d0c82fcda84433b05e"
+      },
+      {
+        "name": "redis",
+        "image": "ghcr.io/quenchworks/images/redis@sha256:f027d0109a0bdd1779bfac85a10744336f4af80518e9bc2c290984e206b3bf14"
+      }
+    ]
   },
   {
     "slug": "coredns",
@@ -138,7 +196,13 @@
     "repositoryID": "847fc001-bca9-4673-ba1a-d7a84d2df540",
     "port": 53,
     "upstream": "https://coredns.io",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/coredns"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/coredns",
+    "images": [
+      {
+        "name": "coredns",
+        "image": "ghcr.io/quenchworks/images/coredns@sha256:ae229b2c4c36cc766e29569cddd4f2bb7a53e215e7819b3a77a6bf472eccbb6f"
+      }
+    ]
   },
   {
     "slug": "couchdb",
@@ -156,7 +220,13 @@
     "repositoryID": "2a97106c-4e54-4881-8b84-2c4eefa64dee",
     "port": 5984,
     "upstream": "https://github.com/apache/couchdb",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/couchdb"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/couchdb",
+    "images": [
+      {
+        "name": "couchdb",
+        "image": "ghcr.io/quenchworks/images/couchdb@sha256:73147a4b2d1dcd42144b73db5d230433b4b61ea95743b025bb8fd052ab6b9c6a"
+      }
+    ]
   },
   {
     "slug": "distribution",
@@ -174,7 +244,13 @@
     "repositoryID": "7996908f-74a7-475e-91a2-f3f68f11e71d",
     "port": 5000,
     "upstream": "https://distribution.github.io/distribution",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/distribution"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/distribution",
+    "images": [
+      {
+        "name": "distribution",
+        "image": "ghcr.io/quenchworks/images/distribution@sha256:65d4161707162d266216bf6469ec031a21dcedd9dd4ad93f27753aad1f620f17"
+      }
+    ]
   },
   {
     "slug": "documentdb",
@@ -192,7 +268,13 @@
     "repositoryID": "8a88d701-6590-4e8f-9739-822208f2633f",
     "port": 10260,
     "upstream": "https://github.com/documentdb/documentdb",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/documentdb"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/documentdb",
+    "images": [
+      {
+        "name": "documentdb",
+        "image": "ghcr.io/quenchworks/images/documentdb@sha256:9ac60f2cbdd6cc50dab9d6ddf6aafe9027aaac4b26e3df678a1c398f38dc842a"
+      }
+    ]
   },
   {
     "slug": "dragonfly",
@@ -211,6 +293,12 @@
     "port": 6379,
     "upstream": "https://github.com/dragonflydb/dragonfly",
     "chartRef": "oci://ghcr.io/quenchworks/charts/dragonfly",
+    "images": [
+      {
+        "name": "dragonfly",
+        "image": "ghcr.io/quenchworks/images/dragonfly@sha256:da4468c83f74bb8271aeaac5a6f26b84a4617fa0717935dadb32151d1d73f15b"
+      }
+    ],
     "caution": true,
     "cleanAlternative": "Valkey (BSD-3-Clause) — the truly-open Redis-compatible cache."
   },
@@ -230,6 +318,12 @@
     "repositoryID": "5510adc6-3400-48ab-b57c-807b6b0b815c",
     "upstream": "https://github.com/elastic/elasticsearch",
     "chartRef": "oci://ghcr.io/quenchworks/charts/elasticsearch",
+    "images": [
+      {
+        "name": "elasticsearch",
+        "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:baf990ecb20495391161ca1e8eba6a3abf67b9f99a8cdbba55c0178d827430fb"
+      }
+    ],
     "caution": true,
     "cleanAlternative": "OpenSearch (Apache-2.0) — the open drop-in fork of Elasticsearch."
   },
@@ -248,7 +342,13 @@
     "imageDigest": "sha256:0a9df4f40d9f49ec6470ab20729cd91bb7389863c2f2e356c9412263da7f05e0",
     "repositoryID": "98517665-9758-4b43-aa34-1f32a092ab19",
     "upstream": "https://github.com/etcd-io/etcd",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/etcd"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/etcd",
+    "images": [
+      {
+        "name": "etcd",
+        "image": "ghcr.io/quenchworks/images/etcd@sha256:0a9df4f40d9f49ec6470ab20729cd91bb7389863c2f2e356c9412263da7f05e0"
+      }
+    ]
   },
   {
     "slug": "excalidraw",
@@ -266,7 +366,13 @@
     "repositoryID": "034078d1-9a32-44da-b2e1-636b566e8dba",
     "port": 80,
     "upstream": "https://excalidraw.com",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/excalidraw"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/excalidraw",
+    "images": [
+      {
+        "name": "excalidraw",
+        "image": "ghcr.io/quenchworks/images/excalidraw@sha256:ae98c046462274e84d31df1bc02c6916b2a66b660d91ec5a5c98e07a5e342606"
+      }
+    ]
   },
   {
     "slug": "ferretdb",
@@ -284,7 +390,13 @@
     "repositoryID": "f98e193b-63b5-44ff-a253-0be60665dfdd",
     "port": 27017,
     "upstream": "https://github.com/FerretDB/FerretDB",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/ferretdb"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ferretdb",
+    "images": [
+      {
+        "name": "ferretdb",
+        "image": "ghcr.io/quenchworks/images/ferretdb@sha256:9aee41e900c918471a7cc2305c70c9b44391473bdf658092bf6d27bbebddf609"
+      }
+    ]
   },
   {
     "slug": "fluent-bit",
@@ -301,7 +413,13 @@
     "imageDigest": "sha256:6f8f931acdeb6c0b4b8c373e94314ca8f8e2f5144f708f51c27e4d09089f2b1b",
     "repositoryID": "fc2e7de0-7393-4032-b7da-fe1c9600efec",
     "upstream": "https://github.com/fluent/fluent-bit",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/fluent-bit"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/fluent-bit",
+    "images": [
+      {
+        "name": "fluent-bit",
+        "image": "ghcr.io/quenchworks/images/fluent-bit@sha256:6f8f931acdeb6c0b4b8c373e94314ca8f8e2f5144f708f51c27e4d09089f2b1b"
+      }
+    ]
   },
   {
     "slug": "garage",
@@ -319,7 +437,13 @@
     "repositoryID": "af8b9a72-f944-4df7-91fb-9fe3789113be",
     "port": 3900,
     "upstream": "https://github.com/deuxfleurs-org/garage",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/garage"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/garage",
+    "images": [
+      {
+        "name": "garage",
+        "image": "ghcr.io/quenchworks/images/garage@sha256:43dd4ecbe2a9fa5fea2dcba79976bc96f7ecb79ab6a16257cc8de8dad5875146"
+      }
+    ]
   },
   {
     "slug": "gitea",
@@ -337,7 +461,17 @@
     "repositoryID": "7fc07dfc-0e91-4ef3-ba34-5cc905c8195e",
     "port": 3000,
     "upstream": "https://github.com/go-gitea/gitea",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/gitea"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/gitea",
+    "images": [
+      {
+        "name": "gitea",
+        "image": "ghcr.io/quenchworks/images/gitea@sha256:7e16982dfc7b7fe62478f8e0fad6b747b182921de80aaf2e8bb3156d7a5dbb53"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      }
+    ]
   },
   {
     "slug": "grafana",
@@ -355,7 +489,13 @@
     "repositoryID": "cb635e07-c5aa-4bb7-b199-892dabe82aca",
     "port": 3000,
     "upstream": "https://github.com/grafana/grafana",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/grafana"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/grafana",
+    "images": [
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:422b52219a03f5f70b1eac89060964027567df3ae504e5f43f533c9ef4dc51b5"
+      }
+    ]
   },
   {
     "slug": "haproxy",
@@ -373,7 +513,13 @@
     "repositoryID": "528a20e1-beb3-49e9-8013-fa0478dd0f84",
     "port": 8080,
     "upstream": "https://github.com/haproxy/haproxy",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/haproxy"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/haproxy",
+    "images": [
+      {
+        "name": "haproxy",
+        "image": "ghcr.io/quenchworks/images/haproxy@sha256:0a97b05265db9ebf564c1e894877237bec30f4adef8f55e38e4432b949ede11e"
+      }
+    ]
   },
   {
     "slug": "harbor",
@@ -389,7 +535,53 @@
     "imageRepository": "ghcr.io/quenchworks/images/harbor",
     "repositoryID": "2f885f06-90d5-4097-9614-6d668187e5a7",
     "upstream": "",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/harbor"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/harbor",
+    "images": [
+      {
+        "name": "harbor-core",
+        "image": "ghcr.io/quenchworks/images/harbor-core@sha256:de17159951ca978126ffdaf747ca3bae038cea0b6df4d8e1e1c9d687d89cebfa"
+      },
+      {
+        "name": "harbor-jobservice",
+        "image": "ghcr.io/quenchworks/images/harbor-jobservice@sha256:55300a27787176f60a0e9e892cfbe43856566abb46d8613e59e5e85753d8a353"
+      },
+      {
+        "name": "harbor-registry",
+        "image": "ghcr.io/quenchworks/images/harbor-registry@sha256:5d027d2fe8378689f6490a0bdd957ba8d9c4603b123428f6f137a48d3ecf8c7b"
+      },
+      {
+        "name": "harbor-registryctl",
+        "image": "ghcr.io/quenchworks/images/harbor-registryctl@sha256:6984e3e26bc3478ac6fd2c83726e70ccfe9c68bc1f318062c4de15216399555d"
+      },
+      {
+        "name": "harbor-portal",
+        "image": "ghcr.io/quenchworks/images/harbor-portal@sha256:7fe602638c3f0c870ec9b9d1cf92324042910035156828a62d27ac49885b8bf4"
+      },
+      {
+        "name": "harbor-trivy-adapter",
+        "image": "ghcr.io/quenchworks/images/harbor-trivy-adapter@sha256:627a8e1a373ec1ce471b9ce21a58386d61eee87adde5f1e74f8e3eb536c3fb06"
+      },
+      {
+        "name": "harbor-exporter",
+        "image": "ghcr.io/quenchworks/images/harbor-exporter@sha256:42034a1c1f9289628f93c8a8e9c307bc9a65a7a7b0a17fd49665977d47e7ff4b"
+      },
+      {
+        "name": "nginx",
+        "image": "ghcr.io/quenchworks/images/nginx@sha256:d469478d8a59d908965b81bc91e6fe8821573db90058555f826b6c66b13f68fa"
+      },
+      {
+        "name": "busybox",
+        "image": "ghcr.io/quenchworks/images/busybox@sha256:1167af509d97dceef9b7d1b0ecc0c655a1eb2d5562e0ae6a60ff1147feb0e7c8"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      },
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:4482926665b4e9fbe73b6ab15e403e1f4d9285112aca313ce4994095346c6565"
+      }
+    ]
   },
   {
     "slug": "harbor-observability",
@@ -405,7 +597,17 @@
     "imageRepository": "ghcr.io/quenchworks/images/harbor-observability",
     "repositoryID": "f5b2571f-37a6-47f2-bf0a-3017fe76e65c",
     "upstream": "",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/harbor-observability"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/harbor-observability",
+    "images": [
+      {
+        "name": "prometheus",
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:bd56fabf8b76c87b6b698c967bea1ac909a5148c66c9cdd85a5f84febd6dc8d8"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:422b52219a03f5f70b1eac89060964027567df3ae504e5f43f533c9ef4dc51b5"
+      }
+    ]
   },
   {
     "slug": "identity-stack",
@@ -425,6 +627,25 @@
     "components": [
       "keycloak",
       "oauth2-proxy"
+    ],
+    "images": [
+      {
+        "name": "keycloak",
+        "image": "ghcr.io/quenchworks/images/keycloak@sha256:5e700e70b7ce773ab14cdb3705591290b33c3dc8fa528741aec10c26eabcb64b"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      },
+      {
+        "name": "oauth2-proxy",
+        "image": "ghcr.io/quenchworks/images/oauth2-proxy@sha256:73496afee746deab63d06f404ba8e4057835a2f8b007365129c3c02840a360ac"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/keycloak/keycloak",
+      "https://github.com/oauth2-proxy/oauth2-proxy",
+      "https://github.com/postgres/postgres"
     ]
   },
   {
@@ -443,7 +664,13 @@
     "repositoryID": "d50fd427-8fa1-4a5f-8d23-71f1c7d61a06",
     "port": 8086,
     "upstream": "https://github.com/influxdata/influxdb",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/influxdb"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/influxdb",
+    "images": [
+      {
+        "name": "influxdb",
+        "image": "ghcr.io/quenchworks/images/influxdb@sha256:30213d15b3c3efe8836f626750855e7a44ed4a5151ecb2c9c702bd5b035ba657"
+      }
+    ]
   },
   {
     "slug": "kafka",
@@ -461,7 +688,13 @@
     "repositoryID": "b21be4d8-c990-4c5c-bab3-1a45e95740e0",
     "port": 9092,
     "upstream": "https://github.com/apache/kafka",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/kafka"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kafka",
+    "images": [
+      {
+        "name": "kafka",
+        "image": "ghcr.io/quenchworks/images/kafka@sha256:4c2844b3e7d1eca4987848ce42d141efadce10d41889a1ef23e12b25cbc858bf"
+      }
+    ]
   },
   {
     "slug": "keycloak",
@@ -479,7 +712,17 @@
     "repositoryID": "adb521a3-9e2e-43f7-b6d7-c4bd417df884",
     "port": 8080,
     "upstream": "https://github.com/keycloak/keycloak",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/keycloak"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/keycloak",
+    "images": [
+      {
+        "name": "keycloak",
+        "image": "ghcr.io/quenchworks/images/keycloak@sha256:5e700e70b7ce773ab14cdb3705591290b33c3dc8fa528741aec10c26eabcb64b"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      }
+    ]
   },
   {
     "slug": "lgtm-stack",
@@ -502,6 +745,55 @@
       "grafana",
       "tempo",
       "alertmanager"
+    ],
+    "images": [
+      {
+        "name": "victoriametrics",
+        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:7fab85e512dd34a3dab5c760f1bbae1acfc01d85053cdbf26d7599985ee75820"
+      },
+      {
+        "name": "loki",
+        "image": "ghcr.io/quenchworks/images/loki@sha256:3409d6b1fa72af5034327920ae24a20d2d6693f90de3a098c5683f228115191d"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:422b52219a03f5f70b1eac89060964027567df3ae504e5f43f533c9ef4dc51b5"
+      },
+      {
+        "name": "tempo",
+        "image": "ghcr.io/quenchworks/images/tempo@sha256:2da185a3d2d088a20a975e8bb8a1c1e6522213bda5975380ea0bc01b4779b775"
+      },
+      {
+        "name": "alertmanager",
+        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:862b251add3271174a224ebdad736056162ebfe4eb55318a013aa89c50304f33"
+      },
+      {
+        "name": "otel-collector",
+        "image": "ghcr.io/quenchworks/images/otel-collector@sha256:ed19a525ab80c31f8997e417fbc669fca4bed5c8748264d5f24a99d5d1dcec83"
+      },
+      {
+        "name": "vector",
+        "image": "ghcr.io/quenchworks/images/vector@sha256:4d67202d12a453b1347b271982b54dde292563235b6bc3500f2cf23579ba2df2"
+      },
+      {
+        "name": "kube-state-metrics",
+        "image": "ghcr.io/quenchworks/images/kube-state-metrics@sha256:210a2dcb84a2589f3629dad3be847421dde941fc3181ceede61996289cd76fe3"
+      },
+      {
+        "name": "node-exporter",
+        "image": "ghcr.io/quenchworks/images/node-exporter@sha256:4c3735371055cea29cf1ed3250a2b2a7cb4a4ddcdd26ae378619ceddb2966a16"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/VictoriaMetrics/VictoriaMetrics",
+      "https://github.com/grafana/loki",
+      "https://github.com/grafana/grafana",
+      "https://github.com/grafana/tempo",
+      "https://github.com/prometheus/alertmanager",
+      "https://github.com/open-telemetry/opentelemetry-collector",
+      "https://github.com/vectordotdev/vector",
+      "https://github.com/kubernetes/kube-state-metrics",
+      "https://github.com/prometheus/node_exporter"
     ]
   },
   {
@@ -522,6 +814,25 @@
     "components": [
       "loki",
       "grafana"
+    ],
+    "images": [
+      {
+        "name": "loki",
+        "image": "ghcr.io/quenchworks/images/loki@sha256:3409d6b1fa72af5034327920ae24a20d2d6693f90de3a098c5683f228115191d"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:422b52219a03f5f70b1eac89060964027567df3ae504e5f43f533c9ef4dc51b5"
+      },
+      {
+        "name": "vector",
+        "image": "ghcr.io/quenchworks/images/vector@sha256:4d67202d12a453b1347b271982b54dde292563235b6bc3500f2cf23579ba2df2"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/grafana/loki",
+      "https://github.com/grafana/grafana",
+      "https://github.com/vectordotdev/vector"
     ]
   },
   {
@@ -540,7 +851,13 @@
     "repositoryID": "c8319a5d-340f-4475-a05f-886c884c8b7d",
     "port": 3100,
     "upstream": "https://github.com/grafana/loki",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/loki"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/loki",
+    "images": [
+      {
+        "name": "loki",
+        "image": "ghcr.io/quenchworks/images/loki@sha256:3409d6b1fa72af5034327920ae24a20d2d6693f90de3a098c5683f228115191d"
+      }
+    ]
   },
   {
     "slug": "mariadb",
@@ -558,7 +875,13 @@
     "repositoryID": "2c24b359-787b-44bc-9261-d43eb1f03ffe",
     "port": 3306,
     "upstream": "https://github.com/MariaDB/server",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/mariadb"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mariadb",
+    "images": [
+      {
+        "name": "mariadb",
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:abf1c0823dcc7f2c1b77252defaa0202a386907d131e3ea62feb0bb07304a0f5"
+      }
+    ]
   },
   {
     "slug": "meilisearch",
@@ -576,7 +899,13 @@
     "repositoryID": "280e461c-2cdb-42e6-9600-705b68755883",
     "port": 7700,
     "upstream": "https://github.com/meilisearch/meilisearch",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/meilisearch"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/meilisearch",
+    "images": [
+      {
+        "name": "meilisearch",
+        "image": "ghcr.io/quenchworks/images/meilisearch@sha256:9a8e011d94164c72b1e88d52c8adf773ed8aa719ffc4fe7c39fe40b91ae2981c"
+      }
+    ]
   },
   {
     "slug": "memcached",
@@ -594,7 +923,13 @@
     "repositoryID": "4f83ee0f-4f34-4dd1-bdce-f3c94a9cde23",
     "port": 11211,
     "upstream": "https://github.com/memcached/memcached",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/memcached"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/memcached",
+    "images": [
+      {
+        "name": "memcached",
+        "image": "ghcr.io/quenchworks/images/memcached@sha256:263b6453bf4ac9bff09fb2296e2ba2ae45fab231b8bef35594bc0a5de2fab6a8"
+      }
+    ]
   },
   {
     "slug": "mongodb",
@@ -613,6 +948,12 @@
     "port": 27017,
     "upstream": "https://github.com/mongodb/mongo",
     "chartRef": "oci://ghcr.io/quenchworks/charts/mongodb",
+    "images": [
+      {
+        "name": "mongodb",
+        "image": "ghcr.io/quenchworks/images/mongodb@sha256:04f1aa4d1229531ec267e8ca59253500079d04e79933755f725ad7ae65bc2e83"
+      }
+    ],
     "caution": true,
     "cleanAlternative": "FerretDB + DocumentDB — MongoDB-wire-compatible and truly open (Apache-2.0 / PostgreSQL)."
   },
@@ -632,7 +973,13 @@
     "repositoryID": "76f428fc-ee39-4158-b2ee-12f0922309fa",
     "port": 3306,
     "upstream": "https://github.com/mysql/mysql-server",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/mysql"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mysql",
+    "images": [
+      {
+        "name": "mysql",
+        "image": "ghcr.io/quenchworks/images/mysql@sha256:e345a54ed4d42b030515ec9e5b6bf359e3d303f4fbc7deea83800e28e5cc1cee"
+      }
+    ]
   },
   {
     "slug": "nats",
@@ -649,7 +996,13 @@
     "imageDigest": "sha256:8a00be1e1a2e05093a4ea5c68afa1361e535d83d8185fb737026d870275129b3",
     "repositoryID": "1f27509e-072c-46c9-832a-6221159961e0",
     "upstream": "https://github.com/nats-io/nats-server",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/nats"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/nats",
+    "images": [
+      {
+        "name": "nats",
+        "image": "ghcr.io/quenchworks/images/nats@sha256:8a00be1e1a2e05093a4ea5c68afa1361e535d83d8185fb737026d870275129b3"
+      }
+    ]
   },
   {
     "slug": "neo4j",
@@ -666,7 +1019,13 @@
     "imageDigest": "sha256:56432af42ac27904ff65374e976fcbd61a017362748fadace20eb8e1c8c50676",
     "repositoryID": "68ee4e50-989c-48b8-976d-1891cadafd8a",
     "upstream": "https://github.com/neo4j/neo4j",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/neo4j"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/neo4j",
+    "images": [
+      {
+        "name": "neo4j",
+        "image": "ghcr.io/quenchworks/images/neo4j@sha256:56432af42ac27904ff65374e976fcbd61a017362748fadace20eb8e1c8c50676"
+      }
+    ]
   },
   {
     "slug": "nginx",
@@ -684,7 +1043,13 @@
     "repositoryID": "75aa85b5-cca1-4b4a-a88b-46f68521ae58",
     "port": 8080,
     "upstream": "https://github.com/nginx/nginx",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/nginx"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/nginx",
+    "images": [
+      {
+        "name": "nginx",
+        "image": "ghcr.io/quenchworks/images/nginx@sha256:d469478d8a59d908965b81bc91e6fe8821573db90058555f826b6c66b13f68fa"
+      }
+    ]
   },
   {
     "slug": "oauth2-proxy",
@@ -702,7 +1067,13 @@
     "repositoryID": "463f3b8c-beae-4296-b0fb-55d6f2b408d7",
     "port": 4180,
     "upstream": "https://oauth2-proxy.github.io/oauth2-proxy/",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/oauth2-proxy"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/oauth2-proxy",
+    "images": [
+      {
+        "name": "oauth2-proxy",
+        "image": "ghcr.io/quenchworks/images/oauth2-proxy@sha256:73496afee746deab63d06f404ba8e4057835a2f8b007365129c3c02840a360ac"
+      }
+    ]
   },
   {
     "slug": "observability-stack",
@@ -723,6 +1094,40 @@
       "prometheus",
       "grafana",
       "alertmanager"
+    ],
+    "images": [
+      {
+        "name": "prometheus",
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:bd56fabf8b76c87b6b698c967bea1ac909a5148c66c9cdd85a5f84febd6dc8d8"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:422b52219a03f5f70b1eac89060964027567df3ae504e5f43f533c9ef4dc51b5"
+      },
+      {
+        "name": "alertmanager",
+        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:862b251add3271174a224ebdad736056162ebfe4eb55318a013aa89c50304f33"
+      },
+      {
+        "name": "kube-state-metrics",
+        "image": "ghcr.io/quenchworks/images/kube-state-metrics@sha256:210a2dcb84a2589f3629dad3be847421dde941fc3181ceede61996289cd76fe3"
+      },
+      {
+        "name": "node-exporter",
+        "image": "ghcr.io/quenchworks/images/node-exporter@sha256:4c3735371055cea29cf1ed3250a2b2a7cb4a4ddcdd26ae378619ceddb2966a16"
+      },
+      {
+        "name": "cadvisor",
+        "image": "ghcr.io/quenchworks/images/cadvisor@sha256:836078216185abf81bf11a8d07a1fe038346749a37ef87d78acff6d2961be57b"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/prometheus/prometheus",
+      "https://github.com/grafana/grafana",
+      "https://github.com/prometheus/alertmanager",
+      "https://github.com/kubernetes/kube-state-metrics",
+      "https://github.com/prometheus/node_exporter",
+      "https://github.com/google/cadvisor"
     ]
   },
   {
@@ -741,7 +1146,13 @@
     "repositoryID": "25598768-f4b3-4167-9be9-79c6a804c303",
     "port": 8181,
     "upstream": "https://www.openpolicyagent.org",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/opa"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/opa",
+    "images": [
+      {
+        "name": "opa",
+        "image": "ghcr.io/quenchworks/images/opa@sha256:43b233ead1f2b0befb2b10e712ae4f672e9fbe049f37eba4f7d32bae789aa88c"
+      }
+    ]
   },
   {
     "slug": "openbao",
@@ -758,7 +1169,13 @@
     "imageDigest": "sha256:96d169a900ff4526f556ba72f323018b61db52253e9ac164a9437a7e349c820e",
     "repositoryID": "8d6b6290-58a0-40c4-9b6d-3604faf59685",
     "upstream": "https://github.com/openbao/openbao",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/openbao"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/openbao",
+    "images": [
+      {
+        "name": "openbao",
+        "image": "ghcr.io/quenchworks/images/openbao@sha256:96d169a900ff4526f556ba72f323018b61db52253e9ac164a9437a7e349c820e"
+      }
+    ]
   },
   {
     "slug": "opensearch",
@@ -775,7 +1192,13 @@
     "imageDigest": "sha256:26da476f72430d894ed8d18f150d61bbb2eb9f214e5ce91c9c54482b8b88eaa9",
     "repositoryID": "19bdd691-33a2-4882-8662-4871a10038fe",
     "upstream": "https://github.com/opensearch-project/OpenSearch",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/opensearch"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/opensearch",
+    "images": [
+      {
+        "name": "opensearch",
+        "image": "ghcr.io/quenchworks/images/opensearch@sha256:26da476f72430d894ed8d18f150d61bbb2eb9f214e5ce91c9c54482b8b88eaa9"
+      }
+    ]
   },
   {
     "slug": "otel-collector",
@@ -792,7 +1215,13 @@
     "imageDigest": "sha256:ed19a525ab80c31f8997e417fbc669fca4bed5c8748264d5f24a99d5d1dcec83",
     "repositoryID": "07621d0b-a78b-4d04-9db9-bd131e773814",
     "upstream": "https://github.com/open-telemetry/opentelemetry-collector",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/otel-collector"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/otel-collector",
+    "images": [
+      {
+        "name": "otel-collector",
+        "image": "ghcr.io/quenchworks/images/otel-collector@sha256:ed19a525ab80c31f8997e417fbc669fca4bed5c8748264d5f24a99d5d1dcec83"
+      }
+    ]
   },
   {
     "slug": "pgbouncer",
@@ -810,7 +1239,13 @@
     "repositoryID": "464615b6-6f41-496a-a458-d27fea6e29e5",
     "port": 6432,
     "upstream": "https://github.com/pgbouncer/pgbouncer",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/pgbouncer"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/pgbouncer",
+    "images": [
+      {
+        "name": "pgbouncer",
+        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:a34244ca0957a98b1bb6596d4839e371af12abeaf3850da12f87cfbee83414ad"
+      }
+    ]
   },
   {
     "slug": "postgresql",
@@ -828,7 +1263,17 @@
     "repositoryID": "f73f0b94-2c4e-4918-8720-8152e260e2b1",
     "port": 5432,
     "upstream": "https://github.com/postgres/postgres",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/postgresql"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/postgresql",
+    "images": [
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      },
+      {
+        "name": "postgres-exporter",
+        "image": "ghcr.io/quenchworks/images/postgres-exporter@sha256:325e496a0fa4b15b33ba2537f3fc5b2b90dc08992b124aa412a03ba1d8e6f389"
+      }
+    ]
   },
   {
     "slug": "postgres-documentdb",
@@ -846,7 +1291,17 @@
     "repositoryID": "4d6304a8-b68f-41dd-8f4e-4d4faf64acb0",
     "port": 5432,
     "upstream": "https://github.com/FerretDB/documentdb",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/postgres-documentdb"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/postgres-documentdb",
+    "images": [
+      {
+        "name": "postgres-documentdb",
+        "image": "ghcr.io/quenchworks/images/postgres-documentdb@sha256:1c0d8aed825471ed0a6c1f689d478fc4dea904702f9eead106bb067dd9a94f73"
+      },
+      {
+        "name": "postgres-exporter",
+        "image": "ghcr.io/quenchworks/images/postgres-exporter@sha256:bc71916629ddb82977c93bb6d9708bda0da14f47b4354e1c7c8719551f8e17ed"
+      }
+    ]
   },
   {
     "slug": "prometheus",
@@ -864,7 +1319,13 @@
     "repositoryID": "a1ea88ca-6c90-4a7d-b020-53879714aecb",
     "port": 9090,
     "upstream": "https://github.com/prometheus/prometheus",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/prometheus"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/prometheus",
+    "images": [
+      {
+        "name": "prometheus",
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:bd56fabf8b76c87b6b698c967bea1ac909a5148c66c9cdd85a5f84febd6dc8d8"
+      }
+    ]
   },
   {
     "slug": "pulsar",
@@ -881,7 +1342,13 @@
     "imageDigest": "sha256:97f24d151a556b86d61c7e64d54987961d5b48b53cae8f56125926169880269b",
     "repositoryID": "6820f31e-b254-41f1-bced-a801f69cca0b",
     "upstream": "https://github.com/apache/pulsar",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/pulsar"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/pulsar",
+    "images": [
+      {
+        "name": "pulsar",
+        "image": "ghcr.io/quenchworks/images/pulsar@sha256:97f24d151a556b86d61c7e64d54987961d5b48b53cae8f56125926169880269b"
+      }
+    ]
   },
   {
     "slug": "qdrant",
@@ -899,7 +1366,13 @@
     "repositoryID": "a2deb908-d256-44ff-a71b-fe4c316619d0",
     "port": 6333,
     "upstream": "https://github.com/qdrant/qdrant",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/qdrant"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/qdrant",
+    "images": [
+      {
+        "name": "qdrant",
+        "image": "ghcr.io/quenchworks/images/qdrant@sha256:671516f1ca3558ddae21ee9d0bdabd2674d1b98c01a61c310040e32a83f37787"
+      }
+    ]
   },
   {
     "slug": "rabbitmq",
@@ -917,7 +1390,13 @@
     "repositoryID": "030e0367-02fa-4bcd-83e5-d05889532553",
     "port": 5672,
     "upstream": "https://github.com/rabbitmq/rabbitmq-server",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/rabbitmq"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/rabbitmq",
+    "images": [
+      {
+        "name": "rabbitmq",
+        "image": "ghcr.io/quenchworks/images/rabbitmq@sha256:e45523daf0c56371f92417cfc1533a191e9e380b27850ff212953d0a16a3b600"
+      }
+    ]
   },
   {
     "slug": "redis",
@@ -935,7 +1414,17 @@
     "repositoryID": "8bef6dc9-50b6-406e-928b-c50115e83c02",
     "port": 6379,
     "upstream": "https://github.com/redis/redis",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/redis"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/redis",
+    "images": [
+      {
+        "name": "redis",
+        "image": "ghcr.io/quenchworks/images/redis@sha256:f027d0109a0bdd1779bfac85a10744336f4af80518e9bc2c290984e206b3bf14"
+      },
+      {
+        "name": "redis-exporter",
+        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:528112544150b31f0a170290cf171b6e779f21ecfd6ec74647aa18b6d581d6d7"
+      }
+    ]
   },
   {
     "slug": "rustfs",
@@ -953,7 +1442,13 @@
     "repositoryID": "304c53e5-aaac-42f5-b1bb-aa702aaf1596",
     "port": 9000,
     "upstream": "https://github.com/rustfs/rustfs",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/rustfs"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/rustfs",
+    "images": [
+      {
+        "name": "rustfs",
+        "image": "ghcr.io/quenchworks/images/rustfs@sha256:c6a50fbeb88df03009b42f33168201d03b5688ebab9a355039432599f7fa6885"
+      }
+    ]
   },
   {
     "slug": "scylladb",
@@ -970,7 +1465,13 @@
     "imageDigest": "sha256:fe93c40ebdaee55d1994fb93253dbd9e272f8223c3c3f6bc440ccbd0c3021cb1",
     "repositoryID": "c7b3870a-4c0f-47a7-a129-f34c038e1614",
     "upstream": "https://github.com/scylladb/scylladb",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/scylladb"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/scylladb",
+    "images": [
+      {
+        "name": "scylladb",
+        "image": "ghcr.io/quenchworks/images/scylladb@sha256:fe93c40ebdaee55d1994fb93253dbd9e272f8223c3c3f6bc440ccbd0c3021cb1"
+      }
+    ]
   },
   {
     "slug": "seaweedfs",
@@ -988,7 +1489,13 @@
     "repositoryID": "c0e22525-4794-4f13-a436-671e0a536544",
     "port": 8333,
     "upstream": "https://github.com/seaweedfs/seaweedfs",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/seaweedfs"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/seaweedfs",
+    "images": [
+      {
+        "name": "seaweedfs",
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:4c62d9945bee98881f7914e278c8ba4ab6bb89257f487d450d2d360323b93bba"
+      }
+    ]
   },
   {
     "slug": "solr",
@@ -1005,7 +1512,13 @@
     "imageDigest": "sha256:e658f8f2dc85487037e23034d7938976b207b809dffe9b1774f1861a631f5037",
     "repositoryID": "454a51ee-3e78-44ca-ba05-0ec7db85503e",
     "upstream": "https://github.com/apache/solr",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/solr"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/solr",
+    "images": [
+      {
+        "name": "solr",
+        "image": "ghcr.io/quenchworks/images/solr@sha256:e658f8f2dc85487037e23034d7938976b207b809dffe9b1774f1861a631f5037"
+      }
+    ]
   },
   {
     "slug": "tempo",
@@ -1023,7 +1536,13 @@
     "repositoryID": "56401048-50e6-4ee5-925c-bf82224af054",
     "port": 3200,
     "upstream": "https://github.com/grafana/tempo",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/tempo"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/tempo",
+    "images": [
+      {
+        "name": "tempo",
+        "image": "ghcr.io/quenchworks/images/tempo@sha256:2da185a3d2d088a20a975e8bb8a1c1e6522213bda5975380ea0bc01b4779b775"
+      }
+    ]
   },
   {
     "slug": "temporal",
@@ -1040,7 +1559,17 @@
     "imageDigest": "sha256:88ca3754589640a473df7ee73ed9f944010c9aefb1105b757c36a0025dfc1f65",
     "repositoryID": "52dca231-7f15-4b72-8150-ed5806969292",
     "upstream": "https://github.com/temporalio/temporal",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/temporal"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/temporal",
+    "images": [
+      {
+        "name": "temporal",
+        "image": "ghcr.io/quenchworks/images/temporal@sha256:88ca3754589640a473df7ee73ed9f944010c9aefb1105b757c36a0025dfc1f65"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      }
+    ]
   },
   {
     "slug": "tracing-stack",
@@ -1060,6 +1589,25 @@
     "components": [
       "tempo",
       "grafana"
+    ],
+    "images": [
+      {
+        "name": "tempo",
+        "image": "ghcr.io/quenchworks/images/tempo@sha256:2da185a3d2d088a20a975e8bb8a1c1e6522213bda5975380ea0bc01b4779b775"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:422b52219a03f5f70b1eac89060964027567df3ae504e5f43f533c9ef4dc51b5"
+      },
+      {
+        "name": "otel-collector",
+        "image": "ghcr.io/quenchworks/images/otel-collector@sha256:ed19a525ab80c31f8997e417fbc669fca4bed5c8748264d5f24a99d5d1dcec83"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/grafana/tempo",
+      "https://github.com/grafana/grafana",
+      "https://github.com/open-telemetry/opentelemetry-collector"
     ]
   },
   {
@@ -1078,7 +1626,13 @@
     "repositoryID": "a2a33f4e-0ce3-4e18-9410-d53e0a6ee38e",
     "port": 80,
     "upstream": "https://github.com/traefik/traefik",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/traefik"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/traefik",
+    "images": [
+      {
+        "name": "traefik",
+        "image": "ghcr.io/quenchworks/images/traefik@sha256:dbd9d950047f4979999d4591e27255d828f97b52d7797bae4f494c6d9f7e7622"
+      }
+    ]
   },
   {
     "slug": "valkey",
@@ -1096,7 +1650,17 @@
     "repositoryID": "2b3e73a8-e891-4878-af28-33e8a1dba292",
     "port": 6379,
     "upstream": "https://github.com/valkey-io/valkey",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/valkey"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/valkey",
+    "images": [
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:4482926665b4e9fbe73b6ab15e403e1f4d9285112aca313ce4994095346c6565"
+      },
+      {
+        "name": "redis-exporter",
+        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:528112544150b31f0a170290cf171b6e779f21ecfd6ec74647aa18b6d581d6d7"
+      }
+    ]
   },
   {
     "slug": "vector",
@@ -1113,7 +1677,13 @@
     "imageDigest": "sha256:efa18f5eb0c49a552760980fe89fc07eba4e9398adf9fd3f88d44460f6b761c0",
     "repositoryID": "8f957e7a-a457-4ec0-8e5b-b6761b06463d",
     "upstream": "https://github.com/vectordotdev/vector",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/vector"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/vector",
+    "images": [
+      {
+        "name": "vector",
+        "image": "ghcr.io/quenchworks/images/vector@sha256:efa18f5eb0c49a552760980fe89fc07eba4e9398adf9fd3f88d44460f6b761c0"
+      }
+    ]
   },
   {
     "slug": "victoriametrics",
@@ -1131,7 +1701,13 @@
     "repositoryID": "18aeaade-1bb0-4b11-9787-f80599ccde32",
     "port": 8428,
     "upstream": "https://github.com/VictoriaMetrics/VictoriaMetrics",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/victoriametrics"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/victoriametrics",
+    "images": [
+      {
+        "name": "victoriametrics",
+        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:7fab85e512dd34a3dab5c760f1bbae1acfc01d85053cdbf26d7599985ee75820"
+      }
+    ]
   },
   {
     "slug": "weaviate",
@@ -1148,7 +1724,13 @@
     "imageDigest": "sha256:f18a271005e2fb16c84b72056f1118205da631689f25c8baccad25337daff67f",
     "repositoryID": "59500368-862f-4896-9543-a154bb62797a",
     "upstream": "https://weaviate.io",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/weaviate"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/weaviate",
+    "images": [
+      {
+        "name": "weaviate",
+        "image": "ghcr.io/quenchworks/images/weaviate@sha256:f18a271005e2fb16c84b72056f1118205da631689f25c8baccad25337daff67f"
+      }
+    ]
   },
   {
     "slug": "zookeeper",
@@ -1165,6 +1747,12 @@
     "imageDigest": "sha256:90c3160265c79bf6894549062508c4457e48a7bf2c70154c282e507211c0db39",
     "repositoryID": "53f0539d-ef99-4dfb-9972-4efa995b0294",
     "upstream": "https://github.com/apache/zookeeper",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/zookeeper"
+    "chartRef": "oci://ghcr.io/quenchworks/charts/zookeeper",
+    "images": [
+      {
+        "name": "zookeeper",
+        "image": "ghcr.io/quenchworks/images/zookeeper@sha256:90c3160265c79bf6894549062508c4457e48a7bf2c70154c282e507211c0db39"
+      }
+    ]
   }
 ]
