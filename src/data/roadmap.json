@@ -1285,7 +1285,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: a pluggable Git backend + Atlantis + Terralist for Terraform/OpenTofu GitOps with a private module/provider registry. Pick your forge: Gitea (default, built) or Forgejo / Gogs (lightweight, clean) / OneDev (all-in-one) / GitLab CE (heavy, mixed license). Atlantis + Gitea charts built; needs a Terralist image, the chosen forge's image, and a runner (or runner-less)."
+    "note": "Umbrella: a pluggable Git backend + Atlantis + Terralist for Terraform/OpenTofu GitOps with a private module/provider registry. Pick your forge: Gitea (default, built) or Forgejo / Gogs (lightweight, clean) / OneDev (all-in-one) / GitLab CE (heavy, mixed license). Atlantis + Gitea charts built; needs a Terralist image, the chosen forge's image, and a runner — GitHub Actions Runner or GitLab Runner, both now on the roadmap (or run runner-less)."
   },
   {
     "name": "messaging-stack",
@@ -1293,7 +1293,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: Kafka + ZooKeeper (or NATS) + a console UI — event backbone. Needs a kafka-ui image first."
+    "note": "Umbrella: Kafka + ZooKeeper (or NATS) + a console UI — event backbone. Needs a Kafka UI image first — AKHQ (Apache-2.0) is now on the roadmap for exactly this."
   },
   {
     "name": "search-stack",
@@ -1424,5 +1424,775 @@
     "priority": "exploring",
     "note": "Operator-based HA MongoDB: MongoDB Community Operator + a metrics exporter — replica-set failover. CRD-driven. The operator is Apache-2.0, but MongoDB itself is SSPL (not OSI), so the stack inherits that caution.",
     "cleanAlternative": "FerretDB (Apache-2.0) on the pg-ha-stack — a MongoDB-compatible, fully-open document database over PostgreSQL."
+  },
+  {
+    "name": "MinIO",
+    "category": "Storage & platform",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "S3-compatible object storage; relicensed to AGPL-3.0.",
+    "cleanAlternative": "SeaweedFS / Garage / RustFS (Apache-2.0), all already shipped."
+  },
+  {
+    "name": "Versity Gateway",
+    "category": "Storage & platform",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "S3-compatible gateway fronting any storage backend."
+  },
+  {
+    "name": "Rook",
+    "category": "Storage & platform",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Ceph storage orchestrator for Kubernetes (block/object/file)."
+  },
+  {
+    "name": "Apache Tomcat",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Java servlet container / application server."
+  },
+  {
+    "name": "Jetty",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Lightweight Eclipse Jetty servlet server."
+  },
+  {
+    "name": "WildFly",
+    "category": "Gateways & proxies",
+    "license": "LGPL-2.1",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "JBoss Jakarta EE application server."
+  },
+  {
+    "name": "Apache TomEE",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Tomcat plus the Jakarta EE stack."
+  },
+  {
+    "name": "NGINX Unit",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Polyglot application server from the nginx team."
+  },
+  {
+    "name": "OpenResty",
+    "category": "Gateways & proxies",
+    "license": "BSD-2-Clause",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "nginx + LuaJIT platform for scriptable web apps and gateways."
+  },
+  {
+    "name": "KrakenD",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Stateless high-performance API gateway."
+  },
+  {
+    "name": "Emissary-ingress",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Envoy-based Kubernetes API gateway / ingress."
+  },
+  {
+    "name": "Kaniko",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Build container images inside Kubernetes without a daemon."
+  },
+  {
+    "name": "BuildKit",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Concurrent container image build engine."
+  },
+  {
+    "name": "Buildah",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Daemonless OCI image builder."
+  },
+  {
+    "name": "Podman",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Daemonless container engine and Docker CLI replacement."
+  },
+  {
+    "name": "Skopeo",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Inspect and copy container images between registries."
+  },
+  {
+    "name": "Crane",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "go-containerregistry CLI for registry interaction."
+  },
+  {
+    "name": "ORAS",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Push and pull arbitrary artifacts to OCI registries."
+  },
+  {
+    "name": "ko",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Build and deploy Go container images with no Dockerfile."
+  },
+  {
+    "name": "Dagger",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Programmable CI/CD engine that runs pipelines in containers."
+  },
+  {
+    "name": "Notation",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Notary v2 OCI artifact signing and verification."
+  },
+  {
+    "name": "Hadolint",
+    "category": "Security & supply chain",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Dockerfile linter."
+  },
+  {
+    "name": "ShellCheck",
+    "category": "Security & supply chain",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Shell script static analysis linter."
+  },
+  {
+    "name": "Checkov",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Static security scanning for Terraform, Kubernetes, and more."
+  },
+  {
+    "name": "Gitleaks",
+    "category": "Security & supply chain",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Secret scanner for git repos and files."
+  },
+  {
+    "name": "TruffleHog",
+    "category": "Security & supply chain",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "exploring",
+    "note": "Deep secret scanner across repos and filesystems."
+  },
+  {
+    "name": "Kubescape",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kubernetes security, posture, and compliance scanner."
+  },
+  {
+    "name": "Trivy Operator",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "In-cluster continuous Trivy scanning via CRDs."
+  },
+  {
+    "name": "OpenSCAP",
+    "category": "Security & supply chain",
+    "license": "LGPL-2.1",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "SCAP compliance and vulnerability scanning."
+  },
+  {
+    "name": "Connaisseur",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Admission controller enforcing image signature verification."
+  },
+  {
+    "name": "Dive",
+    "category": "Security & supply chain",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Explore container image layers and wasted space."
+  },
+  {
+    "name": "OPA Gatekeeper",
+    "category": "Secrets & identity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "OPA policy admission controller for Kubernetes."
+  },
+  {
+    "name": "Polaris (Fairwinds)",
+    "category": "Secrets & identity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Kubernetes configuration best-practice validation."
+  },
+  {
+    "name": "metrics-server",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kubernetes resource-metrics API for HPA and kubectl top."
+  },
+  {
+    "name": "Descheduler",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Rebalances pods by evicting and rescheduling them."
+  },
+  {
+    "name": "Cluster Autoscaler",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Scales Kubernetes node pools to match pending workloads."
+  },
+  {
+    "name": "Vertical Pod Autoscaler",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Recommends and applies pod CPU/memory requests."
+  },
+  {
+    "name": "KubeVirt",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Run virtual machines as Kubernetes workloads."
+  },
+  {
+    "name": "vcluster",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Virtual Kubernetes clusters inside a namespace."
+  },
+  {
+    "name": "kube-vip",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Virtual IP and load balancer for the control plane and services."
+  },
+  {
+    "name": "Reloader",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Rolls workloads when their ConfigMaps or Secrets change."
+  },
+  {
+    "name": "kured",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Safe automated node reboots for Kubernetes."
+  },
+  {
+    "name": "OpenCost",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kubernetes cost monitoring and allocation (CNCF)."
+  },
+  {
+    "name": "Calico",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "eBPF/iptables CNI for networking and network policy."
+  },
+  {
+    "name": "BIND 9",
+    "category": "Coordination & mesh",
+    "license": "MPL-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Authoritative and recursive DNS server."
+  },
+  {
+    "name": "Tailscale",
+    "category": "Coordination & mesh",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "WireGuard-based mesh VPN with a Kubernetes operator."
+  },
+  {
+    "name": "FRRouting",
+    "category": "Coordination & mesh",
+    "license": "GPL-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Internet routing protocol suite (BGP, OSPF, etc.)."
+  },
+  {
+    "name": "AKHQ",
+    "category": "Messaging & streaming",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Web UI to manage and browse Kafka — the console the messaging-stack needs."
+  },
+  {
+    "name": "Strimzi",
+    "category": "Messaging & streaming",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kubernetes operator for running and managing Kafka."
+  },
+  {
+    "name": "Apicurio Registry",
+    "category": "Messaging & streaming",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "API and schema registry for Kafka, Avro, and Protobuf."
+  },
+  {
+    "name": "Apache Storm",
+    "category": "Messaging & streaming",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Distributed real-time stream processing."
+  },
+  {
+    "name": "RethinkDB",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Realtime document database with live queries."
+  },
+  {
+    "name": "CrateDB",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Distributed SQL database for time-series and search."
+  },
+  {
+    "name": "OrientDB",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Multi-model graph and document database."
+  },
+  {
+    "name": "pgvector",
+    "category": "Databases & engines",
+    "license": "PostgreSQL",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "PostgreSQL with the pgvector extension for vector similarity search."
+  },
+  {
+    "name": "Couchbase",
+    "category": "Databases & engines",
+    "license": "BSL-1.1",
+    "licenseClean": "caution",
+    "priority": "exploring",
+    "note": "Distributed document database. Source-available, not OSI.",
+    "cleanAlternative": "CouchDB (Apache-2.0), already shipped."
+  },
+  {
+    "name": "Aerospike",
+    "category": "Databases & engines",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "exploring",
+    "note": "Real-time key-value database; community edition is AGPL."
+  },
+  {
+    "name": "Liquibase",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Database schema change and migration management."
+  },
+  {
+    "name": "Flyway",
+    "category": "Databases & engines",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Versioned SQL database migrations."
+  },
+  {
+    "name": "mysqld-exporter",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Prometheus exporter for MySQL/MariaDB metrics."
+  },
+  {
+    "name": "mongodb-exporter",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Prometheus exporter for MongoDB metrics."
+  },
+  {
+    "name": "kafka-exporter",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Prometheus exporter for Kafka lag and topic metrics."
+  },
+  {
+    "name": "Promtail",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Loki's agent for shipping pod and file logs."
+  },
+  {
+    "name": "Cortex",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Horizontally scalable, multi-tenant Prometheus storage."
+  },
+  {
+    "name": "Netdata",
+    "category": "Observability",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Real-time per-second infrastructure monitoring agent."
+  },
+  {
+    "name": "Uptime Kuma",
+    "category": "Observability",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Self-hosted uptime and status-page monitor."
+  },
+  {
+    "name": "KServe",
+    "category": "Machine learning",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kubernetes model inference serving with autoscaling."
+  },
+  {
+    "name": "Kubeflow Pipelines",
+    "category": "Machine learning",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "ML pipeline orchestration on Kubernetes."
+  },
+  {
+    "name": "TensorFlow Serving",
+    "category": "Machine learning",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "High-performance serving system for TensorFlow models."
+  },
+  {
+    "name": "AnythingLLM",
+    "category": "Machine learning",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Self-hosted chat-with-your-documents LLM application."
+  },
+  {
+    "name": "DataHub",
+    "category": "Machine learning",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Metadata platform and data catalog."
+  },
+  {
+    "name": "GitLab Runner",
+    "category": "CI/CD & registry",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "CI job executor for GitLab pipelines; also a gitops-stack runner option."
+  },
+  {
+    "name": "GitHub Actions Runner",
+    "category": "CI/CD & registry",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Self-hosted Actions runner — the runner the gitops-stack needs for a Gitea/Forgejo backend."
+  },
+  {
+    "name": "Argo Rollouts",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Progressive delivery (canary, blue-green) for Kubernetes."
+  },
+  {
+    "name": "Argo Events",
+    "category": "CI/CD & registry",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Event-driven workflow automation for Kubernetes."
+  },
+  {
+    "name": "MediaWiki",
+    "category": "Apps & productivity",
+    "license": "GPL-2.0-or-later",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "The wiki engine behind Wikipedia, backed by MySQL or MariaDB."
+  },
+  {
+    "name": "XWiki",
+    "category": "Apps & productivity",
+    "license": "LGPL-2.1",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Enterprise wiki and structured collaboration platform."
+  },
+  {
+    "name": "Rocket.Chat",
+    "category": "Apps & productivity",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Self-hosted team chat platform backed by MongoDB."
+  },
+  {
+    "name": "Metabase",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Friendly self-service BI and analytics dashboards."
+  },
+  {
+    "name": "Grist",
+    "category": "Apps & productivity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Self-hosted spreadsheet-database hybrid, an Airtable alternative."
+  },
+  {
+    "name": "Plone",
+    "category": "Apps & productivity",
+    "license": "GPL-2.0-or-later",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Python enterprise CMS on Zope."
+  },
+  {
+    "name": "Backdrop CMS",
+    "category": "Apps & productivity",
+    "license": "GPL-2.0-or-later",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Drupal fork focused on simplicity, backed by MySQL."
+  },
+  {
+    "name": "Friendica",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "exploring",
+    "note": "Federated social network server."
+  },
+  {
+    "name": "YOURLS",
+    "category": "Apps & productivity",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Self-hosted URL shortener."
+  },
+  {
+    "name": "Mongo Express",
+    "category": "Apps & productivity",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Web administration UI for MongoDB."
+  },
+  {
+    "name": "Apache Polaris",
+    "category": "Workflow & data",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Open REST catalog for Apache Iceberg tables."
+  },
+  {
+    "name": "Apache Tika",
+    "category": "Workflow & data",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Content and metadata extraction toolkit."
+  },
+  {
+    "name": "Apache Camel K",
+    "category": "Workflow & data",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Kubernetes-native integration framework."
+  },
+  {
+    "name": "Cube",
+    "category": "Workflow & data",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Semantic layer and analytics API over your data."
+  },
+  {
+    "name": "Ansible",
+    "category": "Workflow & data",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Agentless IT automation and configuration management."
+  },
+  {
+    "name": "Terragrunt",
+    "category": "CI/CD & registry",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Thin Terraform/OpenTofu wrapper for DRY configurations."
+  },
+  {
+    "name": "WireMock",
+    "category": "Workflow & data",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "HTTP API mock server for testing."
+  },
+  {
+    "name": "Selenium Grid",
+    "category": "Apps & productivity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Distributed browser automation and testing grid."
+  },
+  {
+    "name": "Chromium",
+    "category": "Apps & productivity",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Headless browser for rendering, scraping, and PDF export."
+  },
+  {
+    "name": "SATOSA",
+    "category": "Secrets & identity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Proxy that translates between SAML and OIDC."
+  },
+  {
+    "name": "Hyperledger Fabric",
+    "category": "Workflow & data",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Permissioned enterprise blockchain platform."
   }
 ]
