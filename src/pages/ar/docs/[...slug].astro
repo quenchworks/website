@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Docs from '../../../layouts/Docs.astro';
+import * as shortcodes from '../../../components/shortcodes';
 
 export async function getStaticPaths() {
   const entries = await getCollection('docsAr');
@@ -15,5 +16,5 @@ const { Content } = await render(entry);
 ---
 
 <Docs title={`${entry.data.title} · Quenchworks`} description={entry.data.description} slug={entry.id}>
-  <Content />
+  <Content components={shortcodes} />
 </Docs>

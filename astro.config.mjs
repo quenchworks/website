@@ -2,7 +2,6 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
-import AutoImport from "astro-auto-import";
 import astroExpressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
@@ -17,22 +16,10 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   integrations: [
-    // Auto-import the docs shortcodes so MDX can use them without per-file
-    // import lines. AutoImport MUST come before mdx() so the imports are
-    // injected before MDX compiles each page.
-    AutoImport({
-      imports: [
-        "./src/components/shortcodes/Notice.astro",
-        "./src/components/shortcodes/Steps.astro",
-        "./src/components/shortcodes/Tabs.astro",
-        "./src/components/shortcodes/Tab.astro",
-        "./src/components/shortcodes/Kbd.astro",
-        "./src/components/shortcodes/Card.astro",
-        "./src/components/shortcodes/CardGrid.astro",
-        "./src/components/shortcodes/FileTree.astro",
-        "./src/components/shortcodes/Badge.astro",
-      ],
-    }),
+    // Docs MDX shortcodes (Steps, Notice, Tabs, ...) are provided to each page
+    // via the native <Content components={shortcodes} /> prop in
+    // src/pages/**/docs/[...slug].astro — see src/components/shortcodes/index.ts.
+    // (Replaced astro-auto-import, which doesn't support Astro 7.)
     // Expressive Code must precede mdx() so it can pre-process fenced code
     // blocks before MDX compiles each page. Config lives in ec.config.mjs.
     astroExpressiveCode(),
