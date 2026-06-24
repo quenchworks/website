@@ -215,7 +215,7 @@ for (const slug of chartDirs.sort()) {
     imageDigest: isStack ? undefined : img.digest ? String(img.digest) : undefined,
     repositoryID: ahRepo?.repositoryID ? String(ahRepo.repositoryID) : undefined,
     port: isStack ? undefined : servicePort(valuesYaml),
-    upstream: a.upstream || a.source || '',
+    upstream: a.upstream || a.source || (chartYaml?.home ? String(chartYaml.home) : '') || '',
     chartRef: `oci://${ghcr}/charts/${slug}`,
     stack: isStack || undefined,
     components: components && components.length ? components : undefined,
