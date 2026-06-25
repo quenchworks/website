@@ -236,7 +236,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
+    "chartVersion": "0.0.2",
     "appVersion": "2.45.1",
     "description": "Dex, the CNCF OpenID Connect (OIDC) identity provider and federated SSO gateway with pluggable connectors (LDAP, SAML, GitHub, Google, OIDC). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/dex",
@@ -720,6 +720,29 @@
     ]
   },
   {
+    "slug": "jenkins",
+    "name": "jenkins",
+    "category": "CI/CD & registry",
+    "summary": "The leading open-source automation server for building, testing, and deploying software, with thousands of plugins. Ships the architecture-independent jenkins.war LTS line on a hardened Wolfi JRE.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.555.3",
+    "description": "Jenkins, the leading open-source automation server for building, testing, and deploying software (CI/CD pipelines, Pipeline-as-Code, and a vast plugin ecosystem). Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image, cosign-signed and pinned by digest. Runs as a single-replica StatefulSet with a persistent JENKINS_HOME volume.",
+    "imageRepository": "ghcr.io/quenchworks/images/jenkins",
+    "imageDigest": "sha256:0da181c81f30ef98507211221ac30586a54895742f6234e634cb49402a429663",
+    "repositoryID": "c0cb7878-34a9-4d7f-9740-f5f1e208aa0a",
+    "upstream": "https://www.jenkins.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/jenkins",
+    "images": [
+      {
+        "name": "jenkins",
+        "image": "ghcr.io/quenchworks/images/jenkins@sha256:0da181c81f30ef98507211221ac30586a54895742f6234e634cb49402a429663"
+      }
+    ]
+  },
+  {
     "slug": "kafka",
     "name": "Kafka",
     "category": "Messaging",
@@ -927,6 +950,34 @@
       {
         "name": "mariadb",
         "image": "ghcr.io/quenchworks/images/mariadb@sha256:abf1c0823dcc7f2c1b77252defaa0202a386907d131e3ea62feb0bb07304a0f5"
+      }
+    ]
+  },
+  {
+    "slug": "mattermost",
+    "name": "mattermost",
+    "category": "Messaging",
+    "summary": "Open-source, self-hosted team messaging and collaboration platform (a Slack alternative) with channels, direct messages, file sharing, and integrations. Packaged from Mattermost's official Team Edition server release; requires an external PostgreSQL.",
+    "tier": "standard",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "11.8.1",
+    "description": "Open-source, self-hosted team collaboration and messaging platform (Team Edition) — channels, direct messages, and file sharing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
+    "imageRepository": "ghcr.io/quenchworks/images/mattermost",
+    "imageDigest": "sha256:e3821cf30bfc7493b9b68a0f42426e7e85c1d136858c53d6b3ee51945507ef07",
+    "repositoryID": "07d405ed-b843-469d-be0b-6a11a9ff963e",
+    "port": 8065,
+    "upstream": "https://mattermost.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mattermost",
+    "images": [
+      {
+        "name": "mattermost",
+        "image": "ghcr.io/quenchworks/images/mattermost@sha256:e3821cf30bfc7493b9b68a0f42426e7e85c1d136858c53d6b3ee51945507ef07"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
       }
     ]
   },
@@ -1208,7 +1259,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
+    "chartVersion": "0.0.2",
     "appVersion": "0.30.10",
     "description": "Ollama, the local large-language-model runtime that pulls and serves open models (Llama, Mistral, Gemma, Qwen, ...) over a simple REST API. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image, cosign-signed and pinned by digest. CPU-only; runs as a StatefulSet with a persistent /models volume.",
     "imageRepository": "ghcr.io/quenchworks/images/ollama",
