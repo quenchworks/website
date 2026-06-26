@@ -170,6 +170,44 @@
     "image": "ghcr.io/quenchworks/images/atlantis"
   },
   {
+    "slug": "authelia",
+    "name": "authelia",
+    "category": "Identity",
+    "summary": "Open-source authentication and authorization server providing single sign-on and two-factor authentication via a web portal, designed as a companion for reverse proxies. Packaged from Authelia's official prebuilt binary; needs a config plus a SQLite or PostgreSQL storage backend.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "4.39.18, 4.39.19, 4.39.20",
+    "versions": [
+      {
+        "version": "4.39.18",
+        "size": "23.2 MB",
+        "published": "2026-06-25T09:37:48Z",
+        "digest": "sha256:90e1595409ec15dd96251449f176f00bc8506a5be8b2157e384b49275486afe7"
+      },
+      {
+        "version": "4.39.19",
+        "size": "23.2 MB",
+        "published": "2026-06-25T09:37:38Z",
+        "digest": "sha256:0f03d1507dadf4d531dd7c7156ca95860490bb21015fc469c78c6170d1c8182c"
+      },
+      {
+        "version": "4.39.20",
+        "size": "23.6 MB",
+        "published": "2026-06-25T09:37:38Z",
+        "digest": "sha256:9d8a4377b29c18986aa226de5e60370ea48463b253dfa0c1d1ae239d19860a9c"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.authelia.com",
+    "source": "https://github.com/authelia/authelia",
+    "image": "ghcr.io/quenchworks/images/authelia"
+  },
+  {
     "slug": "blackbox-exporter",
     "name": "blackbox-exporter",
     "category": "Metrics/Exporter",
@@ -2734,6 +2772,38 @@
     "image": "ghcr.io/quenchworks/images/memcached"
   },
   {
+    "slug": "mlflow",
+    "name": "mlflow",
+    "category": "Machine learning & AI",
+    "summary": "MLflow Tracking Server for the ML lifecycle — experiment tracking, model registry, and run metadata over a REST/UI on port 5000. Packaged as the lightweight mlflow-skinny stack (gunicorn + psycopg2 + boto3) on a hardened Wolfi python base; needs an external PostgreSQL backend store and an artifact store (S3 or PVC).",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "3.14.0, 3.13.0",
+    "versions": [
+      {
+        "version": "3.14.0",
+        "size": "130.0 MB",
+        "published": "2026-06-26T17:04:57Z",
+        "digest": "sha256:20aa121eb9183259447a7a8eea94eba76f35aff6158f83cd3db331e74a298a72"
+      },
+      {
+        "version": "3.13.0",
+        "size": "129.7 MB",
+        "published": "2026-06-26T17:04:51Z",
+        "digest": "sha256:ca0c98e96875d6b2cacb19d02cbf5e5c35554cbdb4a7772cbcbe64449c5b3534"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://mlflow.org",
+    "source": "https://github.com/mlflow/mlflow",
+    "image": "ghcr.io/quenchworks/images/mlflow"
+  },
+  {
     "slug": "mongodb",
     "name": "MongoDB",
     "category": "Document",
@@ -4592,6 +4662,44 @@
     "image": "ghcr.io/quenchworks/images/temporal-cli"
   },
   {
+    "slug": "thanos",
+    "name": "thanos",
+    "category": "Observability",
+    "summary": "Highly-available Prometheus setup with unlimited metric retention via object storage, adding a global query view, downsampling, and compaction across Prometheus servers. A CNCF project.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "0.41.0, 0.40.1, 0.39.2",
+    "versions": [
+      {
+        "version": "0.41.0",
+        "size": "34.3 MB",
+        "published": "2026-06-26T14:55:33Z",
+        "digest": "sha256:7cf417061ecb11d06f9dc43c4ca00e49dfcd207c7c412a09a0185ca19386ffa9"
+      },
+      {
+        "version": "0.40.1",
+        "size": "34.8 MB",
+        "published": "2026-06-26T14:55:33Z",
+        "digest": "sha256:6e5d27eeaaab69a5bfd6590ccb7ead4b089956f807f5faea6530ca61011eedca"
+      },
+      {
+        "version": "0.39.2",
+        "size": "31.5 MB",
+        "published": "2026-06-26T14:55:28Z",
+        "digest": "sha256:5003d7e44fa6f566e81e78fbb2142a4060363ac982ceb08361b773a5b0eeb145"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/thanos-io/thanos",
+    "source": "https://github.com/thanos-io/thanos",
+    "image": "ghcr.io/quenchworks/images/thanos"
+  },
+  {
     "slug": "traefik",
     "name": "Traefik",
     "category": "Gateway",
@@ -4906,6 +5014,44 @@
     "upstream": "https://yarnpkg.com",
     "source": "https://yarnpkg.com",
     "image": "ghcr.io/quenchworks/images/yarn"
+  },
+  {
+    "slug": "zitadel",
+    "name": "zitadel",
+    "category": "Identity",
+    "summary": "Cloud-native identity and access management (IAM) with OIDC/OAuth2/SAML, multi-tenancy, and a built-in admin console. Packaged from ZITADEL's official prebuilt binary; event-sourced store on an external PostgreSQL.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "4.14.0, 4.15.3, 4.13.1",
+    "versions": [
+      {
+        "version": "4.14.0",
+        "size": "53.0 MB",
+        "published": "2026-06-25T09:37:32Z",
+        "digest": "sha256:4c48e2223749dd2dfbf82120dcc0073d31c9b7f456cc7d1eec4a2a3283af2752"
+      },
+      {
+        "version": "4.15.3",
+        "size": "53.0 MB",
+        "published": "2026-06-25T09:37:31Z",
+        "digest": "sha256:5e1236f874ae7a2e212cfcbc38cff2390a764d11aef6c22f114e418777dd2343"
+      },
+      {
+        "version": "4.13.1",
+        "size": "52.5 MB",
+        "published": "2026-06-25T09:37:27Z",
+        "digest": "sha256:4892894a614164ebc6f3dbdce1ebaaf7f4939fd7074e452acdcde233c3710cb2"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://zitadel.com",
+    "source": "https://github.com/zitadel/zitadel",
+    "image": "ghcr.io/quenchworks/images/zitadel"
   },
   {
     "slug": "zookeeper",

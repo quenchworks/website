@@ -48,6 +48,30 @@
     ]
   },
   {
+    "slug": "authelia",
+    "name": "authelia",
+    "category": "Identity",
+    "summary": "Open-source authentication and authorization server providing single sign-on and two-factor authentication via a web portal, designed as a companion for reverse proxies. Packaged from Authelia's official prebuilt binary; needs a config plus a SQLite or PostgreSQL storage backend.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "4.39.20",
+    "description": "Hardened Authelia authentication and authorization server on a 0-CVE image",
+    "imageRepository": "ghcr.io/quenchworks/images/authelia",
+    "imageDigest": "sha256:9d8a4377b29c18986aa226de5e60370ea48463b253dfa0c1d1ae239d19860a9c",
+    "repositoryID": "c3292f9d-22ca-45cd-aad9-b8b96894fa81",
+    "port": 9091,
+    "upstream": "https://www.authelia.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/authelia",
+    "images": [
+      {
+        "name": "authelia",
+        "image": "ghcr.io/quenchworks/images/authelia@sha256:9d8a4377b29c18986aa226de5e60370ea48463b253dfa0c1d1ae239d19860a9c"
+      }
+    ]
+  },
+  {
     "slug": "caddy",
     "name": "Caddy",
     "category": "Gateway",
@@ -1030,6 +1054,34 @@
     ]
   },
   {
+    "slug": "mlflow",
+    "name": "mlflow",
+    "category": "Machine learning & AI",
+    "summary": "MLflow Tracking Server for the ML lifecycle — experiment tracking, model registry, and run metadata over a REST/UI on port 5000. Packaged as the lightweight mlflow-skinny stack (gunicorn + psycopg2 + boto3) on a hardened Wolfi python base; needs an external PostgreSQL backend store and an artifact store (S3 or PVC).",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "3.14.0",
+    "description": "Hardened MLflow Tracking Server (experiment tracking + model registry) on a 0-CVE nonroot image, with a bundled PostgreSQL backend store.",
+    "imageRepository": "ghcr.io/quenchworks/images/mlflow",
+    "imageDigest": "sha256:20aa121eb9183259447a7a8eea94eba76f35aff6158f83cd3db331e74a298a72",
+    "repositoryID": "bcb02e82-89ea-4710-aec5-ff9942283d2b",
+    "port": 5000,
+    "upstream": "https://mlflow.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mlflow",
+    "images": [
+      {
+        "name": "mlflow",
+        "image": "ghcr.io/quenchworks/images/mlflow@sha256:20aa121eb9183259447a7a8eea94eba76f35aff6158f83cd3db331e74a298a72"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      }
+    ]
+  },
+  {
     "slug": "mongodb",
     "name": "MongoDB",
     "category": "Document",
@@ -1717,6 +1769,29 @@
     ]
   },
   {
+    "slug": "thanos",
+    "name": "thanos",
+    "category": "Observability",
+    "summary": "Highly-available Prometheus setup with unlimited metric retention via object storage, adding a global query view, downsampling, and compaction across Prometheus servers. A CNCF project.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.41.0",
+    "description": "Thanos, the CNCF highly-available Prometheus setup with long-term storage and a global query view. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The single binary runs every component (query, receive, store, compact, rule, sidecar) as separate toggleable workloads; this chart ships a self-contained query + receive pair by default.",
+    "imageRepository": "ghcr.io/quenchworks/images/thanos",
+    "imageDigest": "sha256:7cf417061ecb11d06f9dc43c4ca00e49dfcd207c7c412a09a0185ca19386ffa9",
+    "repositoryID": "18b16ed4-ceb8-4911-8a79-6b2cbd555c8f",
+    "upstream": "https://github.com/thanos-io/thanos",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/thanos",
+    "images": [
+      {
+        "name": "thanos",
+        "image": "ghcr.io/quenchworks/images/thanos@sha256:7cf417061ecb11d06f9dc43c4ca00e49dfcd207c7c412a09a0185ca19386ffa9"
+      }
+    ]
+  },
+  {
     "slug": "tracing-stack",
     "name": "tracing-stack",
     "category": "Stacks",
@@ -1874,6 +1949,34 @@
       {
         "name": "weaviate",
         "image": "ghcr.io/quenchworks/images/weaviate@sha256:f18a271005e2fb16c84b72056f1118205da631689f25c8baccad25337daff67f"
+      }
+    ]
+  },
+  {
+    "slug": "zitadel",
+    "name": "zitadel",
+    "category": "Identity",
+    "summary": "Cloud-native identity and access management (IAM) with OIDC/OAuth2/SAML, multi-tenancy, and a built-in admin console. Packaged from ZITADEL's official prebuilt binary; event-sourced store on an external PostgreSQL.",
+    "tier": "standard",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "4.15.3",
+    "description": "Open-source identity infrastructure — a cloud-native OIDC/OAuth2/SAML identity and access management server with multi-tenancy, self-service, and a built-in management API/console. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
+    "imageRepository": "ghcr.io/quenchworks/images/zitadel",
+    "imageDigest": "sha256:5e1236f874ae7a2e212cfcbc38cff2390a764d11aef6c22f114e418777dd2343",
+    "repositoryID": "6f205d15-ee9e-4ad0-b418-1ff79e383fa2",
+    "port": 8080,
+    "upstream": "https://zitadel.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/zitadel",
+    "images": [
+      {
+        "name": "zitadel",
+        "image": "ghcr.io/quenchworks/images/zitadel@sha256:5e1236f874ae7a2e212cfcbc38cff2390a764d11aef6c22f114e418777dd2343"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
       }
     ]
   },
