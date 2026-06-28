@@ -11,7 +11,7 @@ COPY . .
 RUN ["dotnet", "publish", "App.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
 
 # Runtime stage: ASP.NET Core runtime, nonroot.
-FROM ghcr.io/quenchworks/images/aspnet:8.0.122 AS runtime
+FROM ghcr.io/quenchworks/images/aspnet:8.0.127 AS runtime
 WORKDIR /app
 ENV ASPNETCORE_URLS=http://+:8080 \
     DOTNET_CLI_TELEMETRY_OPTOUT=1

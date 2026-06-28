@@ -11,7 +11,7 @@ COPY . .
 RUN ["dotnet", "publish", "Worker.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
 
 # This image is the final runtime stage: the plain .NET runtime, nonroot.
-FROM ghcr.io/quenchworks/images/dotnet-runtime:10.0.100 AS runtime
+FROM ghcr.io/quenchworks/images/dotnet-runtime:10.0.109 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish ./
 USER 1001

@@ -10,7 +10,7 @@ COPY . .
 RUN ["composer", "dump-autoload", "--optimize", "--no-dev"]
 
 # Runtime stage: copy vendor + app onto a clean php base, run nonroot.
-FROM ghcr.io/quenchworks/images/php:8.5 AS runtime
+FROM ghcr.io/quenchworks/images/php:8.4.22 AS runtime
 WORKDIR /app
 COPY --from=build /app /app
 USER 1001

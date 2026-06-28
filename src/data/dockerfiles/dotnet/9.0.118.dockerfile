@@ -1,5 +1,5 @@
 # Build stage: restore, then publish the app.
-FROM ghcr.io/quenchworks/images/dotnet:10.0.100 AS build
+FROM ghcr.io/quenchworks/images/dotnet:9.0.118 AS build
 USER root
 WORKDIR /src
 ENV NUGET_PACKAGES=/tmp/nuget \
@@ -11,7 +11,7 @@ COPY . .
 RUN ["dotnet", "publish", "App.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
 
 # Runtime stage: ASP.NET Core runtime, nonroot.
-FROM ghcr.io/quenchworks/images/aspnet:10.0.109 AS runtime
+FROM ghcr.io/quenchworks/images/aspnet:9.0.118 AS runtime
 WORKDIR /app
 ENV ASPNETCORE_URLS=http://+:8080 \
     DOTNET_CLI_TELEMETRY_OPTOUT=1

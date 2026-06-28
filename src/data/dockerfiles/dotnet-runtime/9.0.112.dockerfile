@@ -1,5 +1,5 @@
 # Build stage: restore and publish the worker/console app with the SDK.
-FROM ghcr.io/quenchworks/images/dotnet:9.0.112 AS build
+FROM ghcr.io/quenchworks/images/dotnet:9.0.118 AS build
 USER root
 WORKDIR /src
 ENV NUGET_PACKAGES=/tmp/nuget \
