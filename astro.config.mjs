@@ -44,6 +44,11 @@ export default defineConfig({
     "/runtimes/[slug]": "/images/[slug]",
     // The bare /api lands on the docs.
     "/api": "/api/docs",
+    // The bespoke Bitnami page is now one of the data-driven /alternative/<vendor>
+    // pages; keep the old URL (and its localized variants) alive.
+    "/bitnami-alternative": "/alternative/bitnami",
+    "/ar/bitnami-alternative": "/alternative/bitnami",
+    "/es/bitnami-alternative": "/alternative/bitnami",
   },
   vite: {
     plugins: [tailwindcss()],

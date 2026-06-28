@@ -1,0 +1,125 @@
+---
+// Hub for the per-competitor alternative pages. One card per vendor with a
+// factual at-a-glance summary — where QuenchWorks leads and where the vendor
+// holds up — derived from the same comparison matrix that drives /compare and
+// each /alternative/<vendor> page. Nothing here is hand-maintained: edit
+// src/data/compare.ts and these summaries follow.
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { vendors, rows, vendorMeta, vendorSlug, pillTone, tone } from '../../data/compare';
+
+// A "strong" verdict is one tone() renders in paper (Yes / Free); everything
+// else (No, Paid, Partial, Varies, n/a) is muted. We compare QuenchWorks
+// (column 0) against each vendor column to split the rows into:
+//   leads  — QuenchWorks strong, the vendor not (a QuenchWorks advantage)
+//   parity — the vendor is strong too (where they hold up)
+const strong = (v: string) => tone(v) === 'text-paper';
+
+const summaries = vendors
+  .map((name, i) => ({ name, i }))
+  .filter((v) => v.name !== 'QuenchWorks')
+  .map(({ name, i }) => {
+    const leads = rows.filter((r) => strong(r.cells[0].v) && !strong(r.cells[i].v)).map((r) => r.label);
+    const parity = rows.filter((r) => strong(r.cells[i].v)).map((r) => r.label);
+    return { name, slug: vendorSlug(name), meta: vendorMeta[i], leads, parity };
+  });
+
+// Structured data: a breadcrumb plus an ItemList of the per-vendor pages, so
+// search engines can surface each comparison as a sub-result of this hub.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Alternatives', item: new URL('/alternative', Astro.site).href },
+      ],
+    },
+    {
+      '@type': 'ItemList',
+      name: 'QuenchWorks alternatives',
+      itemListElement: summaries.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: `QuenchWorks vs ${s.name}`,
+        url: new URL(`/alternative/${s.slug}`, Astro.site).href,
+      })),
+    },
+  ],
+};
+---
+
+<Base
+  title="Alternatives · QuenchWorks vs the hardened-image providers"
+  description="At-a-glance comparison of QuenchWorks against Bitnami, Chainguard, Docker Hardened Images, RapidFort, and Minimus — where QuenchWorks leads and where each provider holds up, with a detail page for every competitor."
+>
+  <Header />
+  <main
+    class="mx-auto max-w-5xl px-5 py-16"
+    data-pagefind-body
+    data-pagefind-meta="title:QuenchWorks alternatives,type:Alternative"
+  >
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Alternatives</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Switching from another provider?</h1>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
+      Hardened, low-CVE images are a crowded field. Here is how QuenchWorks stacks up against each of
+      the main providers — what you get more of, and where they hold their own. Every summary is
+      derived from the same conservative comparison matrix; open a provider for the full breakdown.
+    </p>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {
+        summaries.map((s) => (
+          <a
+            href={`/alternative/${s.slug}`}
+            class="group block rounded-xl border border-line bg-graphite p-6 no-underline transition-colors hover:border-paper/40"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <h2 class="text-xl font-semibold tracking-tight text-paper">QuenchWorks vs {s.name}</h2>
+              <span class:list={['shrink-0 rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest', pillTone(s.meta.tier)]}>{s.meta.tier}</span>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-ash">{s.meta.blurb}</p>
+
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-widest text-ash">Where QuenchWorks leads</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              {s.leads.length ? (
+                s.leads.map((l) => (
+                  <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] text-paper">{l}</span>
+                ))
+              ) : (
+                <span class="text-xs text-ash">Closely matched across the board.</span>
+              )}
+            </div>
+
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-widest text-ash">Where {s.name} holds up</p>
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              {s.parity.length ? (
+                s.parity.map((l) => (
+                  <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] text-ash">{l}</span>
+                ))
+              ) : (
+                <span class="text-xs text-ash">No confirmed parity in this set.</span>
+              )}
+            </div>
+
+            <span class="mt-5 inline-flex font-mono text-xs uppercase tracking-widest text-paper">
+              Full comparison &rarr;
+            </span>
+          </a>
+        ))
+      }
+    </div>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
+      <p class="text-base text-paper">Want every provider side by side?</p>
+      <p class="mt-2 text-sm text-ash">The full feature-by-feature matrix compares all of them at once.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href="/compare" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">Full comparison table</a>
+        <a href="/charts" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">Browse the catalog</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />
+</Base>
