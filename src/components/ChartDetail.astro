@@ -176,7 +176,7 @@ const ld = {
           <div class="mt-3 flex flex-wrap gap-1.5 font-mono text-[11px] uppercase tracking-widest">
             {alternatives.map((a) => (
               <a
-                href={a.hasChart ? `/charts/${a.slug}` : `/images/${a.slug}`}
+                href={l(a.hasChart ? `/charts/${a.slug}` : `/images/${a.slug}`)}
                 class="rounded border border-line bg-graphite px-2.5 py-1 text-paper transition-colors hover:bg-ink"
               >{a.name} &rarr;</a>
             ))}

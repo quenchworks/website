@@ -190,7 +190,7 @@ const sevs = isLatest && sec
                 <tr>
                   <td class="py-2.5 pe-4">
                     <a
-                      href={v.version === newest ? `/images/${entry.slug}` : `/images/${entry.slug}/${v.version}`}
+                      href={l(v.version === newest ? `/images/${entry.slug}` : `/images/${entry.slug}/${v.version}`)}
                       class:list={['font-mono tabular-nums underline-offset-4 transition-colors hover:underline', v.version === version ? 'text-paper' : 'text-paper/90 hover:text-paper']}
                     >{v.version}</a>
                     {v.version === newest && (
@@ -223,7 +223,7 @@ const sevs = isLatest && sec
           <div class="mt-3 flex flex-wrap gap-1.5 font-mono text-[11px] uppercase tracking-widest">
             {alternatives.map((a) => (
               <a
-                href={a.hasImage ? `/images/${a.slug}` : `/charts/${a.slug}`}
+                href={l(a.hasImage ? `/images/${a.slug}` : `/charts/${a.slug}`)}
                 class="rounded border border-line bg-graphite px-2.5 py-1 text-paper transition-colors hover:bg-ink"
               >{a.name} &rarr;</a>
             ))}

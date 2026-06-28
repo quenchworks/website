@@ -180,7 +180,7 @@ const ld = {
                 <tr>
                   <td class="py-2.5 pe-4">
                     <a
-                      href={v.version === newest ? `/images/${entry.slug}` : `/images/${entry.slug}/${v.version}`}
+                      href={l(v.version === newest ? `/images/${entry.slug}` : `/images/${entry.slug}/${v.version}`)}
                       class:list={['font-mono tabular-nums underline-offset-4 transition-colors hover:underline', v.version === version ? 'text-paper' : 'text-paper/90 hover:text-paper']}
                     >{v.version}</a>
                     {v.version === newest && (
