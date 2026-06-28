@@ -30,6 +30,17 @@ export default defineConfig({
         defaultLocale: "en",
         locales: { en: "en", ar: "ar", es: "es" },
       },
+      // The /alternative section is English-only. The i18n integration otherwise
+      // attaches ar/es hreflang alternates to every URL, which would point at
+      // pages that don't exist. Drop the phantom localized locs and trim the
+      // alternates on the real /alternative pages to just en.
+      serialize(item) {
+        if (/\/(ar|es)\/alternative(\/|$)/.test(item.url)) return undefined;
+        if (item.url.includes("/alternative") && item.links) {
+          item.links = item.links.filter((l) => l.lang === "en");
+        }
+        return item;
+      },
     }),
   ],
   // Prefetch internal links on hover so navigation across the catalog feels instant.

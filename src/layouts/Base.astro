@@ -7,24 +7,37 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  // The locales this particular page is actually published in. Defaults to all
+  // three (most pages are fully translated). English-only pages (e.g. the
+  // /alternative SEO landings) pass ['en'] so we never emit hreflang/og
+  // alternates that point at a 404.
+  locales?: ('en' | 'ar' | 'es')[];
 }
 
 const {
   title = 'Quenchworks: hardened, 0-CVE Helm charts and container images',
   description = 'Hardened, 0-CVE Helm charts and container images, built from source on Wolfi, signed, and pinned by digest. Free and independent.',
   image = '/og.png',
+  locales = ['en', 'ar', 'es'],
 } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const dir = rtlLangs.includes(lang) ? 'rtl' : 'ltr';
 
+// Open Graph locale code per language.
+const ogLocale: Record<string, string> = { en: 'en_US', ar: 'ar_AR', es: 'es_ES' };
+
 // Path with the locale prefix stripped, so we can build the same page under
-// each locale for the hreflang alternates.
+// each locale for the hreflang alternates. Only emit alternates for the
+// locales this page is actually published in.
 const basePath = Astro.url.pathname.replace(/^\/(ar|es)(?=\/|$)/, '') || '/';
-const alternates = (['en', 'ar', 'es'] as const).map((l) => ({
+const alternates = locales.map((l) => ({
   lang: l,
   href: new URL(getRelativeLocaleUrl(l, basePath), Astro.site).href,
 }));
+// x-default points at the English (default-locale) version when present,
+// otherwise the first available alternate.
+const xDefault = (alternates.find((a) => a.lang === 'en') ?? alternates[0]).href;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
@@ -68,12 +81,13 @@ const jsonLd = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {alternates.map((a) => <link rel="alternate" hreflang={a.lang} href={a.href} />)}
-    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="QuenchWorks" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={ogLocale[lang]} />
+    {alternates.filter((a) => a.lang !== lang).map((a) => <meta property="og:locale:alternate" content={ogLocale[a.lang]} />)}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
