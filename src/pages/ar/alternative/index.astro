@@ -1,22 +1,15 @@
 ---
-// Hub for the per-competitor alternative pages. One card per vendor with a
-// factual at-a-glance summary — where QuenchWorks leads and where the vendor
-// holds up — derived from the same comparison matrix that drives /compare and
-// each /alternative/<vendor> page. Nothing here is hand-maintained: edit
-// src/data/compare.ts and these summaries follow, in every language.
-import Base from '../../layouts/Base.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { getLangFromUrl } from '../../i18n/ui';
-import { vendors, rows, vendorMeta, vendorSlug, pillTone, tone, pick, ui } from '../../data/compare';
+// Arabic hub for the per-competitor alternative pages. Same structure as the en
+// hub; only the link prefixes (/ar/...), pagefind title, and JSON-LD URLs carry
+// the locale. All copy comes from src/data/compare.ts via pick(_, lang).
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getLangFromUrl } from '../../../i18n/ui';
+import { vendors, rows, vendorMeta, vendorSlug, pillTone, tone, pick, ui } from '../../../data/compare';
 
 const lang = getLangFromUrl(Astro.url);
 
-// A "strong" verdict is one tone() renders in paper (Yes / Free); everything
-// else (No, Paid, Partial, Varies, n/a) is muted. We compare QuenchWorks
-// (column 0) against each vendor column to split the rows into:
-//   leads  — QuenchWorks strong, the vendor not (a QuenchWorks advantage)
-//   parity — the vendor is strong too (where they hold up)
 const strong = (v: string) => tone(v) === 'text-paper';
 
 const summaries = vendors
@@ -30,8 +23,6 @@ const summaries = vendors
     return { name, slug: vendorSlug(name), meta: vendorMeta[i], leads, parity };
   });
 
-// Structured data: a breadcrumb plus an ItemList of the per-vendor pages, so
-// search engines can surface each comparison as a sub-result of this hub.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -42,7 +33,7 @@ const jsonLd = {
           '@type': 'ListItem',
           position: 1,
           name: pick(ui['eyebrow'], lang),
-          item: new URL('/alternative', Astro.site).href,
+          item: new URL('/ar/alternative', Astro.site).href,
         },
       ],
     },
@@ -53,7 +44,7 @@ const jsonLd = {
         '@type': 'ListItem',
         position: i + 1,
         name: `QuenchWorks vs ${s.name}`,
-        url: new URL(`/alternative/${s.slug}`, Astro.site).href,
+        url: new URL(`/ar/alternative/${s.slug}`, Astro.site).href,
       })),
     },
   ],
@@ -61,14 +52,14 @@ const jsonLd = {
 ---
 
 <Base
-  title="Alternatives · QuenchWorks vs the hardened-image providers"
-  description="At-a-glance comparison of QuenchWorks against Bitnami, Chainguard, Docker Hardened Images, RapidFort, and Minimus — where QuenchWorks leads and where each provider holds up, with a detail page for every competitor."
+  title="البدائل · QuenchWorks مقابل مزوّدي الصور المُحصّنة"
+  description="مقارنة سريعة بين QuenchWorks وBitnami وChainguard وDocker Hardened Images وRapidFort وMinimus — أين يتقدّم QuenchWorks وأين يصمد كل مزوّد، مع صفحة تفصيلية لكل منافس."
 >
   <Header />
   <main
     class="mx-auto max-w-5xl px-5 py-16"
     data-pagefind-body
-    data-pagefind-meta="title:QuenchWorks alternatives,type:Alternative"
+    data-pagefind-meta="title:بدائل QuenchWorks,type:Alternative"
   >
     <p class="font-mono text-xs uppercase tracking-widest text-ash">{pick(ui['eyebrow'], lang)}</p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{pick(ui['hubTitle'], lang)}</h1>
@@ -78,7 +69,7 @@ const jsonLd = {
       {
         summaries.map((s) => (
           <a
-            href={`/alternative/${s.slug}`}
+            href={`/ar/alternative/${s.slug}`}
             class="group block rounded-xl border border-line bg-graphite p-6 no-underline transition-colors hover:border-paper/40"
           >
             <div class="flex items-center justify-between gap-3">
@@ -121,8 +112,8 @@ const jsonLd = {
       <p class="text-base text-paper">{pick(ui['hubCtaTitle'], lang)}</p>
       <p class="mt-2 text-sm text-ash">{pick(ui['hubCtaBody'], lang)}</p>
       <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
-        <a href="/compare" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['fullTable'], lang)}</a>
-        <a href="/charts" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['browseAll'], lang)}</a>
+        <a href="/ar/compare" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['fullTable'], lang)}</a>
+        <a href="/ar/charts" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['browseAll'], lang)}</a>
       </div>
     </section>
   </main>

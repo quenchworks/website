@@ -3,204 +3,32 @@ import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
+import {
+  vendors,
+  rows,
+  tone,
+  differentiators,
+  vendorMeta,
+  pillTone,
+  verdictLabel,
+  groupTitles,
+  rowGroupIndex,
+  pick,
+} from '../../data/compare';
 
 const lang = getLangFromUrl(Astro.url);
 const l = (p: string) => localizeUrl(lang, p);
 
-// Vendor order; QuenchWorks stays first so it keeps the highlighted column.
-// Each `cells` array below has one entry per vendor, in this same order.
-const vendors: string[] = ['QuenchWorks', 'Bitnami', 'Chainguard', 'Docker', 'RapidFort', 'Minimus'];
+// Localized verdict display for this language.
+const vt = (v: string): string => verdictLabel[lang][v] ?? v;
 
-// Each cell is { v: short verdict, n?: short note }. `v` stays in English because
-// it doubles as a semantic key for tone() + the verdict label map; the displayed
-// text comes from `verdictLabel`. Notes are translated prose.
-type Cell = { v: string; n?: string };
-type Row = { label: string; cells: Cell[] };
-
-// Display label per verdict key (Arabic).
-const verdictLabel: Record<string, string> = {
-  Free: 'مجاني',
-  Paid: 'مدفوع',
-  Freemium: 'مجاني-جزئيًا',
-  Varies: 'يختلف',
-  Yes: 'نعم',
-  No: 'لا',
-  Partial: 'جزئي',
-  'n/a': 'غير منطبق',
-};
-const vt = (v: string): string => verdictLabel[v] ?? v;
-
-const rows: Row[] = [
-  {
-    label: 'السعر / الطبقة المجانية',
-    cells: [
-      { v: 'Free' },
-      { v: 'Paid', n: 'Bitnami Secure Images تجاري؛ تبقى مجموعة مجتمعية مُحصّنة بأحدث إصدار فقط وسجلّ قديم مجمّد' },
-      { v: 'Freemium', n: 'مجموعة صغيرة من صور Starter مجانية؛ الكتالوج الكامل اشتراك مدفوع' },
-      { v: 'Free', n: 'فُتحت Docker Hardened Images مجانًا مفتوحة المصدر بترخيص Apache-2.0 في ديسمبر 2025' },
-      { v: 'Varies', n: 'منصّة تجارية؛ تسعير الوصول إلى الصور غير منشور علنًا' },
-      { v: 'Paid', n: 'تجاري؛ يوجد برنامج مجاني مفتوح المصدر للمشاريع المؤهّلة' },
-    ],
-  },
-  {
-    label: 'مبني من المصدر على Wolfi',
-    cells: [
-      { v: 'Yes' },
-      { v: 'No', n: 'تحصين قائم على Debian، لا Wolfi' },
-      { v: 'Yes', n: 'قائم على Wolfi' },
-      { v: 'No', n: 'مبني على Debian وAlpine' },
-      { v: 'No', n: 'صور رسمية مُنسّقة/مُحسّنة، لا إعادة بناء على Wolfi' },
-      { v: 'No', n: 'بناء مملوك من المصدر، لا Wolfi' },
-    ],
-  },
-  {
-    label: 'هدف صفر ثغرات مع إعادة بناء يومية',
-    cells: [
-      { v: 'Yes', n: 'بوابة Trivy صارمة؛ ثغرة قابلة للإصلاح تُفشل البناء' },
-      { v: 'Yes', n: 'هدف شبه صفر ثغرات؛ الوتيرة غير محدّدة علنًا هنا' },
-      { v: 'Yes', n: 'هدف شبه صفر ثغرات مع إعادة بناء متكرّرة' },
-      { v: 'Yes', n: 'هدف شبه صفر ثغرات؛ الطبقات المدفوعة تضيف اتفاقية مستوى خدمة للمعالجة' },
-      { v: 'Yes', n: 'هدف شبه صفر ثغرات عبر تحصين مستمر' },
-      { v: 'Yes', n: 'هدف شبه صفر ثغرات؛ الطبقات المدفوعة تضيف اتفاقية مستوى خدمة للمعالجة' },
-    ],
-  },
-  {
-    label: 'موقّع (cosign دون مفتاح)',
-    cells: [
-      { v: 'Yes' },
-      { v: 'Yes', n: 'صور موقّعة' },
-      { v: 'Yes' },
-      { v: 'Yes' },
-      { v: 'Yes', n: 'توقيع تشفيري' },
-      { v: 'Yes', n: 'توقيعات cosign' },
-    ],
-  },
-  {
-    label: 'SBOM (SPDX أو CycloneDX)',
-    cells: [
-      { v: 'Yes', n: 'SPDX' },
-      { v: 'Yes' },
-      { v: 'Yes' },
-      { v: 'Yes', n: 'SPDX وCycloneDX' },
-      { v: 'Yes' },
-      { v: 'Yes' },
-    ],
-  },
-  {
-    label: 'منشأ بناء SLSA',
-    cells: [
-      { v: 'Yes' },
-      { v: 'Partial', n: 'تختلف الشهادات حسب العرض' },
-      { v: 'Yes', n: 'SLSA Build Level 2' },
-      { v: 'Yes', n: 'SLSA Build Level 3' },
-      { v: 'Yes', n: 'SLSA Level 3 (حسب المورّد)' },
-      { v: 'Yes', n: 'متوائم مع SLSA Level 3 (حسب المورّد)' },
-    ],
-  },
-  {
-    label: 'متعدد المعماريات (amd64 + arm64)',
-    cells: [
-      { v: 'Yes' },
-      { v: 'Yes' },
-      { v: 'Yes' },
-      { v: 'Yes' },
-      { v: 'Varies', n: 'غير مؤكّد عبر الكتالوج' },
-      { v: 'Varies', n: 'غير مؤكّد من مصدر أولي' },
-    ],
-  },
-  {
-    label: 'مخططات Helm مُضمّنة',
-    cells: [
-      { v: 'Yes' },
-      { v: 'Yes', n: 'خلف الكتالوج المدفوع' },
-      { v: 'No', n: 'مُركّز على الصور' },
-      { v: 'Yes' },
-      { v: 'Partial', n: 'صور متوافقة مع المخططات؛ تتكامل مع المخططات الموجودة' },
-      { v: 'Yes', n: 'مخططات Helm مُتاحة' },
-    ],
-  },
-  {
-    label: 'المخططات تثبّت الصور بالبصمة الرقمية',
-    cells: [
-      { v: 'Yes' },
-      { v: 'Varies', n: 'غير مؤكّد هنا' },
-      { v: 'n/a' },
-      { v: 'Varies', n: 'غير مؤكّد هنا' },
-      { v: 'n/a', n: 'لا مخططات من الطرف الأول' },
-      { v: 'Varies', n: 'غير مؤكّد هنا' },
-    ],
-  },
-  {
-    label: 'شفافية الترخيص، مع تمييز البدائل النظيفة',
-    cells: [
-      { v: 'Yes', n: 'التطبيقات متاحة المصدر مُعلّمة، مع ذِكر بديل نظيف OSI' },
-      { v: 'Partial' },
-      { v: 'Partial' },
-      { v: 'Partial' },
-      { v: 'Partial' },
-      { v: 'Partial' },
-    ],
-  },
-  {
-    label: 'مفتوح ومجاني للتحقّق',
-    cells: [
-      { v: 'Yes', n: 'صور ومخططات ومسارات بناء عامة' },
-      { v: 'Partial', n: 'الكتالوج الكامل محجوب خلف اشتراك' },
-      { v: 'Partial', n: 'الكتالوج الكامل محجوب خلف اشتراك' },
-      { v: 'Yes', n: 'كتالوج مجاني مفتوح المصدر مع شهادات عامة' },
-      { v: 'Partial', n: 'منصّة تجارية؛ ليست كتالوجًا مفتوحًا بالكامل' },
-      { v: 'Partial', n: 'تجاري؛ برنامج مفتوح المصدر للمشاريع المؤهّلة' },
-    ],
-  },
-];
-
-// Group the flat capability list into thematic sections. Mapping is by row label.
-const groupOrder = ['الوصول والتكلفة', 'البناء والتحصين', 'سلسلة التوريد', 'المخططات والترخيص'] as const;
-const rowGroup: Record<string, (typeof groupOrder)[number]> = {
-  'السعر / الطبقة المجانية': 'الوصول والتكلفة',
-  'مفتوح ومجاني للتحقّق': 'الوصول والتكلفة',
-  'مبني من المصدر على Wolfi': 'البناء والتحصين',
-  'هدف صفر ثغرات مع إعادة بناء يومية': 'البناء والتحصين',
-  'متعدد المعماريات (amd64 + arm64)': 'البناء والتحصين',
-  'موقّع (cosign دون مفتاح)': 'سلسلة التوريد',
-  'SBOM (SPDX أو CycloneDX)': 'سلسلة التوريد',
-  'منشأ بناء SLSA': 'سلسلة التوريد',
-  'مخططات Helm مُضمّنة': 'المخططات والترخيص',
-  'المخططات تثبّت الصور بالبصمة الرقمية': 'المخططات والترخيص',
-  'شفافية الترخيص، مع تمييز البدائل النظيفة': 'المخططات والترخيص',
-};
-const groupedRows = groupOrder.map((title) => ({ title, rows: rows.filter((r) => rowGroup[r.label] === title) }));
-
-// Pick a visual treatment per verdict word without adding any color accent.
-function tone(v: string): string {
-  const yes = v.toLowerCase();
-  if (yes === 'yes' || yes === 'free') return 'text-paper';
-  // Everything else (No, Paid, Partial, Varies, Freemium, n/a) is muted.
-  return 'text-ash';
-}
-
-// The handful of things that set QuenchWorks apart, called out above the grid.
-const differentiators: { label: string; body: string }[] = [
-  { label: 'مجاني، دون حساب', body: 'اسحب الصور وانشر المخططات دون اشتراك ودون تسجيل دخول ودون سجلّ لإضافته.' },
-  { label: 'عام بالكامل، قابل للتحقّق', body: 'الصور والمخططات والإثبات (SBOM ومنشأ SLSA) عامة ليفحصها أي شخص.' },
-  { label: 'مخططات مثبّتة بالبصمة الرقمية', body: 'تشير مخططات Helm الموقّعة إلى صورتها عبر sha256، لا عبر وسم متغيّر.' },
-  { label: 'صدق الترخيص', body: 'التطبيقات متاحة المصدر مُعلّمة كذلك، ولكلٍّ منها بديل نظيف OSI مذكور.' },
-];
-
-// One-line, neutral snapshot per vendor (same order as `vendors`); tier drives the pill.
-const vendorMeta: { name: string; tier: string; tierLabel: string; blurb: string }[] = [
-  { name: 'QuenchWorks', tier: 'Free', tierLabel: 'مجاني', blurb: 'كتالوج مُحصّن مستقل وعام بالكامل. صور مبنية على Wolfi ومخططات Helm موقّعة مثبّتة بالبصمة الرقمية، دون حاجة إلى حساب.' },
-  { name: 'Bitnami', tier: 'Paid', tierLabel: 'مدفوع', blurb: 'Bitnami Secure Images التجاري من Broadcom. سُحب كتالوج المجتمع المجاني، تاركًا وراءه سجلًّا قديمًا مجمّدًا.' },
-  { name: 'Chainguard', tier: 'Freemium', tierLabel: 'مجاني-جزئيًا', blurb: 'صور مصغّرة متميّزة قائمة على Wolfi. مجموعة Starter صغيرة مجانية؛ الكتالوج الكامل اشتراك مدفوع.' },
-  { name: 'Docker', tier: 'Free', tierLabel: 'مجاني', blurb: 'Docker Hardened Images، فُتحت ككتالوج مجاني مفتوح المصدر بترخيص Apache-2.0 أواخر 2025. مبنية على Debian وAlpine.' },
-  { name: 'RapidFort', tier: 'Varies', tierLabel: 'يختلف', blurb: 'صور مُنسّقة ومُحسّنة تُزيل سطح الهجوم من الحاويات الرسمية. منصّة تجارية.' },
-  { name: 'Minimus', tier: 'Paid', tierLabel: 'مدفوع', blurb: 'صور مصغّرة مملوكة من المصدر. تجارية، مع برنامج مجاني للمشاريع المؤهّلة مفتوحة المصدر.' },
-];
-
-// Pill treatment for a price tier; monochrome, with Free carrying the emphasis.
-function pillTone(tier: string): string {
-  return tier === 'Free' ? 'border-paper/40 text-paper' : 'border-line text-ash';
-}
+// Rebuild the thematic grouping: for each group index g, gather the rows whose
+// rowGroupIndex matches, keeping the original row index so the cells stay aligned
+// to the vendor columns.
+const groupedRows = groupTitles.map((title, g) => ({
+  title: pick(title, lang),
+  rows: rows.map((r, i) => ({ r, i })).filter((x) => rowGroupIndex[x.i] === g).map((x) => x.r),
+}));
 ---
 
 <Base
@@ -232,8 +60,8 @@ function pillTone(tier: string): string {
         {
           differentiators.map((d) => (
             <div class="rounded-xl border border-line bg-graphite p-5">
-              <p class="text-sm font-semibold text-paper">{d.label}</p>
-              <p class="mt-2 text-sm leading-relaxed text-ash">{d.body}</p>
+              <p class="text-sm font-semibold text-paper">{pick(d.label, lang)}</p>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{pick(d.body, lang)}</p>
             </div>
           ))
         }
@@ -249,9 +77,9 @@ function pillTone(tier: string): string {
             <div class:list={['rounded-xl border bg-graphite p-5', v.name === 'QuenchWorks' ? 'border-paper/40' : 'border-line']}>
               <div class="flex items-center justify-between gap-3">
                 <p class="text-base font-semibold text-paper">{v.name}</p>
-                <span class:list={['shrink-0 rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest', pillTone(v.tier)]}>{v.tierLabel}</span>
+                <span class:list={['shrink-0 rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest', pillTone(v.tier)]}>{verdictLabel[lang][v.tier]}</span>
               </div>
-              <p class="mt-2 text-sm leading-relaxed text-ash">{v.blurb}</p>
+              <p class="mt-2 text-sm leading-relaxed text-ash">{pick(v.blurb, lang)}</p>
             </div>
           ))
         }
@@ -294,11 +122,11 @@ function pillTone(tier: string): string {
                 </tr>
                 {group.rows.map((row) => (
                   <tr class="border-b border-line/70">
-                    <td class="px-4 py-4 align-top font-medium text-paper">{row.label}</td>
+                    <td class="px-4 py-4 align-top font-medium text-paper">{pick(row.label, lang)}</td>
                     {row.cells.map((cell, i) => (
                       <td class:list={['px-4 py-4 align-top', i === 0 ? 'bg-graphite/40' : '']}>
                         <span class:list={['font-medium', tone(cell.v)]}>{vt(cell.v)}</span>
-                        {cell.n && <span class="mt-1 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                        {cell.n && <span class="mt-1 block text-xs leading-relaxed text-ash">{pick(cell.n, lang)}</span>}
                       </td>
                     ))}
                   </tr>
@@ -319,7 +147,7 @@ function pillTone(tier: string): string {
             <div class="mt-3 space-y-3">
               {group.rows.map((row) => (
                 <div class="rounded-xl border border-line bg-graphite p-4">
-                  <p class="font-medium text-paper">{row.label}</p>
+                  <p class="font-medium text-paper">{pick(row.label, lang)}</p>
                   <dl class="mt-3 space-y-2">
                     {row.cells.map((cell, i) => (
                       <div class="flex items-baseline justify-between gap-3 border-t border-line/60 pt-2 first:border-0 first:pt-0">
@@ -328,7 +156,7 @@ function pillTone(tier: string): string {
                         </dt>
                         <dd class="text-end">
                           <span class:list={['text-sm font-medium', tone(cell.v)]}>{vt(cell.v)}</span>
-                          {cell.n && <span class="mt-0.5 block text-xs leading-relaxed text-ash">{cell.n}</span>}
+                          {cell.n && <span class="mt-0.5 block text-xs leading-relaxed text-ash">{pick(cell.n, lang)}</span>}
                         </dd>
                       </div>
                     ))}

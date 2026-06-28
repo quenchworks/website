@@ -30,17 +30,6 @@ export default defineConfig({
         defaultLocale: "en",
         locales: { en: "en", ar: "ar", es: "es" },
       },
-      // The /alternative section is English-only. The i18n integration otherwise
-      // attaches ar/es hreflang alternates to every URL, which would point at
-      // pages that don't exist. Drop the phantom localized locs and trim the
-      // alternates on the real /alternative pages to just en.
-      serialize(item) {
-        if (/\/(ar|es)\/alternative(\/|$)/.test(item.url)) return undefined;
-        if (item.url.includes("/alternative") && item.links) {
-          item.links = item.links.filter((l) => l.lang === "en");
-        }
-        return item;
-      },
     }),
   ],
   // Prefetch internal links on hover so navigation across the catalog feels instant.
@@ -56,10 +45,11 @@ export default defineConfig({
     // The bare /api lands on the docs.
     "/api": "/api/docs",
     // The bespoke Bitnami page is now one of the data-driven /alternative/<vendor>
-    // pages; keep the old URL (and its localized variants) alive.
+    // pages; keep the old URL (and its localized variants) alive, each to its
+    // own locale's vendor page.
     "/bitnami-alternative": "/alternative/bitnami",
-    "/ar/bitnami-alternative": "/alternative/bitnami",
-    "/es/bitnami-alternative": "/alternative/bitnami",
+    "/ar/bitnami-alternative": "/ar/alternative/bitnami",
+    "/es/bitnami-alternative": "/es/alternative/bitnami",
   },
   vite: {
     plugins: [tailwindcss()],

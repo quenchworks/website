@@ -1,17 +1,14 @@
 ---
-// One SEO landing per competitor, generated from the shared comparison data in
-// src/data/compare.ts. Each page is "QuenchWorks vs <Vendor>": a per-vendor lead,
-// then the feature-by-feature matrix narrowed to QuenchWorks vs that one vendor.
-// Add/refine a competitor by editing the data module — the page follows, in
-// every language.
-import Base from '../../layouts/Base.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { getLangFromUrl } from '../../i18n/ui';
-import { vendors, rows, vendorMeta, vendorSlug, vendorIntro, tone, pick, ui, verdictLabel } from '../../data/compare';
+// Arabic per-competitor landing. Same structure as the en [vendor] page; only
+// link prefixes (/ar/...), pagefind title, and JSON-LD URLs carry the locale.
+// All copy comes from src/data/compare.ts via pick(_, lang) / verdictLabel[lang].
+import Base from '../../../layouts/Base.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import { getLangFromUrl } from '../../../i18n/ui';
+import { vendors, rows, vendorMeta, vendorSlug, vendorIntro, tone, pick, ui, verdictLabel } from '../../../data/compare';
 
 export function getStaticPaths() {
-  // Every vendor except QuenchWorks (index 0) gets a "vs" page.
   return vendors
     .map((name, i) => ({ name, i }))
     .filter((v) => v.name !== 'QuenchWorks')
@@ -23,40 +20,38 @@ const { name, index } = Astro.props;
 const meta = vendorMeta[index];
 const intro = vendorIntro[vendorSlug(name)] ?? { headline: { en: `QuenchWorks vs ${name}`, ar: `QuenchWorks مقابل ${name}`, es: `QuenchWorks frente a ${name}` }, body: meta.blurb };
 
-// Narrow each capability row to the two columns this page compares.
 const compared = rows.map((r) => ({ label: r.label, quench: r.cells[0], rival: r.cells[index] }));
 
-// Breadcrumb structured data (Alternatives > <vendor>) for richer search results.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: pick(ui['eyebrow'], lang), item: new URL('/alternative', Astro.site).href },
+    { '@type': 'ListItem', position: 1, name: pick(ui['eyebrow'], lang), item: new URL('/ar/alternative', Astro.site).href },
     { '@type': 'ListItem', position: 2, name: `QuenchWorks vs ${name}`, item: new URL(Astro.url.pathname, Astro.site).href },
   ],
 };
 ---
 
 <Base
-  title={`QuenchWorks vs ${name} · A free, signed alternative`}
-  description={`How QuenchWorks compares to ${name} across price, hardening, signing, SBOMs, SLSA provenance, and Helm charts — feature by feature, conservative and verifiable.`}
+  title={`QuenchWorks مقابل ${name} · بديل مجاني وموقّع`}
+  description={`كيف يقارَن QuenchWorks بـ ${name} عبر السعر والتحصين والتوقيع وSBOM ومنشأ SLSA ومخططات Helm — ميزة بميزة، محافظ وقابل للتحقّق.`}
 >
   <Header />
   <main
     class="mx-auto max-w-3xl px-5 py-16"
     data-pagefind-body
-    data-pagefind-meta={`title:QuenchWorks vs ${name},type:Alternative`}
+    data-pagefind-meta={`title:QuenchWorks مقابل ${name},type:Alternative`}
   >
     <p class="font-mono text-xs uppercase tracking-widest text-ash">
-      <a href="/alternative" class="transition-colors hover:text-paper">{pick(ui['eyebrow'], lang)}</a>
+      <a href="/ar/alternative" class="transition-colors hover:text-paper">{pick(ui['eyebrow'], lang)}</a>
       <span class="text-ash/50">/</span> {name}
     </p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{pick(intro.headline, lang)}</h1>
     <p class="mt-4 leading-relaxed text-ash">{pick(intro.body, lang)}</p>
 
     <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
-      <a href="/charts" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['browseCharts'], lang)}</a>
-      <a href="/docs/migrate" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['migrate'], lang)}</a>
+      <a href="/ar/charts" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['browseCharts'], lang)}</a>
+      <a href="/ar/docs/migrate" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['migrate'], lang)}</a>
     </div>
 
     <!-- Feature-by-feature: QuenchWorks vs this vendor -->
@@ -89,8 +84,8 @@ const jsonLd = {
       <p class="text-base text-paper">{pick(ui['ctaTitle'], lang)}</p>
       <p class="mt-2 text-sm text-ash">{pick(ui['ctaBody'], lang)}</p>
       <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
-        <a href="/charts" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['browseAll'], lang)}</a>
-        <a href="/docs/migrate" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['migrationGuide'], lang)}</a>
+        <a href="/ar/charts" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['browseAll'], lang)}</a>
+        <a href="/ar/docs/migrate" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['migrationGuide'], lang)}</a>
       </div>
     </section>
   </main>
