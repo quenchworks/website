@@ -34,6 +34,8 @@ export interface ImageEntry {
   image: string; // ghcr.io/quenchworks/images/<slug>
   caution?: boolean;
   cleanAlternative?: string;
+  /** Editorial note about a current known issue (e.g. a CVE pending an upstream fix). */
+  knownIssue?: string;
 }
 
 export const ghcr = 'ghcr.io/quenchworks';

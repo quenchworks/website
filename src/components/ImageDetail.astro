@@ -6,6 +6,7 @@ import VersionSwitcher from '../components/VersionSwitcher.astro';
 import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { charts } from '../data/charts';
 import { fetchPackageDetail } from '../data/artifacthub';
+import CveStatus from '../components/CveStatus.astro';
 import { resolveAlternatives } from '../data/alternatives';
 import { slugify } from '../data/slugify';
 import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
@@ -124,7 +125,7 @@ const sevs = isLatest && sec
     </header>
 
     <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-      <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper">{t('detail.badge.fixableCves')}</span>
+      <CveStatus total={total} sec={sec} cleanLabel={t('detail.badge.fixableCves')} />
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.cosignSigned')}</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.spdxSbom')}</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.slsaProvenance')}</span>

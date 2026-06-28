@@ -14,6 +14,26 @@ export interface AhFacts {
   repo: string;
   url: string;
   ts?: number;
+  // Live Trivy security summary from ArtifactHub (the search endpoint carries it),
+  // so catalog cards can show a real CVE marker instead of a hardcoded claim.
+  security?: SecuritySummary;
+  securityTotal?: number;
+}
+
+// Normalize ArtifactHub's security_report_summary into our shape + a total.
+function parseSecurity(raw: any): { security?: SecuritySummary; securityTotal?: number } {
+  if (!raw) return {};
+  const security: SecuritySummary = {
+    critical: raw.critical ?? 0,
+    high: raw.high ?? 0,
+    medium: raw.medium ?? 0,
+    low: raw.low ?? 0,
+    unknown: raw.unknown ?? 0,
+  };
+  return {
+    security,
+    securityTotal: security.critical + security.high + security.medium + security.low + security.unknown,
+  };
 }
 
 // Lightweight: one search call -> map of package name -> basic facts (used by the index).
@@ -35,6 +55,7 @@ export async function fetchArtifactHub(): Promise<Record<string, AhFacts>> {
         repo,
         url: `${API.replace('/api/v1', '')}/packages/helm/${repo}/${p.name}`,
         ts: p.ts,
+        ...parseSecurity(p.security_report_summary),
       };
     }
   } catch {

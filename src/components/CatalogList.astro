@@ -14,6 +14,7 @@
  */
 import Pager from './Pager.astro';
 import type { AhFacts } from '../data/artifacthub';
+import CveStatus from '../components/CveStatus.astro';
 import { canonicalVersions } from '../data/images';
 import { getLangFromUrl, localizeUrl, useTranslations } from '../i18n/ui';
 import { localizedSummary } from '../i18n/content';
@@ -90,6 +91,9 @@ const dataset = all.map((e) => {
     latest: isImages ? (canon(e)[0]?.version ?? null) : null,
     size: isImages ? (canon(e)[0]?.size ?? null) : null,
     versionCount: isImages ? canon(e).length : 0,
+    // Live CVE marker (ArtifactHub): total + worst-severity flag for the dot color.
+    cveTotal: live?.securityTotal ?? null,
+    cveBad: !!live?.security && live.security.critical + live.security.high > 0,
   };
 });
 
@@ -207,7 +211,7 @@ const dataset = all.map((e) => {
                 )}
               </span>
               {e.status === 'available' ? (
-                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+                <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" />
               ) : (
                 <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">{t('catalog.list.badgePlanned')}</span>
               )}
@@ -244,7 +248,7 @@ const dataset = all.map((e) => {
             <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
               <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
             </span>
-            <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+            <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" />
           </div>
           <div class="flex-1">
             <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
@@ -325,6 +329,16 @@ const dataset = all.map((e) => {
   const esc = (s: string) =>
     s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+  // Live CVE badge (matches CveStatus.astro): green "0 CVE" when clean, amber for
+  // medium/low, red when critical/high. Driven by ArtifactHub data on the entry.
+  const cveBadge = (e: Entry): string => {
+    const tot = (e as any).cveTotal;
+    if (typeof tot !== 'number' || tot === 0)
+      return '<span class="rounded border border-line bg-graphite px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>';
+    const cls = (e as any).cveBad ? 'border-red-500/40 bg-red-500/10 text-red-300' : 'border-amber-500/40 bg-amber-500/10 text-amber-300';
+    return `<span class="rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest ${cls}" title="Live ArtifactHub scan">${tot}&nbsp;CVE${tot === 1 ? '' : 's'}</span>`;
+  };
+
   function cardHTML(e: Entry): string {
     if (isImages) {
       const available = e.status === 'available';
@@ -337,7 +351,7 @@ const dataset = all.map((e) => {
         ? '<img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />'
         : '<span class="size-2 rounded-full border border-ash" aria-hidden="true"></span>';
       const badge = available
-        ? '<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>'
+        ? cveBadge(e)
         : `<span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">${esc(tPlanned)}</span>`;
       const latest = e.latest ?? e.version;
       const verParts = available && latest
@@ -372,7 +386,7 @@ const dataset = all.map((e) => {
     return `<li class="card"><a href="${itemBase}/${e.slug}" class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40">
       <div class="flex items-start justify-between gap-3">
         <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink"><img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" /></span>
-        <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-paper">0&nbsp;CVE</span>
+        ${cveBadge(e)}
       </div>
       <div class="flex-1">
         <h2 class="text-base font-semibold leading-tight">${esc(e.name)}</h2>

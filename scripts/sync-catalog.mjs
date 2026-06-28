@@ -136,6 +136,7 @@ for (const [slug, a] of Object.entries(lockApps)) {
     entry.caution = true;
     if (a.cleanAlternative) entry.cleanAlternative = a.cleanAlternative;
   }
+  if (a.knownIssue) entry.knownIssue = a.knownIssue;
   images.push(entry);
 }
 

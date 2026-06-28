@@ -6,6 +6,7 @@ import VersionSwitcher from '../components/VersionSwitcher.astro';
 import { Code } from 'astro-expressive-code/components';
 import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { fetchPackageDetail } from '../data/artifacthub';
+import CveStatus from '../components/CveStatus.astro';
 import { dockerfileFor } from '../data/dockerfiles';
 import { slugify } from '../data/slugify';
 import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
@@ -124,13 +125,20 @@ const ld = {
     </header>
 
     <div class="mt-4 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-      <span class="rounded border border-line bg-graphite px-2 py-0.5 text-paper">{t('detail.badge.fixableCves')}</span>
+      <CveStatus total={ah?.securityTotal} sec={ah?.security} cleanLabel={t('detail.badge.fixableCves')} />
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.nonroot')}</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.cosignSigned')}</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.spdxSbom')}</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.slsaProvenance')}</span>
       <span class="rounded border border-line bg-graphite px-2 py-0.5">{t('detail.badge.arch')}</span>
     </div>
+
+    {entry.knownIssue && (
+      <div class="mt-4 flex max-w-2xl items-start gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
+        <span class="mt-0.5 inline-block size-2 shrink-0 rounded-full bg-amber-500" aria-hidden="true" />
+        <p><span class="font-semibold">Known issue:</span> {entry.knownIssue}</p>
+      </div>
+    )}
 
     <p class="mt-6 max-w-2xl text-ash">{summary}</p>
 

@@ -1,0 +1,55 @@
+---
+// Live CVE indicator, fed by ArtifactHub's security_report_summary (never a
+// hardcoded value). Two shapes: `dot` for catalog cards, badge for detail pages.
+// Accessible: color is backed by an aria-label + a title with the full breakdown
+// (never color-only). When AH is unreachable (total undefined), falls back to the
+// neutral clean label so a deploy never shows a false alarm.
+import type { SecuritySummary } from '../data/artifacthub';
+
+interface Props {
+  total?: number;
+  sec?: SecuritySummary;
+  dot?: boolean;
+  cleanLabel: string; // e.g. "0 fixable CVEs" (localized by the caller)
+}
+const { total, sec, dot = false, cleanLabel } = Astro.props;
+
+// Worst severity drives the color; medium/low/unknown are "warn", critical/high "bad".
+const bad = !!sec && sec.critical + sec.high > 0;
+const has = typeof total === 'number' && total > 0;
+
+const parts = sec
+  ? (['critical', 'high', 'medium', 'low', 'unknown'] as const)
+      .filter((k) => sec[k] > 0)
+      .map((k) => `${sec[k]} ${k}`)
+  : [];
+const breakdown = parts.join(', ');
+const label = has ? `${total} CVE${total === 1 ? '' : 's'}` : cleanLabel;
+const title = has ? `Live ArtifactHub scan: ${breakdown}` : 'Live ArtifactHub scan: no CVEs';
+
+// Tone: green when clean, amber for medium/low/unknown, red when critical/high.
+const tone = !has ? 'ok' : bad ? 'bad' : 'warn';
+const dotColor = { ok: 'bg-emerald-500', warn: 'bg-amber-500', bad: 'bg-red-500' }[tone];
+const badgeColor = {
+  ok: 'border-line bg-graphite text-paper',
+  warn: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
+  bad: 'border-red-500/40 bg-red-500/10 text-red-300',
+}[tone];
+---
+{
+  dot ? (
+    <span
+      class:list={['inline-block size-2 shrink-0 rounded-full', dotColor]}
+      role="img"
+      aria-label={`${label} (${title})`}
+      title={`${label} — ${title}`}
+    />
+  ) : (
+    <span
+      class:list={['rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest', badgeColor]}
+      title={title}
+    >
+      {label}
+    </span>
+  )
+}
