@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { STACKS } from '../data/stacks';
+
+// Translated one-line value prop per stack (keyed by slug). Structural data
+// (name/components/slug) is shared in ../data/stacks.
+const prop: Record<string, string> = {
+  'observability-stack': 'Metrics, alerting, and populated Kubernetes dashboards from a single install.',
+  'lgtm-stack': 'The logs + metrics + traces superset, all in one pane of glass.',
+  'logging-stack': 'Cluster-wide log aggregation and browsing, ready to query.',
+  'tracing-stack': 'Distributed tracing with an OTLP ingest gateway, ready for your services.',
+  'identity-stack': 'SSO via OIDC and SAML in front of your apps, with a database that comes with it.',
+};
+
+// Per-locale link prefix. This is the en page, so no prefix.
+const chartHref = (slug: string) => `/charts/${slug}`;
+const quickstartHref = '/docs/chart-quickstart';
+const chartsHref = '/charts';
+---
+
+<Base
+  title="Stacks · Quenchworks"
+  description="Curated, hardened, operator-free observability and identity stacks. Deploy a full system with one helm install instead of assembling six charts by hand."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks,type:Stacks">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Stacks</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Full systems, one helm install</h1>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
+      Stacks are curated umbrella charts that bundle the same hardened building blocks as our
+      individual charts (0-CVE, nonroot, cosign-signed, digest-pinned, multi-arch) and pre-wire
+      them together. Instead of assembling six charts by hand and figuring out how they talk to
+      each other, you get a working system from a single install.
+    </p>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
+      Every stack is operator-free: plain Helm, no CRDs and no operators to run. What you deploy is
+      exactly the wiring you can read in the chart.
+    </p>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {
+        STACKS.map((s) => (
+          <div class="rounded-xl border border-line bg-graphite p-6">
+            <h2 class="text-xl font-semibold tracking-tight text-paper">{s.name}</h2>
+            <p class="mt-2 leading-relaxed text-ash">{prop[s.slug]}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {s.components.map((c) => (
+                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                  {c}
+                </span>
+              ))}
+            </div>
+            <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>helm install {s.slug} oci://ghcr.io/quenchworks/charts/{s.slug}</code></pre>
+            <a
+              href={chartHref(s.slug)}
+              class="mt-4 inline-flex rounded-lg border border-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:bg-ink"
+            >
+              View chart
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
+      <p class="text-base text-paper">Same hardened parts, pre-assembled.</p>
+      <p class="mt-2 text-sm text-ash">Browse every chart, or read the quickstart to deploy your first one.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href={chartsHref} class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">Browse all charts</a>
+        <a href={quickstartHref} class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">Chart quickstart</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

@@ -25,7 +25,7 @@ const sections = [
 
 <Base title="الأمان · Quenchworks" description="كيف يُبقي QuenchWorks الصور عند صفر ثغرات قابلة للإصلاح: مبنية من المصدر، موقّعة بـ cosign، مثبّتة بالبصمة الرقمية، ومُعاد بناؤها وفق جدول.">
   <Header />
-  <main class="mx-auto max-w-3xl px-5 py-16">
+  <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="type:Security">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">الأمان</p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">ثقة يمكنك التحقّق منها</h1>
     <p class="mt-4 text-ash">
@@ -46,15 +46,39 @@ const sections = [
 
     <section class="mt-10">
       <h2 class="text-xl font-semibold tracking-tight">تحقّق بنفسك</h2>
-      <pre class="mt-3 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># تأكّد من أن صورة بُنيت ووُقّعت بواسطة CI الخاص بنا (الصور بلا وسم latest)</span>
+      <p class="mt-2 leading-relaxed text-ash">
+        استبدل اسم أي صورة أو مخطط. هذه الأوامر حقيقية ولا تحتاج إلى مفتاح — يكفي cosign
+        وواجهة GitHub CLI.
+      </p>
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper" dir="ltr"><code><span class="text-ash"># تأكّد من أن صورة بُنيت ووُقّعت بواسطة CI الخاص بنا (الصور بلا وسم latest)</span>
 cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># الأمر نفسه ينطبق على أي مخطط، عبر وسم إصداره</span>
+<span class="text-ash"># استخدم المرجع المجرّد — يرفض cosign بادئة //:oci هنا</span>
 cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper" dir="ltr"><code><span class="text-ash"># تحقّق من شهادة SBOM بصيغة SPDX ومن إثبات بناء SLSA في خطوة واحدة</span>
+<span class="text-ash"># هذه هي الأداة الصحيحة — وليست `cosign download sbom`</span>
+gh attestation verify oci://ghcr.io/quenchworks/images/redis:8.8.0 --owner quenchworks</code></pre>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper" dir="ltr"><code><span class="text-ash"># استخرج بصمة sha256 الدقيقة الكامنة خلف الوسم</span>
+docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:8.8.0 \
+  --format '{'{{.Manifest.Digest}}'}'
+<span class="text-ash"># تُثبّت المخططات هذه البصمة بالضبط، لا وسمًا — فلا يمكن لما يعمل أن ينحرف</span></code></pre>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
+      <h2 class="text-lg font-semibold tracking-tight">بوابة صفر ثغرات</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        يُجرى فحص Trivy في كل بناء ويُفشله بشكل قاطع عند أي ثغرة قابلة للإصلاح، من الحرجة وصولًا
+        إلى المنخفضة، مع <span class="font-mono" dir="ltr">--ignore-unfixed</span> كي لا نمنع إلا
+        ما يمكننا فعليًا ترقيعه. تعمل البوابة نفسها مجددًا وفق جدول إعادة بناء، فالفحص النظيف هدف
+        متحرّك يُبقى نظيفًا مع ظهور تنبيهات جديدة — لا تدقيق لمرة واحدة.
+      </p>
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">

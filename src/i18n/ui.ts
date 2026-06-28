@@ -17,6 +17,7 @@ export const ui = {
   en: {
     'nav.charts': 'Charts',
     'nav.images': 'Images',
+    'nav.stacks': 'Stacks',
     'nav.runtimes': 'Runtimes',
     'nav.docs': 'Docs',
     'nav.api': 'API',
@@ -271,6 +272,7 @@ export const ui = {
   ar: {
     'nav.charts': 'المخططات',
     'nav.images': 'الصور',
+    'nav.stacks': 'الحزم',
     'nav.runtimes': 'بيئات التشغيل',
     'nav.docs': 'التوثيق',
     'nav.api': 'واجهة البرمجة',
@@ -524,6 +526,7 @@ export const ui = {
   es: {
     'nav.charts': 'Charts',
     'nav.images': 'Imágenes',
+    'nav.stacks': 'Stacks',
     'nav.runtimes': 'Entornos de ejecución',
     'nav.docs': 'Documentación',
     'nav.api': 'API',

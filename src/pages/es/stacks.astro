@@ -1,0 +1,78 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+import { STACKS } from '../../data/stacks';
+
+// Propuesta de valor traducida por stack (por slug). Los datos estructurales
+// (nombre/componentes/slug) se comparten en ../../data/stacks.
+const prop: Record<string, string> = {
+  'observability-stack': 'Métricas, alertas y paneles de Kubernetes poblados desde una sola instalación.',
+  'lgtm-stack': 'El superconjunto de logs + métricas + trazas, todo en un solo panel.',
+  'logging-stack': 'Agregación y exploración de logs de todo el clúster, listas para consultar.',
+  'tracing-stack': 'Trazado distribuido con una pasarela de ingesta OTLP, lista para tus servicios.',
+  'identity-stack': 'SSO mediante OIDC y SAML delante de tus aplicaciones, con una base de datos incluida.',
+};
+
+// Prefijo de enlace por idioma. Esta es la página en español.
+const chartHref = (slug: string) => `/es/charts/${slug}`;
+const quickstartHref = '/es/docs/chart-quickstart';
+const chartsHref = '/es/charts';
+---
+
+<Base
+  title="Stacks · Quenchworks"
+  description="Stacks de observabilidad e identidad curados, endurecidos y sin operadores. Despliega un sistema completo con un solo helm install en lugar de ensamblar seis charts a mano."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks,type:Stacks">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">Stacks</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Sistemas completos, un solo helm install</h1>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
+      Los stacks son charts paraguas curados que agrupan los mismos componentes endurecidos que
+      nuestros charts individuales (cero CVE, sin root, firmados con cosign, fijados por digest,
+      multi-arquitectura) y los precablean entre sí. En lugar de ensamblar seis charts a mano y
+      averiguar cómo se comunican, obtienes un sistema funcionando con una sola instalación.
+    </p>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
+      Cada stack es sin operadores: Helm puro, sin CRDs ni operadores que ejecutar. Lo que
+      despliegas es exactamente el cableado que puedes leer en el chart.
+    </p>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {
+        STACKS.map((s) => (
+          <div class="rounded-xl border border-line bg-graphite p-6">
+            <h2 class="text-xl font-semibold tracking-tight text-paper">{s.name}</h2>
+            <p class="mt-2 leading-relaxed text-ash">{prop[s.slug]}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {s.components.map((c) => (
+                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                  {c}
+                </span>
+              ))}
+            </div>
+            <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>helm install {s.slug} oci://ghcr.io/quenchworks/charts/{s.slug}</code></pre>
+            <a
+              href={chartHref(s.slug)}
+              class="mt-4 inline-flex rounded-lg border border-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:bg-ink"
+            >
+              Ver chart
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
+      <p class="text-base text-paper">Las mismas piezas endurecidas, preensambladas.</p>
+      <p class="mt-2 text-sm text-ash">Explora todos los charts, o lee la guía rápida para desplegar el primero.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href={chartsHref} class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">Explorar todos los charts</a>
+        <a href={quickstartHref} class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">Guía rápida de charts</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

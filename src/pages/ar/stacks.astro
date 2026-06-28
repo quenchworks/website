@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { STACKS } from '../../data/stacks';
+
+// عبارة القيمة المترجمة لكل حزمة (حسب الـ slug). البيانات البنيوية
+// (الاسم/المكوّنات/الـ slug) مشتركة في ../../data/stacks.
+const prop: Record<string, string> = {
+  'observability-stack': 'مقاييس وتنبيهات ولوحات Kubernetes مُعبّأة من تثبيت واحد.',
+  'lgtm-stack': 'المجموعة الشاملة للسجلّات والمقاييس والتتبّعات، جميعها في لوحة واحدة.',
+  'logging-stack': 'تجميع وتصفّح سجلّات العنقود بالكامل، جاهزة للاستعلام.',
+  'tracing-stack': 'تتبّع موزّع مع بوّابة استقبال OTLP، جاهز لخدماتك.',
+  'identity-stack': 'دخول موحّد عبر OIDC وSAML أمام تطبيقاتك، مع قاعدة بيانات مرفقة.',
+};
+
+// بادئة الروابط حسب اللغة. هذه هي الصفحة العربية.
+const chartHref = (slug: string) => `/ar/charts/${slug}`;
+const quickstartHref = '/ar/docs/chart-quickstart';
+const chartsHref = '/ar/charts';
+---
+
+<Base
+  title="الحزم · Quenchworks"
+  description="حزم مراقبة وهوية منسّقة ومُحصّنة وبدون مشغّلات. انشر نظامًا كاملًا بأمر helm install واحد بدلًا من تجميع ستة charts يدويًا."
+>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:الحزم,type:Stacks">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">الحزم</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">أنظمة كاملة بأمر helm install واحد</h1>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
+      الحزم هي charts مظلّية منسّقة تجمع نفس المكوّنات المُحصّنة الموجودة في الـ charts الفردية
+      (صفر CVE، بدون صلاحيات الجذر، موقّعة بـ cosign، مثبّتة بالـ digest، متعددة المعماريات)
+      وتصلها ببعضها مسبقًا. بدلًا من تجميع ستة charts يدويًا ومعرفة كيفية تواصلها معًا، تحصل على
+      نظام جاهز للعمل من تثبيت واحد.
+    </p>
+    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
+      كل حزمة بدون مشغّلات: Helm بحت، بدون CRDs وبدون مشغّلات لتشغيلها. ما تنشره هو بالضبط
+      الوصلات التي يمكنك قراءتها في الـ chart.
+    </p>
+
+    <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
+      {
+        STACKS.map((s) => (
+          <div class="rounded-xl border border-line bg-graphite p-6">
+            <h2 class="text-xl font-semibold tracking-tight text-paper">{s.name}</h2>
+            <p class="mt-2 leading-relaxed text-ash">{prop[s.slug]}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {s.components.map((c) => (
+                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                  {c}
+                </span>
+              ))}
+            </div>
+            <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper" dir="ltr"><code>helm install {s.slug} oci://ghcr.io/quenchworks/charts/{s.slug}</code></pre>
+            <a
+              href={chartHref(s.slug)}
+              class="mt-4 inline-flex rounded-lg border border-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:bg-ink"
+            >
+              عرض الـ chart
+            </a>
+          </div>
+        ))
+      }
+    </div>
+
+    <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
+      <p class="text-base text-paper">نفس المكوّنات المُحصّنة، مجمّعة مسبقًا.</p>
+      <p class="mt-2 text-sm text-ash">تصفّح كل الـ charts، أو اقرأ دليل البدء السريع لنشر أوّل واحد.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
+        <a href={chartsHref} class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">تصفّح كل الـ charts</a>
+        <a href={quickstartHref} class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">دليل البدء السريع للـ charts</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>

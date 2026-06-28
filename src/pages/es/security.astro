@@ -25,7 +25,7 @@ const sections = [
 
 <Base title="Seguridad · Quenchworks" description="Cómo QuenchWorks mantiene las imágenes en cero CVE corregibles: compiladas desde el código fuente, firmadas con cosign, fijadas por digest y reconstruidas de forma programada.">
   <Header />
-  <main class="mx-auto max-w-3xl px-5 py-16">
+  <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="type:Security">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">Seguridad</p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Confianza que puedes verificar</h1>
     <p class="mt-4 text-ash">
@@ -46,15 +46,41 @@ const sections = [
 
     <section class="mt-10">
       <h2 class="text-xl font-semibold tracking-tight">Verifícalo tú mismo</h2>
-      <pre class="mt-3 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirma que una imagen fue construida y firmada por nuestro CI (las imágenes no tienen :latest)</span>
+      <p class="mt-2 leading-relaxed text-ash">
+        Sustituye el nombre de cualquier imagen o chart. Estos comandos son reales y no necesitan
+        clave — solo cosign y la CLI de GitHub.
+      </p>
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirma que una imagen fue construida y firmada por nuestro CI (las imágenes no tienen :latest)</span>
 cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># lo mismo funciona para cualquier chart, por su etiqueta de versión</span>
+<span class="text-ash"># usa la referencia simple — cosign rechaza el prefijo oci:// aquí</span>
 cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># verifica la atestación SBOM SPDX y la procedencia de compilación SLSA en un solo paso</span>
+<span class="text-ash"># esta es la herramienta correcta — no `cosign download sbom`</span>
+gh attestation verify oci://ghcr.io/quenchworks/images/redis:8.8.0 --owner quenchworks</code></pre>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># resuelve el digest sha256 exacto detrás de la etiqueta</span>
+docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:8.8.0 \
+  --format '{'{{.Manifest.Digest}}'}'
+<span class="text-ash"># los charts fijan este digest exacto, nunca una etiqueta — así lo que corre no puede desplazarse</span></code></pre>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
+      <h2 class="text-lg font-semibold tracking-tight">La puerta de cero CVE</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        Un análisis de Trivy se ejecuta en cada compilación y la hace fallar de forma tajante ante
+        cualquier vulnerabilidad corregible, de CRÍTICA a BAJA, con
+        <span class="font-mono">--ignore-unfixed</span> para bloquear solo lo que realmente podemos
+        parchear. La misma puerta vuelve a ejecutarse de forma programada, así que un análisis limpio
+        es un objetivo móvil mantenido limpio a medida que aparecen nuevos avisos — no una auditoría
+        puntual.
+      </p>
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">

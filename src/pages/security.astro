@@ -25,7 +25,7 @@ const sections = [
 
 <Base title="Security · Quenchworks" description="How QuenchWorks keeps images at zero fixable CVEs: built from source, signed with cosign, pinned by digest, rebuilt on a schedule.">
   <Header />
-  <main class="mx-auto max-w-3xl px-5 py-16">
+  <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="type:Security">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">Security</p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Trust you can verify</h1>
     <p class="mt-4 text-ash">
@@ -46,15 +46,39 @@ const sections = [
 
     <section class="mt-10">
       <h2 class="text-xl font-semibold tracking-tight">Verify it yourself</h2>
-      <pre class="mt-3 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirm an image was built and signed by our CI (images have no :latest)</span>
+      <p class="mt-2 leading-relaxed text-ash">
+        Swap in any image or chart name. These commands are real and need no key — just cosign and
+        the GitHub CLI.
+      </p>
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirm an image was built and signed by our CI (images have no :latest)</span>
 cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># the same works for any chart, by its version tag</span>
+<span class="text-ash"># use the plain ref — cosign rejects an oci:// prefix here</span>
 cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># verify the SPDX SBOM attestation and the SLSA build provenance in one step</span>
+<span class="text-ash"># this is the right tool — not `cosign download sbom`</span>
+gh attestation verify oci://ghcr.io/quenchworks/images/redis:8.8.0 --owner quenchworks</code></pre>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># resolve the exact sha256 digest behind the tag</span>
+docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:8.8.0 \
+  --format '{'{{.Manifest.Digest}}'}'
+<span class="text-ash"># charts pin this exact digest, never a tag — so what runs cannot drift</span></code></pre>
+    </section>
+
+    <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
+      <h2 class="text-lg font-semibold tracking-tight">The 0-CVE gate</h2>
+      <p class="mt-2 text-sm leading-relaxed text-ash">
+        A Trivy scan runs on every build and hard-fails it on any fixable vulnerability, from
+        CRITICAL down to LOW, with <span class="font-mono">--ignore-unfixed</span> so we only block
+        on what we can actually patch. The same gate runs again on a rebuild schedule, so a clean
+        scan is a moving target kept clean as new advisories land — not a one-time audit.
+      </p>
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
