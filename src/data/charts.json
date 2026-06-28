@@ -517,6 +517,34 @@
     ]
   },
   {
+    "slug": "ghost",
+    "name": "ghost",
+    "category": "Apps & productivity",
+    "summary": "Open-source Node.js publishing platform for blogs, newsletters, and membership sites. Packaged from Ghost's official npm distribution on a hardened Wolfi Node 22; configured entirely via environment and backed by an external MySQL/MariaDB with a content PVC for themes, images, and data.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "6.49.0",
+    "description": "Hardened Ghost publishing platform (Node.js CMS + membership/newsletter engine) on a 0-CVE nonroot image, with a bundled MariaDB backend.",
+    "imageRepository": "ghcr.io/quenchworks/images/ghost",
+    "imageDigest": "sha256:d6b815df0eee8368937db38f5a17e203e2589f4be5e52a6876266a2b9959b20b",
+    "repositoryID": "5f3aa248-601d-446c-9838-0dd270fd9b4e",
+    "port": 2368,
+    "upstream": "https://ghost.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ghost",
+    "images": [
+      {
+        "name": "ghost",
+        "image": "ghcr.io/quenchworks/images/ghost@sha256:d6b815df0eee8368937db38f5a17e203e2589f4be5e52a6876266a2b9959b20b"
+      },
+      {
+        "name": "mariadb",
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:abf1c0823dcc7f2c1b77252defaa0202a386907d131e3ea62feb0bb07304a0f5"
+      }
+    ]
+  },
+  {
     "slug": "gitea",
     "name": "Gitea",
     "category": "Git",
@@ -1788,6 +1816,30 @@
       {
         "name": "thanos",
         "image": "ghcr.io/quenchworks/images/thanos@sha256:7cf417061ecb11d06f9dc43c4ca00e49dfcd207c7c412a09a0185ca19386ffa9"
+      }
+    ]
+  },
+  {
+    "slug": "timescaledb",
+    "name": "timescaledb",
+    "category": "Time series",
+    "summary": "PostgreSQL 17 plus the open TimescaleDB extension (Apache-only edition), adding hypertables, continuous aggregates, and time-series functions for high-ingest metrics and event data. Built clean-licensed from source on Wolfi (no TSL community code).",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.28.1",
+    "description": "PostgreSQL 17 with the open-source (Apache-2.0) TimescaleDB extension for time-series workloads: hypertables, continuous aggregates, and native compression. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/timescaledb",
+    "imageDigest": "sha256:3387171928c6e8490a46c5b68c8ce9dbe139c06df4631f6807a48b675a990fcc",
+    "repositoryID": "ab4e6296-ee14-436f-b273-496d5f46527d",
+    "port": 5432,
+    "upstream": "https://www.timescale.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/timescaledb",
+    "images": [
+      {
+        "name": "timescaledb",
+        "image": "ghcr.io/quenchworks/images/timescaledb@sha256:3387171928c6e8490a46c5b68c8ce9dbe139c06df4631f6807a48b675a990fcc"
       }
     ]
   },
