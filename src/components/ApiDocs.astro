@@ -76,6 +76,7 @@ const resources = [
   { name: 'roadmap', total: roadmap.length, desc: { en: 'Apps on deck, not yet built.', ar: 'تطبيقات قادمة لم تُبنَ بعد.', es: 'Apps en cola, aún no construidas.' } },
 ];
 const BADGE = (s: string) => `https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/${s}.json`;
+const BADGES = ['images', 'charts', 'cves', 'wolfi', 'cosign', 'multiarch', 'artifacthub', 'license'];
 ---
 
 <Base title="API · Quenchworks" description="The free QuenchWorks JSON API: hardened images, signed charts, the roadmap, and live CVE counts as paginated JSON.">
@@ -85,9 +86,7 @@ const BADGE = (s: string) => `https://img.shields.io/endpoint?url=https://quench
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{tr('title')}</h1>
 
     <div class="mt-5 flex flex-wrap gap-2">
-      <img src={BADGE('images')} alt="hardened images" />
-      <img src={BADGE('charts')} alt="signed charts" />
-      <img src={BADGE('cves')} alt="open CVEs" />
+      {BADGES.map((s) => <img src={BADGE(s)} alt={s} />)}
     </div>
 
     <div class="mt-6 space-y-5 leading-relaxed text-ash">
@@ -141,9 +140,7 @@ curl https://quench-works.com/api/v1/images.json | jq '.data[] | {slug, security
 
     <h2 class="mt-12 text-2xl font-bold tracking-tight">{tr('badges')}</h2>
     <p class="mt-2 text-ash">{tr('badgesDesc')}</p>
-    <pre class={pre}>{`![images](${BADGE('images')})
-![charts](${BADGE('charts')})
-![CVEs](${BADGE('cves')})`}</pre>
+    <pre class={pre}>{BADGES.map((s) => `![${s}](${BADGE(s)})`).join('\n')}</pre>
 
     <h2 class="mt-12 text-2xl font-bold tracking-tight">{tr('examples')}</h2>
     <pre class={pre}>{`curl https://quench-works.com/api/v1/images.json
