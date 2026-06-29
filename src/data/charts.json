@@ -103,18 +103,52 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "5.0.8",
     "description": "Distributed wide-column NoSQL store built for linear horizontal scale and high availability with no single point of failure, tuned for heavy writes. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cassandra",
-    "imageDigest": "sha256:8baf8c0ca8362cc04e11a0c968602c75af08263c521b577143f566f09aa20a21",
+    "imageDigest": "sha256:bde2cd5b03e626d62207db8a513d0af7512d9a31b373d20c0b789c08e75a50df",
     "repositoryID": "a2c07ae3-ae2a-421e-9013-f3495d338e09",
     "upstream": "https://github.com/apache/cassandra",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cassandra",
     "images": [
       {
         "name": "cassandra",
-        "image": "ghcr.io/quenchworks/images/cassandra@sha256:8baf8c0ca8362cc04e11a0c968602c75af08263c521b577143f566f09aa20a21"
+        "image": "ghcr.io/quenchworks/images/cassandra@sha256:bde2cd5b03e626d62207db8a513d0af7512d9a31b373d20c0b789c08e75a50df"
+      }
+    ]
+  },
+  {
+    "slug": "cert-manager",
+    "name": "cert-manager",
+    "category": "Datastore",
+    "summary": "Hardened cert-manager image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.20.3",
+    "description": "cert-manager: automated X.509 certificate management for Kubernetes. Issues and renews certificates from ACME (Let's Encrypt), self-signed, CA, Vault and other Issuers via the Certificate/Issuer/ClusterIssuer CRDs. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest. Runs the controller, webhook and cainjector as three deployments; the webhook self-bootstraps its serving CA and the cainjector injects that CA bundle into the admission webhooks, so no external cert-manager dependency is required.",
+    "imageRepository": "ghcr.io/quenchworks/images/cert-manager",
+    "repositoryID": "81bae89c-5c8d-4c9b-b5a7-3650ca7d15e0",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/cert-manager",
+    "images": [
+      {
+        "name": "cert-manager-controller",
+        "image": "ghcr.io/quenchworks/images/cert-manager-controller@sha256:6c01146b07847c7057904c278858c7923afceff44c173c9c7f794cf787bf2b49"
+      },
+      {
+        "name": "cert-manager-webhook",
+        "image": "ghcr.io/quenchworks/images/cert-manager-webhook@sha256:8610e4604b2163a02835476878be8c5e9751cf84afdf5886c897036693e5d77b"
+      },
+      {
+        "name": "cert-manager-cainjector",
+        "image": "ghcr.io/quenchworks/images/cert-manager-cainjector@sha256:6507c66dbbaf19474b11bd10317e586f05dc7acf0e3610d688009576e6c7e41f"
+      },
+      {
+        "name": "cert-manager-acmesolver",
+        "image": "ghcr.io/quenchworks/images/cert-manager-acmesolver@sha256:241a5a21ad2f62751c0d597b01bdde6bbdebf0f78a0cb808af5ce800da467260"
       }
     ]
   },
@@ -442,6 +476,29 @@
       {
         "name": "excalidraw",
         "image": "ghcr.io/quenchworks/images/excalidraw@sha256:ae98c046462274e84d31df1bc02c6916b2a66b660d91ec5a5c98e07a5e342606"
+      }
+    ]
+  },
+  {
+    "slug": "external-secrets",
+    "name": "external-secrets",
+    "category": "Security & supply chain",
+    "summary": "External Secrets Operator, the CNCF operator that syncs secrets from external APIs (AWS/GCP/Azure Secrets Manager, Vault, and many more) into Kubernetes Secrets. The single controller binary also serves the webhook and cert-controller, with every provider compiled in.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.7.0",
+    "description": "External Secrets Operator: syncs secrets from external APIs (Vault, cloud secret managers, and more) into Kubernetes Secrets via ExternalSecret/SecretStore CRDs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Runs the single ESO binary as three deployments (controller, webhook, cert-controller); the cert-controller manages the webhook's self-signed CA, so no cert-manager dependency is required.",
+    "imageRepository": "ghcr.io/quenchworks/images/external-secrets",
+    "imageDigest": "sha256:495b2de371a1d407769c865b92a52cb03ccb30513901813dabb69ba8e7d1c89c",
+    "repositoryID": "a43cf3cf-e802-4bd6-8910-40e27275bb18",
+    "upstream": "https://external-secrets.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/external-secrets",
+    "images": [
+      {
+        "name": "external-secrets",
+        "image": "ghcr.io/quenchworks/images/external-secrets@sha256:495b2de371a1d407769c865b92a52cb03ccb30513901813dabb69ba8e7d1c89c"
       }
     ]
   },
