@@ -56,34 +56,34 @@ function scan(ref) {
   return c;
 }
 
-// newest published version's digest (prefer the one the catalog marks as current)
-function newestDigest(e) {
+// newest published version (prefer the one the catalog marks as current) — returns
+// {version, digest} so the scan records exactly which tag was checked.
+function newestVersion(e) {
   const vers = e.versions || [];
-  const cur = vers.find((v) => v.version === e.version) || vers[vers.length - 1];
-  return cur?.digest;
+  return vers.find((v) => v.version === e.version) || vers[vers.length - 1];
 }
 
 const result = {};
 let scanned = 0, failed = 0;
 for (const e of images) {
   if (only.length && !only.includes(e.slug)) continue;
-  const digest = newestDigest(e);
-  if (!e.image || !digest) { console.error(`skip ${e.slug} (no image/digest)`); continue; }
-  const ref = `${e.image}@${digest}`;
+  const cur = newestVersion(e);
+  if (!e.image || !cur?.digest) { console.error(`skip ${e.slug} (no image/digest)`); continue; }
+  const ref = `${e.image}@${cur.digest}`;
   let c;
   try {
     c = scan(ref);
   } catch (err) {
     // one retry (transient registry / DB hiccup), then give up on this image
-    try { c = scan(ref); } catch (err2) { failed++; console.error(`FAIL ${e.slug}: ${String(err2.message).split('\n')[0]}`); continue; }
+    try { c = scan(ref); } catch (err2) { failed++; console.error(`FAIL ${e.slug} (${cur.version}): ${String(err2.message).split('\n')[0]}`); continue; }
   }
-  const entry = {};
+  const entry = { version: cur.version, tag: `${e.image}:${cur.version}` };
   for (const s of SEV) entry[s] = c[s];
   entry.total = c.total; entry.fixable = c.fixable;
   entry.grade = gradeOf(c); entry.score = scoreOf(c);
   result[e.slug] = entry;
   scanned++;
-  console.error(`${e.slug.padEnd(26)} total=${c.total} fixable=${c.fixable} grade=${entry.grade} score=${entry.score}`);
+  console.error(`${e.slug.padEnd(26)} ${String(cur.version).padEnd(14)} total=${c.total} fixable=${c.fixable} grade=${entry.grade} score=${entry.score}`);
 }
 
 // A subset run (slugs given) updates only those keys; a full run replaces the file.
