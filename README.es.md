@@ -2,6 +2,12 @@
 
 [English](README.md) · [العربية](README.ar.md) · **Español**
 
+<p align="center">
+  <a href="https://quench-works.com/images"><img src="https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/images.json" alt="hardened images"></a>
+  <a href="https://quench-works.com/charts"><img src="https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/charts.json" alt="signed charts"></a>
+  <a href="https://quench-works.com/security"><img src="https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/cves.json" alt="open CVEs"></a>
+</p>
+
 El sitio de marketing y el catalogo en vivo de [QuenchWorks](https://github.com/quenchworks), un catalogo gratuito y endurecido 0-CVE de imagenes de contenedor y charts de Helm firmados. Es la puerta de entrada en [quench-works.com](https://quench-works.com), y el indice navegable de cada imagen y chart que publicamos.
 
 <p align="center">

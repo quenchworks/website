@@ -8,8 +8,8 @@ const l = (p: string) => localizeUrl(lang, p);
 const year = new Date().getFullYear();
 
 // Two columns: catalog/resources and developer entry points. Content-page links
-// are localized to the active locale; /api/docs and /rss.xml are global (English
-// only), so they are NOT prefixed.
+// are localized to the active locale; /rss.xml is global (English only), so it
+// is NOT prefixed.
 const resources = [
   { label: t('nav.charts'), href: l('/charts') },
   { label: t('nav.images'), href: l('/images') },
@@ -23,7 +23,7 @@ const resources = [
 ];
 const developers = [
   { label: t('nav.docs'), href: l('/docs') },
-  { label: t('nav.api'), href: '/api/docs' },
+  { label: t('nav.api'), href: l('/api/docs') },
   { label: t('nav.security'), href: l('/security') },
   { label: 'How it works', href: l('/how-it-works') },
   { label: 'RSS', href: '/rss.xml' },

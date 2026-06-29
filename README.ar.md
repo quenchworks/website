@@ -2,6 +2,12 @@
 
 [English](README.md) · **العربية** · [Español](README.es.md)
 
+<p align="center">
+  <a href="https://quench-works.com/images"><img src="https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/images.json" alt="hardened images"></a>
+  <a href="https://quench-works.com/charts"><img src="https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/charts.json" alt="signed charts"></a>
+  <a href="https://quench-works.com/security"><img src="https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/cves.json" alt="open CVEs"></a>
+</p>
+
 الموقع التسويقي والكتالوج الحي لـ [QuenchWorks](https://github.com/quenchworks)، كتالوج مجاني ومُحصَّن بصفر ثغرات (0-CVE) من صور الحاويات ومخططات Helm الموقّعة. إنه الواجهة الأمامية على [quench-works.com](https://quench-works.com)، والفهرس القابل للتصفح لكل صورة ومخطط نشحنه.
 
 <p align="center">
