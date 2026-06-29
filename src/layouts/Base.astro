@@ -15,8 +15,8 @@ interface Props {
 }
 
 const {
-  title = 'Quenchworks: hardened, 0-CVE Helm charts and container images',
-  description = 'Hardened, 0-CVE Helm charts and container images, built from source on Wolfi, signed, and pinned by digest. Free and independent.',
+  title = 'QuenchWorks: hardened, 0-CVE Helm charts and container images',
+  description = 'QuenchWorks is a free, open-source catalog of hardened, 0-CVE container images and signed Helm charts, built from source on Wolfi, cosign-signed, and pinned by digest. A vendor-neutral, drop-in alternative to the Bitnami catalog.',
   image = '/og.png',
   locales = ['en', 'ar', 'es'],
 } = Astro.props;
@@ -42,17 +42,31 @@ const xDefault = (alternates.find((a) => a.lang === 'en') ?? alternates[0]).href
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
 
+// Structured data, tuned for entity disambiguation: an unrelated UK IT-consulting
+// firm owns the exact-match domain quenchworks.com, so we give Google explicit,
+// software-flavoured signals (SoftwareApplication, free Offer, sameAs to our
+// authoritative profiles) so this project gets its own knowledge-graph entity
+// rather than being merged with the consultancy or the Etsy shop.
+const orgId = new URL('/#org', Astro.site).href;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
       '@type': 'Organization',
-      '@id': new URL('/#org', Astro.site).href,
+      '@id': orgId,
       name: 'QuenchWorks',
+      alternateName: ['Quench Works', 'quench-works'],
       url: new URL('/', Astro.site).href,
-      logo: new URL('/brand/logo.svg', Astro.site).href,
+      logo: { '@type': 'ImageObject', url: new URL('/brand/logo.svg', Astro.site).href },
+      image: ogImage.href,
       description:
-        'A free, independent catalog of hardened, 0-CVE container images and signed Helm charts.',
+        'QuenchWorks is a free, independent open-source project: a catalog of hardened, 0-CVE container images and signed Helm charts, built from source on Wolfi, cosign-signed, and pinned by digest. A vendor-neutral, drop-in alternative to the Bitnami catalog.',
+      foundingDate: '2026',
+      slogan: 'Hardened, 0-CVE container images and Helm charts.',
+      knowsAbout: [
+        'container images', 'Helm charts', 'Kubernetes', 'cloud-native', 'supply-chain security',
+        '0-CVE images', 'Wolfi', 'apko', 'melange', 'cosign', 'SBOM', 'Bitnami alternative',
+      ],
       sameAs: [
         'https://github.com/quenchworks',
         'https://artifacthub.io/packages/search?org=quenchworks',
@@ -62,8 +76,25 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': new URL('/#site', Astro.site).href,
       name: 'QuenchWorks',
+      alternateName: 'QuenchWorks catalog',
       url: new URL('/', Astro.site).href,
-      publisher: { '@id': new URL('/#org', Astro.site).href },
+      inLanguage: ['en', 'ar', 'es'],
+      description,
+      publisher: { '@id': orgId },
+      about: { '@id': orgId },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': new URL('/#catalog', Astro.site).href,
+      name: 'QuenchWorks catalog',
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Linux, Kubernetes',
+      url: new URL('/', Astro.site).href,
+      description:
+        'Hardened, 0-CVE container images and signed Helm charts for Redis, Harbor, Mattermost, PostgreSQL, cert-manager, Grafana, and 130+ more — a drop-in, vendor-neutral alternative to the Bitnami catalog.',
+      isAccessibleForFree: true,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      publisher: { '@id': orgId },
     },
   ],
 };
