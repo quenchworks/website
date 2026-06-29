@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  packages: read
 
 concurrency:
   group: security-scan
@@ -32,10 +33,17 @@ jobs:
             | sudo sh -s -- -b /usr/local/bin
           trivy --version
 
+      # Authenticate pulls to GHCR so the parallel scans aren't anonymous-rate-limited.
+      - name: Log in to GHCR for image pulls
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
       - name: Warm the Trivy vuln DB (once, before parallel scans)
         run: trivy image --download-db-only
 
       - name: Scan all catalog images
+        env:
+          TRIVY_USERNAME: ${{ github.actor }}
+          TRIVY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/scan-images.mjs
 
       - name: Commit security.json if it changed

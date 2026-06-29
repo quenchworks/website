@@ -26,7 +26,7 @@ const execFileP = promisify(execFile);
 const ROOT = new URL('..', import.meta.url).pathname;
 const images = JSON.parse(readFileSync(ROOT + 'src/data/images.json', 'utf8'));
 const only = process.argv.slice(2);
-const CONCURRENCY = Number(process.env.SCAN_CONCURRENCY || 10);
+const CONCURRENCY = Number(process.env.SCAN_CONCURRENCY || 6);
 
 const SEV = ['critical', 'high', 'medium', 'low', 'unknown'];
 
@@ -43,9 +43,13 @@ function scoreOf(c) {
 }
 
 async function scanOnce(ref) {
+  // --cache-backend memory: keep the per-scan analysis cache in memory so parallel
+  //   trivy processes don't fight over the on-disk fanal bolt lock.
+  // --skip-db-update: the vuln DB is pre-downloaded once (shared, read-only) by the workflow.
   const { stdout } = await execFileP(
     'trivy',
-    ['image', '--quiet', '--format', 'json', '--scanners', 'vuln', '--skip-db-update',
+    ['image', '--quiet', '--format', 'json', '--scanners', 'vuln',
+     '--skip-db-update', '--cache-backend', 'memory',
      '--severity', 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN', ref],
     { maxBuffer: 128 * 1024 * 1024, timeout: 300_000 },
   );
@@ -85,7 +89,7 @@ async function worker(queue) {
     let c;
     try { c = await scanOnce(`${t.image}@${t.digest}`); }
     catch { try { c = await scanOnce(`${t.image}@${t.digest}`); } // one retry
-            catch (err) { failed++; console.error(`FAIL ${t.slug} ${t.version}: ${String(err.message).split('\n')[0]}`); continue; } }
+            catch (err) { failed++; const why = String(err.stderr || err.message).trim().split('\n').pop(); console.error(`FAIL ${t.slug} ${t.version}: ${why}`); continue; } }
     (perImage[t.slug] ||= []).push(summarize(t.version, t.image, c));
     done++;
     console.error(`[${done}/${tasks.length}] ${t.slug.padEnd(26)} ${String(t.version).padEnd(14)} total=${c.total} fixable=${c.fixable} grade=${gradeOf(c)}`);
