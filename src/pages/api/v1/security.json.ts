@@ -1,7 +1,7 @@
 // GET /api/v1/security.json -> live CVE summary: grand total, severity rollup,
-// and per-image {critical,high,medium,low,unknown,total}. Sourced from the
-// committed ArtifactHub snapshot (scripts/sync-security.mjs), so it refreshes
-// on every build/deploy -- never a hardcoded value.
+// and per-image {critical,high,medium,low,unknown,total,fixable,grade,score}. Sourced
+// from the snapshot the nightly Trivy scan writes (scripts/scan-images.mjs), so it
+// refreshes on every scan/deploy -- never a hardcoded value, and independent of ArtifactHub.
 import type { APIRoute } from 'astro';
 import { json } from './_data';
 import security from '../../../data/security.json';

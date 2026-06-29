@@ -1,0 +1,50 @@
+name: security-scan
+
+# Nightly Trivy scan of every catalog image, straight from the published GHCR digests
+# (the image packages are public). Writes src/data/security.json — the authoritative,
+# ArtifactHub-independent source of the catalog's CVE numbers and per-image grades.
+# Pushing the refreshed file triggers the normal site redeploy.
+on:
+  schedule:
+    - cron: "0 1 * * *" # 01:00 UTC daily
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: security-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Trivy
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh \
+            | sudo sh -s -- -b /usr/local/bin
+          trivy --version
+
+      - name: Scan all catalog images
+        run: node scripts/scan-images.mjs
+
+      - name: Commit security.json if it changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet src/data/security.json; then
+            echo "security.json unchanged — nothing to commit."
+            exit 0
+          fi
+          git config user.name "QuenchWorks"
+          git config user.email "info@quench-works.com"
+          git add src/data/security.json
+          git commit -m "chore(security): nightly Trivy scan of all catalog images" \
+                     -m "Co-Authored-By: QuenchWorks <info@quench-works.com>"
+          git push

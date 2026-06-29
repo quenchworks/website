@@ -8,7 +8,7 @@ const API = 'https://artifacthub.io/api/v1';
 // AH repository slug convention for this org: quench-<app>
 const repoOf = (slug: string) => `quench-${slug}`;
 
-// Reliable per-package CVE summary from the committed snapshot (scripts/sync-security.mjs).
+// Per-image CVE summary from the committed snapshot (scripts/scan-images.mjs, nightly Trivy scan).
 // Used everywhere instead of the rate-limited live call so the build never blanks.
 function snapshotSecurity(name: string): { security?: SecuritySummary; securityTotal?: number } {
   const rec = (securitySnapshot as Record<string, any>)[name];
