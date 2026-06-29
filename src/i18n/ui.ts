@@ -160,7 +160,7 @@ export const ui = {
     'detail.caution.bodyChart':
       'is source-available, not open source. The chart carries this note prominently, and we do not represent it as open source.',
     'detail.caution.cleanAlt': 'Clean alternative:',
-    'detail.security.heading': 'Security report (Trivy, via ArtifactHub)',
+    'detail.security.heading': 'Security report (Trivy)',
     'detail.security.zeroFixable': '0 fixable CVEs',
     'detail.security.critical': 'Critical',
     'detail.security.high': 'High',
@@ -414,7 +414,7 @@ export const ui = {
     'detail.caution.bodyChart':
       'متاح المصدر، وليس مفتوح المصدر. يحمل المخطط هذا التنبيه بوضوح، ولا نقدّمه على أنه مفتوح المصدر.',
     'detail.caution.cleanAlt': 'بديل نظيف:',
-    'detail.security.heading': 'تقرير الأمان (Trivy، عبر ArtifactHub)',
+    'detail.security.heading': 'تقرير الأمان (Trivy)',
     'detail.security.zeroFixable': '0 ثغرة قابلة للإصلاح',
     'detail.security.critical': 'حرجة',
     'detail.security.high': 'عالية',
@@ -669,7 +669,7 @@ export const ui = {
     'detail.caution.bodyChart':
       'es de código disponible, no de código abierto. El chart lleva esta nota de forma destacada y no lo presentamos como código abierto.',
     'detail.caution.cleanAlt': 'Alternativa limpia:',
-    'detail.security.heading': 'Informe de seguridad (Trivy, vía ArtifactHub)',
+    'detail.security.heading': 'Informe de seguridad (Trivy)',
     'detail.security.zeroFixable': '0 CVE corregibles',
     'detail.security.critical': 'Crítica',
     'detail.security.high': 'Alta',
