@@ -6,6 +6,7 @@ import VersionSwitcher from '../components/VersionSwitcher.astro';
 import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { charts } from '../data/charts';
 import { fetchPackageDetail } from '../data/artifacthub';
+import security from '../data/security.json';
 import CveStatus from '../components/CveStatus.astro';
 import { resolveAlternatives } from '../data/alternatives';
 import { slugify } from '../data/slugify';
@@ -39,8 +40,11 @@ function freshness(iso: string): { abs: string; rel: string } {
 const ah = await fetchPackageDetail(entry.slug);
 const appVersion = ah?.appVersion ?? entry.version;
 const pinned = ah?.image; // image@sha256:... (the chart's deployed digest)
-const sec = ah?.security;
-const total = ah?.securityTotal;
+// Security for the SELECTED version (security.json carries per-version data), so the
+// report matches the tab you're on; falls back to the top-level (latest) record.
+const secRec = (security as Record<string, any>)[entry.slug];
+const sec = secRec?.versions?.find((v: any) => v.version === version) ?? secRec ?? ah?.security;
+const total = sec?.total ?? ah?.securityTotal;
 
 // Per-version data from images.json (the catalog lock): full X.Y.Z leaf tags,
 // newest first, with alias tags (e.g. "21" when "21.0.11" exists) dropped.

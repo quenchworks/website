@@ -6,6 +6,7 @@ import VersionSwitcher from '../components/VersionSwitcher.astro';
 import { Code } from 'astro-expressive-code/components';
 import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { fetchPackageDetail } from '../data/artifacthub';
+import security from '../data/security.json';
 import CveStatus from '../components/CveStatus.astro';
 import { dockerfileFor } from '../data/dockerfiles';
 import { slugify } from '../data/slugify';
@@ -88,10 +89,11 @@ const pkgUrl = `https://github.com/orgs/quenchworks/packages/container/package/i
 const categorySlug = slugify(entry.category);
 const isLatest = versions[0] === version;
 
-// Trivy security from security.json (via the snapshot fallback in fetchPackageDetail),
-// shown the same way as the image/chart detail pages.
-const sec = ah?.security;
-const total = ah?.securityTotal;
+// Trivy security for the SELECTED version (security.json carries per-version data),
+// shown the same way as the image/chart detail pages; falls back to latest.
+const secRec = (security as Record<string, any>)[entry.slug];
+const sec = secRec?.versions?.find((v: any) => v.version === version) ?? secRec ?? ah?.security;
+const total = sec?.total ?? ah?.securityTotal;
 const sevs: [string, number][] = sec
   ? [
       [t('detail.security.critical'), sec.critical],

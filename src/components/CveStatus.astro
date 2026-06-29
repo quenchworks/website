@@ -31,7 +31,7 @@ const parts = sec
   : [];
 const breakdown = parts.length ? parts.join(', ') : 'no CVEs';
 const fixable = sec?.fixable ?? 0;
-const verPart = sec?.version ? ` (worst version ${sec.version})` : '';
+const verPart = sec?.version ? ` (version ${sec.version})` : '';
 const fixPart = fixable > 0 ? `; ${fixable} fixable — a rebuild clears ${fixable === 1 ? 'it' : 'them'}` : '';
 const title = `Trivy scan: grade ${grade ?? (has ? '–' : 'A+')}${sec?.score != null ? ` (score ${sec.score}/100)` : ''}${verPart} — ${breakdown}${fixPart}`;
 

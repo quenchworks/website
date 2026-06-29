@@ -146,7 +146,7 @@ async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null
   const snap = snapshotSecurity(slug);
   const snapOnly = (): AhDetail | null =>
     snap.securityTotal !== undefined
-      ? ({ signed: false, signatures: [], versions: [], security: snap.security, securityTotal: snap.securityTotal } as AhDetail)
+      ? ({ signed: false, signatures: [], versions: [], security: snap.security, securityTotal: snap.securityTotal } as unknown as AhDetail)
       : null;
   try {
     const res = await fetch(`${API}/packages/helm/${repo}/${slug}`, {

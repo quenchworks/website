@@ -71,7 +71,9 @@ const fresh = vmeta?.published ? freshness(vmeta.published) : undefined;
 // Trivy security for the image this chart deploys (shares the chart's slug), from
 // the nightly scan (security.json). Umbrella stacks with no single matching image
 // simply omit the section.
-const secRec = (security as Record<string, any>)[entry.slug];
+const secAll = (security as Record<string, any>)[entry.slug];
+// the chart deploys the image at appVersion — show that version's report (falls back to latest)
+const secRec = secAll?.versions?.find((v: any) => v.version === appVersion) ?? secAll;
 const sevs: [string, number][] = secRec
   ? [
       [t('detail.security.critical'), secRec.critical],

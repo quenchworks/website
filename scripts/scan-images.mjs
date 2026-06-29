@@ -100,13 +100,26 @@ const queues = Array.from({ length: CONCURRENCY }, () => []);
 tasks.forEach((t, i) => queues[i % CONCURRENCY].push(t));
 await Promise.all(queues.map(worker));
 
+// numeric-aware version compare: vcmp(a,b) > 0 when a is newer than b
+function vcmp(a, b) {
+  const x = (a.match(/\d+/g) || []).map(Number);
+  const y = (b.match(/\d+/g) || []).map(Number);
+  for (let i = 0; i < Math.max(x.length, y.length); i++) {
+    const d = (x[i] || 0) - (y[i] || 0);
+    if (d) return d;
+  }
+  return 0;
+}
+
 const result = {};
 for (const [slug, vers] of Object.entries(perImage)) {
   if (!vers.length) continue;
   const e = images.find((x) => x.slug === slug);
-  // top-level summary = the WORST version (most total CVEs), no triple-counting
-  const worst = vers.reduce((a, b) => (b.total > a.total ? b : a));
-  result[slug] = { image: e.image, ...worst, versions: vers.sort((a, b) => (a.version < b.version ? 1 : -1)) };
+  // versions newest-first; the top-level summary mirrors the LATEST version (what a
+  // card/badge shows, and what new deployments get). Per-version detail stays in `versions`.
+  const sorted = vers.slice().sort((a, b) => vcmp(b.version, a.version));
+  const latest = sorted[0];
+  result[slug] = { image: e.image, ...latest, versions: sorted };
 }
 
 let prev = {};
