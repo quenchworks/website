@@ -18,7 +18,6 @@ const STATS: Record<string, { label: string; message: string; color: string; nam
   images: { label: 'images', message: `${availableCount} hardened`, color: '0a0a0c', namedLogo: 'docker' },
   charts: { label: 'charts', message: `${chartCount} signed`, color: '0a0a0c', namedLogo: 'helm' },
   cves: { label: 'open CVEs', message: String(cveTotal), color: cveTotal === 0 ? 'brightgreen' : 'orange', namedLogo: 'trivy' },
-  fixable: { label: 'fixable CVEs', message: '0', color: '1d2b3a', namedLogo: 'trivy' },
   wolfi: { label: 'built from source', message: 'Wolfi / apko', color: '1d2b3a', namedLogo: 'linux' },
   cosign: { label: 'signed', message: 'cosign keyless', color: '0a0a0c', namedLogo: 'linuxfoundation' },
   multiarch: { label: 'arch', message: 'amd64 + arm64', color: '0a0a0c', namedLogo: 'linux' },
