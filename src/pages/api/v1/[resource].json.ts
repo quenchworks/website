@@ -8,7 +8,7 @@ import security from '../../../data/security.json';
 export const getStaticPaths = () =>
   Object.keys(RESOURCES).map((resource) => ({ params: { resource } }));
 
-const sec = security as Record<string, Record<string, number>>;
+const sec = security as Record<string, Record<string, unknown>>;
 
 export const GET: APIRoute = ({ params }) => {
   const name = params.resource as ResourceName;

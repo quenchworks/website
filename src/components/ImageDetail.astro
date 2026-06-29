@@ -91,8 +91,9 @@ const ld = {
   codeRepository: entry.upstream,
 };
 
-// Only show the live Trivy report on the latest line (it scans the deployed digest).
-const sevs = isLatest && sec
+// The Trivy report (from security.json) applies to the image regardless of which
+// version tab is open, so show it on every line — same as the chart detail page.
+const sevs = sec
   ? ([
       [t('detail.security.critical'), sec.critical],
       [t('detail.security.high'), sec.high],
@@ -235,9 +236,23 @@ const sevs = isLatest && sec
 
     {sevs.length > 0 && (
       <section class="mt-8 rounded-xl border border-line bg-graphite p-5">
-        <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <div class="flex flex-wrap items-center justify-between gap-3">
           <h2 class="font-mono text-xs uppercase tracking-widest text-ash">{t('detail.security.heading')}</h2>
-          {total === 0 && <span class="font-mono text-xs uppercase tracking-widest text-paper">{t('detail.security.zeroFixable')}</span>}
+          <div class="flex flex-wrap items-center gap-2">
+            {sec?.grade && (
+              <span
+                class:list={['inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-[11px] font-semibold uppercase tracking-widest tabular-nums',
+                  sec.grade === 'A+' || sec.grade === 'A' ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+                  : sec.grade === 'B' || sec.grade === 'C' ? 'border-amber-500/40 bg-amber-500/10 text-amber-300'
+                  : 'border-red-500/40 bg-red-500/10 text-red-300']}
+              >{sec.grade}{sec?.score != null && <span class="text-ash/70">· {sec.score}/100</span>}</span>
+            )}
+            {total === 0
+              ? <span class="font-mono text-[11px] uppercase tracking-widest text-emerald-300">{t('detail.security.zeroFixable')}</span>
+              : sec?.fixable
+                ? <span class="font-mono text-[11px] uppercase tracking-widest text-amber-300">{sec.fixable} fixable · rebuild clears {sec.fixable === 1 ? 'it' : 'them'}</span>
+                : <span class="font-mono text-[11px] uppercase tracking-widest text-ash">{total} open · no upstream fix yet</span>}
+          </div>
         </div>
         <div class="mt-4 grid grid-cols-5 gap-3 text-center">
           {sevs.map(([k, v]) => (

@@ -9,7 +9,7 @@ import security from '../../../data/security.json';
 const SEVS = ['critical', 'high', 'medium', 'low', 'unknown'] as const;
 
 export const GET: APIRoute = () => {
-  const images = security as Record<string, Record<string, number | string>>;
+  const images = security as Record<string, Record<string, any>>;
   const bySeverity = { critical: 0, high: 0, medium: 0, low: 0, unknown: 0 };
   let total = 0, fixable = 0;
   for (const rec of Object.values(images)) {

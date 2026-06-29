@@ -1,52 +1,62 @@
 ---
-// Live CVE indicator, fed by ArtifactHub's security_report_summary (never a
-// hardcoded value). Two shapes: `dot` for catalog cards, badge for detail pages.
-// Accessible: color is backed by an aria-label + a title with the full breakdown
-// (never color-only). When AH is unreachable (total undefined), falls back to the
-// neutral clean label so a deploy never shows a false alarm.
+// Per-image security indicator, fed by the nightly Trivy scan (scripts/scan-images.mjs)
+// via security.json — never a hardcoded value. Leads with a letter GRADE (A+ clean →
+// F critical) so the signal is readable without relying on colour alone; colour, the
+// CVE count, and the fixable count reinforce it. Two shapes: a compact `dot` chip for
+// catalog cards and a fuller badge for detail pages. Falls back to the neutral clean
+// label when an item has no scan record (e.g. an umbrella chart with no single image).
 import type { SecuritySummary } from '../data/artifacthub';
 
 interface Props {
   total?: number;
   sec?: SecuritySummary;
   dot?: boolean;
-  cleanLabel: string; // e.g. "0 fixable CVEs" (localized by the caller)
+  cleanLabel: string; // localized neutral fallback, e.g. "0 CVE"
 }
 const { total, sec, dot = false, cleanLabel } = Astro.props;
 
-// Worst severity drives the color; medium/low/unknown are "warn", critical/high "bad".
-const bad = !!sec && sec.critical + sec.high > 0;
 const has = typeof total === 'number' && total > 0;
+const grade = sec?.grade ?? (typeof total === 'number' ? (has ? undefined : 'A+') : undefined);
+
+// Grade drives the tone; A+/A clean, B/C are warnings, D/F are serious.
+const tone = !grade ? (has ? 'warn' : 'ok')
+  : grade === 'A+' || grade === 'A' ? 'ok'
+  : grade === 'B' || grade === 'C' ? 'warn'
+  : 'bad';
 
 const parts = sec
   ? (['critical', 'high', 'medium', 'low', 'unknown'] as const)
       .filter((k) => sec[k] > 0)
       .map((k) => `${sec[k]} ${k}`)
   : [];
-const breakdown = parts.join(', ');
-const label = has ? `${total} CVE${total === 1 ? '' : 's'}` : cleanLabel;
-const title = has ? `Live ArtifactHub scan: ${breakdown}` : 'Live ArtifactHub scan: no CVEs';
+const breakdown = parts.length ? parts.join(', ') : 'no CVEs';
+const fixable = sec?.fixable ?? 0;
+const verPart = sec?.version ? ` (worst version ${sec.version})` : '';
+const fixPart = fixable > 0 ? `; ${fixable} fixable — a rebuild clears ${fixable === 1 ? 'it' : 'them'}` : '';
+const title = `Trivy scan: grade ${grade ?? (has ? '–' : 'A+')}${sec?.score != null ? ` (score ${sec.score}/100)` : ''}${verPart} — ${breakdown}${fixPart}`;
 
-// Tone: green when clean, amber for medium/low/unknown, red when critical/high.
-const tone = !has ? 'ok' : bad ? 'bad' : 'warn';
+// Visible text: grade leads; the count tags along when there are CVEs.
+const countText = has ? `${total}` : '';
+const label = grade ? `${grade}${countText ? ' ' + countText : ''}` : (has ? `${total} CVE${total === 1 ? '' : 's'}` : cleanLabel);
+
 const dotColor = { ok: 'bg-emerald-500', warn: 'bg-amber-500', bad: 'bg-red-500' }[tone];
-const badgeColor = {
-  ok: 'border-line bg-graphite text-paper',
+const chipColor = {
+  ok: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',
   warn: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
   bad: 'border-red-500/40 bg-red-500/10 text-red-300',
 }[tone];
 ---
 {
   dot ? (
-    <span
-      class:list={['inline-block size-2 shrink-0 rounded-full', dotColor]}
-      role="img"
-      aria-label={`${label} (${title})`}
-      title={`${label} — ${title}`}
-    />
+    <span class="inline-flex items-center gap-1.5" role="img" aria-label={`Security ${label} — ${title}`} title={title}>
+      <span class:list={['inline-block size-1.5 shrink-0 rounded-full', dotColor]} aria-hidden="true" />
+      <span class="font-mono text-[10px] font-semibold tabular-nums tracking-wide">{label}</span>
+    </span>
   ) : (
     <span
-      class:list={['rounded border px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest', badgeColor]}
+      class:list={['inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest tabular-nums', chipColor]}
+      role="img"
+      aria-label={`Security ${label} — ${title}`}
       title={title}
     >
       {label}

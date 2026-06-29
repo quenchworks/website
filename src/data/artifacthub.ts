@@ -14,7 +14,10 @@ function snapshotSecurity(name: string): { security?: SecuritySummary; securityT
   const rec = (securitySnapshot as Record<string, any>)[name];
   if (!rec) return {};
   return {
-    security: { critical: rec.critical, high: rec.high, medium: rec.medium, low: rec.low, unknown: rec.unknown },
+    security: {
+      critical: rec.critical, high: rec.high, medium: rec.medium, low: rec.low, unknown: rec.unknown,
+      grade: rec.grade, score: rec.score, fixable: rec.fixable, version: rec.version,
+    },
     securityTotal: rec.total,
   };
 }
@@ -91,6 +94,13 @@ export interface SecuritySummary {
   medium: number;
   low: number;
   unknown: number;
+  // From the nightly Trivy scan (scan-images.mjs): the worst version's letter grade
+  // (A+ clean → F critical), a 0-100 score, the count of CVEs that have a fix
+  // available (a rebuild clears them), and the version that grade reflects.
+  grade?: string;
+  score?: number;
+  fixable?: number;
+  version?: string;
 }
 
 export interface AhDetail {
@@ -130,11 +140,19 @@ export function fetchPackageDetail(slug: string): Promise<AhDetail | null> {
 
 async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null> {
   const repo = repoOf(slug);
+  // Always have the Trivy snapshot ready: some images (e.g. coolify-realtime, a
+  // sub-image of the coolify chart) have no chart of their own, so the AH call 404s
+  // — but we still know their CVE grade from security.json and must surface it.
+  const snap = snapshotSecurity(slug);
+  const snapOnly = (): AhDetail | null =>
+    snap.securityTotal !== undefined
+      ? ({ signed: false, signatures: [], versions: [], security: snap.security, securityTotal: snap.securityTotal } as AhDetail)
+      : null;
   try {
     const res = await fetch(`${API}/packages/helm/${repo}/${slug}`, {
       headers: { accept: 'application/json' },
     });
-    if (!res.ok) return null;
+    if (!res.ok) return snapOnly();
     const d = (await res.json()) as any;
     const sec: SecuritySummary | undefined = d.security_report_summary
       ? {
@@ -155,8 +173,8 @@ async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null
       hasValuesSchema: Boolean(d.has_values_schema),
       image: (d.containers_images ?? [])[0]?.image,
       // Prefer the committed snapshot (reliable) over the live (rate-limited) summary.
-      security: snapshotSecurity(slug).security ?? sec,
-      securityTotal: snapshotSecurity(slug).securityTotal ?? (sec ? sec.critical + sec.high + sec.medium + sec.low + sec.unknown : undefined),
+      security: snap.security ?? sec,
+      securityTotal: snap.securityTotal ?? (sec ? sec.critical + sec.high + sec.medium + sec.low + sec.unknown : undefined),
       scannedAt: d.security_report_created_at,
       versions: (d.available_versions ?? []).map((v: any) => ({ version: v.version, ts: v.ts })),
       signKeyUrl: d.sign_key?.url,
@@ -164,6 +182,6 @@ async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null
       url: `${API.replace('/api/v1', '')}/packages/helm/${repo}/${slug}`,
     };
   } catch {
-    return null;
+    return snapOnly();
   }
 }
