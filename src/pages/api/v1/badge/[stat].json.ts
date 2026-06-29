@@ -20,7 +20,7 @@ const STATS: Record<string, { label: string; message: string; color: string; nam
   cves: { label: 'open CVEs', message: String(cveTotal), color: cveTotal === 0 ? 'brightgreen' : 'orange', namedLogo: 'trivy' },
   fixable: { label: 'fixable CVEs', message: '0', color: '1d2b3a', namedLogo: 'trivy' },
   wolfi: { label: 'built from source', message: 'Wolfi / apko', color: '1d2b3a', namedLogo: 'linux' },
-  cosign: { label: 'signed', message: 'cosign keyless', color: '0a0a0c', namedLogo: 'sigstore' },
+  cosign: { label: 'signed', message: 'cosign keyless', color: '0a0a0c', namedLogo: 'linuxfoundation' },
   multiarch: { label: 'arch', message: 'amd64 + arm64', color: '0a0a0c', namedLogo: 'linux' },
   artifacthub: { label: 'ArtifactHub', message: 'verified publisher', color: '417598', namedLogo: 'artifacthub' },
   license: { label: 'license', message: 'MIT', color: 'blue', namedLogo: 'opensourceinitiative' },
