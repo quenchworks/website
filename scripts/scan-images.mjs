@@ -3,24 +3,30 @@
 //
 // Self-contained and independent of ArtifactHub: it reads the image ref + EVERY
 // published version's digest from src/data/images.json (which gen-catalog.py keeps
-// strictly aligned to each app's build.conf VERSIONS — no registry extras), and runs
-// Trivy against each exact digest. Scanning by digest (not tag) means the result is
-// pinned to precisely the artifact we ship.
+// aligned to each app's build.conf VERSIONS — no registry major-alias tags), and runs
+// Trivy against each exact digest. Scanning by digest (not tag) pins the result to
+// precisely the artifact we ship.
 //
 // Per version: severity breakdown, a `fixable` count (CVEs with a FixedVersion — what
 // our 0-CVE gate and a rebuild would clear), a letter `grade`, and a numeric `score`.
 // Each image's top-level summary is its WORST version (so a card flags if ANY tag has
 // CVEs), plus a `versions` array with the per-tag detail so you can see what to fix.
 //
+// Scans run concurrently (CONCURRENCY workers) so ~400 image-versions finish in minutes,
+// not hours. Run `trivy image --download-db-only` once before this to avoid a DB race.
+//
 // Usage:
 //   node scripts/scan-images.mjs              # all images (the nightly job)
 //   node scripts/scan-images.mjs neo4j redis  # a subset, merged into existing
-import { execFileSync } from 'node:child_process';
+import { execFile } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
+import { promisify } from 'node:util';
 
+const execFileP = promisify(execFile);
 const ROOT = new URL('..', import.meta.url).pathname;
 const images = JSON.parse(readFileSync(ROOT + 'src/data/images.json', 'utf8'));
 const only = process.argv.slice(2);
+const CONCURRENCY = Number(process.env.SCAN_CONCURRENCY || 10);
 
 const SEV = ['critical', 'high', 'medium', 'low', 'unknown'];
 
@@ -36,14 +42,14 @@ function scoreOf(c) {
   return Math.max(0, 100 - w);
 }
 
-function scan(ref) {
-  const out = execFileSync(
+async function scanOnce(ref) {
+  const { stdout } = await execFileP(
     'trivy',
-    ['image', '--quiet', '--format', 'json', '--scanners', 'vuln',
+    ['image', '--quiet', '--format', 'json', '--scanners', 'vuln', '--skip-db-update',
      '--severity', 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN', ref],
-    { encoding: 'utf8', maxBuffer: 128 * 1024 * 1024, timeout: 300_000 },
+    { maxBuffer: 128 * 1024 * 1024, timeout: 300_000 },
   );
-  const data = JSON.parse(out);
+  const data = JSON.parse(stdout);
   const c = { critical: 0, high: 0, medium: 0, low: 0, unknown: 0, fixable: 0 };
   for (const r of data.Results || []) {
     for (const v of r.Vulnerabilities || []) {
@@ -63,33 +69,40 @@ function summarize(version, image, c) {
   return e;
 }
 
-const result = {};
-let scanned = 0, failed = 0;
+// flat task list: one entry per (image, version)
+const tasks = [];
 for (const e of images) {
   if (only.length && !only.includes(e.slug)) continue;
-  const vers = (e.versions || []).filter((v) => v.digest);
-  if (!e.image || !vers.length) { console.error(`skip ${e.slug} (no published versions)`); continue; }
-
-  const perVersion = [];
-  for (const v of vers) {
-    let c;
-    try {
-      c = scan(`${e.image}@${v.digest}`);
-    } catch {
-      try { c = scan(`${e.image}@${v.digest}`); } // one retry
-      catch (err2) { failed++; console.error(`FAIL ${e.slug} ${v.version}: ${String(err2.message).split('\n')[0]}`); continue; }
-    }
-    const s = summarize(v.version, e.image, c);
-    perVersion.push(s);
-    scanned++;
-    console.error(`${e.slug.padEnd(26)} ${String(v.version).padEnd(14)} total=${c.total} fixable=${c.fixable} grade=${s.grade} score=${s.score}`);
+  for (const v of e.versions || []) {
+    if (v.digest) tasks.push({ slug: e.slug, image: e.image, version: v.version, digest: v.digest });
   }
-  if (!perVersion.length) continue;
+}
 
-  // top-level summary = the WORST version (most total CVEs), so a card flags any bad tag
-  // without triple-counting the same CVE across version lines.
-  const worst = perVersion.reduce((a, b) => (b.total > a.total ? b : a));
-  result[e.slug] = { image: e.image, ...worst, versions: perVersion };
+const perImage = {}; // slug -> [version summaries]
+let done = 0, failed = 0;
+async function worker(queue) {
+  for (const t of queue) {
+    let c;
+    try { c = await scanOnce(`${t.image}@${t.digest}`); }
+    catch { try { c = await scanOnce(`${t.image}@${t.digest}`); } // one retry
+            catch (err) { failed++; console.error(`FAIL ${t.slug} ${t.version}: ${String(err.message).split('\n')[0]}`); continue; } }
+    (perImage[t.slug] ||= []).push(summarize(t.version, t.image, c));
+    done++;
+    console.error(`[${done}/${tasks.length}] ${t.slug.padEnd(26)} ${String(t.version).padEnd(14)} total=${c.total} fixable=${c.fixable} grade=${gradeOf(c)}`);
+  }
+}
+// split tasks round-robin across workers
+const queues = Array.from({ length: CONCURRENCY }, () => []);
+tasks.forEach((t, i) => queues[i % CONCURRENCY].push(t));
+await Promise.all(queues.map(worker));
+
+const result = {};
+for (const [slug, vers] of Object.entries(perImage)) {
+  if (!vers.length) continue;
+  const e = images.find((x) => x.slug === slug);
+  // top-level summary = the WORST version (most total CVEs), no triple-counting
+  const worst = vers.reduce((a, b) => (b.total > a.total ? b : a));
+  result[slug] = { image: e.image, ...worst, versions: vers.sort((a, b) => (a.version < b.version ? 1 : -1)) };
 }
 
 let prev = {};
@@ -100,4 +113,4 @@ writeFileSync(ROOT + 'src/data/security.json', JSON.stringify(sorted, null, 2) +
 
 const totalCves = Object.values(sorted).reduce((a, r) => a + (r.total || 0), 0);
 const needFix = Object.values(sorted).filter((r) => (r.fixable || 0) > 0).length;
-console.error(`\nscanned=${scanned} versions, failed=${failed} | security.json: ${Object.keys(sorted).length} images, ${totalCves} worst-case CVEs, ${needFix} need a rebuild`);
+console.error(`\nscanned=${done} versions, failed=${failed} | security.json: ${Object.keys(sorted).length} images, ${totalCves} worst-case CVEs, ${needFix} need a rebuild`);
