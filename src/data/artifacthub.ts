@@ -2,9 +2,22 @@
 // so this runs server-side during `astro build` only -- never in the browser.
 // If AH is unreachable, callers fall back to static catalog values so a deploy never breaks.
 
+import securitySnapshot from './security.json';
+
 const API = 'https://artifacthub.io/api/v1';
 // AH repository slug convention for this org: quench-<app>
 const repoOf = (slug: string) => `quench-${slug}`;
+
+// Reliable per-package CVE summary from the committed snapshot (scripts/sync-security.mjs).
+// Used everywhere instead of the rate-limited live call so the build never blanks.
+function snapshotSecurity(name: string): { security?: SecuritySummary; securityTotal?: number } {
+  const rec = (securitySnapshot as Record<string, any>)[name];
+  if (!rec) return {};
+  return {
+    security: { critical: rec.critical, high: rec.high, medium: rec.medium, low: rec.low, unknown: rec.unknown },
+    securityTotal: rec.total,
+  };
+}
 
 export interface AhFacts {
   version: string;
@@ -20,46 +33,54 @@ export interface AhFacts {
   securityTotal?: number;
 }
 
-// Normalize ArtifactHub's security_report_summary into our shape + a total.
-function parseSecurity(raw: any): { security?: SecuritySummary; securityTotal?: number } {
-  if (!raw) return {};
-  const security: SecuritySummary = {
-    critical: raw.critical ?? 0,
-    high: raw.high ?? 0,
-    medium: raw.medium ?? 0,
-    low: raw.low ?? 0,
-    unknown: raw.unknown ?? 0,
-  };
-  return {
-    security,
-    securityTotal: security.critical + security.high + security.medium + security.low + security.unknown,
-  };
+// Lightweight: one search call -> map of package name -> basic facts (used by the
+// index + cards + hero). Module-cached so the WHOLE build shares ONE request.
+// CVE counts come from the committed security.json snapshot (overlaid below), NOT
+// this live call -- the build renders pages in parallel and the live call often
+// 429s, which would blank the catalog. version/signed are best-effort live.
+let searchCache: Promise<Record<string, AhFacts>> | null = null;
+export function fetchArtifactHub(): Promise<Record<string, AhFacts>> {
+  if (!searchCache) searchCache = fetchArtifactHubUncached();
+  return searchCache;
 }
 
-// Lightweight: one search call -> map of package name -> basic facts (used by the index).
-export async function fetchArtifactHub(): Promise<Record<string, AhFacts>> {
+async function fetchArtifactHubUncached(): Promise<Record<string, AhFacts>> {
   const out: Record<string, AhFacts> = {};
-  try {
-    const res = await fetch(`${API}/packages/search?ts_query_web=quenchworks&kind=0&limit=60`, {
-      headers: { accept: 'application/json' },
-    });
-    if (!res.ok) return out;
-    const data = (await res.json()) as { packages?: any[] };
-    for (const p of data.packages ?? []) {
-      const repo = p.repository?.name ?? '';
-      out[p.name] = {
-        version: p.version,
-        appVersion: p.app_version,
-        signed: Boolean(p.signed),
-        signatures: p.signatures ?? [],
-        repo,
-        url: `${API.replace('/api/v1', '')}/packages/helm/${repo}/${p.name}`,
-        ts: p.ts,
-        ...parseSecurity(p.security_report_summary),
-      };
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      // AH caps limit at 60; that's enough for the live version/signed enrichment
+      // (security is overlaid from security.json regardless).
+      const res = await fetch(`${API}/packages/search?ts_query_web=quenchworks&kind=0&limit=60`, {
+        headers: { accept: 'application/json' },
+      });
+      if (res.ok) {
+        const data = (await res.json()) as { packages?: any[] };
+        for (const p of data.packages ?? []) {
+          const repo = p.repository?.name ?? '';
+          out[p.name] = {
+            version: p.version,
+            appVersion: p.app_version,
+            signed: Boolean(p.signed),
+            signatures: p.signatures ?? [],
+            repo,
+            url: `${API.replace('/api/v1', '')}/packages/helm/${repo}/${p.name}`,
+            ts: p.ts,
+          };
+        }
+        break;
+      }
+    } catch {
+      /* retry */
     }
-  } catch {
-    /* fall back */
+    await new Promise((r) => setTimeout(r, 500 * (attempt + 1)));
+  }
+  // Overlay the committed CVE snapshot so every package has reliable security data
+  // even when the live call was rate-limited or returned a subset.
+  for (const name of Object.keys(securitySnapshot as Record<string, any>)) {
+    out[name] = {
+      ...(out[name] ?? { signed: true, signatures: [], repo: repoOf(name), url: '', version: '' }),
+      ...snapshotSecurity(name),
+    };
   }
   return out;
 }
@@ -133,8 +154,9 @@ async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null
       chartLicense: d.license,
       hasValuesSchema: Boolean(d.has_values_schema),
       image: (d.containers_images ?? [])[0]?.image,
-      security: sec,
-      securityTotal: sec ? sec.critical + sec.high + sec.medium + sec.low + sec.unknown : undefined,
+      // Prefer the committed snapshot (reliable) over the live (rate-limited) summary.
+      security: snapshotSecurity(slug).security ?? sec,
+      securityTotal: snapshotSecurity(slug).securityTotal ?? (sec ? sec.critical + sec.high + sec.medium + sec.low + sec.unknown : undefined),
       scannedAt: d.security_report_created_at,
       versions: (d.available_versions ?? []).map((v: any) => ({ version: v.version, ts: v.ts })),
       signKeyUrl: d.sign_key?.url,

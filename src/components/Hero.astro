@@ -3,10 +3,19 @@
 import { availableCount } from '../data/images';
 import { chartCount } from '../data/charts';
 import { githubStars } from '../data/github';
+import { fetchArtifactHub } from '../data/artifacthub';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getLangFromUrl, useTranslations } from '../i18n/ui';
 // shipped end-to-end = apps with both an available image and a chart.
 const shipped = Math.min(availableCount, chartCount);
+
+// LIVE CVE total across the catalog, summed from ArtifactHub's per-package Trivy
+// summaries (never hardcoded). If AH is unreachable (no data), fall back to the
+// static "0 fixable CVEs" claim so the hero never shows a false count.
+const ahFacts = await fetchArtifactHub();
+const ahKeys = Object.keys(ahFacts);
+const cveTotal = ahKeys.reduce((s, k) => s + (ahFacts[k].securityTotal ?? 0), 0);
+const cveLive = ahKeys.length > 0; // we actually got scan data back
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -25,7 +34,13 @@ const chartsHref = getRelativeLocaleUrl(lang, '/charts');
   <div class="mx-auto max-w-5xl px-5 pb-20 pt-20 text-center sm:pt-28">
     <p class="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-ash">
       <span class="font-bold tabular-nums text-paper">{availableCount}</span> {t('hero.statImages')} ·
-      <span class="font-bold tabular-nums text-paper">{chartCount}</span> {t('hero.statCharts')} · {t('hero.statCves')}{
+      <span class="font-bold tabular-nums text-paper">{chartCount}</span> {t('hero.statCharts')} · {
+        cveLive && cveTotal > 0 ? (
+          <><span class="font-bold tabular-nums text-amber-400">{cveTotal}</span> {cveTotal === 1 ? 'open CVE' : 'open CVEs'}</>
+        ) : (
+          t('hero.statCves')
+        )
+      }{
         githubStars !== null && (
           <>
             {' '}· <span class="text-paper" aria-hidden="true">★</span>{' '}
