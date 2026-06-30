@@ -55,7 +55,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "4.39.20",
     "description": "Hardened Authelia authentication and authorization server on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authelia",
@@ -68,6 +68,18 @@
       {
         "name": "authelia",
         "image": "ghcr.io/quenchworks/images/authelia@sha256:9d8a4377b29c18986aa226de5e60370ea48463b253dfa0c1d1ae239d19860a9c"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      },
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:4482926665b4e9fbe73b6ab15e403e1f4d9285112aca313ce4994095346c6565"
+      },
+      {
+        "name": "redis",
+        "image": "ghcr.io/quenchworks/images/redis@sha256:f027d0109a0bdd1779bfac85a10744336f4af80518e9bc2c290984e206b3bf14"
       }
     ]
   },
@@ -431,6 +443,30 @@
       }
     ],
     "caution": true
+  },
+  {
+    "slug": "envoy",
+    "name": "envoy",
+    "category": "Gateway",
+    "summary": "Cloud-native L7 proxy and communication bus, the data plane behind API gateways and service meshes. HTTP/gRPC routing, load balancing, rich observability, and an admin/health endpoint. The chart supplies the bootstrap config.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.38.1",
+    "description": "Envoy, the CNCF high-performance L7 edge/service proxy. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a sensible default bootstrap so the pod is useful out-of-the-box.",
+    "imageRepository": "ghcr.io/quenchworks/images/envoy",
+    "imageDigest": "sha256:03bac51fd570bc1af5172c72985d0e48c51d792a40c60ebe653f55f68be76921",
+    "repositoryID": "54d769f7-dfed-4af0-b906-13ea462e9f0a",
+    "port": 10000,
+    "upstream": "https://www.envoyproxy.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/envoy",
+    "images": [
+      {
+        "name": "envoy",
+        "image": "ghcr.io/quenchworks/images/envoy@sha256:03bac51fd570bc1af5172c72985d0e48c51d792a40c60ebe653f55f68be76921"
+      }
+    ]
   },
   {
     "slug": "etcd",
@@ -825,6 +861,29 @@
       {
         "name": "influxdb",
         "image": "ghcr.io/quenchworks/images/influxdb@sha256:30213d15b3c3efe8836f626750855e7a44ed4a5151ecb2c9c702bd5b035ba657"
+      }
+    ]
+  },
+  {
+    "slug": "ingress-nginx",
+    "name": "ingress-nginx",
+    "category": "Gateway",
+    "summary": "The Kubernetes NGINX Ingress Controller. Routes external HTTP/HTTPS traffic to in-cluster Services via Ingress resources, with TLS termination, path/host routing, and an admission webhook. The chart wires its RBAC, IngressClass, and webhook.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.15.8",
+    "description": "Ingress NGINX Controller: the Kubernetes-maintained Ingress controller built on NGINX. Watches Ingress resources of the nginx IngressClass and configures NGINX to load-balance and route HTTP/HTTPS traffic to backend Services, with a validating admission webhook that rejects malformed Ingress objects before they are persisted. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The controller runs as a single Deployment; the admission webhook's serving certificate is bootstrapped by a self-contained pre/post-install Job pair (no external cert-manager dependency).",
+    "imageRepository": "ghcr.io/quenchworks/images/ingress-nginx",
+    "imageDigest": "sha256:62fe44bf9274dce79081b145a64d351b7d1a448c5d9f87569511b97493916b65",
+    "repositoryID": "1f5e0727-cf7e-4b35-8cd1-e58c15da8d10",
+    "upstream": "https://kubernetes.github.io/ingress-nginx",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ingress-nginx",
+    "images": [
+      {
+        "name": "ingress-nginx-controller",
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:62fe44bf9274dce79081b145a64d351b7d1a448c5d9f87569511b97493916b65"
       }
     ]
   },
