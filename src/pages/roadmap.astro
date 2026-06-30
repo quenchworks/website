@@ -16,6 +16,8 @@ const grouped = roadmapCategories.map((cat) => ({
   items: roadmap.filter((r) => r.category === cat).sort(byPriority),
 }));
 const nextCount = roadmap.filter((r) => r.priority === 'next').length;
+const plannedCount = roadmap.filter((r) => r.priority === 'planned').length;
+const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
 ---
 
 <Base title="Roadmap · QuenchWorks" description="What is shipped now and the 180+ apps on deck for the QuenchWorks catalog, covering the most-requested datastores, infrastructure, and developer tools.">
@@ -42,13 +44,15 @@ const nextCount = roadmap.filter((r) => r.priority === 'next').length;
       <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-ink" role="progressbar" aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100">
         <div class="h-full rounded-full bg-paper" style={`width:${percent}%`}></div>
       </div>
-      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center">
+      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center sm:grid-cols-5">
         {
           (
             [
               ['Shipped', shipped.length],
               ['On the roadmap', roadmapTotal],
               ['Up next', nextCount],
+              ['Planned', plannedCount],
+              ['Exploring', exploringCount],
             ] as [string, number][]
           ).map(([label, n]) => (
             <div>
