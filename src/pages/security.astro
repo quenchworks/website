@@ -47,7 +47,7 @@ const sections = [
     <section class="mt-10">
       <h2 class="text-xl font-semibold tracking-tight">Verify it yourself</h2>
       <p class="mt-2 leading-relaxed text-ash">
-        Swap in any image or chart name. These commands are real and need no key — just cosign and
+        Swap in any image or chart name. These commands are real and need no key, just cosign and
         the GitHub CLI.
       </p>
       <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirm an image was built and signed by our CI (images have no :latest)</span>
@@ -77,7 +77,7 @@ docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:8.8.0 \
         A Trivy scan runs on every build and hard-fails it on any fixable vulnerability, from
         CRITICAL down to LOW, with <span class="font-mono">--ignore-unfixed</span> so we only block
         on what we can actually patch. The same gate runs again on a rebuild schedule, so a clean
-        scan is a moving target kept clean as new advisories land — not a one-time audit.
+        scan is a moving target kept clean as new advisories land, not a one-time audit.
       </p>
     </section>
 

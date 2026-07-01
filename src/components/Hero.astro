@@ -15,7 +15,16 @@ const shipped = Math.min(availableCount, chartCount);
 const ahFacts = await fetchArtifactHub();
 const ahKeys = Object.keys(ahFacts);
 const cveTotal = ahKeys.reduce((s, k) => s + (ahFacts[k].securityTotal ?? 0), 0);
+// Fixable CVEs are the ones a rebuild can clear; catalog-wide this is 0 today. We
+// surface it next to the open count so "N open" never reads as contradicting the
+// "0 fixable CVEs" claim elsewhere on the page (open ≠ fixable).
+const fixableTotal = ahKeys.reduce((s, k) => s + (ahFacts[k].security?.fixable ?? 0), 0);
 const cveLive = ahKeys.length > 0; // we actually got scan data back
+
+// Gate the star chip: a tiny count reads as "unadopted" to a skeptic, so only
+// show it once it clears a credibility threshold. Below that, omit the segment.
+const STAR_THRESHOLD = 25;
+const showStars = githubStars !== null && githubStars >= STAR_THRESHOLD;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -36,12 +45,15 @@ const chartsHref = getRelativeLocaleUrl(lang, '/charts');
       <span class="font-bold tabular-nums text-paper">{availableCount}</span> {t('hero.statImages')} ·
       <span class="font-bold tabular-nums text-paper">{chartCount}</span> {t('hero.statCharts')} · {
         cveLive && cveTotal > 0 ? (
-          <><span class="font-bold tabular-nums text-amber-400">{cveTotal}</span> {cveTotal === 1 ? 'open CVE' : 'open CVEs'}</>
+          <>
+            <span class="font-bold tabular-nums text-amber-400">{cveTotal}</span> open ·{' '}
+            <span class="font-bold tabular-nums text-paper">{fixableTotal}</span> fixable {cveTotal === 1 ? 'CVE' : 'CVEs'}
+          </>
         ) : (
           t('hero.statCves')
         )
       }{
-        githubStars !== null && (
+        showStars && (
           <>
             {' '}· <span class="text-paper" aria-hidden="true">★</span>{' '}
             <span class="font-bold tabular-nums text-paper">{githubStars}</span>
@@ -74,20 +86,20 @@ const chartsHref = getRelativeLocaleUrl(lang, '/charts');
     </div>
 
     <!-- terminal card -->
-    <div class="mx-auto mt-14 max-w-2xl overflow-hidden rounded-xl border border-line bg-graphite text-start">
+    <div class="qw-boot mx-auto mt-14 max-w-2xl overflow-hidden rounded-xl border border-line bg-graphite text-start">
       <div class="flex items-center gap-2 border-b border-line px-4 py-3">
         <span class="size-3 rounded-full border border-line"></span>
         <span class="size-3 rounded-full border border-line"></span>
         <span class="size-3 rounded-full border border-line"></span>
         <span class="ms-2 font-mono text-xs text-ash">install &amp; verify</span>
       </div>
-      <pre class="overflow-x-auto px-4 py-4 font-mono text-[13px] leading-relaxed text-paper"><code><span class="text-ash"># add the chart (OCI) and install</span>
+      <pre class="whitespace-pre-wrap break-words px-4 py-4 font-mono text-[13px] leading-relaxed text-paper sm:overflow-x-auto sm:whitespace-pre sm:break-normal"><code><span class="text-ash"># add the chart (OCI) and install</span>
 helm install my-redis oci://ghcr.io/quenchworks/charts/redis
 
 <span class="text-ash"># verify the image was built &amp; signed by CI before you trust it</span>
 cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
-  --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com<span class="qw-cursor" aria-hidden="true"></span></code></pre>
     </div>
   </div>
 </section>

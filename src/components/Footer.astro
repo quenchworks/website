@@ -7,6 +7,11 @@ const t = useTranslations(lang);
 const l = (p: string) => localizeUrl(lang, p);
 const year = new Date().getFullYear();
 
+// Only show the star count once it clears a credibility threshold; a tiny count
+// reads as "unadopted" to a skeptic. Below that, omit the chip entirely.
+const STAR_THRESHOLD = 25;
+const showStars = githubStars !== null && githubStars >= STAR_THRESHOLD;
+
 // Two columns: catalog/resources and developer entry points. Content-page links
 // are localized to the active locale; /rss.xml is global (English only), so it
 // is NOT prefixed.
@@ -39,7 +44,7 @@ const developers = [
         <img src="/brand/logo-dark.svg" alt="QuenchWorks" class="h-7 w-auto" width="200" height="51" />
       </a>
       <p class="max-w-xs text-sm leading-relaxed text-ash">{t('footer.tagline')}</p>
-      {githubStars !== null && (
+      {showStars && (
         <a
           href="https://github.com/quenchworks"
           class="inline-flex items-center gap-2 rounded-lg border border-line px-3 py-1.5 font-mono text-xs text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"

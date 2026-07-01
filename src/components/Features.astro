@@ -34,15 +34,16 @@ const features = [
 
 <section id="how" class="mx-auto max-w-5xl px-5 py-16 sm:py-24">
   <div class="mb-10 text-center">
-    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">{t('features.eyebrow')}</p>
     <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{t('features.title')}</h2>
   </div>
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
     {
-      features.map((f) => (
+      features.map((f, i) => (
         <article
-          class={`group rounded-xl border border-line bg-graphite p-6 transition-colors duration-200 hover:border-ash/50 ${f.span}`}
+          data-reveal
+          style={`--i:${i}`}
+          class={`group rounded-xl border border-line bg-graphite p-6 transition duration-200 hover:-translate-y-px hover:border-ash/50 ${f.span}`}
         >
           <div class="mb-4 inline-flex size-10 items-center justify-center rounded-lg border border-line text-paper">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="size-5" aria-hidden="true">

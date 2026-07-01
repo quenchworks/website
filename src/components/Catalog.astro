@@ -18,11 +18,18 @@ const counts = charts.reduce<Record<string, number>>((acc, c) => {
 const categories = Object.entries(counts)
   .map(([label, count]) => ({ label, count }))
   .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
+
+// Cap the grid to the most-populated categories so it stays scannable; when there
+// are more, the last cell becomes a "+N more categories" link to /images instead
+// of a flat wall of ~28 tiles. 11 shown + the more-tile fills a clean 3×4 grid.
+const CATEGORY_CAP = 12;
+const hasOverflow = categories.length > CATEGORY_CAP;
+const shownCategories = hasOverflow ? categories.slice(0, CATEGORY_CAP - 1) : categories;
+const overflowCount = categories.length - shownCategories.length;
 ---
 
 <section class="mx-auto max-w-5xl px-5 pb-8">
   <div class="mb-10 text-center">
-    <p class="mb-3 font-mono text-xs uppercase tracking-[0.25em] text-ash">{t('catalog.eyebrow')}</p>
     <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{t('catalog.title')}</h2>
     <p class="mx-auto mt-4 max-w-xl text-pretty text-sm leading-relaxed text-ash sm:text-base">
       <span class="font-semibold text-paper tabular-nums">{availableCount}</span> {t('catalog.bodyPre')}
@@ -34,12 +41,25 @@ const categories = Object.entries(counts)
 
   <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
     {
-      categories.map((c) => (
-        <li class="flex items-center justify-between gap-3 rounded-xl border border-line bg-graphite px-4 py-3">
+      shownCategories.map((c, i) => (
+        <li data-reveal style={`--i:${i}`} class="flex items-center justify-between gap-3 rounded-xl border border-line bg-graphite px-4 py-3">
           <span class="text-sm font-medium text-paper">{categoryName(lang, c.label)}</span>
           <span class="font-mono text-xs tabular-nums text-ash">{c.count}</span>
         </li>
       ))
+    }
+    {
+      hasOverflow && (
+        <li data-reveal style={`--i:${shownCategories.length}`}>
+          <a
+            href={l('/images')}
+            class="flex h-full items-center justify-between gap-3 rounded-xl border border-line bg-graphite px-4 py-3 transition-colors duration-200 hover:border-paper/40"
+          >
+            <span class="text-sm font-medium text-ash">+{overflowCount} {t('catalog.moreCategories')}</span>
+            <span aria-hidden="true" class="text-ash">&rarr;</span>
+          </a>
+        </li>
+      )
     }
   </ul>
 
