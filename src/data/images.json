@@ -190,6 +190,38 @@
     "image": "ghcr.io/quenchworks/images/authelia"
   },
   {
+    "slug": "authentik",
+    "name": "authentik",
+    "category": "Secrets & identity",
+    "summary": "Self-hosted identity provider (OIDC, SAML, LDAP, SCIM) with flows, policies, and application/provider management. Built clean-room from source on Wolfi as a four-language image (nodejs web UI, Go server/proxy, Rust worker, Python/Django core via uv) on a hardened nonroot base; FIPS mode is not forced and the license-gated MaxMind GeoIP download is omitted. Needs PostgreSQL and Redis at runtime, provided by the chart.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "2026.5.3, 2026.2.4",
+    "versions": [
+      {
+        "version": "2026.5.3",
+        "size": "237.6 MB",
+        "published": "2026-07-01T12:05:20Z",
+        "digest": "sha256:1809478b0e91f9b5602ba0a28a87ae05e86989b958cb29ce6c6d262a926dd5d0"
+      },
+      {
+        "version": "2026.2.4",
+        "size": "229.9 MB",
+        "published": "2026-07-01T12:05:15Z",
+        "digest": "sha256:9ec4a3c0bf0a3f69f03ea23d36f30d5035a54457d1e9cd55318a531697a35549"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://goauthentik.io",
+    "source": "https://github.com/goauthentik/authentik",
+    "image": "ghcr.io/quenchworks/images/authentik"
+  },
+  {
     "slug": "blackbox-exporter",
     "name": "blackbox-exporter",
     "category": "Metrics/Exporter",
@@ -898,27 +930,6 @@
     "status": "available",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "version": "3.0.6, 2.6.3, 3.1.1",
-    "versions": [
-      {
-        "version": "3.0.6",
-        "size": "29.5 MB",
-        "published": "2026-06-23T11:16:51Z",
-        "digest": "sha256:a1de9dcea71c574ca172040748dfa0023fac3b0b1940f05f6845778143057761"
-      },
-      {
-        "version": "2.6.3",
-        "size": "29.7 MB",
-        "published": "2026-06-23T11:16:50Z",
-        "digest": "sha256:d64bbc2c27b7624989722a1cfa4a40718cf1e368397d4f49f81960fa50b07b72"
-      },
-      {
-        "version": "3.1.1",
-        "size": "30.1 MB",
-        "published": "2026-06-23T11:16:48Z",
-        "digest": "sha256:4fd8d6f95a12db4c8895ce9ed888b017c849d4ea768f31ce53d07c0565f2d893"
-      }
-    ],
     "arches": [
       "amd64",
       "arm64"
@@ -1635,6 +1646,82 @@
     "upstream": "https://github.com/FerretDB/FerretDB",
     "source": "https://github.com/FerretDB/FerretDB",
     "image": "ghcr.io/quenchworks/images/ferretdb"
+  },
+  {
+    "slug": "floci",
+    "name": "floci",
+    "category": "Apps & productivity",
+    "summary": "Local AWS cloud emulator and LocalStack Community successor, built from source into a Quarkus fast-jar on a hardened Wolfi JRE. The hardened image runs all 55 of Floci's in-process AWS services nonroot with no Docker socket, covering S3, DynamoDB, SQS, SNS, SES, IAM, STS, KMS, Secrets Manager, API Gateway, Cognito, Kinesis, CloudFormation, Step Functions, EventBridge, CloudWatch, Route53, and more. The 10 Docker-backed services (Lambda, RDS, ElastiCache, MSK, ECS, EKS, OpenSearch, ECR, DocumentDB, Neptune) need the host Docker socket plus root and are out of scope for this image.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "1.5.27, 1.5.28, 1.5.29",
+    "versions": [
+      {
+        "version": "1.5.27",
+        "size": "169.0 MB",
+        "published": "2026-07-01T08:11:35Z",
+        "digest": "sha256:162e8edb4ec6ec50105f5fa25e366d547bfa61189f22e0acb47ff0d48a62c4bd"
+      },
+      {
+        "version": "1.5.28",
+        "size": "188.9 MB",
+        "published": "2026-07-01T08:11:33Z",
+        "digest": "sha256:e637e7140842c75ca42ffae219b3a74b170845f3a8bbceef73db81697ccb276f"
+      },
+      {
+        "version": "1.5.29",
+        "size": "189.0 MB",
+        "published": "2026-07-01T08:11:25Z",
+        "digest": "sha256:ea56e8403342af51972527b6962b9186032d609ce8a006d26b14f4a5057922f3"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://floci.io",
+    "source": "https://github.com/floci-io/floci",
+    "image": "ghcr.io/quenchworks/images/floci"
+  },
+  {
+    "slug": "floci-full",
+    "name": "floci-full",
+    "category": "Apps & productivity",
+    "summary": "Opt-in, NON-hardened companion to the floci image: it runs as root and expects the host Docker socket mounted, which lets it emulate all 65 of Floci's AWS services including the 10 Docker-backed ones (Lambda, RDS, ElastiCache, MSK, ECS, EKS, OpenSearch, ECR, DocumentDB, Neptune). Same from-source Quarkus build and 0-CVE Trivy gate as floci, but running root with a mounted /var/run/docker.sock is a node-root / container-escape surface, so use it only in trusted single-tenant dev or CI. The floci Helm chart selects this image via mode=full behind an explicit acknowledgeRisk gate. Image only, no separate chart.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "1.5.29, 1.5.28, 1.5.27",
+    "versions": [
+      {
+        "version": "1.5.29",
+        "size": "189.0 MB",
+        "published": "2026-07-01T09:58:08Z",
+        "digest": "sha256:269b815df374249d2514aeef39353052115995b533c6706889e9d9d0d04acd09"
+      },
+      {
+        "version": "1.5.28",
+        "size": "188.9 MB",
+        "published": "2026-07-01T09:58:06Z",
+        "digest": "sha256:a39a403e9dde9cba1faa1a162df4c3e3c4aba8a0304d602cfdd2d1dc6a73f322"
+      },
+      {
+        "version": "1.5.27",
+        "size": "169.0 MB",
+        "published": "2026-07-01T09:58:04Z",
+        "digest": "sha256:5c2b00e63886a552ff0bcf937aa7c4f92e6a45127b564c8aa463944aea468e17"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://floci.io",
+    "source": "https://github.com/floci-io/floci",
+    "image": "ghcr.io/quenchworks/images/floci-full"
   },
   {
     "slug": "fluent-bit",

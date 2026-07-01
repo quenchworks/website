@@ -84,6 +84,42 @@
     ]
   },
   {
+    "slug": "authentik",
+    "name": "authentik",
+    "category": "Secrets & identity",
+    "summary": "Self-hosted identity provider (OIDC, SAML, LDAP, SCIM) with flows, policies, and application/provider management. Built clean-room from source on Wolfi as a four-language image (nodejs web UI, Go server/proxy, Rust worker, Python/Django core via uv) on a hardened nonroot base; FIPS mode is not forced and the license-gated MaxMind GeoIP download is omitted. Needs PostgreSQL and Redis at runtime, provided by the chart.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.1.0",
+    "appVersion": "2026.5.3",
+    "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a 0-CVE image",
+    "imageRepository": "ghcr.io/quenchworks/images/authentik",
+    "imageDigest": "sha256:1809478b0e91f9b5602ba0a28a87ae05e86989b958cb29ce6c6d262a926dd5d0",
+    "repositoryID": "50bb4aa5-5b51-4158-bafa-3e0a9204ef5b",
+    "port": 80,
+    "upstream": "https://goauthentik.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/authentik",
+    "images": [
+      {
+        "name": "authentik",
+        "image": "ghcr.io/quenchworks/images/authentik@sha256:1809478b0e91f9b5602ba0a28a87ae05e86989b958cb29ce6c6d262a926dd5d0"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      },
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:4482926665b4e9fbe73b6ab15e403e1f4d9285112aca313ce4994095346c6565"
+      },
+      {
+        "name": "redis",
+        "image": "ghcr.io/quenchworks/images/redis@sha256:f027d0109a0bdd1779bfac85a10744336f4af80518e9bc2c290984e206b3bf14"
+      }
+    ]
+  },
+  {
     "slug": "caddy",
     "name": "Caddy",
     "category": "Gateway",
@@ -559,6 +595,34 @@
       {
         "name": "ferretdb",
         "image": "ghcr.io/quenchworks/images/ferretdb@sha256:9aee41e900c918471a7cc2305c70c9b44391473bdf658092bf6d27bbebddf609"
+      }
+    ]
+  },
+  {
+    "slug": "floci",
+    "name": "floci",
+    "category": "Apps & productivity",
+    "summary": "Local AWS cloud emulator and LocalStack Community successor, built from source into a Quarkus fast-jar on a hardened Wolfi JRE. The hardened image runs all 55 of Floci's in-process AWS services nonroot with no Docker socket, covering S3, DynamoDB, SQS, SNS, SES, IAM, STS, KMS, Secrets Manager, API Gateway, Cognito, Kinesis, CloudFormation, Step Functions, EventBridge, CloudWatch, Route53, and more. The 10 Docker-backed services (Lambda, RDS, ElastiCache, MSK, ECS, EKS, OpenSearch, ECR, DocumentDB, Neptune) need the host Docker socket plus root and are out of scope for this image.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.2.0",
+    "appVersion": "1.5.29",
+    "description": "Floci, the self-hosted, LocalStack-compatible local AWS emulator (Quarkus). This chart ships ONLY the in-process services (S3, DynamoDB, SQS, SNS, IAM) that run nonroot without a Docker socket; the Docker-backed services (Lambda, RDS, ECS, EKS, ...) are out of scope. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/floci",
+    "imageDigest": "sha256:ea56e8403342af51972527b6962b9186032d609ce8a006d26b14f4a5057922f3",
+    "repositoryID": "3abdd874-e669-4028-8d15-dc03ef8ff2e7",
+    "port": 4566,
+    "upstream": "https://floci.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/floci",
+    "images": [
+      {
+        "name": "floci",
+        "image": "ghcr.io/quenchworks/images/floci@sha256:ea56e8403342af51972527b6962b9186032d609ce8a006d26b14f4a5057922f3"
+      },
+      {
+        "name": "floci-full",
+        "image": "ghcr.io/quenchworks/images/floci-full@sha256:269b815df374249d2514aeef39353052115995b533c6706889e9d9d0d04acd09"
       }
     ]
   },
