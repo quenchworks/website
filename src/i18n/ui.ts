@@ -15,6 +15,7 @@ export const rtlLangs: Lang[] = ['ar'];
 
 export const ui = {
   en: {
+    'a11y.skipToContent': 'Skip to content',
     'nav.charts': 'Charts',
     'nav.images': 'Images',
     'nav.stacks': 'Stacks',
@@ -76,6 +77,7 @@ export const ui = {
     'catalog.bodyImages': 'images',
     'catalog.browsePre': 'Browse all',
     'catalog.browsePost': 'charts',
+    'catalog.moreCategories': 'more categories',
     'cta.title': 'Free, independent, and yours to verify.',
     'cta.body':
       'No paywall and no lock-in. Pull an image, check the signature yourself, then install the chart. You never have to take our word for it.',
@@ -101,6 +103,7 @@ export const ui = {
     'catalog.list.filterCharts': 'Filter charts',
     'catalog.list.filterAll': 'All',
     'catalog.list.filterAvailable': 'Available',
+    'catalog.list.filterCategory': 'All categories',
     'catalog.list.noMatchImages': 'No images match that search.',
     'catalog.list.noMatchCharts': 'No charts match that search.',
     'catalog.list.badgeCve': '0 CVE',
@@ -270,6 +273,7 @@ export const ui = {
     'docs.next': 'Next',
   },
   ar: {
+    'a11y.skipToContent': 'تخطَّ إلى المحتوى',
     'nav.charts': 'المخططات',
     'nav.images': 'الصور',
     'nav.stacks': 'الحزم',
@@ -330,6 +334,7 @@ export const ui = {
     'catalog.bodyImages': 'الصور',
     'catalog.browsePre': 'تصفّح كل',
     'catalog.browsePost': 'مخطط',
+    'catalog.moreCategories': 'فئة أخرى',
     'cta.title': 'مجانية، ومستقلة، ولك أن تتحقّق منها.',
     'cta.body':
       'دون جدار دفع ودون احتكار. اسحب صورة، وتحقّق من التوقيع بنفسك، ثم ثبّت المخطط. لا داعي لأن تأخذ كلامنا على عِلّاته.',
@@ -355,6 +360,7 @@ export const ui = {
     'catalog.list.filterCharts': 'تصفية المخططات',
     'catalog.list.filterAll': 'الكل',
     'catalog.list.filterAvailable': 'متاح',
+    'catalog.list.filterCategory': 'جميع الفئات',
     'catalog.list.noMatchImages': 'لا توجد صور تطابق هذا البحث.',
     'catalog.list.noMatchCharts': 'لا توجد مخططات تطابق هذا البحث.',
     'catalog.list.badgeCve': '0 CVE',
@@ -524,6 +530,7 @@ export const ui = {
     'docs.next': 'التالي',
   },
   es: {
+    'a11y.skipToContent': 'Saltar al contenido',
     'nav.charts': 'Charts',
     'nav.images': 'Imágenes',
     'nav.stacks': 'Stacks',
@@ -585,6 +592,7 @@ export const ui = {
     'catalog.bodyImages': 'imágenes',
     'catalog.browsePre': 'Explorar los',
     'catalog.browsePost': 'charts',
+    'catalog.moreCategories': 'categorías más',
     'cta.title': 'Libre, independiente y tuyo para verificar.',
     'cta.body':
       'Sin muro de pago y sin dependencia forzosa. Descarga una imagen, comprueba tú mismo la firma y luego instala el chart. Nunca tienes que fiarte de nuestra palabra.',
@@ -610,6 +618,7 @@ export const ui = {
     'catalog.list.filterCharts': 'Filtrar charts',
     'catalog.list.filterAll': 'Todos',
     'catalog.list.filterAvailable': 'Disponibles',
+    'catalog.list.filterCategory': 'Todas las categorías',
     'catalog.list.noMatchImages': 'Ninguna imagen coincide con esa búsqueda.',
     'catalog.list.noMatchCharts': 'Ningún chart coincide con esa búsqueda.',
     'catalog.list.badgeCve': '0 CVE',

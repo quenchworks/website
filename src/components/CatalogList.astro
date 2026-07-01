@@ -171,13 +171,18 @@ const dataset = all.map((e) => {
       class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
       aria-pressed="false">{f.label}</button>
   ))}
-  {categories.map((c) => (
-    <button
-      data-filter={c}
-      data-kind="category"
-      class="filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
-      aria-pressed="false">{categoryName(lang, c)}</button>
-  ))}
+  {/* 28-35 categories is a button wall; a native select stays scannable and gets
+      the OS picker + keyboard for free. Tier/status stay as buttons (only a few). */}
+  <label for="cat-filter" class="sr-only">{isImages ? t('catalog.list.filterImages') : t('catalog.list.filterCharts')}</label>
+  <select
+    id="cat-filter"
+    class="rounded-lg border border-line bg-graphite px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 focus:border-paper/40 focus:outline-none"
+  >
+    <option value="">{t('catalog.list.filterCategory')}</option>
+    {categories.map((c) => (
+      <option value={c}>{categoryName(lang, c)}</option>
+    ))}
+  </select>
 </div>
 
 <div class="mb-4 flex min-h-5 items-center justify-between gap-4">
@@ -187,7 +192,7 @@ const dataset = all.map((e) => {
 
 {/* SERVER slice: the real, crawlable 12-card page. Hidden by the client when filtering. */}
 <ul id="server-grid" class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-  {page.data.map((e) => {
+  {page.data.map((e, i) => {
     const live = ah[e.slug];
     if (isImages) {
       const Tag = e.status === 'available' ? 'a' : 'div';
@@ -196,7 +201,7 @@ const dataset = all.map((e) => {
       const size = cv[0]?.size;
       const count = cv.length;
       return (
-        <li class="card" data-status={e.status} data-tier={e.tier} data-category={e.category}>
+        <li class="card" data-reveal style={`--i:${i}`} data-status={e.status} data-tier={e.tier} data-category={e.category}>
           <Tag
             {...(e.status === 'available' ? { href: `${itemBase}/${e.slug}` } : {})}
             class:list={[
@@ -241,7 +246,7 @@ const dataset = all.map((e) => {
     const chartVer = live?.version ?? e.chartVersion;
     const appVer = live?.appVersion ?? e.appVersion;
     return (
-      <li class="card" data-tier={e.tier} data-category={e.category}>
+      <li class="card" data-reveal style={`--i:${i}`} data-tier={e.tier} data-category={e.category}>
         <a
           href={`${itemBase}/${e.slug}`}
           class="group flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
@@ -319,6 +324,7 @@ const dataset = all.map((e) => {
 
   const search = document.querySelector<HTMLInputElement>(isImages ? '#image-search' : '#chart-search');
   const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const catSelect = document.querySelector<HTMLSelectElement>('#cat-filter');
   const serverGrid = document.getElementById('server-grid');
   const filterGrid = document.getElementById('filter-grid');
   const realPager = document.getElementById('real-pager');
@@ -425,6 +431,9 @@ const dataset = all.map((e) => {
       filterGrid?.classList.add('hidden');
       if (filterGrid) filterGrid.innerHTML = '';
       serverGrid?.classList.remove('hidden');
+      // Force-reveal any server card that never got its entrance (was display:none
+      // while filtering, so the IntersectionObserver couldn't fire): no blank cells.
+      serverGrid?.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-visible'));
       realPager?.classList.remove('hidden');
       noResults?.classList.add('hidden');
       if (count) count.textContent = '';
@@ -460,10 +469,26 @@ const dataset = all.map((e) => {
   buttons.forEach((btn) => {
     btn.addEventListener('click', () => {
       buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      // Buttons and the category select are one mutually-exclusive dimension:
+      // pressing a button clears the category select back to "All categories".
+      if (catSelect) catSelect.value = '';
       activeFilter = btn.dataset.filter ?? 'all';
       activeKind = btn.dataset.kind ?? 'all';
       apply();
     });
+  });
+  catSelect?.addEventListener('change', () => {
+    if (catSelect.value) {
+      activeKind = 'category';
+      activeFilter = catSelect.value;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', 'false'));
+    } else {
+      // Back to "All categories" == the All button.
+      activeKind = 'all';
+      activeFilter = 'all';
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === 'all')));
+    }
+    apply();
   });
   search?.addEventListener('input', apply);
   apply();
