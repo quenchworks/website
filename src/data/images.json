@@ -1292,6 +1292,38 @@
     "cleanAlternative": "Valkey (BSD-3-Clause) — the truly-open Redis-compatible cache."
   },
   {
+    "slug": "drupal",
+    "name": "drupal",
+    "category": "Apps & productivity",
+    "summary": "Drupal core, the open-source CMS and content framework. Built from the official release tarball on a hardened Wolfi php-8.4-fpm + nginx runtime (nonroot, read-only rootfs, supervisord); the chart supplies settings.php via ConfigMap and a MySQL backend. Ships the 11.3/11.4 lines (11.2 is held because drupal/core-recommended pins guzzle below its CVE fix).",
+    "tier": "standard",
+    "status": "available",
+    "license": "GPL-2.0+",
+    "licenseClean": "clean",
+    "version": "11.4.0, 11.3.13",
+    "versions": [
+      {
+        "version": "11.4.0",
+        "size": "68.3 MB",
+        "published": "2026-07-02T19:48:26Z",
+        "digest": "sha256:46a64d6707028b23731a9802280fb48eae8d73f844f3a735c7102422b36f8327"
+      },
+      {
+        "version": "11.3.13",
+        "size": "67.1 MB",
+        "published": "2026-07-02T19:48:20Z",
+        "digest": "sha256:0d4140b2b54cc146bdc6572e313df12752a32cf3a07315d7fa992a4966b85ff0"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.drupal.org",
+    "source": "https://ftp.drupal.org/files/projects/drupal-11.4.0.tar.gz",
+    "image": "ghcr.io/quenchworks/images/drupal"
+  },
+  {
     "slug": "duckdb",
     "name": "duckdb",
     "category": "Databases & engines",
@@ -2011,6 +2043,45 @@
     "upstream": "https://github.com/grafana/grafana",
     "source": "https://github.com/grafana/grafana",
     "image": "ghcr.io/quenchworks/images/grafana"
+  },
+  {
+    "slug": "graylog",
+    "name": "graylog",
+    "category": "Observability",
+    "summary": "Graylog, the log-management and analysis server (search, dashboards, alerting, GELF/Beats inputs). Built clean-room on a hardened Wolfi JRE (nonroot, read-only rootfs); the chart provides MongoDB (metadata) and OpenSearch (log storage) backends. Graylog Server is SSPL-1.0 (source-available, not OSI-approved).",
+    "tier": "standard",
+    "status": "available",
+    "license": "SSPL-1.0",
+    "licenseClean": "caution",
+    "version": "7.0.9, 6.3.14, 7.1.4",
+    "versions": [
+      {
+        "version": "7.0.9",
+        "size": "393.9 MB",
+        "published": "2026-07-02T19:10:57Z",
+        "digest": "sha256:4293f2e249b073c3dd8d41a85506cc5129935fd76f0ae3ffb48e984142d6e965"
+      },
+      {
+        "version": "6.3.14",
+        "size": "386.7 MB",
+        "published": "2026-07-02T19:10:12Z",
+        "digest": "sha256:a80f658da5ae7deacfde8d2969b5e21775c7cf6baf7139cf3e3396f846f17761"
+      },
+      {
+        "version": "7.1.4",
+        "size": "423.3 MB",
+        "published": "2026-07-02T19:09:42Z",
+        "digest": "sha256:f536a26aa7cc348700e1d0fd7b86cd959aab2ca22801e29f5e439bb52e88f6cd"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.graylog.org",
+    "source": "https://packages.graylog2.org/releases/graylog/graylog",
+    "image": "ghcr.io/quenchworks/images/graylog",
+    "caution": true
   },
   {
     "slug": "grype",
@@ -3243,6 +3314,44 @@
     "upstream": "https://github.com/neo4j/neo4j",
     "source": "https://github.com/neo4j/neo4j",
     "image": "ghcr.io/quenchworks/images/neo4j"
+  },
+  {
+    "slug": "nextcloud",
+    "name": "nextcloud",
+    "category": "Apps & productivity",
+    "summary": "Nextcloud, the self-hosted file-sync and content-collaboration platform. Reconstructed clean-room on a hardened Wolfi php-8.4-fpm + nginx runtime (nonroot, read-only rootfs); the chart installs via occ and provides a MariaDB backend. Nextcloud is AGPL-3.0-only (strong copyleft).",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "34.0.1, 33.0.6, 32.0.12",
+    "versions": [
+      {
+        "version": "34.0.1",
+        "size": "407.8 MB",
+        "published": "2026-07-02T19:38:50Z",
+        "digest": "sha256:028029e55ea1673efb284223430fd87f76ca99f345bdae9a59fc24acd7e08c19"
+      },
+      {
+        "version": "33.0.6",
+        "size": "407.1 MB",
+        "published": "2026-07-02T19:38:45Z",
+        "digest": "sha256:0cd61fc612a222927df44f4b2a4ca84f63b1d0d3feaf39f988abd17e6c89b3fd"
+      },
+      {
+        "version": "32.0.12",
+        "size": "407.2 MB",
+        "published": "2026-07-02T19:38:44Z",
+        "digest": "sha256:ce32d8acb978cb72d94f7def309484c65359fbe6fc511154402c92db39eca785"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://nextcloud.com",
+    "source": "https://download.nextcloud.com/server/releases/nextcloud-34.0.1.tar.bz2",
+    "image": "ghcr.io/quenchworks/images/nextcloud"
   },
   {
     "slug": "nginx",
@@ -5121,6 +5230,44 @@
     "image": "ghcr.io/quenchworks/images/victoriametrics"
   },
   {
+    "slug": "vllm",
+    "name": "vllm",
+    "category": "Machine learning & AI",
+    "summary": "vLLM, the high-throughput LLM inference and serving engine with an OpenAI-compatible API. CPU build — installs vLLM's prebuilt CPU wheel (torch+cpu, no source compile, no CUDA) into a venv on a hardened Wolfi python-3.12 base, 0-CVE across ~140 Python packages. The user supplies the model; the chart runs it as a StatefulSet with a persistent model cache.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "0.23.0, 0.22.1, 0.24.0",
+    "versions": [
+      {
+        "version": "0.23.0",
+        "size": "936.8 MB",
+        "published": "2026-07-02T19:40:03Z",
+        "digest": "sha256:dd5695a96a01c203e1feac758403e6d755d8e9d50e75abf245c948fcda69bf7f"
+      },
+      {
+        "version": "0.22.1",
+        "size": "934.5 MB",
+        "published": "2026-07-02T19:40:00Z",
+        "digest": "sha256:fa17dc7bba4bd76f950f2f05a06701ed8c7e97f0a7ea1d56af61d0fec1ecf899"
+      },
+      {
+        "version": "0.24.0",
+        "size": "939.2 MB",
+        "published": "2026-07-02T19:39:59Z",
+        "digest": "sha256:22b64e4c0de8eeaa13b838660d4e014180a7f81f5cef0ba9abe6310f94b24551"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://docs.vllm.ai",
+    "source": "https://github.com/vllm-project/vllm",
+    "image": "ghcr.io/quenchworks/images/vllm"
+  },
+  {
     "slug": "weaviate",
     "name": "weaviate",
     "category": "Search & vector",
@@ -5157,6 +5304,82 @@
     "upstream": "https://weaviate.io",
     "source": "https://github.com/weaviate/weaviate",
     "image": "ghcr.io/quenchworks/images/weaviate"
+  },
+  {
+    "slug": "wordpress",
+    "name": "wordpress",
+    "category": "Apps & productivity",
+    "summary": "WordPress, the PHP content-management system and blogging platform. Reconstructed clean-room from the official release on a hardened Wolfi php-8.4-fpm + nginx runtime (nonroot, read-only rootfs, supervisord), not the php:apache upstream image. The image ships no wp-config.php; the chart supplies one via ConfigMap and provides a MySQL backend.",
+    "tier": "standard",
+    "status": "available",
+    "license": "GPL-2.0+",
+    "licenseClean": "clean",
+    "version": "6.8.5, 7.0, 6.9.4",
+    "versions": [
+      {
+        "version": "6.8.5",
+        "size": "90.8 MB",
+        "published": "2026-07-02T19:11:35Z",
+        "digest": "sha256:39a8407b9f9eed946028ee7dfb7f2e76e69d75f3d8c9ccf6148cc64a090ecaf7"
+      },
+      {
+        "version": "7.0",
+        "size": "93.6 MB",
+        "published": "2026-07-02T19:11:32Z",
+        "digest": "sha256:3e95fe3a728ce160723a97a72b0a212ac14ee8c7a82f564fd884a5897ff08d61"
+      },
+      {
+        "version": "6.9.4",
+        "size": "90.9 MB",
+        "published": "2026-07-02T19:11:29Z",
+        "digest": "sha256:7b86413f0568e1389b4a87e8009d083ec1770e8b2daea3a5db1d3c15138c9ad5"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://wordpress.org",
+    "source": "https://wordpress.org/wordpress-7.0.tar.gz",
+    "image": "ghcr.io/quenchworks/images/wordpress"
+  },
+  {
+    "slug": "xyops",
+    "name": "xyops",
+    "category": "Workflow",
+    "summary": "xyops, a workflow-automation and server-monitoring system (job scheduler, monitors, alerting, ticketing) by the creator of Cronicle. Built from source on Wolfi nodejs-22 (native better-sqlite3), nonroot on a hardened read-only-rootfs base. Single-instance with an embedded SQLite store on a persistent volume; the chart runs it as a StatefulSet.",
+    "tier": "standard",
+    "status": "available",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "version": "1.0.74, 1.0.76, 1.0.75",
+    "versions": [
+      {
+        "version": "1.0.74",
+        "size": "84.7 MB",
+        "published": "2026-07-02T19:10:18Z",
+        "digest": "sha256:849f78561d0557ab40b3e0a8125a4de907db16c510ed1edcc523d51ab2777ba1"
+      },
+      {
+        "version": "1.0.76",
+        "size": "84.8 MB",
+        "published": "2026-07-02T19:10:11Z",
+        "digest": "sha256:d38707be89f53d0a7ebb197925b73cf8ac80503ab29debb6b87603d95049487f"
+      },
+      {
+        "version": "1.0.75",
+        "size": "84.7 MB",
+        "published": "2026-07-02T19:09:23Z",
+        "digest": "sha256:79ea159879cccf5ff6fc52a10a7682be736e670de299fd56b6a2be68fc1bfa80"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/pixlcore/xyops",
+    "source": "https://github.com/pixlcore/xyops",
+    "image": "ghcr.io/quenchworks/images/xyops"
   },
   {
     "slug": "yarn",

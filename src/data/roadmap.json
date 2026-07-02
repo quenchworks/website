@@ -89,21 +89,14 @@
     "note": "Fast, cost-effective log database from the VictoriaMetrics team."
   },
   {
-    "name": "Graylog",
-    "category": "Observability",
-    "license": "SSPL-1.0",
-    "licenseClean": "caution",
-    "priority": "next",
-    "note": "Centralized log management and analysis. Source-available, not OSI.",
-    "cleanAlternative": "Loki (AGPL) + OpenSearch (Apache-2.0) for a truly-open logging stack."
-  },
-  {
     "name": "Apache SkyWalking",
     "category": "Observability",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "APM: distributed tracing, metrics, and service-topology analysis."
+    "note": "APM: distributed tracing, metrics, and service-topology analysis.",
+    "blocked": true,
+    "blockedReason": "Built and 0-CVE, but the chart is held on its storage backend: SkyWalking OAP 10.4.0's bundled Elasticsearch client drives ES 6/7/8 and OpenSearch only and throws `UnsupportedOperationException` on ES major 9, so OAP crashes on boot against QuenchWorks' Elasticsearch 9.x. Held until a compatible backend ships (an ES 8 image, or SkyWalking's native BanyanDB — the OAP image already bundles the BanyanDB client)."
   },
   {
     "name": "Milvus",
@@ -154,21 +147,15 @@
     "note": "Data orchestrator for ML and analytics pipelines."
   },
   {
-    "name": "xyops",
-    "category": "Workflow & data",
-    "license": "BSD-3-Clause",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Workflow automation and server monitoring system."
-  },
-  {
     "name": "n8n",
     "category": "Workflow & data",
     "license": "Sustainable Use License",
     "licenseClean": "caution",
     "priority": "planned",
     "note": "Fair-code workflow automation with native AI. Source-available, not OSI.",
-    "cleanAlternative": "No drop-in clean equivalent; Temporal (MIT) for code-first orchestration."
+    "cleanAlternative": "No drop-in clean equivalent; Temporal (MIT) for code-first orchestration.",
+    "blocked": true,
+    "blockedReason": "n8n's pinned npm dependency tree carries fixable CVEs that upstream has not moved past, so the image cannot reach 0 fixable CVEs without diverging from n8n's own lockfile. Built and tested; held until the dependencies are updated. (n8n is also source-available under the Sustainable Use License, not OSI.)"
   },
   {
     "name": "NSQ",
@@ -310,22 +297,6 @@
     "cleanAlternative": "Coolify (Apache-2.0), already shipped."
   },
   {
-    "name": "WordPress",
-    "category": "Apps & productivity",
-    "license": "GPL-2.0-or-later",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "PHP CMS and blogging platform; runs PHP-FPM behind a web server against MySQL or MariaDB."
-  },
-  {
-    "name": "Drupal",
-    "category": "Apps & productivity",
-    "license": "GPL-2.0-or-later",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "PHP content management framework backed by MySQL, MariaDB, or PostgreSQL."
-  },
-  {
     "name": "Joomla",
     "category": "Apps & productivity",
     "license": "GPL-2.0-or-later",
@@ -334,20 +305,14 @@
     "note": "PHP CMS backed by MySQL or MariaDB."
   },
   {
-    "name": "Nextcloud",
-    "category": "Apps & productivity",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Self-hosted file sync, sharing, and collaboration suite on PHP backed by PostgreSQL or MariaDB."
-  },
-  {
     "name": "Matomo",
     "category": "Apps & productivity",
     "license": "GPL-3.0-only",
     "licenseClean": "agpl",
     "priority": "planned",
-    "note": "Privacy-respecting web analytics platform on PHP backed by MySQL or MariaDB."
+    "note": "Privacy-respecting web analytics platform on PHP backed by MySQL or MariaDB.",
+    "blocked": true,
+    "blockedReason": "Matomo's vendored PHP dependencies pin Twig below the version that fixes current CVEs, so the image cannot reach 0 fixable CVEs without diverging from Matomo's own constraints. Built and tested; held until upstream bumps the pin."
   },
   {
     "name": "Mastodon",
@@ -592,14 +557,6 @@
     "note": "Operator for running Ray distributed-compute clusters on Kubernetes."
   },
   {
-    "name": "vLLM",
-    "category": "Machine learning",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "High-throughput LLM inference and serving engine with an OpenAI-compatible API."
-  },
-  {
     "name": "Open WebUI",
     "category": "Machine learning",
     "license": "BSD-3-Clause",
@@ -654,7 +611,9 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Visualization and dashboards UI for OpenSearch."
+    "note": "Visualization and dashboards UI for OpenSearch.",
+    "blocked": true,
+    "blockedReason": "OpenSearch Dashboards bundles Node dependencies pinned below their CVE fixes, so the image cannot reach 0 fixable CVEs without diverging from the upstream bundle. Built and tested; held until upstream updates them."
   },
   {
     "name": "Zipkin",
