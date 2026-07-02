@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { images as catalog } from '../data/images';
-import { roadmap, roadmapTotal, roadmapCategories, byPriority } from '../data/roadmap';
+import { roadmap, roadmapTotal, roadmapCategories, byPriority, blockedCount } from '../data/roadmap';
 
 const shipped = catalog.filter((e) => e.status === 'available');
 const total = shipped.length + roadmapTotal;
@@ -11,6 +11,15 @@ const percent = Math.round((shipped.length / total) * 100);
 const available = [...shipped].sort((a, b) => a.name.localeCompare(b.name));
 
 const priorityLabel: Record<string, string> = { next: 'next', planned: 'planned', exploring: 'exploring' };
+// Priority is NOT security state, so it's distinguished within the monochrome ramp
+// (border style + tone), never by hue — hue stays reserved for CVE severity. next
+// is loudest (solid bright border), planned is a solid line, exploring is dashed
+// (reads as tentative). Scannable at a glance without a legend.
+const priorityBadge: Record<string, string> = {
+  next: 'border border-paper/50 bg-paper/10 text-paper',
+  planned: 'border border-ash/50 text-ash',
+  exploring: 'border border-dashed border-ash/45 text-ash/70',
+};
 const grouped = roadmapCategories.map((cat) => ({
   cat,
   items: roadmap.filter((r) => r.category === cat).sort(byPriority),
@@ -44,7 +53,7 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
       <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-ink" role="progressbar" aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100">
         <div class="h-full rounded-full bg-paper" style={`width:${percent}%`}></div>
       </div>
-      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center sm:grid-cols-5">
+      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center sm:grid-cols-6">
         {
           (
             [
@@ -53,10 +62,11 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
               ['Up next', nextCount],
               ['Planned', plannedCount],
               ['Exploring', exploringCount],
+              ['Blocked', blockedCount],
             ] as [string, number][]
           ).map(([label, n]) => (
             <div>
-              <dd class="font-mono text-2xl font-bold tabular-nums">{n}</dd>
+              <dd class:list={['font-mono text-2xl font-bold tabular-nums', label === 'Blocked' && n > 0 ? 'text-red-300' : '']}>{n}</dd>
               <dt class="mt-1 font-mono text-[10px] uppercase tracking-widest text-ash">{label}</dt>
             </div>
           ))
@@ -110,7 +120,8 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
         Candidates, not commitments. <span class="text-paper">next</span> = strongest near-term picks;
         <span class="text-paper">planned</span> and <span class="text-paper">exploring</span> follow. Items
         marked <span class="text-paper">caution</span> are source-available (not OSI) and would ship only with a
-        loud license note and the clean alternative called out. Each card also shows how it will
+        loud license note and the clean alternative called out. A <span class="text-red-300">blocked</span> tag means
+        the app was built and tested but can't reach 0 fixable CVEs yet (see the note below). Each card also shows how it will
         ship: <span class="text-paper">image + chart</span> for a deployable service, or
         <span class="text-paper">image only</span> for a base/CLI/sidecar utility (like busybox).
       </p>
@@ -129,16 +140,38 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
                   <li class="flex h-full flex-col gap-3 rounded-xl border border-line/70 bg-graphite/50 p-5">
                     <div class="flex items-start justify-between gap-2">
                       <span class="text-base font-medium leading-tight text-paper/90">{r.name}</span>
-                      <span
-                        class:list={[
-                          'rounded px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest',
-                          r.priority === 'next' ? 'border border-paper/40 text-paper' : 'bg-ink text-ash',
-                        ]}
-                      >
-                        {priorityLabel[r.priority]}
-                      </span>
+                      {r.blocked ? (
+                        <span
+                          class="shrink-0 rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300"
+                          role="img"
+                          aria-label="Tested and held: cannot reach zero fixable CVEs due to upstream dependency pins"
+                        >
+                          blocked
+                        </span>
+                      ) : (
+                        <span
+                          class:list={[
+                            'shrink-0 rounded px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest',
+                            priorityBadge[r.priority],
+                          ]}
+                        >
+                          {priorityLabel[r.priority]}
+                        </span>
+                      )}
                     </div>
                     <p class="flex-1 text-sm leading-relaxed text-ash">{r.note}</p>
+                    {r.blocked && r.blockedReason && (
+                      <button
+                        type="button"
+                        data-blocked-open
+                        data-name={r.name}
+                        data-reason={r.blockedReason}
+                        aria-haspopup="dialog"
+                        class="self-start rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-red-300 transition-colors duration-200 hover:bg-red-500/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-300"
+                      >
+                        why blocked?
+                      </button>
+                    )}
                     {r.cleanAlternative && (
                       <p class="text-xs leading-relaxed text-ash">
                         <span class="font-mono uppercase tracking-widest text-paper/70">clean alt:</span> {r.cleanAlternative}
@@ -163,6 +196,25 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
       </div>
     </section>
 
+    {
+      blockedCount > 0 && (
+        <section class="mt-16 rounded-2xl border border-line bg-graphite p-6 sm:p-8" aria-label="About blocked apps">
+          <div class="flex items-center gap-3">
+            <span class="rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300">blocked</span>
+            <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Why some apps are held</h2>
+          </div>
+          <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
+            QuenchWorks ships nothing that carries a fixable CVE. A few apps build cleanly but can't
+            reach that bar yet: the app itself pins a dependency <em class="not-italic text-paper/90">below</em> the
+            version that fixes a known CVE, so patching it would break the app's own declared
+            constraints. Those are marked <span class="text-red-300">blocked</span>: built and tested,
+            held (not shipped) until upstream relaxes the pin or backports the fix. They go live the
+            moment that lands. Nothing already in the catalog carries a known fixable CVE to get there faster.
+          </p>
+        </section>
+      )
+    }
+
     <section class="mt-16 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
       <p class="text-ash">
         Want something prioritized?{' '}
@@ -171,5 +223,67 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
       </p>
     </section>
   </main>
+
+  {/* One shared modal for every "why blocked?" button. Native <dialog> gives the
+      centered layout, focus trap, and Escape-to-close for free; the ::backdrop is
+      blurred. Populated from the clicked button's data-* by the script below. */}
+  <dialog
+    id="blocked-dialog"
+    aria-labelledby="bd-title"
+    class="m-auto w-[calc(100%-2rem)] max-w-md rounded-xl border border-line bg-graphite p-0 text-paper backdrop:bg-ink/70 backdrop:backdrop-blur-sm"
+  >
+    <div class="p-6">
+      <div class="flex items-center justify-between gap-3">
+        <h2 id="bd-title" class="text-lg font-semibold tracking-tight"></h2>
+        <span class="shrink-0 rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300">blocked</span>
+      </div>
+      <p class="mt-2 font-mono text-[10px] uppercase tracking-widest text-ash">Tested and held: cannot reach 0 fixable CVEs</p>
+      <p id="bd-reason" class="mt-4 text-sm leading-relaxed text-ash"></p>
+      <div class="mt-6 flex justify-end">
+        <button
+          id="bd-close"
+          type="button"
+          class="rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"
+        >
+          close
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const dlg = document.getElementById('blocked-dialog') as HTMLDialogElement | null;
+    const title = document.getElementById('bd-title');
+    const reason = document.getElementById('bd-reason');
+    if (dlg && title && reason) {
+      // Render the reason with `backtick` spans as inline <code> — built as DOM
+      // nodes (textContent), so no markdown lib and no innerHTML injection.
+      const render = (text: string) => {
+        reason.replaceChildren();
+        text.split('`').forEach((part, i) => {
+          if (i % 2 === 1) {
+            const code = document.createElement('code');
+            code.className = 'rounded bg-ink px-1.5 py-0.5 font-mono text-[0.85em] text-paper';
+            code.textContent = part;
+            reason.appendChild(code);
+          } else if (part) {
+            reason.appendChild(document.createTextNode(part));
+          }
+        });
+      };
+      for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-blocked-open]')) {
+        btn.addEventListener('click', () => {
+          title.textContent = btn.dataset.name ?? '';
+          render(btn.dataset.reason ?? '');
+          dlg.showModal();
+        });
+      }
+      document.getElementById('bd-close')?.addEventListener('click', () => dlg.close());
+      // Click on the backdrop (the dialog element itself, outside the panel) closes.
+      dlg.addEventListener('click', (e) => {
+        if (e.target === dlg) dlg.close();
+      });
+    }
+  </script>
   <Footer />
 </Base>

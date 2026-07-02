@@ -1,5 +1,5 @@
-# Build stage: install prod dependencies with Composer.
-FROM ghcr.io/quenchworks/images/composer:2.10.1 AS build
+# Build stage: Composer installs and locks prod dependencies.
+FROM ghcr.io/quenchworks/images/composer:2.10.2 AS build
 USER root
 WORKDIR /app
 ENV COMPOSER_CACHE_DIR=/tmp/composer
@@ -9,8 +9,8 @@ RUN ["composer", "install", "--no-dev", "--no-scripts", "--prefer-dist", "--no-p
 COPY . .
 RUN ["composer", "dump-autoload", "--optimize", "--no-dev"]
 
-# Runtime stage: copy vendor + app onto a clean php base, run nonroot.
-FROM ghcr.io/quenchworks/images/php:8.5.7 AS runtime
+# Runtime stage: vendor + app on a slim php base, nonroot.
+FROM ghcr.io/quenchworks/images/php:8.5.8 AS runtime
 WORKDIR /app
 COPY --from=build /app /app
 USER 1001

@@ -23,12 +23,21 @@ export interface RoadmapItem {
   priority: Priority;
   deliverable?: Deliverable; // default 'image+chart'
   cleanAlternative?: string;
+  // Tested but HELD: the image builds, but the app cannot reach zero fixable CVEs
+  // because the app itself pins a dependency below the version that fixes a CVE.
+  // We do not ship anything that isn't 0-CVE, so it waits until upstream relaxes
+  // the pin or backports the fix. blockedReason states the specific pin conflict.
+  blocked?: boolean;
+  blockedReason?: string;
 }
 
 export const roadmap = roadmapData as RoadmapItem[];
 export const roadmapTotal = roadmap.length;
 export const roadmapCategories = [...new Set(roadmap.map((r) => r.category))];
+export const blockedCount = roadmap.filter((r) => r.blocked).length;
 
 const PRIORITY_ORDER: Record<Priority, number> = { next: 0, planned: 1, exploring: 2 };
+// Blocked items sort after everything else within their category.
+const orderOf = (r: RoadmapItem) => (r.blocked ? 3 : PRIORITY_ORDER[r.priority]);
 export const byPriority = (a: RoadmapItem, b: RoadmapItem) =>
-  PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority] || a.name.localeCompare(b.name);
+  orderOf(a) - orderOf(b) || a.name.localeCompare(b.name);

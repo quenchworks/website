@@ -1,5 +1,5 @@
 # Build stage: compile a static (musl) release binary.
-FROM ghcr.io/quenchworks/images/rust:1.96.0 AS build
+FROM ghcr.io/quenchworks/images/rust:1.96.1 AS build
 USER root
 WORKDIR /src
 ENV CARGO_HOME=/tmp/cargo

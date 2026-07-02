@@ -93,7 +93,7 @@
     "category": "Observability",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "priority": "planned",
+    "priority": "next",
     "note": "Centralized log management and analysis. Source-available, not OSI.",
     "cleanAlternative": "Loki (AGPL) + OpenSearch (Apache-2.0) for a truly-open logging stack."
   },
@@ -102,7 +102,7 @@
     "category": "Observability",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "APM: distributed tracing, metrics, and service-topology analysis."
   },
   {
@@ -128,14 +128,6 @@
     "licenseClean": "agpl",
     "priority": "planned",
     "note": "Search engine for logs and traces on object storage."
-  },
-  {
-    "name": "Apache Airflow",
-    "category": "Workflow & data",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Programmatic workflow scheduling and orchestration."
   },
   {
     "name": "Apache Flink",
@@ -466,8 +458,10 @@
     "category": "Apps & productivity",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Data exploration and business-intelligence dashboard platform backed by a metadata database and Redis."
+    "priority": "planned",
+    "note": "Data exploration and business-intelligence dashboard platform backed by a metadata database and Redis.",
+    "blocked": true,
+    "blockedReason": "Superset pins `cryptography <47`, `msgpack <1.1`, and `pyarrow <19`, all below the versions that fix current HIGH CVEs, so it cannot reach 0 fixable CVEs without diverging from upstream's own dependency constraints. Built and tested; held until upstream relaxes the pins or backports the fixes."
   },
   {
     "name": "Jellyfin",
