@@ -102,6 +102,32 @@
     "image": "ghcr.io/quenchworks/images/alertmanager"
   },
   {
+    "slug": "argo-workflows",
+    "name": "argo-workflows",
+    "category": "Workflow",
+    "summary": "Kubernetes-native workflow engine for orchestrating parallel jobs as DAGs. Ships the workflow-controller and the argo CLI/API server with an embedded React UI, built from source on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "3.7.15",
+    "versions": [
+      {
+        "version": "3.7.15",
+        "size": "64.3 MB",
+        "published": "2026-07-03T00:20:57Z",
+        "digest": "sha256:09b2ef8058f7954a8713586d502f67c02018204c66e1842ca508140d680cfc3c"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://argoproj.github.io/workflows",
+    "source": "https://github.com/argoproj/argo-workflows",
+    "image": "ghcr.io/quenchworks/images/argo-workflows"
+  },
+  {
     "slug": "aspnet",
     "name": "aspnet",
     "category": "Runtime base",
@@ -438,6 +464,32 @@
     "image": "ghcr.io/quenchworks/images/caddy"
   },
   {
+    "slug": "cadence",
+    "name": "cadence",
+    "category": "Workflow",
+    "summary": "Fault-tolerant, stateful workflow orchestration engine by Uber. Ships the cadence server and CLI as static Go binaries on a hardened nonroot Wolfi base; Cassandra or a SQL store is the operator's concern.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "1.4.1",
+    "versions": [
+      {
+        "version": "1.4.1",
+        "size": "47.3 MB",
+        "published": "2026-07-03T01:10:37Z",
+        "digest": "sha256:1f95b7bfc1e38f5744d22b68f197b7569ef7e5275cf0e183e504905d5065f4c8"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://cadenceworkflow.io",
+    "source": "https://github.com/uber/cadence",
+    "image": "ghcr.io/quenchworks/images/cadence"
+  },
+  {
     "slug": "cadvisor",
     "name": "cadvisor",
     "category": "Observability",
@@ -512,6 +564,32 @@
     "upstream": "https://github.com/apache/cassandra",
     "source": "https://downloads.apache.org/cassandra/5.0.8/apache-cassandra-5.0.8-bin.tar.gz",
     "image": "ghcr.io/quenchworks/images/cassandra"
+  },
+  {
+    "slug": "centrifugo",
+    "name": "centrifugo",
+    "category": "Messaging",
+    "summary": "Scalable real-time messaging server (WebSocket, SSE, GRPC) with channels, presence, and JWT auth. Built from source as a static Go binary on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "6.8.4",
+    "versions": [
+      {
+        "version": "6.8.4",
+        "size": "25.9 MB",
+        "published": "2026-07-02T23:59:58Z",
+        "digest": "sha256:2c747b13d92d872a3055052028c72d7cb1a6126dd635bdda73b324b3fc7aa717"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://centrifugal.dev",
+    "source": "https://github.com/centrifugal/centrifugo",
+    "image": "ghcr.io/quenchworks/images/centrifugo"
   },
   {
     "slug": "cert-manager-acmesolver",
@@ -1060,6 +1138,32 @@
     "upstream": "https://github.com/denoland/deno",
     "source": "https://github.com/denoland/deno",
     "image": "ghcr.io/quenchworks/images/deno"
+  },
+  {
+    "slug": "descheduler",
+    "name": "descheduler",
+    "category": "Coordination",
+    "summary": "Kubernetes descheduler that evicts pods so the scheduler can re-place them for better cluster balance. Single static Go binary on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "0.36.0",
+    "versions": [
+      {
+        "version": "0.36.0",
+        "size": "21.7 MB",
+        "published": "2026-07-03T02:21:48Z",
+        "digest": "sha256:668db70ed1718ad6ac3b5ac1d545b97e973e5855047329a4479df48fe843f287"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/kubernetes-sigs/descheduler",
+    "source": "https://github.com/kubernetes-sigs/descheduler",
+    "image": "ghcr.io/quenchworks/images/descheduler"
   },
   {
     "slug": "dex",
@@ -1727,6 +1831,44 @@
     "image": "ghcr.io/quenchworks/images/ferretdb"
   },
   {
+    "slug": "filebrowser",
+    "name": "filebrowser",
+    "category": "Apps & productivity",
+    "summary": "Web-based file manager with a built-in UI, users, and share links. From source (Vite UI embedded in a static Go binary) on a hardened nonroot Wolfi base; data and served roots are volumes.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.63.15, 2.63.16, 2.63.17",
+    "versions": [
+      {
+        "version": "2.63.15",
+        "size": "15.5 MB",
+        "published": "2026-07-02T23:50:23Z",
+        "digest": "sha256:242a91baadc05a76d44fbd8423da114d7b74e715d5d0fd879d24bf6d2c0b8320"
+      },
+      {
+        "version": "2.63.16",
+        "size": "15.4 MB",
+        "published": "2026-07-02T23:50:22Z",
+        "digest": "sha256:452489ba908ce2204dc0d3286c994924d073f60e8bdea6cfd701cc90f2336f39"
+      },
+      {
+        "version": "2.63.17",
+        "size": "15.5 MB",
+        "published": "2026-07-02T23:49:57Z",
+        "digest": "sha256:cea3a11410ba307b8ef123ba80dacb7f5e0615653fe0e8391eac2d53222496a3"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://filebrowser.org",
+    "source": "https://github.com/filebrowser/filebrowser",
+    "image": "ghcr.io/quenchworks/images/filebrowser"
+  },
+  {
     "slug": "floci",
     "name": "floci",
     "category": "Apps & productivity",
@@ -1839,6 +1981,32 @@
     "upstream": "https://github.com/fluent/fluent-bit",
     "source": "https://github.com/fluent/fluent-bit",
     "image": "ghcr.io/quenchworks/images/fluent-bit"
+  },
+  {
+    "slug": "forgejo",
+    "name": "forgejo",
+    "category": "Git",
+    "summary": "Self-hosted lightweight Git forge (a community Gitea fork) with issues, PRs, CI, and packages. From source with the web UI embedded (no Node at runtime), CGO+static-musl SQLite, on a hardened nonroot Wolfi base; data lives on a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "GPL-3.0+",
+    "licenseClean": "agpl",
+    "version": "15.0.3",
+    "versions": [
+      {
+        "version": "15.0.3",
+        "size": "68.6 MB",
+        "published": "2026-07-03T01:11:09Z",
+        "digest": "sha256:c94744a2a3393a19413084eb1f4b01144c8c31e53c429681e3e68b102efb0c6d"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://forgejo.org",
+    "source": "https://codeberg.org/forgejo/forgejo",
+    "image": "ghcr.io/quenchworks/images/forgejo"
   },
   {
     "slug": "garage",
@@ -1979,6 +2147,32 @@
     "upstream": "https://github.com/golang/go",
     "source": "https://github.com/golang/go",
     "image": "ghcr.io/quenchworks/images/go"
+  },
+  {
+    "slug": "gotify",
+    "name": "gotify",
+    "category": "Messaging",
+    "summary": "Self-hosted server for sending and receiving real-time push messages over WebSocket, with a web UI and app tokens. From source (UI embedded, CGO+static-musl SQLite) on a hardened nonroot Wolfi base; data on a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "2.9.1",
+    "versions": [
+      {
+        "version": "2.9.1",
+        "size": "13.2 MB",
+        "published": "2026-07-03T02:38:21Z",
+        "digest": "sha256:ecd4ddb3317f43de1b6ac6b2d71b8924a0e5305c7f7bce76eb0c3a371ae16f0e"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://gotify.net",
+    "source": "https://github.com/gotify/server",
+    "image": "ghcr.io/quenchworks/images/gotify"
   },
   {
     "slug": "gradle",
@@ -2426,6 +2620,32 @@
     "image": "ghcr.io/quenchworks/images/harbor-trivy-adapter"
   },
   {
+    "slug": "headscale",
+    "name": "headscale",
+    "category": "Coordination & mesh",
+    "summary": "Open-source, self-hosted implementation of the Tailscale control server for coordinating a WireGuard mesh. Single static Go binary on a hardened nonroot Wolfi base; config and state on writable volumes.",
+    "tier": "standard",
+    "status": "available",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "version": "0.29.2",
+    "versions": [
+      {
+        "version": "0.29.2",
+        "size": "19.8 MB",
+        "published": "2026-07-03T04:10:34Z",
+        "digest": "sha256:f72b94abb404cc2a50233b1382efd88f2ccd7b23687feaa49769d8a88886c1a2"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/juanfont/headscale",
+    "source": "https://github.com/juanfont/headscale",
+    "image": "ghcr.io/quenchworks/images/headscale"
+  },
+  {
     "slug": "influxdb",
     "name": "InfluxDB",
     "category": "Time series",
@@ -2488,6 +2708,32 @@
     "upstream": "https://kubernetes.github.io/ingress-nginx",
     "source": "https://github.com/kubernetes/ingress-nginx",
     "image": "ghcr.io/quenchworks/images/ingress-nginx"
+  },
+  {
+    "slug": "jaeger",
+    "name": "jaeger",
+    "category": "Observability",
+    "summary": "Distributed tracing platform (Jaeger v2, OpenTelemetry-collector based) with an embedded query UI. From source on a hardened nonroot Wolfi base; in-memory storage by default, badger under a volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.19.0",
+    "versions": [
+      {
+        "version": "2.19.0",
+        "size": "28.1 MB",
+        "published": "2026-07-03T00:01:58Z",
+        "digest": "sha256:01d30b12ac6e9b36a632b3a84baa8bc118ec33066ebd4f5f57c0ad7847533c82"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.jaegertracing.io",
+    "source": "https://github.com/jaegertracing/jaeger",
+    "image": "ghcr.io/quenchworks/images/jaeger"
   },
   {
     "slug": "jdk",
@@ -2642,6 +2888,32 @@
     "image": "ghcr.io/quenchworks/images/jre"
   },
   {
+    "slug": "k6",
+    "name": "k6",
+    "category": "Observability",
+    "summary": "Developer-friendly load and performance testing tool scripted in JavaScript. Single static Go binary on a hardened nonroot Wolfi base; test scripts are mounted at runtime.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "2.1.0",
+    "versions": [
+      {
+        "version": "2.1.0",
+        "size": "16.6 MB",
+        "published": "2026-07-03T01:55:12Z",
+        "digest": "sha256:be3689cfbe9b5d06085552602df3293447d1aff8e73b954b827105bfbe8fc1df"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://k6.io",
+    "source": "https://github.com/grafana/k6",
+    "image": "ghcr.io/quenchworks/images/k6"
+  },
+  {
     "slug": "kafka",
     "name": "Kafka",
     "category": "Messaging",
@@ -2678,6 +2950,32 @@
     "upstream": "https://github.com/apache/kafka",
     "source": "https://archive.apache.org/dist/kafka/4.3.0/kafka_2.13-4.3.0.tgz",
     "image": "ghcr.io/quenchworks/images/kafka"
+  },
+  {
+    "slug": "keda",
+    "name": "keda",
+    "category": "Coordination",
+    "summary": "Kubernetes event-driven autoscaler that scales workloads based on external event sources (queues, streams, metrics). Ships the operator and metrics adapter as static Go binaries on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.20.1",
+    "versions": [
+      {
+        "version": "2.20.1",
+        "size": "79.7 MB",
+        "published": "2026-07-03T02:23:14Z",
+        "digest": "sha256:139441ff3c11137dbe7be0e1a3da12a58aa3a9a4cffeba07a838d0829e20c810"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://keda.sh",
+    "source": "https://github.com/kedacore/keda",
+    "image": "ghcr.io/quenchworks/images/keda"
   },
   {
     "slug": "keycloak",
@@ -2788,6 +3086,58 @@
     "image": "ghcr.io/quenchworks/images/kubectl"
   },
   {
+    "slug": "kuma",
+    "name": "kuma",
+    "category": "Coordination & mesh",
+    "summary": "CNCF service mesh control plane (Envoy-based) for multi-zone and multi-cluster meshes. Ships kuma-cp and kumactl with an embedded GUI, built from source on a hardened nonroot Wolfi base; default in-memory store runs standalone.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.14.0",
+    "versions": [
+      {
+        "version": "2.14.0",
+        "size": "62.4 MB",
+        "published": "2026-07-03T00:28:07Z",
+        "digest": "sha256:b6c34027e3216f69b56c6156ddbd61f165cdd82c07599f0fdcc0da747cc62504"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kuma.io",
+    "source": "https://github.com/kumahq/kuma",
+    "image": "ghcr.io/quenchworks/images/kuma"
+  },
+  {
+    "slug": "kyverno",
+    "name": "kyverno",
+    "category": "Security & supply chain",
+    "summary": "Kubernetes-native policy engine for validating, mutating, and generating resources with no new language. Ships the controllers and CLI as static Go binaries on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.18.1",
+    "versions": [
+      {
+        "version": "1.18.1",
+        "size": "252.5 MB",
+        "published": "2026-07-03T01:13:54Z",
+        "digest": "sha256:8153401e5e7534c9b51aeed9cb0b84f2d70ff41bd612768124e902e0f48e27c9"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kyverno.io",
+    "source": "https://github.com/kyverno/kyverno",
+    "image": "ghcr.io/quenchworks/images/kyverno"
+  },
+  {
     "slug": "litestream",
     "name": "litestream",
     "category": "Storage & platform",
@@ -2824,6 +3174,32 @@
     "upstream": "https://litestream.io",
     "source": "https://github.com/benbjohnson/litestream",
     "image": "ghcr.io/quenchworks/images/litestream"
+  },
+  {
+    "slug": "livekit",
+    "name": "livekit",
+    "category": "Media & streaming",
+    "summary": "WebRTC SFU server for scalable real-time audio, video, and data. Single static Go binary on a hardened nonroot Wolfi base; config via mounted YAML or LIVEKIT_ env.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.13.2",
+    "versions": [
+      {
+        "version": "1.13.2",
+        "size": "17.9 MB",
+        "published": "2026-07-02T23:59:54Z",
+        "digest": "sha256:1a4f1ad708c17eb565255953327ae5e417bf5cf8b1ae7fd9a5b36874ec2f81e0"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://livekit.io",
+    "source": "https://github.com/livekit/livekit",
+    "image": "ghcr.io/quenchworks/images/livekit"
   },
   {
     "slug": "loki",
@@ -3016,6 +3392,32 @@
     "image": "ghcr.io/quenchworks/images/maven"
   },
   {
+    "slug": "mediamtx",
+    "name": "mediamtx",
+    "category": "Media & streaming",
+    "summary": "Real-time media server and proxy for RTSP, RTMP, HLS, WebRTC, and SRT. Single static Go binary on a hardened nonroot Wolfi base; config via a mounted mediamtx.yml.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "1.19.2",
+    "versions": [
+      {
+        "version": "1.19.2",
+        "size": "17.7 MB",
+        "published": "2026-07-02T23:59:38Z",
+        "digest": "sha256:b9e32f74098fa6fa3037a567107e24060ad223d5ca3cf4f6237e64b6b5e037bc"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/bluenviron/mediamtx",
+    "source": "https://github.com/bluenviron/mediamtx",
+    "image": "ghcr.io/quenchworks/images/mediamtx"
+  },
+  {
     "slug": "meilisearch",
     "name": "Meilisearch",
     "category": "Search",
@@ -3090,6 +3492,58 @@
     "upstream": "https://github.com/memcached/memcached",
     "source": "https://www.memcached.org/files/memcached-1.6.42.tar.gz",
     "image": "ghcr.io/quenchworks/images/memcached"
+  },
+  {
+    "slug": "mimir",
+    "name": "mimir",
+    "category": "Observability",
+    "summary": "Horizontally scalable, highly available long-term storage for Prometheus metrics. Single static Go binary (all-in-one or microservices target) on a hardened nonroot Wolfi base; object storage is the operator's choice.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "3.1.2",
+    "versions": [
+      {
+        "version": "3.1.2",
+        "size": "39.4 MB",
+        "published": "2026-07-03T01:57:45Z",
+        "digest": "sha256:70ca1a439edf381c0afda680b9a47bb61c05bb937599fe9db8a4ca8d65191aef"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://grafana.com/oss/mimir",
+    "source": "https://github.com/grafana/mimir",
+    "image": "ghcr.io/quenchworks/images/mimir"
+  },
+  {
+    "slug": "miniflux",
+    "name": "miniflux",
+    "category": "Apps & productivity",
+    "summary": "Minimalist, opinionated RSS and Atom feed reader with a clean web UI and a REST API. Single pure-Go static binary on a hardened nonroot Wolfi base; needs PostgreSQL at runtime (operator-provided).",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.3.2",
+    "versions": [
+      {
+        "version": "2.3.2",
+        "size": "8.9 MB",
+        "published": "2026-07-03T02:36:21Z",
+        "digest": "sha256:5b096e6f159868e6ef87d80e96c3243549692e2bbc23bb1029ba2a6712af646e"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://miniflux.app",
+    "source": "https://github.com/miniflux/v2",
+    "image": "ghcr.io/quenchworks/images/miniflux"
   },
   {
     "slug": "mlflow",
@@ -3276,6 +3730,32 @@
     "upstream": "https://github.com/nats-io/nats-server",
     "source": "https://github.com/nats-io/nats-server",
     "image": "ghcr.io/quenchworks/images/nats"
+  },
+  {
+    "slug": "navidrome",
+    "name": "navidrome",
+    "category": "Media & streaming",
+    "summary": "Self-hosted music server and streamer compatible with the Subsonic/OpenSubsonic API, with a modern web UI. From source (React UI embedded, CGO+static-musl SQLite) on a hardened nonroot Wolfi base; music and data on writable volumes.",
+    "tier": "standard",
+    "status": "available",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "version": "0.62.0",
+    "versions": [
+      {
+        "version": "0.62.0",
+        "size": "22.2 MB",
+        "published": "2026-07-03T06:53:54Z",
+        "digest": "sha256:e9d92dc3bbbee2eb9855e8d53e40ace711a456286f20589e93068347f5e5643c"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.navidrome.org",
+    "source": "https://github.com/navidrome/navidrome",
+    "image": "ghcr.io/quenchworks/images/navidrome"
   },
   {
     "slug": "neo4j",
@@ -3474,6 +3954,70 @@
     "image": "ghcr.io/quenchworks/images/node-exporter"
   },
   {
+    "slug": "nsq",
+    "name": "nsq",
+    "category": "Messaging",
+    "summary": "Realtime distributed messaging platform. Ships nsqd, nsqlookupd, and nsqadmin as static Go binaries on a hardened nonroot Wolfi base; nsqd data path is a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "1.2.0, 1.3.0, 1.2.1",
+    "versions": [
+      {
+        "version": "1.2.0",
+        "size": "10.9 MB",
+        "published": "2026-07-02T23:50:44Z",
+        "digest": "sha256:67a40a182fc3b9ac283db62f90a0f75c4e391c3bac699d95c0faac995be9dc44"
+      },
+      {
+        "version": "1.3.0",
+        "size": "11.0 MB",
+        "published": "2026-07-02T23:50:31Z",
+        "digest": "sha256:8fb8a7a72431873e4cf4ecb2272434f13504d88781f5a70d35f0996bde560684"
+      },
+      {
+        "version": "1.2.1",
+        "size": "11.3 MB",
+        "published": "2026-07-02T23:50:30Z",
+        "digest": "sha256:cb087bdd6687eab61293150992b9a299e56d262bc822e894ead3acb61c9c002f"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://nsq.io",
+    "source": "https://github.com/nsqio/nsq",
+    "image": "ghcr.io/quenchworks/images/nsq"
+  },
+  {
+    "slug": "ntfy",
+    "name": "ntfy",
+    "category": "Messaging",
+    "summary": "Simple HTTP-based pub-sub notification service for sending push notifications to phones and desktops from any script. From source with the web UI embedded (no Node at runtime) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.25.0",
+    "versions": [
+      {
+        "version": "2.25.0",
+        "size": "20.4 MB",
+        "published": "2026-07-03T02:37:29Z",
+        "digest": "sha256:7259d0fa4a5c4974fedf7bdde3439f2fa93d5436a172a5acf054d86ff2307ae3"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://ntfy.sh",
+    "source": "https://github.com/binwiederhier/ntfy",
+    "image": "ghcr.io/quenchworks/images/ntfy"
+  },
+  {
     "slug": "oauth2-proxy",
     "name": "oauth2-proxy",
     "category": "Secrets & identity",
@@ -3626,6 +4170,32 @@
     "image": "ghcr.io/quenchworks/images/openbao"
   },
   {
+    "slug": "openfga",
+    "name": "openfga",
+    "category": "Identity",
+    "summary": "Fine-grained authorization engine (Zanzibar-style relationship-based access control) over HTTP and gRPC. From source on a hardened nonroot Wolfi base; datastore is the operator's choice.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.18.1",
+    "versions": [
+      {
+        "version": "1.18.1",
+        "size": "20.7 MB",
+        "published": "2026-07-03T00:00:40Z",
+        "digest": "sha256:b4f599ed4c1f84c658bd93c6d4b74ee4b57453c6ceaac770bbb12e2c01eedfd3"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://openfga.dev",
+    "source": "https://github.com/openfga/openfga",
+    "image": "ghcr.io/quenchworks/images/openfga"
+  },
+  {
     "slug": "opensearch",
     "name": "OpenSearch",
     "category": "Search",
@@ -3766,6 +4336,32 @@
     "image": "ghcr.io/quenchworks/images/perl"
   },
   {
+    "slug": "perses",
+    "name": "perses",
+    "category": "Observability",
+    "summary": "CNCF dashboards and observability visualization tool with an embedded React UI and 24 default panel/datasource plugins. From source (Node UI build embedded in a static Go binary) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "0.53.1",
+    "versions": [
+      {
+        "version": "0.53.1",
+        "size": "92.0 MB",
+        "published": "2026-07-03T00:11:40Z",
+        "digest": "sha256:50b4d02afd3d2048747ace15e2d6225f8c2c2c64b5ebd9bbc0f9d52d945e9436"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://perses.dev",
+    "source": "https://github.com/perses/perses",
+    "image": "ghcr.io/quenchworks/images/perses"
+  },
+  {
     "slug": "pgbouncer",
     "name": "pgbouncer",
     "category": "Relational",
@@ -3878,6 +4474,32 @@
     "upstream": "https://pnpm.io",
     "source": "https://pnpm.io",
     "image": "ghcr.io/quenchworks/images/pnpm"
+  },
+  {
+    "slug": "pocketbase",
+    "name": "pocketbase",
+    "category": "Apps & productivity",
+    "summary": "Open-source backend in a single file with an embedded SQLite database, auth, file storage, realtime subscriptions, and an admin dashboard over a REST API. Pure-Go static binary (UI embedded) on a hardened nonroot Wolfi base; state on a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "0.39.5",
+    "versions": [
+      {
+        "version": "0.39.5",
+        "size": "12.2 MB",
+        "published": "2026-07-03T04:09:27Z",
+        "digest": "sha256:4723b19f374064edcafd4e69a0028467dc62b17761960bcfae47cc1f80df5fba"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://pocketbase.io",
+    "source": "https://github.com/pocketbase/pocketbase",
+    "image": "ghcr.io/quenchworks/images/pocketbase"
   },
   {
     "slug": "poetry",
@@ -4222,6 +4844,32 @@
     "image": "ghcr.io/quenchworks/images/pulumi"
   },
   {
+    "slug": "pyroscope",
+    "name": "pyroscope",
+    "category": "Observability",
+    "summary": "Continuous profiling database for analyzing CPU, memory, and other resource usage over time. From source with the React UI embedded (no Node at runtime) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "2.1.0",
+    "versions": [
+      {
+        "version": "2.1.0",
+        "size": "31.1 MB",
+        "published": "2026-07-03T01:57:31Z",
+        "digest": "sha256:6d5e82289c14875c135ea0c15ddc84fb6fcf6e059a02a682ad567ca96320a06d"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://grafana.com/oss/pyroscope",
+    "source": "https://github.com/grafana/pyroscope",
+    "image": "ghcr.io/quenchworks/images/pyroscope"
+  },
+  {
     "slug": "python",
     "name": "python",
     "category": "Language runtime",
@@ -4296,6 +4944,32 @@
     "upstream": "https://github.com/qdrant/qdrant",
     "source": "https://github.com/qdrant/qdrant",
     "image": "ghcr.io/quenchworks/images/qdrant"
+  },
+  {
+    "slug": "quickwit",
+    "name": "quickwit",
+    "category": "Search",
+    "summary": "Cloud-native search engine for logs, traces, and analytics with sub-second search over object storage. Built from Rust source (UI embedded, no Node at runtime) on a hardened nonroot Wolfi base; index data on object storage or a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "0.8.2",
+    "versions": [
+      {
+        "version": "0.8.2",
+        "size": "95.0 MB",
+        "published": "2026-07-03T04:02:11Z",
+        "digest": "sha256:c4ae313ed9dc0e7539bfc4315779a4cd1baef6878b10f87d0d9da8ecf2da81ba"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://quickwit.io",
+    "source": "https://github.com/quickwit-oss/quickwit",
+    "image": "ghcr.io/quenchworks/images/quickwit"
   },
   {
     "slug": "rabbitmq",
@@ -4486,6 +5160,32 @@
     "upstream": "https://docs.renovatebot.com",
     "source": "https://github.com/renovatebot/renovate",
     "image": "ghcr.io/quenchworks/images/renovate"
+  },
+  {
+    "slug": "rqlite",
+    "name": "rqlite",
+    "category": "Relational",
+    "summary": "Lightweight, distributed relational database built on SQLite and Raft. Ships rqlited and the rqlite CLI as static (musl) Go binaries on a hardened nonroot Wolfi base; data dir is a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "10.2.5",
+    "versions": [
+      {
+        "version": "10.2.5",
+        "size": "18.9 MB",
+        "published": "2026-07-03T00:00:38Z",
+        "digest": "sha256:7a22d9bdfc32f0844af37c55b8bf8b923997ec5672f6da28cb4468cdb9bdd540"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://rqlite.io",
+    "source": "https://github.com/rqlite/rqlite",
+    "image": "ghcr.io/quenchworks/images/rqlite"
   },
   {
     "slug": "ruby",
@@ -4748,6 +5448,32 @@
     "image": "ghcr.io/quenchworks/images/sonar-scanner-cli"
   },
   {
+    "slug": "spicedb",
+    "name": "spicedb",
+    "category": "Identity",
+    "summary": "Zanzibar-style authorization database for fine-grained permissions over gRPC. From source on a hardened nonroot Wolfi base; the operator supplies the datastore (in-memory, postgres, or cockroach).",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.54.0",
+    "versions": [
+      {
+        "version": "1.54.0",
+        "size": "24.3 MB",
+        "published": "2026-07-03T00:00:55Z",
+        "digest": "sha256:3adc16ae7e4aae651157cd8bb0a2859efce2bc999db0f192c3d0278cefe7ac0a"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://authzed.com",
+    "source": "https://github.com/authzed/spicedb",
+    "image": "ghcr.io/quenchworks/images/spicedb"
+  },
+  {
     "slug": "static",
     "name": "static",
     "category": "Runtime base",
@@ -4772,6 +5498,32 @@
     "upstream": "https://github.com/wolfi-dev",
     "source": "https://github.com/wolfi-dev",
     "image": "ghcr.io/quenchworks/images/static"
+  },
+  {
+    "slug": "step-ca",
+    "name": "step-ca",
+    "category": "Security & supply chain",
+    "summary": "Online private certificate authority and ACME server for issuing X.509 and SSH certificates. Single static Go binary on a hardened nonroot Wolfi base; config and data live under a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "0.30.2",
+    "versions": [
+      {
+        "version": "0.30.2",
+        "size": "15.8 MB",
+        "published": "2026-07-03T00:18:50Z",
+        "digest": "sha256:bf20e973dac82b6c1afd77eff7f7ba83db7e814c294951d2f7294f26998005e5"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://smallstep.com",
+    "source": "https://github.com/smallstep/certificates",
+    "image": "ghcr.io/quenchworks/images/step-ca"
   },
   {
     "slug": "syft",
@@ -4810,6 +5562,32 @@
     "upstream": "https://anchore.com/opensource/",
     "source": "https://github.com/anchore/syft",
     "image": "ghcr.io/quenchworks/images/syft"
+  },
+  {
+    "slug": "tekton",
+    "name": "tekton",
+    "category": "CI/CD & registry",
+    "summary": "Kubernetes-native CI/CD pipelines. Ships the Tekton Pipelines controller, webhook, resolvers, and pod-injected helper binaries, built from source on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.14.0",
+    "versions": [
+      {
+        "version": "1.14.0",
+        "size": "117.1 MB",
+        "published": "2026-07-03T00:28:34Z",
+        "digest": "sha256:f870bf349a90b35bcc11a9ab9bf0e1c7ddabff5727484bfd227f0f3b1ebb9348"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://tekton.dev",
+    "source": "https://github.com/tektoncd/pipeline",
+    "image": "ghcr.io/quenchworks/images/tekton"
   },
   {
     "slug": "tempo",
@@ -5078,6 +5856,32 @@
     "image": "ghcr.io/quenchworks/images/trivy"
   },
   {
+    "slug": "tyk",
+    "name": "tyk",
+    "category": "Gateway",
+    "summary": "Full-featured API gateway with rate limiting, auth, and quotas. Single static Go binary on a hardened nonroot Wolfi base; Redis is a runtime dependency the operator provides.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MPL-2.0",
+    "licenseClean": "clean",
+    "version": "5.13.1",
+    "versions": [
+      {
+        "version": "5.13.1",
+        "size": "91.0 MB",
+        "published": "2026-07-03T01:14:29Z",
+        "digest": "sha256:3a68366c7151bfe0fedf125db369d2c0fc030ac16a49cdf4640b0d226d965c64"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://tyk.io",
+    "source": "https://github.com/TykTechnologies/tyk",
+    "image": "ghcr.io/quenchworks/images/tyk"
+  },
+  {
     "slug": "uv",
     "name": "uv",
     "category": "Build tool",
@@ -5192,6 +5996,58 @@
     "image": "ghcr.io/quenchworks/images/vector"
   },
   {
+    "slug": "velero",
+    "name": "velero",
+    "category": "Storage & platform",
+    "summary": "CNCF backup and disaster-recovery tool for Kubernetes cluster resources and persistent volumes. Single static Go binary on a hardened nonroot Wolfi base; object-store and snapshot backends are the operator's choice.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.18.2",
+    "versions": [
+      {
+        "version": "1.18.2",
+        "size": "30.3 MB",
+        "published": "2026-07-03T00:27:49Z",
+        "digest": "sha256:0bac53d092b8a53d5b7f5910518b987a7dd10283fa90828e32461431e8a484f5"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://velero.io",
+    "source": "https://github.com/vmware-tanzu/velero",
+    "image": "ghcr.io/quenchworks/images/velero"
+  },
+  {
+    "slug": "victorialogs",
+    "name": "victorialogs",
+    "category": "Observability",
+    "summary": "Fast, cost-efficient logs database with the LogsQL query language. Single static Go binary on a hardened nonroot Wolfi base; log data lives on a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.51.0",
+    "versions": [
+      {
+        "version": "1.51.0",
+        "size": "9.8 MB",
+        "published": "2026-07-03T01:55:04Z",
+        "digest": "sha256:c96cfb283a3f23093ed0a242ab2fac59ae4eb02228747a96a8e9b94daf004b7b"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://docs.victoriametrics.com/victorialogs",
+    "source": "https://github.com/VictoriaMetrics/VictoriaLogs",
+    "image": "ghcr.io/quenchworks/images/victorialogs"
+  },
+  {
     "slug": "victoriametrics",
     "name": "VictoriaMetrics",
     "category": "Time series",
@@ -5228,6 +6084,32 @@
     "upstream": "https://github.com/VictoriaMetrics/VictoriaMetrics",
     "source": "https://github.com/VictoriaMetrics/VictoriaMetrics",
     "image": "ghcr.io/quenchworks/images/victoriametrics"
+  },
+  {
+    "slug": "vikunja",
+    "name": "vikunja",
+    "category": "Apps & productivity",
+    "summary": "Self-hosted to-do and project management app (lists, kanban, gantt, calendar) serving both the API and the Vue web UI. From source with the UI embedded on a hardened nonroot Wolfi base; SQLite or an external SQL database.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0+",
+    "licenseClean": "agpl",
+    "version": "2.3.0",
+    "versions": [
+      {
+        "version": "2.3.0",
+        "size": "29.7 MB",
+        "published": "2026-07-03T04:11:16Z",
+        "digest": "sha256:af5707d2cb8a8ca71322f5923d3d0d4c0ca3ff6bd903790f89a5e2cfa6c6f3d3"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://vikunja.io",
+    "source": "https://github.com/go-vikunja/vikunja",
+    "image": "ghcr.io/quenchworks/images/vikunja"
   },
   {
     "slug": "vllm",
@@ -5304,6 +6186,32 @@
     "upstream": "https://weaviate.io",
     "source": "https://github.com/weaviate/weaviate",
     "image": "ghcr.io/quenchworks/images/weaviate"
+  },
+  {
+    "slug": "woodpecker",
+    "name": "woodpecker",
+    "category": "CI/CD & registry",
+    "summary": "Lightweight, container-native CI/CD engine (a Drone-compatible fork) with a server, agent, and CLI. From source (Vue UI embedded in the static Go server) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "3.16.0",
+    "versions": [
+      {
+        "version": "3.16.0",
+        "size": "59.1 MB",
+        "published": "2026-07-03T00:11:28Z",
+        "digest": "sha256:e3fde93e1cbe870bbcfbfc73db94ab6a5d027e15d2ebeb704b96d44d9a63b2c9"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://woodpecker-ci.org",
+    "source": "https://github.com/woodpecker-ci/woodpecker",
+    "image": "ghcr.io/quenchworks/images/woodpecker"
   },
   {
     "slug": "wordpress",
@@ -5494,5 +6402,31 @@
     "upstream": "https://github.com/apache/zookeeper",
     "source": "https://archive.apache.org/dist/zookeeper/zookeeper-3.9.5/apache-zookeeper-3.9.5-bin.tar.gz",
     "image": "ghcr.io/quenchworks/images/zookeeper"
+  },
+  {
+    "slug": "zot",
+    "name": "zot",
+    "category": "Registry",
+    "summary": "OCI-native container registry (registry, sync, and dist-spec surface). Built from source as a static Go binary on a hardened nonroot Wolfi base; filesystem storage under a writable volume.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.1.18",
+    "versions": [
+      {
+        "version": "2.1.18",
+        "size": "22.3 MB",
+        "published": "2026-07-03T00:00:51Z",
+        "digest": "sha256:00c6f5c0bed920018f51a5a442dd6107ed5ac5d5529402e75b15a23623e50ab1"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://zotregistry.dev",
+    "source": "https://github.com/project-zot/zot",
+    "image": "ghcr.io/quenchworks/images/zot"
   }
 ]

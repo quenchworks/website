@@ -25,14 +25,6 @@
     "note": "Dynamic API gateway on Nginx + LuaJIT: hot-reloads plugins and config from etcd, with no relational-database dependency. A high-performance Kong alternative."
   },
   {
-    "name": "Tyk",
-    "category": "Gateways & proxies",
-    "license": "MPL-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "API gateway written in Go: full-featured out of the box rather than open-core, with custom plugins in Go, Python, JavaScript, or gRPC (no Lua required)."
-  },
-  {
     "name": "Gloo Edge",
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
@@ -65,30 +57,6 @@
     "note": "Lightweight Python proxy exposing one OpenAI-compatible API to call, monitor, and cost-map 100+ LLM providers."
   },
   {
-    "name": "Mimir",
-    "category": "Observability",
-    "license": "AGPL-3.0",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Horizontally scalable long-term metrics storage."
-  },
-  {
-    "name": "Jaeger",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "End-to-end distributed tracing."
-  },
-  {
-    "name": "VictoriaLogs",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Fast, cost-effective log database from the VictoriaMetrics team."
-  },
-  {
     "name": "Apache SkyWalking",
     "category": "Observability",
     "license": "Apache-2.0",
@@ -113,14 +81,6 @@
     "licenseClean": "agpl",
     "priority": "planned",
     "note": "Typo-tolerant search engine, an Algolia alternative."
-  },
-  {
-    "name": "Quickwit",
-    "category": "Search & vector",
-    "license": "AGPL-3.0",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Search engine for logs and traces on object storage."
   },
   {
     "name": "Apache Flink",
@@ -156,22 +116,6 @@
     "cleanAlternative": "No drop-in clean equivalent; Temporal (MIT) for code-first orchestration.",
     "blocked": true,
     "blockedReason": "n8n's pinned npm dependency tree carries fixable CVEs that upstream has not moved past, so the image cannot reach 0 fixable CVEs without diverging from n8n's own lockfile. Built and tested; held until the dependencies are updated. (n8n is also source-available under the Sustainable Use License, not OSI.)"
-  },
-  {
-    "name": "NSQ",
-    "category": "Messaging & streaming",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Realtime distributed messaging."
-  },
-  {
-    "name": "Centrifugo",
-    "category": "Messaging & streaming",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Realtime messaging / WebSocket server."
   },
   {
     "name": "Redpanda",
@@ -262,14 +206,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Scalable distributed object store (S3 + HDFS)."
-  },
-  {
-    "name": "Forgejo",
-    "category": "Storage & platform",
-    "license": "GPL-3.0",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Community Git forge, a Gitea fork."
   },
   {
     "name": "Woodpecker CI",
@@ -379,14 +315,6 @@
     "note": "VS Code running in the browser on a remote server."
   },
   {
-    "name": "Filebrowser",
-    "category": "Apps & productivity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Web-based file manager for a server filesystem."
-  },
-  {
     "name": "Homepage",
     "category": "Apps & productivity",
     "license": "GPL-3.0-only",
@@ -437,22 +365,6 @@
     "note": "Self-hosted media server for movies, music, and live TV."
   },
   {
-    "name": "LiveKit",
-    "category": "Media & streaming",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "WebRTC SFU media server for real-time audio and video."
-  },
-  {
-    "name": "MediaMTX",
-    "category": "Media & streaming",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Real-time media server and proxy for RTSP, RTMP, HLS, and WebRTC streams."
-  },
-  {
     "name": "Apache Guacamole",
     "category": "Media & streaming",
     "license": "Apache-2.0",
@@ -469,22 +381,6 @@
     "note": "Declarative GitOps continuous delivery for Kubernetes."
   },
   {
-    "name": "Argo Workflows",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Container-native workflow engine for orchestrating parallel jobs on Kubernetes."
-  },
-  {
-    "name": "Tekton",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Kubernetes-native CI/CD building blocks for pipelines and tasks."
-  },
-  {
     "name": "Concourse",
     "category": "CI/CD & registry",
     "license": "Apache-2.0",
@@ -498,15 +394,9 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Self-hosted Git hosting with built-in pipelines from Harness."
-  },
-  {
-    "name": "Zot",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "OCI-native container image registry with optional UI and sync."
+    "note": "Self-hosted Git hosting with built-in pipelines from Harness.",
+    "blocked": true,
+    "blockedReason": "Built, but pulls `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) across its gitspace/pipeline code; the fix is only in the renamed `moby/moby` v29 module, an API-breaking migration that would fork upstream. Held until Gitness moves to moby v29."
   },
   {
     "name": "Apache NiFi",
@@ -624,20 +514,14 @@
     "note": "Distributed tracing system for collecting and querying timing data."
   },
   {
-    "name": "Grafana Pyroscope",
-    "category": "Observability",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Continuous profiling backend for CPU and memory flame graphs."
-  },
-  {
     "name": "Grafana Alloy",
     "category": "Observability",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "OpenTelemetry-based collector distribution for metrics, logs, traces, and profiles."
+    "note": "OpenTelemetry-based collector distribution for metrics, logs, traces, and profiles.",
+    "blocked": true,
+    "blockedReason": "Built and otherwise 0-CVE, but a transitive `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) pulled by Alloy's docker discovery has its fix only in the renamed `moby/moby` v29 module, so it can't be bumped without forking. Held until Alloy migrates to moby v29."
   },
   {
     "name": "Telegraf",
@@ -645,7 +529,9 @@
     "license": "MIT",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Plugin-driven metrics collection agent from the InfluxData ecosystem."
+    "note": "Plugin-driven metrics collection agent from the InfluxData ecosystem.",
+    "blocked": true,
+    "blockedReason": "Built, but a transitive `github.com/rclone/rclone` carries a CRITICAL RCE (CVE-2026-49980); the fix (rclone 1.74.3) drops an API Telegraf's remotefile plugin depends on, so bumping breaks the build. Held until Telegraf updates its rclone pin."
   },
   {
     "name": "Fluentd",
@@ -665,14 +551,6 @@
     "cleanAlternative": "Vector (MPL-2.0) or Fluentd (Apache-2.0), both open pipelines."
   },
   {
-    "name": "Grafana k6",
-    "category": "Observability",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Scriptable load-testing tool for performance and reliability testing."
-  },
-  {
     "name": "Zabbix",
     "category": "Observability",
     "license": "AGPL-3.0-only",
@@ -681,20 +559,14 @@
     "note": "Infrastructure and network monitoring platform; version 7 and later is AGPL-3.0."
   },
   {
-    "name": "Perses",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "CNCF dashboards-as-code visualization tool for metrics."
-  },
-  {
     "name": "Ory Hydra",
     "category": "Secrets & identity",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "OAuth 2.0 and OpenID Connect provider backed by a relational database."
+    "note": "OAuth 2.0 and OpenID Connect provider backed by a relational database.",
+    "blocked": true,
+    "blockedReason": "Built, but pulls `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) via ory/x's vendored dockertest helper; the fix lives only in `moby/moby` v29 and ory/x is embedded via a local replace, so it can't be bumped without forking. Held until Ory migrates ory/x to moby v29."
   },
   {
     "name": "Ory Kratos",
@@ -702,31 +574,9 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Identity and user-management server for login, registration, and MFA."
-  },
-  {
-    "name": "OpenFGA",
-    "category": "Secrets & identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Fine-grained authorization engine based on the Zanzibar model."
-  },
-  {
-    "name": "SpiceDB",
-    "category": "Secrets & identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Zanzibar-inspired permissions database for fine-grained authorization."
-  },
-  {
-    "name": "Kyverno",
-    "category": "Secrets & identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Kubernetes-native policy engine for validation, mutation, and generation."
+    "note": "Identity and user-management server for login, registration, and MFA.",
+    "blocked": true,
+    "blockedReason": "Built, but pulls `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) via ory/x's vendored dockertest helper; the fix lives only in `moby/moby` v29 and ory/x is embedded via a local replace, so it can't be bumped without forking. Held until Ory migrates ory/x to moby v29."
   },
   {
     "name": "Sealed Secrets",
@@ -735,14 +585,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Encrypts Kubernetes Secrets so they can be stored safely in Git."
-  },
-  {
-    "name": "step-ca",
-    "category": "Secrets & identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Smallstep online certificate authority for internal PKI and ACME."
   },
   {
     "name": "SPIRE",
@@ -849,14 +691,6 @@
     "note": "Load-balancer implementation for bare-metal Kubernetes clusters."
   },
   {
-    "name": "Kuma",
-    "category": "Coordination & mesh",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Envoy-based service mesh and control plane for multi-zone deployments."
-  },
-  {
     "name": "Cilium",
     "category": "Coordination & mesh",
     "license": "Apache-2.0",
@@ -929,14 +763,6 @@
     "note": "Redis-protocol key-value database persisted on RocksDB."
   },
   {
-    "name": "rqlite",
-    "category": "Databases & engines",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Distributed relational database built on SQLite with Raft consensus."
-  },
-  {
     "name": "Apache Nessie",
     "category": "Databases & engines",
     "license": "Apache-2.0",
@@ -951,14 +777,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Distributed block storage for Kubernetes with snapshots and backups."
-  },
-  {
-    "name": "Velero",
-    "category": "Storage & platform",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Backup, restore, and migration of Kubernetes cluster resources and volumes."
   },
   {
     "name": "Kubo",
@@ -1031,22 +849,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Distributed application runtime providing building-block APIs for microservices."
-  },
-  {
-    "name": "KEDA",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Event-driven autoscaling for Kubernetes workloads."
-  },
-  {
-    "name": "Cadence",
-    "category": "Workflow & data",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Fault-tolerant workflow orchestration engine backed by a database."
   },
   {
     "name": "Camunda",
@@ -1505,15 +1307,9 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Kubernetes resource-metrics API for HPA and kubectl top."
-  },
-  {
-    "name": "Descheduler",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Rebalances pods by evicting and rescheduling them."
+    "note": "Kubernetes resource-metrics API for HPA and kubectl top.",
+    "blocked": true,
+    "blockedReason": "Built, but a transitive `github.com/prometheus/prometheus` carries fixable CVEs whose fix (0.311.3) forces k8s v0.35 (breaking metrics-server's v0.33 apiserver lockstep) plus a textparse API change — unfixable without forking. Held until an upstream release bumps prometheus."
   },
   {
     "name": "Cluster Autoscaler",
