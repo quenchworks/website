@@ -1,5 +1,5 @@
 # Build stage: compile a fully static binary (Go shown; Rust musl is the same idea).
-FROM ghcr.io/quenchworks/images/go:1.26.0 AS build
+FROM ghcr.io/quenchworks/images/go:1.26.4 AS build
 USER root
 WORKDIR /src
 ENV CGO_ENABLED=0 \
