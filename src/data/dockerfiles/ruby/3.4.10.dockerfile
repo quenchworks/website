@@ -1,5 +1,5 @@
 # Build stage: install gems in deployment mode (build deps included).
-FROM ghcr.io/quenchworks/images/ruby:3.3.11 AS build
+FROM ghcr.io/quenchworks/images/ruby:3.4.10 AS build
 USER root
 WORKDIR /app
 ENV BUNDLE_PATH=/app/vendor/bundle \
@@ -11,7 +11,7 @@ RUN ["bundle", "install"]
 COPY . .
 
 # Runtime stage: copy the vendored bundle + app onto a clean ruby base.
-FROM ghcr.io/quenchworks/images/ruby:3.3.11 AS runtime
+FROM ghcr.io/quenchworks/images/ruby:3.4.10 AS runtime
 WORKDIR /app
 ENV BUNDLE_PATH=/app/vendor/bundle \
     BUNDLE_DEPLOYMENT=true \
