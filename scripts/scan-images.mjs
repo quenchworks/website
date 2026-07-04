@@ -46,9 +46,15 @@ async function scanOnce(ref) {
   // --cache-backend memory: keep the per-scan analysis cache in memory so parallel
   //   trivy processes don't fight over the on-disk fanal bolt lock.
   // --skip-db-update: the vuln DB is pre-downloaded once (shared, read-only) by the workflow.
+  // --detection-priority comprehensive: REQUIRED to match the build gate. In the default
+  //   "precise" mode Trivy drops language files owned by an OS package, so the app's own
+  //   Go/Rust binary is skipped and only OS-package CVEs surface -- security.json would
+  //   under-report. Comprehensive keeps the gobinary/language analyzers so the published
+  //   grade reflects the true dep state.
   const { stdout } = await execFileP(
     'trivy',
     ['image', '--quiet', '--format', 'json', '--scanners', 'vuln',
+     '--detection-priority', 'comprehensive',
      '--skip-db-update', '--cache-backend', 'memory',
      '--severity', 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN', ref],
     { maxBuffer: 128 * 1024 * 1024, timeout: 300_000 },
