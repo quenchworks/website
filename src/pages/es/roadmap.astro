@@ -3,35 +3,49 @@ import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import { images as catalog } from '../../data/images';
-import { roadmap, roadmapTotal, roadmapCategories, byPriority } from '../../data/roadmap';
+import { roadmap, roadmapTotal, roadmapCategories, byPriority, blockedCount, blockedList } from '../../data/roadmap';
 import { localizedSummary } from '../../i18n/content';
 import { categoryName } from '../../i18n/categories';
 import { localizeUrl } from '../../i18n/ui';
 
 const shipped = catalog.filter((e) => e.status === 'available');
 const total = shipped.length + roadmapTotal;
-const percent = Math.round((shipped.length / total) * 100);
 const available = [...shipped].sort((a, b) => a.name.localeCompare(b.name));
 
+const openItems = roadmap.filter((r) => !r.blocked);
+const openTotal = openItems.length;
+const shippedPct = Math.round((shipped.length / total) * 100);
+const blockedPct = Math.round((blockedCount / total) * 100);
+
 const priorityLabel: Record<string, string> = { next: 'próximo', planned: 'planificado', exploring: 'explorando' };
-const grouped = roadmapCategories.map((cat) => ({
-  cat,
-  items: roadmap.filter((r) => r.category === cat).sort(byPriority),
-}));
-const nextCount = roadmap.filter((r) => r.priority === 'next').length;
+const priorityBadge: Record<string, string> = {
+  next: 'border border-paper/50 bg-paper/10 text-paper',
+  planned: 'border border-ash/50 text-ash',
+  exploring: 'border border-dashed border-ash/45 text-ash/70',
+};
+const grouped = roadmapCategories
+  .map((cat) => ({ cat, items: openItems.filter((r) => r.category === cat).sort(byPriority) }))
+  .filter((g) => g.items.length > 0);
+const nextCount = openItems.filter((r) => r.priority === 'next').length;
+
+const catsOf = <T extends { category: string }>(items: T[]) =>
+  [...new Set(items.map((i) => i.category))]
+    .sort()
+    .map((cat) => ({ cat, items: items.filter((i) => i.category === cat) }));
+const availableGrouped = catsOf(available);
+const blockedGrouped = catsOf(blockedList);
 ---
 
-<Base title="Hoja de ruta · QuenchWorks" description="Lo que está disponible ahora y las más de 180 aplicaciones en camino para el catálogo de QuenchWorks, que cubre los almacenes de datos, la infraestructura y las herramientas de desarrollo más solicitados.">
+<Base title="Hoja de ruta · QuenchWorks" description="Lo que está publicado ahora y las más de 180 apps en camino al catálogo de QuenchWorks, cubriendo las bases de datos, la infraestructura y las herramientas de desarrollo más solicitadas.">
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16">
     <header class="max-w-2xl">
       <p class="font-mono text-xs uppercase tracking-widest text-ash">Hoja de ruta</p>
-      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Lo que está disponible, lo que viene</h1>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Qué está publicado, qué sigue</h1>
       <p class="mt-4 leading-relaxed text-ash">
-        {shipped.length} almacenes de datos y herramientas están reforzados y disponibles hoy. A
-        continuación está lo que viene, primero las opciones limpias según OSI. Cada entrada se
-        compila desde el código fuente en Wolfi, se analiza hasta cero CVE corregibles, se firma
-        y se fija por digest antes de pasar a disponible.
+        {shipped.length} bases de datos y herramientas están endurecidas y publicadas hoy. Debajo está lo que
+        viene, primero las opciones limpias OSI. Cada entrada se compila desde el código fuente sobre Wolfi, se
+        escanea hasta cero CVE corregibles, se firma y se fija por digest antes de pasar a disponible.
       </p>
     </header>
 
@@ -41,22 +55,35 @@ const nextCount = roadmap.filter((r) => r.priority === 'next').length;
         <div class="font-mono text-5xl font-bold tabular-nums leading-none tracking-tight">
           {shipped.length}<span class="text-ash">/{total}</span>
         </div>
-        <div class="font-mono text-2xl font-bold tabular-nums text-ash">{percent}%</div>
+        <div class="flex items-end gap-5 font-mono tabular-nums">
+          <div class="text-right">
+            <div class="text-2xl font-bold">{shippedPct}%</div>
+            <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">publicado</div>
+          </div>
+          {blockedCount > 0 && (
+            <div class="text-right">
+              <div class="text-2xl font-bold text-red-300">{blockedPct}%</div>
+              <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">bloqueadas</div>
+            </div>
+          )}
+        </div>
       </div>
-      <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-ink" role="progressbar" aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100">
-        <div class="h-full rounded-full bg-paper" style={`width:${percent}%`}></div>
+      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% publicado, ${blockedPct}% retenido/bloqueado, de ${total} en total`}>
+        <div class="h-full bg-paper" style={`width:${shippedPct}%`}></div>
+        <div class="h-full bg-red-500/70" style={`width:${blockedPct}%`}></div>
       </div>
-      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center">
+      <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-line pt-5 text-center sm:grid-cols-4">
         {
           (
             [
-              ['Disponible', shipped.length],
-              ['En la hoja de ruta', roadmapTotal],
+              ['Publicado', shipped.length],
+              ['En la hoja de ruta', openTotal],
               ['Próximamente', nextCount],
+              ['Bloqueadas', blockedCount],
             ] as [string, number][]
           ).map(([label, n]) => (
             <div>
-              <dd class="font-mono text-2xl font-bold tabular-nums">{n}</dd>
+              <dd class:list={['font-mono text-2xl font-bold tabular-nums', label === 'Bloqueadas' && n > 0 ? 'text-red-300' : '']}>{n}</dd>
               <dt class="mt-1 font-mono text-[10px] uppercase tracking-widest text-ash">{label}</dt>
             </div>
           ))
@@ -66,65 +93,146 @@ const nextCount = roadmap.filter((r) => r.priority === 'next').length;
 
     {/* Roadmap item names are intentionally kept in English (proper nouns). */}
     <!-- available -->
-    <section class="mt-16">
-      <div class="mb-6 flex items-center gap-4">
+    <details open class="group mt-16">
+      <summary class="mb-6 flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
         <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Disponible ahora</h2>
         <span class="h-px flex-1 bg-line"></span>
         <span class="font-mono text-xs tabular-nums text-ash">{shipped.length}</span>
-      </div>
-      <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+      </summary>
+      <div class="space-y-10">
         {
-          available.map((e) => (
-            <li>
-              <a
-                href={localizeUrl('es', `/images/${e.slug}`)}
-                class="group flex h-full flex-col justify-between gap-5 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
-              >
-                <div class="flex items-start justify-between">
-                  <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
-                    <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
-                  </span>
-                  <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
-                </div>
-                <div>
-                  <span class="block text-base font-semibold leading-tight">{e.name}</span>
-                  <span class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-                    <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
-                    <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
-                  </span>
-                </div>
-              </a>
-            </li>
+          availableGrouped.map((g) => (
+            <details open class="group/cat">
+              <summary class="mb-3 flex cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
+                <h3 class="text-sm font-semibold text-paper">{categoryName('es', g.cat)}</h3>
+                <span class="h-px flex-1 bg-line/60"></span>
+                <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
+                <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+              </summary>
+              <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {g.items.map((e) => (
+                  <li>
+                    <a
+                      href={localizeUrl('es', `/images/${e.slug}`)}
+                      class="group flex h-full flex-col justify-between gap-5 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
+                    >
+                      <div class="flex items-start justify-between">
+                        <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
+                          <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
+                        </span>
+                        <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+                      </div>
+                      <div>
+                        <span class="block text-base font-semibold leading-tight">{e.name}</span>
+                        <span class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                          <span class="rounded bg-ink px-2 py-0.5">{categoryName('es', e.category)}</span>
+                          <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
           ))
         }
-      </ul>
-    </section>
+      </div>
+    </details>
+
+    <!-- held: built + tested, not shipped -->
+    {
+      blockedCount > 0 && (
+        <details open class="group mt-16">
+          <summary class="mb-6 flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
+            <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Retenidas &mdash; compiladas, sin publicar</h2>
+            <span class="h-px flex-1 bg-line" />
+            <span class="font-mono text-xs tabular-nums text-ash">{blockedCount}</span>
+            <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+          </summary>
+          <p class="-mt-3 mb-8 max-w-2xl text-sm text-ash">
+            Se compilan y prueban limpias pero aún no alcanzan <span class="text-paper">0 CVE corregibles</span> &mdash; la
+            app o su base fija una dependencia por debajo de la versión que corrige un CVE conocido, así que la
+            retenemos en lugar de publicar una imagen vulnerable. Cada una se vuelve a listar automáticamente en cuanto
+            el upstream publica la corrección. Toca <span class="text-red-300">¿por qué bloqueada?</span> para ver la fijación exacta.
+          </p>
+          <div class="space-y-10">
+            {blockedGrouped.map((g) => (
+              <details open class="group/cat">
+                <summary class="mb-3 flex cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
+                  <h3 class="text-sm font-semibold text-paper">{categoryName('es', g.cat)}</h3>
+                  <span class="h-px flex-1 bg-line/60"></span>
+                  <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
+                  <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+                </summary>
+                <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {g.items.map((r) => (
+                    <li class="flex h-full flex-col gap-3 rounded-xl border border-line/70 bg-graphite/50 p-5">
+                      <div class="flex items-start justify-between gap-2">
+                        <span class="text-base font-medium leading-tight text-paper/90">{r.name}</span>
+                        <span
+                          class="shrink-0 rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300"
+                          role="img"
+                          aria-label="Probada y retenida: no puede alcanzar cero CVE corregibles por una fijación de dependencia del upstream"
+                        >
+                          bloqueada
+                        </span>
+                      </div>
+                      <p class="flex-1 text-sm leading-relaxed text-ash">{localizedSummary('es', 'roadmap', r.name, r.note)}</p>
+                      {r.blockedReason && (
+                        <button
+                          type="button"
+                          data-blocked-open
+                          data-name={r.name}
+                          data-reason={r.blockedReason}
+                          aria-haspopup="dialog"
+                          class="self-start rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-red-300 transition-colors duration-200 hover:bg-red-500/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-300"
+                        >
+                          ¿por qué bloqueada?
+                        </button>
+                      )}
+                      <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                        <span class="rounded bg-ink px-2 py-0.5">{categoryName('es', r.category)}</span>
+                        <span class="rounded bg-ink px-2 py-0.5">{r.license}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
+        </details>
+      )
+    }
 
     <!-- on the roadmap, grouped by theme -->
-    <section class="mt-16">
-      <div class="mb-6 flex items-center gap-4">
+    <details open class="group mt-16">
+      <summary class="mb-6 flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
         <h2 class="font-mono text-xs uppercase tracking-widest text-paper">En la hoja de ruta</h2>
         <span class="h-px flex-1 bg-line"></span>
-        <span class="font-mono text-xs tabular-nums text-ash">{roadmapTotal}</span>
-      </div>
+        <span class="font-mono text-xs tabular-nums text-ash">{openTotal}</span>
+        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+      </summary>
       <p class="-mt-3 mb-8 max-w-2xl text-sm text-ash">
         Candidatos, no compromisos. <span class="text-paper">próximo</span> = las apuestas más sólidas a corto plazo;
         luego siguen <span class="text-paper">planificado</span> y <span class="text-paper">explorando</span>. Los elementos
         marcados como <span class="text-paper">precaución</span> son de código disponible (no OSI) y solo se publicarían con
-        una nota de licencia destacada y la alternativa limpia señalada. Cada tarjeta también muestra cómo
-        se publicará: <span class="text-paper">imagen + chart</span> para un servicio desplegable, o
+        una nota de licencia visible y la alternativa limpia señalada. (Las apps que compilan pero aún no llegan a 0 CVE
+        corregibles están en <span class="text-red-300">Retenidas</span>, arriba.) Cada tarjeta también muestra cómo se
+        publicará: <span class="text-paper">imagen + chart</span> para un servicio desplegable, o
         <span class="text-paper">solo imagen</span> para una utilidad base/CLI/sidecar (como busybox).
       </p>
 
       <div class="space-y-10">
         {
           grouped.map((g) => (
-            <div>
-              <div class="mb-3 flex items-center gap-3">
+            <details open class="group/cat">
+              <summary class="mb-3 flex cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
                 <h3 class="text-sm font-semibold text-paper">{categoryName('es', g.cat)}</h3>
                 <span class="h-px flex-1 bg-line/60"></span>
                 <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
-              </div>
+                <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+              </summary>
               <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {g.items.map((r) => (
                   <li class="flex h-full flex-col gap-3 rounded-xl border border-line/70 bg-graphite/50 p-5">
@@ -132,8 +240,8 @@ const nextCount = roadmap.filter((r) => r.priority === 'next').length;
                       <span class="text-base font-medium leading-tight text-paper/90">{r.name}</span>
                       <span
                         class:list={[
-                          'rounded px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest',
-                          r.priority === 'next' ? 'border border-paper/40 text-paper' : 'bg-ink text-ash',
+                          'shrink-0 rounded px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest',
+                          priorityBadge[r.priority],
                         ]}
                       >
                         {priorityLabel[r.priority]}
@@ -158,19 +266,94 @@ const nextCount = roadmap.filter((r) => r.priority === 'next').length;
                   </li>
                 ))}
               </ul>
-            </div>
+            </details>
           ))
         }
       </div>
-    </section>
+    </details>
+
+    {
+      blockedCount > 0 && (
+        <section class="mt-16 rounded-2xl border border-line bg-graphite p-6 sm:p-8" aria-label="Sobre las apps bloqueadas">
+          <div class="flex items-center gap-3">
+            <span class="rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300">bloqueada</span>
+            <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Por qué se retienen algunas apps</h2>
+          </div>
+          <p class="mt-4 max-w-2xl text-sm leading-relaxed text-ash">
+            QuenchWorks no publica nada que tenga un CVE corregible. Algunas apps compilan limpias pero aún no llegan a
+            ese nivel: la propia app fija una dependencia <em class="not-italic text-paper/90">por debajo</em> de la
+            versión que corrige un CVE conocido, así que parchearla rompería sus propias restricciones declaradas. Se
+            marcan como <span class="text-red-300">bloqueadas</span>: compiladas y probadas, retenidas (sin publicar)
+            hasta que el upstream relaje la fijación o retroporte la corrección. Se publican en cuanto eso ocurre. Nada
+            que ya esté en el catálogo tiene un CVE corregible conocido.
+          </p>
+        </section>
+      )
+    }
 
     <section class="mt-16 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
       <p class="text-ash">
         ¿Quieres priorizar algo?{' '}
-        <a href="mailto:info@quench-works.com?subject=App%20request" class="font-medium text-paper underline-offset-4 hover:underline">Solicita una aplicación</a>{' '}
-        y lo encajaremos en la hoja de ruta.
+        <a href="mailto:info@quench-works.com?subject=App%20request" class="font-medium text-paper underline-offset-4 hover:underline">Solicita una app</a>{' '}
+        y la ubicaremos en la hoja de ruta.
       </p>
     </section>
   </main>
+
+  <dialog
+    id="blocked-dialog"
+    aria-labelledby="bd-title"
+    class="m-auto w-[calc(100%-2rem)] max-w-md rounded-xl border border-line bg-graphite p-0 text-paper backdrop:bg-ink/70 backdrop:backdrop-blur-sm"
+  >
+    <div class="p-6">
+      <div class="flex items-center justify-between gap-3">
+        <h2 id="bd-title" class="text-lg font-semibold tracking-tight"></h2>
+        <span class="shrink-0 rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300">bloqueada</span>
+      </div>
+      <p class="mt-2 font-mono text-[10px] uppercase tracking-widest text-ash">Probada y retenida: no alcanza 0 CVE corregibles</p>
+      <p id="bd-reason" class="mt-4 text-sm leading-relaxed text-ash"></p>
+      <div class="mt-6 flex justify-end">
+        <button
+          id="bd-close"
+          type="button"
+          class="rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"
+        >
+          cerrar
+        </button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const dlg = document.getElementById('blocked-dialog') as HTMLDialogElement | null;
+    const title = document.getElementById('bd-title');
+    const reason = document.getElementById('bd-reason');
+    if (dlg && title && reason) {
+      const render = (text: string) => {
+        reason.replaceChildren();
+        text.split('`').forEach((part, i) => {
+          if (i % 2 === 1) {
+            const code = document.createElement('code');
+            code.className = 'rounded bg-ink px-1.5 py-0.5 font-mono text-[0.85em] text-paper';
+            code.textContent = part;
+            reason.appendChild(code);
+          } else if (part) {
+            reason.appendChild(document.createTextNode(part));
+          }
+        });
+      };
+      for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-blocked-open]')) {
+        btn.addEventListener('click', () => {
+          title.textContent = btn.dataset.name ?? '';
+          render(btn.dataset.reason ?? '');
+          dlg.showModal();
+        });
+      }
+      document.getElementById('bd-close')?.addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', (e) => {
+        if (e.target === dlg) dlg.close();
+      });
+    }
+  </script>
   <Footer />
 </Base>

@@ -35,6 +35,8 @@ export const roadmap = roadmapData as RoadmapItem[];
 export const roadmapTotal = roadmap.length;
 export const roadmapCategories = [...new Set(roadmap.map((r) => r.category))];
 export const blockedCount = roadmap.filter((r) => r.blocked).length;
+// All held/blocked apps in one name-sorted list for the dedicated "Held" section.
+export const blockedList = roadmap.filter((r) => r.blocked).sort((a, b) => a.name.localeCompare(b.name));
 
 const PRIORITY_ORDER: Record<Priority, number> = { next: 0, planned: 1, exploring: 2 };
 // Blocked items sort after everything else within their category.

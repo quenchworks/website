@@ -3,12 +3,19 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { images as catalog } from '../data/images';
-import { roadmap, roadmapTotal, roadmapCategories, byPriority, blockedCount } from '../data/roadmap';
+import { roadmap, roadmapTotal, roadmapCategories, byPriority, blockedCount, blockedList } from '../data/roadmap';
 
 const shipped = catalog.filter((e) => e.status === 'available');
 const total = shipped.length + roadmapTotal;
-const percent = Math.round((shipped.length / total) * 100);
 const available = [...shipped].sort((a, b) => a.name.localeCompare(b.name));
+
+// Blocked apps are held (built, not shipped) and get their own "Held" section, so
+// they are excluded from the "On the roadmap" count + listing. The progress bar
+// shows shipped and blocked as slices of the same total (blocked in red).
+const openItems = roadmap.filter((r) => !r.blocked);
+const openTotal = openItems.length;
+const shippedPct = Math.round((shipped.length / total) * 100);
+const blockedPct = Math.round((blockedCount / total) * 100);
 
 const priorityLabel: Record<string, string> = { next: 'next', planned: 'planned', exploring: 'exploring' };
 // Priority is NOT security state, so it's distinguished within the monochrome ramp
@@ -20,13 +27,18 @@ const priorityBadge: Record<string, string> = {
   planned: 'border border-ash/50 text-ash',
   exploring: 'border border-dashed border-ash/45 text-ash/70',
 };
-const grouped = roadmapCategories.map((cat) => ({
-  cat,
-  items: roadmap.filter((r) => r.category === cat).sort(byPriority),
-}));
-const nextCount = roadmap.filter((r) => r.priority === 'next').length;
-const plannedCount = roadmap.filter((r) => r.priority === 'planned').length;
-const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
+const grouped = roadmapCategories
+  .map((cat) => ({ cat, items: openItems.filter((r) => r.category === cat).sort(byPriority) }))
+  .filter((g) => g.items.length > 0);
+const nextCount = openItems.filter((r) => r.priority === 'next').length;
+
+// Available + Held are grouped by category too (each a nested collapsible), matching On-the-roadmap.
+const catsOf = <T extends { category: string }>(items: T[]) =>
+  [...new Set(items.map((i) => i.category))]
+    .sort()
+    .map((cat) => ({ cat, items: items.filter((i) => i.category === cat) }));
+const availableGrouped = catsOf(available);
+const blockedGrouped = catsOf(blockedList);
 ---
 
 <Base title="Roadmap · QuenchWorks" description="What is shipped now and the 180+ apps on deck for the QuenchWorks catalog, covering the most-requested datastores, infrastructure, and developer tools.">
@@ -48,20 +60,30 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
         <div class="font-mono text-5xl font-bold tabular-nums leading-none tracking-tight">
           {shipped.length}<span class="text-ash">/{total}</span>
         </div>
-        <div class="font-mono text-2xl font-bold tabular-nums text-ash">{percent}%</div>
+        <div class="flex items-end gap-5 font-mono tabular-nums">
+          <div class="text-right">
+            <div class="text-2xl font-bold">{shippedPct}%</div>
+            <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">shipped</div>
+          </div>
+          {blockedCount > 0 && (
+            <div class="text-right">
+              <div class="text-2xl font-bold text-red-300">{blockedPct}%</div>
+              <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">blocked</div>
+            </div>
+          )}
+        </div>
       </div>
-      <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-ink" role="progressbar" aria-valuenow={percent} aria-valuemin="0" aria-valuemax="100">
-        <div class="h-full rounded-full bg-paper" style={`width:${percent}%`}></div>
+      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% shipped, ${blockedPct}% held/blocked, of ${total} total`}>
+        <div class="h-full bg-paper" style={`width:${shippedPct}%`}></div>
+        <div class="h-full bg-red-500/70" style={`width:${blockedPct}%`}></div>
       </div>
-      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center sm:grid-cols-6">
+      <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-line pt-5 text-center sm:grid-cols-4">
         {
           (
             [
               ['Shipped', shipped.length],
-              ['On the roadmap', roadmapTotal],
+              ['On the roadmap', openTotal],
               ['Up next', nextCount],
-              ['Planned', plannedCount],
-              ['Exploring', exploringCount],
               ['Blocked', blockedCount],
             ] as [string, number][]
           ).map(([label, n]) => (
@@ -75,53 +97,132 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
     </section>
 
     <!-- available -->
-    <section class="mt-16">
-      <div class="mb-6 flex items-center gap-4">
+    <details open class="group mt-16">
+      <summary class="mb-6 flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
         <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Available now</h2>
         <span class="h-px flex-1 bg-line"></span>
         <span class="font-mono text-xs tabular-nums text-ash">{shipped.length}</span>
-      </div>
-      <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+      </summary>
+      <div class="space-y-10">
         {
-          available.map((e) => (
-            <li>
-              <a
-                href={`/images/${e.slug}`}
-                class="group flex h-full flex-col justify-between gap-5 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
-              >
-                <div class="flex items-start justify-between">
-                  <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
-                    <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
-                  </span>
-                  <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
-                </div>
-                <div>
-                  <span class="block text-base font-semibold leading-tight">{e.name}</span>
-                  <span class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-                    <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
-                    <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
-                  </span>
-                </div>
-              </a>
-            </li>
+          availableGrouped.map((g) => (
+            <details open class="group/cat">
+              <summary class="mb-3 flex cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
+                <h3 class="text-sm font-semibold text-paper">{g.cat}</h3>
+                <span class="h-px flex-1 bg-line/60"></span>
+                <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
+                <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+              </summary>
+              <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {g.items.map((e) => (
+                  <li>
+                    <a
+                      href={`/images/${e.slug}`}
+                      class="group flex h-full flex-col justify-between gap-5 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40"
+                    >
+                      <div class="flex items-start justify-between">
+                        <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
+                          <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
+                        </span>
+                        <span class="font-mono text-sm text-ash transition-colors group-hover:text-paper">&rarr;</span>
+                      </div>
+                      <div>
+                        <span class="block text-base font-semibold leading-tight">{e.name}</span>
+                        <span class="mt-2 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                          <span class="rounded bg-ink px-2 py-0.5">{e.category}</span>
+                          <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
           ))
         }
-      </ul>
-    </section>
+      </div>
+    </details>
+
+    <!-- held: built + tested, not shipped (all blocked apps in one place) -->
+    {
+      blockedCount > 0 && (
+        <details open class="group mt-16">
+          <summary class="mb-6 flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
+            <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Held &mdash; built, not shipped</h2>
+            <span class="h-px flex-1 bg-line" />
+            <span class="font-mono text-xs tabular-nums text-ash">{blockedCount}</span>
+            <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+          </summary>
+          <p class="-mt-3 mb-8 max-w-2xl text-sm text-ash">
+            These build and test clean but can't reach <span class="text-paper">0 fixable CVEs</span> yet &mdash; the
+            app or its base pins a dependency below the version that fixes a known CVE, so we hold it rather than ship a
+            vulnerable image. Each re-lists automatically the moment upstream ships the fix. Tap
+            <span class="text-red-300">why blocked?</span> for the exact pin.
+          </p>
+          <div class="space-y-10">
+            {blockedGrouped.map((g) => (
+              <details open class="group/cat">
+                <summary class="mb-3 flex cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
+                  <h3 class="text-sm font-semibold text-paper">{g.cat}</h3>
+                  <span class="h-px flex-1 bg-line/60"></span>
+                  <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
+                  <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+                </summary>
+                <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {g.items.map((r) => (
+                    <li class="flex h-full flex-col gap-3 rounded-xl border border-line/70 bg-graphite/50 p-5">
+                      <div class="flex items-start justify-between gap-2">
+                        <span class="text-base font-medium leading-tight text-paper/90">{r.name}</span>
+                        <span
+                          class="shrink-0 rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300"
+                          role="img"
+                          aria-label="Tested and held: cannot reach zero fixable CVEs due to an upstream dependency pin"
+                        >
+                          blocked
+                        </span>
+                      </div>
+                      <p class="flex-1 text-sm leading-relaxed text-ash">{r.note}</p>
+                      {r.blockedReason && (
+                        <button
+                          type="button"
+                          data-blocked-open
+                          data-name={r.name}
+                          data-reason={r.blockedReason}
+                          aria-haspopup="dialog"
+                          class="self-start rounded-lg border border-red-500/40 bg-red-500/10 px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-red-300 transition-colors duration-200 hover:bg-red-500/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-300"
+                        >
+                          why blocked?
+                        </button>
+                      )}
+                      <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
+                        <span class="rounded bg-ink px-2 py-0.5">{r.category}</span>
+                        <span class="rounded bg-ink px-2 py-0.5">{r.license}</span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
+        </details>
+      )
+    }
 
     <!-- on the roadmap, grouped by theme -->
-    <section class="mt-16">
-      <div class="mb-6 flex items-center gap-4">
+    <details open class="group mt-16">
+      <summary class="mb-6 flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
         <h2 class="font-mono text-xs uppercase tracking-widest text-paper">On the roadmap</h2>
         <span class="h-px flex-1 bg-line"></span>
-        <span class="font-mono text-xs tabular-nums text-ash">{roadmapTotal}</span>
-      </div>
+        <span class="font-mono text-xs tabular-nums text-ash">{openTotal}</span>
+        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+      </summary>
       <p class="-mt-3 mb-8 max-w-2xl text-sm text-ash">
         Candidates, not commitments. <span class="text-paper">next</span> = strongest near-term picks;
         <span class="text-paper">planned</span> and <span class="text-paper">exploring</span> follow. Items
         marked <span class="text-paper">caution</span> are source-available (not OSI) and would ship only with a
-        loud license note and the clean alternative called out. A <span class="text-red-300">blocked</span> tag means
-        the app was built and tested but can't reach 0 fixable CVEs yet (see the note below). Each card also shows how it will
+        loud license note and the clean alternative called out. (Apps that build but can't hit 0 fixable CVEs yet are
+        in <span class="text-red-300">Held</span>, above.) Each card also shows how it will
         ship: <span class="text-paper">image + chart</span> for a deployable service, or
         <span class="text-paper">image only</span> for a base/CLI/sidecar utility (like busybox).
       </p>
@@ -129,12 +230,13 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
       <div class="space-y-10">
         {
           grouped.map((g) => (
-            <div>
-              <div class="mb-3 flex items-center gap-3">
+            <details open class="group/cat">
+              <summary class="mb-3 flex cursor-pointer list-none items-center gap-3 [&::-webkit-details-marker]:hidden">
                 <h3 class="text-sm font-semibold text-paper">{g.cat}</h3>
                 <span class="h-px flex-1 bg-line/60"></span>
                 <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
-              </div>
+                <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+              </summary>
               <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {g.items.map((r) => (
                   <li class="flex h-full flex-col gap-3 rounded-xl border border-line/70 bg-graphite/50 p-5">
@@ -190,11 +292,11 @@ const exploringCount = roadmap.filter((r) => r.priority === 'exploring').length;
                   </li>
                 ))}
               </ul>
-            </div>
+            </details>
           ))
         }
       </div>
-    </section>
+    </details>
 
     {
       blockedCount > 0 && (

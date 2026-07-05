@@ -1936,5 +1936,310 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Jenkins JNLP inbound build agent. Image only, no chart. Build held: jenkins-docker-agent carries a CRITICAL jetty CVE (fix 2.560-r0 not yet in Wolfi)."
+  },
+  {
+    "name": "OpenSearch",
+    "category": "Search",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Search and analytics suite with a Kibana-style dashboards UI.",
+    "blocked": true,
+    "blockedReason": "OpenSearch 3.7.0 (newest) shades jackson-databind 2.21.3 inside the security plugin's `opensaml-3.7.0.0-all.jar` uber-jar — CVE-2026-54512..54518. Fixed jackson can't be swapped into a shaded jar; no released OpenSearch bundles it yet."
+  },
+  {
+    "name": "Elasticsearch",
+    "category": "Search",
+    "license": "SSPL-1.0",
+    "licenseClean": "caution",
+    "priority": "planned",
+    "note": "Distributed search and analytics engine.",
+    "blocked": true,
+    "blockedReason": "Elasticsearch 9.4.3 (newest) shades jackson inside its own `elasticsearch-x-content` core jar and `parquet-hadoop-bundle` (CVE-2026-54512..515) — 48 fixable jar CVEs, none swappable without an upstream jar rebuild."
+  },
+  {
+    "name": "Apache Solr",
+    "category": "Search",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Enterprise search platform built on Apache Lucene, offering full-text search, faceting, and indexing over large document collections.",
+    "blocked": true,
+    "blockedReason": "Solr 10.0.0 pins standalone jackson-databind 2.20.0 whose fix is only 2.21.4 (minor) / 3.x (major) — no same-major patch exists — plus CVE-2025-55163 shaded in `grpc-netty-shaded`."
+  },
+  {
+    "name": "Neo4j",
+    "category": "Graph",
+    "license": "GPL-3.0-only",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Graph database for highly connected data, queried with Cypher for traversals and relationship-heavy workloads.",
+    "blocked": true,
+    "blockedReason": "Neo4j 2026.05.0 (newest) shades jackson 2.21.3 inside `parquet-jackson-1.17.1.jar` (CVE-2026-54512..518); the shaded copy can't be swapped and no fixed release exists."
+  },
+  {
+    "name": "Keycloak",
+    "category": "Identity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Open-source identity and access management server providing SSO, user federation, and OAuth2/OIDC and SAML for apps and APIs.",
+    "blocked": true,
+    "blockedReason": "Keycloak 26.6.4 pins opentelemetry-api 1.57.0 via `quarkus-opentelemetry` (CVE-2026-45292). OTel's versioning contract forbids bumping the api jar alone, and moving the whole OTel stack breaks the Quarkus platform."
+  },
+  {
+    "name": "Graylog",
+    "category": "Observability",
+    "license": "SSPL-1.0",
+    "licenseClean": "caution",
+    "priority": "planned",
+    "note": "Graylog, the log-management and analysis server (search, dashboards, alerting, GELF/Beats inputs).",
+    "blocked": true,
+    "blockedReason": "Graylog 7.1.4 (newest) shades jackson 2.21.2 inside its 299MB `graylog.jar` uber-jar and the opensearch storage plugin (CVE-2026-54512..518) — no standalone jar to swap."
+  },
+  {
+    "name": "Apache Pulsar",
+    "category": "Messaging",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Cloud-native distributed messaging and streaming platform with multi-tenancy, geo-replication, and tiered storage that separates compute from storage.",
+    "blocked": true,
+    "blockedReason": "Pulsar 4.2.2 shades jackson 2.18.6 inside `java-instance.jar` (CVE-2026-54512..515) and bundles jline 3.21 which needs a JLine 4 major bump."
+  },
+  {
+    "name": "Authelia",
+    "category": "Identity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Open-source authentication and authorization server providing single sign-on and two-factor authentication via a web portal, designed as a companion for reverse proxies.",
+    "blocked": true,
+    "blockedReason": "Ships upstream's prebuilt Go binary with stale baked-in Go stdlib/deps; there is no from-source build to bump them. Unblocks when upstream ships a release rebuilt on patched toolchain/deps."
+  },
+  {
+    "name": "Apache Cassandra",
+    "category": "Wide-column",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Distributed wide-column NoSQL store built for linear horizontal scale and high availability with no single point of failure, tuned for heavy writes.",
+    "blocked": true,
+    "blockedReason": "Cassandra 5.0.8 (newest) ships standalone jackson-databind 2.19.2 (CVE-2026-54515). The same-major fixes (2.18.9 / 2.21.5 / 2.22.1) are not yet published to Maven Central — only jackson 3.x (a major bump) exists."
+  },
+  {
+    "name": "CockroachDB",
+    "category": "Relational",
+    "license": "BUSL-1.1",
+    "licenseClean": "caution",
+    "priority": "planned",
+    "note": "Distributed SQL database with PostgreSQL wire compatibility and automatic horizontal scaling and survivability.",
+    "blocked": true,
+    "blockedReason": "Prebuilt binary baked on Go stdlib 1.25.5 (24 CVEs incl. CVE-2025-68121). A go-1.25.11 rebuild would clear all of them, but CockroachDB 26.x is a Bazel-only build (custom fork + C submodules + a Node UI) that can't run in the build sandbox."
+  },
+  {
+    "name": "Coolify Helper",
+    "category": "PaaS",
+    "license": "Apache-2.0 AND AGPL-3.0-or-later",
+    "licenseClean": "agpl",
+    "priority": "next",
+    "note": "Coolify helper image carrying the build and deploy toolchain (buildpacks, git, ssh) that runs on target hosts to execute deployments.",
+    "blocked": true,
+    "blockedReason": "Bundled Wolfi apks `docker-compose`/`docker-cli-buildx` carry CVE-2026-34040, whose fix is the `github.com/docker/docker` v28 -> `moby/moby` v29 module rename (not yet in Wolfi), plus `mc`'s x/net. Clears when Wolfi publishes the moby-v29 apks."
+  },
+  {
+    "name": "Coolify Realtime",
+    "category": "PaaS",
+    "license": "AGPL-3.0-or-later",
+    "licenseClean": "agpl",
+    "priority": "next",
+    "note": "Realtime server component of Coolify, providing the websocket connections and terminal/log gateway for the dashboard.",
+    "blocked": true,
+    "blockedReason": "All 117 bundled Node CVEs are already resolved; the only remaining finding is the Wolfi `cloudflared` apk (CVE-2026-41178 + go-chi CVE-2025-69725), fixed in cloudflared 2026.6.1-r2 which Wolfi has not published yet."
+  },
+  {
+    "name": "Deno",
+    "category": "Language runtime",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Hardened Deno runtime for JavaScript and TypeScript, secure by default with explicit permissions and built-in tooling.",
+    "blocked": true,
+    "blockedReason": "The Wolfi `deno` apk (2.8.2-r0, newest) bakes vulnerable rustls-webpki + CVE-2026-50185; the fix ships in deno 2.9.1-r1 which Wolfi has not published yet. Self-heals on the next Wolfi rebuild.",
+    "deliverable": "image"
+  },
+  {
+    "name": ".NET SDK",
+    "category": "Language runtime",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Hardened .NET SDK for building and running .NET apps.",
+    "blocked": true,
+    "blockedReason": "The Wolfi .NET SDK bundles a NuGet client stamped `7.0.3-rc.65534` (a build-metadata artifact that Trivy sorts below the 7.0.3 fix for GHSA-g4vj-cjjj-v7hg) plus a .NET 9 MSBuild CVE. Clears when Wolfi rebuilds the dotnet apk.",
+    "deliverable": "image"
+  },
+  {
+    "name": "FerretDB",
+    "category": "Document",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "MongoDB-compatible document database that translates the MongoDB wire protocol onto PostgreSQL via the DocumentDB extension.",
+    "blocked": true,
+    "blockedReason": "FerretDB 2.7.0 directly depends on `modelcontextprotocol/go-sdk` v0.2.0 (4 HIGH CVEs); the fix is only in v1.x (a major bump), and v1 removes the API types FerretDB's own source imports — needs an upstream migration."
+  },
+  {
+    "name": "Floci",
+    "category": "Apps & productivity",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Local AWS cloud emulator and LocalStack Community successor, built from source into a Quarkus fast-jar on a hardened Wolfi JRE.",
+    "blocked": true,
+    "blockedReason": "The Quarkus fast-jar bundles `com.squareup.wire:wire-runtime` 4.9.11 (CVE-2026-45799, HIGH), fixed only in Wire 6.x — a major bump of a transitive runtime dependency."
+  },
+  {
+    "name": "Floci (full)",
+    "category": "Apps & productivity",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Opt-in, NON-hardened companion to the floci image: it runs as root and expects the host Docker socket mounted, which lets it emulate all 65 of Floci's AWS services including the 10 Docker-backed ones (Lambda, RDS, ElastiCache, MSK, ECS, EKS, OpenSearch, ECR, DocumentDB, Neptune).",
+    "blocked": true,
+    "blockedReason": "Same blocker as floci: bundled `wire-runtime` 4.9.11 (CVE-2026-45799, HIGH) is fixed only in Wire 6.x (a major bump)."
+  },
+  {
+    "name": "Ghost",
+    "category": "Apps & productivity",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Open-source Node.js publishing platform for blogs, newsletters, and membership sites.",
+    "blocked": true,
+    "blockedReason": "Ghost 6.51.0 (newest) pins production npm deps below their CVE fixes that require MAJOR bumps (jsonwebtoken 8->9, nodemailer 8->9, `babel-traverse` package rename, knex->2, validator->13); patching them would break Ghost's own declared constraints."
+  },
+  {
+    "name": "Gradle",
+    "category": "Build tool",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "JDK base image with Gradle, used as the build stage for Gradle projects; run the resulting jar on jre.",
+    "blocked": true,
+    "blockedReason": "The Wolfi `gradle-9` apk (9.6.1-r1) bundles jackson-databind 2.18.8 (CVE-2026-54515, fix 2.18.9). Wolfi has not published a fixed `-r2` yet; self-heals on the next Wolfi rebuild.",
+    "deliverable": "image"
+  },
+  {
+    "name": "Grafana",
+    "category": "Observability",
+    "license": "AGPL-3.0-only",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Dashboards and visualization for metrics, logs, and traces across many data sources.",
+    "blocked": true,
+    "blockedReason": "Ships upstream's prebuilt OSS binary (the frontend build is infeasible on a hosted runner), which bakes openfga 1.14.2 and a grafana/tempo module with fixable CVEs; 13.1.0 (newest) still carries them and there is no from-source path to bump them."
+  },
+  {
+    "name": "Grype",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Anchore's vulnerability scanner for container images and filesystems, driven by the same SBOM engine as Syft.",
+    "blocked": true,
+    "blockedReason": "grype 0.115.0 directly depends on `github.com/docker/docker` v28.5.2 (CVE-2026-34040); the fix requires migrating to the renamed `moby/moby` v29 (`/v2`) import path in grype's own source.",
+    "deliverable": "image"
+  },
+  {
+    "name": "Jenkins",
+    "category": "CI/CD & registry",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "The leading open-source automation server for building, testing, and deploying software, with thousands of plugins.",
+    "blocked": true,
+    "blockedReason": "Jenkins LTS 2.555.3 (newest LTS) core carries CVE-2026-53441 (HIGH); the fix (2.568) ships only on the weekly channel, and `jenkins-core` is the coupled core of the war, not an independently swappable jar."
+  },
+  {
+    "name": "Apache JMeter",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Apache JMeter load-testing and performance-measurement tool, the official binary distribution running on a hardened Wolfi JRE.",
+    "blocked": true,
+    "blockedReason": "JMeter 5.6.3 (newest) shades netty inside `neo4j-java-driver` and needs Apache Tika 1->2/3 (CVE-2025-66516 CRITICAL) and dnsjava 2->3 — both major bumps."
+  },
+  {
+    "name": "Apache Kafka",
+    "category": "Messaging",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Distributed event-streaming platform for high-throughput, durable, replayable publish-subscribe pipelines and stream processing.",
+    "blocked": true,
+    "blockedReason": "Apache Kafka bundles JLine 3.x; the CVE fix requires a JLine 3->4 major jar bump the release does not adopt."
+  },
+  {
+    "name": "Mattermost",
+    "category": "Messaging",
+    "license": "AGPL-3.0-only",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Open-source, self-hosted team messaging and collaboration platform (a Slack alternative) with channels, direct messages, file sharing, and integrations.",
+    "blocked": true,
+    "blockedReason": "Ships upstream's prebuilt Go binary (the webapp build is infeasible on a hosted runner) with stale baked-in Go stdlib/deps (x/net, x/crypto, x/image); no from-source path to bump them."
+  },
+  {
+    "name": "Nextcloud",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0-only",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Nextcloud, the self-hosted file-sync and content-collaboration platform.",
+    "blocked": true,
+    "blockedReason": "Nextcloud 34.0.1 (newest) ships guzzle/psr7/phpseclib/symfony/web-token inside its code-integrity-signed `3rdparty/` tree; swapping them trips Nextcloud's signature check, and the newest release still pins the vulnerable versions."
+  },
+  {
+    "name": "Rust",
+    "category": "Language runtime",
+    "license": "MIT OR Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Hardened Rust toolchain (cargo plus rustc) for build stages; ship the compiled binary on the static base.",
+    "blocked": true,
+    "blockedReason": "The Wolfi `rust-1.96` apk bakes the `rand` dev-dependency in the standard-library SOURCE lockfiles (GHSA-cq8v-f236-94qc, LOW). It clears only when Wolfi rebuilds rust with refreshed stdlib dev-deps (or ships rust-1.97).",
+    "deliverable": "image"
+  },
+  {
+    "name": "Thanos",
+    "category": "Observability",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Highly-available Prometheus setup with unlimited metric retention via object storage, adding a global query view, downsampling, and compaction across Prometheus servers.",
+    "blocked": true,
+    "blockedReason": "Thanos 0.41.0 (newest) vendors prometheus 0.308 (CVE-2026-42151 cluster, HIGH); the fix needs prometheus 0.311.3, which forces k8s apimachinery v0.35 and a breaking `textparse` API change."
+  },
+  {
+    "name": "ZITADEL",
+    "category": "Identity",
+    "license": "AGPL-3.0-only",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Cloud-native identity and access management (IAM) with OIDC/OAuth2/SAML, multi-tenancy, and a built-in admin console.",
+    "blocked": true,
+    "blockedReason": "Ships upstream's prebuilt Go binary (the Angular console build is infeasible on a hosted runner) baking gorilla/csrf, x/crypto, x/net and Go stdlib 1.25.8 — 37 CVEs; 4.15.3 (newest) still carries them."
+  },
+  {
+    "name": "Apache ZooKeeper",
+    "category": "Coordination",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Centralized coordination service for distributed systems, providing configuration, naming, leader election, and synchronization primitives.",
+    "blocked": true,
+    "blockedReason": "ZooKeeper 3.9.5 (newest 3.9 line) pins jetty-http 9.4 (needs a Jetty 12 major bump) and jline 3.25 (needs a JLine 4 major bump)."
   }
 ]
