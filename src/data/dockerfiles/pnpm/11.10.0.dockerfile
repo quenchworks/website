@@ -1,5 +1,5 @@
 # Build stage: pnpm resolves, locks, and builds (dev deps included here).
-FROM ghcr.io/quenchworks/images/pnpm:11.9.0 AS build
+FROM ghcr.io/quenchworks/images/pnpm:11.10.0 AS build
 USER root
 WORKDIR /app
 ENV PNPM_HOME=/tmp/pnpm
