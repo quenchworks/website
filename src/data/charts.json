@@ -958,6 +958,30 @@
     ]
   },
   {
+    "slug": "httpd",
+    "name": "httpd",
+    "category": "Gateway",
+    "summary": "Apache HTTP Server, the long-standing open-source web server and reverse proxy for serving static content and fronting application backends (mod_proxy).",
+    "tier": "critical",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.4.68",
+    "description": "Apache HTTP Server for serving static content and fronting application backends as a reverse proxy. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image built from source, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/httpd",
+    "imageDigest": "sha256:362a9941a1dc27ac2e4d48c882bb5bac149b99e85c2b5b7e950aceb4f452ba3a",
+    "repositoryID": "e585d62d-d42a-4ad8-af1c-c8680cc45ee2",
+    "port": 8080,
+    "upstream": "https://github.com/apache/httpd",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/httpd",
+    "images": [
+      {
+        "name": "httpd",
+        "image": "ghcr.io/quenchworks/images/httpd@sha256:362a9941a1dc27ac2e4d48c882bb5bac149b99e85c2b5b7e950aceb4f452ba3a"
+      }
+    ]
+  },
+  {
     "slug": "identity-stack",
     "name": "identity-stack",
     "category": "Stacks",
@@ -2163,6 +2187,30 @@
       {
         "name": "timescaledb",
         "image": "ghcr.io/quenchworks/images/timescaledb@sha256:54bf16887ca4306cbdd76ca580199249f20c48a5e8acb1a95d0056a43a55e7bc"
+      }
+    ]
+  },
+  {
+    "slug": "tomcat",
+    "name": "tomcat",
+    "category": "Gateway",
+    "summary": "Apache Tomcat, the widely used open-source Java servlet container and web/application server for running Jakarta Servlet, JSP, and WebSocket web applications.",
+    "tier": "critical",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "11.0.23",
+    "description": "Apache Tomcat servlet container and Jakarta EE web server for running Java web applications and WARs. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image built from source on Wolfi (openjdk-21-jre), cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/tomcat",
+    "imageDigest": "sha256:d12ab5de3901691d8f9bca0d5b23fc455f45fb6bf5fe95500dc2273b5671c2ec",
+    "repositoryID": "825f85ca-0b6c-46c0-b7fb-f9d75e9272ac",
+    "port": 8080,
+    "upstream": "https://github.com/apache/tomcat",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/tomcat",
+    "images": [
+      {
+        "name": "tomcat",
+        "image": "ghcr.io/quenchworks/images/tomcat@sha256:d12ab5de3901691d8f9bca0d5b23fc455f45fb6bf5fe95500dc2273b5671c2ec"
       }
     ]
   },
