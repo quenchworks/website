@@ -659,6 +659,30 @@
     ]
   },
   {
+    "slug": "filebrowser",
+    "name": "filebrowser",
+    "category": "Apps & productivity",
+    "summary": "Web-based file manager with a built-in UI, users, and share links. From source (Vite UI embedded in a static Go binary) on a hardened nonroot Wolfi base; data and served roots are volumes.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.63.17",
+    "description": "Self-hosted web file manager (Go + embedded web UI). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/filebrowser",
+    "imageDigest": "sha256:cea3a11410ba307b8ef123ba80dacb7f5e0615653fe0e8391eac2d53222496a3",
+    "repositoryID": "e1537f00-10e7-462d-b5c8-542792ca9b78",
+    "port": 80,
+    "upstream": "https://filebrowser.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/filebrowser",
+    "images": [
+      {
+        "name": "filebrowser",
+        "image": "ghcr.io/quenchworks/images/filebrowser@sha256:cea3a11410ba307b8ef123ba80dacb7f5e0615653fe0e8391eac2d53222496a3"
+      }
+    ]
+  },
+  {
     "slug": "floci",
     "name": "floci",
     "category": "Datastore",
@@ -786,6 +810,30 @@
       {
         "name": "postgresql",
         "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      }
+    ]
+  },
+  {
+    "slug": "gotify",
+    "name": "gotify",
+    "category": "Messaging",
+    "summary": "Self-hosted server for sending and receiving real-time push messages over WebSocket, with a web UI and app tokens. From source (UI embedded, CGO+static-musl SQLite) on a hardened nonroot Wolfi base; data on a writable volume.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.9.1",
+    "description": "Self-hosted push-notification server (Go + embedded web UI). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/gotify",
+    "imageDigest": "sha256:ecd4ddb3317f43de1b6ac6b2d71b8924a0e5305c7f7bce76eb0c3a371ae16f0e",
+    "repositoryID": "b4e0d38e-b686-45f6-bf7c-1d81ed56cd84",
+    "port": 80,
+    "upstream": "https://gotify.net",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/gotify",
+    "images": [
+      {
+        "name": "gotify",
+        "image": "ghcr.io/quenchworks/images/gotify@sha256:ecd4ddb3317f43de1b6ac6b2d71b8924a0e5305c7f7bce76eb0c3a371ae16f0e"
       }
     ]
   },
@@ -1502,6 +1550,30 @@
     ]
   },
   {
+    "slug": "navidrome",
+    "name": "navidrome",
+    "category": "Media & streaming",
+    "summary": "Self-hosted music server and streamer compatible with the Subsonic/OpenSubsonic API, with a modern web UI. From source (React UI embedded, CGO+static-musl SQLite) on a hardened nonroot Wolfi base; music and data on writable volumes.",
+    "tier": "standard",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.62.0",
+    "description": "Self-hosted music server and streamer (Go, Subsonic/OpenSubsonic API + web UI). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/navidrome",
+    "imageDigest": "sha256:e9d92dc3bbbee2eb9855e8d53e40ace711a456286f20589e93068347f5e5643c",
+    "repositoryID": "dc8f79af-e18a-46e1-ae2b-073366674dda",
+    "port": 80,
+    "upstream": "https://www.navidrome.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/navidrome",
+    "images": [
+      {
+        "name": "navidrome",
+        "image": "ghcr.io/quenchworks/images/navidrome@sha256:e9d92dc3bbbee2eb9855e8d53e40ace711a456286f20589e93068347f5e5643c"
+      }
+    ]
+  },
+  {
     "slug": "neo4j",
     "name": "Neo4j",
     "category": "Datastore",
@@ -1573,6 +1645,30 @@
       {
         "name": "nginx",
         "image": "ghcr.io/quenchworks/images/nginx@sha256:d469478d8a59d908965b81bc91e6fe8821573db90058555f826b6c66b13f68fa"
+      }
+    ]
+  },
+  {
+    "slug": "ntfy",
+    "name": "ntfy",
+    "category": "Messaging",
+    "summary": "Simple HTTP-based pub-sub notification service for sending push notifications to phones and desktops from any script. From source with the web UI embedded (no Node at runtime) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.25.0",
+    "description": "ntfy, the simple pub/sub HTTP notification server for sending push notifications to your phone or desktop from any script. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/ntfy",
+    "imageDigest": "sha256:7259d0fa4a5c4974fedf7bdde3439f2fa93d5436a172a5acf054d86ff2307ae3",
+    "repositoryID": "2a61f84a-eeb6-41a9-8b34-d730105b7701",
+    "port": 8080,
+    "upstream": "https://ntfy.sh",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ntfy",
+    "images": [
+      {
+        "name": "ntfy",
+        "image": "ghcr.io/quenchworks/images/ntfy@sha256:7259d0fa4a5c4974fedf7bdde3439f2fa93d5436a172a5acf054d86ff2307ae3"
       }
     ]
   },
@@ -1773,6 +1869,30 @@
     ]
   },
   {
+    "slug": "perses",
+    "name": "perses",
+    "category": "Observability",
+    "summary": "CNCF dashboards and observability visualization tool with an embedded React UI and 24 default panel/datasource plugins. From source (Node UI build embedded in a static Go binary) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.53.1",
+    "description": "Perses, the CNCF open dashboard and observability visualization tool. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/perses",
+    "imageDigest": "sha256:50b4d02afd3d2048747ace15e2d6225f8c2c2c64b5ebd9bbc0f9d52d945e9436",
+    "repositoryID": "7a12501c-9e30-4882-aad7-fba587e08572",
+    "port": 8080,
+    "upstream": "https://perses.dev",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/perses",
+    "images": [
+      {
+        "name": "perses",
+        "image": "ghcr.io/quenchworks/images/perses@sha256:50b4d02afd3d2048747ace15e2d6225f8c2c2c64b5ebd9bbc0f9d52d945e9436"
+      }
+    ]
+  },
+  {
     "slug": "pgbouncer",
     "name": "pgbouncer",
     "category": "Relational",
@@ -1793,6 +1913,30 @@
       {
         "name": "pgbouncer",
         "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:a34244ca0957a98b1bb6596d4839e371af12abeaf3850da12f87cfbee83414ad"
+      }
+    ]
+  },
+  {
+    "slug": "pocketbase",
+    "name": "pocketbase",
+    "category": "Apps & productivity",
+    "summary": "Open-source backend in a single file with an embedded SQLite database, auth, file storage, realtime subscriptions, and an admin dashboard over a REST API. Pure-Go static binary (UI embedded) on a hardened nonroot Wolfi base; state on a writable volume.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.39.5",
+    "description": "Open-source backend in one Go binary (SQLite DB + auth + file storage + admin UI + realtime REST API). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/pocketbase",
+    "imageDigest": "sha256:4723b19f374064edcafd4e69a0028467dc62b17761960bcfae47cc1f80df5fba",
+    "repositoryID": "c5f062bc-0349-4ca6-94ec-d9d5bfbccb78",
+    "port": 80,
+    "upstream": "https://pocketbase.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/pocketbase",
+    "images": [
+      {
+        "name": "pocketbase",
+        "image": "ghcr.io/quenchworks/images/pocketbase@sha256:4723b19f374064edcafd4e69a0028467dc62b17761960bcfae47cc1f80df5fba"
       }
     ]
   },
