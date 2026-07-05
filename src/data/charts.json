@@ -86,10 +86,10 @@
   {
     "slug": "authelia",
     "name": "authelia",
-    "category": "Identity",
-    "summary": "Open-source authentication and authorization server providing single sign-on and two-factor authentication via a web portal, designed as a companion for reverse proxies. Packaged from Authelia's official prebuilt binary; needs a config plus a SQLite or PostgreSQL storage backend.",
+    "category": "Datastore",
+    "summary": "Hardened authelia image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "Apache-2.0",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.4",
     "appVersion": "4.39.20",
@@ -98,7 +98,7 @@
     "imageDigest": "sha256:9d8a4377b29c18986aa226de5e60370ea48463b253dfa0c1d1ae239d19860a9c",
     "repositoryID": "c3292f9d-22ca-45cd-aad9-b8b96894fa81",
     "port": 9091,
-    "upstream": "https://www.authelia.com",
+    "upstream": "https://github.com/quenchworks",
     "chartRef": "oci://ghcr.io/quenchworks/charts/authelia",
     "images": [
       {
@@ -182,10 +182,10 @@
   {
     "slug": "cassandra",
     "name": "Cassandra",
-    "category": "Wide-column",
-    "summary": "Distributed wide-column NoSQL store built for linear horizontal scale and high availability with no single point of failure, tuned for heavy writes.",
+    "category": "Datastore",
+    "summary": "Hardened cassandra image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "Apache-2.0",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.10",
     "appVersion": "5.0.8",
@@ -193,7 +193,7 @@
     "imageRepository": "ghcr.io/quenchworks/images/cassandra",
     "imageDigest": "sha256:bde2cd5b03e626d62207db8a513d0af7512d9a31b373d20c0b789c08e75a50df",
     "repositoryID": "a2c07ae3-ae2a-421e-9013-f3495d338e09",
-    "upstream": "https://github.com/apache/cassandra",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cassandra",
     "images": [
       {
@@ -262,27 +262,25 @@
   {
     "slug": "cockroachdb",
     "name": "CockroachDB",
-    "category": "Relational",
-    "summary": "Distributed SQL database with PostgreSQL wire compatibility and automatic horizontal scaling and survivability. BUSL is source-available, not OSI-approved; no clean in-catalog substitute yet, evaluate PostgreSQL for single-region SQL.",
-    "tier": "low",
-    "license": "BUSL-1.1",
-    "licenseClean": "caution",
+    "category": "Datastore",
+    "summary": "Hardened cockroachdb image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.6",
     "appVersion": "26.2.2",
     "description": "Distributed SQL database with PostgreSQL wire compatibility and automatic horizontal scaling and survivability. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cockroachdb",
     "imageDigest": "sha256:ae9726365f7684e710aefc8a214b641e5c788b79993a0b4b30777377b6e38cd2",
     "repositoryID": "5920d963-0c6f-4c4b-9ece-d3056bc50ef9",
-    "upstream": "https://github.com/cockroachdb/cockroach",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cockroachdb",
     "images": [
       {
         "name": "cockroachdb",
         "image": "ghcr.io/quenchworks/images/cockroachdb@sha256:ae9726365f7684e710aefc8a214b641e5c788b79993a0b4b30777377b6e38cd2"
       }
-    ],
-    "caution": true,
-    "cleanAlternative": "No in-catalog clean substitute yet — evaluate PostgreSQL for single-region SQL."
+    ]
   },
   {
     "slug": "coolify",
@@ -498,27 +496,25 @@
   {
     "slug": "elasticsearch",
     "name": "Elasticsearch",
-    "category": "Search",
-    "summary": "Distributed search and analytics engine. Shipped under SSPL/Elastic License, which are not OSI-approved; OpenSearch (Apache-2.0) is the open drop-in fork.",
-    "tier": "low",
-    "license": "SSPL-1.0",
-    "licenseClean": "caution",
+    "category": "Datastore",
+    "summary": "Hardened elasticsearch image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.8",
     "appVersion": "9.4.3",
     "description": "Distributed search and analytics engine. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/elasticsearch",
     "imageDigest": "sha256:40ecec5042a504fa8d7cffcb968630620e5b9a83275cc0b28c55dc2061d649f1",
     "repositoryID": "5510adc6-3400-48ab-b57c-807b6b0b815c",
-    "upstream": "https://github.com/elastic/elasticsearch",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/elasticsearch",
     "images": [
       {
         "name": "elasticsearch",
         "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:40ecec5042a504fa8d7cffcb968630620e5b9a83275cc0b28c55dc2061d649f1"
       }
-    ],
-    "caution": true,
-    "cleanAlternative": "OpenSearch (Apache-2.0) — the open drop-in fork of Elasticsearch."
+    ]
   },
   {
     "slug": "emqx",
@@ -641,10 +637,10 @@
   {
     "slug": "ferretdb",
     "name": "FerretDB",
-    "category": "Document",
-    "summary": "MongoDB-compatible document database that translates the MongoDB wire protocol onto PostgreSQL via the DocumentDB extension. The clean-license substitute for MongoDB.",
+    "category": "Datastore",
+    "summary": "Hardened ferretdb image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "Apache-2.0",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.7",
     "appVersion": "2.7.0",
@@ -653,7 +649,7 @@
     "imageDigest": "sha256:9aee41e900c918471a7cc2305c70c9b44391473bdf658092bf6d27bbebddf609",
     "repositoryID": "f98e193b-63b5-44ff-a253-0be60665dfdd",
     "port": 27017,
-    "upstream": "https://github.com/FerretDB/FerretDB",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ferretdb",
     "images": [
       {
@@ -665,10 +661,10 @@
   {
     "slug": "floci",
     "name": "floci",
-    "category": "Apps & productivity",
-    "summary": "Local AWS cloud emulator and LocalStack Community successor, built from source into a Quarkus fast-jar on a hardened Wolfi JRE. The hardened image runs all 55 of Floci's in-process AWS services nonroot with no Docker socket, covering S3, DynamoDB, SQS, SNS, SES, IAM, STS, KMS, Secrets Manager, API Gateway, Cognito, Kinesis, CloudFormation, Step Functions, EventBridge, CloudWatch, Route53, and more. The 10 Docker-backed services (Lambda, RDS, ElastiCache, MSK, ECS, EKS, OpenSearch, ECR, DocumentDB, Neptune) need the host Docker socket plus root and are out of scope for this image.",
+    "category": "Datastore",
+    "summary": "Hardened floci image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "MIT",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.2.1",
     "appVersion": "1.5.29",
@@ -677,7 +673,7 @@
     "imageDigest": "sha256:ea56e8403342af51972527b6962b9186032d609ce8a006d26b14f4a5057922f3",
     "repositoryID": "3abdd874-e669-4028-8d15-dc03ef8ff2e7",
     "port": 4566,
-    "upstream": "https://floci.io",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/floci",
     "images": [
       {
@@ -740,10 +736,10 @@
   {
     "slug": "ghost",
     "name": "ghost",
-    "category": "Apps & productivity",
-    "summary": "Open-source Node.js publishing platform for blogs, newsletters, and membership sites. Packaged from Ghost's official npm distribution on a hardened Wolfi Node 22; configured entirely via environment and backed by an external MySQL/MariaDB with a content PVC for themes, images, and data.",
+    "category": "Datastore",
+    "summary": "Hardened ghost image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "MIT",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.3",
     "appVersion": "6.49.0",
@@ -752,7 +748,7 @@
     "imageDigest": "sha256:d6b815df0eee8368937db38f5a17e203e2589f4be5e52a6876266a2b9959b20b",
     "repositoryID": "5f3aa248-601d-446c-9838-0dd270fd9b4e",
     "port": 2368,
-    "upstream": "https://ghost.org",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ghost",
     "images": [
       {
@@ -796,11 +792,11 @@
   {
     "slug": "grafana",
     "name": "Grafana",
-    "category": "Observability",
-    "summary": "Dashboards and visualization for metrics, logs, and traces across many data sources. OSS edition, licensed AGPL.",
+    "category": "Datastore",
+    "summary": "Hardened grafana image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "AGPL-3.0",
-    "licenseClean": "agpl",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.9",
     "appVersion": "13.1.0",
     "description": "Dashboards and visualization for metrics, logs, and traces across many data sources. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
@@ -808,7 +804,7 @@
     "imageDigest": "sha256:ae5dfc810d218c92a6e3e5ae2401317c86ab76206e5f53c3388c74ef7961f995",
     "repositoryID": "cb635e07-c5aa-4bb7-b199-892dabe82aca",
     "port": 3000,
-    "upstream": "https://github.com/grafana/grafana",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/grafana",
     "images": [
       {
@@ -820,11 +816,11 @@
   {
     "slug": "graylog",
     "name": "graylog",
-    "category": "Observability",
-    "summary": "Graylog, the log-management and analysis server (search, dashboards, alerting, GELF/Beats inputs). Built clean-room on a hardened Wolfi JRE (nonroot, read-only rootfs); the chart provides MongoDB (metadata) and OpenSearch (log storage) backends. Graylog Server is SSPL-1.0 (source-available, not OSI-approved).",
+    "category": "Datastore",
+    "summary": "Hardened graylog image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "SSPL-1.0",
-    "licenseClean": "caution",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.1",
     "appVersion": "7.1.4",
     "description": "Hardened Graylog log management server on a 0-CVE nonroot image, with bundled MongoDB (config/metadata) and OpenSearch (log storage) backends. NOTE the SSPL-1.0 license (source-available, not OSI-approved).",
@@ -832,7 +828,7 @@
     "imageDigest": "sha256:f536a26aa7cc348700e1d0fd7b86cd959aab2ca22801e29f5e439bb52e88f6cd",
     "repositoryID": "85097b02-99d9-46a5-bc88-e9b36f3e4f89",
     "port": 9000,
-    "upstream": "https://www.graylog.org",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/graylog",
     "images": [
       {
@@ -847,8 +843,7 @@
         "name": "opensearch",
         "image": "ghcr.io/quenchworks/images/opensearch@sha256:35048e73302f817d1bed340a317b41ec8a7d709a3cd55c75b90d8a61faf75d3b"
       }
-    ],
-    "caution": true
+    ]
   },
   {
     "slug": "haproxy",
@@ -1051,10 +1046,10 @@
   {
     "slug": "jenkins",
     "name": "jenkins",
-    "category": "CI/CD & registry",
-    "summary": "The leading open-source automation server for building, testing, and deploying software, with thousands of plugins. Ships the architecture-independent jenkins.war LTS line on a hardened Wolfi JRE.",
+    "category": "Datastore",
+    "summary": "Hardened jenkins image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "MIT",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.4",
     "appVersion": "2.555.3",
@@ -1062,7 +1057,7 @@
     "imageRepository": "ghcr.io/quenchworks/images/jenkins",
     "imageDigest": "sha256:3154dfb8263f5df2e3e1eabe4ec4fb67d2ad8b39bde34fb8b79ebd5ec7027fc4",
     "repositoryID": "c0cb7878-34a9-4d7f-9740-f5f1e208aa0a",
-    "upstream": "https://www.jenkins.io",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/jenkins",
     "images": [
       {
@@ -1074,10 +1069,10 @@
   {
     "slug": "kafka",
     "name": "Kafka",
-    "category": "Messaging",
-    "summary": "Distributed event-streaming platform for high-throughput, durable, replayable publish-subscribe pipelines and stream processing.",
-    "tier": "critical",
-    "license": "Apache-2.0",
+    "category": "Datastore",
+    "summary": "Hardened kafka image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.8",
     "appVersion": "4.3.1",
@@ -1086,7 +1081,7 @@
     "imageDigest": "sha256:6b9166c97d6184ab35fc82760ff38401483ab66b397378acdeeb03747aca95c6",
     "repositoryID": "b21be4d8-c990-4c5c-bab3-1a45e95740e0",
     "port": 9092,
-    "upstream": "https://github.com/apache/kafka",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/kafka",
     "images": [
       {
@@ -1098,10 +1093,10 @@
   {
     "slug": "keycloak",
     "name": "Keycloak",
-    "category": "Identity",
-    "summary": "Open-source identity and access management server providing SSO, user federation, and OAuth2/OIDC and SAML for apps and APIs.",
+    "category": "Datastore",
+    "summary": "Hardened keycloak image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "Apache-2.0",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.9",
     "appVersion": "26.6.4",
@@ -1110,7 +1105,7 @@
     "imageDigest": "sha256:2c33374f5bd1ac44a52016ee8af0d4f3a0a7ed181bddbb7a4224b58c176af5c5",
     "repositoryID": "adb521a3-9e2e-43f7-b6d7-c4bd417df884",
     "port": 8080,
-    "upstream": "https://github.com/keycloak/keycloak",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/keycloak",
     "images": [
       {
@@ -1285,11 +1280,11 @@
   {
     "slug": "mattermost",
     "name": "mattermost",
-    "category": "Messaging",
-    "summary": "Open-source, self-hosted team messaging and collaboration platform (a Slack alternative) with channels, direct messages, file sharing, and integrations. Packaged from Mattermost's official Team Edition server release; requires an external PostgreSQL.",
+    "category": "Datastore",
+    "summary": "Hardened mattermost image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "AGPL-3.0",
-    "licenseClean": "agpl",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.4",
     "appVersion": "11.8.2",
     "description": "Open-source, self-hosted team collaboration and messaging platform (Team Edition) — channels, direct messages, and file sharing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
@@ -1297,7 +1292,7 @@
     "imageDigest": "sha256:7469943b411e614ae0af90c305d5f629e89c773c97384fd45ddeb29342f7d18c",
     "repositoryID": "07d405ed-b843-469d-be0b-6a11a9ff963e",
     "port": 8065,
-    "upstream": "https://mattermost.com",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/mattermost",
     "images": [
       {
@@ -1485,18 +1480,18 @@
   {
     "slug": "neo4j",
     "name": "Neo4j",
-    "category": "Graph",
-    "summary": "Graph database for highly connected data, queried with Cypher for traversals and relationship-heavy workloads. Community edition is GPLv3.",
-    "tier": "low",
-    "license": "GPL-3.0",
-    "licenseClean": "agpl",
+    "category": "Datastore",
+    "summary": "Hardened neo4j image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.8",
     "appVersion": "2026.05.0",
     "description": "Graph database for highly connected data, queried with Cypher for traversals and relationship-heavy workloads. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/neo4j",
     "imageDigest": "sha256:86b72f7d4e0e0e69dd4fd83ee59250cc3b51d683c9ba4b9e146c847ab96d64bd",
     "repositoryID": "68ee4e50-989c-48b8-976d-1891cadafd8a",
-    "upstream": "https://github.com/neo4j/neo4j",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/neo4j",
     "images": [
       {
@@ -1508,11 +1503,11 @@
   {
     "slug": "nextcloud",
     "name": "nextcloud",
-    "category": "Apps & productivity",
-    "summary": "Nextcloud, the self-hosted file-sync and content-collaboration platform. Reconstructed clean-room on a hardened Wolfi php-8.4-fpm + nginx runtime (nonroot, read-only rootfs); the chart installs via occ and provides a MariaDB backend. Nextcloud is AGPL-3.0-only (strong copyleft).",
+    "category": "Datastore",
+    "summary": "Hardened nextcloud image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "AGPL-3.0",
-    "licenseClean": "agpl",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.1",
     "appVersion": "34.0.1",
     "description": "Hardened Nextcloud (self-hosted content collaboration / file-sync platform) on a 0-CVE nonroot php-fpm + nginx image, with a bundled MariaDB backend.",
@@ -1520,7 +1515,7 @@
     "imageDigest": "sha256:028029e55ea1673efb284223430fd87f76ca99f345bdae9a59fc24acd7e08c19",
     "repositoryID": "33b3c589-42d5-4619-9f11-be2aa944d2a0",
     "port": 8080,
-    "upstream": "https://nextcloud.com",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/nextcloud",
     "images": [
       {
@@ -1710,10 +1705,10 @@
   {
     "slug": "opensearch",
     "name": "OpenSearch",
-    "category": "Search",
-    "summary": "Search and analytics suite with a Kibana-style dashboards UI. The Apache-2.0 community fork of Elasticsearch and the recommended open alternative.",
+    "category": "Datastore",
+    "summary": "Hardened opensearch image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "Apache-2.0",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.8",
     "appVersion": "3.7.0",
@@ -1721,7 +1716,7 @@
     "imageRepository": "ghcr.io/quenchworks/images/opensearch",
     "imageDigest": "sha256:35048e73302f817d1bed340a317b41ec8a7d709a3cd55c75b90d8a61faf75d3b",
     "repositoryID": "19bdd691-33a2-4882-8662-4871a10038fe",
-    "upstream": "https://github.com/opensearch-project/OpenSearch",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/opensearch",
     "images": [
       {
@@ -1860,10 +1855,10 @@
   {
     "slug": "pulsar",
     "name": "Pulsar",
-    "category": "Messaging",
-    "summary": "Cloud-native distributed messaging and streaming platform with multi-tenancy, geo-replication, and tiered storage that separates compute from storage.",
-    "tier": "low",
-    "license": "Apache-2.0",
+    "category": "Datastore",
+    "summary": "Hardened pulsar image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.8",
     "appVersion": "4.2.2",
@@ -1871,7 +1866,7 @@
     "imageRepository": "ghcr.io/quenchworks/images/pulsar",
     "imageDigest": "sha256:d2088f309b49cb45c0fc05f2119884ea50fcc4ff58ce668bdc621ed470d2e8f9",
     "repositoryID": "6820f31e-b254-41f1-bced-a801f69cca0b",
-    "upstream": "https://github.com/apache/pulsar",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/pulsar",
     "images": [
       {
@@ -2053,10 +2048,10 @@
   {
     "slug": "solr",
     "name": "Solr",
-    "category": "Search",
-    "summary": "Enterprise search platform built on Apache Lucene, offering full-text search, faceting, and indexing over large document collections.",
-    "tier": "low",
-    "license": "Apache-2.0",
+    "category": "Datastore",
+    "summary": "Hardened solr image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.9",
     "appVersion": "10.0.0",
@@ -2064,7 +2059,7 @@
     "imageRepository": "ghcr.io/quenchworks/images/solr",
     "imageDigest": "sha256:5475d809449fa9c1f802ab679c69ed9c358bcc3ed1bf3dcf5d5f6a90c0c532c7",
     "repositoryID": "454a51ee-3e78-44ca-ba05-0ec7db85503e",
-    "upstream": "https://github.com/apache/solr",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/solr",
     "images": [
       {
@@ -2127,10 +2122,10 @@
   {
     "slug": "thanos",
     "name": "thanos",
-    "category": "Observability",
-    "summary": "Highly-available Prometheus setup with unlimited metric retention via object storage, adding a global query view, downsampling, and compaction across Prometheus servers. A CNCF project.",
+    "category": "Datastore",
+    "summary": "Hardened thanos image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "Apache-2.0",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.3",
     "appVersion": "0.41.0",
@@ -2138,7 +2133,7 @@
     "imageRepository": "ghcr.io/quenchworks/images/thanos",
     "imageDigest": "sha256:7cf417061ecb11d06f9dc43c4ca00e49dfcd207c7c412a09a0185ca19386ffa9",
     "repositoryID": "18b16ed4-ceb8-4911-8a79-6b2cbd555c8f",
-    "upstream": "https://github.com/thanos-io/thanos",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/thanos",
     "images": [
       {
@@ -2411,11 +2406,11 @@
   {
     "slug": "zitadel",
     "name": "zitadel",
-    "category": "Identity",
-    "summary": "Cloud-native identity and access management (IAM) with OIDC/OAuth2/SAML, multi-tenancy, and a built-in admin console. Packaged from ZITADEL's official prebuilt binary; event-sourced store on an external PostgreSQL.",
+    "category": "Datastore",
+    "summary": "Hardened zitadel image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "AGPL-3.0",
-    "licenseClean": "agpl",
+    "license": "Unknown",
+    "licenseClean": "clean",
     "chartVersion": "0.0.4",
     "appVersion": "4.15.3",
     "description": "Open-source identity infrastructure — a cloud-native OIDC/OAuth2/SAML identity and access management server with multi-tenancy, self-service, and a built-in management API/console. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
@@ -2423,7 +2418,7 @@
     "imageDigest": "sha256:5e1236f874ae7a2e212cfcbc38cff2390a764d11aef6c22f114e418777dd2343",
     "repositoryID": "6f205d15-ee9e-4ad0-b418-1ff79e383fa2",
     "port": 8080,
-    "upstream": "https://zitadel.com",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/zitadel",
     "images": [
       {
@@ -2439,10 +2434,10 @@
   {
     "slug": "zookeeper",
     "name": "ZooKeeper",
-    "category": "Coordination",
-    "summary": "Centralized coordination service for distributed systems, providing configuration, naming, leader election, and synchronization primitives.",
+    "category": "Datastore",
+    "summary": "Hardened zookeeper image, built from source on Wolfi.",
     "tier": "standard",
-    "license": "Apache-2.0",
+    "license": "Unknown",
     "licenseClean": "clean",
     "chartVersion": "0.0.8",
     "appVersion": "3.9.5",
@@ -2450,7 +2445,7 @@
     "imageRepository": "ghcr.io/quenchworks/images/zookeeper",
     "imageDigest": "sha256:825da42e3562cf565f2e70fb42b2852eab1fa2c8a9bb33a361e6610d252ca2c5",
     "repositoryID": "53f0539d-ef99-4dfb-9972-4efa995b0294",
-    "upstream": "https://github.com/apache/zookeeper",
+    "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/zookeeper",
     "images": [
       {
