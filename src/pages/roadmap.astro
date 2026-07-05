@@ -14,8 +14,12 @@ const available = [...shipped].sort((a, b) => a.name.localeCompare(b.name));
 // shows shipped and blocked as slices of the same total (blocked in red).
 const openItems = roadmap.filter((r) => !r.blocked);
 const openTotal = openItems.length;
+// The three states partition the total: shipped + on-roadmap + blocked = total.
+// Show all three as % so they visibly sum to 100 (roadmap takes the remainder so
+// rounding always lands on 100).
 const shippedPct = Math.round((shipped.length / total) * 100);
 const blockedPct = Math.round((blockedCount / total) * 100);
+const roadmapPct = 100 - shippedPct - blockedPct;
 
 const priorityLabel: Record<string, string> = { next: 'next', planned: 'planned', exploring: 'exploring' };
 // Priority is NOT security state, so it's distinguished within the monochrome ramp
@@ -30,7 +34,6 @@ const priorityBadge: Record<string, string> = {
 const grouped = roadmapCategories
   .map((cat) => ({ cat, items: openItems.filter((r) => r.category === cat).sort(byPriority) }))
   .filter((g) => g.items.length > 0);
-const nextCount = openItems.filter((r) => r.priority === 'next').length;
 
 // Available + Held are grouped by category too (each a nested collapsible), matching On-the-roadmap.
 const catsOf = <T extends { category: string }>(items: T[]) =>
@@ -60,35 +63,27 @@ const blockedGrouped = catsOf(blockedList);
         <div class="font-mono text-5xl font-bold tabular-nums leading-none tracking-tight">
           {shipped.length}<span class="text-ash">/{total}</span>
         </div>
-        <div class="flex items-end gap-5 font-mono tabular-nums">
-          <div class="text-right">
-            <div class="text-2xl font-bold">{shippedPct}%</div>
-            <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">shipped</div>
-          </div>
-          {blockedCount > 0 && (
-            <div class="text-right">
-              <div class="text-2xl font-bold text-red-300">{blockedPct}%</div>
-              <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">blocked</div>
-            </div>
-          )}
-        </div>
+        <div class="font-mono text-2xl font-bold tabular-nums">{shippedPct}%<span class="text-ash"> shipped</span></div>
       </div>
-      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% shipped, ${blockedPct}% held/blocked, of ${total} total`}>
+      {/* Three-segment meter: shipped + on-roadmap + blocked partition the total (=100%). */}
+      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% shipped, ${roadmapPct}% on the roadmap, ${blockedPct}% held/blocked — ${total} total`}>
         <div class="h-full bg-paper" style={`width:${shippedPct}%`}></div>
+        <div class="h-full bg-ash/40" style={`width:${roadmapPct}%`}></div>
         <div class="h-full bg-red-500/70" style={`width:${blockedPct}%`}></div>
       </div>
-      <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-line pt-5 text-center sm:grid-cols-4">
+      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center">
         {
           (
             [
-              ['Shipped', shipped.length],
-              ['On the roadmap', openTotal],
-              ['Up next', nextCount],
-              ['Blocked', blockedCount],
-            ] as [string, number][]
-          ).map(([label, n]) => (
+              ['Shipped', shipped.length, shippedPct, 'text-paper'],
+              ['On the roadmap', openTotal, roadmapPct, 'text-ash'],
+              ['Blocked', blockedCount, blockedPct, blockedCount > 0 ? 'text-red-300' : 'text-ash'],
+            ] as [string, number, number, string][]
+          ).map(([label, n, pct, tone]) => (
             <div>
-              <dd class:list={['font-mono text-2xl font-bold tabular-nums', label === 'Blocked' && n > 0 ? 'text-red-300' : '']}>{n}</dd>
+              <dd class="font-mono text-2xl font-bold tabular-nums">
+                {n}<span class:list={['ml-1 text-sm font-medium', tone]}>{pct}%</span>
+              </dd>
               <dt class="mt-1 font-mono text-[10px] uppercase tracking-widest text-ash">{label}</dt>
             </div>
           ))

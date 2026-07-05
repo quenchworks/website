@@ -16,6 +16,7 @@ const openItems = roadmap.filter((r) => !r.blocked);
 const openTotal = openItems.length;
 const shippedPct = Math.round((shipped.length / total) * 100);
 const blockedPct = Math.round((blockedCount / total) * 100);
+const roadmapPct = 100 - shippedPct - blockedPct;
 
 const priorityLabel: Record<string, string> = { next: 'التالي', planned: 'مُخطّط', exploring: 'قيد الاستكشاف' };
 const priorityBadge: Record<string, string> = {
@@ -26,7 +27,6 @@ const priorityBadge: Record<string, string> = {
 const grouped = roadmapCategories
   .map((cat) => ({ cat, items: openItems.filter((r) => r.category === cat).sort(byPriority) }))
   .filter((g) => g.items.length > 0);
-const nextCount = openItems.filter((r) => r.priority === 'next').length;
 
 const catsOf = <T extends { category: string }>(items: T[]) =>
   [...new Set(items.map((i) => i.category))]
@@ -55,35 +55,27 @@ const blockedGrouped = catsOf(blockedList);
         <div class="font-mono text-5xl font-bold tabular-nums leading-none tracking-tight">
           {shipped.length}<span class="text-ash">/{total}</span>
         </div>
-        <div class="flex items-end gap-5 font-mono tabular-nums">
-          <div class="text-right">
-            <div class="text-2xl font-bold">{shippedPct}%</div>
-            <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">مطروح</div>
-          </div>
-          {blockedCount > 0 && (
-            <div class="text-right">
-              <div class="text-2xl font-bold text-red-300">{blockedPct}%</div>
-              <div class="mt-0.5 text-[10px] uppercase tracking-widest text-ash">محجوبة</div>
-            </div>
-          )}
-        </div>
+        <div class="font-mono text-2xl font-bold tabular-nums">{shippedPct}%<span class="text-ash"> مطروح</span></div>
       </div>
-      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% مطروح، ${blockedPct}% محجوبة، من ${total} إجمالًا`}>
+      {/* شريط من ثلاثة أجزاء: مطروح + على خارطة الطريق + محجوبة = 100% من الإجمالي. */}
+      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% مطروح، ${roadmapPct}% على خارطة الطريق، ${blockedPct}% محجوبة — ${total} إجمالًا`}>
         <div class="h-full bg-paper" style={`width:${shippedPct}%`}></div>
+        <div class="h-full bg-ash/40" style={`width:${roadmapPct}%`}></div>
         <div class="h-full bg-red-500/70" style={`width:${blockedPct}%`}></div>
       </div>
-      <dl class="mt-6 grid grid-cols-2 gap-4 border-t border-line pt-5 text-center sm:grid-cols-4">
+      <dl class="mt-6 grid grid-cols-3 gap-4 border-t border-line pt-5 text-center">
         {
           (
             [
-              ['مطروح', shipped.length],
-              ['على خارطة الطريق', openTotal],
-              ['التالي', nextCount],
-              ['محجوبة', blockedCount],
-            ] as [string, number][]
-          ).map(([label, n]) => (
+              ['مطروح', shipped.length, shippedPct, 'text-paper'],
+              ['على خارطة الطريق', openTotal, roadmapPct, 'text-ash'],
+              ['محجوبة', blockedCount, blockedPct, blockedCount > 0 ? 'text-red-300' : 'text-ash'],
+            ] as [string, number, number, string][]
+          ).map(([label, n, pct, tone]) => (
             <div>
-              <dd class:list={['font-mono text-2xl font-bold tabular-nums', label === 'محجوبة' && n > 0 ? 'text-red-300' : '']}>{n}</dd>
+              <dd class="font-mono text-2xl font-bold tabular-nums">
+                {n}<span class:list={['ml-1 text-sm font-medium', tone]}>{pct}%</span>
+              </dd>
               <dt class="mt-1 font-mono text-[10px] uppercase tracking-widest text-ash">{label}</dt>
             </div>
           ))
