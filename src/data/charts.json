@@ -1006,6 +1006,30 @@
     ]
   },
   {
+    "slug": "headscale",
+    "name": "headscale",
+    "category": "Coordination & mesh",
+    "summary": "Open-source, self-hosted implementation of the Tailscale control server for coordinating a WireGuard mesh. Single static Go binary on a hardened nonroot Wolfi base; config and state on writable volumes.",
+    "tier": "standard",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.29.2",
+    "description": "Self-hosted, open-source implementation of the Tailscale control server (Go). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/headscale",
+    "imageDigest": "sha256:f72b94abb404cc2a50233b1382efd88f2ccd7b23687feaa49769d8a88886c1a2",
+    "repositoryID": "a9a7bfd6-1030-4fb3-bee6-19b08814bf44",
+    "port": 8080,
+    "upstream": "https://github.com/juanfont/headscale",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/headscale",
+    "images": [
+      {
+        "name": "headscale",
+        "image": "ghcr.io/quenchworks/images/headscale@sha256:f72b94abb404cc2a50233b1382efd88f2ccd7b23687feaa49769d8a88886c1a2"
+      }
+    ]
+  },
+  {
     "slug": "httpd",
     "name": "httpd",
     "category": "Gateway",
@@ -1823,6 +1847,29 @@
     ]
   },
   {
+    "slug": "openfga",
+    "name": "openfga",
+    "category": "Identity",
+    "summary": "Fine-grained authorization engine (Zanzibar-style relationship-based access control) over HTTP and gRPC. From source on a hardened nonroot Wolfi base; datastore is the operator's choice.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.18.1",
+    "description": "OpenFGA, the CNCF fine-grained authorization service (Zanzibar-style ReBAC) with HTTP and gRPC APIs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/openfga",
+    "imageDigest": "sha256:b4f599ed4c1f84c658bd93c6d4b74ee4b57453c6ceaac770bbb12e2c01eedfd3",
+    "repositoryID": "ebb121df-d83a-4d90-9f04-4e2cc016c66b",
+    "upstream": "https://openfga.dev",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/openfga",
+    "images": [
+      {
+        "name": "openfga",
+        "image": "ghcr.io/quenchworks/images/openfga@sha256:b4f599ed4c1f84c658bd93c6d4b74ee4b57453c6ceaac770bbb12e2c01eedfd3"
+      }
+    ]
+  },
+  {
     "slug": "opensearch",
     "name": "OpenSearch",
     "category": "Datastore",
@@ -2068,6 +2115,30 @@
     ]
   },
   {
+    "slug": "quickwit",
+    "name": "quickwit",
+    "category": "Search",
+    "summary": "Cloud-native search engine for logs, traces, and analytics with sub-second search over object storage. Built from Rust source (UI embedded, no Node at runtime) on a hardened nonroot Wolfi base; index data on object storage or a writable volume.",
+    "tier": "standard",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.8.2",
+    "description": "Cloud-native search engine for logs & traces (Rust) with a bundled admin UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/quickwit",
+    "imageDigest": "sha256:c4ae313ed9dc0e7539bfc4315779a4cd1baef6878b10f87d0d9da8ecf2da81ba",
+    "repositoryID": "a0c7c3b1-912f-42f3-837f-b09ca389d340",
+    "port": 7280,
+    "upstream": "https://quickwit.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/quickwit",
+    "images": [
+      {
+        "name": "quickwit",
+        "image": "ghcr.io/quenchworks/images/quickwit@sha256:c4ae313ed9dc0e7539bfc4315779a4cd1baef6878b10f87d0d9da8ecf2da81ba"
+      }
+    ]
+  },
+  {
     "slug": "rabbitmq",
     "name": "RabbitMQ",
     "category": "Messaging",
@@ -2256,6 +2327,29 @@
       {
         "name": "solr",
         "image": "ghcr.io/quenchworks/images/solr@sha256:5475d809449fa9c1f802ab679c69ed9c358bcc3ed1bf3dcf5d5f6a90c0c532c7"
+      }
+    ]
+  },
+  {
+    "slug": "spicedb",
+    "name": "spicedb",
+    "category": "Identity",
+    "summary": "Zanzibar-style authorization database for fine-grained permissions over gRPC. From source on a hardened nonroot Wolfi base; the operator supplies the datastore (in-memory, postgres, or cockroach).",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.54.0",
+    "description": "SpiceDB, the Authzed open-source, Google Zanzibar-inspired database for fine-grained authorization (ReBAC/relationship-based permissions) over a gRPC API. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/spicedb",
+    "imageDigest": "sha256:3adc16ae7e4aae651157cd8bb0a2859efce2bc999db0f192c3d0278cefe7ac0a",
+    "repositoryID": "820d8604-d2b5-459b-af41-2be29d05eccf",
+    "upstream": "https://authzed.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/spicedb",
+    "images": [
+      {
+        "name": "spicedb",
+        "image": "ghcr.io/quenchworks/images/spicedb@sha256:3adc16ae7e4aae651157cd8bb0a2859efce2bc999db0f192c3d0278cefe7ac0a"
       }
     ]
   },
