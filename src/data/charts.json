@@ -180,6 +180,33 @@
     ]
   },
   {
+    "slug": "cadence",
+    "name": "cadence",
+    "category": "Workflow",
+    "summary": "Fault-tolerant, stateful workflow orchestration engine by Uber. Ships the cadence server and CLI as static Go binaries on a hardened nonroot Wolfi base; Cassandra or a SQL store is the operator's concern.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.4.1",
+    "description": "Uber Cadence: a fault-tolerant, stateful workflow orchestration engine that runs long-running business logic as durable code, persisting execution state in Cassandra so workflows survive process crashes and resume where they left off. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled Cassandra by default for a self-contained install.",
+    "imageRepository": "ghcr.io/quenchworks/images/cadence",
+    "imageDigest": "sha256:9a79028c4c81dfb3fa7ccbaf3300adec53a4775fac9405d35ffb45837357ad04",
+    "repositoryID": "aabd7ba2-3393-4c72-bda9-02200215db38",
+    "upstream": "https://cadenceworkflow.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/cadence",
+    "images": [
+      {
+        "name": "cadence",
+        "image": "ghcr.io/quenchworks/images/cadence@sha256:9a79028c4c81dfb3fa7ccbaf3300adec53a4775fac9405d35ffb45837357ad04"
+      },
+      {
+        "name": "cassandra",
+        "image": "ghcr.io/quenchworks/images/cassandra@sha256:bde2cd5b03e626d62207db8a513d0af7512d9a31b373d20c0b789c08e75a50df"
+      }
+    ]
+  },
+  {
     "slug": "cassandra",
     "name": "Cassandra",
     "category": "Datastore",
@@ -2586,6 +2613,30 @@
       {
         "name": "spicedb",
         "image": "ghcr.io/quenchworks/images/spicedb@sha256:3adc16ae7e4aae651157cd8bb0a2859efce2bc999db0f192c3d0278cefe7ac0a"
+      }
+    ]
+  },
+  {
+    "slug": "step-ca",
+    "name": "step-ca",
+    "category": "Security & supply chain",
+    "summary": "Online private certificate authority and ACME server for issuing X.509 and SSH certificates. Single static Go binary on a hardened nonroot Wolfi base; config and data live under a writable volume.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.30.2",
+    "description": "Smallstep step-ca online certificate authority (ACME/step CA over HTTPS). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest; the bundled step CLI bootstraps the PKI on first boot.",
+    "imageRepository": "ghcr.io/quenchworks/images/step-ca",
+    "imageDigest": "sha256:aa3c9c22334a1641bc52eff2892ac5dcf54b946048af5fee8ceb234402fce65c",
+    "repositoryID": "8d7a2efe-988d-4e8e-9e0f-971f76206012",
+    "port": 443,
+    "upstream": "https://smallstep.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/step-ca",
+    "images": [
+      {
+        "name": "step-ca",
+        "image": "ghcr.io/quenchworks/images/step-ca@sha256:aa3c9c22334a1641bc52eff2892ac5dcf54b946048af5fee8ceb234402fce65c"
       }
     ]
   },
