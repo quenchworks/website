@@ -1334,6 +1334,30 @@
     ]
   },
   {
+    "slug": "livekit",
+    "name": "livekit",
+    "category": "Media & streaming",
+    "summary": "WebRTC SFU server for scalable real-time audio, video, and data. Single static Go binary on a hardened nonroot Wolfi base; config via mounted YAML or LIVEKIT_ env.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.13.2",
+    "description": "LiveKit, the open-source WebRTC SFU for scalable real-time audio, video, and data. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. This chart runs a single-node (no-Redis) server for dev and small deployments.",
+    "imageRepository": "ghcr.io/quenchworks/images/livekit",
+    "imageDigest": "sha256:1a4f1ad708c17eb565255953327ae5e417bf5cf8b1ae7fd9a5b36874ec2f81e0",
+    "repositoryID": "db675eb1-b78b-4077-a204-684a0ee25435",
+    "port": 7880,
+    "upstream": "https://livekit.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/livekit",
+    "images": [
+      {
+        "name": "livekit",
+        "image": "ghcr.io/quenchworks/images/livekit@sha256:1a4f1ad708c17eb565255953327ae5e417bf5cf8b1ae7fd9a5b36874ec2f81e0"
+      }
+    ]
+  },
+  {
     "slug": "logging-stack",
     "name": "logging-stack",
     "category": "Stacks",
@@ -1449,6 +1473,29 @@
     ]
   },
   {
+    "slug": "mediamtx",
+    "name": "mediamtx",
+    "category": "Media & streaming",
+    "summary": "Real-time media server and proxy for RTSP, RTMP, HLS, WebRTC, and SRT. Single static Go binary on a hardened nonroot Wolfi base; config via a mounted mediamtx.yml.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.19.2",
+    "description": "MediaMTX, the zero-dependency real-time media server and proxy that ingests and republishes video/audio over RTSP, RTMP, HLS, WebRTC and SRT. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/mediamtx",
+    "imageDigest": "sha256:b9e32f74098fa6fa3037a567107e24060ad223d5ca3cf4f6237e64b6b5e037bc",
+    "repositoryID": "f7dc00fa-877c-487a-b9d6-7343d082ffd7",
+    "upstream": "https://github.com/bluenviron/mediamtx",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mediamtx",
+    "images": [
+      {
+        "name": "mediamtx",
+        "image": "ghcr.io/quenchworks/images/mediamtx@sha256:b9e32f74098fa6fa3037a567107e24060ad223d5ca3cf4f6237e64b6b5e037bc"
+      }
+    ]
+  },
+  {
     "slug": "meilisearch",
     "name": "Meilisearch",
     "category": "Search",
@@ -1493,6 +1540,30 @@
       {
         "name": "memcached",
         "image": "ghcr.io/quenchworks/images/memcached@sha256:3bfd8582be71d01d13685bf52694a4e4075e82abbd364a7d91fff384848cfa95"
+      }
+    ]
+  },
+  {
+    "slug": "mimir",
+    "name": "mimir",
+    "category": "Observability",
+    "summary": "Horizontally scalable, highly available long-term storage for Prometheus metrics. Single static Go binary (all-in-one or microservices target) on a hardened nonroot Wolfi base; object storage is the operator's choice.",
+    "tier": "standard",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "3.1.2",
+    "description": "Horizontally scalable, highly available, long-term storage for Prometheus metrics from Grafana. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/mimir",
+    "imageDigest": "sha256:70ca1a439edf381c0afda680b9a47bb61c05bb937599fe9db8a4ca8d65191aef",
+    "repositoryID": "5b29112e-7258-42d6-b604-c5ce31ee0401",
+    "port": 8080,
+    "upstream": "https://grafana.com/oss/mimir",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mimir",
+    "images": [
+      {
+        "name": "mimir",
+        "image": "ghcr.io/quenchworks/images/mimir@sha256:70ca1a439edf381c0afda680b9a47bb61c05bb937599fe9db8a4ca8d65191aef"
       }
     ]
   },
@@ -2799,6 +2870,30 @@
       {
         "name": "weaviate",
         "image": "ghcr.io/quenchworks/images/weaviate@sha256:d1a5d391ca85cb1bc058f1ffb8ef1fa2ec236e3188e4094ba6bf028a02b2c132"
+      }
+    ]
+  },
+  {
+    "slug": "woodpecker",
+    "name": "woodpecker",
+    "category": "CI/CD & registry",
+    "summary": "Lightweight, container-native CI/CD engine (a Drone-compatible fork) with a server, agent, and CLI. From source (Vue UI embedded in the static Go server) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "3.16.0",
+    "description": "Woodpecker CI server (Go): a lightweight, forge-driven CI/CD engine. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/woodpecker",
+    "imageDigest": "sha256:e3fde93e1cbe870bbcfbfc73db94ab6a5d027e15d2ebeb704b96d44d9a63b2c9",
+    "repositoryID": "0831bcfa-fc10-4aaf-a4e9-e75f4ac7685f",
+    "port": 80,
+    "upstream": "https://woodpecker-ci.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/woodpecker",
+    "images": [
+      {
+        "name": "woodpecker",
+        "image": "ghcr.io/quenchworks/images/woodpecker@sha256:e3fde93e1cbe870bbcfbfc73db94ab6a5d027e15d2ebeb704b96d44d9a63b2c9"
       }
     ]
   },
