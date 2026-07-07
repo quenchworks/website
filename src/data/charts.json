@@ -1409,11 +1409,11 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
-    "appVersion": "1.6.42",
+    "chartVersion": "0.0.7",
+    "appVersion": "1.6.44",
     "description": "Simple, high-performance distributed in-memory cache for storing small objects and database query results to reduce backend load. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/memcached",
-    "imageDigest": "sha256:263b6453bf4ac9bff09fb2296e2ba2ae45fab231b8bef35594bc0a5de2fab6a8",
+    "imageDigest": "sha256:3bfd8582be71d01d13685bf52694a4e4075e82abbd364a7d91fff384848cfa95",
     "repositoryID": "4f83ee0f-4f34-4dd1-bdce-f3c94a9cde23",
     "port": 11211,
     "upstream": "https://github.com/memcached/memcached",
@@ -1421,7 +1421,7 @@
     "images": [
       {
         "name": "memcached",
-        "image": "ghcr.io/quenchworks/images/memcached@sha256:263b6453bf4ac9bff09fb2296e2ba2ae45fab231b8bef35594bc0a5de2fab6a8"
+        "image": "ghcr.io/quenchworks/images/memcached@sha256:3bfd8582be71d01d13685bf52694a4e4075e82abbd364a7d91fff384848cfa95"
       }
     ]
   },
@@ -2132,6 +2132,7 @@
     "description": "Lightweight distributed relational database built on SQLite with Raft consensus (Go). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rqlite",
     "imageDigest": "sha256:7a22d9bdfc32f0844af37c55b8bf8b923997ec5672f6da28cb4468cdb9bdd540",
+    "repositoryID": "e66bc57f-d10d-4e7c-a13d-a663d33c3d32",
     "upstream": "https://rqlite.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/rqlite",
     "images": [
@@ -2196,11 +2197,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
-    "appVersion": "4.34",
+    "chartVersion": "0.0.8",
+    "appVersion": "4.38",
     "description": "Fast distributed storage for blobs, objects, and files (S3 API) built on Facebook's Haystack design, with O(1) disk seeks for billions of small files. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/seaweedfs",
-    "imageDigest": "sha256:967d44af096dea08ba7b0222c37264dec3a58dc9e0bbf76c0b7802b034855018",
+    "imageDigest": "sha256:0af79e0c55a406101287279928929e3adb38764f44e6d4a6b4545fca95829db7",
     "repositoryID": "c0e22525-4794-4f13-a436-671e0a536544",
     "port": 8333,
     "upstream": "https://github.com/seaweedfs/seaweedfs",
@@ -2208,7 +2209,7 @@
     "images": [
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:967d44af096dea08ba7b0222c37264dec3a58dc9e0bbf76c0b7802b034855018"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:0af79e0c55a406101287279928929e3adb38764f44e6d4a6b4545fca95829db7"
       }
     ]
   },
@@ -2495,6 +2496,30 @@
     ]
   },
   {
+    "slug": "victorialogs",
+    "name": "victorialogs",
+    "category": "Observability",
+    "summary": "Fast, cost-efficient logs database with the LogsQL query language. Single static Go binary on a hardened nonroot Wolfi base; log data lives on a writable volume.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.51.0",
+    "description": "Single-binary log database (VictoriaLogs, Go) with an HTTP ingestion + query API. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/victorialogs",
+    "imageDigest": "sha256:c96cfb283a3f23093ed0a242ab2fac59ae4eb02228747a96a8e9b94daf004b7b",
+    "repositoryID": "2f50041f-c821-497e-909e-bcf4d9762eff",
+    "port": 9428,
+    "upstream": "https://docs.victoriametrics.com/victorialogs",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/victorialogs",
+    "images": [
+      {
+        "name": "victorialogs",
+        "image": "ghcr.io/quenchworks/images/victorialogs@sha256:c96cfb283a3f23093ed0a242ab2fac59ae4eb02228747a96a8e9b94daf004b7b"
+      }
+    ]
+  },
+  {
     "slug": "victoriametrics",
     "name": "VictoriaMetrics",
     "category": "Time series",
@@ -2502,11 +2527,11 @@
     "tier": "low",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
-    "appVersion": "1.146.0",
+    "chartVersion": "0.0.8",
+    "appVersion": "1.147.0",
     "description": "Fast, cost-efficient time-series database that speaks PromQL and Prometheus remote_write. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/victoriametrics",
-    "imageDigest": "sha256:29bef6e6fc86a799cfa7a32f5d2ab27c2973d78d3bb7bc251455e9bddeb83f71",
+    "imageDigest": "sha256:e228724c12d89f8fed4499e63ad26cb39735a58b2e7683ce151eedcb59980b2f",
     "repositoryID": "18aeaade-1bb0-4b11-9787-f80599ccde32",
     "port": 8428,
     "upstream": "https://github.com/VictoriaMetrics/VictoriaMetrics",
@@ -2514,7 +2539,31 @@
     "images": [
       {
         "name": "victoriametrics",
-        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:29bef6e6fc86a799cfa7a32f5d2ab27c2973d78d3bb7bc251455e9bddeb83f71"
+        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:e228724c12d89f8fed4499e63ad26cb39735a58b2e7683ce151eedcb59980b2f"
+      }
+    ]
+  },
+  {
+    "slug": "vikunja",
+    "name": "vikunja",
+    "category": "Apps & productivity",
+    "summary": "Self-hosted to-do and project management app (lists, kanban, gantt, calendar) serving both the API and the Vue web UI. From source with the UI embedded on a hardened nonroot Wolfi base; SQLite or an external SQL database.",
+    "tier": "standard",
+    "license": "AGPL-3.0+",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.3.0",
+    "description": "Self-hosted to-do & project management app (Go single binary + embedded frontend). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/vikunja",
+    "imageDigest": "sha256:af5707d2cb8a8ca71322f5923d3d0d4c0ca3ff6bd903790f89a5e2cfa6c6f3d3",
+    "repositoryID": "81d90cd8-1b9c-4172-9c6c-373b83971370",
+    "port": 80,
+    "upstream": "https://vikunja.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/vikunja",
+    "images": [
+      {
+        "name": "vikunja",
+        "image": "ghcr.io/quenchworks/images/vikunja@sha256:af5707d2cb8a8ca71322f5923d3d0d4c0ca3ff6bd903790f89a5e2cfa6c6f3d3"
       }
     ]
   },
@@ -2681,6 +2730,7 @@
     "description": "A production-ready, vendor-neutral OCI-native container image registry for storing and distributing OCI artifacts. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/zot",
     "imageDigest": "sha256:00c6f5c0bed920018f51a5a442dd6107ed5ac5d5529402e75b15a23623e50ab1",
+    "repositoryID": "10b85a3d-c95b-4faf-b0e7-6786c609bd32",
     "port": 5000,
     "upstream": "https://zotregistry.dev",
     "chartRef": "oci://ghcr.io/quenchworks/charts/zot",
