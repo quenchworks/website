@@ -734,6 +734,30 @@
     ]
   },
   {
+    "slug": "forgejo",
+    "name": "forgejo",
+    "category": "Git",
+    "summary": "Self-hosted lightweight Git forge (a community Gitea fork) with issues, PRs, CI, and packages. From source with the web UI embedded (no Node at runtime), CGO+static-musl SQLite, on a hardened nonroot Wolfi base; data lives on a writable volume.",
+    "tier": "standard",
+    "license": "GPL-3.0+",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "15.0.3",
+    "description": "Self-hosted Git forge (Forgejo, a community Gitea fork; Go + embedded web UI). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/forgejo",
+    "imageDigest": "sha256:c94744a2a3393a19413084eb1f4b01144c8c31e53c429681e3e68b102efb0c6d",
+    "repositoryID": "b2a58170-c268-4196-bd76-98d277a71b2b",
+    "port": 80,
+    "upstream": "https://forgejo.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/forgejo",
+    "images": [
+      {
+        "name": "forgejo",
+        "image": "ghcr.io/quenchworks/images/forgejo@sha256:c94744a2a3393a19413084eb1f4b01144c8c31e53c429681e3e68b102efb0c6d"
+      }
+    ]
+  },
+  {
     "slug": "garage",
     "name": "Garage",
     "category": "Object storage",
@@ -1136,6 +1160,29 @@
       {
         "name": "ingress-nginx-controller",
         "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:62fe44bf9274dce79081b145a64d351b7d1a448c5d9f87569511b97493916b65"
+      }
+    ]
+  },
+  {
+    "slug": "jaeger",
+    "name": "jaeger",
+    "category": "Observability",
+    "summary": "Distributed tracing platform (Jaeger v2, OpenTelemetry-collector based) with an embedded query UI. From source on a hardened nonroot Wolfi base; in-memory storage by default, badger under a volume.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.19.0",
+    "description": "Jaeger v2 all-in-one distributed tracing (OpenTelemetry-collector based): OTLP ingestion plus the Jaeger query UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/jaeger",
+    "imageDigest": "sha256:01d30b12ac6e9b36a632b3a84baa8bc118ec33066ebd4f5f57c0ad7847533c82",
+    "repositoryID": "e203b6b0-71c6-4cf1-a66e-7c72e685e90c",
+    "upstream": "https://www.jaegertracing.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/jaeger",
+    "images": [
+      {
+        "name": "jaeger",
+        "image": "ghcr.io/quenchworks/images/jaeger@sha256:01d30b12ac6e9b36a632b3a84baa8bc118ec33066ebd4f5f57c0ad7847533c82"
       }
     ]
   },
@@ -1673,6 +1720,29 @@
     ]
   },
   {
+    "slug": "nsq",
+    "name": "nsq",
+    "category": "Messaging",
+    "summary": "Realtime distributed messaging platform. Ships nsqd, nsqlookupd, and nsqadmin as static Go binaries on a hardened nonroot Wolfi base; nsqd data path is a writable volume.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.3.0",
+    "description": "NSQ realtime distributed messaging (Go). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a single nsqd node with a persistent disk-queue.",
+    "imageRepository": "ghcr.io/quenchworks/images/nsq",
+    "imageDigest": "sha256:8fb8a7a72431873e4cf4ecb2272434f13504d88781f5a70d35f0996bde560684",
+    "repositoryID": "b39f39cd-d58b-4157-9efd-6bae5f8fdf03",
+    "upstream": "https://nsq.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/nsq",
+    "images": [
+      {
+        "name": "nsq",
+        "image": "ghcr.io/quenchworks/images/nsq@sha256:8fb8a7a72431873e4cf4ecb2272434f13504d88781f5a70d35f0996bde560684"
+      }
+    ]
+  },
+  {
     "slug": "ntfy",
     "name": "ntfy",
     "category": "Messaging",
@@ -2087,6 +2157,30 @@
       {
         "name": "pulsar",
         "image": "ghcr.io/quenchworks/images/pulsar@sha256:d2088f309b49cb45c0fc05f2119884ea50fcc4ff58ce668bdc621ed470d2e8f9"
+      }
+    ]
+  },
+  {
+    "slug": "pyroscope",
+    "name": "pyroscope",
+    "category": "Observability",
+    "summary": "Continuous profiling database for analyzing CPU, memory, and other resource usage over time. From source with the React UI embedded (no Node at runtime) on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.1.0",
+    "description": "Grafana Pyroscope continuous-profiling database (Go, single-binary -target=all). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/pyroscope",
+    "imageDigest": "sha256:6d5e82289c14875c135ea0c15ddc84fb6fcf6e059a02a682ad567ca96320a06d",
+    "repositoryID": "1d01e624-c16c-422b-8e4a-78744b117f13",
+    "port": 4040,
+    "upstream": "https://grafana.com/oss/pyroscope",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/pyroscope",
+    "images": [
+      {
+        "name": "pyroscope",
+        "image": "ghcr.io/quenchworks/images/pyroscope@sha256:6d5e82289c14875c135ea0c15ddc84fb6fcf6e059a02a682ad567ca96320a06d"
       }
     ]
   },
