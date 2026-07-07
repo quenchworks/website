@@ -369,6 +369,30 @@
     ]
   },
   {
+    "slug": "descheduler",
+    "name": "descheduler",
+    "category": "Coordination",
+    "summary": "Kubernetes descheduler that evicts pods so the scheduler can re-place them for better cluster balance. Single static Go binary on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.36.0",
+    "description": "The Kubernetes descheduler evicts running pods so the scheduler can reschedule them onto more suitable nodes, correcting drift from node taints, affinity, topology spread and utilisation over time. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/descheduler",
+    "imageDigest": "sha256:668db70ed1718ad6ac3b5ac1d545b97e973e5855047329a4479df48fe843f287",
+    "repositoryID": "a6c57005-ea4b-4a62-8ee2-64e47fd85ea7",
+    "port": 10258,
+    "upstream": "https://github.com/kubernetes-sigs/descheduler",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/descheduler",
+    "images": [
+      {
+        "name": "descheduler",
+        "image": "ghcr.io/quenchworks/images/descheduler@sha256:668db70ed1718ad6ac3b5ac1d545b97e973e5855047329a4479df48fe843f287"
+      }
+    ]
+  },
+  {
     "slug": "dex",
     "name": "dex",
     "category": "Identity",
@@ -1262,6 +1286,29 @@
     ]
   },
   {
+    "slug": "kuma",
+    "name": "kuma",
+    "category": "Coordination & mesh",
+    "summary": "CNCF service mesh control plane (Envoy-based) for multi-zone and multi-cluster meshes. Ships kuma-cp and kumactl with an embedded GUI, built from source on a hardened nonroot Wolfi base; default in-memory store runs standalone.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.14.0",
+    "description": "Kuma service mesh control plane (kuma-cp). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. This chart runs a single standalone control plane with the in-memory store (no external DB, no CRDs) for demos and small universal-mode setups.",
+    "imageRepository": "ghcr.io/quenchworks/images/kuma",
+    "imageDigest": "sha256:b6c34027e3216f69b56c6156ddbd61f165cdd82c07599f0fdcc0da747cc62504",
+    "repositoryID": "dcdb4012-6d7d-4688-a196-c6b78ae637a6",
+    "upstream": "https://kuma.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kuma",
+    "images": [
+      {
+        "name": "kuma",
+        "image": "ghcr.io/quenchworks/images/kuma@sha256:b6c34027e3216f69b56c6156ddbd61f165cdd82c07599f0fdcc0da747cc62504"
+      }
+    ]
+  },
+  {
     "slug": "lgtm-stack",
     "name": "lgtm-stack",
     "category": "Stacks",
@@ -1564,6 +1611,30 @@
       {
         "name": "mimir",
         "image": "ghcr.io/quenchworks/images/mimir@sha256:70ca1a439edf381c0afda680b9a47bb61c05bb937599fe9db8a4ca8d65191aef"
+      }
+    ]
+  },
+  {
+    "slug": "miniflux",
+    "name": "miniflux",
+    "category": "Apps & productivity",
+    "summary": "Minimalist, opinionated RSS and Atom feed reader with a clean web UI and a REST API. Single pure-Go static binary on a hardened nonroot Wolfi base; needs PostgreSQL at runtime (operator-provided).",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.3.2",
+    "description": "Minimalist, opinionated feed reader (Go, single binary) backed by PostgreSQL. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled PostgreSQL by default for a self-contained install.",
+    "imageRepository": "ghcr.io/quenchworks/images/miniflux",
+    "imageDigest": "sha256:5b096e6f159868e6ef87d80e96c3243549692e2bbc23bb1029ba2a6712af646e",
+    "repositoryID": "ec937af5-fce6-4483-a6e5-000ae71b65d9",
+    "port": 80,
+    "upstream": "https://miniflux.app",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/miniflux",
+    "images": [
+      {
+        "name": "miniflux",
+        "image": "ghcr.io/quenchworks/images/miniflux@sha256:5b096e6f159868e6ef87d80e96c3243549692e2bbc23bb1029ba2a6712af646e"
       }
     ]
   },
