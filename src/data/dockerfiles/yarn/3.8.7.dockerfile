@@ -18,7 +18,7 @@ COPY package.json yarn.lock ./
 RUN ["yarn", "install", "--frozen-lockfile", "--production"]
 
 # Runtime stage: prod node_modules + built dist on a slim node base, nonroot.
-FROM ghcr.io/quenchworks/images/node:26.4.0 AS runtime
+FROM ghcr.io/quenchworks/images/node:24.18.0 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=prod-deps /app/node_modules ./node_modules
