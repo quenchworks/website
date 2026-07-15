@@ -1,0 +1,416 @@
+---
+// The interactive /api/reference page: Swagger UI mounted on the same-origin
+// /openapi.json with "Try it out" enabled, wrapped in localized (en/ar/es) page
+// chrome. Rendered by src/pages/api/reference.astro + its /ar /es counterparts;
+// lang comes from the URL so Base handles dir/RTL + hreflang.
+//
+// Swagger UI is vendored (swagger-ui-dist@5.18.2) under /public/vendor/swagger,
+// so there are NO third-party CDN calls at runtime. The API is CORS-open and the
+// spec's server is same-origin, so "Try it out" fetches resolve against the site.
+import Base from '../layouts/Base.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLangFromUrl, localizeUrl } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
+
+// Pinned vendored Swagger UI. Bump this string to re-vendor a new release.
+const SWAGGER_VERSION = '5.18.2';
+
+type Lang = 'en' | 'ar' | 'es';
+const T: Record<string, Record<Lang, string>> = {
+  eyebrow: { en: 'API · REFERENCE', ar: 'الواجهة · مرجع', es: 'API · REFERENCIA' },
+  title: { en: 'API reference', ar: 'مرجع الواجهة', es: 'Referencia de la API' },
+  intro: {
+    en: 'An interactive reference for the read-only JSON API, driven by the OpenAPI spec. Expand any endpoint and use "Try it out" to send a live request and read the real response — no key, no auth, same-origin.',
+    ar: 'مرجع تفاعلي لواجهة JSON البرمجية للقراءة فقط، مبني على مواصفة OpenAPI. وسِّع أي نقطة نهاية واستخدم «Try it out» لإرسال طلب حيّ وقراءة الاستجابة الفعلية — بلا مفتاح ولا مصادقة ومن نفس النطاق.',
+    es: 'Una referencia interactiva de la API JSON de solo lectura, generada a partir de la especificación OpenAPI. Expande cualquier endpoint y usa «Try it out» para enviar una petición en vivo y leer la respuesta real — sin clave, sin autenticación, mismo origen.',
+  },
+  docsLink: { en: 'Prose API docs', ar: 'توثيق الواجهة النصي', es: 'Documentación de la API' },
+  specLink: { en: 'Raw OpenAPI spec', ar: 'مواصفة OpenAPI الخام', es: 'Especificación OpenAPI' },
+  noscript: {
+    en: 'The interactive tester needs JavaScript. The raw OpenAPI spec is available directly:',
+    ar: 'يحتاج المُختبِر التفاعلي إلى جافاسكربت. مواصفة OpenAPI الخام متوفرة مباشرةً:',
+    es: 'El probador interactivo necesita JavaScript. La especificación OpenAPI está disponible directamente:',
+  },
+};
+const tr = (k: string) => T[k][lang as Lang] ?? T[k].en;
+---
+
+<Base
+  title="API reference · QuenchWorks"
+  description="Interactive OpenAPI reference for the free QuenchWorks JSON API — expand any endpoint and Try it out against live, same-origin data."
+>
+  <Header />
+  <!-- Chrome (heading + links) inherits the page dir; the Swagger widget itself
+       is forced LTR below so paths, methods, and JSON never mirror in Arabic. -->
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <p class="font-mono text-xs uppercase tracking-widest text-ash">{tr('eyebrow')}</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{tr('title')}</h1>
+    <p class="mt-6 max-w-2xl leading-relaxed text-ash">{tr('intro')}</p>
+
+    <div class="mt-5 flex flex-wrap gap-2">
+      <a
+        href={l('/api/docs')}
+        class="inline-flex items-center rounded-lg border border-line px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"
+      >{tr('docsLink')}</a>
+      <a
+        href="/openapi.json"
+        class="inline-flex items-center rounded-lg border border-line px-3 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"
+      >{tr('specLink')}</a>
+    </div>
+
+    <noscript>
+      <p class="mt-8 rounded-lg border border-line bg-graphite/40 p-4 text-sm text-ash">
+        {tr('noscript')}
+        <a class="text-paper underline" href="/openapi.json">/openapi.json</a>
+      </p>
+    </noscript>
+
+    <!-- Swagger mounts here. dir="ltr" keeps the widget LTR under RTL pages. -->
+    <div id="swagger" dir="ltr" class="mt-10"></div>
+  </main>
+  <Footer />
+
+  <link rel="stylesheet" href={`/vendor/swagger/swagger-ui.css?v=${SWAGGER_VERSION}`} />
+  <script is:inline src={`/vendor/swagger/swagger-ui-bundle.js?v=${SWAGGER_VERSION}`}></script>
+  <script is:inline>
+    // BaseLayout (from the apis preset) has no top URL bar — we point straight at
+    // the same-origin spec. supportedSubmitMethods is GET-only: the whole API is
+    // read-only, so Try-it-out never offers a mutating verb.
+    window.addEventListener('DOMContentLoaded', function () {
+      if (typeof SwaggerUIBundle === 'undefined') return;
+      window.ui = SwaggerUIBundle({
+        url: '/openapi.json',
+        dom_id: '#swagger',
+        deepLinking: true,
+        tryItOutEnabled: true,
+        layout: 'BaseLayout',
+        presets: [SwaggerUIBundle.presets.apis],
+        supportedSubmitMethods: ['get'],
+        docExpansion: 'list',
+        defaultModelsExpandDepth: 0,
+        syntaxHighlight: { activated: true, theme: 'agate' },
+      });
+    });
+  </script>
+
+  <!--
+    Dark monochrome override for Swagger UI. Its stock look is light + method-color
+    coded (blue/green/…); we neutralize it onto the QuenchWorks ramp: ink page,
+    graphite surfaces, 1px line borders (no shadows), Inter for prose + JetBrains
+    Mono for machine text, and the bright method badges flattened to the mono ramp.
+    is:global because Swagger injects its DOM client-side (Astro scoping wouldn't
+    reach it); every rule is prefixed .swagger-ui so it can't leak to the site.
+  -->
+  <style is:global>
+    .swagger-ui {
+      direction: ltr;
+      text-align: left;
+      color: var(--color-ash);
+      font-family: var(--font-sans);
+    }
+    .swagger-ui .wrapper { padding: 0; max-width: none; }
+    /* No shadows anywhere — separation is tone + 1px line. */
+    .swagger-ui,
+    .swagger-ui * { box-shadow: none !important; text-shadow: none !important; }
+
+    /* Prose + headings */
+    .swagger-ui .info,
+    .swagger-ui .info li,
+    .swagger-ui .info p,
+    .swagger-ui .info table,
+    .swagger-ui .markdown p,
+    .swagger-ui .renderedMarkdown p,
+    .swagger-ui p,
+    .swagger-ui li,
+    .swagger-ui label,
+    .swagger-ui table,
+    .swagger-ui .response-col_links { color: var(--color-ash); }
+    .swagger-ui .info .title,
+    .swagger-ui h1, .swagger-ui h2, .swagger-ui h3,
+    .swagger-ui h4, .swagger-ui h5,
+    .swagger-ui .opblock-tag,
+    .swagger-ui .opblock-summary-path,
+    .swagger-ui .opblock-summary-path__deprecated,
+    .swagger-ui .parameter__name,
+    .swagger-ui .response-col_status,
+    .swagger-ui .col_header,
+    .swagger-ui table thead tr td,
+    .swagger-ui table thead tr th { color: var(--color-paper); font-family: var(--font-sans); }
+    .swagger-ui a,
+    .swagger-ui .info a,
+    .swagger-ui .nostyle,
+    .swagger-ui .opblock-summary-path a { color: var(--color-paper); }
+    .swagger-ui .info .title small { background: var(--color-line); color: var(--color-ash); }
+
+    /* Mono for machine text: versions, paths, params, code */
+    .swagger-ui .opblock-summary-path,
+    .swagger-ui .parameter__name,
+    .swagger-ui .parameter__type,
+    .swagger-ui .parameter__in,
+    .swagger-ui .prop-type,
+    .swagger-ui .model,
+    .swagger-ui .model-title,
+    .swagger-ui code,
+    .swagger-ui .response-col_status,
+    .swagger-ui .microlight,
+    .swagger-ui .opblock-summary-method { font-family: var(--font-mono); }
+
+    /* Servers / scheme bar */
+    .swagger-ui .scheme-container { background: transparent; border-bottom: 1px solid var(--color-line); box-shadow: none; padding: 0 0 1.25rem; margin: 0 0 1.25rem; }
+    .swagger-ui .scheme-container .schemes-title { color: var(--color-paper); }
+
+    /* Tag section headers */
+    .swagger-ui .opblock-tag { border-bottom: 1px solid var(--color-line); }
+    .swagger-ui .opblock-tag small { color: var(--color-ash); }
+    .swagger-ui .opblock-tag:hover { background: var(--color-graphite); }
+
+    /* Operation blocks — flatten every method variant to the mono ramp */
+    .swagger-ui .opblock {
+      background: var(--color-graphite);
+      border: 1px solid var(--color-line);
+      border-radius: 12px;
+      margin: 0 0 1rem;
+    }
+    .swagger-ui .opblock .opblock-summary { border-color: var(--color-line); }
+    .swagger-ui .opblock.is-open .opblock-summary { border-bottom: 1px solid var(--color-line); }
+    .swagger-ui .opblock .opblock-summary-description { color: var(--color-ash); }
+    .swagger-ui .opblock-summary-method {
+      background: var(--color-line);
+      color: var(--color-paper);
+      border-radius: 4px;
+      text-shadow: none;
+      min-width: 60px;
+    }
+    /* Neutralize the per-method accent colors (GET/POST/PUT/DELETE/…). */
+    .swagger-ui .opblock.opblock-get,
+    .swagger-ui .opblock.opblock-post,
+    .swagger-ui .opblock.opblock-put,
+    .swagger-ui .opblock.opblock-delete,
+    .swagger-ui .opblock.opblock-patch,
+    .swagger-ui .opblock.opblock-head,
+    .swagger-ui .opblock.opblock-options {
+      background: var(--color-graphite);
+      border-color: var(--color-line);
+    }
+    .swagger-ui .opblock.opblock-get .opblock-summary,
+    .swagger-ui .opblock.opblock-post .opblock-summary,
+    .swagger-ui .opblock.opblock-put .opblock-summary,
+    .swagger-ui .opblock.opblock-delete .opblock-summary,
+    .swagger-ui .opblock.opblock-patch .opblock-summary { border-color: var(--color-line); }
+
+    /* Section headers inside an opblock */
+    .swagger-ui .opblock-section-header {
+      background: var(--color-ink);
+      border-color: var(--color-line);
+      box-shadow: none;
+    }
+    .swagger-ui .opblock-section-header h4,
+    .swagger-ui .opblock-section-header > label,
+    .swagger-ui .opblock-title_normal,
+    .swagger-ui .tab li { color: var(--color-paper); }
+    .swagger-ui .opblock-description-wrapper,
+    .swagger-ui .opblock-external-docs-wrapper,
+    .swagger-ui .opblock-title_normal { color: var(--color-ash); }
+
+    /* Inputs / selects / textareas */
+    .swagger-ui input[type=text],
+    .swagger-ui input[type=email],
+    .swagger-ui input[type=password],
+    .swagger-ui input[type=search],
+    .swagger-ui input[type=number],
+    .swagger-ui textarea,
+    .swagger-ui select {
+      background: var(--color-ink);
+      color: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      font-family: var(--font-mono);
+    }
+    .swagger-ui select { background-image: none; }
+
+    /* Buttons */
+    .swagger-ui .btn {
+      background: var(--color-ink);
+      color: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+      box-shadow: none;
+      font-family: var(--font-mono);
+    }
+    .swagger-ui .btn:hover { border-color: color-mix(in srgb, var(--color-paper) 40%, transparent); }
+    .swagger-ui .btn.execute {
+      background: var(--color-paper);
+      color: var(--color-ink);
+      border-color: var(--color-paper);
+    }
+    .swagger-ui .btn.cancel { color: var(--color-paper); border-color: var(--color-line); background: var(--color-ink); }
+
+    /* Tables */
+    .swagger-ui table { border-collapse: collapse; }
+    .swagger-ui table tbody tr td,
+    .swagger-ui table thead tr td,
+    .swagger-ui table thead tr th { border-color: var(--color-line); color: var(--color-ash); }
+    .swagger-ui .parameters-col_description input { width: 100%; }
+
+    /* Code / response bodies */
+    .swagger-ui .highlight-code,
+    .swagger-ui .microlight,
+    .swagger-ui .responses-inner pre,
+    .swagger-ui .body-param__example,
+    .swagger-ui .curl-command,
+    .swagger-ui pre {
+      background: var(--color-ink) !important;
+      color: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-radius: 8px;
+    }
+    .swagger-ui .microlight code,
+    .swagger-ui pre code,
+    .swagger-ui .highlight-code * { color: inherit; background: transparent !important; }
+
+    /* Models */
+    .swagger-ui section.models { border: 1px solid var(--color-line); background: var(--color-graphite); border-radius: 12px; }
+    .swagger-ui section.models.is-open h4 { border-color: var(--color-line); }
+    .swagger-ui section.models .model-container { background: var(--color-ink); border-radius: 8px; }
+    .swagger-ui .model,
+    .swagger-ui .model-title,
+    .swagger-ui .prop-type { color: var(--color-ash); }
+    .swagger-ui .model-toggle:after { opacity: 0.6; }
+
+    /* Response status chips + tab bar */
+    .swagger-ui .tab li { font-family: var(--font-mono); }
+    .swagger-ui .response-control-media-type--accept-controller select { border-color: var(--color-line); }
+    .swagger-ui .responses-table .response-col_status { color: var(--color-paper); }
+
+    /* Chevrons / arrows / copy icon → ash, not stock blue */
+    .swagger-ui .expand-operation svg,
+    .swagger-ui .opblock-summary-control svg,
+    .swagger-ui .model-toggle,
+    .swagger-ui svg.arrow { fill: var(--color-ash); }
+    .swagger-ui .copy-to-clipboard { background: var(--color-line); border-radius: 4px; }
+    .swagger-ui .copy-to-clipboard button { background: var(--color-ash); }
+
+    /* Required marker + validation stay functional-red (severity-adjacent) */
+    .swagger-ui .parameter__name.required:after { color: var(--color-ash); }
+
+    /* ── Readability floor ──────────────────────────────────────────────
+       Swagger's stock CSS colours a lot of text #3b4151 (dark slate) and
+       gives some containers light backgrounds — both vanish on the ink page.
+       These order-last rules guarantee everything is legible: force all text
+       to ash, strip residual light backgrounds, then re-assert paper for the
+       elements that must read first. ash is 9.15:1 on ink (AA). */
+    .swagger-ui,
+    .swagger-ui * { color: var(--color-ash) !important; }
+
+    .swagger-ui .info,
+    .swagger-ui .wrapper,
+    .swagger-ui .information-container,
+    .swagger-ui .opblock-body,
+    .swagger-ui .opblock-description-wrapper,
+    .swagger-ui .responses-inner,
+    .swagger-ui .response-col_description__inner,
+    .swagger-ui .parameters-container,
+    .swagger-ui .table-container,
+    .swagger-ui .model-box,
+    .swagger-ui section.models .model-container { background: transparent !important; }
+
+    /* Emphasis / must-read-first → paper */
+    .swagger-ui .info .title,
+    .swagger-ui h1, .swagger-ui h2, .swagger-ui h3, .swagger-ui h4, .swagger-ui h5,
+    .swagger-ui .opblock-tag,
+    .swagger-ui .opblock-summary-path,
+    .swagger-ui .opblock-summary-path a,
+    .swagger-ui .opblock-summary-method,
+    .swagger-ui .parameter__name,
+    .swagger-ui .col_header,
+    .swagger-ui table thead tr th,
+    .swagger-ui .response-col_status,
+    .swagger-ui .scheme-container .schemes-title,
+    .swagger-ui a { color: var(--color-paper) !important; }
+
+    /* Field values readable; execute button keeps ink text on its paper fill */
+    .swagger-ui input,
+    .swagger-ui textarea,
+    .swagger-ui select,
+    .swagger-ui .microlight,
+    .swagger-ui pre,
+    .swagger-ui pre * { color: var(--color-paper) !important; }
+    .swagger-ui .btn.execute,
+    .swagger-ui .btn.execute * { color: var(--color-ink) !important; }
+
+    /* Icons draw via fill, not color */
+    .swagger-ui svg { fill: var(--color-ash) !important; }
+
+    /* ── Backgrounds & method accents ───────────────────────────────────
+       Swagger's stock CSS sets these light/coloured with high specificity
+       (and sometimes !important), so the earlier rules lost. Force them. */
+    .swagger-ui .scheme-container { background: transparent !important; border: 0 !important; border-bottom: 1px solid var(--color-line) !important; }
+    .swagger-ui .opblock-section-header,
+    .swagger-ui .opblock .opblock-section-header { background: var(--color-ink) !important; }
+    .swagger-ui .opblock-body,
+    .swagger-ui .responses-inner,
+    .swagger-ui .parameters-container,
+    .swagger-ui .model-box,
+    .swagger-ui .tab-header { background: transparent !important; }
+
+    /* Method badge → mono ramp, not blue/green/… */
+    .swagger-ui .opblock-summary-method { background: var(--color-line) !important; color: var(--color-paper) !important; }
+
+    /* Neutralise the per-method opblock tint + accent border (also kills the
+       coloured side-stripe, which the design system bans) */
+    .swagger-ui .opblock.opblock-get,
+    .swagger-ui .opblock.opblock-post,
+    .swagger-ui .opblock.opblock-put,
+    .swagger-ui .opblock.opblock-delete,
+    .swagger-ui .opblock.opblock-patch,
+    .swagger-ui .opblock.opblock-head,
+    .swagger-ui .opblock.opblock-options {
+      background: var(--color-graphite) !important;
+      border-color: var(--color-line) !important;
+    }
+    .swagger-ui .opblock.opblock-get .opblock-summary,
+    .swagger-ui .opblock.opblock-post .opblock-summary,
+    .swagger-ui .opblock.opblock-put .opblock-summary,
+    .swagger-ui .opblock.opblock-delete .opblock-summary,
+    .swagger-ui .opblock.opblock-patch .opblock-summary { border-color: var(--color-line) !important; }
+
+    /* Buttons → mono/flat; cancel loses its stock red */
+    .swagger-ui .btn.cancel { background: transparent !important; border-color: var(--color-line) !important; color: var(--color-ash) !important; }
+    .swagger-ui .btn.execute { background: var(--color-paper) !important; border-color: var(--color-paper) !important; }
+    .swagger-ui .btn.authorize { background: transparent !important; border-color: var(--color-line) !important; }
+    .swagger-ui .btn.authorize svg { fill: var(--color-ash) !important; }
+
+    /* Native <select> dropdowns (Servers, media-type, content-type) were
+       white-on-white — force a dark fill + dark option list so the value and
+       the opened list are both legible. */
+    .swagger-ui select {
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      background-color: var(--color-ink) !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b0b0ba' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 0.75rem center !important;
+      background-size: 14px 14px !important;
+      color: var(--color-paper) !important;
+      border: 1px solid var(--color-line) !important;
+      padding-right: 2rem !important;
+    }
+    .swagger-ui select option,
+    .swagger-ui option {
+      background: var(--color-graphite) !important;
+      color: var(--color-paper) !important;
+    }
+    /* Custom (non-native) dropdown menus Swagger renders as divs */
+    .swagger-ui .dropdown-menu,
+    .swagger-ui .dropdown-content,
+    .swagger-ui ul.dropdown-menu li,
+    .swagger-ui .filter .operation-filter-input { background: var(--color-graphite) !important; color: var(--color-paper) !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .swagger-ui * { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+    }
+  </style>
+</Base>

@@ -10,9 +10,10 @@ import { charts } from '../data/charts';
 import { roadmap } from '../data/roadmap';
 import { PER_PAGE } from '../pages/api/v1/_data';
 import security from '../data/security.json';
-import { getLangFromUrl } from '../i18n/ui';
+import { getLangFromUrl, localizeUrl } from '../i18n/ui';
 
 const lang = getLangFromUrl(Astro.url);
+const l = (p: string) => localizeUrl(lang, p);
 const cveTotal = Object.values(security as Record<string, { total: number }>).reduce((a, r) => a + r.total, 0);
 const totalPages = Math.ceil(images.length / PER_PAGE);
 const pre = 'mt-3 overflow-x-auto rounded-lg border border-line bg-graphite/40 p-4 font-mono text-xs text-ash';
@@ -52,6 +53,12 @@ const T: Record<string, Record<Lang, string>> = {
   },
   examples: { en: 'Examples', ar: 'أمثلة', es: 'Ejemplos' },
   notes: { en: 'Notes', ar: 'ملاحظات', es: 'Notas' },
+  tryIt: {
+    en: 'Prefer to test it in the browser? Open the interactive API reference and use “Try it out”.',
+    ar: 'تفضّل تجربتها في المتصفح؟ افتح مرجع الواجهة التفاعلي واستخدم «Try it out».',
+    es: '¿Prefieres probarla en el navegador? Abre la referencia interactiva de la API y usa «Try it out».',
+  },
+  tryItCta: { en: 'Open the API reference →', ar: 'افتح مرجع الواجهة ←', es: 'Abrir la referencia de la API →' },
   note1: {
     en: 'Read-only, no auth, CORS-open, cached for an hour.',
     ar: 'للقراءة فقط، بلا مصادقة، CORS مفتوح، ومُخزَّن مؤقتًا لمدة ساعة.',
@@ -92,6 +99,11 @@ const BADGES = ['images', 'charts', 'cves', 'wolfi', 'cosign', 'multiarch', 'art
     <div class="mt-6 space-y-5 leading-relaxed text-ash">
       <p>{tr('intro')}</p>
     </div>
+
+    <p class="mt-6 rounded-lg border border-line bg-graphite/40 p-4 text-sm text-ash">
+      {tr('tryIt')}{' '}
+      <a class="font-mono text-paper underline underline-offset-2 hover:text-paper" href={l('/api/reference')}>{tr('tryItCta')}</a>
+    </p>
 
     <h2 class="mt-12 text-2xl font-bold tracking-tight">{tr('collections')}</h2>
     <p class="mt-2 text-ash">{tr('collectionsDesc')}</p>
