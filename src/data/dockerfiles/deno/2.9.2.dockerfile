@@ -1,5 +1,5 @@
 # Build stage: cache deps into a fixed DENO_DIR, then compile checks.
-FROM ghcr.io/quenchworks/images/deno:2.9.1 AS build
+FROM ghcr.io/quenchworks/images/deno:2.9.2 AS build
 USER root
 WORKDIR /app
 ENV DENO_DIR=/deno-dir
@@ -10,7 +10,7 @@ COPY . .
 RUN ["deno", "cache", "main.ts"]
 
 # Runtime stage: copy the cache + app onto a clean deno base, run nonroot.
-FROM ghcr.io/quenchworks/images/deno:2.9.1 AS runtime
+FROM ghcr.io/quenchworks/images/deno:2.9.2 AS runtime
 WORKDIR /app
 ENV DENO_DIR=/tmp/deno
 COPY --from=build /deno-dir /tmp/deno
