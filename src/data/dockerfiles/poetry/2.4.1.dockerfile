@@ -12,7 +12,7 @@ COPY . .
 RUN ["poetry", "install", "--only", "main"]
 
 # Runtime stage: copy the venv + app onto a clean python base, nonroot.
-FROM ghcr.io/quenchworks/images/python:3.14.6 AS runtime
+FROM ghcr.io/quenchworks/images/python:2.4.1 AS runtime
 WORKDIR /app
 ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONUNBUFFERED=1

@@ -396,6 +396,29 @@
     ]
   },
   {
+    "slug": "coroot",
+    "name": "coroot",
+    "category": "Observability",
+    "summary": "Coroot — open-source observability/APM (eBPF-based metrics, logs, traces, cost insights and service maps) with an embedded Vue UI. Built from source on Wolfi (go:embedded frontend, cgo lz4), prometheus/ch-go bumped to their fixed lines. Image only, no chart.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.1.1",
+    "appVersion": "1.23.3",
+    "description": "Open-source observability/APM server: eBPF-based metrics, logs, traces, cost insights and service maps with an embedded Vue UI (Go). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/coroot",
+    "imageDigest": "sha256:64d067ca22237cd6a785cbcd969bb3f286fa3b7be2576ce6de664da4ef94907c",
+    "repositoryID": "7314e5d7-4903-4248-bbd4-3c6645ed019e",
+    "upstream": "https://coroot.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/coroot",
+    "images": [
+      {
+        "name": "coroot",
+        "image": "ghcr.io/quenchworks/images/coroot@sha256:64d067ca22237cd6a785cbcd969bb3f286fa3b7be2576ce6de664da4ef94907c"
+      }
+    ]
+  },
+  {
     "slug": "couchdb",
     "name": "CouchDB",
     "category": "Document",
@@ -474,7 +497,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "3.1.1",
     "description": "The CNCF reference OCI and Docker registry server for storing and distributing container images and other OCI artifacts. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/distribution",
@@ -649,7 +672,7 @@
     "tier": "critical",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.13",
     "appVersion": "3.7.0",
     "description": "Distributed, strongly consistent key-value store using Raft consensus. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/etcd",
@@ -672,7 +695,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "0.18.1",
     "description": "Open-source virtual whiteboard for sketching hand-drawn-style diagrams, served as a static SPA. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/excalidraw",
@@ -1295,11 +1318,11 @@
     "tier": "critical",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.12",
     "appVersion": "4.3.1",
     "description": "Distributed event-streaming platform for high-throughput, durable, replayable publish-subscribe pipelines and stream processing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/kafka",
-    "imageDigest": "sha256:2554148a801aff5690a2d21a79cf00c38c557095cce7956d645e7246a8e310de",
+    "imageDigest": "sha256:c5d2088c4538c1ea12fc422fa3026290b93a04f5a26357cd31e1efa615c2d4e0",
     "repositoryID": "b21be4d8-c990-4c5c-bab3-1a45e95740e0",
     "port": 9092,
     "upstream": "https://github.com/apache/kafka",
@@ -1307,7 +1330,7 @@
     "images": [
       {
         "name": "kafka",
-        "image": "ghcr.io/quenchworks/images/kafka@sha256:2554148a801aff5690a2d21a79cf00c38c557095cce7956d645e7246a8e310de"
+        "image": "ghcr.io/quenchworks/images/kafka@sha256:c5d2088c4538c1ea12fc422fa3026290b93a04f5a26357cd31e1efa615c2d4e0"
       }
     ]
   },
@@ -1529,11 +1552,11 @@
     "tier": "critical",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "12.3.2",
     "description": "Community-developed relational database and drop-in MySQL successor, GPL-licensed and fully open. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mariadb",
-    "imageDigest": "sha256:3851e39ebd378bcd1deb4eafbff8ac887d27c677bb65848dd24b7d7d2265befe",
+    "imageDigest": "sha256:45a1d20926bde15a076b0de0d2bc12b6fb3202b6ba2a49db896a8903a29fbb3f",
     "repositoryID": "2c24b359-787b-44bc-9261-d43eb1f03ffe",
     "port": 3306,
     "upstream": "https://github.com/MariaDB/server",
@@ -1541,7 +1564,7 @@
     "images": [
       {
         "name": "mariadb",
-        "image": "ghcr.io/quenchworks/images/mariadb@sha256:3851e39ebd378bcd1deb4eafbff8ac887d27c677bb65848dd24b7d7d2265befe"
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:45a1d20926bde15a076b0de0d2bc12b6fb3202b6ba2a49db896a8903a29fbb3f"
       }
     ]
   },
@@ -1790,6 +1813,34 @@
       {
         "name": "mysql",
         "image": "ghcr.io/quenchworks/images/mysql@sha256:2557fc11f8cfda009240c5c497826f8d563eb2e78239d825e14211abd4ddfcd5"
+      }
+    ]
+  },
+  {
+    "slug": "n8n",
+    "name": "n8n",
+    "category": "Workflow",
+    "summary": "Fair-code workflow automation platform — build integrations and automations across 400+ apps via a visual node editor, with native AI/LLM agent nodes. Node build on a hardened nonroot Wolfi base; the flagged transitive npm CVE class is cleared image-side with pinned overrides.",
+    "tier": "standard",
+    "license": "LicenseRef-n8n-Sustainable-Use-License-1.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.1.1",
+    "appVersion": "2.29.11",
+    "description": "Fair-code workflow automation platform — a visual node editor for building integrations and automations across 400+ apps, with native AI/LLM agent nodes (Node.js). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/n8n",
+    "imageDigest": "sha256:88a03dddc89a894d74a4e53ce542af84ce64282595d6381dcaff731b280067f2",
+    "repositoryID": "7329d01d-e6f6-4410-a265-bde59581da96",
+    "port": 5678,
+    "upstream": "https://n8n.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/n8n",
+    "images": [
+      {
+        "name": "n8n",
+        "image": "ghcr.io/quenchworks/images/n8n@sha256:88a03dddc89a894d74a4e53ce542af84ce64282595d6381dcaff731b280067f2"
+      },
+      {
+        "name": "n8n-runners",
+        "image": "ghcr.io/quenchworks/images/n8n-runners@sha256:e2aa10949dd811520f6eb7eb6417c490dcca903801f04a351babc2f5bfc7ce07"
       }
     ]
   },
@@ -2073,7 +2124,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "1.18.2",
     "description": "Open Policy Agent, the CNCF general-purpose policy engine for authorization, admission control, and config validation over Rego. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opa",
@@ -2143,7 +2194,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.1.1",
     "appVersion": "3.7.0",
     "description": "Search and analytics suite with a Kibana-style dashboards UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opensearch",
@@ -2261,11 +2312,11 @@
     "tier": "critical",
     "license": "PostgreSQL",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "18.4",
     "description": "Advanced open-source relational database (v18.x) with strong SQL, ACID transactions, JSON, and a rich extension ecosystem. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/postgresql",
-    "imageDigest": "sha256:2097c93c488cdf0a6e189e4758586ee6fb2caff5fc9a2870d8a95d84fc921ed2",
+    "imageDigest": "sha256:8c1e9fc6e846ed9c2a9ed9698a06464f3aa543ef10313573a212e5bb1e84cbb8",
     "repositoryID": "f73f0b94-2c4e-4918-8720-8152e260e2b1",
     "port": 5432,
     "upstream": "https://github.com/postgres/postgres",
@@ -2273,7 +2324,7 @@
     "images": [
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:2097c93c488cdf0a6e189e4758586ee6fb2caff5fc9a2870d8a95d84fc921ed2"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:8c1e9fc6e846ed9c2a9ed9698a06464f3aa543ef10313573a212e5bb1e84cbb8"
       },
       {
         "name": "postgres-exporter",
@@ -2436,7 +2487,7 @@
     "tier": "critical",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.12",
     "appVersion": "4.3.2",
     "description": "Reliable message broker speaking AMQP plus MQTT and STOMP, with flexible routing, queues, and acknowledgements for decoupling services. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rabbitmq",
@@ -2488,7 +2539,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "10.2.5",
     "description": "Lightweight distributed relational database built on SQLite with Raft consensus (Go). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rqlite",
@@ -2884,7 +2935,7 @@
     "tier": "critical",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.14",
     "appVersion": "9.1.0",
     "description": "BSD-licensed in-memory key-value store, the truly-open community fork of Redis 7.2. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/valkey",
@@ -2924,6 +2975,29 @@
       {
         "name": "vector",
         "image": "ghcr.io/quenchworks/images/vector@sha256:585def3cf0583f7cd27de242940b2f9196b79bd3832a079970c1d8fedd607d3c"
+      }
+    ]
+  },
+  {
+    "slug": "velero",
+    "name": "velero",
+    "category": "Storage & platform",
+    "summary": "CNCF backup and disaster-recovery tool for Kubernetes cluster resources and persistent volumes. Single static Go binary on a hardened nonroot Wolfi base; object-store and snapshot backends are the operator's choice.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.1.1",
+    "appVersion": "1.18.2",
+    "description": "Velero, the CNCF backup and disaster-recovery controller for Kubernetes cluster resources and persistent volumes. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Runs the velero server as a single Deployment; object-store and volume-snapshot backends are plugged in as initContainers.",
+    "imageRepository": "ghcr.io/quenchworks/images/velero",
+    "imageDigest": "sha256:9a59509862a9c1830f63b0f19575a445b41f5042b4b8fce0c30244294a6dfc4a",
+    "repositoryID": "cf1f3537-cbf6-46b5-9892-ed260f3b3765",
+    "upstream": "https://velero.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/velero",
+    "images": [
+      {
+        "name": "velero",
+        "image": "ghcr.io/quenchworks/images/velero@sha256:9a59509862a9c1830f63b0f19575a445b41f5042b4b8fce0c30244294a6dfc4a"
       }
     ]
   },
@@ -3181,7 +3255,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "2.1.18",
     "description": "A production-ready, vendor-neutral OCI-native container image registry for storing and distributing OCI artifacts. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/zot",
