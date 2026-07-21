@@ -1,5 +1,5 @@
 # Build stage: restore and publish with the full SDK.
-FROM ghcr.io/quenchworks/images/dotnet:9.0.118 AS build
+FROM ghcr.io/quenchworks/images/dotnet:10.0.110 AS build
 USER root
 WORKDIR /src
 ENV NUGET_PACKAGES=/tmp/nuget \

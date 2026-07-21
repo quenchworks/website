@@ -1,5 +1,5 @@
 # Build stage: restore, then publish the app.
-FROM ghcr.io/quenchworks/images/dotnet:10.0.109 AS build
+FROM ghcr.io/quenchworks/images/dotnet:10.0.110 AS build
 USER root
 WORKDIR /src
 ENV NUGET_PACKAGES=/tmp/nuget \

@@ -61,8 +61,8 @@
     "category": "Observability",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "APM: distributed tracing, metrics, and service-topology analysis.",
+    "priority": "planned",
+    "note": "APM: distributed tracing, metrics, and service-topology analysis. [blocked: upstream CVEs / ES9 unsupported]",
     "blocked": true,
     "blockedReason": "Built and 0-CVE, but the chart is held on its storage backend: SkyWalking OAP 10.4.0's bundled Elasticsearch client drives ES 6/7/8 and OpenSearch only and throws `UnsupportedOperationException` on ES major 9, so OAP crashes on boot against QuenchWorks' Elasticsearch 9.x. Held until a compatible backend ships (an ES 8 image, or SkyWalking's native BanyanDB — the OAP image already bundles the BanyanDB client)."
   },
@@ -2002,16 +2002,6 @@
     "blockedReason": "Ships upstream's prebuilt Go binary with stale baked-in Go stdlib/deps; there is no from-source build to bump them. Unblocks when upstream ships a release rebuilt on patched toolchain/deps."
   },
   {
-    "name": "Apache Cassandra",
-    "category": "Wide-column",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Distributed wide-column NoSQL store built for linear horizontal scale and high availability with no single point of failure, tuned for heavy writes.",
-    "blocked": true,
-    "blockedReason": "Cassandra 5.0.8 (newest) ships standalone jackson-databind 2.19.2 (CVE-2026-54515). The same-major fixes (2.18.9 / 2.21.5 / 2.22.1) are not yet published to Maven Central — only jackson 3.x (a major bump) exists."
-  },
-  {
     "name": "CockroachDB",
     "category": "Relational",
     "license": "BUSL-1.1",
@@ -2026,42 +2016,10 @@
     "category": "PaaS",
     "license": "Apache-2.0 AND AGPL-3.0-or-later",
     "licenseClean": "agpl",
-    "priority": "next",
-    "note": "Coolify helper image carrying the build and deploy toolchain (buildpacks, git, ssh) that runs on target hosts to execute deployments.",
+    "priority": "planned",
+    "note": "Coolify helper image carrying the build and deploy toolchain (buildpacks, git, ssh) that runs on target hosts to execute deployments. [blocked: upstream CVEs / ES9 unsupported]",
     "blocked": true,
     "blockedReason": "Bundled Wolfi apks `docker-compose`/`docker-cli-buildx` carry CVE-2026-34040, whose fix is the `github.com/docker/docker` v28 -> `moby/moby` v29 module rename (not yet in Wolfi), plus `mc`'s x/net. Clears when Wolfi publishes the moby-v29 apks."
-  },
-  {
-    "name": "Coolify Realtime",
-    "category": "PaaS",
-    "license": "AGPL-3.0-or-later",
-    "licenseClean": "agpl",
-    "priority": "next",
-    "note": "Realtime server component of Coolify, providing the websocket connections and terminal/log gateway for the dashboard.",
-    "blocked": true,
-    "blockedReason": "All 117 bundled Node CVEs are already resolved; the only remaining finding is the Wolfi `cloudflared` apk (CVE-2026-41178 + go-chi CVE-2025-69725), fixed in cloudflared 2026.6.1-r2 which Wolfi has not published yet."
-  },
-  {
-    "name": "Deno",
-    "category": "Language runtime",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Hardened Deno runtime for JavaScript and TypeScript, secure by default with explicit permissions and built-in tooling.",
-    "blocked": true,
-    "blockedReason": "The Wolfi `deno` apk (2.8.2-r0, newest) bakes vulnerable rustls-webpki + CVE-2026-50185; the fix ships in deno 2.9.1-r1 which Wolfi has not published yet. Self-heals on the next Wolfi rebuild.",
-    "deliverable": "image"
-  },
-  {
-    "name": ".NET SDK",
-    "category": "Language runtime",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Hardened .NET SDK for building and running .NET apps.",
-    "blocked": true,
-    "blockedReason": "The Wolfi .NET SDK bundles a NuGet client stamped `7.0.3-rc.65534` (a build-metadata artifact that Trivy sorts below the 7.0.3 fix for GHSA-g4vj-cjjj-v7hg) plus a .NET 9 MSBuild CVE. Clears when Wolfi rebuilds the dotnet apk.",
-    "deliverable": "image"
   },
   {
     "name": "FerretDB",
@@ -2102,17 +2060,6 @@
     "note": "Open-source Node.js publishing platform for blogs, newsletters, and membership sites.",
     "blocked": true,
     "blockedReason": "Ghost 6.51.0 (newest) pins production npm deps below their CVE fixes that require MAJOR bumps (jsonwebtoken 8->9, nodemailer 8->9, `babel-traverse` package rename, knex->2, validator->13); patching them would break Ghost's own declared constraints."
-  },
-  {
-    "name": "Gradle",
-    "category": "Build tool",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "JDK base image with Gradle, used as the build stage for Gradle projects; run the resulting jar on jre.",
-    "blocked": true,
-    "blockedReason": "The Wolfi `gradle-9` apk (9.6.1-r1) bundles jackson-databind 2.18.8 (CVE-2026-54515, fix 2.18.9). Wolfi has not published a fixed `-r2` yet; self-heals on the next Wolfi rebuild.",
-    "deliverable": "image"
   },
   {
     "name": "Grafana",
@@ -2184,17 +2131,6 @@
     "note": "Nextcloud, the self-hosted file-sync and content-collaboration platform.",
     "blocked": true,
     "blockedReason": "Nextcloud 34.0.1 (newest) ships guzzle/psr7/phpseclib/symfony/web-token inside its code-integrity-signed `3rdparty/` tree; swapping them trips Nextcloud's signature check, and the newest release still pins the vulnerable versions."
-  },
-  {
-    "name": "Rust",
-    "category": "Language runtime",
-    "license": "MIT OR Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Hardened Rust toolchain (cargo plus rustc) for build stages; ship the compiled binary on the static base.",
-    "blocked": true,
-    "blockedReason": "The Wolfi `rust-1.96` apk bakes the `rand` dev-dependency in the standard-library SOURCE lockfiles (GHSA-cq8v-f236-94qc, LOW). It clears only when Wolfi rebuilds rust with refreshed stdlib dev-deps (or ships rust-1.97).",
-    "deliverable": "image"
   },
   {
     "name": "Thanos",
