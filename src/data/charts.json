@@ -334,6 +334,30 @@
     ]
   },
   {
+    "slug": "code-server",
+    "name": "code-server",
+    "category": "Developer tools / IDE",
+    "summary": "VS Code in the browser (Coder's code-server), a full IDE served over HTTP. Ships Coder's official prebuilt release (bundled Node 24 + compiled VS Code) hardened on a minimal, nonroot Wolfi base; runs as a single-replica Deployment with a persistent workspace and PASSWORD login.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "4.129.0",
+    "description": "code-server (VS Code in the browser) by Coder, hardened by QuenchWorks as a minimal, nonroot, 0-CVE image on Wolfi, cosign-signed and pinned by digest. Runs as a single-replica Deployment with a persistent workspace ($HOME) and PASSWORD login.",
+    "imageRepository": "ghcr.io/quenchworks/images/code-server",
+    "imageDigest": "sha256:3b6974a4c2754bd796c1051d298b8483442367dff4e4562e3542b8f4b4643aa8",
+    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
+    "port": 8080,
+    "upstream": "https://coder.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/code-server",
+    "images": [
+      {
+        "name": "code-server",
+        "image": "ghcr.io/quenchworks/images/code-server@sha256:3b6974a4c2754bd796c1051d298b8483442367dff4e4562e3542b8f4b4643aa8"
+      }
+    ]
+  },
+  {
     "slug": "coolify",
     "name": "coolify",
     "category": "Datastore",
@@ -2955,6 +2979,30 @@
       {
         "name": "tyk",
         "image": "ghcr.io/quenchworks/images/tyk@sha256:4b3268e38006cda8d5d796b0eaa6c033982bb24c23086d0b08dd7a225927d2f5"
+      }
+    ]
+  },
+  {
+    "slug": "typesense",
+    "name": "typesense",
+    "category": "Search",
+    "summary": "Fast, typo-tolerant search engine with an instant-search REST API and a self-contained embedded store (no external database), tuned for low-latency site and in-app search.",
+    "tier": "standard",
+    "license": "GPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "30.2",
+    "description": "Fast, typo-tolerant search engine with an instant-search REST API and a self-contained embedded store (no external database). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/typesense",
+    "imageDigest": "sha256:cd0f547e0efe05502c9d2dcbef4a2e0071084d4bed694aac244b6c3a5f6e8337",
+    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
+    "port": 8108,
+    "upstream": "https://github.com/typesense/typesense",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/typesense",
+    "images": [
+      {
+        "name": "typesense",
+        "image": "ghcr.io/quenchworks/images/typesense@sha256:cd0f547e0efe05502c9d2dcbef4a2e0071084d4bed694aac244b6c3a5f6e8337"
       }
     ]
   },
