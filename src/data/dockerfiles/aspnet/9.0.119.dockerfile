@@ -11,7 +11,7 @@ COPY . .
 RUN ["dotnet", "publish", "App.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
 
 # This image is the final runtime stage: the ASP.NET Core runtime, nonroot.
-FROM ghcr.io/quenchworks/images/aspnet:9.0.118 AS runtime
+FROM ghcr.io/quenchworks/images/aspnet:9.0.119 AS runtime
 WORKDIR /app
 ENV ASPNETCORE_URLS=http://+:8080
 COPY --from=build /app/publish ./
