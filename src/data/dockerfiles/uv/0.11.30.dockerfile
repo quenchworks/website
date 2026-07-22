@@ -1,5 +1,5 @@
 # Build stage: uv resolves and installs into a project venv, fast.
-FROM ghcr.io/quenchworks/images/uv:0.11.27 AS build
+FROM ghcr.io/quenchworks/images/uv:0.11.30 AS build
 USER root
 WORKDIR /app
 ENV UV_PROJECT_ENVIRONMENT=/opt/venv \
