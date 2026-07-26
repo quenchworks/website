@@ -15,6 +15,11 @@ import { getLangFromUrl, localizeUrl } from '../i18n/ui';
 const lang = getLangFromUrl(Astro.url);
 const l = (p: string) => localizeUrl(lang, p);
 const cveTotal = Object.values(security as Record<string, { total: number }>).reduce((a, r) => a + r.total, 0);
+// Link the docs at a real record — one that actually has CVEs when the catalog has any,
+// so the example response isn't an empty list.
+const secEntries = Object.entries(security as Record<string, any>);
+const [securitySample, securitySampleRec] = secEntries.find(([, r]) => r.total > 0) ?? secEntries[0];
+const securitySampleVersion = securitySampleRec.version;
 const totalPages = Math.ceil(images.length / PER_PAGE);
 const pre = 'mt-3 overflow-x-auto rounded-lg border border-line bg-graphite/40 p-4 font-mono text-xs text-ash';
 
@@ -44,6 +49,11 @@ const T: Record<string, Record<Lang, string>> = {
     en: `Live CVE counts from the ArtifactHub Trivy scan of each chart-pinned image digest, refreshed every deploy. The summary gives the catalog total + a severity rollup; every images/charts item also carries a per-item security object (${cveTotal} open CVEs catalog-wide right now).`,
     ar: `أعداد ثغرات CVE حيّة من فحص Trivy عبر ArtifactHub لكل بصمة صورة مثبَّتة في المخطط، تُحدَّث مع كل نشر. يعطي الملخص الإجمالي للكتالوج مع تجميع حسب الخطورة؛ كما يحمل كل عنصر images/charts كائن security خاصًا به (${cveTotal} ثغرة مفتوحة في الكتالوج حاليًا).`,
     es: `Conteos de CVE en vivo del escaneo Trivy de ArtifactHub sobre cada digest de imagen fijado en el chart, actualizados en cada despliegue. El resumen da el total del catálogo + un desglose por severidad; cada elemento de images/charts incluye además un objeto security propio (${cveTotal} CVE abiertos en el catálogo ahora mismo).`,
+  },
+  securityPerImage: {
+    en: 'For what each issue actually is, ask per image: the detail endpoints carry the deduped CVE list (id, severity, package, installed and fixed version, title, advisory URL, affected targets) for the latest version and for every published version. The rollup above stays counts-only and links to them with an href.',
+    ar: 'لمعرفة ماهية كل ثغرة فعليًا، اسأل لكل صورة: تحمل نقاط النهاية التفصيلية قائمة الثغرات بعد إزالة التكرار (المعرِّف، الخطورة، الحزمة، الإصدار المثبَّت وإصدار الإصلاح، الوصف، رابط التحذير، الأهداف المتأثرة) للإصدار الأحدث ولكل إصدار منشور. يبقى الملخص أعلاه بالأعداد فقط ويشير إليها عبر حقل href.',
+    es: 'Para saber qué es realmente cada problema, consulta por imagen: los endpoints de detalle traen la lista de CVE deduplicada (id, gravedad, paquete, versión instalada y corregida, título, URL del aviso, objetivos afectados) de la última versión y de cada versión publicada. El resumen anterior se queda solo con los conteos y enlaza a ellos con un href.',
   },
   badges: { en: 'Status badges', ar: 'شارات الحالة', es: 'Insignias de estado' },
   badgesDesc: {
@@ -81,6 +91,37 @@ const resources = [
   { name: 'images', total: images.length, desc: { en: 'Hardened container images in the catalog.', ar: 'صور حاويات مُحصَّنة في الكتالوج.', es: 'Imágenes de contenedor endurecidas en el catálogo.' } },
   { name: 'charts', total: charts.length, desc: { en: 'Signed Helm charts in the catalog.', ar: 'مخططات Helm موقَّعة في الكتالوج.', es: 'Helm charts firmados en el catálogo.' } },
   { name: 'roadmap', total: roadmap.length, desc: { en: 'Apps on deck, not yet built.', ar: 'تطبيقات قادمة لم تُبنَ بعد.', es: 'Apps en cola, aún no construidas.' } },
+];
+// Per-image CVE detail routes. Prerendered like everything else, so the image slug and
+// version live in the path (there is no ?image= query). `sample` links a real record.
+const securityRoutes = [
+  {
+    path: '/api/v1/security/index.json',
+    href: '/api/v1/security/index.json',
+    desc: {
+      en: 'Discovery index: every scanned image with its grade, totals, and detail href.',
+      ar: 'فهرس استكشافي: كل صورة مفحوصة مع تقديرها وإجمالياتها ورابط تفاصيلها.',
+      es: 'Índice de descubrimiento: cada imagen escaneada con su nota, totales y href de detalle.',
+    },
+  },
+  {
+    path: '/api/v1/security/{image}.json',
+    href: `/api/v1/security/${securitySample}.json`,
+    desc: {
+      en: 'One image, full CVE detail — the latest version plus every published version.',
+      ar: 'صورة واحدة بتفاصيل الثغرات الكاملة — الإصدار الأحدث وكل إصدار منشور.',
+      es: 'Una imagen con el detalle completo de CVE: la última versión y cada versión publicada.',
+    },
+  },
+  {
+    path: '/api/v1/security/{image}/{version}.json',
+    href: `/api/v1/security/${securitySample}/${securitySampleVersion}.json`,
+    desc: {
+      en: 'One version of one image, with that version’s own CVE list.',
+      ar: 'إصدار واحد من صورة واحدة، مع قائمة ثغراته الخاصة.',
+      es: 'Una versión de una imagen, con su propia lista de CVE.',
+    },
+  },
 ];
 const BADGE = (s: string) => `https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/${s}.json`;
 const BADGES = ['images', 'charts', 'cves', 'wolfi', 'cosign', 'multiarch', 'artifacthub', 'license'];
@@ -150,6 +191,26 @@ const BADGES = ['images', 'charts', 'cves', 'wolfi', 'cosign', 'multiarch', 'art
 # per-item too: each images/charts entry gains a "security" field
 curl https://quench-works.com/api/v1/images.json | jq '.data[] | {slug, security}'`}</pre>
 
+    <p class="mt-6 text-ash">{tr('securityPerImage')}</p>
+    <ul class="mt-4 space-y-2">
+      {securityRoutes.map((r) => (
+        <li class="font-mono text-sm">
+          <a class="text-paper underline" href={r.href}>GET {r.path}</a>
+          <span class="text-ash"> — {r.desc[lang as Lang] ?? r.desc.en}</span>
+        </li>
+      ))}
+    </ul>
+    <pre class={pre}>{`{
+  "apiVersion": "v1", "resource": "security",
+  "slug": "${securitySample}", "image": "ghcr.io/quenchworks/images/${securitySample}",
+  "latest": {
+    "version": "${securitySampleVersion}", "total": 0, "fixable": 0, "grade": "A+", "score": 100,
+    "cves": [ { "id": "CVE-0000-0000", "severity": "HIGH", "pkg": "…", "installed": "…",
+                "fixed": "…", "title": "…", "url": "…", "targets": [ "…" ] } ]
+  },
+  "versions": [ /* the same shape per published version */ ]
+}`}</pre>
+
     <h2 class="mt-12 text-2xl font-bold tracking-tight">{tr('badges')}</h2>
     <p class="mt-2 text-ash">{tr('badgesDesc')}</p>
     <pre class={pre}>{BADGES.map((s) => `![${s}](${BADGE(s)})`).join('\n')}</pre>
@@ -157,7 +218,8 @@ curl https://quench-works.com/api/v1/images.json | jq '.data[] | {slug, security
     <h2 class="mt-12 text-2xl font-bold tracking-tight">{tr('examples')}</h2>
     <pre class={pre}>{`curl https://quench-works.com/api/v1/images.json
 curl https://quench-works.com/api/v1/charts/2.json
-curl https://quench-works.com/api/v1/security.json`}</pre>
+curl https://quench-works.com/api/v1/security.json
+curl https://quench-works.com/api/v1/security/${securitySample}.json | jq '.latest.cves'`}</pre>
 
     <h2 class="mt-12 text-2xl font-bold tracking-tight">{tr('notes')}</h2>
     <ul class="mt-3 list-disc space-y-1 ps-5 text-ash">

@@ -8,7 +8,9 @@
 // precisely the artifact we ship.
 //
 // Per version: severity breakdown, a `fixable` count (CVEs with a FixedVersion — what
-// our 0-CVE gate and a rebuild would clear), a letter `grade`, and a numeric `score`.
+// our 0-CVE gate and a rebuild would clear), a letter `grade`, a numeric `score`, and
+// `cves[]` — the deduped per-CVE detail (id/severity/pkg/installed/fixed/title/url/targets)
+// the detail pages render in their full-report table.
 // Each image's top-level summary is its WORST version (so a card flags if ANY tag has
 // CVEs), plus a `versions` array with the per-tag detail so you can see what to fix.
 //
@@ -18,6 +20,7 @@
 // Usage:
 //   node scripts/scan-images.mjs              # all images (the nightly job)
 //   node scripts/scan-images.mjs neo4j redis  # a subset, merged into existing
+import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { promisify } from 'node:util';
@@ -29,6 +32,8 @@ const only = process.argv.slice(2);
 const CONCURRENCY = Number(process.env.SCAN_CONCURRENCY || 6);
 
 const SEV = ['critical', 'high', 'medium', 'low', 'unknown'];
+const SEV_RANK = { CRITICAL: 0, HIGH: 1, MEDIUM: 2, LOW: 3, UNKNOWN: 4 };
+const TARGETS_CAP = 8; // keep the JSON payload sane for CVEs found in dozens of jars
 
 function gradeOf(c) {
   if (c.total === 0) return 'A+';
@@ -40,6 +45,58 @@ function gradeOf(c) {
 function scoreOf(c) {
   const w = c.critical * 25 + c.high * 10 + c.medium * 4 + c.unknown * 2 + c.low * 1 + c.fixable * 5;
   return Math.max(0, 100 - w);
+}
+
+// Turn one Trivy JSON report into { counts, per-CVE rows }.
+//
+// COUNTS stay raw: every finding is counted exactly once, in the same place it always
+// was, so total/fixable/grade/score never move.
+//
+// ROWS are DEDUPED by `id|pkg|installed`: the same CVE routinely repeats across dozens
+// of targets (one bundled jar CVE x every jar that ships it — opensearch reports ~49
+// findings that are a handful of real CVEs), and a 49-row table of the same ID is noise.
+// Duplicates merge into one row whose `targets` is the union (capped, with `targetsMore`).
+// Sorted severity-first, then fixable-first, then id — worst + actionable at the top.
+function parseReport(data) {
+  const c = { critical: 0, high: 0, medium: 0, low: 0, unknown: 0, fixable: 0 };
+  const rows = new Map();
+  for (const r of data.Results || []) {
+    for (const v of r.Vulnerabilities || []) {
+      const s = (v.Severity || 'UNKNOWN').toLowerCase();
+      if (s in c) c[s]++; else c.unknown++;
+      if (v.FixedVersion) c.fixable++;
+
+      const installed = v.InstalledVersion ?? null;
+      const key = `${v.VulnerabilityID}|${v.PkgName}|${installed}`;
+      let row = rows.get(key);
+      if (!row) {
+        rows.set(key, row = {
+          id: v.VulnerabilityID,
+          severity: (v.Severity || 'UNKNOWN').toUpperCase(),
+          pkg: v.PkgName,
+          installed,
+          fixed: v.FixedVersion ?? null, // null => nothing to rebuild into yet
+          title: v.Title ?? v.Description?.slice(0, 160) ?? null,
+          url: v.PrimaryURL ?? (v.References || []).find((u) => /^https?:\/\//.test(u)) ?? null,
+          targets: [],
+        });
+      }
+      if (r.Target && !row.targets.includes(r.Target)) row.targets.push(r.Target);
+    }
+  }
+  c.total = c.critical + c.high + c.medium + c.low + c.unknown;
+
+  const cves = [...rows.values()].sort((a, b) =>
+    (SEV_RANK[a.severity] ?? 9) - (SEV_RANK[b.severity] ?? 9) ||
+    Number(!a.fixed) - Number(!b.fixed) ||
+    (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  for (const row of cves) {
+    if (row.targets.length > TARGETS_CAP) {
+      row.targetsMore = row.targets.length - TARGETS_CAP;
+      row.targets.length = TARGETS_CAP;
+    }
+  }
+  return { ...c, cves };
 }
 
 async function scanOnce(ref) {
@@ -59,24 +116,46 @@ async function scanOnce(ref) {
      '--severity', 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN', ref],
     { maxBuffer: 128 * 1024 * 1024, timeout: 300_000 },
   );
-  const data = JSON.parse(stdout);
-  const c = { critical: 0, high: 0, medium: 0, low: 0, unknown: 0, fixable: 0 };
-  for (const r of data.Results || []) {
-    for (const v of r.Vulnerabilities || []) {
-      const s = (v.Severity || 'UNKNOWN').toLowerCase();
-      if (s in c) c[s]++; else c.unknown++;
-      if (v.FixedVersion) c.fixable++;
-    }
-  }
-  c.total = c.critical + c.high + c.medium + c.low + c.unknown;
-  return c;
+  return parseReport(JSON.parse(stdout));
 }
 
 function summarize(version, image, c) {
   const e = { version, tag: `${image}:${version}` };
   for (const s of SEV) e[s] = c[s];
   e.total = c.total; e.fixable = c.fixable; e.grade = gradeOf(c); e.score = scoreOf(c);
+  e.cves = c.cves ?? [];
   return e;
+}
+
+// `node scripts/scan-images.mjs --selftest` — checks parseReport (counts stay raw,
+// rows dedupe/sort/cap) without pulling a single image. Runs in ms; no Trivy needed.
+if (only[0] === '--selftest') {
+  const dupe = (target) => ({
+    Target: target,
+    Vulnerabilities: [{ VulnerabilityID: 'CVE-2', Severity: 'HIGH', PkgName: 'p', InstalledVersion: '1', FixedVersion: '2', Title: 't2', PrimaryURL: 'https://u2' }],
+  });
+  const got = parseReport({
+    Results: [
+      { Target: 'a.jar', Vulnerabilities: [
+        { VulnerabilityID: 'CVE-1', Severity: 'CRITICAL', PkgName: 'q', InstalledVersion: '1', Description: 'd'.repeat(300), References: ['ftp://nope', 'https://ref'] },
+        { VulnerabilityID: 'CVE-0', Severity: 'HIGH', PkgName: 'p', InstalledVersion: '1', Title: 't0' }, // no FixedVersion
+      ] },
+      ...Array.from({ length: 10 }, (_, i) => dupe(`t${i}.jar`)), // same CVE in 10 targets
+    ],
+  });
+  assert.equal(got.total, 12, 'counts stay raw (every finding)');
+  assert.equal(got.critical, 1);
+  assert.equal(got.high, 11);
+  assert.equal(got.fixable, 10, 'fixable counts every raw finding, not deduped rows');
+  assert.deepEqual(got.cves.map((r) => r.id), ['CVE-1', 'CVE-2', 'CVE-0'], 'severity, then fixable-first, then id');
+  assert.equal(got.cves.length, 3, 'deduped by id|pkg|installed');
+  assert.equal(got.cves[2].fixed, null, 'no FixedVersion => null');
+  assert.equal(got.cves[0].url, 'https://ref', 'falls back to the first http(s) reference');
+  assert.equal(got.cves[0].title.length, 160, 'description truncated to 160');
+  assert.equal(got.cves[1].targets.length, TARGETS_CAP, 'targets capped');
+  assert.equal(got.cves[1].targetsMore, 2, 'and the remainder counted');
+  console.error('selftest OK');
+  process.exit(0);
 }
 
 // flat task list: one entry per (image, version)

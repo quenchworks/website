@@ -1,0 +1,130 @@
+---
+// "Full report" trigger + a <dialog> holding the per-CVE table for ONE image version,
+// fed by security.json `cves[]` (the nightly Trivy scan, scripts/scan-images.mjs) —
+// never a hardcoded list. Rows are SERVER-RENDERED (a page carries exactly one list),
+// so the script only opens/closes the native dialog: no data-* payloads, no innerHTML.
+// <dialog>.showModal() supplies the focus trap, Escape-to-close, and centering; the
+// open/backdrop animation is inherited from global.css.
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+export interface CveRow {
+  id: string;
+  severity: string;
+  pkg?: string;
+  installed?: string | null;
+  fixed?: string | null;
+  title?: string | null;
+  url?: string | null;
+  targets?: string[];
+  targetsMore?: number;
+}
+
+interface Props {
+  cves?: CveRow[];
+  /** What this report covers, e.g. "redis 8.2.1" — shown beside the dialog title. */
+  subject: string;
+}
+const { cves = [], subject } = Astro.props;
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+// Same functional trio as CveStatus / CatalogList. Colour only reinforces the severity
+// WORD (which is always present as text); LOW/UNKNOWN stay neutral so they don't shout.
+const chip = (s: string) =>
+  s === 'CRITICAL' || s === 'HIGH'
+    ? 'border-red-500/40 bg-red-500/10 text-red-300'
+    : s === 'MEDIUM'
+      ? 'border-amber-500/40 bg-amber-500/10 text-amber-300'
+      : 'border-line bg-ink text-ash';
+
+// The targets a finding was seen in (deduped rows union them) — supplementary detail,
+// so it rides along as a tooltip instead of a seventh column.
+const where = (r: CveRow) =>
+  r.targets?.length ? r.targets.join(', ') + (r.targetsMore ? ` +${r.targetsMore} more` : '') : undefined;
+---
+
+{cves.length > 0 && (
+  <>
+    <button
+      type="button"
+      data-cve-open
+      aria-haspopup="dialog"
+      class="rounded-lg border border-line px-2.5 py-1 font-mono text-[11px] uppercase tracking-widest text-paper transition-colors duration-200 hover:border-paper/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-paper"
+    >
+      {t('detail.security.fullReport')}
+    </button>
+
+    <dialog
+      data-cve-dialog
+      aria-labelledby="cve-report-title"
+      class="m-auto max-h-[85vh] w-[calc(100%-2rem)] max-w-4xl rounded-xl border border-line bg-graphite p-0 text-paper backdrop:bg-ink/70 backdrop:backdrop-blur-sm"
+    >
+      <div class="p-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 id="cve-report-title" class="text-lg font-semibold tracking-tight">{t('detail.security.reportHeading')}</h2>
+          <span class="font-mono text-[10px] uppercase tracking-widest tabular-nums text-ash">{subject} · {cves.length} CVE</span>
+        </div>
+        <div class="mt-4 max-h-[60vh] overflow-auto">
+          <table class="w-full min-w-[34rem] text-start text-sm">
+            <thead>
+              <tr class="border-b border-line font-mono text-[10px] uppercase tracking-widest text-ash">
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.security.colCve')}</th>
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.security.colSeverity')}</th>
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.security.colPackage')}</th>
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.security.colInstalled')}</th>
+                <th scope="col" class="py-2 pe-4 font-medium">{t('detail.security.colFixed')}</th>
+                <th scope="col" class="py-2 font-medium">{t('detail.security.colTitle')}</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-line/60">
+              {cves.map((r) => (
+                <tr>
+                  <td class="py-2.5 pe-4 font-mono text-xs">
+                    {r.url ? (
+                      <a href={r.url} target="_blank" rel="noopener noreferrer" class="text-paper underline-offset-4 hover:underline">{r.id}</a>
+                    ) : (
+                      <span class="text-paper">{r.id}</span>
+                    )}
+                  </td>
+                  <td class="py-2.5 pe-4">
+                    <span class:list={['inline-flex items-center rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest', chip(r.severity)]}>{r.severity}</span>
+                  </td>
+                  <td class="py-2.5 pe-4 font-mono text-xs text-ash" title={where(r)}>{r.pkg ?? '—'}</td>
+                  <td class="py-2.5 pe-4 font-mono text-xs tabular-nums text-ash">{r.installed ?? '—'}</td>
+                  <td class="py-2.5 pe-4 font-mono text-xs tabular-nums">
+                    {r.fixed
+                      ? <span class="text-paper">{r.fixed}</span>
+                      : <span class="text-ash">— <span class="uppercase tracking-widest text-[10px] text-ash/70">{t('detail.security.notFixable')}</span></span>}
+                  </td>
+                  <td class="py-2.5 text-ash">{r.title ?? '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-6 flex justify-end">
+          <button
+            type="button"
+            data-cve-close
+            class="rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper"
+          >
+            {t('detail.security.close')}
+          </button>
+        </div>
+      </div>
+    </dialog>
+  </>
+)}
+
+<script>
+  // Trigger and dialog are rendered as siblings, so each pair wires itself up.
+  for (const btn of document.querySelectorAll<HTMLButtonElement>('[data-cve-open]')) {
+    const dlg = btn.nextElementSibling;
+    if (!(dlg instanceof HTMLDialogElement)) continue;
+    btn.addEventListener('click', () => dlg.showModal());
+    dlg.querySelector<HTMLButtonElement>('[data-cve-close]')?.addEventListener('click', () => dlg.close());
+    // Click on the backdrop (the dialog element itself, outside the panel) closes.
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) dlg.close();
+    });
+  }
+</script>

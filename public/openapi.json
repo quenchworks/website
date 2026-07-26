@@ -126,7 +126,7 @@
       "get": {
         "tags": ["Security"],
         "summary": "Security summary",
-        "description": "The catalog-wide CVE summary: grand total, a severity rollup, and a per-image record (with per-version detail). Sourced from the QuenchWorks nightly Trivy scan of each published image digest, so it refreshes on every scan/deploy — never a hardcoded value.",
+        "description": "The catalog-wide CVE summary: grand total, a severity rollup, and a per-image record (with per-version detail). Sourced from the QuenchWorks nightly Trivy scan of each published image digest, so it refreshes on every scan/deploy — never a hardcoded value.\n\nCounts only: each record carries an `href` to its full per-CVE detail at `/api/v1/security/{image}.json`.",
         "operationId": "getSecurity",
         "responses": {
           "200": {
@@ -137,6 +137,69 @@
               }
             }
           }
+        }
+      }
+    },
+    "/api/v1/security/index.json": {
+      "get": {
+        "tags": ["Security"],
+        "summary": "Per-image security index",
+        "description": "Discovery index for the per-image detail endpoints: every scanned image with its grade, totals, and detail `href`.",
+        "operationId": "getSecurityIndex",
+        "responses": {
+          "200": {
+            "description": "The index of scanned images.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SecurityIndex" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/security/{image}.json": {
+      "get": {
+        "tags": ["Security"],
+        "summary": "One image's full CVE detail",
+        "description": "Everything the nightly scan knows about one image: the latest scanned version plus every published version, each with its own deduped `cves[]` (id, severity, package, installed and fixed version, title, advisory URL, affected targets). An image with no scan record is not published and returns 404.",
+        "operationId": "getSecurityImage",
+        "parameters": [
+          { "name": "image", "in": "path", "required": true, "description": "Image slug, as used in the catalog (e.g. `opensearch`).", "schema": { "type": "string" }, "example": "opensearch" }
+        ],
+        "responses": {
+          "200": {
+            "description": "The image's full CVE detail.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SecurityImageDetail" }
+              }
+            }
+          },
+          "404": { "description": "No scan record for that image." }
+        }
+      }
+    },
+    "/api/v1/security/{image}/{version}.json": {
+      "get": {
+        "tags": ["Security"],
+        "summary": "One version's CVE detail",
+        "description": "One published version of one image, with that version's own `cves[]`. Versions containing dots or underscores (`3.7.0`, `1.0.0_beta11_p1`) are used verbatim in the path.",
+        "operationId": "getSecurityImageVersion",
+        "parameters": [
+          { "name": "image", "in": "path", "required": true, "description": "Image slug.", "schema": { "type": "string" }, "example": "opensearch" },
+          { "name": "version", "in": "path", "required": true, "description": "A published version of that image.", "schema": { "type": "string" }, "example": "3.7.0" }
+        ],
+        "responses": {
+          "200": {
+            "description": "That version's CVE detail.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/SecurityVersionDetail" }
+              }
+            }
+          },
+          "404": { "description": "No scan record for that image/version." }
         }
       }
     },
@@ -318,7 +381,82 @@
           "total": { "type": "integer" },
           "fixable": { "type": "integer", "description": "CVEs with an available fix — what a rebuild clears." },
           "grade": { "type": "string", "enum": ["A+", "A", "B", "C", "D", "F"] },
-          "score": { "type": "integer", "minimum": 0, "maximum": 100 }
+          "score": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "cves": { "type": "array", "description": "Per-CVE detail. Present on the /api/v1/security/{image}[/{version}].json endpoints; omitted from the counts-only rollup.", "items": { "$ref": "#/components/schemas/Cve" } }
+        }
+      },
+      "Cve": {
+        "type": "object",
+        "description": "One finding, deduped across the targets it was seen in.",
+        "required": ["id", "severity", "pkg", "installed", "fixed", "title", "url", "targets"],
+        "properties": {
+          "id": { "type": "string", "example": "CVE-2025-12345" },
+          "severity": { "type": "string", "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "UNKNOWN"] },
+          "pkg": { "type": "string", "description": "The package the finding is against." },
+          "installed": { "type": ["string", "null"], "description": "Version currently shipped." },
+          "fixed": { "type": ["string", "null"], "description": "Version that fixes it; null means no upstream fix yet (not fixable)." },
+          "title": { "type": ["string", "null"] },
+          "url": { "type": ["string", "null"], "description": "Primary advisory URL." },
+          "targets": { "type": "array", "items": { "type": "string" }, "description": "Scan targets the finding was seen in (capped at 8)." },
+          "targetsMore": { "type": "integer", "description": "Targets beyond the cap, when truncated." }
+        }
+      },
+      "SecurityImageDetail": {
+        "type": "object",
+        "description": "One image's full CVE detail: latest version + every published version.",
+        "required": ["apiVersion", "resource", "slug", "image", "source", "latest", "versions"],
+        "properties": {
+          "apiVersion": { "type": "string", "const": "v1" },
+          "resource": { "type": "string", "const": "security" },
+          "slug": { "type": "string", "example": "opensearch" },
+          "image": { "type": "string", "example": "ghcr.io/quenchworks/images/opensearch" },
+          "source": { "type": "string", "example": "QuenchWorks nightly Trivy scan (each published image digest)" },
+          "latest": { "$ref": "#/components/schemas/SecurityVersion" },
+          "versions": { "type": "array", "items": { "$ref": "#/components/schemas/SecurityVersion" } }
+        }
+      },
+      "SecurityVersionDetail": {
+        "type": "object",
+        "description": "One version of one image, with that version's own CVE list.",
+        "allOf": [
+          { "$ref": "#/components/schemas/SecurityVersion" },
+          {
+            "type": "object",
+            "properties": {
+              "apiVersion": { "type": "string", "const": "v1" },
+              "resource": { "type": "string", "const": "security" },
+              "slug": { "type": "string" },
+              "image": { "type": "string" },
+              "source": { "type": "string" },
+              "links": { "type": "object", "properties": { "image": { "type": "string", "example": "/api/v1/security/opensearch.json" } } }
+            }
+          }
+        ]
+      },
+      "SecurityIndex": {
+        "type": "object",
+        "description": "Discovery index over the per-image detail endpoints.",
+        "required": ["apiVersion", "resource", "source", "count", "images"],
+        "properties": {
+          "apiVersion": { "type": "string", "const": "v1" },
+          "resource": { "type": "string", "const": "security" },
+          "source": { "type": "string" },
+          "count": { "type": "integer" },
+          "images": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["slug", "image", "grade", "total", "fixable", "href"],
+              "properties": {
+                "slug": { "type": "string" },
+                "image": { "type": "string" },
+                "grade": { "type": "string", "enum": ["A+", "A", "B", "C", "D", "F"] },
+                "total": { "type": "integer" },
+                "fixable": { "type": "integer" },
+                "href": { "type": "string", "example": "/api/v1/security/opensearch.json" }
+              }
+            }
+          }
         }
       },
       "SecurityRecord": {
@@ -338,7 +476,8 @@
           "fixable": { "type": "integer" },
           "grade": { "type": "string", "enum": ["A+", "A", "B", "C", "D", "F"] },
           "score": { "type": "integer", "minimum": 0, "maximum": 100 },
-          "versions": { "type": "array", "items": { "$ref": "#/components/schemas/SecurityVersion" } }
+          "versions": { "type": "array", "items": { "$ref": "#/components/schemas/SecurityVersion" } },
+          "href": { "type": "string", "description": "Link to this image's full per-CVE detail (present in the /api/v1/security.json rollup).", "example": "/api/v1/security/adminer.json" }
         }
       },
       "SecuritySummary": {

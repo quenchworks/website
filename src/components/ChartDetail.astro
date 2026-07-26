@@ -6,6 +6,7 @@ import VersionSwitcher from '../components/VersionSwitcher.astro';
 import { ghcr, type ChartEntry } from '../data/charts';
 import { images } from '../data/images';
 import security from '../data/security.json';
+import CveReport from '../components/CveReport.astro';
 import { resolveAlternatives } from '../data/alternatives';
 import { slugify } from '../data/slugify';
 import type { AhDetail } from '../data/artifacthub';
@@ -220,6 +221,7 @@ const ld = {
               : secRec.fixable
                 ? <span class="font-mono text-[11px] uppercase tracking-widest text-amber-300">{secRec.fixable} fixable · rebuild clears {secRec.fixable === 1 ? 'it' : 'them'}</span>
                 : <span class="font-mono text-[11px] uppercase tracking-widest text-ash">{secRec.total} open · no upstream fix yet</span>}
+            <CveReport cves={secRec.cves} subject={`${entry.slug} ${secRec.version ?? appVersion ?? ''}`.trim()} />
           </div>
         </div>
         <div class="mt-4 grid grid-cols-5 gap-3 text-center">

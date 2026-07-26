@@ -8,6 +8,7 @@ import { ghcr, canonicalVersions, type ImageEntry } from '../data/images';
 import { fetchPackageDetail } from '../data/artifacthub';
 import security from '../data/security.json';
 import CveStatus from '../components/CveStatus.astro';
+import CveReport from '../components/CveReport.astro';
 import { dockerfileFor } from '../data/dockerfiles';
 import { slugify } from '../data/slugify';
 import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
@@ -198,6 +199,7 @@ const ld = {
               : sec?.fixable
                 ? <span class="font-mono text-[11px] uppercase tracking-widest text-amber-300">{sec.fixable} fixable · rebuild clears {sec.fixable === 1 ? 'it' : 'them'}</span>
                 : <span class="font-mono text-[11px] uppercase tracking-widest text-ash">{total} open · no upstream fix yet</span>}
+            <CveReport cves={sec?.cves} subject={`${entry.slug} ${version}`} />
           </div>
         </div>
         <div class="mt-4 grid grid-cols-5 gap-3 text-center">
