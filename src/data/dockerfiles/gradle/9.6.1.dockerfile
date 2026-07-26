@@ -10,7 +10,7 @@ COPY src ./src
 RUN ["gradle", "--no-daemon", "-x", "test", "bootJar"]
 
 # Runtime stage: run the jar on the slim JRE base, nonroot.
-FROM ghcr.io/quenchworks/images/jre:25.0.3 AS runtime
+FROM ghcr.io/quenchworks/images/jre:25.0.4 AS runtime
 WORKDIR /app
 COPY --from=build /app/build/libs/*.jar /app/app.jar
 USER 1001

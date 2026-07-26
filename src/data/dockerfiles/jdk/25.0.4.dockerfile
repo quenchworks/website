@@ -1,5 +1,5 @@
 # Build stage: compile and package the jar with the full JDK.
-FROM ghcr.io/quenchworks/images/jdk:25.0.3 AS build
+FROM ghcr.io/quenchworks/images/jdk:25.0.4 AS build
 USER root
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN ["javac", "-d", "/app/out", "@sources.txt"]
 RUN ["jar", "--create", "--file", "/app/app.jar", "--main-class", "App", "-C", "/app/out", "."]
 
 # Runtime stage: run the jar on the slim JRE base, nonroot.
-FROM ghcr.io/quenchworks/images/jre:25.0.3 AS runtime
+FROM ghcr.io/quenchworks/images/jre:25.0.4 AS runtime
 WORKDIR /app
 COPY --from=build /app/app.jar /app/app.jar
 USER 1001

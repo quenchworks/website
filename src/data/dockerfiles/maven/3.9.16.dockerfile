@@ -10,7 +10,7 @@ COPY src ./src
 RUN ["mvn", "-B", "-o", "-Dmaven.repo.local=/tmp/.m2", "package", "-DskipTests"]
 
 # Runtime stage: run the jar on the slim JRE base, nonroot.
-FROM ghcr.io/quenchworks/images/jre:25.0.3 AS runtime
+FROM ghcr.io/quenchworks/images/jre:25.0.4 AS runtime
 WORKDIR /app
 COPY --from=build /app/target/*.jar /app/app.jar
 USER 1001
