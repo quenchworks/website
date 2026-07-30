@@ -869,11 +869,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.2.9",
-    "appVersion": "1.5.33",
+    "chartVersion": "0.2.10",
+    "appVersion": "1.5.34",
     "description": "Floci, the self-hosted, LocalStack-compatible local AWS emulator (Quarkus). This chart ships ONLY the in-process services (S3, DynamoDB, SQS, SNS, IAM) that run nonroot without a Docker socket; the Docker-backed services (Lambda, RDS, ECS, EKS, ...) are out of scope. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/floci",
-    "imageDigest": "sha256:847ca0a8da78f93b5b6cbfe96aade29a9722d029ea9c9286e9338bbf07bb66a2",
+    "imageDigest": "sha256:176ab5fde8c4f515e7d1f6e1c88906d7bc0b37531e4c268ddca79c3819ad37e8",
     "repositoryID": "3abdd874-e669-4028-8d15-dc03ef8ff2e7",
     "port": 4566,
     "upstream": "https://floci.io",
@@ -881,7 +881,7 @@
     "images": [
       {
         "name": "floci",
-        "image": "ghcr.io/quenchworks/images/floci@sha256:847ca0a8da78f93b5b6cbfe96aade29a9722d029ea9c9286e9338bbf07bb66a2"
+        "image": "ghcr.io/quenchworks/images/floci@sha256:176ab5fde8c4f515e7d1f6e1c88906d7bc0b37531e4c268ddca79c3819ad37e8"
       },
       {
         "name": "floci-full",
@@ -1879,11 +1879,11 @@
     "tier": "critical",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
-    "appVersion": "9.7.1",
+    "chartVersion": "0.0.12",
+    "appVersion": "9.7.2",
     "description": "Widely used open-source relational database for general-purpose OLTP workloads, with broad framework and tooling support. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mysql",
-    "imageDigest": "sha256:dc90a02b6e7669cdadf75b98d4cd88b1c92cee136791bde167f6465a378d8e6a",
+    "imageDigest": "sha256:01e08bae9a563f645e776a868274c3a9bf0a405891d3615cd59ef6aab0f2a9e7",
     "repositoryID": "76f428fc-ee39-4158-b2ee-12f0922309fa",
     "port": 3306,
     "upstream": "https://github.com/mysql/mysql-server",
@@ -1891,7 +1891,7 @@
     "images": [
       {
         "name": "mysql",
-        "image": "ghcr.io/quenchworks/images/mysql@sha256:dc90a02b6e7669cdadf75b98d4cd88b1c92cee136791bde167f6465a378d8e6a"
+        "image": "ghcr.io/quenchworks/images/mysql@sha256:01e08bae9a563f645e776a868274c3a9bf0a405891d3615cd59ef6aab0f2a9e7"
       }
     ]
   },
@@ -2227,18 +2227,18 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
-    "appVersion": "2.6.0",
+    "chartVersion": "0.0.11",
+    "appVersion": "2.6.1",
     "description": "Open-source secrets and encryption management for tokens, keys, and certificates, with dynamic secrets and leasing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/openbao",
-    "imageDigest": "sha256:fa8c10d29e998abf744497a3d50fd67e7bffdea54a902fa859f5ca00f4a38d4e",
+    "imageDigest": "sha256:a27e51c4ac384b57e5141aaf0435163c8c3d36cd185510a163eb5126e56d6394",
     "repositoryID": "8d6b6290-58a0-40c4-9b6d-3604faf59685",
     "upstream": "https://github.com/openbao/openbao",
     "chartRef": "oci://ghcr.io/quenchworks/charts/openbao",
     "images": [
       {
         "name": "openbao",
-        "image": "ghcr.io/quenchworks/images/openbao@sha256:fa8c10d29e998abf744497a3d50fd67e7bffdea54a902fa859f5ca00f4a38d4e"
+        "image": "ghcr.io/quenchworks/images/openbao@sha256:a27e51c4ac384b57e5141aaf0435163c8c3d36cd185510a163eb5126e56d6394"
       }
     ]
   },
@@ -2951,18 +2951,18 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
-    "appVersion": "0.42.2",
+    "chartVersion": "0.0.7",
+    "appVersion": "0.42.3",
     "description": "Thanos, the CNCF highly-available Prometheus setup with long-term storage and a global query view. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The single binary runs every component (query, receive, store, compact, rule, sidecar) as separate toggleable workloads; this chart ships a self-contained query + receive pair by default.",
     "imageRepository": "ghcr.io/quenchworks/images/thanos",
-    "imageDigest": "sha256:fc3394f9f06683f193ff4801728e94538be8c8b74277e703239cc1eda10f6c13",
+    "imageDigest": "sha256:7a05551ba7b8eb49c8a0c724f1afb0ef6f3652284033a342a74a6705c721b777",
     "repositoryID": "18b16ed4-ceb8-4911-8a79-6b2cbd555c8f",
     "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/thanos",
     "images": [
       {
         "name": "thanos",
-        "image": "ghcr.io/quenchworks/images/thanos@sha256:fc3394f9f06683f193ff4801728e94538be8c8b74277e703239cc1eda10f6c13"
+        "image": "ghcr.io/quenchworks/images/thanos@sha256:7a05551ba7b8eb49c8a0c724f1afb0ef6f3652284033a342a74a6705c721b777"
       }
     ]
   },
@@ -3204,25 +3204,26 @@
   {
     "slug": "vault",
     "name": "vault",
-    "category": "Datastore",
-    "summary": "Hardened vault image, built from source on Wolfi.",
-    "tier": "standard",
-    "license": "Unknown",
-    "licenseClean": "clean",
+    "category": "Secrets",
+    "summary": "Secrets and encryption management for tokens, keys, and certificates, with dynamic secrets, leasing, and PKI. Shipped under the Business Source License 1.1, which is not OSI-approved; OpenBao (MPL-2.0) is the open drop-in fork. Built from source without the web UI; the 1.20.x line is CVE-blocked upstream and not shipped.",
+    "tier": "low",
+    "license": "BUSL-1.1",
+    "licenseClean": "caution",
     "chartVersion": "0.0.1",
     "appVersion": "2.0.3",
     "description": "Secrets and encryption management for tokens, keys, and certificates, with dynamic secrets and leasing. Shipped under the Business Source License, which is not OSI-approved; OpenBao (MPL-2.0) is the open drop-in fork. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/vault",
-    "imageDigest": "sha256:REPLACE_WITH_IMAGE_DIGEST",
-    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
-    "upstream": "https://quench-works.com",
+    "imageDigest": "sha256:3428da8e9cee6078dfb909784150e6ac487123ffa13c94091f18b82c8865d893",
+    "repositoryID": "f21e3927-e0b6-4bb2-a660-90a3795afa4f",
+    "upstream": "https://github.com/hashicorp/vault",
     "chartRef": "oci://ghcr.io/quenchworks/charts/vault",
     "images": [
       {
         "name": "vault",
-        "image": "ghcr.io/quenchworks/images/vault@sha256:REPLACE_WITH_IMAGE_DIGEST"
+        "image": "ghcr.io/quenchworks/images/vault@sha256:3428da8e9cee6078dfb909784150e6ac487123ffa13c94091f18b82c8865d893"
       }
-    ]
+    ],
+    "caution": true
   },
   {
     "slug": "vector",
@@ -3374,18 +3375,18 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
-    "appVersion": "1.38.7",
+    "chartVersion": "0.0.12",
+    "appVersion": "1.38.8",
     "description": "Open-source vector database for AI-native applications: stores objects and their vector embeddings and serves low-latency semantic search over REST and gRPC. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/weaviate",
-    "imageDigest": "sha256:1cdad4e53344388498b13d9b3039c04a807beea26af71c5b9d1ccb1c8cf2b246",
+    "imageDigest": "sha256:519ffc0a60bb2d763a9186f859c1e736947a1cbc519925ea205edff3aa5dcd2a",
     "repositoryID": "59500368-862f-4896-9543-a154bb62797a",
     "upstream": "https://weaviate.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/weaviate",
     "images": [
       {
         "name": "weaviate",
-        "image": "ghcr.io/quenchworks/images/weaviate@sha256:1cdad4e53344388498b13d9b3039c04a807beea26af71c5b9d1ccb1c8cf2b246"
+        "image": "ghcr.io/quenchworks/images/weaviate@sha256:519ffc0a60bb2d763a9186f859c1e736947a1cbc519925ea205edff3aa5dcd2a"
       }
     ]
   },
@@ -3449,11 +3450,11 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
-    "appVersion": "1.0.85",
+    "chartVersion": "0.0.9",
+    "appVersion": "1.0.86",
     "description": "xyOps, a complete workflow-automation and server-monitoring system (job scheduler, monitors, alerting, ticketing) by the creator of Cronicle. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image, cosign-signed and pinned by digest. Ships an embedded better-sqlite3 store, so it runs as a single-replica StatefulSet with a persistent data volume; no external database.",
     "imageRepository": "ghcr.io/quenchworks/images/xyops",
-    "imageDigest": "sha256:8ea4b7a795a6b9c0f1cb4158485da89b700b21d9345b79141ad528245aedd77c",
+    "imageDigest": "sha256:ee7074c8201e3b2a05c4145af92ca3beb2421687ee347f033c831926fc02ed06",
     "repositoryID": "4d2b242e-e962-40b7-9d13-794f35b54dcc",
     "port": 5522,
     "upstream": "https://github.com/pixlcore/xyops",
@@ -3461,7 +3462,7 @@
     "images": [
       {
         "name": "xyops",
-        "image": "ghcr.io/quenchworks/images/xyops@sha256:8ea4b7a795a6b9c0f1cb4158485da89b700b21d9345b79141ad528245aedd77c"
+        "image": "ghcr.io/quenchworks/images/xyops@sha256:ee7074c8201e3b2a05c4145af92ca3beb2421687ee347f033c831926fc02ed06"
       }
     ]
   },
@@ -3473,11 +3474,11 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
-    "appVersion": "4.16.0",
+    "chartVersion": "0.0.8",
+    "appVersion": "4.16.2",
     "description": "Open-source identity infrastructure — a cloud-native OIDC/OAuth2/SAML identity and access management server with multi-tenancy, self-service, and a built-in management API/console. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/zitadel",
-    "imageDigest": "sha256:320c6ee8c8363d3ee3c99e8b0c9077a327cbaf2db4c3a210fc0becccd0e971a6",
+    "imageDigest": "sha256:9d3a7e6663962c9b68e3f8bc967006e212c1f7deb11c0d834be1df6744c7f720",
     "repositoryID": "6f205d15-ee9e-4ad0-b418-1ff79e383fa2",
     "port": 8080,
     "upstream": "https://quench-works.com",
@@ -3485,7 +3486,7 @@
     "images": [
       {
         "name": "zitadel",
-        "image": "ghcr.io/quenchworks/images/zitadel@sha256:320c6ee8c8363d3ee3c99e8b0c9077a327cbaf2db4c3a210fc0becccd0e971a6"
+        "image": "ghcr.io/quenchworks/images/zitadel@sha256:9d3a7e6663962c9b68e3f8bc967006e212c1f7deb11c0d834be1df6744c7f720"
       },
       {
         "name": "postgresql",
