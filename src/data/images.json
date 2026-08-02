@@ -2894,6 +2894,38 @@
     "image": "ghcr.io/quenchworks/images/mariadb"
   },
   {
+    "slug": "matomo",
+    "name": "matomo",
+    "category": "Apps & productivity",
+    "summary": "Matomo, the self-hosted web analytics platform and a privacy-respecting alternative to Google Analytics: you keep the raw data. Built from the official release tarball on a hardened Wolfi php-8.3-fpm runtime fronted by nginx built from source (nonroot, read-only rootfs, supervisord), with the vendored twig/twig replaced by 3.28.0 to clear 14 advisories the shipped 3.11.3 carries. The tarball ships no composer.lock, so the recipe re-materialises the dependency inventory from vendor/composer/installed.php purely so scanners can enumerate what is vendored. Image only, no chart.",
+    "tier": "standard",
+    "status": "available",
+    "license": "GPL-3.0+",
+    "licenseClean": "agpl",
+    "version": "5.12.0, 5.11.2",
+    "versions": [
+      {
+        "version": "5.12.0",
+        "size": "90.2 MB",
+        "published": "2026-08-02T12:55:33Z",
+        "digest": "sha256:8d771a71ca6ee35a1595cda0a87d07d15adbc76d51be874ab251d243a90688b0"
+      },
+      {
+        "version": "5.11.2",
+        "size": "90.2 MB",
+        "published": "2026-08-02T12:55:31Z",
+        "digest": "sha256:c98c52d90e749fb75ae2da390d74f3f5a7847988125e21d6dd2e8b783605f60b"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://matomo.org",
+    "source": "https://builds.matomo.org/matomo-5.12.0.tar.gz",
+    "image": "ghcr.io/quenchworks/images/matomo"
+  },
+  {
     "slug": "mattermost",
     "name": "mattermost",
     "category": "Messaging",
