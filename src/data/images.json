@@ -989,6 +989,45 @@
     "image": "ghcr.io/quenchworks/images/cosign"
   },
   {
+    "slug": "cosmian-kms",
+    "name": "cosmian-kms",
+    "category": "Secrets",
+    "summary": "KMIP 2.1 key management server with PKCS#11 and Google/Microsoft CSE support -- the only KMIP speaker in this catalog. Shipped under BUSL-1.1, which is NOT OSI-approved AND caps production use at 2 vCPUs (1 physical core) while barring third-party offering; read the licence before deploying. Built non-FIPS against Wolfi's OpenSSL, so it is NOT FIPS 140-3 validated despite upstream's description.",
+    "tier": "low",
+    "status": "available",
+    "license": "BUSL-1.1",
+    "licenseClean": "caution",
+    "version": "5.24.0, 5.25.0, 5.23.0",
+    "versions": [
+      {
+        "version": "5.24.0",
+        "size": "15.1 MB",
+        "published": "2026-08-04T10:43:44Z",
+        "digest": "sha256:aa9464a418f5c53e4951a0ac76072089c7278c122e25f4bd48deb930d293c03f"
+      },
+      {
+        "version": "5.25.0",
+        "size": "15.4 MB",
+        "published": "2026-08-04T10:43:39Z",
+        "digest": "sha256:ed05b34f42b3b6ec9642a4a15a79bae35848c533d85f993dd02f9685d0bcabf0"
+      },
+      {
+        "version": "5.23.0",
+        "size": "15.0 MB",
+        "published": "2026-08-04T10:43:35Z",
+        "digest": "sha256:dfa02fb06c836ee2be5ec6187ea61d823e0e1e6e54b84fc88cbb2a1d572793fc"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/Cosmian/kms",
+    "source": "https://github.com/Cosmian/kms",
+    "image": "ghcr.io/quenchworks/images/cosmian-kms",
+    "caution": true
+  },
+  {
     "slug": "couchdb",
     "name": "CouchDB",
     "category": "Document",
@@ -2628,6 +2667,32 @@
     "upstream": "https://github.com/keycloak/keycloak",
     "source": "https://github.com/keycloak/keycloak",
     "image": "ghcr.io/quenchworks/images/keycloak"
+  },
+  {
+    "slug": "kong",
+    "name": "kong",
+    "category": "Gateway",
+    "summary": "API gateway and ingress controller on a patched OpenResty, with routing, auth, rate limiting, and a plugin ecosystem. Built from source against current OpenSSL rather than Kong's pinned older crypto; ships the Admin API without the Kong Manager GUI, whose assets are not built from source upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "3.9.3",
+    "versions": [
+      {
+        "version": "3.9.3",
+        "size": "42.3 MB",
+        "published": "2026-08-04T10:06:16Z",
+        "digest": "sha256:dcf9af271e724e8063894813a65bdae23559f04528f839a8b8b2affebf92fa6e"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/Kong/kong",
+    "source": "https://github.com/Kong/kong",
+    "image": "ghcr.io/quenchworks/images/kong"
   },
   {
     "slug": "kube-state-metrics",
