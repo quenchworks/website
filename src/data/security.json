@@ -118,13 +118,13 @@
         "tag": "ghcr.io/quenchworks/images/airflow:3.2.2",
         "critical": 0,
         "high": 1,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 2,
+        "fixable": 2,
         "grade": "D",
-        "score": 85,
+        "score": 76,
         "cves": [
           {
             "id": "CVE-2026-69247",
@@ -134,6 +134,18 @@
             "fixed": "50.0.0",
             "title": "cryptography is a package designed to expose cryptographic primitives  ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69247",
+            "targets": [
+              "Python"
+            ]
+          },
+          {
+            "id": "CVE-2026-49296",
+            "severity": "MEDIUM",
+            "pkg": "apache-airflow",
+            "installed": "3.2.2",
+            "fixed": "3.3.0",
+            "title": "apache-airflow DAG source authorization bypass exposes co-located DAG source",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-49296",
             "targets": [
               "Python"
             ]
@@ -207,13 +219,13 @@
     "tag": "ghcr.io/quenchworks/images/ansible:14.2.0",
     "critical": 0,
     "high": 1,
-    "medium": 1,
-    "low": 0,
+    "medium": 3,
+    "low": 2,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
+    "total": 6,
+    "fixable": 6,
     "grade": "D",
-    "score": 76,
+    "score": 46,
     "cves": [
       {
         "id": "CVE-2026-69247",
@@ -228,6 +240,30 @@
         ]
       },
       {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
+        ]
+      },
+      {
         "id": "CVE-2026-58055",
         "severity": "MEDIUM",
         "pkg": "libnghttp2-14",
@@ -235,6 +271,30 @@
         "fixed": "1.70.0-r0",
         "title": "nghttp2: nghttp2: HTTP Request/Response Smuggling and Response-Queue Poisoning via ambiguous HTTP/1.1 Upgrade requests",
         "url": "https://avd.aquasec.com/nvd/cve-2026-58055",
+        "targets": [
+          "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
         "targets": [
           "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
         ]
@@ -246,13 +306,13 @@
         "tag": "ghcr.io/quenchworks/images/ansible:14.2.0",
         "critical": 0,
         "high": 1,
-        "medium": 1,
-        "low": 0,
+        "medium": 3,
+        "low": 2,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 6,
+        "fixable": 6,
         "grade": "D",
-        "score": 76,
+        "score": 46,
         "cves": [
           {
             "id": "CVE-2026-69247",
@@ -264,6 +324,30 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-69247",
             "targets": [
               "Python"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
             ]
           },
           {
@@ -277,6 +361,30 @@
             "targets": [
               "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
             ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:0a24f0269b8691d6679b4f976bdc376babebc160e1da02b2301603e797fda911 (wolfi 20230201)"
+            ]
           }
         ]
       },
@@ -285,13 +393,13 @@
         "tag": "ghcr.io/quenchworks/images/ansible:14.1.0",
         "critical": 0,
         "high": 1,
-        "medium": 1,
-        "low": 0,
+        "medium": 3,
+        "low": 2,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 6,
+        "fixable": 6,
         "grade": "D",
-        "score": 76,
+        "score": 46,
         "cves": [
           {
             "id": "CVE-2026-69247",
@@ -306,6 +414,30 @@
             ]
           },
           {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:1c27197ae13e6c9f7391a263ebba7846646c70c9591dd8a5ad8107aeb4f4402c (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:1c27197ae13e6c9f7391a263ebba7846646c70c9591dd8a5ad8107aeb4f4402c (wolfi 20230201)"
+            ]
+          },
+          {
             "id": "CVE-2026-58055",
             "severity": "MEDIUM",
             "pkg": "libnghttp2-14",
@@ -313,6 +445,30 @@
             "fixed": "1.70.0-r0",
             "title": "nghttp2: nghttp2: HTTP Request/Response Smuggling and Response-Queue Poisoning via ambiguous HTTP/1.1 Upgrade requests",
             "url": "https://avd.aquasec.com/nvd/cve-2026-58055",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:1c27197ae13e6c9f7391a263ebba7846646c70c9591dd8a5ad8107aeb4f4402c (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/ansible@sha256:1c27197ae13e6c9f7391a263ebba7846646c70c9591dd8a5ad8107aeb4f4402c (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
             "targets": [
               "ghcr.io/quenchworks/images/ansible@sha256:1c27197ae13e6c9f7391a263ebba7846646c70c9591dd8a5ad8107aeb4f4402c (wolfi 20230201)"
             ]
@@ -433,15 +589,28 @@
     "version": "3.4.6",
     "tag": "ghcr.io/quenchworks/images/argocd:3.4.6",
     "critical": 0,
-    "high": 3,
+    "high": 5,
     "medium": 1,
     "low": 0,
-    "unknown": 6,
+    "unknown": 4,
     "total": 10,
     "fixable": 6,
     "grade": "D",
-    "score": 24,
+    "score": 8,
     "cves": [
+      {
+        "id": "CVE-2026-46600",
+        "severity": "HIGH",
+        "pkg": "golang.org/x/net",
+        "installed": "v0.55.0",
+        "fixed": "0.56.0",
+        "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+        "targets": [
+          "usr/bin/git-lfs",
+          "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+        ]
+      },
       {
         "id": "CVE-2026-50163",
         "severity": "HIGH",
@@ -480,19 +649,6 @@
         ]
       },
       {
-        "id": "CVE-2026-46600",
-        "severity": "UNKNOWN",
-        "pkg": "golang.org/x/net",
-        "installed": "v0.55.0",
-        "fixed": "0.56.0",
-        "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
-        "targets": [
-          "usr/bin/git-lfs",
-          "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
-        ]
-      },
-      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -524,15 +680,28 @@
         "version": "3.4.6",
         "tag": "ghcr.io/quenchworks/images/argocd:3.4.6",
         "critical": 0,
-        "high": 3,
+        "high": 5,
         "medium": 1,
         "low": 0,
-        "unknown": 6,
+        "unknown": 4,
         "total": 10,
         "fixable": 6,
         "grade": "D",
-        "score": 24,
+        "score": 8,
         "cves": [
+          {
+            "id": "CVE-2026-46600",
+            "severity": "HIGH",
+            "pkg": "golang.org/x/net",
+            "installed": "v0.55.0",
+            "fixed": "0.56.0",
+            "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+            "targets": [
+              "usr/bin/git-lfs",
+              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+            ]
+          },
           {
             "id": "CVE-2026-50163",
             "severity": "HIGH",
@@ -568,19 +737,6 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-71557",
             "targets": [
               "usr/bin/argocd"
-            ]
-          },
-          {
-            "id": "CVE-2026-46600",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/net",
-            "installed": "v0.55.0",
-            "fixed": "0.56.0",
-            "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
-            "targets": [
-              "usr/bin/git-lfs",
-              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
             ]
           },
           {
@@ -615,15 +771,28 @@
         "version": "3.3.13",
         "tag": "ghcr.io/quenchworks/images/argocd:3.3.13",
         "critical": 0,
-        "high": 3,
+        "high": 5,
         "medium": 1,
         "low": 0,
-        "unknown": 6,
+        "unknown": 4,
         "total": 10,
         "fixable": 6,
         "grade": "D",
-        "score": 24,
+        "score": 8,
         "cves": [
+          {
+            "id": "CVE-2026-46600",
+            "severity": "HIGH",
+            "pkg": "golang.org/x/net",
+            "installed": "v0.55.0",
+            "fixed": "0.56.0",
+            "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+            "targets": [
+              "usr/bin/git-lfs",
+              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+            ]
+          },
           {
             "id": "CVE-2026-50163",
             "severity": "HIGH",
@@ -659,19 +828,6 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-71557",
             "targets": [
               "usr/bin/argocd"
-            ]
-          },
-          {
-            "id": "CVE-2026-46600",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/net",
-            "installed": "v0.55.0",
-            "fixed": "0.56.0",
-            "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
-            "targets": [
-              "usr/bin/git-lfs",
-              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
             ]
           },
           {
@@ -706,15 +862,28 @@
         "version": "3.2.12",
         "tag": "ghcr.io/quenchworks/images/argocd:3.2.12",
         "critical": 0,
-        "high": 3,
+        "high": 5,
         "medium": 1,
         "low": 0,
-        "unknown": 6,
+        "unknown": 4,
         "total": 10,
         "fixable": 6,
         "grade": "D",
-        "score": 24,
+        "score": 8,
         "cves": [
+          {
+            "id": "CVE-2026-46600",
+            "severity": "HIGH",
+            "pkg": "golang.org/x/net",
+            "installed": "v0.55.0",
+            "fixed": "0.56.0",
+            "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+            "targets": [
+              "usr/bin/git-lfs",
+              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+            ]
+          },
           {
             "id": "CVE-2026-50163",
             "severity": "HIGH",
@@ -750,19 +919,6 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-71557",
             "targets": [
               "usr/bin/argocd"
-            ]
-          },
-          {
-            "id": "CVE-2026-46600",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/net",
-            "installed": "v0.55.0",
-            "fixed": "0.56.0",
-            "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
-            "targets": [
-              "usr/bin/git-lfs",
-              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
             ]
           },
           {
@@ -1169,11 +1325,11 @@
     "tag": "ghcr.io/quenchworks/images/authentik:2026.5.6",
     "critical": 0,
     "high": 3,
-    "medium": 6,
-    "low": 2,
+    "medium": 8,
+    "low": 4,
     "unknown": 0,
-    "total": 11,
-    "fixable": 10,
+    "total": 15,
+    "fixable": 14,
     "grade": "D",
     "score": 0,
     "cves": [
@@ -1183,7 +1339,7 @@
         "pkg": "aiohttp",
         "installed": "3.14.1",
         "fixed": "3.14.3",
-        "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+        "title": "aiohttp: AIOHTTP: Denial of Service via malformed HTTP responses",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69244",
         "targets": [
           "Python"
@@ -1211,6 +1367,30 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-69249",
         "targets": [
           "Python"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14-base",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
         ]
       },
       {
@@ -1255,7 +1435,7 @@
         "pkg": "aiohttp",
         "installed": "3.14.1",
         "fixed": "3.14.2",
-        "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+        "title": "aiohttp: AIOHTTP: HTTP Request Smuggling via WebSocket Upgrade",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69243",
         "targets": [
           "Python"
@@ -1298,6 +1478,30 @@
         ]
       },
       {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.14",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.14-base",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
+        ]
+      },
+      {
         "id": "CVE-2026-44405",
         "severity": "LOW",
         "pkg": "paramiko",
@@ -1316,11 +1520,11 @@
         "tag": "ghcr.io/quenchworks/images/authentik:2026.5.6",
         "critical": 0,
         "high": 3,
-        "medium": 6,
-        "low": 2,
+        "medium": 8,
+        "low": 4,
         "unknown": 0,
-        "total": 11,
-        "fixable": 10,
+        "total": 15,
+        "fixable": 14,
         "grade": "D",
         "score": 0,
         "cves": [
@@ -1330,7 +1534,7 @@
             "pkg": "aiohttp",
             "installed": "3.14.1",
             "fixed": "3.14.3",
-            "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+            "title": "aiohttp: AIOHTTP: Denial of Service via malformed HTTP responses",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69244",
             "targets": [
               "Python"
@@ -1358,6 +1562,30 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-69249",
             "targets": [
               "Python"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14-base",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
             ]
           },
           {
@@ -1402,7 +1630,7 @@
             "pkg": "aiohttp",
             "installed": "3.14.1",
             "fixed": "3.14.2",
-            "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+            "title": "aiohttp: AIOHTTP: HTTP Request Smuggling via WebSocket Upgrade",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69243",
             "targets": [
               "Python"
@@ -1442,6 +1670,30 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-48588",
             "targets": [
               "Python"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.14",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.14-base",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/authentik@sha256:ae674559d1ed7cc9820d5128c914d5647f36effe3f3fed632e886946fcf5f634 (wolfi 20230201)"
             ]
           },
           {
@@ -3002,15 +3254,28 @@
     "version": "4.2.0",
     "tag": "ghcr.io/quenchworks/images/coolify-app:4.2.0",
     "critical": 0,
-    "high": 4,
-    "medium": 3,
-    "low": 0,
-    "unknown": 4,
-    "total": 11,
-    "fixable": 9,
+    "high": 6,
+    "medium": 4,
+    "low": 1,
+    "unknown": 2,
+    "total": 13,
+    "fixable": 11,
     "grade": "D",
     "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-46600",
+        "severity": "HIGH",
+        "pkg": "golang.org/x/net",
+        "installed": "v0.55.0",
+        "fixed": "0.56.0",
+        "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+        "targets": [
+          "usr/bin/git-lfs",
+          "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+        ]
+      },
       {
         "id": "CVE-2026-71488",
         "severity": "HIGH",
@@ -3060,6 +3325,18 @@
         ]
       },
       {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/coolify-app@sha256:a170bf310e7f2335dffb936c5df58f4bff8ccf567d78d80131919527ce4878f6 (wolfi 20230201)"
+        ]
+      },
+      {
         "id": "CVE-2026-58055",
         "severity": "MEDIUM",
         "pkg": "libnghttp2-14",
@@ -3096,16 +3373,15 @@
         ]
       },
       {
-        "id": "CVE-2026-46600",
-        "severity": "UNKNOWN",
-        "pkg": "golang.org/x/net",
-        "installed": "v0.55.0",
-        "fixed": "0.56.0",
-        "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
         "targets": [
-          "usr/bin/git-lfs",
-          "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+          "ghcr.io/quenchworks/images/coolify-app@sha256:a170bf310e7f2335dffb936c5df58f4bff8ccf567d78d80131919527ce4878f6 (wolfi 20230201)"
         ]
       },
       {
@@ -3127,15 +3403,28 @@
         "version": "4.2.0",
         "tag": "ghcr.io/quenchworks/images/coolify-app:4.2.0",
         "critical": 0,
-        "high": 4,
-        "medium": 3,
-        "low": 0,
-        "unknown": 4,
-        "total": 11,
-        "fixable": 9,
+        "high": 6,
+        "medium": 4,
+        "low": 1,
+        "unknown": 2,
+        "total": 13,
+        "fixable": 11,
         "grade": "D",
         "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-46600",
+            "severity": "HIGH",
+            "pkg": "golang.org/x/net",
+            "installed": "v0.55.0",
+            "fixed": "0.56.0",
+            "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+            "targets": [
+              "usr/bin/git-lfs",
+              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+            ]
+          },
           {
             "id": "CVE-2026-71488",
             "severity": "HIGH",
@@ -3185,6 +3474,18 @@
             ]
           },
           {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/coolify-app@sha256:a170bf310e7f2335dffb936c5df58f4bff8ccf567d78d80131919527ce4878f6 (wolfi 20230201)"
+            ]
+          },
+          {
             "id": "CVE-2026-58055",
             "severity": "MEDIUM",
             "pkg": "libnghttp2-14",
@@ -3221,16 +3522,15 @@
             ]
           },
           {
-            "id": "CVE-2026-46600",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/net",
-            "installed": "v0.55.0",
-            "fixed": "0.56.0",
-            "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
             "targets": [
-              "usr/bin/git-lfs",
-              "var/lib/db/sbom/git-lfs-3.7.1-r18.spdx.json"
+              "ghcr.io/quenchworks/images/coolify-app@sha256:a170bf310e7f2335dffb936c5df58f4bff8ccf567d78d80131919527ce4878f6 (wolfi 20230201)"
             ]
           },
           {
@@ -3270,7 +3570,7 @@
         "pkg": "brace-expansion",
         "installed": "5.0.8",
         "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-        "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+        "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
         "targets": [
           "Node.js"
@@ -3345,7 +3645,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -4428,13 +4728,13 @@
     "tag": "ghcr.io/quenchworks/images/drupal:11.4.4",
     "critical": 0,
     "high": 1,
-    "medium": 2,
-    "low": 0,
+    "medium": 3,
+    "low": 1,
     "unknown": 0,
-    "total": 3,
-    "fixable": 3,
+    "total": 5,
+    "fixable": 5,
     "grade": "D",
-    "score": 67,
+    "score": 52,
     "cves": [
       {
         "id": "CVE-2026-69246",
@@ -4446,6 +4746,18 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-69246",
         "targets": [
           "opt/drupal/vendor/composer/installed.json"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/drupal@sha256:23aa2bdb493cedda7c0d64d0f3f423d463f65e55abbed1bbfd45066ec8976eb0 (wolfi 20230201)"
         ]
       },
       {
@@ -4471,6 +4783,18 @@
         "targets": [
           "opt/drupal/vendor/composer/installed.json"
         ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/drupal@sha256:23aa2bdb493cedda7c0d64d0f3f423d463f65e55abbed1bbfd45066ec8976eb0 (wolfi 20230201)"
+        ]
       }
     ],
     "versions": [
@@ -4479,13 +4803,13 @@
         "tag": "ghcr.io/quenchworks/images/drupal:11.4.4",
         "critical": 0,
         "high": 1,
-        "medium": 2,
-        "low": 0,
+        "medium": 3,
+        "low": 1,
         "unknown": 0,
-        "total": 3,
-        "fixable": 3,
+        "total": 5,
+        "fixable": 5,
         "grade": "D",
-        "score": 67,
+        "score": 52,
         "cves": [
           {
             "id": "CVE-2026-69246",
@@ -4497,6 +4821,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-69246",
             "targets": [
               "opt/drupal/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/drupal@sha256:23aa2bdb493cedda7c0d64d0f3f423d463f65e55abbed1bbfd45066ec8976eb0 (wolfi 20230201)"
             ]
           },
           {
@@ -4521,6 +4857,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-69245",
             "targets": [
               "opt/drupal/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/drupal@sha256:23aa2bdb493cedda7c0d64d0f3f423d463f65e55abbed1bbfd45066ec8976eb0 (wolfi 20230201)"
             ]
           }
         ]
@@ -4591,15 +4939,27 @@
     "version": "9.4.4",
     "tag": "ghcr.io/quenchworks/images/elasticsearch:9.4.4",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 3,
     "low": 1,
     "unknown": 0,
-    "total": 4,
-    "fixable": 4,
-    "grade": "C",
-    "score": 67,
+    "total": 5,
+    "fixable": 5,
+    "grade": "D",
+    "score": 52,
     "cves": [
+      {
+        "id": "CVE-2026-54399",
+        "severity": "HIGH",
+        "pkg": "org.apache.httpcomponents.core5:httpcore5",
+        "installed": "5.3.5",
+        "fixed": "5.4.3, 5.5-beta2",
+        "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-46968",
         "severity": "MEDIUM",
@@ -4654,15 +5014,27 @@
         "version": "9.4.4",
         "tag": "ghcr.io/quenchworks/images/elasticsearch:9.4.4",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 3,
         "low": 1,
         "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "C",
-        "score": 67,
+        "total": 5,
+        "fixable": 5,
+        "grade": "D",
+        "score": 52,
         "cves": [
+          {
+            "id": "CVE-2026-54399",
+            "severity": "HIGH",
+            "pkg": "org.apache.httpcomponents.core5:httpcore5",
+            "installed": "5.3.5",
+            "fixed": "5.4.3, 5.5-beta2",
+            "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-46968",
             "severity": "MEDIUM",
@@ -5345,29 +5717,55 @@
     "version": "1.5.34",
     "tag": "ghcr.io/quenchworks/images/floci:1.5.34",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-54399",
+        "severity": "HIGH",
+        "pkg": "org.apache.httpcomponents.core5:httpcore5",
+        "installed": "5.3.6",
+        "fixed": "5.4.3, 5.5-beta2",
+        "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.5.34",
         "tag": "ghcr.io/quenchworks/images/floci:1.5.34",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-54399",
+            "severity": "HIGH",
+            "pkg": "org.apache.httpcomponents.core5:httpcore5",
+            "installed": "5.3.6",
+            "fixed": "5.4.3, 5.5-beta2",
+            "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -5376,29 +5774,79 @@
     "version": "1.5.29",
     "tag": "ghcr.io/quenchworks/images/floci-full:1.5.29",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "D",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2026-50559",
+        "severity": "HIGH",
+        "pkg": "io.quarkus:quarkus-vertx-http",
+        "installed": "3.36.0",
+        "fixed": "3.20.6.2, 3.27.4.1, 3.33.2.1, 3.36.3, 3.37.0",
+        "title": "io.quarkus/quarkus-vertx-http: Quarkus: Authorization bypass in HTTP path-based policies via encoded characters",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-50559",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-54399",
+        "severity": "HIGH",
+        "pkg": "org.apache.httpcomponents.core5:httpcore5",
+        "installed": "5.3.6",
+        "fixed": "5.4.3, 5.5-beta2",
+        "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.5.29",
         "tag": "ghcr.io/quenchworks/images/floci-full:1.5.29",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "D",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2026-50559",
+            "severity": "HIGH",
+            "pkg": "io.quarkus:quarkus-vertx-http",
+            "installed": "3.36.0",
+            "fixed": "3.20.6.2, 3.27.4.1, 3.33.2.1, 3.36.3, 3.37.0",
+            "title": "io.quarkus/quarkus-vertx-http: Quarkus: Authorization bypass in HTTP path-based policies via encoded characters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-50559",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-54399",
+            "severity": "HIGH",
+            "pkg": "org.apache.httpcomponents.core5:httpcore5",
+            "installed": "5.3.6",
+            "fixed": "5.4.3, 5.5-beta2",
+            "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -5578,11 +6026,11 @@
     "version": "6.55.0",
     "tag": "ghcr.io/quenchworks/images/ghost:6.55.0",
     "critical": 0,
-    "high": 11,
+    "high": 12,
     "medium": 13,
     "low": 1,
     "unknown": 0,
-    "total": 25,
+    "total": 26,
     "fixable": 20,
     "grade": "D",
     "score": 0,
@@ -5641,7 +6089,7 @@
         "pkg": "brace-expansion",
         "installed": "5.0.8",
         "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-        "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+        "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
         "targets": [
           "Node.js"
@@ -5715,6 +6163,18 @@
         "fixed": null,
         "title": "image-size: image-size: Denial of Service via crafted ICNS image buffer",
         "url": "https://avd.aquasec.com/nvd/cve-2025-71330",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-56876",
+        "severity": "HIGH",
+        "pkg": "extract-zip",
+        "installed": "2.0.1",
+        "fixed": null,
+        "title": "extract-zip: github.com/maxogden/extract-zip: extract-zip: Arbitrary file write and information disclosure via symlink validation bypass",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-56876",
         "targets": [
           "Node.js"
         ]
@@ -5893,11 +6353,11 @@
         "version": "6.55.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.55.0",
         "critical": 0,
-        "high": 11,
+        "high": 12,
         "medium": 13,
         "low": 1,
         "unknown": 0,
-        "total": 25,
+        "total": 26,
         "fixable": 20,
         "grade": "D",
         "score": 0,
@@ -5956,7 +6416,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -6030,6 +6490,18 @@
             "fixed": null,
             "title": "image-size: image-size: Denial of Service via crafted ICNS image buffer",
             "url": "https://avd.aquasec.com/nvd/cve-2025-71330",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-56876",
+            "severity": "HIGH",
+            "pkg": "extract-zip",
+            "installed": "2.0.1",
+            "fixed": null,
+            "title": "extract-zip: github.com/maxogden/extract-zip: extract-zip: Arbitrary file write and information disclosure via symlink validation bypass",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-56876",
             "targets": [
               "Node.js"
             ]
@@ -6629,15 +7101,27 @@
     "version": "7.1.6",
     "tag": "ghcr.io/quenchworks/images/graylog:7.1.6",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 4,
     "low": 1,
     "unknown": 0,
-    "total": 5,
-    "fixable": 4,
-    "grade": "C",
-    "score": 63,
+    "total": 6,
+    "fixable": 5,
+    "grade": "D",
+    "score": 48,
     "cves": [
+      {
+        "id": "CVE-2026-54399",
+        "severity": "HIGH",
+        "pkg": "org.apache.httpcomponents.core5:httpcore5",
+        "installed": "5.3.4",
+        "fixed": "5.4.3, 5.5-beta2",
+        "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-46968",
         "severity": "MEDIUM",
@@ -6704,15 +7188,27 @@
         "version": "7.1.6",
         "tag": "ghcr.io/quenchworks/images/graylog:7.1.6",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 4,
         "low": 1,
         "unknown": 0,
-        "total": 5,
-        "fixable": 4,
-        "grade": "C",
-        "score": 63,
+        "total": 6,
+        "fixable": 5,
+        "grade": "D",
+        "score": 48,
         "cves": [
+          {
+            "id": "CVE-2026-54399",
+            "severity": "HIGH",
+            "pkg": "org.apache.httpcomponents.core5:httpcore5",
+            "installed": "5.3.4",
+            "fixed": "5.4.3, 5.5-beta2",
+            "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-46968",
             "severity": "MEDIUM",
@@ -7896,14 +8392,14 @@
     "version": "1.15.8",
     "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.8",
     "critical": 0,
-    "high": 3,
+    "high": 5,
     "medium": 1,
     "low": 0,
-    "unknown": 2,
+    "unknown": 0,
     "total": 6,
     "fixable": 6,
     "grade": "D",
-    "score": 32,
+    "score": 16,
     "cves": [
       {
         "id": "CVE-2026-42533",
@@ -7915,6 +8411,19 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-42533",
         "targets": [
           "ghcr.io/quenchworks/images/ingress-nginx@sha256:3f88b7c56cf30d630f367c0175477af5ac406a1145a7d3d0225a8c53f23e99b8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-46600",
+        "severity": "HIGH",
+        "pkg": "golang.org/x/net",
+        "installed": "v0.55.0",
+        "fixed": "0.56.0",
+        "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+        "targets": [
+          "usr/bin/nginx-ingress-controller",
+          "var/lib/db/sbom/ingress-nginx-controller-1.15-1.15.8-r8.spdx.json"
         ]
       },
       {
@@ -7941,19 +8450,6 @@
         "targets": [
           "ghcr.io/quenchworks/images/ingress-nginx@sha256:3f88b7c56cf30d630f367c0175477af5ac406a1145a7d3d0225a8c53f23e99b8 (wolfi 20230201)"
         ]
-      },
-      {
-        "id": "CVE-2026-46600",
-        "severity": "UNKNOWN",
-        "pkg": "golang.org/x/net",
-        "installed": "v0.55.0",
-        "fixed": "0.56.0",
-        "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
-        "targets": [
-          "usr/bin/nginx-ingress-controller",
-          "var/lib/db/sbom/ingress-nginx-controller-1.15-1.15.8-r8.spdx.json"
-        ]
       }
     ],
     "versions": [
@@ -7961,14 +8457,14 @@
         "version": "1.15.8",
         "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.8",
         "critical": 0,
-        "high": 3,
+        "high": 5,
         "medium": 1,
         "low": 0,
-        "unknown": 2,
+        "unknown": 0,
         "total": 6,
         "fixable": 6,
         "grade": "D",
-        "score": 32,
+        "score": 16,
         "cves": [
           {
             "id": "CVE-2026-42533",
@@ -7980,6 +8476,19 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-42533",
             "targets": [
               "ghcr.io/quenchworks/images/ingress-nginx@sha256:3f88b7c56cf30d630f367c0175477af5ac406a1145a7d3d0225a8c53f23e99b8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-46600",
+            "severity": "HIGH",
+            "pkg": "golang.org/x/net",
+            "installed": "v0.55.0",
+            "fixed": "0.56.0",
+            "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+            "targets": [
+              "usr/bin/nginx-ingress-controller",
+              "var/lib/db/sbom/ingress-nginx-controller-1.15-1.15.8-r8.spdx.json"
             ]
           },
           {
@@ -8005,19 +8514,6 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-58055",
             "targets": [
               "ghcr.io/quenchworks/images/ingress-nginx@sha256:3f88b7c56cf30d630f367c0175477af5ac406a1145a7d3d0225a8c53f23e99b8 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-46600",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/net",
-            "installed": "v0.55.0",
-            "fixed": "0.56.0",
-            "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
-            "targets": [
-              "usr/bin/nginx-ingress-controller",
-              "var/lib/db/sbom/ingress-nginx-controller-1.15-1.15.8-r8.spdx.json"
             ]
           }
         ]
@@ -8292,13 +8788,13 @@
     "tag": "ghcr.io/quenchworks/images/jenkins:2.572",
     "critical": 0,
     "high": 0,
-    "medium": 2,
+    "medium": 3,
     "low": 1,
     "unknown": 0,
-    "total": 3,
+    "total": 4,
     "fixable": 3,
     "grade": "C",
-    "score": 76,
+    "score": 72,
     "cves": [
       {
         "id": "CVE-2026-46968",
@@ -8325,6 +8821,18 @@
         ]
       },
       {
+        "id": "CVE-2025-48924",
+        "severity": "MEDIUM",
+        "pkg": "commons-lang:commons-lang",
+        "installed": "2.6",
+        "fixed": null,
+        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
         "id": "CVE-2026-47010",
         "severity": "LOW",
         "pkg": "openjdk-21-jre",
@@ -8343,13 +8851,13 @@
         "tag": "ghcr.io/quenchworks/images/jenkins:2.572",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 3,
         "low": 1,
         "unknown": 0,
-        "total": 3,
+        "total": 4,
         "fixable": 3,
         "grade": "C",
-        "score": 76,
+        "score": 72,
         "cves": [
           {
             "id": "CVE-2026-46968",
@@ -8376,6 +8884,18 @@
             ]
           },
           {
+            "id": "CVE-2025-48924",
+            "severity": "MEDIUM",
+            "pkg": "commons-lang:commons-lang",
+            "installed": "2.6",
+            "fixed": null,
+            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
             "id": "CVE-2026-47010",
             "severity": "LOW",
             "pkg": "openjdk-21-jre",
@@ -8396,15 +8916,27 @@
     "version": "5.6.3",
     "tag": "ghcr.io/quenchworks/images/jmeter:5.6.3",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 3,
     "low": 1,
     "unknown": 0,
-    "total": 4,
-    "fixable": 4,
-    "grade": "C",
-    "score": 67,
+    "total": 5,
+    "fixable": 5,
+    "grade": "D",
+    "score": 52,
     "cves": [
+      {
+        "id": "CVE-2026-54399",
+        "severity": "HIGH",
+        "pkg": "org.apache.httpcomponents.core5:httpcore5",
+        "installed": "5.2.4",
+        "fixed": "5.4.3, 5.5-beta2",
+        "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-46968",
         "severity": "MEDIUM",
@@ -8459,15 +8991,27 @@
         "version": "5.6.3",
         "tag": "ghcr.io/quenchworks/images/jmeter:5.6.3",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 3,
         "low": 1,
         "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "C",
-        "score": 67,
+        "total": 5,
+        "fixable": 5,
+        "grade": "D",
+        "score": 52,
         "cves": [
+          {
+            "id": "CVE-2026-54399",
+            "severity": "HIGH",
+            "pkg": "org.apache.httpcomponents.core5:httpcore5",
+            "installed": "5.2.4",
+            "fixed": "5.4.3, 5.5-beta2",
+            "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-46968",
             "severity": "MEDIUM",
@@ -8951,15 +9495,39 @@
     "version": "26.7.0",
     "tag": "ghcr.io/quenchworks/images/keycloak:26.7.0",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 2,
     "low": 1,
     "unknown": 0,
-    "total": 3,
-    "fixable": 3,
-    "grade": "C",
-    "score": 76,
+    "total": 5,
+    "fixable": 5,
+    "grade": "D",
+    "score": 46,
     "cves": [
+      {
+        "id": "CVE-2026-40983",
+        "severity": "HIGH",
+        "pkg": "io.micrometer:micrometer-core",
+        "installed": "1.16.3",
+        "fixed": "1.16.6, 1.15.12",
+        "title": "micrometer: micrometer-core: Micrometer: Denial of Service via specially crafted gRPC requests",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-40983",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-40984",
+        "severity": "HIGH",
+        "pkg": "io.micrometer:micrometer-core",
+        "installed": "1.16.3",
+        "fixed": "1.16.6, 1.15.12",
+        "title": "micrometer-core: micrometer-jetty11: micrometer-jetty12: Micrometer: Denial of Service via specially crafted HTTP requests",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-40984",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-46968",
         "severity": "MEDIUM",
@@ -9002,15 +9570,39 @@
         "version": "26.7.0",
         "tag": "ghcr.io/quenchworks/images/keycloak:26.7.0",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 2,
         "low": 1,
         "unknown": 0,
-        "total": 3,
-        "fixable": 3,
-        "grade": "C",
-        "score": 76,
+        "total": 5,
+        "fixable": 5,
+        "grade": "D",
+        "score": 46,
         "cves": [
+          {
+            "id": "CVE-2026-40983",
+            "severity": "HIGH",
+            "pkg": "io.micrometer:micrometer-core",
+            "installed": "1.16.3",
+            "fixed": "1.16.6, 1.15.12",
+            "title": "micrometer: micrometer-core: Micrometer: Denial of Service via specially crafted gRPC requests",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-40983",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-40984",
+            "severity": "HIGH",
+            "pkg": "io.micrometer:micrometer-core",
+            "installed": "1.16.3",
+            "fixed": "1.16.6, 1.15.12",
+            "title": "micrometer-core: micrometer-jetty11: micrometer-jetty12: Micrometer: Denial of Service via specially crafted HTTP requests",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-40984",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-46968",
             "severity": "MEDIUM",
@@ -9892,42 +10484,117 @@
     "tag": "ghcr.io/quenchworks/images/matomo:5.12.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
+    "medium": 1,
+    "low": 1,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/matomo@sha256:8d771a71ca6ee35a1595cda0a87d07d15adbc76d51be874ab251d243a90688b0 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/matomo@sha256:8d771a71ca6ee35a1595cda0a87d07d15adbc76d51be874ab251d243a90688b0 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.12.0",
         "tag": "ghcr.io/quenchworks/images/matomo:5.12.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 1,
+        "low": 1,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/matomo@sha256:8d771a71ca6ee35a1595cda0a87d07d15adbc76d51be874ab251d243a90688b0 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/matomo@sha256:8d771a71ca6ee35a1595cda0a87d07d15adbc76d51be874ab251d243a90688b0 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "5.11.2",
         "tag": "ghcr.io/quenchworks/images/matomo:5.11.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 1,
+        "low": 1,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/matomo@sha256:c98c52d90e749fb75ae2da390d74f3f5a7847988125e21d6dd2e8b783605f60b (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/matomo@sha256:c98c52d90e749fb75ae2da390d74f3f5a7847988125e21d6dd2e8b783605f60b (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -10541,15 +11208,27 @@
     "version": "3.1.2",
     "tag": "ghcr.io/quenchworks/images/mimir:3.1.2",
     "critical": 0,
-    "high": 2,
+    "high": 3,
     "medium": 0,
     "low": 0,
-    "unknown": 2,
+    "unknown": 1,
     "total": 4,
     "fixable": 3,
     "grade": "D",
-    "score": 61,
+    "score": 53,
     "cves": [
+      {
+        "id": "CVE-2026-46600",
+        "severity": "HIGH",
+        "pkg": "golang.org/x/net",
+        "installed": "v0.55.0",
+        "fixed": "0.56.0",
+        "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+        "targets": [
+          "usr/bin/mimir"
+        ]
+      },
       {
         "id": "CVE-2026-56852",
         "severity": "HIGH",
@@ -10575,18 +11254,6 @@
         ]
       },
       {
-        "id": "CVE-2026-46600",
-        "severity": "UNKNOWN",
-        "pkg": "golang.org/x/net",
-        "installed": "v0.55.0",
-        "fixed": "0.56.0",
-        "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
-        "targets": [
-          "usr/bin/mimir"
-        ]
-      },
-      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -10604,15 +11271,27 @@
         "version": "3.1.2",
         "tag": "ghcr.io/quenchworks/images/mimir:3.1.2",
         "critical": 0,
-        "high": 2,
+        "high": 3,
         "medium": 0,
         "low": 0,
-        "unknown": 2,
+        "unknown": 1,
         "total": 4,
         "fixable": 3,
         "grade": "D",
-        "score": 61,
+        "score": 53,
         "cves": [
+          {
+            "id": "CVE-2026-46600",
+            "severity": "HIGH",
+            "pkg": "golang.org/x/net",
+            "installed": "v0.55.0",
+            "fixed": "0.56.0",
+            "title": "golang.org/x/net/dns/dnsmessage: golang.org/x/net/dns/dnsmessage: Denial of Service via invalid DNS record parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
+            "targets": [
+              "usr/bin/mimir"
+            ]
+          },
           {
             "id": "CVE-2026-56852",
             "severity": "HIGH",
@@ -10633,18 +11312,6 @@
             "fixed": "1.82.1",
             "title": "gRPC-Go: xDS RBAC and HTTP/2 Vulnerabilities",
             "url": "https://github.com/advisories/GHSA-hrxh-6v49-42gf",
-            "targets": [
-              "usr/bin/mimir"
-            ]
-          },
-          {
-            "id": "CVE-2026-46600",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/net",
-            "installed": "v0.55.0",
-            "fixed": "0.56.0",
-            "title": "Parsing an invalid SVCB or HTTPS RR can panic when the size of a param ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-46600",
             "targets": [
               "usr/bin/mimir"
             ]
@@ -11377,7 +12044,7 @@
         "pkg": "brace-expansion",
         "installed": "5.0.8",
         "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-        "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+        "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
         "targets": [
           "Node.js"
@@ -11560,7 +12227,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -11684,11 +12351,11 @@
     "tag": "ghcr.io/quenchworks/images/n8n-runners:2.32.7",
     "critical": 0,
     "high": 6,
-    "medium": 11,
-    "low": 0,
+    "medium": 13,
+    "low": 2,
     "unknown": 0,
-    "total": 17,
-    "fixable": 17,
+    "total": 21,
+    "fixable": 21,
     "grade": "D",
     "score": 0,
     "cves": [
@@ -11722,7 +12389,7 @@
         "pkg": "brace-expansion",
         "installed": "5.0.8",
         "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-        "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+        "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
         "targets": [
           "Node.js"
@@ -11738,6 +12405,30 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-69192",
         "targets": [
           "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
         ]
       },
       {
@@ -11811,6 +12502,30 @@
         "targets": [
           "Node.js"
         ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
+        ]
       }
     ],
     "versions": [
@@ -11819,11 +12534,11 @@
         "tag": "ghcr.io/quenchworks/images/n8n-runners:2.32.7",
         "critical": 0,
         "high": 6,
-        "medium": 11,
-        "low": 0,
+        "medium": 13,
+        "low": 2,
         "unknown": 0,
-        "total": 17,
-        "fixable": 17,
+        "total": 21,
+        "fixable": 21,
         "grade": "D",
         "score": 0,
         "cves": [
@@ -11857,7 +12572,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -11873,6 +12588,30 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-69192",
             "targets": [
               "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
             ]
           },
           {
@@ -11945,6 +12684,30 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-69198",
             "targets": [
               "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/n8n-runners@sha256:45ae091187d4893ecf2eeb92750b057c87fa7e17b7049055c10ec6fb1fdc1f01 (wolfi 20230201)"
             ]
           }
         ]
@@ -12230,13 +12993,13 @@
     "tag": "ghcr.io/quenchworks/images/nextcloud:34.0.2",
     "critical": 0,
     "high": 2,
-    "medium": 3,
-    "low": 0,
+    "medium": 4,
+    "low": 1,
     "unknown": 0,
-    "total": 5,
-    "fixable": 5,
+    "total": 7,
+    "fixable": 7,
     "grade": "D",
-    "score": 43,
+    "score": 28,
     "cves": [
       {
         "id": "CVE-2026-69246",
@@ -12249,6 +13012,18 @@
         "targets": [
           "var/www/html/3rdparty/composer/installed.json",
           "var/www/html/apps/notifications/vendor/composer/installed.json"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/nextcloud@sha256:e20d5f20e45e5c9c5405629738defe66b5f6997da3a55e1c262123051a0c3a54 (wolfi 20230201)"
         ]
       },
       {
@@ -12275,6 +13050,18 @@
           "var/www/html/3rdparty/composer/installed.json",
           "var/www/html/apps/notifications/vendor/composer/installed.json"
         ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/nextcloud@sha256:e20d5f20e45e5c9c5405629738defe66b5f6997da3a55e1c262123051a0c3a54 (wolfi 20230201)"
+        ]
       }
     ],
     "versions": [
@@ -12283,13 +13070,13 @@
         "tag": "ghcr.io/quenchworks/images/nextcloud:34.0.2",
         "critical": 0,
         "high": 2,
-        "medium": 3,
-        "low": 0,
+        "medium": 4,
+        "low": 1,
         "unknown": 0,
-        "total": 5,
-        "fixable": 5,
+        "total": 7,
+        "fixable": 7,
         "grade": "D",
-        "score": 43,
+        "score": 28,
         "cves": [
           {
             "id": "CVE-2026-69246",
@@ -12302,6 +13089,18 @@
             "targets": [
               "var/www/html/3rdparty/composer/installed.json",
               "var/www/html/apps/notifications/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/nextcloud@sha256:e20d5f20e45e5c9c5405629738defe66b5f6997da3a55e1c262123051a0c3a54 (wolfi 20230201)"
             ]
           },
           {
@@ -12327,6 +13126,18 @@
             "targets": [
               "var/www/html/3rdparty/composer/installed.json",
               "var/www/html/apps/notifications/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/nextcloud@sha256:e20d5f20e45e5c9c5405629738defe66b5f6997da3a55e1c262123051a0c3a54 (wolfi 20230201)"
             ]
           }
         ]
@@ -12412,7 +13223,7 @@
         "pkg": "brace-expansion",
         "installed": "5.0.8",
         "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-        "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+        "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
         "targets": [
           "Node.js"
@@ -12511,7 +13322,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -12610,7 +13421,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -12733,7 +13544,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -13307,12 +14118,12 @@
     "version": "3.7.0",
     "tag": "ghcr.io/quenchworks/images/opensearch:3.7.0",
     "critical": 0,
-    "high": 23,
+    "high": 34,
     "medium": 34,
     "low": 1,
     "unknown": 0,
-    "total": 58,
-    "fixable": 58,
+    "total": 69,
+    "fixable": 69,
     "grade": "D",
     "score": 0,
     "cves": [
@@ -13322,8 +14133,20 @@
         "pkg": "org.eclipse.jetty:jetty-security",
         "installed": "9.4.58.v20250814",
         "fixed": "9.4.63, 10.0.31, 11.0.31, 12.0.36, 12.1.10",
-        "title": "In Eclipse Jetty, the Digest authentication server-side component uses ...",
+        "title": "jetty-security: Eclipse Jetty: Authentication bypass via Digest authentication encoding collision",
         "url": "https://avd.aquasec.com/nvd/cve-2026-10050",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-54399",
+        "severity": "HIGH",
+        "pkg": "org.apache.httpcomponents.core5:httpcore5",
+        "installed": "5.4",
+        "fixed": "5.4.3, 5.5-beta2",
+        "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
         "targets": [
           "Java"
         ]
@@ -13562,12 +14385,12 @@
         "version": "3.7.0",
         "tag": "ghcr.io/quenchworks/images/opensearch:3.7.0",
         "critical": 0,
-        "high": 23,
+        "high": 34,
         "medium": 34,
         "low": 1,
         "unknown": 0,
-        "total": 58,
-        "fixable": 58,
+        "total": 69,
+        "fixable": 69,
         "grade": "D",
         "score": 0,
         "cves": [
@@ -13577,8 +14400,20 @@
             "pkg": "org.eclipse.jetty:jetty-security",
             "installed": "9.4.58.v20250814",
             "fixed": "9.4.63, 10.0.31, 11.0.31, 12.0.36, 12.1.10",
-            "title": "In Eclipse Jetty, the Digest authentication server-side component uses ...",
+            "title": "jetty-security: Eclipse Jetty: Authentication bypass via Digest authentication encoding collision",
             "url": "https://avd.aquasec.com/nvd/cve-2026-10050",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-54399",
+            "severity": "HIGH",
+            "pkg": "org.apache.httpcomponents.core5:httpcore5",
+            "installed": "5.4",
+            "fixed": "5.4.3, 5.5-beta2",
+            "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
             "targets": [
               "Java"
             ]
@@ -14226,28 +15061,78 @@
     "tag": "ghcr.io/quenchworks/images/phpmyadmin:5.2.3",
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
+    "medium": 1,
+    "low": 1,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/phpmyadmin@sha256:f25754b97737e0030e8f8c2e1e26ec95d1fc687a78f0d2f215ab81095010ed41 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/phpmyadmin@sha256:f25754b97737e0030e8f8c2e1e26ec95d1fc687a78f0d2f215ab81095010ed41 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.2.3",
         "tag": "ghcr.io/quenchworks/images/phpmyadmin:5.2.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 1,
+        "low": 1,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/phpmyadmin@sha256:f25754b97737e0030e8f8c2e1e26ec95d1fc687a78f0d2f215ab81095010ed41 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/phpmyadmin@sha256:f25754b97737e0030e8f8c2e1e26ec95d1fc687a78f0d2f215ab81095010ed41 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -14443,13 +15328,13 @@
     "tag": "ghcr.io/quenchworks/images/poetry:2.4.1",
     "critical": 0,
     "high": 2,
-    "medium": 0,
-    "low": 0,
+    "medium": 2,
+    "low": 2,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
+    "total": 6,
+    "fixable": 6,
     "grade": "D",
-    "score": 70,
+    "score": 40,
     "cves": [
       {
         "id": "CVE-2026-69247",
@@ -14462,6 +15347,54 @@
         "targets": [
           "Python"
         ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
+        ]
       }
     ],
     "versions": [
@@ -14470,13 +15403,13 @@
         "tag": "ghcr.io/quenchworks/images/poetry:2.4.1",
         "critical": 0,
         "high": 2,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 6,
+        "fixable": 6,
         "grade": "D",
-        "score": 70,
+        "score": 40,
         "cves": [
           {
             "id": "CVE-2026-69247",
@@ -14488,6 +15421,54 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-69247",
             "targets": [
               "Python"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/poetry@sha256:f438a25432152aeb6e46ab2ef819bf77cf72a79cc2192035fb90c65442d97653 (wolfi 20230201)"
             ]
           }
         ]
@@ -14668,56 +15649,252 @@
     "tag": "ghcr.io/quenchworks/images/postgresql:18.4",
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
+    "medium": 2,
+    "low": 2,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 4,
+    "fixable": 4,
+    "grade": "C",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "18.4",
         "tag": "ghcr.io/quenchworks/images/postgresql:18.4",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:949125181299709eff3ede2d74a3d04dd982279a3510ffcc907eae51eb037fd3 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "17.10",
         "tag": "ghcr.io/quenchworks/images/postgresql:17.10",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:756816dfcc66557d1b1886c483d1d00f87be8515a5604306649a822549449856 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:756816dfcc66557d1b1886c483d1d00f87be8515a5604306649a822549449856 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:756816dfcc66557d1b1886c483d1d00f87be8515a5604306649a822549449856 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:756816dfcc66557d1b1886c483d1d00f87be8515a5604306649a822549449856 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "16.14",
         "tag": "ghcr.io/quenchworks/images/postgresql:16.14",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:cb695b1904e10ccc925d1d64fd543ab7ce9e088df25c9c7e25245a4f53e297af (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:cb695b1904e10ccc925d1d64fd543ab7ce9e088df25c9c7e25245a4f53e297af (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:cb695b1904e10ccc925d1d64fd543ab7ce9e088df25c9c7e25245a4f53e297af (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/postgresql@sha256:cb695b1904e10ccc925d1d64fd543ab7ce9e088df25c9c7e25245a4f53e297af (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -15273,42 +16450,189 @@
     "tag": "ghcr.io/quenchworks/images/python:3.14.6",
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
+    "medium": 2,
+    "low": 2,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 4,
+    "fixable": 4,
+    "grade": "C",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14-base",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.14",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.14-base",
+        "installed": "3.14.6-r4",
+        "fixed": "3.14.7-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.14.6",
         "tag": "ghcr.io/quenchworks/images/python:3.14.6",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14-base",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.14",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.14-base",
+            "installed": "3.14.6-r4",
+            "fixed": "3.14.7-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:e286f6249932951787969db8530aae31d486db6e1754c66b3789215f272adb3f (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "3.13.14",
         "tag": "ghcr.io/quenchworks/images/python:3.13.14",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:fd6b1db256d3871e79b6c9c52a079abf34867195e185c86bc2085cd8d8cb5a67 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:fd6b1db256d3871e79b6c9c52a079abf34867195e185c86bc2085cd8d8cb5a67 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:fd6b1db256d3871e79b6c9c52a079abf34867195e185c86bc2085cd8d8cb5a67 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:fd6b1db256d3871e79b6c9c52a079abf34867195e185c86bc2085cd8d8cb5a67 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "3.12.13",
@@ -15753,7 +17077,7 @@
         "pkg": "brace-expansion",
         "installed": "5.0.8",
         "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-        "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+        "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
         "targets": [
           "Node.js"
@@ -15792,7 +17116,7 @@
             "pkg": "brace-expansion",
             "installed": "5.0.8",
             "fixed": "1.1.18, 2.1.4, 3.0.6, 5.0.9",
-            "title": "brace-expansion: brace-expansion: Denial of Service via unbounded intermediate arrays",
+            "title": "brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69152",
             "targets": [
               "Node.js"
@@ -16248,15 +17572,27 @@
     "version": "10.0.0",
     "tag": "ghcr.io/quenchworks/images/solr:10.0.0",
     "critical": 0,
-    "high": 1,
+    "high": 2,
     "medium": 2,
     "low": 1,
     "unknown": 0,
-    "total": 4,
-    "fixable": 3,
+    "total": 5,
+    "fixable": 4,
     "grade": "D",
-    "score": 66,
+    "score": 51,
     "cves": [
+      {
+        "id": "CVE-2026-54399",
+        "severity": "HIGH",
+        "pkg": "org.apache.httpcomponents.core5:httpcore5",
+        "installed": "5.2.3",
+        "fixed": "5.4.3, 5.5-beta2",
+        "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-44825",
         "severity": "HIGH",
@@ -16311,15 +17647,27 @@
         "version": "10.0.0",
         "tag": "ghcr.io/quenchworks/images/solr:10.0.0",
         "critical": 0,
-        "high": 1,
+        "high": 2,
         "medium": 2,
         "low": 1,
         "unknown": 0,
-        "total": 4,
-        "fixable": 3,
+        "total": 5,
+        "fixable": 4,
         "grade": "D",
-        "score": 66,
+        "score": 51,
         "cves": [
+          {
+            "id": "CVE-2026-54399",
+            "severity": "HIGH",
+            "pkg": "org.apache.httpcomponents.core5:httpcore5",
+            "installed": "5.2.3",
+            "fixed": "5.4.3, 5.5-beta2",
+            "title": "org.apache.httpcomponents.core5/httpcore5: Apache HttpComponents Core: Denial of Service via excessive HTTP headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54399",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-44825",
             "severity": "HIGH",
@@ -17132,56 +18480,252 @@
     "tag": "ghcr.io/quenchworks/images/timescaledb:2.29.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
+    "medium": 2,
+    "low": 2,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 4,
+    "fixable": 4,
+    "grade": "C",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.29.0",
         "tag": "ghcr.io/quenchworks/images/timescaledb:2.29.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:1a769b019525f5b8f5ae529dd9d8bf8d7c40d689eafd2c2280d9b12951742bdd (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "2.28.3",
         "tag": "ghcr.io/quenchworks/images/timescaledb:2.28.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:6fd7baf730e2c462cebcd50da2266853400e63e85071122c5be4b3703f01f0c0 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:6fd7baf730e2c462cebcd50da2266853400e63e85071122c5be4b3703f01f0c0 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:6fd7baf730e2c462cebcd50da2266853400e63e85071122c5be4b3703f01f0c0 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:6fd7baf730e2c462cebcd50da2266853400e63e85071122c5be4b3703f01f0c0 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "2.28.2",
         "tag": "ghcr.io/quenchworks/images/timescaledb:2.28.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:87fa1b06bfdf134c97d9edb163e13e62f294a03d5e1cc2fbc047b079ba16f7d3 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:87fa1b06bfdf134c97d9edb163e13e62f294a03d5e1cc2fbc047b079ba16f7d3 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:87fa1b06bfdf134c97d9edb163e13e62f294a03d5e1cc2fbc047b079ba16f7d3 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/timescaledb@sha256:87fa1b06bfdf134c97d9edb163e13e62f294a03d5e1cc2fbc047b079ba16f7d3 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -17622,56 +19166,252 @@
     "tag": "ghcr.io/quenchworks/images/uv:0.12.1",
     "critical": 0,
     "high": 0,
-    "medium": 0,
-    "low": 0,
+    "medium": 2,
+    "low": 2,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 4,
+    "fixable": 4,
+    "grade": "C",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.12.1",
         "tag": "ghcr.io/quenchworks/images/uv:0.12.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:336a88e7c476ac78c127a10160ca117c910fbf6061267d22d8a917e6b3b57e38 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "0.12.0",
         "tag": "ghcr.io/quenchworks/images/uv:0.12.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:df2dd583bcff2e1f8375878e5f8db499c6ece329cefc76d4895733acbcec352c (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:df2dd583bcff2e1f8375878e5f8db499c6ece329cefc76d4895733acbcec352c (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:df2dd583bcff2e1f8375878e5f8db499c6ece329cefc76d4895733acbcec352c (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:df2dd583bcff2e1f8375878e5f8db499c6ece329cefc76d4895733acbcec352c (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "0.11.33",
         "tag": "ghcr.io/quenchworks/images/uv:0.11.33",
         "critical": 0,
         "high": 0,
-        "medium": 0,
-        "low": 0,
+        "medium": 2,
+        "low": 2,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:424b41b632cb28f7f0e01f9b2a57653e562b961f4a421e7d66639bdf6f2685de (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:424b41b632cb28f7f0e01f9b2a57653e562b961f4a421e7d66639bdf6f2685de (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:424b41b632cb28f7f0e01f9b2a57653e562b961f4a421e7d66639bdf6f2685de (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/uv@sha256:424b41b632cb28f7f0e01f9b2a57653e562b961f4a421e7d66639bdf6f2685de (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -18101,7 +19841,7 @@
         "pkg": "aiohttp",
         "installed": "3.14.1",
         "fixed": "3.14.3",
-        "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+        "title": "aiohttp: AIOHTTP: Denial of Service via malformed HTTP responses",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69244",
         "targets": [
           "Python"
@@ -18149,7 +19889,7 @@
         "pkg": "aiohttp",
         "installed": "3.14.1",
         "fixed": "3.14.2",
-        "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+        "title": "aiohttp: AIOHTTP: HTTP Request Smuggling via WebSocket Upgrade",
         "url": "https://avd.aquasec.com/nvd/cve-2026-69243",
         "targets": [
           "Python"
@@ -18200,7 +19940,7 @@
             "pkg": "aiohttp",
             "installed": "3.14.1",
             "fixed": "3.14.3",
-            "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+            "title": "aiohttp: AIOHTTP: Denial of Service via malformed HTTP responses",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69244",
             "targets": [
               "Python"
@@ -18248,7 +19988,7 @@
             "pkg": "aiohttp",
             "installed": "3.14.1",
             "fixed": "3.14.2",
-            "title": "AIOHTTP is an asynchronous HTTP client/server framework for asyncio an ...",
+            "title": "aiohttp: AIOHTTP: HTTP Request Smuggling via WebSocket Upgrade",
             "url": "https://avd.aquasec.com/nvd/cve-2026-69243",
             "targets": [
               "Python"
@@ -18404,14 +20144,26 @@
     "tag": "ghcr.io/quenchworks/images/wordpress:7.0.2",
     "critical": 0,
     "high": 0,
-    "medium": 1,
-    "low": 0,
+    "medium": 2,
+    "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
+    "total": 3,
+    "fixable": 3,
     "grade": "C",
-    "score": 91,
+    "score": 76,
     "cves": [
+      {
+        "id": "CVE-2025-15366",
+        "severity": "MEDIUM",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "cpython: IMAP command injection in user-controlled commands",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+        "targets": [
+          "ghcr.io/quenchworks/images/wordpress@sha256:dbe5e89bf4b10d8950e7bed7aea88d134fdd5554629de29c3aa6427bab8804f6 (wolfi 20230201)"
+        ]
+      },
       {
         "id": "CVE-2026-58055",
         "severity": "MEDIUM",
@@ -18423,6 +20175,18 @@
         "targets": [
           "ghcr.io/quenchworks/images/wordpress@sha256:dbe5e89bf4b10d8950e7bed7aea88d134fdd5554629de29c3aa6427bab8804f6 (wolfi 20230201)"
         ]
+      },
+      {
+        "id": "CVE-2026-6879",
+        "severity": "LOW",
+        "pkg": "python-3.13-base",
+        "installed": "3.13.14-r3",
+        "fixed": "3.13.15-r0",
+        "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+        "targets": [
+          "ghcr.io/quenchworks/images/wordpress@sha256:dbe5e89bf4b10d8950e7bed7aea88d134fdd5554629de29c3aa6427bab8804f6 (wolfi 20230201)"
+        ]
       }
     ],
     "versions": [
@@ -18431,14 +20195,26 @@
         "tag": "ghcr.io/quenchworks/images/wordpress:7.0.2",
         "critical": 0,
         "high": 0,
-        "medium": 1,
-        "low": 0,
+        "medium": 2,
+        "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 3,
+        "fixable": 3,
         "grade": "C",
-        "score": 91,
+        "score": 76,
         "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/wordpress@sha256:dbe5e89bf4b10d8950e7bed7aea88d134fdd5554629de29c3aa6427bab8804f6 (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-58055",
             "severity": "MEDIUM",
@@ -18450,6 +20226,18 @@
             "targets": [
               "ghcr.io/quenchworks/images/wordpress@sha256:dbe5e89bf4b10d8950e7bed7aea88d134fdd5554629de29c3aa6427bab8804f6 (wolfi 20230201)"
             ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/wordpress@sha256:dbe5e89bf4b10d8950e7bed7aea88d134fdd5554629de29c3aa6427bab8804f6 (wolfi 20230201)"
+            ]
           }
         ]
       },
@@ -18458,14 +20246,26 @@
         "tag": "ghcr.io/quenchworks/images/wordpress:6.9.5",
         "critical": 0,
         "high": 0,
-        "medium": 1,
-        "low": 0,
+        "medium": 2,
+        "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 3,
+        "fixable": 3,
         "grade": "C",
-        "score": 91,
+        "score": 76,
         "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/wordpress@sha256:7ac3ed7ed68ee8683cf0d0b4772c51eb18970b25b4c8f6d7236cef5df20218e0 (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-58055",
             "severity": "MEDIUM",
@@ -18477,6 +20277,18 @@
             "targets": [
               "ghcr.io/quenchworks/images/wordpress@sha256:7ac3ed7ed68ee8683cf0d0b4772c51eb18970b25b4c8f6d7236cef5df20218e0 (wolfi 20230201)"
             ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
+            "targets": [
+              "ghcr.io/quenchworks/images/wordpress@sha256:7ac3ed7ed68ee8683cf0d0b4772c51eb18970b25b4c8f6d7236cef5df20218e0 (wolfi 20230201)"
+            ]
           }
         ]
       },
@@ -18485,14 +20297,26 @@
         "tag": "ghcr.io/quenchworks/images/wordpress:6.8.6",
         "critical": 0,
         "high": 0,
-        "medium": 1,
-        "low": 0,
+        "medium": 2,
+        "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 3,
+        "fixable": 3,
         "grade": "C",
-        "score": 91,
+        "score": 76,
         "cves": [
+          {
+            "id": "CVE-2025-15366",
+            "severity": "MEDIUM",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "cpython: IMAP command injection in user-controlled commands",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-15366",
+            "targets": [
+              "ghcr.io/quenchworks/images/wordpress@sha256:ed91a26d0d7641f3732296e070d064cec5cc596ef1c2d8644608a1662fa93a6a (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-58055",
             "severity": "MEDIUM",
@@ -18501,6 +20325,18 @@
             "fixed": "1.70.0-r0",
             "title": "nghttp2: nghttp2: HTTP Request/Response Smuggling and Response-Queue Poisoning via ambiguous HTTP/1.1 Upgrade requests",
             "url": "https://avd.aquasec.com/nvd/cve-2026-58055",
+            "targets": [
+              "ghcr.io/quenchworks/images/wordpress@sha256:ed91a26d0d7641f3732296e070d064cec5cc596ef1c2d8644608a1662fa93a6a (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-6879",
+            "severity": "LOW",
+            "pkg": "python-3.13-base",
+            "installed": "3.13.14-r3",
+            "fixed": "3.13.15-r0",
+            "title": "python: Python: Performance degradation in XML processing due to quadratic time complexity",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-6879",
             "targets": [
               "ghcr.io/quenchworks/images/wordpress@sha256:ed91a26d0d7641f3732296e070d064cec5cc596ef1c2d8644608a1662fa93a6a (wolfi 20230201)"
             ]
