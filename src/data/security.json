@@ -15108,7 +15108,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/filebrowser"
@@ -15267,7 +15267,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/filebrowser"
@@ -15426,7 +15426,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/filebrowser"
@@ -15841,7 +15841,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/forgejo"
@@ -16012,7 +16012,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/forgejo"
@@ -16926,7 +16926,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/gitea"
@@ -17121,7 +17121,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/gitea"
@@ -24276,15 +24276,27 @@
     "version": "1.36.3",
     "tag": "ghcr.io/quenchworks/images/kubectl:1.36.3",
     "critical": 0,
-    "high": 56,
+    "high": 63,
     "medium": 1,
     "low": 0,
     "unknown": 2,
-    "total": 59,
-    "fixable": 57,
+    "total": 66,
+    "fixable": 64,
     "grade": "D",
     "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-33818",
+        "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.3-r1",
+        "fixed": "1.36.3-r3",
+        "title": "encoding/asn1: golang: Go encoding/asn1: Denial of Service via excessive recursion in Unmarshal",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-33818",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+        ]
+      },
       {
         "id": "CVE-2026-33818",
         "severity": "HIGH",
@@ -24323,6 +24335,18 @@
           "var/lib/db/sbom/helm-4-4.2.3-r1.spdx.json",
           "var/lib/db/sbom/kubectl-1.36-1.36.3-r1.spdx.json",
           "var/lib/db/sbom/kustomize-5.8.1-r10.spdx.json"
+        ]
+      },
+      {
+        "id": "CVE-2026-39821",
+        "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.3-r1",
+        "fixed": "1.36.3-r3",
+        "title": "golang.org/x/net/idna: golang: net/http: golang.org/x/net/idna: Privilege escalation via incorrect Punycode label processing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-39821",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
         ]
       },
       {
@@ -24433,6 +24457,18 @@
       {
         "id": "CVE-2026-56853",
         "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.3-r1",
+        "fixed": "1.36.3-r3",
+        "title": "net/http: golang: Go net/http: Unencrypted HTTP/2 connections vulnerable to Denial of Service",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-56853",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-56853",
+        "severity": "HIGH",
         "pkg": "stdlib",
         "installed": "v1.26.5",
         "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
@@ -24461,6 +24497,18 @@
       {
         "id": "CVE-2026-56858",
         "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.3-r1",
+        "fixed": "1.36.3-r3",
+        "title": "html/template: golang: Go html/template: Cross-Site Scripting via pathological input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-56858",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-56858",
+        "severity": "HIGH",
         "pkg": "stdlib",
         "installed": "v1.26.5",
         "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
@@ -24489,6 +24537,18 @@
       {
         "id": "CVE-2026-56859",
         "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.3-r1",
+        "fixed": "1.36.3-r3",
+        "title": "encoding/xml: golang: Go: Denial of Service via XML decoding recursion depth issue",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-56859",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-56859",
+        "severity": "HIGH",
         "pkg": "stdlib",
         "installed": "v1.26.5",
         "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
@@ -24512,6 +24572,18 @@
           "var/lib/db/sbom/helm-4-4.2.3-r1.spdx.json",
           "var/lib/db/sbom/kubectl-1.36-1.36.3-r1.spdx.json",
           "var/lib/db/sbom/kustomize-5.8.1-r10.spdx.json"
+        ]
+      },
+      {
+        "id": "CVE-2026-56860",
+        "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.3-r1",
+        "fixed": "1.36.3-r3",
+        "title": "net/url: golang: golang net/url: Denial of Service from quadratic complexity in path resolution",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-56860",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
         ]
       },
       {
@@ -24552,6 +24624,18 @@
           "var/lib/db/sbom/helm-4-4.2.3-r1.spdx.json",
           "var/lib/db/sbom/kubectl-1.36-1.36.3-r1.spdx.json",
           "var/lib/db/sbom/kustomize-5.8.1-r10.spdx.json"
+        ]
+      },
+      {
+        "id": "CVE-2026-56862",
+        "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.3-r1",
+        "fixed": "1.36.3-r3",
+        "title": "crypto/tls: golang: Golang crypto/tls: Denial of Service via indefinite KeyUpdate messages",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-56862",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
         ]
       },
       {
@@ -24625,15 +24709,27 @@
         "version": "1.36.3",
         "tag": "ghcr.io/quenchworks/images/kubectl:1.36.3",
         "critical": 0,
-        "high": 56,
+        "high": 63,
         "medium": 1,
         "low": 0,
         "unknown": 2,
-        "total": 59,
-        "fixable": 57,
+        "total": 66,
+        "fixable": 64,
         "grade": "D",
         "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-33818",
+            "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.3-r1",
+            "fixed": "1.36.3-r3",
+            "title": "encoding/asn1: golang: Go encoding/asn1: Denial of Service via excessive recursion in Unmarshal",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-33818",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-33818",
             "severity": "HIGH",
@@ -24672,6 +24768,18 @@
               "var/lib/db/sbom/helm-4-4.2.3-r1.spdx.json",
               "var/lib/db/sbom/kubectl-1.36-1.36.3-r1.spdx.json",
               "var/lib/db/sbom/kustomize-5.8.1-r10.spdx.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-39821",
+            "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.3-r1",
+            "fixed": "1.36.3-r3",
+            "title": "golang.org/x/net/idna: golang: net/http: golang.org/x/net/idna: Privilege escalation via incorrect Punycode label processing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-39821",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
             ]
           },
           {
@@ -24782,6 +24890,18 @@
           {
             "id": "CVE-2026-56853",
             "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.3-r1",
+            "fixed": "1.36.3-r3",
+            "title": "net/http: golang: Go net/http: Unencrypted HTTP/2 connections vulnerable to Denial of Service",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-56853",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-56853",
+            "severity": "HIGH",
             "pkg": "stdlib",
             "installed": "v1.26.5",
             "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
@@ -24810,6 +24930,18 @@
           {
             "id": "CVE-2026-56858",
             "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.3-r1",
+            "fixed": "1.36.3-r3",
+            "title": "html/template: golang: Go html/template: Cross-Site Scripting via pathological input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-56858",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-56858",
+            "severity": "HIGH",
             "pkg": "stdlib",
             "installed": "v1.26.5",
             "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
@@ -24838,6 +24970,18 @@
           {
             "id": "CVE-2026-56859",
             "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.3-r1",
+            "fixed": "1.36.3-r3",
+            "title": "encoding/xml: golang: Go: Denial of Service via XML decoding recursion depth issue",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-56859",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-56859",
+            "severity": "HIGH",
             "pkg": "stdlib",
             "installed": "v1.26.5",
             "fixed": "1.25.13, 1.26.6, 1.27.0-rc.3",
@@ -24861,6 +25005,18 @@
               "var/lib/db/sbom/helm-4-4.2.3-r1.spdx.json",
               "var/lib/db/sbom/kubectl-1.36-1.36.3-r1.spdx.json",
               "var/lib/db/sbom/kustomize-5.8.1-r10.spdx.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-56860",
+            "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.3-r1",
+            "fixed": "1.36.3-r3",
+            "title": "net/url: golang: golang net/url: Denial of Service from quadratic complexity in path resolution",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-56860",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
             ]
           },
           {
@@ -24901,6 +25057,18 @@
               "var/lib/db/sbom/helm-4-4.2.3-r1.spdx.json",
               "var/lib/db/sbom/kubectl-1.36-1.36.3-r1.spdx.json",
               "var/lib/db/sbom/kustomize-5.8.1-r10.spdx.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-56862",
+            "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.3-r1",
+            "fixed": "1.36.3-r3",
+            "title": "crypto/tls: golang: Golang crypto/tls: Denial of Service via indefinite KeyUpdate messages",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-56862",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:44a86469299c7f7e56e1fbe93c67106004fec0d7b2f764ccc9cc026b5e299705 (wolfi 20230201)"
             ]
           },
           {
@@ -27056,7 +27224,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.44.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/mailpit"
@@ -27215,7 +27383,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.44.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/mailpit"
@@ -27564,7 +27732,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "opt/mattermost/bin/mattermost",
@@ -27735,7 +27903,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "opt/mattermost/bin/mattermost",
@@ -28960,7 +29128,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/miniflux"
@@ -29095,7 +29263,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/miniflux"
@@ -31317,7 +31485,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/navidrome"
@@ -31452,7 +31620,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/navidrome"
@@ -33640,7 +33808,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/ollama"
@@ -33799,7 +33967,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/ollama"
@@ -36643,7 +36811,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/pocketbase"
@@ -36790,7 +36958,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/pocketbase"
@@ -39509,7 +39677,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.44.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/rclone"
@@ -39644,7 +39812,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.44.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/rclone"
@@ -41381,7 +41549,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/weed"
@@ -41516,7 +41684,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/weed"
@@ -45475,7 +45643,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/tyk"
@@ -45634,7 +45802,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/tyk"
@@ -47243,7 +47411,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/vikunja"
@@ -47414,7 +47582,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/vikunja"
@@ -48114,7 +48282,7 @@
         "pkg": "golang.org/x/image",
         "installed": "v0.43.0",
         "fixed": "0.45.0",
-        "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+        "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
         "targets": [
           "usr/bin/woodpecker-server"
@@ -48290,7 +48458,7 @@
             "pkg": "golang.org/x/image",
             "installed": "v0.43.0",
             "fixed": "0.45.0",
-            "title": "Excessive memory allocation during VP8L decoding in golang.org/x/image",
+            "title": "VP8L decoding in golang.org/x/image/vp8l can allocate an excessive amo ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-46603",
             "targets": [
               "usr/bin/woodpecker-server"
