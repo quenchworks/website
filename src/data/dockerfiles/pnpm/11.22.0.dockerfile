@@ -1,5 +1,5 @@
 # Build stage: pnpm resolves, locks, and builds (dev deps included here).
-FROM ghcr.io/quenchworks/images/pnpm:11.19.0 AS build
+FROM ghcr.io/quenchworks/images/pnpm:11.22.0 AS build
 USER root
 WORKDIR /app
 ENV PNPM_HOME=/tmp/pnpm
@@ -12,7 +12,7 @@ RUN ["pnpm", "run", "build"]
 RUN ["pnpm", "install", "--prod", "--frozen-lockfile"]
 
 # Runtime stage: prod node_modules + built dist on a slim node base, nonroot.
-FROM ghcr.io/quenchworks/images/node:26.5.1 AS runtime
+FROM ghcr.io/quenchworks/images/node:26.7.0 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=build /app/node_modules ./node_modules

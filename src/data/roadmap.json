@@ -21,7 +21,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Dynamic API gateway on Nginx + LuaJIT: hot-reloads plugins and config from etcd, with no relational-database dependency. A high-performance Kong alternative."
   },
   {
@@ -30,14 +30,15 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Envoy-based gateway for microservices, monoliths, and serverless, with strong multi-protocol support: HTTP, gRPC, WebSockets, and FaaS."
+    "note": "SUPERSEDED: development moved to kgateway (kgateway-dev/kgateway). Build kgateway instead of the legacy solo-io/gloo repo.",
+    "cleanAlternative": "kgateway (Apache-2.0)"
   },
   {
     "name": "Envoy Gateway",
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "CNCF implementation of the Kubernetes Gateway API on Envoy: standard K8s resources instead of vendor CRDs. The Kubernetes-first Kong alternative."
   },
   {
@@ -123,7 +124,7 @@
     "category": "Coordination & mesh",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Service mesh built on Envoy: traffic management, mTLS, and observability. Platform-scale, a multi-image wave (istiod control plane plus Envoy sidecars and gateways) rather than a single image."
   },
   {
@@ -131,7 +132,7 @@
     "category": "Coordination & mesh",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Lightweight service mesh."
   },
   {
@@ -140,8 +141,8 @@
     "license": "BUSL-1.1",
     "licenseClean": "caution",
     "priority": "planned",
-    "note": "Service discovery and mesh. Source-available, not OSI.",
-    "cleanAlternative": "etcd (Apache-2.0) for KV/coordination, already shipped."
+    "note": "HashiCorp Consul. BUSL-1.1: source-available, NOT OSI. Recommendation is to skip -- the mesh slot is already covered by Kuma (shipped) plus Linkerd and Istio in this wave, all OSI-licensed. Revisit on explicit demand.",
+    "cleanAlternative": "Kuma (Apache-2.0) -- already shipped; or Linkerd / Istio."
   },
   {
     "name": "Nomad",
@@ -607,7 +608,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Envoy-based Kubernetes ingress controller."
   },
   {
@@ -1066,7 +1067,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Stateless high-performance API gateway."
   },
   {
@@ -1074,7 +1075,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "exploring",
+    "priority": "planned",
     "note": "Envoy-based Kubernetes API gateway / ingress."
   },
   {
@@ -2129,5 +2130,205 @@
     "note": "Centralized coordination service for distributed systems, providing configuration, naming, leader election, and synchronization primitives.",
     "blocked": true,
     "blockedReason": "ZooKeeper 3.9.5 (newest 3.9 line) pins jetty-http 9.4 (needs a Jetty 12 major bump) and jline 3.25 (needs a JLine 4 major bump)."
+  },
+  {
+    "name": "Gateway API CRDs",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "kubernetes-sigs/gateway-api. CRD-only chart, no image. Required by Envoy Gateway, Contour, NGINX Gateway Fabric, kgateway and Istio -- shipped once so implementations pin one CRD version."
+  },
+  {
+    "name": "APISIX Ingress Controller",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Operator for Apache APISIX: its own CRDs (ApisixRoute, ApisixUpstream) plus Gateway API support."
+  },
+  {
+    "name": "APISIX Dashboard",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Web UI for APISIX (Go API + Vue frontend). Confirm upstream is still maintained before building; the gateway ships without it."
+  },
+  {
+    "name": "kgateway",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Successor to Gloo Edge (kgateway-dev/kgateway). Envoy-backed, reuses our hardened envoy image. Build this rather than the legacy solo-io/gloo repo."
+  },
+  {
+    "name": "NGINX Gateway Fabric",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Gateway API implementation with an nginx data plane; reuses our nginx image."
+  },
+  {
+    "name": "Higress",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Alibaba's Istio+Envoy-based gateway. Two components (higress-core, higress-console) and it inherits Istio/Envoy build weight."
+  },
+  {
+    "name": "Apache ShenYu",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Java API gateway. shenyu-bootstrap + shenyu-admin; admin needs a database."
+  },
+  {
+    "name": "Easegress",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Go traffic gateway, clusters via embedded etcd."
+  },
+  {
+    "name": "Skipper",
+    "category": "Gateways & proxies",
+    "license": "UNVERIFIED",
+    "licenseClean": "caution",
+    "priority": "planned",
+    "note": "Zalando's HTTP router. BLOCKING: GitHub reports NOASSERTION and the LICENSE fetch came back empty -- resolve the license before writing a recipe."
+  },
+  {
+    "name": "Gravitee APIM",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Java + Angular, 3 components (gateway, management-api, management-ui), needs MongoDB or JDBC plus Elasticsearch. Heaviest gateway in the wave."
+  },
+  {
+    "name": "Linkerd Control Plane",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "linkerd-controller: destination + identity + proxy-injector webhook. NOTE: linkerd/linkerd2 publishes only edge-* releases; Buoyant gates stable builds commercially, so this tracks Linkerd EDGE."
+  },
+  {
+    "name": "Linkerd Proxy",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "linkerd2-proxy, the Rust sidecar data plane. Separate repo and cadence; must version-match the control plane."
+  },
+  {
+    "name": "Linkerd Policy Controller",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Rust operator serving Linkerd's policy CRDs."
+  },
+  {
+    "name": "Linkerd CNI",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Privileged node agent (alternative to proxy-init). Needs the node-agent exception tier."
+  },
+  {
+    "name": "Linkerd Viz",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Observability extension: metrics-api, tap, tap-injector, web. Ship only if dashboard parity is wanted."
+  },
+  {
+    "name": "Istiod",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Istio control plane: discovery + injecting webhook + CA."
+  },
+  {
+    "name": "Istio proxyv2",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "pilot-agent plus Istio's OWN patched Envoy build -- our stock envoy image cannot be reused. Most expensive single item in the gateway/mesh wave."
+  },
+  {
+    "name": "Istio CNI",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Privileged node agent; hostPath + privileged. Needs the node-agent exception tier."
+  },
+  {
+    "name": "Istio ztunnel",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Rust node proxy for Istio ambient mode. Skip if we ship sidecar mode only."
+  },
+  {
+    "name": "Cilium Operator",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Generic variant only (upstream also ships aws/azure/gcp)."
+  },
+  {
+    "name": "Cilium Envoy",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Cilium's own patched Envoy; not reusable from our stock envoy image."
+  },
+  {
+    "name": "Hubble Relay",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Cilium observability aggregator. Plain Go service, cheapest piece of the Cilium set."
+  },
+  {
+    "name": "Hubble UI",
+    "category": "Coordination & mesh",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Cilium observability UI: frontend (Node/nginx) + backend (Go)."
+  },
+  {
+    "name": "Consul Dataplane",
+    "category": "Coordination & mesh",
+    "license": "MPL-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Envoy-based sidecar for Consul. MPL, so cleaner than the BUSL server."
+  },
+  {
+    "name": "Consul K8s Control Plane",
+    "category": "Coordination & mesh",
+    "license": "MPL-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "The operator that makes Consul work on Kubernetes."
   }
 ]

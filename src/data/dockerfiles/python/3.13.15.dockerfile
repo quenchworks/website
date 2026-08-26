@@ -1,5 +1,5 @@
 # Build stage: install everything into a venv (build deps included).
-FROM ghcr.io/quenchworks/images/python:3.13.14 AS build
+FROM ghcr.io/quenchworks/images/python:3.13.15 AS build
 USER root
 WORKDIR /app
 ENV VIRTUAL_ENV=/opt/venv \
@@ -12,7 +12,7 @@ RUN ["pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
 COPY . .
 
 # Runtime stage: copy the venv + app onto a clean python base, run nonroot.
-FROM ghcr.io/quenchworks/images/python:3.13.14 AS runtime
+FROM ghcr.io/quenchworks/images/python:3.13.15 AS runtime
 WORKDIR /app
 ENV VIRTUAL_ENV=/opt/venv \
     PATH="/opt/venv/bin:$PATH" \
