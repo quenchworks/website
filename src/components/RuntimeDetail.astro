@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { gradeTone, GRADE_CHIP } from '../data/grade';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import VersionSwitcher from '../components/VersionSwitcher.astro';
@@ -189,9 +190,7 @@ const ld = {
             {sec?.grade && (
               <span
                 class:list={['inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-[11px] font-semibold uppercase tracking-widest tabular-nums',
-                  sec.grade === 'A+' || sec.grade === 'A' ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
-                  : sec.grade === 'B' || sec.grade === 'C' ? 'border-amber-500/40 bg-amber-500/10 text-amber-300'
-                  : 'border-red-500/40 bg-red-500/10 text-red-300']}
+                  GRADE_CHIP[gradeTone(sec.grade)]]}
               >{sec.grade}{sec?.score != null && <span class="text-ash/70">· {sec.score}/100</span>}</span>
             )}
             {total === 0

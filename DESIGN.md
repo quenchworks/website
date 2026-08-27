@@ -124,14 +124,15 @@ A single monochrome ramp from near-black to near-white, plus one functional traf
 - **Ash** (`#b0b0ba`): muted / secondary text, labels, and metadata. Tuned to 9.15:1 on ink and 8.55:1 on graphite so even `ash/70` clears 4.5:1.
 
 ### Tertiary (functional status only)
-- **Status OK** (`#10b981`, emerald): rendered as a `/10` fill + `/40` border + `-300` text on the CVE grade chip when an image is clean (A+/A).
-- **Status Warn** (`#f59e0b`, amber): the same chip treatment for medium/low severity (grade B/C).
+- **Status OK** (`#10b981`, emerald): rendered as a `/10` fill + `/40` border + `-300` text on the CVE grade chip when an image has NO findings at all (grade A+).
+- **Status Unknown** (`#0ea5e9`, sky): the same chip treatment for grade A — findings exist, but every one is UNKNOWN severity, so nothing is known to be exploitable. Blue reads informational rather than safe or alarming, which is exactly the claim: not yet triaged. A distinct hue rather than a second green so "proven clean" and "severity unknown" are never mistaken for each other, and so the difference survives greyscale and colour-vision deficiency.
+- **Status Warn** (`#f59e0b`, amber): the same chip treatment for low/medium severity (grade B/C).
 - **Status Bad** (`#ef4444`, red): the same treatment for high/critical (grade D/F).
 
 ### Named Rules
 **The Monochrome Rule.** The brand is ink + paper + the neutral ramp. No decorative hue, no brand accent color. Energy is contrast and type, never color. If a swatch isn't in the neutral ramp, it must be justified as security state.
 
-**The Functional-Color-Only Rule.** The emerald/amber/red trio appears ONLY to encode CVE severity, and it is never the sole signal — the letter grade (A+ → F) and an aria-label always carry the same meaning as text. Color that isn't encoding severity is prohibited.
+**The Functional-Color-Only Rule.** The emerald/sky/amber/red set appears ONLY to encode CVE severity state, and it is never the sole signal — the letter grade (A+ → F) and an aria-label always carry the same meaning as text. Color that isn't encoding severity is prohibited. The single source of truth for grade → colour is `src/data/grade.ts`; no component may hand-roll its own mapping.
 
 ## 3. Typography
 
@@ -174,7 +175,7 @@ Precise and restrained — sharp edges of information on quiet surfaces, nothing
 
 ### Chips / Badges
 - **Style:** JetBrains Mono, uppercase, `text-[10px]`, 1px border, `rounded` (4px), `px-2 py-0.5`. Default is `ash` text on `ink` inside a `line` border (category / tier / license tags).
-- **CVE status chip (signature):** leads with the letter grade (A+ → F), count alongside; colored by the functional trio (`/10` fill, `/40` border, `-300` text) — green clean, amber medium/low, red high/critical. Grade is always text; color never stands alone.
+- **CVE status chip (signature):** leads with the letter grade (A+ → F), count alongside; colored by the functional set (`/10` fill, `/40` border, `-300` text) — green no findings, sky-blue findings of UNKNOWN severity only, amber low/medium, red high/critical. Grade is always text; color never stands alone.
 
 ### Cards / Containers
 - **Corner Style:** `rounded-xl` (16px).

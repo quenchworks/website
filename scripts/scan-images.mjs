@@ -40,7 +40,13 @@ function gradeOf(c) {
   if (c.critical) return 'F';
   if (c.high) return 'D';
   if (c.medium) return 'C';
-  return 'B'; // only low / unknown
+  if (c.low) return 'B';
+  // Only UNKNOWN severity left. UNKNOWN means the advisory carries no CVSS yet -- it is
+  // not a quiet LOW, and it is not evidence of anything exploitable. Grading it B put
+  // "we don't know" in the same bucket as a real known-severity CVE, which overstated
+  // the risk. It gets its own grade (A, coloured differently from A+) until a severity
+  // actually lands.
+  return 'A';
 }
 function scoreOf(c) {
   const w = c.critical * 25 + c.high * 10 + c.medium * 4 + c.unknown * 2 + c.low * 1 + c.fixable * 5;

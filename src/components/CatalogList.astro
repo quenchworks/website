@@ -295,6 +295,8 @@ const dataset = all.map((e) => {
 />
 
 <script>
+  import { gradeTone, gradeNote, GRADE_CHIP } from '../data/grade';
+
   type Entry = {
     slug: string;
     name: string;
@@ -338,22 +340,18 @@ const dataset = all.map((e) => {
     s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
   // Security badge (matches CveStatus.astro): leads with the Trivy grade (A+ clean →
-  // F critical), count tags along. Green A+/A, amber B/C, red D/F. From security.json.
+  // F critical), count tags along. Colours come from the ONE shared map in
+  // src/data/grade.ts so this client-side copy can never drift from the SSR one.
   const cveBadge = (e: Entry): string => {
     const tot = (e as any).cveTotal;
     const grade: string | null = (e as any).cveGrade;
     const fixable: number | null = (e as any).cveFixable;
     const has = typeof tot === 'number' && tot > 0;
     const g = grade ?? (typeof tot === 'number' ? (has ? null : 'A+') : null);
-    const tone = !g ? (has ? 'warn' : 'ok')
-      : g === 'A+' || g === 'A' ? 'ok' : g === 'B' || g === 'C' ? 'warn' : 'bad';
-    const cls = {
-      ok: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',
-      warn: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
-      bad: 'border-red-500/40 bg-red-500/10 text-red-300',
-    }[tone];
+    const cls = GRADE_CHIP[gradeTone(g, has)];
     const label = g ? `${g}${has ? '&nbsp;' + tot : ''}` : (has ? `${tot}&nbsp;CVE${tot === 1 ? '' : 's'}` : '0&nbsp;CVE');
-    const title = esc(`Trivy scan: grade ${g ?? (has ? '–' : 'A+')}${has ? ` · ${tot} CVE${tot === 1 ? '' : 's'}` : ' · no CVEs'}${fixable ? ` · ${fixable} fixable` : ''}`);
+    const note = gradeNote(g);
+    const title = esc(`Trivy scan: grade ${g ?? (has ? '–' : 'A+')}${has ? ` · ${tot} CVE${tot === 1 ? '' : 's'}` : ' · no CVEs'}${fixable ? ` · ${fixable} fixable` : ''}${note ? ` · ${note}` : ''}`);
     return `<span class="inline-flex items-center rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest tabular-nums ${cls}" role="img" aria-label="${title}" title="${title}">${label}</span>`;
   };
 
