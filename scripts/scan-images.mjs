@@ -166,11 +166,57 @@ if (only[0] === '--selftest') {
 
 // flat task list: one entry per (image, version)
 const tasks = [];
+const seenDigests = new Set();
 for (const e of images) {
   if (only.length && !only.includes(e.slug)) continue;
   for (const v of e.versions || []) {
-    if (v.digest) tasks.push({ slug: e.slug, image: e.image, version: v.version, digest: v.digest });
+    if (v.digest) {
+      tasks.push({ slug: e.slug, image: e.image, version: v.version, digest: v.digest });
+      seenDigests.add(v.digest);
+    }
   }
+}
+
+// ALSO scan every digest a published chart pins, even if images.json does not list it.
+//
+// This closes a real blind spot, found 2026-08-27. images.json comes from
+// catalog.lock.yaml, and an image leaves that lock in two ordinary ways: `status:
+// blocked` in catalog.yaml delists it, and bumping build.conf VERSIONS orphans the
+// previously published tags. Either way the scanner had nothing to scan and the app
+// silently vanished from the board -- while shipped charts kept pinning its digest.
+// grafana was exactly this: four SHIPPED stack charts pinned grafana 13.1.0 carrying
+// 1 CRITICAL and 17 HIGH, reported nowhere, because grafana is delisted. "Not scanned"
+// was reading as "clean".
+//
+// A digest someone can actually pull by installing our chart must always be scanned.
+// These are keyed by `chart:<slug>` so they never overwrite a catalog entry.
+const chartsPath = ROOT + 'src/data/charts.json';
+let chartTasks = 0;
+try {
+  const chartsRaw = JSON.parse(readFileSync(chartsPath, 'utf8'));
+  const charts = Array.isArray(chartsRaw) ? chartsRaw : (chartsRaw.charts || []);
+  for (const c of charts) {
+    const refs = [];
+    if (c.imageRepository && c.imageDigest) refs.push({ image: c.imageRepository, digest: c.imageDigest });
+    for (const i of c.images || []) {
+      // entries look like "name: x" / "image: ghcr.io/...@sha256:..."
+      const raw = typeof i === 'string' ? i : (i.image || '');
+      const m = /^(\S+)@(sha256:[0-9a-f]{64})$/.exec(raw);
+      if (m) refs.push({ image: m[1], digest: m[2] });
+    }
+    for (const r of refs) {
+      if (seenDigests.has(r.digest)) continue;      // already covered by the catalog
+      seenDigests.add(r.digest);
+      const slug = r.image.split('/').pop();
+      if (only.length && !only.includes(slug)) continue;
+      tasks.push({ slug, image: r.image, version: `chart:${c.slug}`, digest: r.digest, fromChart: c.slug });
+      chartTasks++;
+    }
+  }
+  if (chartTasks) console.error(`+${chartTasks} digest(s) pinned by charts but absent from the catalog lock`);
+} catch (err) {
+  // charts.json is generated; a missing file must not silently shrink the scan.
+  console.error(`WARNING: could not read ${chartsPath} (${err.message}); chart-pinned digests NOT scanned`);
 }
 
 const perImage = {}; // slug -> [version summaries]

@@ -1,28 +1,11 @@
 [
   {
-    "name": "Vault",
-    "category": "Secrets & identity",
-    "license": "BUSL-1.1",
-    "licenseClean": "caution",
-    "priority": "planned",
-    "note": "HashiCorp Vault. Source-available, not OSI.",
-    "cleanAlternative": "OpenBao (MPL-2.0) — the open fork, already shipped."
-  },
-  {
     "name": "Kong Gateway",
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
     "note": "API gateway on nginx/OpenResty. Open-core (the OSS gateway is Apache-2.0; many features are gated behind the enterprise tier) and it depends on PostgreSQL. APISIX and Tyk are lighter, fully-open alternatives."
-  },
-  {
-    "name": "Apache APISIX",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Dynamic API gateway on Nginx + LuaJIT: hot-reloads plugins and config from etcd, with no relational-database dependency. A high-performance Kong alternative."
   },
   {
     "name": "Gloo Edge",
@@ -32,14 +15,6 @@
     "priority": "planned",
     "note": "SUPERSEDED: development moved to kgateway (kgateway-dev/kgateway). Build kgateway instead of the legacy solo-io/gloo repo.",
     "cleanAlternative": "kgateway (Apache-2.0)"
-  },
-  {
-    "name": "Envoy Gateway",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "CNCF implementation of the Kubernetes Gateway API on Envoy: standard K8s resources instead of vendor CRDs. The Kubernetes-first Kong alternative."
   },
   {
     "name": "Bifrost",
@@ -56,16 +31,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Lightweight Python proxy exposing one OpenAI-compatible API to call, monitor, and cost-map 100+ LLM providers."
-  },
-  {
-    "name": "Apache SkyWalking",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "APM: distributed tracing, metrics, and service-topology analysis. [blocked: upstream CVEs / ES9 unsupported]",
-    "blocked": true,
-    "blockedReason": "Built and 0-CVE, but the chart is held on its storage backend: SkyWalking OAP 10.4.0's bundled Elasticsearch client drives ES 6/7/8 and OpenSearch only and throws `UnsupportedOperationException` on ES major 9, so OAP crashes on boot against QuenchWorks' Elasticsearch 9.x. Held until a compatible backend ships (an ES 8 image, or SkyWalking's native BanyanDB — the OAP image already bundles the BanyanDB client)."
   },
   {
     "name": "Milvus",
@@ -98,17 +63,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Data orchestrator for ML and analytics pipelines."
-  },
-  {
-    "name": "n8n",
-    "category": "Workflow & data",
-    "license": "Sustainable Use License",
-    "licenseClean": "caution",
-    "priority": "planned",
-    "note": "Fair-code workflow automation with native AI. Source-available, not OSI.",
-    "cleanAlternative": "No drop-in clean equivalent; Temporal (MIT) for code-first orchestration.",
-    "blocked": true,
-    "blockedReason": "n8n's pinned npm dependency tree carries fixable CVEs that upstream has not moved past, so the image cannot reach 0 fixable CVEs without diverging from n8n's own lockfile. Built and tested; held until the dependencies are updated. (n8n is also source-available under the Sustainable Use License, not OSI.)"
   },
   {
     "name": "Redpanda",
@@ -218,16 +172,6 @@
     "note": "PHP CMS backed by MySQL or MariaDB."
   },
   {
-    "name": "Matomo",
-    "category": "Apps & productivity",
-    "license": "GPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Privacy-respecting web analytics platform on PHP backed by MySQL or MariaDB.",
-    "blocked": true,
-    "blockedReason": "Matomo's vendored PHP dependencies pin Twig below the version that fixes current CVEs, so the image cannot reach 0 fixable CVEs without diverging from Matomo's own constraints. Built and tested; held until upstream bumps the pin."
-  },
-  {
     "name": "Mastodon",
     "category": "Apps & productivity",
     "license": "AGPL-3.0-only",
@@ -298,14 +242,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Stateless HTML and Office to PDF conversion API."
-  },
-  {
-    "name": "phpMyAdmin",
-    "category": "Apps & productivity",
-    "license": "GPL-2.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "PHP web administration UI for MySQL and MariaDB."
   },
   {
     "name": "pgAdmin",
@@ -548,28 +484,12 @@
     "blockedReason": "Built, but pulls `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) via ory/x's vendored dockertest helper; the fix lives only in `moby/moby` v29 and ory/x is embedded via a local replace, so it can't be bumped without forking. Held until Ory migrates ory/x to moby v29."
   },
   {
-    "name": "Sealed Secrets",
-    "category": "Secrets & identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Encrypts Kubernetes Secrets so they can be stored safely in Git."
-  },
-  {
     "name": "SPIRE",
     "category": "Secrets & identity",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
     "note": "SPIFFE runtime for issuing workload identities across a fleet."
-  },
-  {
-    "name": "OpenLDAP",
-    "category": "Secrets & identity",
-    "license": "OLDAP-2.8",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "LDAP directory server for centralized authentication and user data."
   },
   {
     "name": "EJBCA",
@@ -602,22 +522,6 @@
     "licenseClean": "agpl",
     "priority": "planned",
     "note": "Access plane providing identity-based SSH, Kubernetes, and database access. Community edition is AGPL-3.0."
-  },
-  {
-    "name": "Contour",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Envoy-based Kubernetes ingress controller."
-  },
-  {
-    "name": "Varnish",
-    "category": "Gateways & proxies",
-    "license": "BSD-2-Clause",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "HTTP caching reverse proxy and web accelerator."
   },
   {
     "name": "Squid",
@@ -788,14 +692,6 @@
     "note": "SIEM and XDR platform with manager, indexer, and dashboard components."
   },
   {
-    "name": "Crossplane",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Control-plane framework for managing cloud infrastructure via Kubernetes APIs."
-  },
-  {
     "name": "Flux",
     "category": "CI/CD & registry",
     "license": "Apache-2.0",
@@ -833,7 +729,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Umbrella: OpenBao + Keycloak — SSO in front of secrets management. All components built; ready to build."
+    "note": "Umbrella: OpenBao + Keycloak \u2014 SSO in front of secrets management. All components built; ready to build."
   },
   {
     "name": "postgres-ha-stack",
@@ -841,7 +737,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Umbrella: PostgreSQL + PgBouncer + postgres-exporter — pooled SQL with metrics. All components built; ready to build."
+    "note": "Umbrella: PostgreSQL + PgBouncer + postgres-exporter \u2014 pooled SQL with metrics. All components built; ready to build."
   },
   {
     "name": "cache-stack",
@@ -849,7 +745,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Umbrella: Valkey + redis-exporter + Grafana dashboards — cache with metrics. All components built; ready to build."
+    "note": "Umbrella: Valkey + redis-exporter + Grafana dashboards \u2014 cache with metrics. All components built; ready to build."
   },
   {
     "name": "gitops-stack",
@@ -857,7 +753,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: a pluggable Git backend + Atlantis + Terralist for Terraform/OpenTofu GitOps with a private module/provider registry. Pick your forge: Gitea (default, built) or Forgejo / Gogs (lightweight, clean) / OneDev (all-in-one) / GitLab CE (heavy, mixed license). Atlantis + Gitea charts built; needs a Terralist image, the chosen forge's image, and a runner — GitHub Actions Runner or GitLab Runner, both now on the roadmap (or run runner-less)."
+    "note": "Umbrella: a pluggable Git backend + Atlantis + Terralist for Terraform/OpenTofu GitOps with a private module/provider registry. Pick your forge: Gitea (default, built) or Forgejo / Gogs (lightweight, clean) / OneDev (all-in-one) / GitLab CE (heavy, mixed license). Atlantis + Gitea charts built; needs a Terralist image, the chosen forge's image, and a runner \u2014 GitHub Actions Runner or GitLab Runner, both now on the roadmap (or run runner-less)."
   },
   {
     "name": "messaging-stack",
@@ -865,7 +761,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: Kafka + ZooKeeper (or NATS) + a console UI — event backbone. Needs a Kafka UI image first — AKHQ (Apache-2.0) is now on the roadmap for exactly this."
+    "note": "Umbrella: Kafka + ZooKeeper (or NATS) + a console UI \u2014 event backbone. Needs a Kafka UI image first \u2014 AKHQ (Apache-2.0) is now on the roadmap for exactly this."
   },
   {
     "name": "search-stack",
@@ -873,7 +769,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: OpenSearch + OpenSearch Dashboards — search with a UI. Needs an opensearch-dashboards image first."
+    "note": "Umbrella: OpenSearch + OpenSearch Dashboards \u2014 search with a UI. Needs an opensearch-dashboards image first."
   },
   {
     "name": "Percona PMM",
@@ -881,7 +777,7 @@
     "license": "AGPL-3.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Percona Monitoring and Management — deep MySQL/PostgreSQL/MongoDB observability (query analytics) built on Prometheus, Grafana and VictoriaMetrics. AGPL, OSI-approved."
+    "note": "Percona Monitoring and Management \u2014 deep MySQL/PostgreSQL/MongoDB observability (query analytics) built on Prometheus, Grafana and VictoriaMetrics. AGPL, OSI-approved."
   },
   {
     "name": "temporal-stack",
@@ -889,7 +785,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: Temporal + Elasticsearch for advanced visibility. Marginal — the Temporal chart already bundles its own PostgreSQL, so a stack only adds optional ES visibility search."
+    "note": "Umbrella: Temporal + Elasticsearch for advanced visibility. Marginal \u2014 the Temporal chart already bundles its own PostgreSQL, so a stack only adds optional ES visibility search."
   },
   {
     "name": "Terralist",
@@ -905,7 +801,7 @@
     "license": "GPL-3.0",
     "licenseClean": "agpl",
     "priority": "exploring",
-    "note": "Modern Redis/Valkey desktop GUI (Wails/Go+Vue). A desktop client, not a deployable server, so it falls outside the hardened in-cluster image model — a web Redis UI (e.g. redis-commander) would be the cache-stack UI instead."
+    "note": "Modern Redis/Valkey desktop GUI (Wails/Go+Vue). A desktop client, not a deployable server, so it falls outside the hardened in-cluster image model \u2014 a web Redis UI (e.g. redis-commander) would be the cache-stack UI instead."
   },
   {
     "name": "registry-stack",
@@ -913,7 +809,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: Harbor (container images + OCI Helm charts + Trivy scanning) + Terralist (Terraform/OpenTofu modules & providers) — one self-hosted artifact registry for every kind of artifact. Harbor chart built; needs a Terralist image+chart."
+    "note": "Umbrella: Harbor (container images + OCI Helm charts + Trivy scanning) + Terralist (Terraform/OpenTofu modules & providers) \u2014 one self-hosted artifact registry for every kind of artifact. Harbor chart built; needs a Terralist image+chart."
   },
   {
     "name": "GitLab CE",
@@ -921,8 +817,8 @@
     "license": "MIT",
     "licenseClean": "caution",
     "priority": "exploring",
-    "note": "Full DevOps platform (Git forge + CI/CD + registry). Heavy fit: a large Ruby monolith that bundles PostgreSQL, Redis, Gitaly, Sidekiq and Workhorse, and the gitlab-org/gitlab repo is mostly EE-proprietary — only the CE-flagged code is MIT. Far from the minimal one-purpose hardened model.",
-    "cleanAlternative": "Gitea or Forgejo — lightweight, fully-open Git forges that drop straight into the gitops-stack."
+    "note": "Full DevOps platform (Git forge + CI/CD + registry). Heavy fit: a large Ruby monolith that bundles PostgreSQL, Redis, Gitaly, Sidekiq and Workhorse, and the gitlab-org/gitlab repo is mostly EE-proprietary \u2014 only the CE-flagged code is MIT. Far from the minimal one-purpose hardened model.",
+    "cleanAlternative": "Gitea or Forgejo \u2014 lightweight, fully-open Git forges that drop straight into the gitops-stack."
   },
   {
     "name": "Gogs",
@@ -978,7 +874,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Operator-based HA PostgreSQL: CloudNativePG + PgBouncer + postgres-exporter — streaming replication, automated failover, and backups/PITR to object storage. NOTE: unlike the operator-free observability stacks, this is CRD-driven (it installs the CloudNativePG operator). Needs a CloudNativePG image first."
+    "note": "Operator-based HA PostgreSQL: CloudNativePG + PgBouncer + postgres-exporter \u2014 streaming replication, automated failover, and backups/PITR to object storage. NOTE: unlike the operator-free observability stacks, this is CRD-driven (it installs the CloudNativePG operator). Needs a CloudNativePG image first."
   },
   {
     "name": "mysql-ha-stack",
@@ -986,7 +882,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Operator-based HA MySQL: a MySQL operator (Percona XtraDB Cluster, or MariaDB Operator with Galera) + a metrics exporter — synchronous multi-primary replication and backups. CRD-driven. Needs the chosen operator image first."
+    "note": "Operator-based HA MySQL: a MySQL operator (Percona XtraDB Cluster, or MariaDB Operator with Galera) + a metrics exporter \u2014 synchronous multi-primary replication and backups. CRD-driven. Needs the chosen operator image first."
   },
   {
     "name": "mongodb-ha-stack",
@@ -994,8 +890,8 @@
     "license": "SSPL-1.0",
     "licenseClean": "caution",
     "priority": "exploring",
-    "note": "Operator-based HA MongoDB: MongoDB Community Operator + a metrics exporter — replica-set failover. CRD-driven. The operator is Apache-2.0, but MongoDB itself is SSPL (not OSI), so the stack inherits that caution.",
-    "cleanAlternative": "FerretDB (Apache-2.0) on the pg-ha-stack — a MongoDB-compatible, fully-open document database over PostgreSQL."
+    "note": "Operator-based HA MongoDB: MongoDB Community Operator + a metrics exporter \u2014 replica-set failover. CRD-driven. The operator is Apache-2.0, but MongoDB itself is SSPL (not OSI), so the stack inherits that caution.",
+    "cleanAlternative": "FerretDB (Apache-2.0) on the pg-ha-stack \u2014 a MongoDB-compatible, fully-open document database over PostgreSQL."
   },
   {
     "name": "MinIO",
@@ -1061,14 +957,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "nginx + LuaJIT platform for scriptable web apps and gateways."
-  },
-  {
-    "name": "KrakenD",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Stateless high-performance API gateway."
   },
   {
     "name": "Emissary-ingress",
@@ -1262,7 +1150,7 @@
     "priority": "planned",
     "note": "Kubernetes resource-metrics API for HPA and kubectl top.",
     "blocked": true,
-    "blockedReason": "Built, but a transitive `github.com/prometheus/prometheus` carries fixable CVEs whose fix (0.311.3) forces k8s v0.35 (breaking metrics-server's v0.33 apiserver lockstep) plus a textparse API change — unfixable without forking. Held until an upstream release bumps prometheus."
+    "blockedReason": "Built, but a transitive `github.com/prometheus/prometheus` carries fixable CVEs whose fix (0.311.3) forces k8s v0.35 (breaking metrics-server's v0.33 apiserver lockstep) plus a textparse API change \u2014 unfixable without forking. Held until an upstream release bumps prometheus."
   },
   {
     "name": "Cluster Autoscaler",
@@ -1366,7 +1254,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Web UI to manage and browse Kafka — the console the messaging-stack needs."
+    "note": "Web UI to manage and browse Kafka \u2014 the console the messaging-stack needs."
   },
   {
     "name": "Strimzi",
@@ -1567,7 +1455,7 @@
     "license": "MIT",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Self-hosted Actions runner — the runner the gitops-stack needs for a Gitea/Forgejo backend."
+    "note": "Self-hosted Actions runner \u2014 the runner the gitops-stack needs for a Gitea/Forgejo backend."
   },
   {
     "name": "Argo Rollouts",
@@ -1759,7 +1647,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Grafana Pyroscope + Grafana — continuous CPU/memory profiling; the missing 'P' that completes LGTM(P) alongside the observability/logging/tracing stacks. Needs a Pyroscope image."
+    "note": "Grafana Pyroscope + Grafana \u2014 continuous CPU/memory profiling; the missing 'P' that completes LGTM(P) alongside the observability/logging/tracing stacks. Needs a Pyroscope image."
   },
   {
     "name": "ai-stack",
@@ -1767,7 +1655,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Ollama (or vLLM) + Open WebUI + Qdrant — self-hosted LLM serving, a chat UI, and a vector DB for retrieval-augmented generation. Qdrant is built; needs Ollama/vLLM + Open WebUI images."
+    "note": "Ollama (or vLLM) + Open WebUI + Qdrant \u2014 self-hosted LLM serving, a chat UI, and a vector DB for retrieval-augmented generation. Qdrant is built; needs Ollama/vLLM + Open WebUI images."
   },
   {
     "name": "pki-stack",
@@ -1775,7 +1663,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "step-ca + cert-manager + trust-manager — an internal certificate authority with automated issuance and cluster-wide trust-bundle distribution. Needs those images."
+    "note": "step-ca + cert-manager + trust-manager \u2014 an internal certificate authority with automated issuance and cluster-wide trust-bundle distribution. Needs those images."
   },
   {
     "name": "policy-stack",
@@ -1783,7 +1671,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Kyverno + Policy Reporter + Polaris (Fairwinds) — Kubernetes policy enforcement, violation reporting, and configuration best-practice validation. Operator-light (admission webhooks). Needs those images."
+    "note": "Kyverno + Policy Reporter + Polaris (Fairwinds) \u2014 Kubernetes policy enforcement, violation reporting, and configuration best-practice validation. Operator-light (admission webhooks). Needs those images."
   },
   {
     "name": "backup-stack",
@@ -1791,7 +1679,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Velero + MinIO — scheduled cluster backup/restore and PV snapshots to an in-cluster S3 target. Needs Velero + MinIO images.",
+    "note": "Velero + MinIO \u2014 scheduled cluster backup/restore and PV snapshots to an in-cluster S3 target. Needs Velero + MinIO images.",
     "cleanAlternative": "Use any external S3 (SeaweedFS/Garage, already shipped) instead of MinIO to keep it fully Apache-2.0."
   },
   {
@@ -1800,7 +1688,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Traefik (or ingress-nginx) + cert-manager + external-dns — production ingress with automatic TLS and DNS records. Traefik + external-dns are built; needs cert-manager."
+    "note": "Traefik (or ingress-nginx) + cert-manager + external-dns \u2014 production ingress with automatic TLS and DNS records. Traefik + external-dns are built; needs cert-manager."
   },
   {
     "name": "analytics-stack",
@@ -1808,7 +1696,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Apache Superset + Trino + PostgreSQL — federated SQL analytics with self-service BI dashboards. PostgreSQL is built; needs Superset + Trino."
+    "note": "Apache Superset + Trino + PostgreSQL \u2014 federated SQL analytics with self-service BI dashboards. PostgreSQL is built; needs Superset + Trino."
   },
   {
     "name": "lakehouse-stack",
@@ -1816,7 +1704,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Trino + Apache Nessie (or Polaris) + MinIO — an Iceberg data lakehouse: query engine, versioned table catalog, and object store. Needs those images."
+    "note": "Trino + Apache Nessie (or Polaris) + MinIO \u2014 an Iceberg data lakehouse: query engine, versioned table catalog, and object store. Needs those images."
   },
   {
     "name": "streaming-stack",
@@ -1824,7 +1712,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Kafka + Apache Flink + Apicurio Registry — end-to-end stream processing with schema governance. Kafka is built; needs Flink + Apicurio."
+    "note": "Kafka + Apache Flink + Apicurio Registry \u2014 end-to-end stream processing with schema governance. Kafka is built; needs Flink + Apicurio."
   },
   {
     "name": "orchestration-stack",
@@ -1832,7 +1720,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Apache Airflow + PostgreSQL + Valkey — data-pipeline scheduling (Airflow needs a metadata DB and a broker). PostgreSQL + Valkey are built; needs Airflow."
+    "note": "Apache Airflow + PostgreSQL + Valkey \u2014 data-pipeline scheduling (Airflow needs a metadata DB and a broker). PostgreSQL + Valkey are built; needs Airflow."
   },
   {
     "name": "runtime-security-stack",
@@ -1840,7 +1728,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Falco + Tetragon — eBPF-based runtime threat detection and enforcement. Privileged host/kernel access by design (like node-exporter). Needs those images."
+    "note": "Falco + Tetragon \u2014 eBPF-based runtime threat detection and enforcement. Privileged host/kernel access by design (like node-exporter). Needs those images."
   },
   {
     "name": "supply-chain-stack",
@@ -1848,7 +1736,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Trivy Operator + Kubescape + Dependency-Track — continuous image, cluster-posture, and SBOM vulnerability scanning in one place. Needs those images."
+    "note": "Trivy Operator + Kubescape + Dependency-Track \u2014 continuous image, cluster-posture, and SBOM vulnerability scanning in one place. Needs those images."
   },
   {
     "name": "cost-stack",
@@ -1856,7 +1744,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "OpenCost + Prometheus + Grafana — Kubernetes cost monitoring and allocation dashboards; an add-on to the observability stack. Prometheus + Grafana are built; needs OpenCost."
+    "note": "OpenCost + Prometheus + Grafana \u2014 Kubernetes cost monitoring and allocation dashboards; an add-on to the observability stack. Prometheus + Grafana are built; needs OpenCost."
   },
   {
     "name": "OpenTelemetry Operator",
@@ -1891,96 +1779,6 @@
     "note": "Jenkins JNLP inbound build agent. Image only, no chart. Build held: jenkins-docker-agent carries a CRITICAL jetty CVE (fix 2.560-r0 not yet in Wolfi)."
   },
   {
-    "name": "OpenSearch",
-    "category": "Search",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Search and analytics suite with a Kibana-style dashboards UI.",
-    "blocked": true,
-    "blockedReason": "OpenSearch 3.7.0 (newest) shades jackson-databind 2.21.3 inside the security plugin's `opensaml-3.7.0.0-all.jar` uber-jar — CVE-2026-54512..54518. Fixed jackson can't be swapped into a shaded jar; no released OpenSearch bundles it yet."
-  },
-  {
-    "name": "Elasticsearch",
-    "category": "Search",
-    "license": "SSPL-1.0",
-    "licenseClean": "caution",
-    "priority": "planned",
-    "note": "Distributed search and analytics engine.",
-    "blocked": true,
-    "blockedReason": "Elasticsearch 9.4.3 (newest) shades jackson inside its own `elasticsearch-x-content` core jar and `parquet-hadoop-bundle` (CVE-2026-54512..515) — 48 fixable jar CVEs, none swappable without an upstream jar rebuild."
-  },
-  {
-    "name": "Apache Solr",
-    "category": "Search",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Enterprise search platform built on Apache Lucene, offering full-text search, faceting, and indexing over large document collections.",
-    "blocked": true,
-    "blockedReason": "Solr 10.0.0 pins standalone jackson-databind 2.20.0 whose fix is only 2.21.4 (minor) / 3.x (major) — no same-major patch exists — plus CVE-2025-55163 shaded in `grpc-netty-shaded`."
-  },
-  {
-    "name": "Neo4j",
-    "category": "Graph",
-    "license": "GPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Graph database for highly connected data, queried with Cypher for traversals and relationship-heavy workloads.",
-    "blocked": true,
-    "blockedReason": "Neo4j 2026.05.0 (newest) shades jackson 2.21.3 inside `parquet-jackson-1.17.1.jar` (CVE-2026-54512..518); the shaded copy can't be swapped and no fixed release exists."
-  },
-  {
-    "name": "Keycloak",
-    "category": "Identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Open-source identity and access management server providing SSO, user federation, and OAuth2/OIDC and SAML for apps and APIs.",
-    "blocked": true,
-    "blockedReason": "Keycloak 26.6.4 pins opentelemetry-api 1.57.0 via `quarkus-opentelemetry` (CVE-2026-45292). OTel's versioning contract forbids bumping the api jar alone, and moving the whole OTel stack breaks the Quarkus platform."
-  },
-  {
-    "name": "Graylog",
-    "category": "Observability",
-    "license": "SSPL-1.0",
-    "licenseClean": "caution",
-    "priority": "planned",
-    "note": "Graylog, the log-management and analysis server (search, dashboards, alerting, GELF/Beats inputs).",
-    "blocked": true,
-    "blockedReason": "Graylog 7.1.4 (newest) shades jackson 2.21.2 inside its 299MB `graylog.jar` uber-jar and the opensearch storage plugin (CVE-2026-54512..518) — no standalone jar to swap."
-  },
-  {
-    "name": "Apache Pulsar",
-    "category": "Messaging",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Cloud-native distributed messaging and streaming platform with multi-tenancy, geo-replication, and tiered storage that separates compute from storage.",
-    "blocked": true,
-    "blockedReason": "Pulsar 4.2.2 shades jackson 2.18.6 inside `java-instance.jar` (CVE-2026-54512..515) and bundles jline 3.21 which needs a JLine 4 major bump."
-  },
-  {
-    "name": "Authelia",
-    "category": "Identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Open-source authentication and authorization server providing single sign-on and two-factor authentication via a web portal, designed as a companion for reverse proxies.",
-    "blocked": true,
-    "blockedReason": "Ships upstream's prebuilt Go binary with stale baked-in Go stdlib/deps; there is no from-source build to bump them. Unblocks when upstream ships a release rebuilt on patched toolchain/deps."
-  },
-  {
-    "name": "CockroachDB",
-    "category": "Relational",
-    "license": "BUSL-1.1",
-    "licenseClean": "caution",
-    "priority": "planned",
-    "note": "Distributed SQL database with PostgreSQL wire compatibility and automatic horizontal scaling and survivability.",
-    "blocked": true,
-    "blockedReason": "Prebuilt binary baked on Go stdlib 1.25.5 (24 CVEs incl. CVE-2025-68121). A go-1.25.11 rebuild would clear all of them, but CockroachDB 26.x is a Bazel-only build (custom fork + C submodules + a Node UI) that can't run in the build sandbox."
-  },
-  {
     "name": "Coolify Helper",
     "category": "PaaS",
     "license": "Apache-2.0 AND AGPL-3.0-or-later",
@@ -1991,26 +1789,6 @@
     "blockedReason": "Bundled Wolfi apks `docker-compose`/`docker-cli-buildx` carry CVE-2026-34040, whose fix is the `github.com/docker/docker` v28 -> `moby/moby` v29 module rename (not yet in Wolfi), plus `mc`'s x/net. Clears when Wolfi publishes the moby-v29 apks."
   },
   {
-    "name": "FerretDB",
-    "category": "Document",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "MongoDB-compatible document database that translates the MongoDB wire protocol onto PostgreSQL via the DocumentDB extension.",
-    "blocked": true,
-    "blockedReason": "FerretDB 2.7.0 directly depends on `modelcontextprotocol/go-sdk` v0.2.0 (4 HIGH CVEs); the fix is only in v1.x (a major bump), and v1 removes the API types FerretDB's own source imports — needs an upstream migration."
-  },
-  {
-    "name": "Floci",
-    "category": "Apps & productivity",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Local AWS cloud emulator and LocalStack Community successor, built from source into a Quarkus fast-jar on a hardened Wolfi JRE.",
-    "blocked": true,
-    "blockedReason": "The Quarkus fast-jar bundles `com.squareup.wire:wire-runtime` 4.9.11 (CVE-2026-45799, HIGH), fixed only in Wire 6.x — a major bump of a transitive runtime dependency."
-  },
-  {
     "name": "Floci (full)",
     "category": "Apps & productivity",
     "license": "MIT",
@@ -2019,26 +1797,6 @@
     "note": "Opt-in, NON-hardened companion to the floci image: it runs as root and expects the host Docker socket mounted, which lets it emulate all 65 of Floci's AWS services including the 10 Docker-backed ones (Lambda, RDS, ElastiCache, MSK, ECS, EKS, OpenSearch, ECR, DocumentDB, Neptune).",
     "blocked": true,
     "blockedReason": "Same blocker as floci: bundled `wire-runtime` 4.9.11 (CVE-2026-45799, HIGH) is fixed only in Wire 6.x (a major bump)."
-  },
-  {
-    "name": "Ghost",
-    "category": "Apps & productivity",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Open-source Node.js publishing platform for blogs, newsletters, and membership sites.",
-    "blocked": true,
-    "blockedReason": "Ghost 6.51.0 (newest) pins production npm deps below their CVE fixes that require MAJOR bumps (jsonwebtoken 8->9, nodemailer 8->9, `babel-traverse` package rename, knex->2, validator->13); patching them would break Ghost's own declared constraints."
-  },
-  {
-    "name": "Grafana",
-    "category": "Observability",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Dashboards and visualization for metrics, logs, and traces across many data sources.",
-    "blocked": true,
-    "blockedReason": "Ships upstream's prebuilt OSS binary (the frontend build is infeasible on a hosted runner), which bakes openfga 1.14.2 and a grafana/tempo module with fixable CVEs; 13.1.0 (newest) still carries them and there is no from-source path to bump them."
   },
   {
     "name": "Grype",
@@ -2052,16 +1810,6 @@
     "deliverable": "image"
   },
   {
-    "name": "Jenkins",
-    "category": "CI/CD & registry",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "The leading open-source automation server for building, testing, and deploying software, with thousands of plugins.",
-    "blocked": true,
-    "blockedReason": "Jenkins LTS 2.555.3 (newest LTS) core carries CVE-2026-53441 (HIGH); the fix (2.568) ships only on the weekly channel, and `jenkins-core` is the coupled core of the war, not an independently swappable jar."
-  },
-  {
     "name": "Apache JMeter",
     "category": "Observability",
     "license": "Apache-2.0",
@@ -2069,67 +1817,7 @@
     "priority": "planned",
     "note": "Apache JMeter load-testing and performance-measurement tool, the official binary distribution running on a hardened Wolfi JRE.",
     "blocked": true,
-    "blockedReason": "JMeter 5.6.3 (newest) shades netty inside `neo4j-java-driver` and needs Apache Tika 1->2/3 (CVE-2025-66516 CRITICAL) and dnsjava 2->3 — both major bumps."
-  },
-  {
-    "name": "Apache Kafka",
-    "category": "Messaging",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Distributed event-streaming platform for high-throughput, durable, replayable publish-subscribe pipelines and stream processing.",
-    "blocked": true,
-    "blockedReason": "Apache Kafka bundles JLine 3.x; the CVE fix requires a JLine 3->4 major jar bump the release does not adopt."
-  },
-  {
-    "name": "Mattermost",
-    "category": "Messaging",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Open-source, self-hosted team messaging and collaboration platform (a Slack alternative) with channels, direct messages, file sharing, and integrations.",
-    "blocked": true,
-    "blockedReason": "Ships upstream's prebuilt Go binary (the webapp build is infeasible on a hosted runner) with stale baked-in Go stdlib/deps (x/net, x/crypto, x/image); no from-source path to bump them."
-  },
-  {
-    "name": "Nextcloud",
-    "category": "Apps & productivity",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Nextcloud, the self-hosted file-sync and content-collaboration platform.",
-    "blocked": true,
-    "blockedReason": "Nextcloud 34.0.1 (newest) ships guzzle/psr7/phpseclib/symfony/web-token inside its code-integrity-signed `3rdparty/` tree; swapping them trips Nextcloud's signature check, and the newest release still pins the vulnerable versions."
-  },
-  {
-    "name": "Thanos",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Highly-available Prometheus setup with unlimited metric retention via object storage, adding a global query view, downsampling, and compaction across Prometheus servers.",
-    "blocked": true,
-    "blockedReason": "Thanos 0.41.0 (newest) vendors prometheus 0.308 (CVE-2026-42151 cluster, HIGH); the fix needs prometheus 0.311.3, which forces k8s apimachinery v0.35 and a breaking `textparse` API change."
-  },
-  {
-    "name": "ZITADEL",
-    "category": "Identity",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Cloud-native identity and access management (IAM) with OIDC/OAuth2/SAML, multi-tenancy, and a built-in admin console.",
-    "blocked": true,
-    "blockedReason": "Ships upstream's prebuilt Go binary (the Angular console build is infeasible on a hosted runner) baking gorilla/csrf, x/crypto, x/net and Go stdlib 1.25.8 — 37 CVEs; 4.15.3 (newest) still carries them."
-  },
-  {
-    "name": "Apache ZooKeeper",
-    "category": "Coordination",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Centralized coordination service for distributed systems, providing configuration, naming, leader election, and synchronization primitives.",
-    "blocked": true,
-    "blockedReason": "ZooKeeper 3.9.5 (newest 3.9 line) pins jetty-http 9.4 (needs a Jetty 12 major bump) and jline 3.25 (needs a JLine 4 major bump)."
+    "blockedReason": "JMeter 5.6.3 (newest) shades netty inside `neo4j-java-driver` and needs Apache Tika 1->2/3 (CVE-2025-66516 CRITICAL) and dnsjava 2->3 \u2014 both major bumps."
   },
   {
     "name": "Gateway API CRDs",
