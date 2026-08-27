@@ -1586,14 +1586,6 @@
     "note": "Semantic layer and analytics API over your data."
   },
   {
-    "name": "Ansible",
-    "category": "Workflow & data",
-    "license": "GPL-3.0",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Agentless IT automation and configuration management."
-  },
-  {
     "name": "Terragrunt",
     "category": "CI/CD & registry",
     "license": "MIT",
@@ -1787,45 +1779,6 @@
     "note": "Coolify helper image carrying the build and deploy toolchain (buildpacks, git, ssh) that runs on target hosts to execute deployments. [blocked: upstream CVEs / ES9 unsupported]",
     "blocked": true,
     "blockedReason": "Bundled Wolfi apks `docker-compose`/`docker-cli-buildx` carry CVE-2026-34040, whose fix is the `github.com/docker/docker` v28 -> `moby/moby` v29 module rename (not yet in Wolfi), plus `mc`'s x/net. Clears when Wolfi publishes the moby-v29 apks."
-  },
-  {
-    "name": "Floci (full)",
-    "category": "Apps & productivity",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Opt-in, NON-hardened companion to the floci image: it runs as root and expects the host Docker socket mounted, which lets it emulate all 65 of Floci's AWS services including the 10 Docker-backed ones (Lambda, RDS, ElastiCache, MSK, ECS, EKS, OpenSearch, ECR, DocumentDB, Neptune).",
-    "blocked": true,
-    "blockedReason": "Same blocker as floci: bundled `wire-runtime` 4.9.11 (CVE-2026-45799, HIGH) is fixed only in Wire 6.x (a major bump)."
-  },
-  {
-    "name": "Grype",
-    "category": "Security & supply chain",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Anchore's vulnerability scanner for container images and filesystems, driven by the same SBOM engine as Syft.",
-    "blocked": true,
-    "blockedReason": "grype 0.115.0 directly depends on `github.com/docker/docker` v28.5.2 (CVE-2026-34040); the fix requires migrating to the renamed `moby/moby` v29 (`/v2`) import path in grype's own source.",
-    "deliverable": "image"
-  },
-  {
-    "name": "Apache JMeter",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Apache JMeter load-testing and performance-measurement tool, the official binary distribution running on a hardened Wolfi JRE.",
-    "blocked": true,
-    "blockedReason": "JMeter 5.6.3 (newest) shades netty inside `neo4j-java-driver` and needs Apache Tika 1->2/3 (CVE-2025-66516 CRITICAL) and dnsjava 2->3 \u2014 both major bumps."
-  },
-  {
-    "name": "APISIX Ingress Controller",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Operator for Apache APISIX: its own CRDs (ApisixRoute, ApisixUpstream) plus Gateway API support."
   },
   {
     "name": "APISIX Dashboard",
