@@ -2474,6 +2474,38 @@
     "image": "ghcr.io/quenchworks/images/httpd"
   },
   {
+    "slug": "hydra",
+    "name": "hydra",
+    "category": "Identity",
+    "summary": "Ory Hydra, an OAuth 2.0 and OpenID Connect provider. Issues and validates tokens for first- and third-party clients without owning user credentials -- it delegates login and consent to an external identity provider, so it pairs with Kratos rather than replacing it.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "26.2.0, 25.4.0",
+    "versions": [
+      {
+        "version": "26.2.0",
+        "size": "15.0 MB",
+        "published": "2026-08-30T12:44:01Z",
+        "digest": "sha256:ffaf6629b97b9c5630a91415c6b58723ae628f0b86522a60ae318e17efffdfd4"
+      },
+      {
+        "version": "25.4.0",
+        "size": "15.0 MB",
+        "published": "2026-08-30T12:43:58Z",
+        "digest": "sha256:1e2687ace3bd89cd4b93c5f53a45105700c40c3496631fa71b9ed14fd9831677"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.ory.sh/hydra",
+    "source": "https://github.com/ory/hydra",
+    "image": "ghcr.io/quenchworks/images/hydra"
+  },
+  {
     "slug": "influxdb",
     "name": "InfluxDB",
     "category": "Time series",
@@ -2953,6 +2985,38 @@
     "upstream": "https://www.krakend.io",
     "source": "https://github.com/krakend/krakend-ce",
     "image": "ghcr.io/quenchworks/images/krakend"
+  },
+  {
+    "slug": "kratos",
+    "name": "kratos",
+    "category": "Identity",
+    "summary": "Ory Kratos, an identity and user-management server covering registration, login, MFA, account recovery and profile self-service. Headless by design -- it ships flows and APIs, not a UI -- and pairs with Hydra when OAuth2/OIDC issuance is also needed.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "26.2.0, 25.4.0",
+    "versions": [
+      {
+        "version": "26.2.0",
+        "size": "18.6 MB",
+        "published": "2026-08-30T12:44:19Z",
+        "digest": "sha256:c72eb6f93a26e2a382cb5b36784fd663fa3a092b6ff4a32456d0747b4c79259c"
+      },
+      {
+        "version": "25.4.0",
+        "size": "18.9 MB",
+        "published": "2026-08-30T12:44:15Z",
+        "digest": "sha256:9b9412c8ef6e2537677b040b1fe48a283f2df4a5268ab607569f1d71bb9e9215"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.ory.sh/kratos",
+    "source": "https://github.com/ory/kratos",
+    "image": "ghcr.io/quenchworks/images/kratos"
   },
   {
     "slug": "kube-state-metrics",
@@ -3454,6 +3518,32 @@
     "upstream": "https://github.com/memcached/memcached",
     "source": "https://www.memcached.org/files/memcached-1.6.42.tar.gz",
     "image": "ghcr.io/quenchworks/images/memcached"
+  },
+  {
+    "slug": "metrics-server",
+    "name": "metrics-server",
+    "category": "Observability",
+    "summary": "Kubernetes Metrics Server, the cluster-wide aggregator of resource usage that backs `kubectl top` and the Horizontal Pod Autoscaler. Scrapes kubelet summary endpoints and serves the metrics.k8s.io API through the aggregation layer; it is a short-term metrics source, not a monitoring backend.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "0.9.0",
+    "versions": [
+      {
+        "version": "0.9.0",
+        "size": "21.1 MB",
+        "published": "2026-08-30T08:38:55Z",
+        "digest": "sha256:17af75b28850741938443d738c21a761cae2da464bbebd46b6bf17d4c01ecf40"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/kubernetes-sigs/metrics-server",
+    "source": "https://github.com/kubernetes-sigs/metrics-server",
+    "image": "ghcr.io/quenchworks/images/metrics-server"
   },
   {
     "slug": "mimir",
