@@ -114,6 +114,7 @@ export const ui = {
     'catalog.list.resultMany': 'results',
     'catalog.list.chartV': 'chart v',
     'catalog.list.appV': 'app v',
+    'catalog.list.clearFilters': 'Clear filters',
     // --- Detail pages (ImageDetail / RuntimeDetail / ChartDetail) ---
     'detail.breadcrumb.images': 'Images',
     'detail.breadcrumb.charts': 'Charts',
@@ -382,6 +383,7 @@ export const ui = {
     'catalog.list.resultMany': 'نتائج',
     'catalog.list.chartV': 'مخطط v',
     'catalog.list.appV': 'تطبيق v',
+    'catalog.list.clearFilters': 'مسح عوامل التصفية',
     // --- صفحات التفاصيل (ImageDetail / RuntimeDetail / ChartDetail) ---
     'detail.breadcrumb.images': 'الصور',
     'detail.breadcrumb.charts': 'المخططات',
@@ -651,6 +653,7 @@ export const ui = {
     'catalog.list.resultMany': 'resultados',
     'catalog.list.chartV': 'chart v',
     'catalog.list.appV': 'app v',
+    'catalog.list.clearFilters': 'Limpiar filtros',
     // --- Páginas de detalle (ImageDetail / RuntimeDetail / ChartDetail) ---
     'detail.breadcrumb.images': 'Imágenes',
     'detail.breadcrumb.charts': 'Charts',

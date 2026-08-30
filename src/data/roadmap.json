@@ -1,13 +1,5 @@
 [
   {
-    "name": "Kong Gateway",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "API gateway on nginx/OpenResty. Open-core (the OSS gateway is Apache-2.0; many features are gated behind the enterprise tier) and it depends on PostgreSQL. APISIX and Tyk are lighter, fully-open alternatives."
-  },
-  {
     "name": "Gloo Edge",
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
@@ -139,14 +131,6 @@
     "note": "Scalable distributed object store (S3 + HDFS)."
   },
   {
-    "name": "Woodpecker CI",
-    "category": "Storage & platform",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Simple container-native CI engine."
-  },
-  {
     "name": "SonarQube",
     "category": "Storage & platform",
     "license": "LGPL-3.0",
@@ -276,14 +260,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Clientless remote desktop gateway for RDP, VNC, and SSH over the browser."
-  },
-  {
-    "name": "Argo CD",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Declarative GitOps continuous delivery for Kubernetes."
   },
   {
     "name": "Concourse",
@@ -1143,16 +1119,6 @@
     "note": "Kubernetes configuration best-practice validation."
   },
   {
-    "name": "metrics-server",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Kubernetes resource-metrics API for HPA and kubectl top.",
-    "blocked": true,
-    "blockedReason": "Built, but a transitive `github.com/prometheus/prometheus` carries fixable CVEs whose fix (0.311.3) forces k8s v0.35 (breaking metrics-server's v0.33 apiserver lockstep) plus a textparse API change \u2014 unfixable without forking. Held until an upstream release bumps prometheus."
-  },
-  {
     "name": "Cluster Autoscaler",
     "category": "CI/CD & registry",
     "license": "Apache-2.0",
@@ -1787,22 +1753,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Web UI for APISIX (Go API + Vue frontend). Confirm upstream is still maintained before building; the gateway ships without it."
-  },
-  {
-    "name": "kgateway",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Successor to Gloo Edge (kgateway-dev/kgateway). Envoy-backed, reuses our hardened envoy image. Build this rather than the legacy solo-io/gloo repo."
-  },
-  {
-    "name": "NGINX Gateway Fabric",
-    "category": "Gateways & proxies",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Gateway API implementation with an nginx data plane; reuses our nginx image."
   },
   {
     "name": "Higress",

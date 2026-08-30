@@ -19,6 +19,7 @@ import { canonicalVersions } from '../data/images';
 import { getLangFromUrl, localizeUrl, useTranslations } from '../i18n/ui';
 import { localizedSummary } from '../i18n/content';
 import { categoryName } from '../i18n/categories';
+import { cardSummary } from '../data/truncate';
 
 type ArtifactHubMap = Record<string, AhFacts>;
 
@@ -47,9 +48,11 @@ interface Props {
   categories: string[];
   /** Tier filters: [{ key, label }]. */
   tierFilters: { key: string; label: string }[];
+  /** Same page size as the server-rendered pager (images.ts / charts.ts PAGE_SIZE), so the client-side filtered/paginated grid matches it exactly. */
+  pageSize: number;
 }
 
-const { kind, base, all, ah, page, count, categories, tierFilters } = Astro.props;
+const { kind, base, all, ah, page, count, categories, tierFilters, pageSize } = Astro.props;
 
 const isImages = kind === 'images';
 const noun = isImages ? 'images' : 'charts';
@@ -185,9 +188,12 @@ const dataset = all.map((e) => {
   </select>
 </div>
 
-<div class="mb-4 flex min-h-5 items-center justify-between gap-4">
+<div class="mb-4 flex min-h-5 flex-wrap items-center justify-between gap-4">
   <p class="font-mono text-xs uppercase tracking-widest text-ash" id="result-count"></p>
-  <p class="hidden font-mono text-xs uppercase tracking-widest text-ash" id="no-results">{isImages ? t('catalog.list.noMatchImages') : t('catalog.list.noMatchCharts')}</p>
+  <p class="hidden flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-ash" id="no-results">
+    <span>{isImages ? t('catalog.list.noMatchImages') : t('catalog.list.noMatchCharts')}</span>
+    <button type="button" id="clear-filters" class="rounded border border-line px-2 py-0.5 text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper">{t('catalog.list.clearFilters')}</button>
+  </p>
 </div>
 
 {/* SERVER slice: the real, crawlable 12-card page. Hidden by the client when filtering. */}
@@ -225,7 +231,7 @@ const dataset = all.map((e) => {
             </div>
             <div class="flex-1">
               <h2 class:list={['text-base font-semibold leading-tight', e.status === 'available' ? '' : 'text-paper/80']}>{e.name}</h2>
-              <p class="mt-2 text-sm leading-relaxed text-ash">{localizedSummary(lang, kind, e.slug, e.summary)}</p>
+              <p class="mt-2 line-clamp-3 min-h-17 text-sm leading-relaxed text-ash">{cardSummary(localizedSummary(lang, kind, e.slug, e.summary))}</p>
             </div>
             {e.status === 'available' && latest && (
               <p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-widest text-ash">
@@ -259,7 +265,7 @@ const dataset = all.map((e) => {
           </div>
           <div class="flex-1">
             <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
-            <p class="mt-2 text-sm leading-relaxed text-ash">{localizedSummary(lang, kind, e.slug, e.summary)}</p>
+            <p class="mt-2 line-clamp-3 min-h-17 text-sm leading-relaxed text-ash">{cardSummary(localizedSummary(lang, kind, e.slug, e.summary))}</p>
           </div>
           <p class="font-mono text-[10px] uppercase tracking-widest text-ash">
             {t('catalog.list.chartV')}{chartVer ?? '?'}{appVer ? ` · ${t('catalog.list.appV')}${appVer}` : ''}
@@ -278,6 +284,11 @@ const dataset = all.map((e) => {
 {/* CLIENT results: filled with the full matching set when filtering. Hidden otherwise. */}
 <ul id="filter-grid" class="hidden grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"></ul>
 
+{/* CLIENT pager for the filtered set: same page size + button markup as Pager.astro
+    below, rendered/hidden by the client script (real <a href> links, JS-intercepted
+    for pushState). Empty + hidden until apply() has something to paginate. */}
+<nav id="filter-pager" class="hidden mt-10 flex flex-wrap items-center justify-center gap-1.5" aria-label="Pagination"></nav>
+
 <Pager base={pagerBase} current={page.current} total={page.total} />
 
 <script
@@ -286,6 +297,7 @@ const dataset = all.map((e) => {
   type="application/json"
   data-kind={kind}
   data-itembase={itemBase}
+  data-page-size={pageSize}
   data-planned={t('catalog.list.badgePlanned')}
   data-versions={t('catalog.list.versions')}
   data-chartv={t('catalog.list.chartV')}
@@ -296,6 +308,7 @@ const dataset = all.map((e) => {
 
 <script>
   import { gradeTone, gradeNote, GRADE_CHIP } from '../data/grade';
+  import { cardSummary } from '../data/truncate';
 
   type Entry = {
     slug: string;
@@ -323,18 +336,86 @@ const dataset = all.map((e) => {
   const tResultMany = dataEl?.getAttribute('data-result-many') ?? 'results';
   const isImages = kind === 'images';
   const all: Entry[] = dataEl ? JSON.parse(dataEl.textContent || '[]') : [];
+  // Same page size as the server-rendered Pager (images.ts / charts.ts PAGE_SIZE = 12),
+  // passed through as a data attribute so the filtered/paginated grid matches it exactly.
+  const PAGE_SIZE = Number(dataEl?.getAttribute('data-page-size')) || 12;
 
   const search = document.querySelector<HTMLInputElement>(isImages ? '#image-search' : '#chart-search');
   const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
   const catSelect = document.querySelector<HTMLSelectElement>('#cat-filter');
   const serverGrid = document.getElementById('server-grid');
   const filterGrid = document.getElementById('filter-grid');
+  const filterPager = document.getElementById('filter-pager');
   const realPager = document.getElementById('real-pager');
   const noResults = document.getElementById('no-results');
   const count = document.getElementById('result-count');
+  const clearFiltersBtn = document.getElementById('clear-filters');
 
   let activeFilter = 'all';
   let activeKind = 'all';
+  let currentPage = 1;
+
+  // --- URL as source of truth for q / status / tier / category / page ------
+  // Buttons + the category select are one mutually-exclusive facet (see the
+  // click handlers below), so at most one of status/tier/category is ever in
+  // the URL alongside q. Priority on read mirrors that: status > tier > category.
+  // Changing q/status/tier/category always resets page back to 1 (a stale page
+  // number from a previous, larger result set would otherwise render blank).
+  type UrlState = { q: string; kind: string; filter: string; page: number };
+
+  function stateFromURL(): UrlState {
+    const p = new URLSearchParams(location.search);
+    const q = p.get('q') ?? '';
+    const status = p.get('status');
+    const tier = p.get('tier');
+    const category = p.get('category');
+    const rawPage = parseInt(p.get('page') ?? '1', 10);
+    const page = Number.isFinite(rawPage) && rawPage > 0 ? rawPage : 1;
+    if (isImages && status) return { q, kind: 'status', filter: status, page };
+    if (tier) return { q, kind: 'tier', filter: tier, page };
+    if (category) return { q, kind: 'category', filter: category, page };
+    return { q, kind: 'all', filter: 'all', page };
+  }
+
+  // Reflect a state into the controls (search box, pressed buttons, select)
+  // without touching the URL or history -- used on first load and popstate.
+  // The page number itself has no control to sync; apply() renders + clamps it.
+  function syncControls(state: UrlState) {
+    activeKind = state.kind;
+    activeFilter = state.filter;
+    currentPage = state.page;
+    if (search) search.value = state.q;
+    buttons.forEach((b) => {
+      const pressed = state.kind === 'all' ? b.dataset.filter === 'all' : b.dataset.kind === state.kind && b.dataset.filter === state.filter;
+      b.setAttribute('aria-pressed', String(pressed));
+    });
+    if (catSelect) catSelect.value = state.kind === 'category' ? state.filter : '';
+  }
+
+  function currentState(): UrlState {
+    return { q: (search?.value ?? '').trim(), kind: activeKind, filter: activeFilter, page: currentPage };
+  }
+
+  // Builds the URL for a state, dropping any param that's back to its default
+  // (empty query, "all" facet, page 1) instead of leaving e.g. "?q=" or
+  // "&page=1" behind.
+  function buildURL(state: UrlState): string {
+    const p = new URLSearchParams();
+    if (state.q) p.set('q', state.q);
+    if (state.kind === 'status') p.set('status', state.filter);
+    else if (state.kind === 'tier') p.set('tier', state.filter);
+    else if (state.kind === 'category') p.set('category', state.filter);
+    if (state.page > 1) p.set('page', String(state.page));
+    const qs = p.toString();
+    return `${location.pathname}${qs ? `?${qs}` : ''}`;
+  }
+
+  function writeURL(state: UrlState, mode: 'push' | 'replace') {
+    const url = buildURL(state);
+    if (url === `${location.pathname}${location.search}`) return;
+    if (mode === 'push') history.pushState(state, '', url);
+    else history.replaceState(state, '', url);
+  }
 
   const esc = (s: string) =>
     s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -354,6 +435,58 @@ const dataset = all.map((e) => {
     const title = esc(`Trivy scan: grade ${g ?? (has ? '–' : 'A+')}${has ? ` · ${tot} CVE${tot === 1 ? '' : 's'}` : ' · no CVEs'}${fixable ? ` · ${fixable} fixable` : ''}${note ? ` · ${note}` : ''}`);
     return `<span class="inline-flex items-center rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest tabular-nums ${cls}" role="img" aria-label="${title}" title="${title}">${label}</span>`;
   };
+
+  // Mirrors Pager.astro's markup/classes exactly (BTN_BASE/IDLE/ACTIVE/DISABLED,
+  // the same delta-1 ellipsis page list, the same prev/next chevrons) so the
+  // filtered grid's pager is visually identical to the real, server-rendered one.
+  // Real <a href> links to the same page with ?page=N (deep-linkable / crawlable
+  // / open-in-new-tab), intercepted by the click handler below for pushState nav.
+  const PAGER_BTN_BASE = 'inline-flex min-h-9 min-w-9 items-center justify-center rounded-lg border px-3 py-1.5 font-mono text-xs uppercase tracking-widest transition-colors duration-200 focus-visible:outline-2';
+  const PAGER_BTN_IDLE = 'border-line bg-graphite text-ash hover:border-paper/40 hover:text-paper';
+  const PAGER_BTN_ACTIVE = 'border-paper bg-paper text-ink';
+  const PAGER_BTN_DISABLED = 'border-line/60 bg-graphite/50 text-ash/40 cursor-not-allowed';
+  const PAGER_PREV_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="15 18 9 12 15 6" /></svg>';
+  const PAGER_NEXT_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4" aria-hidden="true"><polyline points="9 18 15 12 9 6" /></svg>';
+
+  type PageToken = number | 'ellipsis';
+
+  function pageTokens(cur: number, tot: number, delta = 1): PageToken[] {
+    if (tot <= 1) return [1];
+    const pages = new Set<number>([1, tot]);
+    for (let p = cur - delta; p <= cur + delta; p++) if (p >= 1 && p <= tot) pages.add(p);
+    const sorted = [...pages].sort((a, b) => a - b);
+    const out: PageToken[] = [];
+    let prev = 0;
+    for (const p of sorted) {
+      if (p - prev > 1) out.push('ellipsis');
+      out.push(p);
+      prev = p;
+    }
+    return out;
+  }
+
+  function pagerHTML(cur: number, tot: number): string {
+    if (tot <= 1) return '';
+    const hrefFor = (p: number) => esc(buildURL({ ...currentState(), page: p }));
+    const prevDisabled = cur <= 1;
+    const nextDisabled = cur >= tot;
+    const prev = prevDisabled
+      ? `<span class="${PAGER_BTN_BASE} ${PAGER_BTN_DISABLED}" aria-disabled="true" aria-label="Previous page">${PAGER_PREV_SVG}</span>`
+      : `<a href="${hrefFor(cur - 1)}" data-page="${cur - 1}" class="${PAGER_BTN_BASE} ${PAGER_BTN_IDLE}" aria-label="Previous page" rel="prev">${PAGER_PREV_SVG}</a>`;
+    const next = nextDisabled
+      ? `<span class="${PAGER_BTN_BASE} ${PAGER_BTN_DISABLED}" aria-disabled="true" aria-label="Next page">${PAGER_NEXT_SVG}</span>`
+      : `<a href="${hrefFor(cur + 1)}" data-page="${cur + 1}" class="${PAGER_BTN_BASE} ${PAGER_BTN_IDLE}" aria-label="Next page" rel="next">${PAGER_NEXT_SVG}</a>`;
+    const numbers = pageTokens(cur, tot)
+      .map((tok) =>
+        tok === 'ellipsis'
+          ? `<span class="inline-flex min-h-9 min-w-9 items-center justify-center font-mono text-xs text-ash/60" aria-hidden="true">…</span>`
+          : tok === cur
+            ? `<span class="${PAGER_BTN_BASE} tabular-nums ${PAGER_BTN_ACTIVE}" aria-current="page" aria-label="Page ${tok}">${tok}</span>`
+            : `<a href="${hrefFor(tok)}" data-page="${tok}" class="${PAGER_BTN_BASE} tabular-nums ${PAGER_BTN_IDLE}" aria-label="Page ${tok}">${tok}</a>`,
+      )
+      .join('');
+    return `${prev}${numbers}${next}`;
+  }
 
   function cardHTML(e: Entry): string {
     if (isImages) {
@@ -387,7 +520,7 @@ const dataset = all.map((e) => {
         </div>
         <div class="flex-1">
           <h2 class="${h2cls}">${esc(e.name)}</h2>
-          <p class="mt-2 text-sm leading-relaxed text-ash">${esc(e.summary)}</p>
+          <p class="mt-2 line-clamp-3 min-h-17 text-sm leading-relaxed text-ash">${esc(cardSummary(e.summary))}</p>
         </div>
         ${ver}
         <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
@@ -406,7 +539,7 @@ const dataset = all.map((e) => {
       </div>
       <div class="flex-1">
         <h2 class="text-base font-semibold leading-tight">${esc(e.name)}</h2>
-        <p class="mt-2 text-sm leading-relaxed text-ash">${esc(e.summary)}</p>
+        <p class="mt-2 line-clamp-3 min-h-17 text-sm leading-relaxed text-ash">${esc(cardSummary(e.summary))}</p>
       </div>
       <p class="font-mono text-[10px] uppercase tracking-widest text-ash">${ver}</p>
       <div class="flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
@@ -428,6 +561,8 @@ const dataset = all.map((e) => {
       // Restore the real, server-rendered slice + the real URL pager.
       filterGrid?.classList.add('hidden');
       if (filterGrid) filterGrid.innerHTML = '';
+      filterPager?.classList.add('hidden');
+      if (filterPager) filterPager.innerHTML = '';
       serverGrid?.classList.remove('hidden');
       // Force-reveal any server card that never got its entrance (was display:none
       // while filtering, so the IntersectionObserver couldn't fire): no blank cells.
@@ -438,8 +573,9 @@ const dataset = all.map((e) => {
       return;
     }
 
-    // Filtering: show ALL matches across the whole catalog (no slicing), hide
-    // the server slice and the real pager.
+    // Filtering: match across the whole catalog, then paginate the result set
+    // at the same PAGE_SIZE as the server-rendered grid. Hide the server slice
+    // and the real pager -- this is a separate, client-only paginated view.
     const matches = all.filter((e) => {
       const matchFilter =
         activeKind === 'all' ||
@@ -451,13 +587,27 @@ const dataset = all.map((e) => {
       return matchFilter && matchSearch;
     });
 
+    // Clamp a stale/out-of-range page (e.g. a deep link to page 9 of a set
+    // that now only has 2 pages) to the last valid page instead of rendering blank.
+    const totalPages = Math.max(1, Math.ceil(matches.length / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const pageMatches = matches.slice(start, start + PAGE_SIZE);
+
     serverGrid?.classList.add('hidden');
     realPager?.classList.add('hidden');
     if (filterGrid) {
-      filterGrid.innerHTML = matches.map(cardHTML).join('');
+      filterGrid.innerHTML = pageMatches.map(cardHTML).join('');
       filterGrid.classList.toggle('hidden', matches.length === 0);
     }
     noResults?.classList.toggle('hidden', matches.length !== 0);
+    if (filterPager) {
+      // No pager on the empty state (just the Clear-filters escape hatch), and
+      // none at all when everything fits on one page.
+      filterPager.innerHTML = matches.length === 0 ? '' : pagerHTML(currentPage, totalPages);
+      filterPager.classList.toggle('hidden', matches.length === 0 || totalPages <= 1);
+    }
     if (count) {
       const noun = matches.length === 1 ? tResultOne : tResultMany;
       count.textContent = matches.length === 0 ? '' : `${matches.length} ${noun}`;
@@ -472,7 +622,9 @@ const dataset = all.map((e) => {
       if (catSelect) catSelect.value = '';
       activeFilter = btn.dataset.filter ?? 'all';
       activeKind = btn.dataset.kind ?? 'all';
+      currentPage = 1; // a filter change always lands back on page 1
       apply();
+      writeURL(currentState(), 'push');
     });
   });
   catSelect?.addEventListener('change', () => {
@@ -486,8 +638,55 @@ const dataset = all.map((e) => {
       activeFilter = 'all';
       buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === 'all')));
     }
+    currentPage = 1; // a filter change always lands back on page 1
+    apply();
+    writeURL(currentState(), 'push');
+  });
+  clearFiltersBtn?.addEventListener('click', () => {
+    const state: UrlState = { q: '', kind: 'all', filter: 'all', page: 1 };
+    syncControls(state);
+    apply();
+    writeURL(state, 'push');
+  });
+
+  // Typing is a `replaceState` (debounced, so keystrokes don't flood history);
+  // picking a button/select/page link above is a discrete `pushState` -- one
+  // Back per choice.
+  let searchDebounce: ReturnType<typeof setTimeout> | undefined;
+  search?.addEventListener('input', () => {
+    currentPage = 1; // a filter change always lands back on page 1
+    apply();
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => writeURL(currentState(), 'replace'), 300);
+  });
+
+  // Pager links are regenerated on every apply(), so the click listener lives
+  // on the (stable) container and is delegated to whichever <a data-page> was
+  // clicked. Plain left-clicks are intercepted for pushState nav; a modified
+  // click (new tab, etc.) is left alone -- the href is a real deep link either way.
+  filterPager?.addEventListener('click', (ev) => {
+    const mouseEv = ev as MouseEvent;
+    if (mouseEv.defaultPrevented || mouseEv.button !== 0 || mouseEv.metaKey || mouseEv.ctrlKey || mouseEv.shiftKey || mouseEv.altKey) return;
+    const link = (ev.target as HTMLElement).closest<HTMLAnchorElement>('a[data-page]');
+    if (!link) return;
+    const p = parseInt(link.dataset.page ?? '1', 10);
+    if (!Number.isFinite(p) || p < 1) return;
+    ev.preventDefault();
+    currentPage = p; // NOT a filter change -- picking a page must not reset itself
+    apply();
+    writeURL(currentState(), 'push');
+  });
+
+  // Back/forward: re-derive state (filters AND page) from the URL (the
+  // browser already restored it) and re-apply -- no history write here, it
+  // would fight the navigation.
+  window.addEventListener('popstate', () => {
+    syncControls(stateFromURL());
     apply();
   });
-  search?.addEventListener('input', apply);
+
+  // Deep link on first load: adopt whatever q/status/tier/category/page the
+  // URL carries before the first render of the filtered grid.
+  syncControls(stateFromURL());
   apply();
 </script>

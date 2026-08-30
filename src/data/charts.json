@@ -7,7 +7,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.8",
+    "chartVersion": "0.1.9",
     "appVersion": "3.3.1",
     "description": "Hardened Apache Airflow 3 workflow orchestration (api-server + scheduler + dag-processor + triggerer, optional Celery workers) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/airflow",
@@ -67,7 +67,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
+    "chartVersion": "0.0.2",
     "appVersion": "3.18.0",
     "description": "Apache APISIX, the cloud-native API gateway built on OpenResty/LuaJIT: dynamic routing, load balancing, authentication and observability driven by an etcd-backed control plane and a REST Admin API. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/apisix",
@@ -80,10 +80,33 @@
       {
         "name": "apisix",
         "image": "ghcr.io/quenchworks/images/apisix@sha256:2b242df1ab22aa04f193a55d28cdb949421d8b8c8ce42012a85ca43a9b790ab8"
-      },
+      }
+    ]
+  },
+  {
+    "slug": "apisix-ingress-controller",
+    "name": "apisix-ingress-controller",
+    "category": "Gateway",
+    "summary": "The Apache APISIX Ingress Controller, the Kubernetes operator that drives an APISIX data plane. Reconciles Gateway API resources, native Ingress and APISIX's own CRDs such as ApisixRoute, ApisixUpstream and ApisixPluginConfig into APISIX configuration. Built from the ASF source release; tracks Gateway API 1.6 and needs Kubernetes 1.31 or newer.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.2.0",
+    "description": "The Apache APISIX Ingress Controller: the Kubernetes control plane that reconciles the apisix.apache.org CRDs (ApisixRoute, ApisixUpstream, ApisixConsumer, GatewayProxy, ...), native Ingress and Gateway API into an APISIX data plane's Admin API. Runs the controller with its required adc sidecar, ships the twelve apisix.apache.org CRDs, and wires an IngressClass and GatewayProxy at the APISIX of your choice. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/apisix-ingress-controller",
+    "imageDigest": "sha256:ddde66c228afa4e945716c81f67ad1baa16370540c60f5dc0c2d84dea7166756",
+    "repositoryID": "cff39444-ac35-4cc9-a137-80f4dfd43a3c",
+    "upstream": "https://apisix.apache.org/docs/ingress-controller/overview/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/apisix-ingress-controller",
+    "images": [
       {
         "name": "apisix-ingress-controller",
         "image": "ghcr.io/quenchworks/images/apisix-ingress-controller@sha256:ddde66c228afa4e945716c81f67ad1baa16370540c60f5dc0c2d84dea7166756"
+      },
+      {
+        "name": "adc",
+        "image": "ghcr.io/quenchworks/images/adc@sha256:83bdee16c435da77fd717424d70a3d7da06afb371e91cd18b45631dcc69e93cc"
       }
     ]
   },
@@ -118,7 +141,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "3.4.6",
     "description": "Argo CD, the declarative GitOps continuous-delivery controller for Kubernetes. Ships the API server with its embedded React console, the repo server (git + helm + kustomize), the application controller and the applicationset controller, all from ONE hardened multi-call image. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/argocd",
@@ -165,7 +188,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "4.39.20",
     "description": "Hardened Authelia authentication and authorization server on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authelia",
@@ -201,7 +224,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.11",
+    "chartVersion": "0.1.12",
     "appVersion": "2026.5.6",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
@@ -285,7 +308,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.4.1",
     "description": "Uber Cadence: a fault-tolerant, stateful workflow orchestration engine that runs long-running business logic as durable code, persisting execution state in Cassandra so workflows survive process crashes and resume where they left off. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled Cassandra by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/cadence",
@@ -386,6 +409,30 @@
     ]
   },
   {
+    "slug": "chartmuseum",
+    "name": "chartmuseum",
+    "category": "CI/CD & registry",
+    "summary": "Helm chart repository server with support for cloud object storage backends (S3, GCS, Azure, and more). Image only, no chart.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.16.6",
+    "description": "ChartMuseum, an HTTP server for Helm chart repositories, with a pluggable storage backend (local disk, S3, GCS, Azure, and more). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/chartmuseum",
+    "imageDigest": "sha256:3af8698e052404bb8c9291b0233c512d6be065c0f1f3d357857d5ff2e2f4aae6",
+    "repositoryID": "eab7bef5-ff91-49f3-874f-99c316471c2f",
+    "port": 8080,
+    "upstream": "https://chartmuseum.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/chartmuseum",
+    "images": [
+      {
+        "name": "chartmuseum",
+        "image": "ghcr.io/quenchworks/images/chartmuseum@sha256:3af8698e052404bb8c9291b0233c512d6be065c0f1f3d357857d5ff2e2f4aae6"
+      }
+    ]
+  },
+  {
     "slug": "clickhouse",
     "name": "ClickHouse",
     "category": "Analytical",
@@ -411,25 +458,27 @@
   {
     "slug": "cockroachdb",
     "name": "CockroachDB",
-    "category": "Datastore",
-    "summary": "Hardened cockroachdb image, built from source on Wolfi.",
-    "tier": "standard",
-    "license": "Unknown",
-    "licenseClean": "clean",
-    "chartVersion": "0.0.8",
-    "appVersion": "26.2.2",
+    "category": "Relational",
+    "summary": "Distributed SQL database with PostgreSQL wire compatibility and automatic horizontal scaling and survivability. BUSL is source-available, not OSI-approved; no clean in-catalog substitute yet, evaluate PostgreSQL for single-region SQL.",
+    "tier": "low",
+    "license": "BUSL-1.1",
+    "licenseClean": "caution",
+    "chartVersion": "0.0.9",
+    "appVersion": "26.2.6",
     "description": "Distributed SQL database with PostgreSQL wire compatibility and automatic horizontal scaling and survivability. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cockroachdb",
-    "imageDigest": "sha256:ae9726365f7684e710aefc8a214b641e5c788b79993a0b4b30777377b6e38cd2",
+    "imageDigest": "sha256:999d37602d17ed56d48d4146b0f36dd140ce3b99dbf9c2022addbe17437e0719",
     "repositoryID": "5920d963-0c6f-4c4b-9ece-d3056bc50ef9",
-    "upstream": "https://quench-works.com",
+    "upstream": "https://github.com/cockroachdb/cockroach",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cockroachdb",
     "images": [
       {
         "name": "cockroachdb",
-        "image": "ghcr.io/quenchworks/images/cockroachdb@sha256:ae9726365f7684e710aefc8a214b641e5c788b79993a0b4b30777377b6e38cd2"
+        "image": "ghcr.io/quenchworks/images/cockroachdb@sha256:999d37602d17ed56d48d4146b0f36dd140ce3b99dbf9c2022addbe17437e0719"
       }
-    ]
+    ],
+    "caution": true,
+    "cleanAlternative": "No in-catalog clean substitute yet — evaluate PostgreSQL for single-region SQL."
   },
   {
     "slug": "code-server",
@@ -489,7 +538,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, 0-CVE image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -799,11 +848,11 @@
     "tier": "standard",
     "license": "GPL-2.0+",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.13",
     "appVersion": "11.4.5",
     "description": "Hardened Drupal CMS (PHP-FPM + nginx) on a 0-CVE nonroot image, with a bundled MySQL backend.",
     "imageRepository": "ghcr.io/quenchworks/images/drupal",
-    "imageDigest": "sha256:bb56d113c957f95efb2c818f4af0feb006f38086ad5d94b748e3970c8c0c9f3a",
+    "imageDigest": "sha256:1969d8357d81ec04b2d3ca456b80efc1e0598195b50061f3ad9cddb92a5ae7a7",
     "repositoryID": "a2eea5e8-53da-4235-b31c-0f84c241303b",
     "port": 8080,
     "upstream": "https://www.drupal.org",
@@ -811,7 +860,7 @@
     "images": [
       {
         "name": "drupal",
-        "image": "ghcr.io/quenchworks/images/drupal@sha256:bb56d113c957f95efb2c818f4af0feb006f38086ad5d94b748e3970c8c0c9f3a"
+        "image": "ghcr.io/quenchworks/images/drupal@sha256:1969d8357d81ec04b2d3ca456b80efc1e0598195b50061f3ad9cddb92a5ae7a7"
       },
       {
         "name": "mysql",
@@ -827,18 +876,18 @@
     "tier": "low",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.14",
-    "appVersion": "9.5.0",
+    "chartVersion": "0.0.15",
+    "appVersion": "9.5.1",
     "description": "Distributed search and analytics engine. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/elasticsearch",
-    "imageDigest": "sha256:367dc3e01e24839f6ab7177503ac32d6a6c470665770790776c9eae17e4a657d",
+    "imageDigest": "sha256:d16df755400253ce03fbc94dda32ae475f13c3344824aff56b071d16dfdac9e1",
     "repositoryID": "5510adc6-3400-48ab-b57c-807b6b0b815c",
     "upstream": "https://github.com/elastic/elasticsearch",
     "chartRef": "oci://ghcr.io/quenchworks/charts/elasticsearch",
     "images": [
       {
         "name": "elasticsearch",
-        "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:367dc3e01e24839f6ab7177503ac32d6a6c470665770790776c9eae17e4a657d"
+        "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:d16df755400253ce03fbc94dda32ae475f13c3344824aff56b071d16dfdac9e1"
       }
     ],
     "caution": true,
@@ -963,6 +1012,30 @@
       {
         "name": "excalidraw",
         "image": "ghcr.io/quenchworks/images/excalidraw@sha256:08a23c56caba9b459e68fe68ea5a1224139891604df44bb02f182c82a46a5767"
+      }
+    ]
+  },
+  {
+    "slug": "external-dns",
+    "name": "external-dns",
+    "category": "Coordination & mesh",
+    "summary": "Synchronizes Kubernetes Services and Ingresses with DNS providers so records are managed automatically. Image only, no chart.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.21.0",
+    "description": "ExternalDNS, the Kubernetes SIG controller that synchronizes exposed Services, Ingresses and Gateway API routes with an external DNS provider. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/external-dns",
+    "imageDigest": "sha256:aeab520e775b5afce2a6a44bc02da6b5d49ec363841d9e0ff64936103d953ec8",
+    "repositoryID": "83235666-021a-443a-a5ba-07f174e150a9",
+    "port": 7979,
+    "upstream": "https://kubernetes-sigs.github.io/external-dns/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/external-dns",
+    "images": [
+      {
+        "name": "external-dns",
+        "image": "ghcr.io/quenchworks/images/external-dns@sha256:aeab520e775b5afce2a6a44bc02da6b5d49ec363841d9e0ff64936103d953ec8"
       }
     ]
   },
@@ -1160,7 +1233,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "6.57.1",
     "description": "Hardened Ghost publishing platform (Node.js CMS + membership/newsletter engine) on a 0-CVE nonroot image, with a bundled MariaDB backend.",
     "imageRepository": "ghcr.io/quenchworks/images/ghost",
@@ -1188,7 +1261,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "1.27.2",
     "description": "Lightweight self-hosted Git service with repositories, issues, pull requests, and built-in CI/CD (Actions). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/gitea",
@@ -1235,24 +1308,24 @@
   {
     "slug": "grafana",
     "name": "Grafana",
-    "category": "Datastore",
-    "summary": "Hardened grafana image, built from source on Wolfi.",
+    "category": "Observability",
+    "summary": "Dashboards and visualization for metrics, logs, and traces across many data sources. OSS edition, licensed AGPL.",
     "tier": "standard",
-    "license": "Unknown",
-    "licenseClean": "clean",
-    "chartVersion": "0.0.11",
-    "appVersion": "13.1.0",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.12",
+    "appVersion": "13.1.4",
     "description": "Dashboards and visualization for metrics, logs, and traces across many data sources. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/grafana",
-    "imageDigest": "sha256:ae5dfc810d218c92a6e3e5ae2401317c86ab76206e5f53c3388c74ef7961f995",
+    "imageDigest": "sha256:3ccc56791c8a7ffc7a54a69084012900aa68bf3ef39a25095241e0867f416492",
     "repositoryID": "cb635e07-c5aa-4bb7-b199-892dabe82aca",
     "port": 3000,
-    "upstream": "https://quench-works.com",
+    "upstream": "https://github.com/grafana/grafana",
     "chartRef": "oci://ghcr.io/quenchworks/charts/grafana",
     "images": [
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:ae5dfc810d218c92a6e3e5ae2401317c86ab76206e5f53c3388c74ef7961f995"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:3ccc56791c8a7ffc7a54a69084012900aa68bf3ef39a25095241e0867f416492"
       }
     ]
   },
@@ -1264,11 +1337,11 @@
     "tier": "standard",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.7",
-    "appVersion": "7.1.7",
+    "chartVersion": "0.0.8",
+    "appVersion": "7.1.8",
     "description": "Hardened Graylog log management server on a 0-CVE nonroot image, with bundled MongoDB (config/metadata) and OpenSearch (log storage) backends. NOTE the SSPL-1.0 license (source-available, not OSI-approved).",
     "imageRepository": "ghcr.io/quenchworks/images/graylog",
-    "imageDigest": "sha256:95f844acb81b61113217d968ef34f69afa7388aec05b39bc429a1a6b57b994b5",
+    "imageDigest": "sha256:364d589f0d75ff9f83cdf4b58b32233648997445b3ce16c75b7dfcbc6661ee68",
     "repositoryID": "85097b02-99d9-46a5-bc88-e9b36f3e4f89",
     "port": 9000,
     "upstream": "https://www.graylog.org",
@@ -1276,7 +1349,7 @@
     "images": [
       {
         "name": "graylog",
-        "image": "ghcr.io/quenchworks/images/graylog@sha256:95f844acb81b61113217d968ef34f69afa7388aec05b39bc429a1a6b57b994b5"
+        "image": "ghcr.io/quenchworks/images/graylog@sha256:364d589f0d75ff9f83cdf4b58b32233648997445b3ce16c75b7dfcbc6661ee68"
       },
       {
         "name": "mongodb",
@@ -1321,7 +1394,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "2.15.2",
     "description": "Cloud-native OCI registry with role-based access control, replication, vulnerability scanning, and image signing. This umbrella chart wires seven QuenchWorks Harbor component images (core, jobservice, registry, registryctl, portal, the optional Trivy scan adapter, and the metrics exporter) over the QuenchWorks PostgreSQL and Valkey charts, each a minimal, nonroot, 0-CVE image pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor",
@@ -1383,7 +1456,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "2.14.4",
     "description": "Monitoring stack for a QuenchWorks Harbor registry. This meta-chart deploys the QuenchWorks Prometheus and Grafana charts preconfigured for Harbor, with Prometheus scraping the harbor-exporter and the core, registry, and jobservice metrics endpoints, and Grafana provisioned with a Prometheus datasource and a Harbor dashboard covering request rate, component health, garbage collection, quota, and the task queue. All images are nonroot, 0-CVE, and pinned by digest through the sub-charts.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor-observability",
@@ -1450,6 +1523,33 @@
     ]
   },
   {
+    "slug": "hydra",
+    "name": "hydra",
+    "category": "Datastore",
+    "summary": "Hardened hydra image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "26.2.0",
+    "description": "OAuth2 / OpenID Connect server (Ory Hydra) — a certified, standards-compliant token and consent service that sits in front of your own login UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
+    "imageRepository": "ghcr.io/quenchworks/images/hydra",
+    "imageDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "repositoryID": "07ece956-210b-4989-8b14-43ea38e44fa5",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/hydra",
+    "images": [
+      {
+        "name": "hydra",
+        "image": "ghcr.io/quenchworks/images/hydra@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      }
+    ]
+  },
+  {
     "slug": "identity-stack",
     "name": "identity-stack",
     "category": "Stacks",
@@ -1457,7 +1557,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free self-hosted SSO/identity stack: Keycloak (OIDC/SAML identity provider) + PostgreSQL (Keycloak's database) + oauth2-proxy (an auth proxy you place in front of any upstream app to authenticate users against Keycloak), wired together so you get single sign-on in front of your apps out of the box. No operator, no CRDs. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed.",
     "repositoryID": "9a0c364f-4e7b-4fac-adc3-559b1865e28b",
@@ -1520,18 +1620,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
-    "appVersion": "1.15.8",
+    "chartVersion": "0.0.8",
+    "appVersion": "1.15.10",
     "description": "Ingress NGINX Controller: the Kubernetes-maintained Ingress controller built on NGINX. Watches Ingress resources of the nginx IngressClass and configures NGINX to load-balance and route HTTP/HTTPS traffic to backend Services, with a validating admission webhook that rejects malformed Ingress objects before they are persisted. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The controller runs as a single Deployment; the admission webhook's serving certificate is bootstrapped by a self-contained pre/post-install Job pair (no external cert-manager dependency).",
     "imageRepository": "ghcr.io/quenchworks/images/ingress-nginx",
-    "imageDigest": "sha256:3f88b7c56cf30d630f367c0175477af5ac406a1145a7d3d0225a8c53f23e99b8",
+    "imageDigest": "sha256:0dd3022236690578a780fb7a989a63fb9cc721fd8e5364ebe2b7ef5ff3ac16a1",
     "repositoryID": "1f5e0727-cf7e-4b35-8cd1-e58c15da8d10",
     "upstream": "https://kubernetes.github.io/ingress-nginx",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ingress-nginx",
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:3f88b7c56cf30d630f367c0175477af5ac406a1145a7d3d0225a8c53f23e99b8"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:0dd3022236690578a780fb7a989a63fb9cc721fd8e5364ebe2b7ef5ff3ac16a1"
       }
     ]
   },
@@ -1659,7 +1759,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "26.7.1",
     "description": "Open-source identity and access management server providing SSO, user federation, and OAuth2/OIDC and SAML for apps and APIs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/keycloak",
@@ -1676,6 +1776,33 @@
       {
         "name": "postgresql",
         "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
+      }
+    ]
+  },
+  {
+    "slug": "kgateway",
+    "name": "kgateway",
+    "category": "Gateway",
+    "summary": "kgateway, the CNCF Gateway API control plane that succeeded Gloo Edge. Watches Gateway, HTTPRoute, GRPCRoute and its own gateway.kgateway.dev policy CRDs, programs Envoy over xDS and provisions the proxy fleet itself. Pairs with the QuenchWorks kgateway-envoy data plane. Ships two minor lines because 2.2.x pins its amd64 data plane to a vendor fork of Envoy this catalog does not rebuild. Carries the Wolfi envoy binary for the strict xDS validation path.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.4.3",
+    "description": "kgateway, the CNCF Gateway API control plane that succeeded Gloo Edge. Watches Gateway, HTTPRoute, GRPCRoute and its own gateway.kgateway.dev policy CRDs, programs Envoy over xDS and provisions the proxy fleet into each Gateway's own namespace. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest -- both the controller and the Envoy data plane. Ships only kgateway's own CRDs; the Gateway API CRDs are owned by the separate quench gateway-api-crds chart and must be installed first.",
+    "imageRepository": "ghcr.io/quenchworks/images/kgateway",
+    "imageDigest": "sha256:7fe15d4874fd17e94ea874051d5cd2455a9fc2a494643fe61dca40775ace93e9",
+    "repositoryID": "21dbf9a0-81db-4f2c-a2c4-041fc863d03b",
+    "upstream": "https://kgateway.dev",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kgateway",
+    "images": [
+      {
+        "name": "kgateway",
+        "image": "ghcr.io/quenchworks/images/kgateway@sha256:7fe15d4874fd17e94ea874051d5cd2455a9fc2a494643fe61dca40775ace93e9"
+      },
+      {
+        "name": "kgateway-envoy",
+        "image": "ghcr.io/quenchworks/images/kgateway-envoy@sha256:86fbf44c30ca252e413468d1b7de420265208aaaa81aa74d44abe8f9e4054c72"
       }
     ]
   },
@@ -1723,6 +1850,33 @@
       {
         "name": "krakend",
         "image": "ghcr.io/quenchworks/images/krakend@sha256:76a71b7451694e61c99434b1a5f3dc77bc8e1ffdf9c04735bb52e911ab4b3b0d"
+      }
+    ]
+  },
+  {
+    "slug": "kratos",
+    "name": "kratos",
+    "category": "Datastore",
+    "summary": "Hardened kratos image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "26.2.0",
+    "description": "Identity server (Ory Kratos) — API-first identity management: registration, login, MFA, account recovery and profile management with no vendor-locked UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
+    "imageRepository": "ghcr.io/quenchworks/images/kratos",
+    "imageDigest": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "repositoryID": "95cbca38-ef6a-430f-833c-8ddda8c9c6d9",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kratos",
+    "images": [
+      {
+        "name": "kratos",
+        "image": "ghcr.io/quenchworks/images/kratos@sha256:0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:b492e8f2aa8528a0af8bc1aa835522ab222aa8e0a0a6c135b2d5fdc3e9467bd4"
       }
     ]
   },
@@ -1784,7 +1938,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free LGTM observability superset in one install: Loki (logs) + Grafana (the single pane) + Tempo (traces) + VictoriaMetrics (Prometheus-compatible metrics) + an OpenTelemetry Collector (OTLP ingest) + Alertmanager. Grafana gets three pre-provisioned datasources — VictoriaMetrics (default), Loki, Tempo — so metrics, logs and traces are explorable side by side out of the box. VictoriaMetrics scrapes pods via annotation-based service discovery; Vector ships every pod's logs to Loki; apps send OTLP traces to the collector, which forwards to Tempo. No operator, no CRDs. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed. node-exporter and Vector take host access by design (cluster metrics + logs); both are toggleable.",
     "repositoryID": "69ed1b3c-ab58-474a-828b-f64cf9dff72e",
@@ -1880,7 +2034,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free logging stack: Loki + Grafana + Vector, wired together for cluster log aggregation and browsing. Vector ships every pod's logs to Loki; Grafana queries Loki through a pre-provisioned datasource with a ready-made logs dashboard. No CRDs, no logging operator. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed. Vector runs as a host DaemonSet (read-only node log dirs) by design — that is the deliberate, toggleable trade-off for a log shipper.",
     "repositoryID": "09e18838-4b6d-4c27-ad7c-708b3aff8bc2",
@@ -1932,6 +2086,29 @@
       {
         "name": "loki",
         "image": "ghcr.io/quenchworks/images/loki@sha256:f6b33056aba27769cf21c1f9f096ac44efd565e3bb312414ed1389850bb18335"
+      }
+    ]
+  },
+  {
+    "slug": "mailpit",
+    "name": "mailpit",
+    "category": "Apps & productivity",
+    "summary": "Email and SMTP testing tool with a web UI for capturing and inspecting messages during development. Image only, no chart.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.30.7",
+    "description": "Mailpit, an SMTP server and web UI that captures every message an application sends so developers can inspect it instead of delivering it. A dev/test mail sink -- not a production mail server. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/mailpit",
+    "imageDigest": "sha256:8d5b5301cac6c9c556727a43a2c2569d3ed2aedbde8ea71a045cb34456224100",
+    "repositoryID": "9d070d6a-6910-448b-9123-6029943b98d6",
+    "upstream": "https://mailpit.axllent.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mailpit",
+    "images": [
+      {
+        "name": "mailpit",
+        "image": "ghcr.io/quenchworks/images/mailpit@sha256:8d5b5301cac6c9c556727a43a2c2569d3ed2aedbde8ea71a045cb34456224100"
       }
     ]
   },
@@ -1991,7 +2168,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "11.10.1",
     "description": "Open-source, self-hosted team collaboration and messaging platform (Team Edition) — channels, direct messages, and file sharing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/mattermost",
@@ -2083,6 +2260,30 @@
     ]
   },
   {
+    "slug": "metrics-server",
+    "name": "metrics-server",
+    "category": "Datastore",
+    "summary": "Hardened metrics-server image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.9.0",
+    "description": "Kubernetes Metrics Server, the cluster-wide aggregator of container resource metrics that backs `kubectl top` and the Horizontal Pod Autoscaler. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/metrics-server",
+    "imageDigest": "sha256:17af75b28850741938443d738c21a761cae2da464bbebd46b6bf17d4c01ecf40",
+    "repositoryID": "336b6e89-a4fc-44dc-98d6-7d92e51ccf0c",
+    "port": 443,
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/metrics-server",
+    "images": [
+      {
+        "name": "metrics-server",
+        "image": "ghcr.io/quenchworks/images/metrics-server@sha256:17af75b28850741938443d738c21a761cae2da464bbebd46b6bf17d4c01ecf40"
+      }
+    ]
+  },
+  {
     "slug": "mimir",
     "name": "mimir",
     "category": "Observability",
@@ -2114,7 +2315,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "2.3.2",
     "description": "Minimalist, opinionated feed reader (Go, single binary) backed by PostgreSQL. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled PostgreSQL by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/miniflux",
@@ -2138,7 +2339,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "3.15.2",
     "description": "Hardened MLflow Tracking Server (experiment tracking + model registry) on a 0-CVE nonroot image, with a bundled PostgreSQL backend store.",
     "imageRepository": "ghcr.io/quenchworks/images/mlflow",
@@ -2337,7 +2538,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.9",
+    "chartVersion": "0.0.10",
     "appVersion": "34.0.3",
     "description": "Hardened Nextcloud (self-hosted content collaboration / file-sync platform) on a 0-CVE nonroot php-fpm + nginx image, with a bundled MariaDB backend.",
     "imageRepository": "ghcr.io/quenchworks/images/nextcloud",
@@ -2378,6 +2579,34 @@
       {
         "name": "nginx",
         "image": "ghcr.io/quenchworks/images/nginx@sha256:19d9321dceb22f855c55789634f39872386e289912658734be374ed15203bf27"
+      }
+    ]
+  },
+  {
+    "slug": "nginx-gateway-fabric",
+    "name": "nginx-gateway-fabric",
+    "category": "Gateway",
+    "summary": "NGINX Gateway Fabric control plane: the F5/NGINX Gateway API implementation. Watches GatewayClass, Gateway, HTTPRoute and its own gateway.nginx.org policy CRDs, provisions an nginx Deployment per Gateway, and pushes generated config to the nginx-agent inside it over gRPC. One binary covers three roles the chart uses -- controller, generate-certs, and the initialize step that runs as the init container of every data-plane pod. Pairs with the nginx-gateway-fabric-nginx data plane, which it version-locks to itself.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.6.7",
+    "description": "NGINX Gateway Fabric, the F5/NGINX Gateway API implementation: a control plane that watches GatewayClass, Gateway, HTTPRoute and its own gateway.nginx.org policy CRDs, provisions an nginx data plane per Gateway, and configures it over an nginx-agent gRPC stream. Both halves are hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest. Ships only NGF's own CRDs -- the Gateway API CRDs are owned by the separate quench gateway-api-crds chart and must be installed first.",
+    "imageRepository": "ghcr.io/quenchworks/images/nginx-gateway-fabric",
+    "imageDigest": "sha256:d6c053f9eb818b4b09c2f8874389b02de98fe58a64ce8e07b0baa47e3d6a508a",
+    "repositoryID": "46d3a4fe-105a-44d8-b9ce-daa4084276de",
+    "port": 443,
+    "upstream": "https://docs.nginx.com/nginx-gateway-fabric/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/nginx-gateway-fabric",
+    "images": [
+      {
+        "name": "nginx-gateway-fabric",
+        "image": "ghcr.io/quenchworks/images/nginx-gateway-fabric@sha256:d6c053f9eb818b4b09c2f8874389b02de98fe58a64ce8e07b0baa47e3d6a508a"
+      },
+      {
+        "name": "nginx-gateway-fabric-nginx",
+        "image": "ghcr.io/quenchworks/images/nginx-gateway-fabric-nginx@sha256:28f46367ba5da843bafc0a8d454de03a61414e0049de236cbb428a3f9a5f35d0"
       }
     ]
   },
@@ -2460,7 +2689,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free observability stack: Prometheus + Grafana + Alertmanager + kube-state-metrics + node-exporter + cAdvisor, wired together for metrics, alerting, and populated Kubernetes dashboards. No Prometheus Operator, no CRDs. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed. node-exporter and cAdvisor take host access by design (the stack's purpose is node + container observability); both are toggleable.",
     "repositoryID": "b35aa9cc-1558-4053-b967-ae9f74250035",
@@ -2633,18 +2862,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.4",
+    "chartVersion": "0.1.5",
     "appVersion": "3.8.0",
     "description": "Search and analytics suite with a Kibana-style dashboards UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opensearch",
-    "imageDigest": "sha256:ff6097ca0218bffc3946a4c87b623decc346eebed6d4d6e37bb10fb48f48baa2",
+    "imageDigest": "sha256:45c60f2fc239ae611ce1c9a829c639e3a1dab7ee21ca4186fff457907076395f",
     "repositoryID": "19bdd691-33a2-4882-8662-4871a10038fe",
     "upstream": "https://github.com/opensearch-project/OpenSearch",
     "chartRef": "oci://ghcr.io/quenchworks/charts/opensearch",
     "images": [
       {
         "name": "opensearch",
-        "image": "ghcr.io/quenchworks/images/opensearch@sha256:ff6097ca0218bffc3946a4c87b623decc346eebed6d4d6e37bb10fb48f48baa2"
+        "image": "ghcr.io/quenchworks/images/opensearch@sha256:45c60f2fc239ae611ce1c9a829c639e3a1dab7ee21ca4186fff457907076395f"
       }
     ]
   },
@@ -2703,7 +2932,7 @@
     "tier": "standard",
     "license": "ISC",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.25.2",
     "description": "Lightweight connection pooler for PostgreSQL that fronts thousands of client connections with a small backend pool, cutting per-connection overhead. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pgbouncer",
@@ -2727,7 +2956,7 @@
     "tier": "standard",
     "license": "HPND",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "4.7.2",
     "description": "PostgreSQL connection pooler, load balancer and query router. Pools client connections, spreads read-only queries across replicas, and fails over to a new primary automatically. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pgpool",
@@ -2751,7 +2980,7 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "5.2.3",
     "description": "Hardened phpMyAdmin (PHP-FPM + nginx) on a 0-CVE nonroot image — a web UI for the MySQL/MariaDB servers you already run, with an optional bundled MariaDB.",
     "imageRepository": "ghcr.io/quenchworks/images/phpmyadmin",
@@ -2848,6 +3077,30 @@
       {
         "name": "postgres-exporter",
         "image": "ghcr.io/quenchworks/images/postgres-exporter@sha256:fab4d5790531b5cd9daad06a8651fe4ca1009620701394b81c34ed9b7ebc9bbb"
+      }
+    ]
+  },
+  {
+    "slug": "postgrest",
+    "name": "postgrest",
+    "category": "Databases & engines",
+    "summary": "REST API server that serves a RESTful API directly from a PostgreSQL schema. Shipped as upstream's official prebuilt static binary. Image only, no chart.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "16.1",
+    "description": "PostgREST, a standalone web server that turns a PostgreSQL database directly into a RESTful API, with authorization derived from the database's own roles and row-level security. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled PostgreSQL by default for a self-contained install.",
+    "imageRepository": "ghcr.io/quenchworks/images/postgrest",
+    "imageDigest": "sha256:051e9c0f4fda51e6e4cfc8bce1cb83fcea1178576114bc470179b3d1fac499ad",
+    "repositoryID": "a0b71180-05b0-4c5e-8996-ebbb894cea1e",
+    "port": 3000,
+    "upstream": "https://postgrest.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/postgrest",
+    "images": [
+      {
+        "name": "postgrest",
+        "image": "ghcr.io/quenchworks/images/postgrest@sha256:051e9c0f4fda51e6e4cfc8bce1cb83fcea1178576114bc470179b3d1fac499ad"
       }
     ]
   },
@@ -3166,23 +3419,27 @@
   {
     "slug": "skywalking",
     "name": "skywalking",
-    "category": "Datastore",
-    "summary": "Hardened skywalking image, built from source on Wolfi.",
+    "category": "Observability",
+    "summary": "Apache SkyWalking APM — observability platform for distributed systems (distributed tracing, metrics, logs and service topology) via the OAP backend. Hardened Wolfi build of the official OAP binary distribution.",
     "tier": "standard",
-    "license": "Unknown",
+    "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "10.4.0",
-    "description": "Hardened Apache SkyWalking OAP (Observability Analysis Platform) backend — APM metrics/traces/logs collector — on a 0-CVE nonroot image, with an optional bundled Elasticsearch storage backend.",
+    "description": "Hardened Apache SkyWalking OAP (Observability Analysis Platform) backend — APM metrics/traces/logs collector — on a 0-CVE nonroot image, with an optional bundled OpenSearch storage backend.",
     "imageRepository": "ghcr.io/quenchworks/images/skywalking",
-    "imageDigest": "sha256:9b14e8630207b5445f28958609c9d9470803fe0e6ed7fb38837cfc6783da1f9d",
+    "imageDigest": "sha256:92d7131dd02a99da25913a2ee091ccc4a0b7a968bcfff3c5f34d4a9bb7821a96",
     "repositoryID": "a812a44e-e422-4743-b306-09a834e536b5",
-    "upstream": "https://quench-works.com",
+    "upstream": "https://skywalking.apache.org",
     "chartRef": "oci://ghcr.io/quenchworks/charts/skywalking",
     "images": [
       {
         "name": "skywalking",
-        "image": "ghcr.io/quenchworks/images/skywalking@sha256:9b14e8630207b5445f28958609c9d9470803fe0e6ed7fb38837cfc6783da1f9d"
+        "image": "ghcr.io/quenchworks/images/skywalking@sha256:92d7131dd02a99da25913a2ee091ccc4a0b7a968bcfff3c5f34d4a9bb7821a96"
+      },
+      {
+        "name": "opensearch",
+        "image": "ghcr.io/quenchworks/images/opensearch@sha256:45c60f2fc239ae611ce1c9a829c639e3a1dab7ee21ca4186fff457907076395f"
       }
     ]
   },
@@ -3315,7 +3572,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "1.31.2",
     "description": "Durable workflow orchestration engine that persists execution state so long-running, multi-step processes survive crashes and resume exactly where they left off. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/temporal",
@@ -3337,23 +3594,23 @@
   {
     "slug": "thanos",
     "name": "thanos",
-    "category": "Datastore",
-    "summary": "Hardened thanos image, built from source on Wolfi.",
+    "category": "Observability",
+    "summary": "Highly-available Prometheus setup with unlimited metric retention via object storage, adding a global query view, downsampling, and compaction across Prometheus servers. A CNCF project.",
     "tier": "standard",
-    "license": "Unknown",
+    "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.9",
+    "chartVersion": "0.0.10",
     "appVersion": "0.42.4",
     "description": "Thanos, the CNCF highly-available Prometheus setup with long-term storage and a global query view. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The single binary runs every component (query, receive, store, compact, rule, sidecar) as separate toggleable workloads; this chart ships a self-contained query + receive pair by default.",
     "imageRepository": "ghcr.io/quenchworks/images/thanos",
-    "imageDigest": "sha256:61ff4a15902b90de0827d3704ed90f7fbf995ef2db7c9d057ed17be36beeabd0",
+    "imageDigest": "sha256:2accbd01874b2a187b122dc88b9906b74d099437926a47143358b53df83123cc",
     "repositoryID": "18b16ed4-ceb8-4911-8a79-6b2cbd555c8f",
-    "upstream": "https://quench-works.com",
+    "upstream": "https://github.com/thanos-io/thanos",
     "chartRef": "oci://ghcr.io/quenchworks/charts/thanos",
     "images": [
       {
         "name": "thanos",
-        "image": "ghcr.io/quenchworks/images/thanos@sha256:61ff4a15902b90de0827d3704ed90f7fbf995ef2db7c9d057ed17be36beeabd0"
+        "image": "ghcr.io/quenchworks/images/thanos@sha256:2accbd01874b2a187b122dc88b9906b74d099437926a47143358b53df83123cc"
       }
     ]
   },
@@ -3437,7 +3694,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free distributed tracing stack: Tempo (trace store/query) + Grafana (Tempo datasource + trace exploration) + an OpenTelemetry Collector gateway that receives OTLP from your apps and forwards spans to Tempo. No operator, no CRDs. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed. Apps send traces to <release>-otel-collector:4317 (OTLP gRPC) / :4318 (OTLP HTTP); explore them in Grafana via Explore -> Tempo.",
     "repositoryID": "5371e037-2138-4f64-8004-d31b0b01d339",
@@ -3500,7 +3757,7 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "5.13.1",
     "description": "Tyk Gateway (open-source), a fast, Go-based API gateway backed by Redis. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled Redis by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/tyk",
@@ -3742,11 +3999,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
-    "appVersion": "0.24.0",
+    "chartVersion": "0.0.5",
+    "appVersion": "0.27.1",
     "description": "vLLM, the high-throughput OpenAI-compatible inference/serving engine for open LLMs. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image, cosign-signed and pinned by digest. CPU-only; runs as a StatefulSet that serves a user-supplied model over an OpenAI-compatible REST API, with a persistent Hugging Face cache volume.",
     "imageRepository": "ghcr.io/quenchworks/images/vllm",
-    "imageDigest": "sha256:010dd904cf2ddbe4468cf16ac6625cd19492ff767690e149975842a32aa669cd",
+    "imageDigest": "sha256:cda259cf4c910175e94a19ee23d238ad81f5223871699c8d6f0f2d640ea7816b",
     "repositoryID": "6953f63b-89cf-4793-8f39-75b8287c2f7f",
     "port": 8000,
     "upstream": "https://docs.vllm.ai",
@@ -3754,7 +4011,7 @@
     "images": [
       {
         "name": "vllm",
-        "image": "ghcr.io/quenchworks/images/vllm@sha256:010dd904cf2ddbe4468cf16ac6625cd19492ff767690e149975842a32aa669cd"
+        "image": "ghcr.io/quenchworks/images/vllm@sha256:cda259cf4c910175e94a19ee23d238ad81f5223871699c8d6f0f2d640ea7816b"
       }
     ]
   },
@@ -3813,7 +4070,7 @@
     "tier": "standard",
     "license": "GPL-2.0+",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "7.0.4",
     "description": "Hardened WordPress CMS (PHP-FPM + nginx) on a 0-CVE nonroot image, with a bundled MySQL backend.",
     "imageRepository": "ghcr.io/quenchworks/images/wordpress",
@@ -3860,24 +4117,24 @@
   {
     "slug": "zitadel",
     "name": "zitadel",
-    "category": "Datastore",
-    "summary": "Hardened zitadel image, built from source on Wolfi.",
+    "category": "Identity",
+    "summary": "Cloud-native identity and access management (IAM) with OIDC/OAuth2/SAML, multi-tenancy, and a built-in admin console. Packaged from ZITADEL's official prebuilt binary; event-sourced store on an external PostgreSQL.",
     "tier": "standard",
-    "license": "Unknown",
-    "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.12",
     "appVersion": "4.17.1",
     "description": "Open-source identity infrastructure — a cloud-native OIDC/OAuth2/SAML identity and access management server with multi-tenancy, self-service, and a built-in management API/console. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/zitadel",
-    "imageDigest": "sha256:9925063fe597115c43901369a84e297b67e6fbb18430aa4ca63bbe654e337ff3",
+    "imageDigest": "sha256:e40ac9da14265e283661e6e18e30453f56926e38294f77577f17ca0a8d19a621",
     "repositoryID": "6f205d15-ee9e-4ad0-b418-1ff79e383fa2",
     "port": 8080,
-    "upstream": "https://quench-works.com",
+    "upstream": "https://zitadel.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/zitadel",
     "images": [
       {
         "name": "zitadel",
-        "image": "ghcr.io/quenchworks/images/zitadel@sha256:9925063fe597115c43901369a84e297b67e6fbb18430aa4ca63bbe654e337ff3"
+        "image": "ghcr.io/quenchworks/images/zitadel@sha256:e40ac9da14265e283661e6e18e30453f56926e38294f77577f17ca0a8d19a621"
       },
       {
         "name": "postgresql",

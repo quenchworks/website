@@ -9,6 +9,7 @@ import type { Page } from 'astro';
 import { getLangFromUrl, localizeUrl } from '../i18n/ui';
 import { localizedSummary } from '../i18n/content';
 import { categoryName } from '../i18n/categories';
+import { cardSummary } from '../data/truncate';
 
 export type CatalogKind = 'charts' | 'images';
 
@@ -102,7 +103,7 @@ const BTN_DISABLED = 'border-line/60 bg-graphite/50 text-ash/40 cursor-not-allow
             </div>
             <div class="flex-1">
               <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
-              <p class="mt-2 text-sm leading-relaxed text-ash">{localizedSummary(lang, noun, e.slug, e.summary)}</p>
+              <p class="mt-2 line-clamp-3 min-h-17 text-sm leading-relaxed text-ash">{cardSummary(localizedSummary(lang, noun, e.slug, e.summary))}</p>
             </div>
             {e.version && (
               <p class="font-mono text-[10px] uppercase tracking-widest text-ash">image v{e.version}</p>
@@ -130,7 +131,7 @@ const BTN_DISABLED = 'border-line/60 bg-graphite/50 text-ash/40 cursor-not-allow
           </div>
           <div class="flex-1">
             <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
-            <p class="mt-2 text-sm leading-relaxed text-ash">{localizedSummary(lang, noun, e.slug, e.summary)}</p>
+            <p class="mt-2 line-clamp-3 min-h-17 text-sm leading-relaxed text-ash">{cardSummary(localizedSummary(lang, noun, e.slug, e.summary))}</p>
           </div>
           <p class="font-mono text-[10px] uppercase tracking-widest text-ash">
             chart v{e.chartVersion ?? '?'}{e.appVersion ? ` · app v${e.appVersion}` : ''}
