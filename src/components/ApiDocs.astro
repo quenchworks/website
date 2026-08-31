@@ -133,8 +133,20 @@ const BADGES = ['images', 'charts', 'cves', 'wolfi', 'cosign', 'multiarch', 'art
     <p class="font-mono text-xs uppercase tracking-widest text-ash">API · v1</p>
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{tr('title')}</h1>
 
+    {/* Remote shields.io renders — width/height reserve the box so the eight of
+        them don't reflow the page in as they arrive (they are ~132x20; `h-5
+        w-auto` lets each settle at its real width once loaded). */}
     <div class="mt-5 flex flex-wrap gap-2">
-      {BADGES.map((s) => <img src={BADGE(s)} alt={s} />)}
+      {BADGES.map((s) => (
+        <img
+          src={BADGE(s)}
+          alt={`QuenchWorks ${s} badge`}
+          width="132"
+          height="20"
+          class="h-5 w-auto"
+          decoding="async"
+        />
+      ))}
     </div>
 
     <div class="mt-6 space-y-5 leading-relaxed text-ash">

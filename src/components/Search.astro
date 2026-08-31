@@ -151,6 +151,7 @@ const { trigger = 'desktop' } = Astro.props;
           results!.replaceChildren();
           activeIndex = -1;
           input!.setAttribute('aria-expanded', 'false');
+          input!.removeAttribute('aria-activedescendant');
         }
 
         function highlight() {
@@ -161,6 +162,11 @@ const { trigger = 'desktop' } = Astro.props;
             el.classList.toggle('bg-ink', active);
             if (active) el.scrollIntoView({ block: 'nearest' });
           });
+          // The combobox is the focused element; without this the highlighted
+          // option was purely visual and never announced.
+          const active = activeIndex >= 0 ? items[activeIndex] : undefined;
+          if (active) input!.setAttribute('aria-activedescendant', active.id);
+          else input!.removeAttribute('aria-activedescendant');
         }
 
         function render(items: { url: string; title: string; excerpt: string; type: string }[]) {
