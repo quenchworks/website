@@ -26,10 +26,29 @@ const ghcr = 'ghcr.io/quenchworks';
 const EXCLUDE = new Set(['quench-common']);
 // status -> published? built/done/pilot all mean "an image exists".
 const PUBLISHED = new Set(['built', 'done', 'pilot']);
+// Every status the catalog is allowed to carry. Anything else -- including a MISSING
+// status -- is a catalog bug, not a "planned" app: String(undefined) is "undefined",
+// which silently fell through to `planned` and hid five already-published images
+// (grafana, thanos, zitadel, cockroachdb, skywalking) from the site and its search.
+const KNOWN_STATUS = new Set([...PUBLISHED, 'planned', 'blocked']);
+const statusProblems = [];
 
 // ──────────────────────────────────────────────────────────────────────────
 // helpers
 // ──────────────────────────────────────────────────────────────────────────
+function publishedStatus(slug, status, versionCount) {
+  const s = status == null ? '(missing)' : String(status);
+  if (!KNOWN_STATUS.has(s)) {
+    // Loud, not silent: an unrecognised status used to degrade to `planned`, which
+    // renders a non-link card and generates no detail page.
+    statusProblems.push(`${slug}: unrecognised status ${s}`);
+  } else if (!PUBLISHED.has(s) && versionCount > 0) {
+    // Also contradictory: a digest exists but the status says it is not published.
+    statusProblems.push(`${slug}: status ${s} but ${versionCount} published version(s)`);
+  }
+  return PUBLISHED.has(s) ? 'available' : 'planned';
+}
+
 function readYamlSafe(path) {
   try {
     if (!existsSync(path)) return null;
@@ -122,7 +141,7 @@ for (const [slug, a] of Object.entries(lockApps)) {
     category: a.category || 'Datastore',
     summary: a.summary || `Hardened ${slug} image, built from source on Wolfi.`,
     tier: String(a.tier || 'standard'),
-    status: PUBLISHED.has(String(a.status)) ? 'available' : 'planned',
+    status: publishedStatus(slug, a.status, versions.length),
     license,
     licenseClean,
     version: versions.length ? versions.map((v) => v.version).join(', ') : undefined,
@@ -250,3 +269,12 @@ const cautionCount = images.filter((i) => i.caution).length;
 console.log(
   `sync-catalog: ${images.length} images (${avail} available), ${charts.length} charts, ${cautionCount} caution.`,
 );
+
+// A status problem silently removes a shipped image from the site and its search, so
+// say so every run. Warn rather than fail: the sync must still work in a website-only
+// build, and the fix belongs in images/catalog.yaml.
+if (statusProblems.length) {
+  console.warn(`! ${statusProblems.length} catalog status problem(s) — these images render as "planned" and get no detail page:`);
+  for (const p of statusProblems) console.warn(`!   ${p}`);
+  console.warn('!   fix the status in images/catalog.yaml, then re-run this sync.');
+}
