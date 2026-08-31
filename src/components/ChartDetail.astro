@@ -136,13 +136,13 @@ const ld = {
 
     <p class="mt-6 max-w-2xl text-ash">{summary}</p>
 
-    <VersionSwitcher section="charts" slug={entry.slug} versions={versions} current={version} />
+    <VersionSwitcher section="charts" slug={entry.slug} versions={versions} current={version} max={3} />
 
     {!isLatest && (
       <section class="mt-6 rounded-xl border border-line bg-graphite p-5">
         <p class="font-mono text-xs uppercase tracking-widest text-ash">{t('chart.released.heading')}</p>
         <p class="mt-2 text-sm leading-relaxed text-paper">
-          {t('chart.released.bodyPre')} <span class="font-mono">{version}</span> {t('chart.released.bodyMid')} {entry.name} {t('chart.released.bodyChart')}{releaseDate ? `${t('chart.released.published')} ${releaseDate}` : ''}.
+          {t('chart.released.bodyPre')} <span class="font-mono">{version}</span> {t('chart.released.bodyMid')} {entry.name} {t('chart.released.bodyChart')}{releaseDate ? `${t('chart.released.published')} ${releaseDate}` : ''}.{' '}
           {t('chart.released.bodyEnd')}
           <a href={l(`/charts/${entry.slug}`)} class="text-paper underline-offset-4 hover:underline"> {t('chart.released.latestLink')}</a>.
         </p>

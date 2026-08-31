@@ -35,6 +35,7 @@ export const ui = {
     'cta.github': 'View on GitHub',
     'footer.resources': 'Resources',
     'footer.developers': 'Developers',
+    'footer.project': 'Project',
     'footer.tagline':
       'MIT licensed. Built independently, not affiliated with any upstream vendor.',
     'hero.title':
@@ -98,6 +99,7 @@ export const ui = {
       'Each chart deploys our hardened image pinned by its signed digest, with sensible production defaults. Cosign-signed and published as an ArtifactHub verified publisher.',
     'catalog.list.descChartsCount': 'charts.',
     'catalog.list.searchPlaceholder': 'Search by name, category, license…',
+    'catalog.list.suggestions': 'Suggestions',
     'catalog.list.searchImages': 'Search images',
     'catalog.list.searchCharts': 'Search charts',
     'catalog.list.filterImages': 'Filter images',
@@ -275,6 +277,8 @@ export const ui = {
     'versions.latestSuffix': ' · latest',
     'versions.note':
       'The latest line lives at the base page; older lines have their own page so you can pin and verify exactly that version.',
+    'versions.olderHidden':
+      'Only the most recent releases are listed — an older chart pins an older image digest.',
     // --- Docs chrome (Docs.astro sidebar + page nav) ---
     'docs.index': 'Docs',
     'docs.group.Guides': 'Guides',
@@ -305,6 +309,7 @@ export const ui = {
     'cta.github': 'اعرض على GitHub',
     'footer.resources': 'الموارد',
     'footer.developers': 'المطوّرون',
+    'footer.project': 'المشروع',
     'footer.tagline':
       'مرخّص بموجب MIT. مبني بشكل مستقل وغير تابع لأي مورّد خارجي.',
     'hero.title': 'صور ومخططات مُحصّنة وخالية من الثغرات للبنية التحتية التي تُشغّلها.',
@@ -367,6 +372,7 @@ export const ui = {
       'يَنشُر كل مخطط صورتنا المُحصّنة المثبّتة ببصمتها الموقّعة، مع إعدادات إنتاجية افتراضية معقولة. موقّعة بـ cosign ومنشورة كناشر موثّق على ArtifactHub.',
     'catalog.list.descChartsCount': 'مخطط.',
     'catalog.list.searchPlaceholder': 'ابحث بالاسم أو الفئة أو الرخصة…',
+    'catalog.list.suggestions': 'اقتراحات',
     'catalog.list.searchImages': 'ابحث في الصور',
     'catalog.list.searchCharts': 'ابحث في المخططات',
     'catalog.list.filterImages': 'تصفية الصور',
@@ -544,6 +550,8 @@ export const ui = {
     'versions.latestSuffix': ' · الأحدث',
     'versions.note':
       'يعيش الخط الأحدث في الصفحة الأساسية؛ وللخطوط الأقدم صفحاتها الخاصة لتتمكّن من تثبيت ذلك الإصدار بالضبط والتحقق منه.',
+    'versions.olderHidden':
+      'تُدرج الإصدارات الأحدث فقط — فالمخطط الأقدم يثبّت بصمة صورة أقدم.',
     // --- توثيق: عناصر الواجهة (شريط جانبي + تنقّل الصفحة) ---
     'docs.index': 'التوثيق',
     'docs.group.Guides': 'الأدلّة',
@@ -574,6 +582,7 @@ export const ui = {
     'cta.github': 'Ver en GitHub',
     'footer.resources': 'Recursos',
     'footer.developers': 'Desarrolladores',
+    'footer.project': 'Proyecto',
     'footer.tagline':
       'Con licencia MIT. Desarrollado de forma independiente, sin afiliación con ningún proveedor.',
     'hero.title':
@@ -637,6 +646,7 @@ export const ui = {
       'Cada chart despliega nuestra imagen reforzada fijada por su digest firmado, con valores predeterminados de producción sensatos. Firmado con cosign y publicado como editor verificado de ArtifactHub.',
     'catalog.list.descChartsCount': 'charts.',
     'catalog.list.searchPlaceholder': 'Buscar por nombre, categoría, licencia…',
+    'catalog.list.suggestions': 'Sugerencias',
     'catalog.list.searchImages': 'Buscar imágenes',
     'catalog.list.searchCharts': 'Buscar charts',
     'catalog.list.filterImages': 'Filtrar imágenes',
@@ -814,6 +824,8 @@ export const ui = {
     'versions.latestSuffix': ' · última',
     'versions.note':
       'La línea más reciente vive en la página base; las líneas más antiguas tienen su propia página para que puedas fijar y verificar exactamente esa versión.',
+    'versions.olderHidden':
+      'Solo se listan las versiones más recientes — un chart más antiguo fija un digest de imagen más antiguo.',
     // --- Documentación: chrome (barra lateral + navegación de página) ---
     'docs.index': 'Documentación',
     'docs.group.Guides': 'Guías',

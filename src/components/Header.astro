@@ -12,17 +12,22 @@ const l = (p: string) => localizeUrl(lang, p);
 // core sections, with Roadmap back in the bar after Compare. Changelog and FAQ
 // stay in the mobile/footer set. hrefs are localized so nav stays in-locale.
 const nav = [
-  { label: t('nav.charts'), href: l('/charts'), primary: true },
-  { label: t('nav.images'), href: l('/images'), primary: true },
-  { label: t('nav.stacks'), href: l('/stacks'), primary: true },
-  { label: t('nav.docs'), href: l('/docs'), primary: true },
-  { label: t('nav.compare'), href: l('/compare'), primary: true },
-  { label: t('nav.roadmap'), href: l('/roadmap'), primary: true },
-  { label: t('nav.security'), href: l('/security'), primary: true },
-  { label: t('nav.changelog'), href: l('/changelog') },
-  { label: t('nav.faq'), href: l('/faq') },
+  { label: t('nav.charts'), href: l('/charts'), primary: true, group: 'catalog' },
+  { label: t('nav.images'), href: l('/images'), primary: true, group: 'catalog' },
+  { label: t('nav.stacks'), href: l('/stacks'), primary: true, group: 'catalog' },
+  { label: t('nav.docs'), href: l('/docs'), primary: true, group: 'about' },
+  { label: t('nav.compare'), href: l('/compare'), primary: true, group: 'about' },
+  { label: t('nav.roadmap'), href: l('/roadmap'), primary: true, group: 'about' },
+  { label: t('nav.security'), href: l('/security'), primary: true, group: 'about' },
+  { label: t('nav.changelog'), href: l('/changelog'), group: 'about' },
+  { label: t('nav.faq'), href: l('/faq'), group: 'about' },
 ];
-const primaryNav = nav.filter((n) => n.primary);
+// The bar carried seven identically-styled links, so the catalog -- the product
+// itself -- read with exactly the same weight as Compare or Roadmap. Split it:
+// what you install first, then everything about it, divided by a 1px rule (the
+// system separates with lines, never shadow).
+const catalogNav = nav.filter((n) => n.primary && n.group === 'catalog');
+const aboutNav = nav.filter((n) => n.primary && n.group === 'about');
 
 const path = Astro.url.pathname.replace(/\/$/, '');
 const isActive = (href: string) => path === href || path.startsWith(`${href}/`);
@@ -43,21 +48,45 @@ const localeLinks = (Object.keys(languages) as (keyof typeof languages)[]).map((
       <img src="/brand/logo-dark.svg" alt="QuenchWorks" class="h-7 w-auto" width="200" height="51" />
     </a>
 
-    <nav class="hidden items-center gap-6 lg:flex" aria-label="Primary">
-      {
-        primaryNav.map((item) => (
-          <a
-            href={item.href}
-            aria-current={isActive(item.href) ? 'page' : undefined}
-            class:list={[
-              'whitespace-nowrap font-mono text-xs uppercase tracking-widest transition-colors duration-200 hover:text-paper',
-              isActive(item.href) ? 'text-paper' : 'text-ash',
-            ]}
-          >
-            {item.label}
-          </a>
-        ))
-      }
+    <nav class="hidden h-full items-stretch lg:flex" aria-label="Primary">
+      <div class="flex items-stretch gap-6">
+        {
+          catalogNav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                // The active marker is a 1px rule sitting on the header's own
+                // bottom border, so the current section is legible without
+                // relying on the ash->paper brightness step alone.
+                'relative flex items-center whitespace-nowrap font-mono text-xs uppercase tracking-widest transition-colors duration-200 hover:text-paper',
+                'after:absolute after:inset-x-0 after:bottom-0 after:h-px after:transition-colors after:duration-200',
+                isActive(item.href) ? 'text-paper after:bg-paper' : 'text-ash after:bg-transparent hover:after:bg-line',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+      <span class="mx-6 my-auto h-4 w-px bg-line" aria-hidden="true"></span>
+      <div class="flex items-stretch gap-6">
+        {
+          aboutNav.map((item) => (
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                'relative flex items-center whitespace-nowrap font-mono text-xs uppercase tracking-widest transition-colors duration-200 hover:text-paper',
+                'after:absolute after:inset-x-0 after:bottom-0 after:h-px after:transition-colors after:duration-200',
+                isActive(item.href) ? 'text-paper after:bg-paper' : 'text-ash after:bg-transparent hover:after:bg-line',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
     </nav>
 
     <div class="flex items-center gap-2">

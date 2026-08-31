@@ -1,4 +1,6 @@
 ---
+import { availableCount } from '../data/images';
+import { chartCount } from '../data/charts';
 import { githubStars } from '../data/github';
 import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
 
@@ -12,39 +14,67 @@ const year = new Date().getFullYear();
 const STAR_THRESHOLD = 25;
 const showStars = githubStars !== null && githubStars >= STAR_THRESHOLD;
 
-// Two columns: catalog/resources and developer entry points. Content-page links
-// are localized to the active locale; /rss.xml is global (English only), so it
-// is NOT prefixed.
-const resources = [
+// Three columns, split by what the reader came to do rather than by page type.
+// The previous two columns held nine and seven links respectively -- long
+// undifferentiated lists where the catalog sat beside the FAQ.
+//
+// Content-page links are localized to the active locale; /rss.xml is global
+// (English only), so it is NOT prefixed.
+const catalog = [
   { label: t('nav.charts'), href: l('/charts') },
   { label: t('nav.images'), href: l('/images') },
   { label: t('nav.stacks'), href: l('/stacks') },
-  { label: t('nav.roadmap'), href: l('/roadmap') },
   { label: t('nav.compare'), href: l('/compare') },
   { label: 'Alternatives', href: l('/alternative') },
-  { label: t('nav.changelog'), href: l('/changelog') },
-  { label: t('nav.faq'), href: l('/faq') },
-  { label: t('nav.about'), href: l('/about') },
 ];
 const developers = [
   { label: t('nav.docs'), href: l('/docs') },
   { label: t('nav.api'), href: l('/api/docs') },
   { label: t('nav.apiReference'), href: l('/api/reference') },
-  { label: t('nav.security'), href: l('/security') },
   { label: 'How it works', href: l('/how-it-works') },
-  { label: 'RSS', href: '/rss.xml' },
   { label: 'GitHub', href: 'https://github.com/quenchworks' },
+];
+const project = [
+  { label: t('nav.security'), href: l('/security') },
+  { label: t('nav.roadmap'), href: l('/roadmap') },
+  { label: t('nav.changelog'), href: l('/changelog') },
+  { label: t('nav.faq'), href: l('/faq') },
+  { label: t('nav.about'), href: l('/about') },
+];
+
+const columns = [
+  { title: t('footer.resources'), links: catalog },
+  { title: t('footer.developers'), links: developers },
+  { title: t('footer.project'), links: project },
 ];
 ---
 
 <footer class="border-t border-line">
-  <div class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-14 sm:grid-cols-4 lg:gap-x-16">
-    {/* Brand block: wordmark + tagline + the GitHub stat, spanning two columns. */}
-    <div class="col-span-2 flex flex-col items-start gap-5">
+  <div
+    class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-12 px-5 py-14 sm:grid-cols-3 lg:grid-cols-5 lg:gap-x-12"
+  >
+    {/* Brand block: wordmark, tagline, and the catalog's own numbers. The footer
+        appears on every page and carried no evidence at all -- only a tagline --
+        on a site whose first principle is to show the receipts. */}
+    <div class="col-span-2 flex flex-col items-start gap-5 sm:col-span-3 lg:col-span-2">
       <a href={l('/')} class="inline-flex shrink-0 items-center" aria-label="QuenchWorks home">
         <img src="/brand/logo-dark.svg" alt="QuenchWorks" class="h-7 w-auto" width="200" height="51" />
       </a>
       <p class="max-w-xs text-sm leading-relaxed text-ash">{t('footer.tagline')}</p>
+
+      <dl class="flex flex-wrap items-baseline gap-x-5 gap-y-2 font-mono text-xs text-ash">
+        <div class="flex items-baseline gap-1.5">
+          <dt class="sr-only">{t('hero.statImages')}</dt>
+          <dd class="font-bold tabular-nums text-paper">{availableCount}</dd>
+          <span aria-hidden="true">{t('hero.statImages')}</span>
+        </div>
+        <div class="flex items-baseline gap-1.5">
+          <dt class="sr-only">{t('hero.statCharts')}</dt>
+          <dd class="font-bold tabular-nums text-paper">{chartCount}</dd>
+          <span aria-hidden="true">{t('hero.statCharts')}</span>
+        </div>
+      </dl>
+
       {showStars && (
         <a
           href="https://github.com/quenchworks"
@@ -54,39 +84,30 @@ const developers = [
           <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true">
             <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7 0-.7 0-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.8 18.3 5.1 18.3 5.1c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z" />
           </svg>
-          <span class="text-paper" aria-hidden="true">★</span>
+          {/* Drawn mark, not a "★" text glyph -- the icon system is SVG. */}
+          <svg viewBox="0 0 24 24" class="size-3.5 text-paper" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.5l2.9 6.06 6.6.86-4.85 4.6 1.2 6.55L12 17.44l-5.85 3.13 1.2-6.55L2.5 9.42l6.6-.86L12 2.5Z" />
+          </svg>
           <span class="font-bold tabular-nums text-paper">{githubStars}</span>
         </a>
       )}
     </div>
 
-    <nav class="flex flex-col gap-3" aria-label={t('footer.resources')}>
-      <p class="font-mono text-[11px] uppercase tracking-widest text-ash/60">{t('footer.resources')}</p>
-      {
-        resources.map((x) => (
-          <a
-            href={x.href}
-            class="font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
-          >
-            {x.label}
-          </a>
-        ))
-      }
-    </nav>
-
-    <nav class="flex flex-col gap-3" aria-label={t('footer.developers')}>
-      <p class="font-mono text-[11px] uppercase tracking-widest text-ash/60">{t('footer.developers')}</p>
-      {
-        developers.map((x) => (
-          <a
-            href={x.href}
-            class="font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
-          >
-            {x.label}
-          </a>
-        ))
-      }
-    </nav>
+    {
+      columns.map((col) => (
+        <nav class="flex flex-col gap-3" aria-label={col.title}>
+          <p class="font-mono text-[11px] uppercase tracking-widest text-ash/70">{col.title}</p>
+          {col.links.map((x) => (
+            <a
+              href={x.href}
+              class="font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+            >
+              {x.label}
+            </a>
+          ))}
+        </nav>
+      ))
+    }
   </div>
 
   <div class="border-t border-line/60">
@@ -95,7 +116,18 @@ const developers = [
         © {year} QuenchWorks · {t('footer.builtBy')}
         <a href="https://mkabumattar.com/" class="text-paper/80 hover:text-paper">Mohammad Abu Mattar</a>
       </p>
-      <a href="https://quench-works.com" class="font-mono text-xs text-ash transition-colors hover:text-paper">quench-works.com</a>
+      {/* Was a link back to quench-works.com -- the page you are already on.
+          RSS was buried mid-list in a link column; this is where a feed belongs. */}
+      <a
+        href="/rss.xml"
+        class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:text-paper"
+      >
+        <svg viewBox="0 0 24 24" class="size-3.5" fill="currentColor" aria-hidden="true">
+          <circle cx="6.18" cy="17.82" r="2.18" />
+          <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56Zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9Z" />
+        </svg>
+        RSS
+      </a>
     </div>
   </div>
 </footer>

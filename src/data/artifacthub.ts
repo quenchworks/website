@@ -3,6 +3,7 @@
 // If AH is unreachable, callers fall back to static catalog values so a deploy never breaks.
 
 import securitySnapshot from './security.json';
+import { compareVersionsDesc } from './versions';
 
 const API = 'https://artifacthub.io/api/v1';
 // AH repository slug convention for this org: quench-<app>
@@ -176,7 +177,16 @@ async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null
       security: snap.security ?? sec,
       securityTotal: snap.securityTotal ?? (sec ? sec.critical + sec.high + sec.medium + sec.low + sec.unknown : undefined),
       scannedAt: d.security_report_created_at,
-      versions: (d.available_versions ?? []).map((v: any) => ({ version: v.version, ts: v.ts })),
+      // ArtifactHub returns available_versions in no guaranteed order, but every
+      // consumer treats versions[0] as the newest: the switcher puts "· latest"
+      // there, the base /charts/<slug> page renders it as canonical, and the
+      // per-version route does slice(1) to skip it. When AH happened to return
+      // an older release first (adminer came back 0.0.1 before 0.0.2), the
+      // canonical page rendered the OLD chart and its stale digest while
+      // labelling it latest. Sort here, once, so nothing downstream has to.
+      versions: (d.available_versions ?? [])
+        .map((v: any) => ({ version: String(v.version), ts: v.ts }))
+        .sort((a: { version: string }, b: { version: string }) => compareVersionsDesc(a.version, b.version)),
       signKeyUrl: d.sign_key?.url,
       ts: d.ts,
       url: `${API.replace('/api/v1', '')}/packages/helm/${repo}/${slug}`,

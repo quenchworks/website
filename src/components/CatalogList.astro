@@ -57,6 +57,7 @@ const { kind, base, all, ah, page, count, categories, tierFilters, pageSize } = 
 const isImages = kind === 'images';
 const noun = isImages ? 'images' : 'charts';
 const inputId = isImages ? 'image-search' : 'chart-search';
+const listboxId = `${inputId}-suggest`;
 
 // Keep links in the active locale: detail cards -> /<lang>/<noun>/<slug>, and the
 // pager base -> /<lang>/<base>. The client renderer gets the prefix via a data attr.
@@ -145,13 +146,34 @@ const dataset = all.map((e) => {
     <circle cx="11" cy="11" r="7"></circle>
     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
   </svg>
+  {/* ARIA 1.2 combobox: the input owns the popup, the popup is a listbox of
+      options, and the highlighted option is pointed at by aria-activedescendant
+      (set by the script) so DOM focus never leaves the input. */}
   <input
     id={inputId}
     type="search"
     placeholder={t('catalog.list.searchPlaceholder')}
     autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck={false}
+    role="combobox"
+    aria-expanded="false"
+    aria-controls={listboxId}
+    aria-autocomplete="list"
     class="w-full rounded-lg border border-line bg-graphite py-2.5 ps-10 pe-4 font-mono text-sm text-paper placeholder:text-ash focus:border-paper/40 focus:outline-none"
   />
+  {/* Suggestions popup. Options are real <a href> (middle-click / open-in-new-tab
+      still work) carrying role="option" + tabindex="-1", so they are exposed as
+      listbox options rather than as a second tab stop. Border + tonal step for
+      separation, never a shadow (DESIGN.md, The Border-Not-Shadow Rule). */}
+  <div
+    id={listboxId}
+    role="listbox"
+    aria-label={t('catalog.list.suggestions')}
+    class="absolute inset-x-0 top-full z-30 mt-2 hidden max-h-80 overflow-y-auto rounded-xl border border-line bg-graphite p-1.5"
+  >
+  </div>
 </div>
 
 <div class="mb-8 mt-4 flex flex-wrap gap-2" role="group" aria-label={isImages ? t('catalog.list.filterImages') : t('catalog.list.filterCharts')}>
@@ -189,7 +211,9 @@ const dataset = all.map((e) => {
 </div>
 
 <div class="mb-4 flex min-h-5 flex-wrap items-center justify-between gap-4">
-  <p class="font-mono text-xs uppercase tracking-widest text-ash" id="result-count"></p>
+  {/* role="status" (implicit aria-live="polite") so the match count is announced
+      when typing/filtering changes it, instead of updating silently. */}
+  <p class="font-mono text-xs uppercase tracking-widest text-ash" id="result-count" role="status"></p>
   <p class="hidden flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-ash" id="no-results">
     <span>{isImages ? t('catalog.list.noMatchImages') : t('catalog.list.noMatchCharts')}</span>
     <button type="button" id="clear-filters" class="rounded border border-line px-2 py-0.5 text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper">{t('catalog.list.clearFilters')}</button>
@@ -303,12 +327,24 @@ const dataset = all.map((e) => {
   data-chartv={t('catalog.list.chartV')}
   data-result-one={t('catalog.list.resultOne')}
   data-result-many={t('catalog.list.resultMany')}
+  data-suggest={`/suggest/${lang}.json`}
+  data-image-base={localizeUrl(lang, '/images')}
+  data-chart-base={localizeUrl(lang, '/charts')}
+  data-type-images={t('catalog.list.typeImages')}
+  data-type-charts={t('catalog.list.typeCharts')}
   set:html={JSON.stringify(dataset)}
 />
 
 <script>
   import { gradeTone, gradeNote, GRADE_CHIP } from '../data/grade';
   import { cardSummary } from '../data/truncate';
+  import {
+    rankSuggestions,
+    suggestName,
+    SUGGEST_MIN,
+    type SuggestKind,
+    type SuggestRow,
+  } from '../data/suggest';
 
   type Entry = {
     slug: string;
@@ -479,7 +515,7 @@ const dataset = all.map((e) => {
     const numbers = pageTokens(cur, tot)
       .map((tok) =>
         tok === 'ellipsis'
-          ? `<span class="inline-flex min-h-9 min-w-9 items-center justify-center font-mono text-xs text-ash/60" aria-hidden="true">…</span>`
+          ? `<span class="inline-flex min-h-9 min-w-9 items-center justify-center font-mono text-xs text-ash/70" aria-hidden="true">…</span>`
           : tok === cur
             ? `<span class="${PAGER_BTN_BASE} tabular-nums ${PAGER_BTN_ACTIVE}" aria-current="page" aria-label="Page ${tok}">${tok}</span>`
             : `<a href="${hrefFor(tok)}" data-page="${tok}" class="${PAGER_BTN_BASE} tabular-nums ${PAGER_BTN_IDLE}" aria-label="Page ${tok}">${tok}</a>`,
@@ -646,7 +682,172 @@ const dataset = all.map((e) => {
     const state: UrlState = { q: '', kind: 'all', filter: 'all', page: 1 };
     syncControls(state);
     apply();
+    closeSuggest();
     writeURL(state, 'push');
+  });
+
+  // ── Suggestions (autocomplete) ─────────────────────────────────────────────
+  // Layered ON TOP of the filtering above, which is untouched: typing still
+  // filters the grid and still rewrites ?q= exactly as before. The popup is an
+  // extra way OUT of this page — picking a suggestion navigates straight to that
+  // item's detail page, and it spans BOTH kinds, so "redis" on /images also
+  // offers the redis chart.
+  //
+  // The index is the build-time file at /suggest/<lang>.json
+  // (src/pages/suggest/[lang].json.ts), fetched once on first use and then
+  // browser-cached — deliberately NOT inlined, so no catalog page pays for it.
+  // The row layout and the match ranking come from the ONE shared module in
+  // src/data/suggest.ts (same trick as grade.ts above), so this client copy can
+  // never drift from the index the endpoint emits.
+  const suggestUrl = dataEl?.getAttribute('data-suggest') ?? '';
+  // Indexed by row[0]: 0 = image, 1 = chart.
+  const suggestBase = [
+    dataEl?.getAttribute('data-image-base') ?? '/images',
+    dataEl?.getAttribute('data-chart-base') ?? '/charts',
+  ];
+  const suggestKindLabel = [
+    dataEl?.getAttribute('data-type-images') ?? 'Images',
+    dataEl?.getAttribute('data-type-charts') ?? 'Charts',
+  ];
+  // Derived from the input itself so the markup stays the single source of truth.
+  const listbox = document.getElementById(search?.getAttribute('aria-controls') ?? '');
+
+  let suggestIndex: SuggestRow[] | null = null;
+  let suggestFetch: Promise<SuggestRow[]> | null = null;
+  let sgRows: SuggestRow[] = [];
+  let sgActive = -1;
+
+  function loadSuggestIndex(): Promise<SuggestRow[]> {
+    if (suggestIndex) return Promise.resolve(suggestIndex);
+    // A failed fetch degrades to "no suggestions"; the filter grid still works.
+    suggestFetch ??= fetch(suggestUrl)
+      .then((r) => (r.ok ? (r.json() as Promise<SuggestRow[]>) : []))
+      .catch(() => [] as SuggestRow[])
+      .then((rows) => (suggestIndex = Array.isArray(rows) ? rows : []));
+    return suggestFetch;
+  }
+
+  function closeSuggest() {
+    sgRows = [];
+    sgActive = -1;
+    search?.setAttribute('aria-expanded', 'false');
+    search?.removeAttribute('aria-activedescendant');
+    if (!listbox) return;
+    listbox.classList.add('hidden');
+    listbox.replaceChildren();
+  }
+
+  /** Move the VIRTUAL cursor: aria-activedescendant + the highlight class. */
+  function markActive() {
+    const opts = Array.from(listbox?.querySelectorAll<HTMLElement>('[role="option"]') ?? []);
+    opts.forEach((el, i) => {
+      const on = i === sgActive;
+      el.setAttribute('aria-selected', String(on));
+      el.classList.toggle('bg-ink', on);
+      if (on) el.scrollIntoView({ block: 'nearest' });
+    });
+    const active = sgActive >= 0 ? opts[sgActive] : undefined;
+    if (active) search?.setAttribute('aria-activedescendant', active.id);
+    else search?.removeAttribute('aria-activedescendant');
+  }
+
+  function renderSuggest(q: string) {
+    if (!listbox || !search || !suggestIndex) return;
+    const here: SuggestKind = isImages ? 0 : 1;
+    sgRows = rankSuggestions(suggestIndex, q, here);
+
+    if (sgRows.length === 0) {
+      closeSuggest();
+      return;
+    }
+    listbox.innerHTML = sgRows
+      .map(
+        (r, i) => `<a id="${search.id}-opt-${i}" role="option" aria-selected="false" tabindex="-1"
+        href="${esc(suggestBase[r[0]])}/${esc(r[1])}"
+        class="flex flex-col gap-0.5 rounded-lg px-3 py-2 no-underline transition-colors duration-150 hover:bg-ink">
+        <span class="flex items-center justify-between gap-3">
+          <span class="text-sm font-medium text-paper">${esc(suggestName(r))}</span>
+          <span class="shrink-0 rounded bg-ink px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">${esc(suggestKindLabel[r[0]])}</span>
+        </span>
+        <span class="line-clamp-1 text-xs leading-relaxed text-ash">${esc(r[3])} · ${esc(r[4])}</span>
+      </a>`,
+      )
+      .join('');
+    listbox.classList.remove('hidden');
+    search.setAttribute('aria-expanded', 'true');
+    sgActive = -1;
+    markActive();
+  }
+
+  const suggestQuery = () => (search?.value ?? '').trim().toLowerCase();
+
+  async function suggest() {
+    if (!listbox || !suggestUrl) return;
+    const q = suggestQuery();
+    if (q.length < SUGGEST_MIN) {
+      closeSuggest();
+      return;
+    }
+    await loadSuggestIndex();
+    // Another keystroke landed while the index was in flight: that call renders.
+    if (suggestQuery() !== q) return;
+    renderSuggest(q);
+  }
+
+  const suggestOpen = () => sgRows.length > 0 && listbox?.classList.contains('hidden') === false;
+
+  // Warm the index on focus so the first keystroke has it in hand.
+  search?.addEventListener('focus', () => {
+    if (suggestUrl) void loadSuggestIndex();
+  });
+
+  search?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (!suggestOpen()) {
+        // Re-open a dismissed popup without needing another keystroke.
+        if (e.key === 'ArrowDown') void suggest();
+        return;
+      }
+      e.preventDefault(); // don't move the caret / scroll the page
+      const step = e.key === 'ArrowDown' ? 1 : -1;
+      sgActive =
+        sgActive < 0
+          ? step === 1
+            ? 0
+            : sgRows.length - 1
+          : (sgActive + step + sgRows.length) % sgRows.length;
+      markActive();
+    } else if (e.key === 'Enter') {
+      const opts = listbox?.querySelectorAll<HTMLAnchorElement>('[role="option"]');
+      const pick = suggestOpen() && sgActive >= 0 ? opts?.[sgActive] : undefined;
+      if (pick) {
+        e.preventDefault();
+        window.location.href = pick.href;
+        return;
+      }
+      // Enter with nothing highlighted commits the plain filter: dismiss only.
+      closeSuggest();
+    } else if (e.key === 'Escape') {
+      // Only swallow Escape when there is a popup to dismiss, so the browser's
+      // native clear-the-search-field behaviour survives otherwise.
+      if (suggestOpen()) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeSuggest();
+      }
+    } else if (e.key === 'Tab') {
+      closeSuggest();
+    }
+  });
+
+  // Keep DOM focus on the input when an option is clicked, so `blur` doesn't tear
+  // the popup down before the click lands on the link.
+  listbox?.addEventListener('mousedown', (e) => e.preventDefault());
+  search?.addEventListener('blur', () => closeSuggest());
+  document.addEventListener('click', (e) => {
+    if (!suggestOpen()) return;
+    const target = e.target as Node | null;
+    if (target && target !== search && !listbox?.contains(target)) closeSuggest();
   });
 
   // Typing is a `replaceState` (debounced, so keystrokes don't flood history);
@@ -656,6 +857,7 @@ const dataset = all.map((e) => {
   search?.addEventListener('input', () => {
     currentPage = 1; // a filter change always lands back on page 1
     apply();
+    void suggest();
     clearTimeout(searchDebounce);
     searchDebounce = setTimeout(() => writeURL(currentState(), 'replace'), 300);
   });
@@ -683,6 +885,9 @@ const dataset = all.map((e) => {
   window.addEventListener('popstate', () => {
     syncControls(stateFromURL());
     apply();
+    // syncControls writes search.value directly (no input event), so the popup
+    // would otherwise keep suggestions for the query we just navigated away from.
+    closeSuggest();
   });
 
   // Deep link on first load: adopt whatever q/status/tier/category/page the

@@ -17,21 +17,36 @@ interface Props {
   current: string;
   /** Optional label above the chips. */
   label?: string;
+  /**
+   * Cap how many versions are listed, newest-first. Charts pass 3: their history
+   * is dominated by digest re-pins (a chart is patch-bumped every time its image
+   * is rebuilt), so a full list runs to 19+ chips that differ only by the digest
+   * they pin -- and an older chart pins an OLDER image, which is the one carrying
+   * CVEs. Images and runtimes pass nothing: their versions are real upstream
+   * release lines (postgresql 16/17/18), and hiding a supported line would be a
+   * lie of omission.
+   */
+  max?: number;
 }
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { section, slug, versions, current, label = t('versions.label') } = Astro.props;
+const { section, slug, versions, current, label = t('versions.label'), max } = Astro.props;
 const latest = versions[0];
+// Always keep the version being rendered in the list, even if the cap would have
+// dropped it -- otherwise the page you are on has no highlighted chip.
+const capped = max && versions.length > max ? versions.slice(0, max) : versions;
+const shown = capped.includes(current) ? capped : [...capped, current];
+const hidden = versions.length - shown.length;
 const hrefFor = (v: string) => localizeUrl(lang, v === latest ? `/${section}/${slug}` : `/${section}/${slug}/${v}`);
 ---
 
-{versions.length > 1 && (
+{shown.length > 1 && (
   <section class="mt-6 rounded-xl border border-line bg-graphite p-5">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">{label}</p>
     <div class="mt-2 flex flex-wrap gap-1.5 font-mono text-[11px]">
-      {versions.map((v) => {
+      {shown.map((v) => {
         const isCurrent = v === current;
         return (
           <a
@@ -49,6 +64,7 @@ const hrefFor = (v: string) => localizeUrl(lang, v === latest ? `/${section}/${s
     </div>
     <p class="mt-2 text-xs text-ash">
       {t('versions.note')}
+      {hidden > 0 && ` ${t('versions.olderHidden')}`}
     </p>
   </section>
 )}
