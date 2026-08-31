@@ -209,6 +209,9 @@ try {
       seenDigests.add(r.digest);
       const slug = r.image.split('/').pop();
       if (only.length && !only.includes(slug)) continue;
+      // 64-zero digests are the deliberate placeholder a chart carries until its
+      // image has a first green publish; pulling one is always MANIFEST_UNKNOWN.
+      if (/^sha256:0{64}$/.test(r.digest)) continue;
       tasks.push({ slug, image: r.image, version: `chart:${c.slug}`, digest: r.digest, fromChart: c.slug });
       chartTasks++;
     }
@@ -220,6 +223,7 @@ try {
 }
 
 const perImage = {}; // slug -> [version summaries]
+const imageOf = {}; // slug -> image ref, for slugs the catalog lock does not carry
 let done = 0, failed = 0;
 async function worker(queue) {
   for (const t of queue) {
@@ -228,6 +232,7 @@ async function worker(queue) {
     catch { try { c = await scanOnce(`${t.image}@${t.digest}`); } // one retry
             catch (err) { failed++; const why = String(err.stderr || err.message).trim().split('\n').pop(); console.error(`FAIL ${t.slug} ${t.version}: ${why}`); continue; } }
     (perImage[t.slug] ||= []).push(summarize(t.version, t.image, c));
+    imageOf[t.slug] ??= t.image;
     done++;
     console.error(`[${done}/${tasks.length}] ${t.slug.padEnd(26)} ${String(t.version).padEnd(14)} total=${c.total} fixable=${c.fixable} grade=${gradeOf(c)}`);
   }
@@ -251,12 +256,15 @@ function vcmp(a, b) {
 const result = {};
 for (const [slug, vers] of Object.entries(perImage)) {
   if (!vers.length) continue;
+  // A chart may pin an image the catalog lock does not carry (delisted, or
+  // published after the last gen-catalog run). Those still get scanned, so fall
+  // back to the ref we scanned with instead of dereferencing undefined.
   const e = images.find((x) => x.slug === slug);
   // versions newest-first; the top-level summary mirrors the LATEST version (what a
   // card/badge shows, and what new deployments get). Per-version detail stays in `versions`.
   const sorted = vers.slice().sort((a, b) => vcmp(b.version, a.version));
   const latest = sorted[0];
-  result[slug] = { image: e.image, ...latest, versions: sorted };
+  result[slug] = { image: e?.image ?? imageOf[slug], ...latest, versions: sorted };
 }
 
 let prev = {};
