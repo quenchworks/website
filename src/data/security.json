@@ -5178,12 +5178,12 @@
     "version": "chart:coolify",
     "tag": "ghcr.io/quenchworks/images/coolify-helper:chart:coolify",
     "critical": 10,
-    "high": 230,
+    "high": 231,
     "medium": 109,
     "low": 11,
     "unknown": 12,
-    "total": 372,
-    "fixable": 347,
+    "total": 373,
+    "fixable": 348,
     "grade": "F",
     "score": 0,
     "cves": [
@@ -6547,7 +6547,7 @@
         "pkg": "golang.org/x/mod",
         "installed": "v0.36.0",
         "fixed": "0.40.0",
-        "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+        "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
         "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
         "targets": [
           "usr/libexec/docker/cli-plugins/docker-buildx",
@@ -6560,7 +6560,7 @@
         "pkg": "golang.org/x/mod",
         "installed": "v0.25.0",
         "fixed": "0.40.0",
-        "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+        "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
         "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
         "targets": [
           "usr/local/bin/pack"
@@ -6666,6 +6666,18 @@
           "usr/bin/mc",
           "usr/local/bin/railpack",
           "var/lib/db/sbom/mc-0.20250813.083541-r15.spdx.json"
+        ]
+      },
+      {
+        "id": "CVE-2026-84445",
+        "severity": "HIGH",
+        "pkg": "mc",
+        "installed": "0.20250813.083541-r15",
+        "fixed": "0.20250813.083541-r24",
+        "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
+        "targets": [
+          "ghcr.io/quenchworks/images/coolify-helper@sha256:3ac8c059ddec50582bb80d6f9626f2e2d06fd7ff67b99f8204976fe3cfd5815b (wolfi 20230201)"
         ]
       },
       {
@@ -7831,12 +7843,12 @@
         "version": "chart:coolify",
         "tag": "ghcr.io/quenchworks/images/coolify-helper:chart:coolify",
         "critical": 10,
-        "high": 230,
+        "high": 231,
         "medium": 109,
         "low": 11,
         "unknown": 12,
-        "total": 372,
-        "fixable": 347,
+        "total": 373,
+        "fixable": 348,
         "grade": "F",
         "score": 0,
         "cves": [
@@ -9200,7 +9212,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.36.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/libexec/docker/cli-plugins/docker-buildx",
@@ -9213,7 +9225,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.25.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/local/bin/pack"
@@ -9319,6 +9331,18 @@
               "usr/bin/mc",
               "usr/local/bin/railpack",
               "var/lib/db/sbom/mc-0.20250813.083541-r15.spdx.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-84445",
+            "severity": "HIGH",
+            "pkg": "mc",
+            "installed": "0.20250813.083541-r15",
+            "fixed": "0.20250813.083541-r24",
+            "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
+            "targets": [
+              "ghcr.io/quenchworks/images/coolify-helper@sha256:3ac8c059ddec50582bb80d6f9626f2e2d06fd7ff67b99f8204976fe3cfd5815b (wolfi 20230201)"
             ]
           },
           {
@@ -28215,12 +28239,12 @@
     "version": "1.36.4",
     "tag": "ghcr.io/quenchworks/images/kubectl:1.36.4",
     "critical": 3,
-    "high": 1,
+    "high": 2,
     "medium": 6,
     "low": 0,
     "unknown": 2,
-    "total": 12,
-    "fixable": 10,
+    "total": 13,
+    "fixable": 11,
     "grade": "F",
     "score": 0,
     "cves": [
@@ -28257,6 +28281,18 @@
         "fixed": "1.36.4-r6",
         "title": "gRPC-Go is the Go language implementation of gRPC. Prior to 1.83.1, in ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-84304",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:587a523c890dc9151f036549effc0ce5a0f5517c47b25a72a87b22441946b121 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84445",
+        "severity": "HIGH",
+        "pkg": "kubectl-1.36",
+        "installed": "1.36.4-r2",
+        "fixed": "1.36.4-r8",
+        "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
         "targets": [
           "ghcr.io/quenchworks/images/kubectl@sha256:587a523c890dc9151f036549effc0ce5a0f5517c47b25a72a87b22441946b121 (wolfi 20230201)"
         ]
@@ -28330,12 +28366,12 @@
         "version": "1.36.4",
         "tag": "ghcr.io/quenchworks/images/kubectl:1.36.4",
         "critical": 3,
-        "high": 1,
+        "high": 2,
         "medium": 6,
         "low": 0,
         "unknown": 2,
-        "total": 12,
-        "fixable": 10,
+        "total": 13,
+        "fixable": 11,
         "grade": "F",
         "score": 0,
         "cves": [
@@ -28372,6 +28408,18 @@
             "fixed": "1.36.4-r6",
             "title": "gRPC-Go is the Go language implementation of gRPC. Prior to 1.83.1, in ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-84304",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:587a523c890dc9151f036549effc0ce5a0f5517c47b25a72a87b22441946b121 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84445",
+            "severity": "HIGH",
+            "pkg": "kubectl-1.36",
+            "installed": "1.36.4-r2",
+            "fixed": "1.36.4-r8",
+            "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
             "targets": [
               "ghcr.io/quenchworks/images/kubectl@sha256:587a523c890dc9151f036549effc0ce5a0f5517c47b25a72a87b22441946b121 (wolfi 20230201)"
             ]
@@ -29769,7 +29817,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.38.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/bin/mailpit"
@@ -29964,7 +30012,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.38.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/bin/mailpit"
@@ -30171,7 +30219,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.38.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/bin/mailpit"
@@ -30414,7 +30462,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.37.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/bin/mailpit"
@@ -30705,7 +30753,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.37.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/bin/mailpit"
@@ -31188,7 +31236,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.35.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/bin/mailpit"
@@ -31875,7 +31923,7 @@
             "pkg": "golang.org/x/mod",
             "installed": "v0.32.0",
             "fixed": "0.40.0",
-            "title": "A malicious GOSUMDB was capable of serving arbitrary module content no ...",
+            "title": "golang.org/x/mod/sumdb: golang.org/x/mod/sumdb: Integrity bypass via malicious GOSUMDB",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56864",
             "targets": [
               "usr/bin/mailpit"
@@ -34500,12 +34548,12 @@
     "version": "2.32.7",
     "tag": "ghcr.io/quenchworks/images/n8n:2.32.7",
     "critical": 0,
-    "high": 8,
-    "medium": 15,
+    "high": 13,
+    "medium": 26,
     "low": 1,
     "unknown": 0,
-    "total": 24,
-    "fixable": 20,
+    "total": 40,
+    "fixable": 36,
     "grade": "D",
     "score": 0,
     "cves": [
@@ -34577,6 +34625,66 @@
         "fixed": "4.3.2, 3.15.2",
         "title": "js-yaml: js-yaml: Denial of Service vulnerability in YAML parsing",
         "url": "https://avd.aquasec.com/nvd/cve-2026-84375",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86075",
+        "severity": "HIGH",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "2.38.2, 2.37.7",
+        "title": "n8n: Unauthenticated Persistent Storage Exhaustion via OAuth Dynamic Client Registration Endpoint",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86075",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86076",
+        "severity": "HIGH",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Expression Sandbox Escape via Class-Field Sanitizer Rebinding Can Lead to Code Execution",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86076",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86081",
+        "severity": "HIGH",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Regular Expression Denial of Service in the Default Blocked-File-Pattern Match via a Git Node Clone Path",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86081",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86082",
+        "severity": "HIGH",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Domain-Restriction Bypass via Unguarded Model-Search Endpoint in OpenAI Chat Model Node",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86082",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86083",
+        "severity": "HIGH",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Expression Sandbox Escape via Shared Builtin Tampering and Code-Printer Injection Leads to Code Execution",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86083",
         "targets": [
           "Node.js"
         ]
@@ -34673,6 +34781,138 @@
         "fixed": "7.0.2",
         "title": "csv-parse: node-csv: Prototype pollution via malicious CSV header",
         "url": "https://avd.aquasec.com/nvd/cve-2026-85063",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86073",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "2.38.1, 2.37.7",
+        "title": "n8n: Per-Resource OAuth Consent Bypass via Unbound Refresh Token Resource Substitution",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86073",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86074",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "2.38.2, 2.37.7",
+        "title": "n8n: Instance AI Credential Setup Accepts Unvalidated Probe URL from Fetched Content",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86074",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86077",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "2.38.2, 2.37.7",
+        "title": "n8n: Anonymous Approval-Gate Bypass via Reused resumeToken over the Chat WebSocket",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86077",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86078",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "2.38.2, 2.37.7",
+        "title": "n8n: Prototype Pollution via Workflow Structure Summary Can Lead to Denial of Service",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86078",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86079",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Path Injection in Elasticsearch and ElasticSecurity Nodes via Unencoded Identifiers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86079",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86080",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: GitHub Trigger 422 Reuse Path Skips Webhook Secret Storage, Causing Signature Verification to Fail-Open",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86080",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86084",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Disabled OIDC SSO Endpoints Remain Active and Issue Valid Sessions",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86084",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86085",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "2.38.2, 2.37.7",
+        "title": "n8n: Cross-Tenant Project-Member PII Disclosure via Missing Per-Project Scope Check on Role Assignment Endpoints",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86085",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86993",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Log Streaming Event Destinations Decrypt Generic-Auth Credentials Without Ownership Check",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86993",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86994",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Cross-User Active Workflow ID and Lifecycle Event Disclosure via Missing userId Filter",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86994",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-86995",
+        "severity": "MEDIUM",
+        "pkg": "n8n",
+        "installed": "2.32.7",
+        "fixed": "1.123.76, 2.38.2, 2.37.7",
+        "title": "n8n: Git Node branch.<name>.remote Config Key Bypasses Sandbox Path Restriction, Enabling Local Git Repository Read",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-86995",
         "targets": [
           "Node.js"
         ]
@@ -34803,12 +35043,12 @@
         "version": "2.32.7",
         "tag": "ghcr.io/quenchworks/images/n8n:2.32.7",
         "critical": 0,
-        "high": 8,
-        "medium": 15,
+        "high": 13,
+        "medium": 26,
         "low": 1,
         "unknown": 0,
-        "total": 24,
-        "fixable": 20,
+        "total": 40,
+        "fixable": 36,
         "grade": "D",
         "score": 0,
         "cves": [
@@ -34880,6 +35120,66 @@
             "fixed": "4.3.2, 3.15.2",
             "title": "js-yaml: js-yaml: Denial of Service vulnerability in YAML parsing",
             "url": "https://avd.aquasec.com/nvd/cve-2026-84375",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86075",
+            "severity": "HIGH",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "2.38.2, 2.37.7",
+            "title": "n8n: Unauthenticated Persistent Storage Exhaustion via OAuth Dynamic Client Registration Endpoint",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86075",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86076",
+            "severity": "HIGH",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Expression Sandbox Escape via Class-Field Sanitizer Rebinding Can Lead to Code Execution",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86076",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86081",
+            "severity": "HIGH",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Regular Expression Denial of Service in the Default Blocked-File-Pattern Match via a Git Node Clone Path",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86081",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86082",
+            "severity": "HIGH",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Domain-Restriction Bypass via Unguarded Model-Search Endpoint in OpenAI Chat Model Node",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86082",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86083",
+            "severity": "HIGH",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Expression Sandbox Escape via Shared Builtin Tampering and Code-Printer Injection Leads to Code Execution",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86083",
             "targets": [
               "Node.js"
             ]
@@ -34976,6 +35276,138 @@
             "fixed": "7.0.2",
             "title": "csv-parse: node-csv: Prototype pollution via malicious CSV header",
             "url": "https://avd.aquasec.com/nvd/cve-2026-85063",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86073",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "2.38.1, 2.37.7",
+            "title": "n8n: Per-Resource OAuth Consent Bypass via Unbound Refresh Token Resource Substitution",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86073",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86074",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "2.38.2, 2.37.7",
+            "title": "n8n: Instance AI Credential Setup Accepts Unvalidated Probe URL from Fetched Content",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86074",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86077",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "2.38.2, 2.37.7",
+            "title": "n8n: Anonymous Approval-Gate Bypass via Reused resumeToken over the Chat WebSocket",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86077",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86078",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "2.38.2, 2.37.7",
+            "title": "n8n: Prototype Pollution via Workflow Structure Summary Can Lead to Denial of Service",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86078",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86079",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Path Injection in Elasticsearch and ElasticSecurity Nodes via Unencoded Identifiers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86079",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86080",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: GitHub Trigger 422 Reuse Path Skips Webhook Secret Storage, Causing Signature Verification to Fail-Open",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86080",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86084",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Disabled OIDC SSO Endpoints Remain Active and Issue Valid Sessions",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86084",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86085",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "2.38.2, 2.37.7",
+            "title": "n8n: Cross-Tenant Project-Member PII Disclosure via Missing Per-Project Scope Check on Role Assignment Endpoints",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86085",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86993",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Log Streaming Event Destinations Decrypt Generic-Auth Credentials Without Ownership Check",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86993",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86994",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Cross-User Active Workflow ID and Lifecycle Event Disclosure via Missing userId Filter",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86994",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-86995",
+            "severity": "MEDIUM",
+            "pkg": "n8n",
+            "installed": "2.32.7",
+            "fixed": "1.123.76, 2.38.2, 2.37.7",
+            "title": "n8n: Git Node branch.<name>.remote Config Key Bypasses Sandbox Path Restriction, Enabling Local Git Repository Read",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-86995",
             "targets": [
               "Node.js"
             ]
@@ -42396,16 +42828,40 @@
     "image": "ghcr.io/quenchworks/images/rclone",
     "version": "1.75.0",
     "tag": "ghcr.io/quenchworks/images/rclone:1.75.0",
-    "critical": 0,
-    "high": 2,
-    "medium": 3,
-    "low": 0,
+    "critical": 2,
+    "high": 4,
+    "medium": 7,
+    "low": 1,
     "unknown": 1,
-    "total": 6,
-    "fixable": 5,
-    "grade": "D",
-    "score": 41,
+    "total": 15,
+    "fixable": 14,
+    "grade": "F",
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-88018",
+        "severity": "CRITICAL",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone is a command-line program to sync files and directories to and  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88018",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
+        "id": "CVE-2026-88044",
+        "severity": "CRITICAL",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone: RC per-server auth-proxy bypass",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88044",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
       {
         "id": "CVE-2026-84304",
         "severity": "HIGH",
@@ -42426,6 +42882,30 @@
         "fixed": "1.82.2, 1.83.2, 1.85.0-dev.0.20260825072537-93e31b48545e",
         "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
         "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
+        "id": "CVE-2026-88017",
+        "severity": "HIGH",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone is a command-line program to sync files and directories to and  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88017",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
+        "id": "CVE-2026-88045",
+        "severity": "HIGH",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone: S3 multipart declared-length memory exhaustion",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88045",
         "targets": [
           "usr/bin/rclone"
         ]
@@ -42467,6 +42947,66 @@
         ]
       },
       {
+        "id": "CVE-2026-88014",
+        "severity": "MEDIUM",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone is a command-line program to sync files and directories to and  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88014",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
+        "id": "CVE-2026-88015",
+        "severity": "MEDIUM",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone is a command-line program to sync files and directories to and  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88015",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
+        "id": "CVE-2026-88016",
+        "severity": "MEDIUM",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone is a command-line program to sync files and directories to and  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88016",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
+        "id": "CVE-2026-88046",
+        "severity": "MEDIUM",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone: source object names can escape the configured root on upload",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88046",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
+        "id": "CVE-2026-88013",
+        "severity": "LOW",
+        "pkg": "github.com/rclone/rclone",
+        "installed": "v1.75.0",
+        "fixed": "1.75.1",
+        "title": "rclone is a command-line program to sync files and directories to and  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88013",
+        "targets": [
+          "usr/bin/rclone"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -42483,16 +43023,40 @@
       {
         "version": "1.75.0",
         "tag": "ghcr.io/quenchworks/images/rclone:1.75.0",
-        "critical": 0,
-        "high": 2,
-        "medium": 3,
-        "low": 0,
+        "critical": 2,
+        "high": 4,
+        "medium": 7,
+        "low": 1,
         "unknown": 1,
-        "total": 6,
-        "fixable": 5,
-        "grade": "D",
-        "score": 41,
+        "total": 15,
+        "fixable": 14,
+        "grade": "F",
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-88018",
+            "severity": "CRITICAL",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone is a command-line program to sync files and directories to and  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88018",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88044",
+            "severity": "CRITICAL",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone: RC per-server auth-proxy bypass",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88044",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
           {
             "id": "CVE-2026-84304",
             "severity": "HIGH",
@@ -42513,6 +43077,30 @@
             "fixed": "1.82.2, 1.83.2, 1.85.0-dev.0.20260825072537-93e31b48545e",
             "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
             "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88017",
+            "severity": "HIGH",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone is a command-line program to sync files and directories to and  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88017",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88045",
+            "severity": "HIGH",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone: S3 multipart declared-length memory exhaustion",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88045",
             "targets": [
               "usr/bin/rclone"
             ]
@@ -42549,6 +43137,66 @@
             "fixed": "1.83.1",
             "title": "gRPC-Go is the Go language implementation of gRPC. Prior to 1.83.1, th ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-84303",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88014",
+            "severity": "MEDIUM",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone is a command-line program to sync files and directories to and  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88014",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88015",
+            "severity": "MEDIUM",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone is a command-line program to sync files and directories to and  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88015",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88016",
+            "severity": "MEDIUM",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone is a command-line program to sync files and directories to and  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88016",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88046",
+            "severity": "MEDIUM",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone: source object names can escape the configured root on upload",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88046",
+            "targets": [
+              "usr/bin/rclone"
+            ]
+          },
+          {
+            "id": "CVE-2026-88013",
+            "severity": "LOW",
+            "pkg": "github.com/rclone/rclone",
+            "installed": "v1.75.0",
+            "fixed": "1.75.1",
+            "title": "rclone is a command-line program to sync files and directories to and  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88013",
             "targets": [
               "usr/bin/rclone"
             ]
@@ -46222,16 +46870,28 @@
     "image": "ghcr.io/quenchworks/images/traefik",
     "version": "3.7.12",
     "tag": "ghcr.io/quenchworks/images/traefik:3.7.12",
-    "critical": 0,
-    "high": 2,
+    "critical": 1,
+    "high": 5,
     "medium": 3,
     "low": 0,
     "unknown": 1,
-    "total": 6,
-    "fixable": 5,
-    "grade": "D",
-    "score": 41,
+    "total": 10,
+    "fixable": 9,
+    "grade": "F",
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-88007",
+        "severity": "CRITICAL",
+        "pkg": "github.com/traefik/traefik/v3",
+        "installed": "3.7.12",
+        "fixed": "3.7.13",
+        "title": "Traefik HTTP/3 Backend NTLM Connection Reuse",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88007",
+        "targets": [
+          "usr/bin/traefik"
+        ]
+      },
       {
         "id": "CVE-2026-84304",
         "severity": "HIGH",
@@ -46252,6 +46912,42 @@
         "fixed": "1.82.2, 1.83.2, 1.85.0-dev.0.20260825072537-93e31b48545e",
         "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
         "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
+        "targets": [
+          "usr/bin/traefik"
+        ]
+      },
+      {
+        "id": "CVE-2026-88004",
+        "severity": "HIGH",
+        "pkg": "github.com/traefik/traefik/v3",
+        "installed": "3.7.12",
+        "fixed": "3.7.13",
+        "title": "Traefik entrypoint header-name sanitization bypassed via request trailers",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88004",
+        "targets": [
+          "usr/bin/traefik"
+        ]
+      },
+      {
+        "id": "CVE-2026-88008",
+        "severity": "HIGH",
+        "pkg": "github.com/traefik/traefik/v3",
+        "installed": "3.7.12",
+        "fixed": "3.7.13",
+        "title": "Traefik: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') and Incorrect Authorization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88008",
+        "targets": [
+          "usr/bin/traefik"
+        ]
+      },
+      {
+        "id": "CVE-2026-88009",
+        "severity": "HIGH",
+        "pkg": "github.com/traefik/traefik/v3",
+        "installed": "3.7.12",
+        "fixed": "3.7.13",
+        "title": "Traefik: Rootless HTTP/1 request-target routes as \"/\" but is forwarded verbatim, bypassing path-scoped routing, middleware guards and access logging",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-88009",
         "targets": [
           "usr/bin/traefik"
         ]
@@ -46309,16 +47005,28 @@
       {
         "version": "3.7.12",
         "tag": "ghcr.io/quenchworks/images/traefik:3.7.12",
-        "critical": 0,
-        "high": 2,
+        "critical": 1,
+        "high": 5,
         "medium": 3,
         "low": 0,
         "unknown": 1,
-        "total": 6,
-        "fixable": 5,
-        "grade": "D",
-        "score": 41,
+        "total": 10,
+        "fixable": 9,
+        "grade": "F",
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-88007",
+            "severity": "CRITICAL",
+            "pkg": "github.com/traefik/traefik/v3",
+            "installed": "3.7.12",
+            "fixed": "3.7.13",
+            "title": "Traefik HTTP/3 Backend NTLM Connection Reuse",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88007",
+            "targets": [
+              "usr/bin/traefik"
+            ]
+          },
           {
             "id": "CVE-2026-84304",
             "severity": "HIGH",
@@ -46339,6 +47047,42 @@
             "fixed": "1.82.2, 1.83.2, 1.85.0-dev.0.20260825072537-93e31b48545e",
             "title": "gRPC-Go xDS servers: Denial of Service (DoS) via crash due to missing `:authority` and `Host` headers",
             "url": "https://avd.aquasec.com/nvd/cve-2026-84445",
+            "targets": [
+              "usr/bin/traefik"
+            ]
+          },
+          {
+            "id": "CVE-2026-88004",
+            "severity": "HIGH",
+            "pkg": "github.com/traefik/traefik/v3",
+            "installed": "3.7.12",
+            "fixed": "3.7.13",
+            "title": "Traefik entrypoint header-name sanitization bypassed via request trailers",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88004",
+            "targets": [
+              "usr/bin/traefik"
+            ]
+          },
+          {
+            "id": "CVE-2026-88008",
+            "severity": "HIGH",
+            "pkg": "github.com/traefik/traefik/v3",
+            "installed": "3.7.12",
+            "fixed": "3.7.13",
+            "title": "Traefik: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') and Incorrect Authorization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88008",
+            "targets": [
+              "usr/bin/traefik"
+            ]
+          },
+          {
+            "id": "CVE-2026-88009",
+            "severity": "HIGH",
+            "pkg": "github.com/traefik/traefik/v3",
+            "installed": "3.7.12",
+            "fixed": "3.7.13",
+            "title": "Traefik: Rootless HTTP/1 request-target routes as \"/\" but is forwarded verbatim, bypassing path-scoped routing, middleware guards and access logging",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-88009",
             "targets": [
               "usr/bin/traefik"
             ]
