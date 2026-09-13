@@ -1990,18 +1990,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
-    "appVersion": "1.18.1",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.19.1",
     "description": "Kyverno: policy as code for Kubernetes. Validates, mutates, generates and cleans up resources from ClusterPolicy/Policy CRs and the CEL-based policies.kyverno.io API, with no new language to learn. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. One image drives four deployments (admission, background, cleanup and reports controllers); the admission controller mints its own CA and serving certificate and registers its own webhook configurations, so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/kyverno",
-    "imageDigest": "sha256:90c78c2401575be2e2f496a491e242fbd4ba051decd98ba25b46fc1931c816dd",
+    "imageDigest": "sha256:25977a3e7b05d584cf47ae79ca296af4ce90b653b9d6f860656472f066e00b5e",
     "repositoryID": "be1b3904-bbff-4484-8183-613bf58f0ad3",
     "upstream": "https://kyverno.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/kyverno",
     "images": [
       {
         "name": "kyverno",
-        "image": "ghcr.io/quenchworks/images/kyverno@sha256:90c78c2401575be2e2f496a491e242fbd4ba051decd98ba25b46fc1931c816dd"
+        "image": "ghcr.io/quenchworks/images/kyverno@sha256:25977a3e7b05d584cf47ae79ca296af4ce90b653b9d6f860656472f066e00b5e"
       },
       {
         "name": "kubectl",
@@ -3137,11 +3137,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.9",
-    "appVersion": "0.39.5",
+    "chartVersion": "0.0.10",
+    "appVersion": "0.40.4",
     "description": "Open-source backend in one Go binary (SQLite DB + auth + file storage + admin UI + realtime REST API). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pocketbase",
-    "imageDigest": "sha256:04a46eef064a6d57b228b49d02c4018a7e54a3ab022ce31b82f8f7d2623cadcb",
+    "imageDigest": "sha256:aceec34b62a951128ccc1ec18f3de1f9e33a8a42ba6c6afef84aa35c56cf143e",
     "repositoryID": "c5f062bc-0349-4ca6-94ec-d9d5bfbccb78",
     "port": 80,
     "upstream": "https://pocketbase.io",
@@ -3149,7 +3149,7 @@
     "images": [
       {
         "name": "pocketbase",
-        "image": "ghcr.io/quenchworks/images/pocketbase@sha256:04a46eef064a6d57b228b49d02c4018a7e54a3ab022ce31b82f8f7d2623cadcb"
+        "image": "ghcr.io/quenchworks/images/pocketbase@sha256:aceec34b62a951128ccc1ec18f3de1f9e33a8a42ba6c6afef84aa35c56cf143e"
       }
     ]
   },
@@ -3654,18 +3654,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
-    "appVersion": "1.14.0",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.16.0",
     "description": "Tekton Pipelines: the Kubernetes-native CI/CD engine. Installs the Task/TaskRun/Pipeline/PipelineRun/StepAction CRDs plus the reconciler and the admission webhook, so builds run as plain Pods with no external build service. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The single image also carries the helper binaries the controller injects into every TaskRun pod (entrypoint, nop, sidecarlogresults, workingdirinit), and the chart points the controller at itself by digest, so a run never reaches for an upstream registry.",
     "imageRepository": "ghcr.io/quenchworks/images/tekton",
-    "imageDigest": "sha256:3b749beca2c9aeef4ffde8590c6189330e4883d1a3c2c7a46925bae1ddf5143a",
+    "imageDigest": "sha256:7b7c7e7bd81d25991191dd8f3483a2e29c3acfedc0d89fc6f8ab81761a3045ab",
     "repositoryID": "2d806364-ea54-48ab-9dda-da58f05cf6e6",
     "upstream": "https://tekton.dev",
     "chartRef": "oci://ghcr.io/quenchworks/charts/tekton",
     "images": [
       {
         "name": "tekton",
-        "image": "ghcr.io/quenchworks/images/tekton@sha256:3b749beca2c9aeef4ffde8590c6189330e4883d1a3c2c7a46925bae1ddf5143a"
+        "image": "ghcr.io/quenchworks/images/tekton@sha256:7b7c7e7bd81d25991191dd8f3483a2e29c3acfedc0d89fc6f8ab81761a3045ab"
       },
       {
         "name": "busybox",
@@ -3705,18 +3705,18 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
-    "appVersion": "1.31.2",
+    "chartVersion": "0.0.20",
+    "appVersion": "1.32.0",
     "description": "Durable workflow orchestration engine that persists execution state so long-running, multi-step processes survive crashes and resume exactly where they left off. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/temporal",
-    "imageDigest": "sha256:2b46cb598b0f2bcfc4f3b0d9ffc50a053bedff7e7b7ffbf9994857c606c2d359",
+    "imageDigest": "sha256:bf77096cc5260c9f09a2eb29bd2d4ce210f416ee8e372e5f8c0e97356a1eaafa",
     "repositoryID": "52dca231-7f15-4b72-8150-ed5806969292",
     "upstream": "https://github.com/temporalio/temporal",
     "chartRef": "oci://ghcr.io/quenchworks/charts/temporal",
     "images": [
       {
         "name": "temporal",
-        "image": "ghcr.io/quenchworks/images/temporal@sha256:2b46cb598b0f2bcfc4f3b0d9ffc50a053bedff7e7b7ffbf9994857c606c2d359"
+        "image": "ghcr.io/quenchworks/images/temporal@sha256:bf77096cc5260c9f09a2eb29bd2d4ce210f416ee8e372e5f8c0e97356a1eaafa"
       },
       {
         "name": "postgresql",
@@ -4116,11 +4116,11 @@
     "tier": "standard",
     "license": "AGPL-3.0+",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.10",
-    "appVersion": "2.5.0",
+    "chartVersion": "0.0.11",
+    "appVersion": "2.6.0",
     "description": "Self-hosted to-do & project management app (Go single binary + embedded frontend). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/vikunja",
-    "imageDigest": "sha256:c6737bb33aa05f4ccdf97af5a4c175b0597f860d77853964ef40d4840608b5d7",
+    "imageDigest": "sha256:ef5d7b5ac5e2089511671b3ef6c8e26c5c3636e9f2d756b7aea1742deb96d1bb",
     "repositoryID": "81d90cd8-1b9c-4172-9c6c-373b83971370",
     "port": 80,
     "upstream": "https://vikunja.io",
@@ -4128,7 +4128,7 @@
     "images": [
       {
         "name": "vikunja",
-        "image": "ghcr.io/quenchworks/images/vikunja@sha256:c6737bb33aa05f4ccdf97af5a4c175b0597f860d77853964ef40d4840608b5d7"
+        "image": "ghcr.io/quenchworks/images/vikunja@sha256:ef5d7b5ac5e2089511671b3ef6c8e26c5c3636e9f2d756b7aea1742deb96d1bb"
       }
     ]
   },
@@ -4187,11 +4187,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.9",
-    "appVersion": "3.16.0",
+    "chartVersion": "0.0.10",
+    "appVersion": "3.18.1",
     "description": "Woodpecker CI server (Go): a lightweight, forge-driven CI/CD engine. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/woodpecker",
-    "imageDigest": "sha256:d47379f0973a8802f112d0f71aef11a60639c641fa3a38f885ab7d4283a3fd92",
+    "imageDigest": "sha256:48923645f123a1be9447991646c62ea3eda69062ce9893a0c4ceb4c6922045dc",
     "repositoryID": "0831bcfa-fc10-4aaf-a4e9-e75f4ac7685f",
     "port": 80,
     "upstream": "https://woodpecker-ci.org",
@@ -4199,7 +4199,7 @@
     "images": [
       {
         "name": "woodpecker",
-        "image": "ghcr.io/quenchworks/images/woodpecker@sha256:d47379f0973a8802f112d0f71aef11a60639c641fa3a38f885ab7d4283a3fd92"
+        "image": "ghcr.io/quenchworks/images/woodpecker@sha256:48923645f123a1be9447991646c62ea3eda69062ce9893a0c4ceb4c6922045dc"
       }
     ]
   },
