@@ -1,5 +1,5 @@
 # Build stage: build the jar with Gradle.
-FROM ghcr.io/quenchworks/images/gradle:9.6.0 AS build
+FROM ghcr.io/quenchworks/images/gradle:9.7.1 AS build
 USER root
 WORKDIR /app
 ENV GRADLE_USER_HOME=/tmp/gradle
