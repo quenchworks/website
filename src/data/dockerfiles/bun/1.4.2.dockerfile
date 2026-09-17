@@ -1,5 +1,5 @@
 # Build stage: install all deps (frozen) and build with Bun.
-FROM ghcr.io/quenchworks/images/bun:1.3.11 AS build
+FROM ghcr.io/quenchworks/images/bun:1.4.2 AS build
 USER root
 WORKDIR /app
 ENV BUN_INSTALL_CACHE_DIR=/tmp/bun
@@ -12,7 +12,7 @@ RUN ["bun", "run", "build"]
 RUN ["bun", "install", "--frozen-lockfile", "--production"]
 
 # Runtime stage: prod deps + built output on a clean bun base, nonroot.
-FROM ghcr.io/quenchworks/images/bun:1.3.11 AS runtime
+FROM ghcr.io/quenchworks/images/bun:1.4.2 AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 COPY --from=build /app/node_modules ./node_modules
