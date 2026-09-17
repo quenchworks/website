@@ -2089,7 +2089,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
+    "chartVersion": "0.0.7",
     "appVersion": "26.8.4",
     "description": "Linkerd's control plane, from-source on QuenchWorks 0-CVE images pinned by digest: the destination service-profile/xDS controller and (optionally) the identity certificate authority and the Rust policy controller. Tracks Linkerd EDGE releases, since upstream has not cut a stable release since stable-2.14.10 (Feb 2024) and gates stable commercially. Sidecar injection (proxy-injector/sp-validator) and the linkerd-proxy data plane land in a later chart.",
     "imageRepository": "ghcr.io/quenchworks/images/linkerd",
@@ -2106,6 +2106,22 @@
         "image": "ghcr.io/quenchworks/images/linkerd-policy-controller@sha256:559c5152d03c0c0c3b1606ebe40427f1db6e7323e5c2113efdb7e2401aec962d"
       }
     ]
+  },
+  {
+    "slug": "linkerd-crds",
+    "name": "linkerd-crds",
+    "category": "Datastore",
+    "summary": "Hardened linkerd-crds image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "26.8.4",
+    "description": "The linkerd-specific CustomResourceDefinitions from linkerd/linkerd2, packaged as a standalone chart so the control plane has the API surface it needs before it starts. Linkerd's destination controller calls k8s.InitializeAPI with ServiceProfile, Server and ExternalWorkload at startup and exits fatally when the apiserver 404s on them, so these CRDs are a hard prerequisite rather than an optional extra. Ships the linkerd-only set: upstream's own bundle also carries the Gateway API route CRDs, and those are deliberately excluded because quench/gateway-api-crds owns those names and a cluster-scoped CRD with two owners belongs to whichever applied last. CRDs go in templates/ rather than crds/ so helm upgrade actually rolls them forward, and carry helm.sh/resource-policy: keep so uninstall cannot cascade-delete every Server and ServiceProfile in the cluster.",
+    "imageRepository": "ghcr.io/quenchworks/images/linkerd-crds",
+    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/linkerd-crds"
   },
   {
     "slug": "livekit",
