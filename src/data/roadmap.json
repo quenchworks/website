@@ -387,26 +387,6 @@
     "note": "Distributed tracing system for collecting and querying timing data."
   },
   {
-    "name": "Grafana Alloy",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "OpenTelemetry-based collector distribution for metrics, logs, traces, and profiles.",
-    "blocked": true,
-    "blockedReason": "Built and otherwise 0-CVE, but a transitive `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) pulled by Alloy's docker discovery has its fix only in the renamed `moby/moby` v29 module, so it can't be bumped without forking. Held until Alloy migrates to moby v29."
-  },
-  {
-    "name": "Telegraf",
-    "category": "Observability",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Plugin-driven metrics collection agent from the InfluxData ecosystem.",
-    "blocked": true,
-    "blockedReason": "Built, but a transitive `github.com/rclone/rclone` carries a CRITICAL RCE (CVE-2026-49980); the fix (rclone 1.74.3) drops an API Telegraf's remotefile plugin depends on, so bumping breaks the build. Held until Telegraf updates its rclone pin."
-  },
-  {
     "name": "Fluentd",
     "category": "Observability",
     "license": "Apache-2.0",
@@ -1304,22 +1284,6 @@
     "note": "Versioned SQL database migrations."
   },
   {
-    "name": "mysqld-exporter",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Prometheus exporter for MySQL/MariaDB metrics."
-  },
-  {
-    "name": "mongodb-exporter",
-    "category": "Observability",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Prometheus exporter for MongoDB metrics."
-  },
-  {
     "name": "kafka-exporter",
     "category": "Observability",
     "license": "Apache-2.0",
@@ -1719,24 +1683,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "In-cluster Kubescape components (operator, scanner, kubevuln) for continuous posture and vulnerability scanning. Distinct from the Kubescape CLI."
-  },
-  {
-    "name": "Jenkins Inbound Agent",
-    "category": "CI/CD & registry",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Jenkins JNLP inbound build agent. Image only, no chart. Build held: jenkins-docker-agent carries a CRITICAL jetty CVE (fix 2.560-r0 not yet in Wolfi)."
-  },
-  {
-    "name": "Coolify Helper",
-    "category": "PaaS",
-    "license": "Apache-2.0 AND AGPL-3.0-or-later",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Coolify helper image carrying the build and deploy toolchain (buildpacks, git, ssh) that runs on target hosts to execute deployments. [blocked: upstream CVEs / ES9 unsupported]",
-    "blocked": true,
-    "blockedReason": "Bundled Wolfi apks `docker-compose`/`docker-cli-buildx` carry CVE-2026-34040, whose fix is the `github.com/docker/docker` v28 -> `moby/moby` v29 module rename (not yet in Wolfi), plus `mc`'s x/net. Clears when Wolfi publishes the moby-v29 apks."
   },
   {
     "name": "APISIX Dashboard",
