@@ -727,11 +727,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
-    "appVersion": "2.3.6",
+    "chartVersion": "0.0.6",
+    "appVersion": "2.4.1",
     "description": "Crossplane, the CNCF control-plane framework that turns Kubernetes into a universal API for infrastructure. Installs Providers, Functions and Configurations as packages, and lets platform teams publish their own composite APIs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/crossplane",
-    "imageDigest": "sha256:3c0adb8f087a9f6d497845d11bb2ab103d77a56aede2b993208cc97fa328a80c",
+    "imageDigest": "sha256:69a727135d8c67b342957ed4302469bc8f28aafddb8652868240370b3731da82",
     "repositoryID": "7682293d-c090-49c6-aaa4-a3d8598d92cc",
     "port": 9443,
     "upstream": "https://crossplane.io",
@@ -739,7 +739,7 @@
     "images": [
       {
         "name": "crossplane",
-        "image": "ghcr.io/quenchworks/images/crossplane@sha256:3c0adb8f087a9f6d497845d11bb2ab103d77a56aede2b993208cc97fa328a80c"
+        "image": "ghcr.io/quenchworks/images/crossplane@sha256:69a727135d8c67b342957ed4302469bc8f28aafddb8652868240370b3731da82"
       }
     ]
   },
@@ -2119,7 +2119,7 @@
     "appVersion": "26.8.4",
     "description": "The linkerd-specific CustomResourceDefinitions from linkerd/linkerd2, packaged as a standalone chart so the control plane has the API surface it needs before it starts. Linkerd's destination controller calls k8s.InitializeAPI with ServiceProfile, Server and ExternalWorkload at startup and exits fatally when the apiserver 404s on them, so these CRDs are a hard prerequisite rather than an optional extra. Ships the linkerd-only set: upstream's own bundle also carries the Gateway API route CRDs, and those are deliberately excluded because quench/gateway-api-crds owns those names and a cluster-scoped CRD with two owners belongs to whichever applied last. CRDs go in templates/ rather than crds/ so helm upgrade actually rolls them forward, and carry helm.sh/resource-policy: keep so uninstall cannot cascade-delete every Server and ServiceProfile in the cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/linkerd-crds",
-    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
+    "repositoryID": "3e491d81-17db-4e11-a201-d3c4733c2172",
     "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/linkerd-crds"
   },
@@ -4330,11 +4330,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
-    "appVersion": "2.1.18",
+    "chartVersion": "0.0.11",
+    "appVersion": "2.1.21",
     "description": "A production-ready, vendor-neutral OCI-native container image registry for storing and distributing OCI artifacts. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/zot",
-    "imageDigest": "sha256:0a6c6792306b12ff3667332f6f5066868ff0c5c5b4a9b594071b69e3d0a0b1b0",
+    "imageDigest": "sha256:a638fab43e62baed2efb56e855d912cccaba77f0b4e475ac6d412fcd231c3052",
     "repositoryID": "10b85a3d-c95b-4faf-b0e7-6786c609bd32",
     "port": 5000,
     "upstream": "https://zotregistry.dev",
@@ -4342,7 +4342,7 @@
     "images": [
       {
         "name": "zot",
-        "image": "ghcr.io/quenchworks/images/zot@sha256:0a6c6792306b12ff3667332f6f5066868ff0c5c5b4a9b594071b69e3d0a0b1b0"
+        "image": "ghcr.io/quenchworks/images/zot@sha256:a638fab43e62baed2efb56e855d912cccaba77f0b4e475ac6d412fcd231c3052"
       }
     ]
   }
