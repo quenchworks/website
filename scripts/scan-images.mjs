@@ -22,7 +22,7 @@
 //   node scripts/scan-images.mjs neo4j redis  # a subset, merged into existing
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { promisify } from 'node:util';
 
 const execFileP = promisify(execFile);
@@ -105,7 +105,21 @@ function parseReport(data) {
   return { ...c, cves };
 }
 
-async function scanOnce(ref) {
+// VEX files live in the images repo, one per app, and the build gate already
+// applies them. Without them here the public feed reports findings the project
+// has already shown do not apply: kgateway's five istio advisories are the
+// standing example, where Go must use a v0.0.0-<date>-<sha> pseudo-version
+// because istio tags releases without a `v`, and Trivy sorts that below every
+// 2019-2022 fixed version. The workflow drops the files into VEX_DIR; when one
+// is absent the scan is unchanged.
+const VEX_DIR = process.env.VEX_DIR || '';
+function vexArgs(slug) {
+  if (!VEX_DIR) return [];
+  const f = `${VEX_DIR}/${slug}.openvex.json`;
+  return existsSync(f) ? ['--vex', f] : [];
+}
+
+async function scanOnce(ref, slug) {
   // --cache-backend memory: keep the per-scan analysis cache in memory so parallel
   //   trivy processes don't fight over the on-disk fanal bolt lock.
   // --skip-db-update: the vuln DB is pre-downloaded once (shared, read-only) by the workflow.
@@ -119,7 +133,7 @@ async function scanOnce(ref) {
     ['image', '--quiet', '--format', 'json', '--scanners', 'vuln',
      '--detection-priority', 'comprehensive',
      '--skip-db-update', '--cache-backend', 'memory',
-     '--severity', 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN', ref],
+     '--severity', 'CRITICAL,HIGH,MEDIUM,LOW,UNKNOWN', ...vexArgs(slug), ref],
     { maxBuffer: 128 * 1024 * 1024, timeout: 300_000 },
   );
   return parseReport(JSON.parse(stdout));
@@ -228,8 +242,8 @@ let done = 0, failed = 0;
 async function worker(queue) {
   for (const t of queue) {
     let c;
-    try { c = await scanOnce(`${t.image}@${t.digest}`); }
-    catch { try { c = await scanOnce(`${t.image}@${t.digest}`); } // one retry
+    try { c = await scanOnce(`${t.image}@${t.digest}`, t.slug); }
+    catch { try { c = await scanOnce(`${t.image}@${t.digest}`, t.slug); } // one retry
             catch (err) { failed++; const why = String(err.stderr || err.message).trim().split('\n').pop(); console.error(`FAIL ${t.slug} ${t.version}: ${why}`); continue; } }
     (perImage[t.slug] ||= []).push(summarize(t.version, t.image, c));
     imageOf[t.slug] ??= t.image;
