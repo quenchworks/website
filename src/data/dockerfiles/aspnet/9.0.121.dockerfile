@@ -1,5 +1,5 @@
 # Build stage: restore and publish with the full SDK.
-FROM ghcr.io/quenchworks/images/dotnet:10.0.111 AS build
+FROM ghcr.io/quenchworks/images/dotnet:10.0.112 AS build
 USER root
 WORKDIR /src
 ENV NUGET_PACKAGES=/tmp/nuget \
@@ -11,7 +11,7 @@ COPY . .
 RUN ["dotnet", "publish", "App.csproj", "-c", "Release", "-o", "/app/publish", "--no-restore"]
 
 # This image is the final runtime stage: the ASP.NET Core runtime, nonroot.
-FROM ghcr.io/quenchworks/images/aspnet:10.0.111 AS runtime
+FROM ghcr.io/quenchworks/images/aspnet:9.0.121 AS runtime
 WORKDIR /app
 ENV ASPNETCORE_URLS=http://+:8080
 COPY --from=build /app/publish ./
