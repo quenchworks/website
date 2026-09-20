@@ -11,8 +11,16 @@
 // our 0-CVE gate and a rebuild would clear), a letter `grade`, a numeric `score`, and
 // `cves[]` — the deduped per-CVE detail (id/severity/pkg/installed/fixed/title/url/targets)
 // the detail pages render in their full-report table.
-// Each image's top-level summary is its WORST version (so a card flags if ANY tag has
-// CVEs), plus a `versions` array with the per-tag detail so you can see what to fix.
+// Each image's top-level summary mirrors its LATEST version, which is what a card or
+// badge shows and what a new deployment gets, plus a `versions` array with the per-tag
+// detail. This header used to say WORST version; the code has always taken the latest
+// (see the sort near the bottom), so the header was the wrong half of the pair.
+//
+// The gap that wording papered over is real: on 2026-09-20 grafana's top-level read 17
+// fixable from 13.1.4 while its own `versions` array carried 12.3.7 at 81 fixable with a
+// CRITICAL. A card reading only the top level understates a blocked app, because a
+// blocked app never rebuilds and its older tags keep drifting. Read `versions` before
+// concluding an image is in good shape.
 //
 // Scans run concurrently (CONCURRENCY workers) so ~400 image-versions finish in minutes,
 // not hours. Run `trivy image --download-db-only` once before this to avoid a DB race.
