@@ -981,18 +981,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "1.9.1",
     "description": "Envoy Gateway, the CNCF Gateway API control plane that provisions and configures fleets of Envoy proxies from GatewayClass/Gateway/HTTPRoute and its own gateway.envoyproxy.io policy CRDs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships only Envoy Gateway's own CRDs -- the Gateway API CRDs are owned by the separate quench gateway-api-crds chart and must be installed first.",
     "imageRepository": "ghcr.io/quenchworks/images/envoy-gateway",
-    "imageDigest": "sha256:d7aa54e790da133db705967f9a3779b03bf1d2d0df8c0276237c694b1dfed22f",
+    "imageDigest": "sha256:006399c56f3f4a90826db9f924df344b987f07e70ce1c7a74f82de2c799c52af",
     "repositoryID": "e97ef0c4-d17c-4a5c-8f7c-84780a21bfb8",
     "upstream": "https://gateway.envoyproxy.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/envoy-gateway",
     "images": [
       {
         "name": "envoy-gateway",
-        "image": "ghcr.io/quenchworks/images/envoy-gateway@sha256:d7aa54e790da133db705967f9a3779b03bf1d2d0df8c0276237c694b1dfed22f"
+        "image": "ghcr.io/quenchworks/images/envoy-gateway@sha256:006399c56f3f4a90826db9f924df344b987f07e70ce1c7a74f82de2c799c52af"
       },
       {
         "name": "envoy",
@@ -1514,11 +1514,11 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.9",
+    "chartVersion": "0.0.10",
     "appVersion": "0.29.3",
     "description": "Self-hosted, open-source implementation of the Tailscale control server (Go). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/headscale",
-    "imageDigest": "sha256:408161bf82888636835dc186b3ee337aebf875880c420b290f261d4f29e72822",
+    "imageDigest": "sha256:5e854c520ef8c9cf1e646669b51985ab7572976ea7925e4fe285fe7684de200c",
     "repositoryID": "a9a7bfd6-1030-4fb3-bee6-19b08814bf44",
     "port": 8080,
     "upstream": "https://github.com/juanfont/headscale",
@@ -1526,7 +1526,7 @@
     "images": [
       {
         "name": "headscale",
-        "image": "ghcr.io/quenchworks/images/headscale@sha256:408161bf82888636835dc186b3ee337aebf875880c420b290f261d4f29e72822"
+        "image": "ghcr.io/quenchworks/images/headscale@sha256:5e854c520ef8c9cf1e646669b51985ab7572976ea7925e4fe285fe7684de200c"
       }
     ]
   },
@@ -1744,18 +1744,18 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "2.2.0",
     "description": "k6 -- developer-friendly load and performance testing, scripted in JavaScript. Runs as a Job (once) or CronJob (scheduled), NOT a Deployment: k6 is a CLI that runs a test and exits. Hardened, nonroot, 0-CVE image built from source on Wolfi, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/k6",
-    "imageDigest": "sha256:bebbbd3f0e562d2f97de74eaef8b7524e4e4e9585c789582dc8b2afc502c32b7",
+    "imageDigest": "sha256:5af9f97a58520c9c26f38c9088a8e0b08990f4270acb2879f9ae82032355ebff",
     "repositoryID": "d329198e-81ac-479f-8326-7bd95c6c390a",
     "upstream": "https://k6.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/k6",
     "images": [
       {
         "name": "k6",
-        "image": "ghcr.io/quenchworks/images/k6@sha256:bebbbd3f0e562d2f97de74eaef8b7524e4e4e9585c789582dc8b2afc502c32b7"
+        "image": "ghcr.io/quenchworks/images/k6@sha256:5af9f97a58520c9c26f38c9088a8e0b08990f4270acb2879f9ae82032355ebff"
       }
     ]
   },
@@ -1842,7 +1842,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "2.4.5",
     "description": "kgateway, the CNCF Gateway API control plane that succeeded Gloo Edge. Watches Gateway, HTTPRoute, GRPCRoute and its own gateway.kgateway.dev policy CRDs, programs Envoy over xDS and provisions the proxy fleet into each Gateway's own namespace. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest -- both the controller and the Envoy data plane. Ships only kgateway's own CRDs; the Gateway API CRDs are owned by the separate quench gateway-api-crds chart and must be installed first.",
     "imageRepository": "ghcr.io/quenchworks/images/kgateway",
@@ -1857,7 +1857,7 @@
       },
       {
         "name": "kgateway-envoy",
-        "image": "ghcr.io/quenchworks/images/kgateway-envoy@sha256:45e910ec5e4040993c5a5014c31097d0acb9e3b586c3fdc1bd9f6da12c27d4ce"
+        "image": "ghcr.io/quenchworks/images/kgateway-envoy@sha256:f306a3853fe4e81e4ba2ce8eb2fda459170ee1befc0bf5b53c0ec35378ff84a4"
       }
     ]
   },
@@ -1892,11 +1892,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "2.13.11",
     "description": "KrakenD Community Edition, a stateless, declarative API gateway that aggregates and transforms backend responses from a single JSON config. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/krakend",
-    "imageDigest": "sha256:3b32406e2483e039d638e2c12087c330179b4dce7fa179ec5f224a1e210aa0aa",
+    "imageDigest": "sha256:94fd22dda74158007f4a61a820b2cb03f697d1f5f609066dd4fcca216e48d805",
     "repositoryID": "b462fa85-2c96-4547-a32a-bc919a6f5059",
     "port": 80,
     "upstream": "https://www.krakend.io",
@@ -1904,7 +1904,7 @@
     "images": [
       {
         "name": "krakend",
-        "image": "ghcr.io/quenchworks/images/krakend@sha256:3b32406e2483e039d638e2c12087c330179b4dce7fa179ec5f224a1e210aa0aa"
+        "image": "ghcr.io/quenchworks/images/krakend@sha256:94fd22dda74158007f4a61a820b2cb03f697d1f5f609066dd4fcca216e48d805"
       }
     ]
   },
@@ -1967,18 +1967,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "2.14.5",
     "description": "Kuma service mesh control plane (kuma-cp). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. This chart runs a single standalone control plane with the in-memory store (no external DB, no CRDs) for demos and small universal-mode setups.",
     "imageRepository": "ghcr.io/quenchworks/images/kuma",
-    "imageDigest": "sha256:0077044fae8f6b3c2c88cb0f3ad1636bfe75a7db77a9d8dbddfe15140e90ee28",
+    "imageDigest": "sha256:62c913889b0bb62a23d1f48fe0d74245c305b74951002a95db8e00bd7fd89749",
     "repositoryID": "dcdb4012-6d7d-4688-a196-c6b78ae637a6",
     "upstream": "https://kuma.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/kuma",
     "images": [
       {
         "name": "kuma",
-        "image": "ghcr.io/quenchworks/images/kuma@sha256:0077044fae8f6b3c2c88cb0f3ad1636bfe75a7db77a9d8dbddfe15140e90ee28"
+        "image": "ghcr.io/quenchworks/images/kuma@sha256:62c913889b0bb62a23d1f48fe0d74245c305b74951002a95db8e00bd7fd89749"
       }
     ]
   },
@@ -2131,11 +2131,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "1.13.7",
     "description": "LiveKit, the open-source WebRTC SFU for scalable real-time audio, video, and data. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. This chart runs a single-node (no-Redis) server for dev and small deployments.",
     "imageRepository": "ghcr.io/quenchworks/images/livekit",
-    "imageDigest": "sha256:494c0158729b081fdc2fb1d6a2eb96eadafd13c5e8dae7771365b162cd9dbdad",
+    "imageDigest": "sha256:5dc8c00a4b3c9961875a89b6b787cd4295498a558ef7ef863f6f6e0f4cef8d1e",
     "repositoryID": "db675eb1-b78b-4077-a204-684a0ee25435",
     "port": 7880,
     "upstream": "https://livekit.io",
@@ -2143,7 +2143,7 @@
     "images": [
       {
         "name": "livekit",
-        "image": "ghcr.io/quenchworks/images/livekit@sha256:494c0158729b081fdc2fb1d6a2eb96eadafd13c5e8dae7771365b162cd9dbdad"
+        "image": "ghcr.io/quenchworks/images/livekit@sha256:5dc8c00a4b3c9961875a89b6b787cd4295498a558ef7ef863f6f6e0f4cef8d1e"
       }
     ]
   },
@@ -2392,11 +2392,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "0.9.0",
     "description": "Kubernetes Metrics Server, the cluster-wide aggregator of container resource metrics that backs `kubectl top` and the Horizontal Pod Autoscaler. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/metrics-server",
-    "imageDigest": "sha256:ba925e56aa864ba9083e50c9242d9cb06fb769633867710038ab0390985a1b98",
+    "imageDigest": "sha256:8e7bddffb6bcc1f94f60de0e79b1080368c33f973151922f1239ea5faababa4d",
     "repositoryID": "336b6e89-a4fc-44dc-98d6-7d92e51ccf0c",
     "port": 443,
     "upstream": "https://github.com/kubernetes-sigs/metrics-server",
@@ -2404,7 +2404,7 @@
     "images": [
       {
         "name": "metrics-server",
-        "image": "ghcr.io/quenchworks/images/metrics-server@sha256:ba925e56aa864ba9083e50c9242d9cb06fb769633867710038ab0390985a1b98"
+        "image": "ghcr.io/quenchworks/images/metrics-server@sha256:8e7bddffb6bcc1f94f60de0e79b1080368c33f973151922f1239ea5faababa4d"
       }
     ]
   },
@@ -2496,7 +2496,7 @@
     "tier": "standard",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "8.0.32",
     "description": "Document (NoSQL) database for JSON-like data. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mongodb",
@@ -2512,7 +2512,7 @@
       },
       {
         "name": "mongodb-exporter",
-        "image": "ghcr.io/quenchworks/images/mongodb-exporter@sha256:794bcc9a9b94a872e5e3a7603731bd072ce376049a6daa10614b3545a1c273fd"
+        "image": "ghcr.io/quenchworks/images/mongodb-exporter@sha256:9d31bec4e977d89a260af5eb925a87227a6b344d813aecdd7dc817b9ec622169"
       }
     ],
     "caution": true,
@@ -3670,18 +3670,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "1.16.0",
     "description": "Tekton Pipelines: the Kubernetes-native CI/CD engine. Installs the Task/TaskRun/Pipeline/PipelineRun/StepAction CRDs plus the reconciler and the admission webhook, so builds run as plain Pods with no external build service. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The single image also carries the helper binaries the controller injects into every TaskRun pod (entrypoint, nop, sidecarlogresults, workingdirinit), and the chart points the controller at itself by digest, so a run never reaches for an upstream registry.",
     "imageRepository": "ghcr.io/quenchworks/images/tekton",
-    "imageDigest": "sha256:384fa003369eda9f7eb6ff252b7e205d05b0b3987f84aff364734d5e74ffd4d8",
+    "imageDigest": "sha256:a7de3dca5e8575798936b675f79a0f046550cecc3988b87d71a9e5676169d997",
     "repositoryID": "2d806364-ea54-48ab-9dda-da58f05cf6e6",
     "upstream": "https://tekton.dev",
     "chartRef": "oci://ghcr.io/quenchworks/charts/tekton",
     "images": [
       {
         "name": "tekton",
-        "image": "ghcr.io/quenchworks/images/tekton@sha256:384fa003369eda9f7eb6ff252b7e205d05b0b3987f84aff364734d5e74ffd4d8"
+        "image": "ghcr.io/quenchworks/images/tekton@sha256:a7de3dca5e8575798936b675f79a0f046550cecc3988b87d71a9e5676169d997"
       },
       {
         "name": "busybox",
@@ -3748,18 +3748,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "0.42.4",
     "description": "Thanos, the CNCF highly-available Prometheus setup with long-term storage and a global query view. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. The single binary runs every component (query, receive, store, compact, rule, sidecar) as separate toggleable workloads; this chart ships a self-contained query + receive pair by default.",
     "imageRepository": "ghcr.io/quenchworks/images/thanos",
-    "imageDigest": "sha256:228938407e59752db029a594a24d6eec81ce2e37ac76df1ac20cf1014cf0a552",
+    "imageDigest": "sha256:5b2b20911e3b375ac8827bc4095e0e1e6d1b3aa0f04f902958729418c59835b5",
     "repositoryID": "18b16ed4-ceb8-4911-8a79-6b2cbd555c8f",
     "upstream": "https://github.com/thanos-io/thanos",
     "chartRef": "oci://ghcr.io/quenchworks/charts/thanos",
     "images": [
       {
         "name": "thanos",
-        "image": "ghcr.io/quenchworks/images/thanos@sha256:228938407e59752db029a594a24d6eec81ce2e37ac76df1ac20cf1014cf0a552"
+        "image": "ghcr.io/quenchworks/images/thanos@sha256:5b2b20911e3b375ac8827bc4095e0e1e6d1b3aa0f04f902958729418c59835b5"
       }
     ]
   },
@@ -3910,11 +3910,11 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "5.14.0",
     "description": "Tyk Gateway (open-source), a fast, Go-based API gateway backed by Redis. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled Redis by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/tyk",
-    "imageDigest": "sha256:3ba5a0a44e3a2b56ff7432e79886c5480d94eed06c91393e5324b0aeb5632fb1",
+    "imageDigest": "sha256:fe1008b023c9b7dea0176820801aeddccce4ade75a85de450114a2ec6eaa3af3",
     "repositoryID": "31e078a5-57aa-431e-bb37-7b5e3087c82f",
     "port": 80,
     "upstream": "https://tyk.io",
@@ -3922,7 +3922,7 @@
     "images": [
       {
         "name": "tyk",
-        "image": "ghcr.io/quenchworks/images/tyk@sha256:3ba5a0a44e3a2b56ff7432e79886c5480d94eed06c91393e5324b0aeb5632fb1"
+        "image": "ghcr.io/quenchworks/images/tyk@sha256:fe1008b023c9b7dea0176820801aeddccce4ade75a85de450114a2ec6eaa3af3"
       },
       {
         "name": "redis",
@@ -4330,11 +4330,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "2.1.21",
     "description": "A production-ready, vendor-neutral OCI-native container image registry for storing and distributing OCI artifacts. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/zot",
-    "imageDigest": "sha256:a638fab43e62baed2efb56e855d912cccaba77f0b4e475ac6d412fcd231c3052",
+    "imageDigest": "sha256:d92ffb51856346550278e35a97a79daf52abc3de5f37e8c242d969596be469b4",
     "repositoryID": "10b85a3d-c95b-4faf-b0e7-6786c609bd32",
     "port": 5000,
     "upstream": "https://zotregistry.dev",
@@ -4342,7 +4342,7 @@
     "images": [
       {
         "name": "zot",
-        "image": "ghcr.io/quenchworks/images/zot@sha256:a638fab43e62baed2efb56e855d912cccaba77f0b4e475ac6d412fcd231c3052"
+        "image": "ghcr.io/quenchworks/images/zot@sha256:d92ffb51856346550278e35a97a79daf52abc3de5f37e8c242d969596be469b4"
       }
     ]
   }
