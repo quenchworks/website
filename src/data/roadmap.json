@@ -13,8 +13,8 @@
     "category": "AI gateway",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "High-performance Go AI gateway: unified access, load balancing, and failover across 20+ LLM providers with near-zero overhead. An open alternative to bolt-on AI-gateway plugins."
+    "priority": "next",
+    "note": "High-performance Go AI gateway: unified access, load balancing and failover across 20+ LLM providers. Monorepo tagged per component, so the image tracks the transports/vX.Y.Z line rather than a plain vX.Y.Z tag."
   },
   {
     "name": "LiteLLM",
@@ -70,8 +70,8 @@
     "category": "Coordination & mesh",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Service mesh built on Envoy: traffic management, mTLS, and observability. Platform-scale, a multi-image wave (istiod control plane plus Envoy sidecars and gateways) rather than a single image."
+    "priority": "planned",
+    "note": "Service mesh built on Envoy. The control plane SHIPPED as istiod (1.29.7, 1.30.4, 1.31.0, with a chart); the wave is held on the data plane, Istio proxyv2, which has no melange-buildable path. Measured 2026-09-20."
   },
   {
     "name": "Consul",
@@ -95,7 +95,7 @@
     "category": "Databases & engines",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Horizontal sharding for MySQL."
   },
   {
@@ -1735,8 +1735,8 @@
     "category": "Coordination & mesh",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "pilot-agent plus Istio's OWN patched Envoy build -- our stock envoy image cannot be reused. Most expensive single item in the gateway/mesh wave."
+    "priority": "planned",
+    "note": "pilot-agent plus Istio's OWN patched Envoy from istio/proxy, which builds with Bazel and clang rather than a source tarball and go build, and cannot reuse our stock envoy image. No recipe exists and none is attempted. Revisit as a separately scoped spike, not as a build day."
   },
   {
     "name": "Istio CNI",
