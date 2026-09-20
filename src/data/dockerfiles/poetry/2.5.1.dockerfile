@@ -1,5 +1,5 @@
 # Build stage: Poetry installs the main group into an in-project venv.
-FROM ghcr.io/quenchworks/images/poetry:2.5.0 AS build
+FROM ghcr.io/quenchworks/images/poetry:2.5.1 AS build
 USER root
 WORKDIR /app
 ENV POETRY_VIRTUALENVS_IN_PROJECT=true \
