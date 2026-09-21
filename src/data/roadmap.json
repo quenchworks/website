@@ -9,14 +9,6 @@
     "cleanAlternative": "kgateway (Apache-2.0)"
   },
   {
-    "name": "Bifrost",
-    "category": "AI gateway",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "High-performance Go AI gateway: unified access, load balancing and failover across 20+ LLM providers. Monorepo tagged per component, so the image tracks the transports/vX.Y.Z line rather than a plain vX.Y.Z tag."
-  },
-  {
     "name": "LiteLLM",
     "category": "AI gateway",
     "license": "MIT",
@@ -254,16 +246,6 @@
     "note": "Pipeline-based continuous integration system backed by PostgreSQL."
   },
   {
-    "name": "Gitness",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Self-hosted Git hosting with built-in pipelines from Harness.",
-    "blocked": true,
-    "blockedReason": "Built, but pulls `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) across its gitspace/pipeline code; the fix is only in the renamed `moby/moby` v29 module, an API-breaking migration that would fork upstream. Held until Gitness moves to moby v29."
-  },
-  {
     "name": "Apache NiFi",
     "category": "Workflow & data",
     "license": "Apache-2.0",
@@ -482,8 +464,8 @@
     "category": "Coordination & mesh",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Load-balancer implementation for bare-metal Kubernetes clusters."
+    "priority": "next",
+    "note": "Load-balancer implementation for bare-metal Kubernetes clusters. Two binaries, controller and speaker; the speaker needs hostNetwork and NET_RAW, so the chart lands in the node-agent exception tier. The image itself is an ordinary static Go build and is not blocked by that."
   },
   {
     "name": "Cilium",
@@ -1125,7 +1107,7 @@
     "category": "Observability",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Kubernetes cost monitoring and allocation (CNCF)."
   },
   {
