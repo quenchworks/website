@@ -744,6 +744,34 @@
     ]
   },
   {
+    "slug": "dagster",
+    "name": "dagster",
+    "category": "Workflow",
+    "summary": "Dagster, the asset-oriented data orchestrator for ML and analytics pipelines. dagster, dagster-webserver, dagster-graphql and dagster-postgres from PyPI in a Python 3.13 venv on a hardened nonroot Wolfi base; one image runs the webserver (UI on 3000), the daemon and user-code servers.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.4",
+    "appVersion": "1.13.24",
+    "description": "Dagster, the asset-oriented data orchestrator: webserver (UI), daemon (schedules, sensors, run queue) and PostgreSQL instance storage. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/dagster",
+    "imageDigest": "sha256:bd7df6bfb8834e908ab60747af5050edb2add70c353f936a07647225e1cd1041",
+    "repositoryID": "83b880fe-e4af-4fd8-bba6-44be5418c990",
+    "port": 3000,
+    "upstream": "https://dagster.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/dagster",
+    "images": [
+      {
+        "name": "dagster",
+        "image": "ghcr.io/quenchworks/images/dagster@sha256:bd7df6bfb8834e908ab60747af5050edb2add70c353f936a07647225e1cd1041"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:ac1fe2437d63a388219ef71431929c3eb579da202c187f771682fbe507f9a60f"
+      }
+    ]
+  },
+  {
     "slug": "descheduler",
     "name": "descheduler",
     "category": "Coordination",
