@@ -2385,6 +2385,32 @@
     ]
   },
   {
+    "slug": "metallb",
+    "name": "metallb",
+    "category": "Datastore",
+    "summary": "Hardened metallb image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.3",
+    "appVersion": "0.16.0",
+    "description": "MetalLB, the load-balancer implementation for bare-metal Kubernetes: assigns LoadBalancer Service IPs from address pools and announces them over L2 (ARP/NDP) or BGP. Hardened by QuenchWorks with controller and speaker images built from source, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/metallb",
+    "repositoryID": "db201125-4af5-40d0-b01d-d43c8b253c96",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/metallb",
+    "images": [
+      {
+        "name": "metallb-controller",
+        "image": "ghcr.io/quenchworks/images/metallb-controller@sha256:34f661a11ddbbac2600b3212bac0b38081fce0dc52b1292b8269b2b621eed3e1"
+      },
+      {
+        "name": "metallb-speaker",
+        "image": "ghcr.io/quenchworks/images/metallb-speaker@sha256:91f8a85a5ccda0eac24e235ceff6cb64d546968c25321766f09d0cd850dbcaa0"
+      }
+    ]
+  },
+  {
     "slug": "metrics-server",
     "name": "metrics-server",
     "category": "Observability",
@@ -2941,6 +2967,30 @@
       {
         "name": "openbao",
         "image": "ghcr.io/quenchworks/images/openbao@sha256:6f2b68757901aa902057e495188452efd67e11cc6dc700cf816d56f23de3e37b"
+      }
+    ]
+  },
+  {
+    "slug": "opencost",
+    "name": "opencost",
+    "category": "Observability",
+    "summary": "Kubernetes cost monitoring and allocation (CNCF). Serves the cost-model API on 9003 as a single static Go binary on a hardened nonroot Wolfi base, with the cloud pricing configs installed where the binary resolves them by default.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.3",
+    "appVersion": "1.121.3",
+    "description": "OpenCost, the CNCF cost monitoring model for Kubernetes: real-time cost allocation by namespace, workload and label. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image built from source, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/opencost",
+    "imageDigest": "sha256:420c082184a37a51f0b477aafbfc37d9f4d7426146d0ef94dbce348556f518a9",
+    "repositoryID": "45d06351-340d-4809-a3d0-4f95ae578601",
+    "port": 9003,
+    "upstream": "https://opencost.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/opencost",
+    "images": [
+      {
+        "name": "opencost",
+        "image": "ghcr.io/quenchworks/images/opencost@sha256:420c082184a37a51f0b477aafbfc37d9f4d7426146d0ef94dbce348556f518a9"
       }
     ]
   },
