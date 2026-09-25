@@ -4,7 +4,7 @@
     "category": "Search & vector",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
+    "priority": "planned",
     "note": "Scalable vector database for AI workloads."
   },
   {
@@ -12,8 +12,8 @@
     "category": "Workflow & data",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Unified batch and stream analytics engine. Measured 2026-09-24: the 4.2.0 distribution carries 99 findings, including Jetty 12.1.8 shaded into spark-core (fixed in 12.1.10), so it needs a from-source build."
+    "priority": "planned",
+    "note": "Unified batch and stream analytics engine. Measured 2026-09-24: the 4.2.0 distribution carries 99 findings, including Jetty 12.1.8 shaded into spark-core (fixed in 12.1.10), so it needs a from-source build. The Wolfi spark-4.0/4.1 packages were measured too (78 and 92 findings): Hive 2.3 jars, the YARN shuffle jar and shaded Jetty 11.0.26 remain, so the build must drop the hive and yarn profiles."
   },
   {
     "name": "Redpanda",
@@ -221,14 +221,6 @@
     "note": "Visual dataflow automation for routing, transforming, and mediating data."
   },
   {
-    "name": "Prefect",
-    "category": "Workflow & data",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Python-native workflow orchestration server for data pipelines."
-  },
-  {
     "name": "Trino",
     "category": "Workflow & data",
     "license": "Apache-2.0",
@@ -357,7 +349,7 @@
     "category": "Secrets & identity",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "OAuth 2.0 and OpenID Connect provider backed by a relational database.",
     "blocked": true,
     "blockedReason": "Built, but pulls `github.com/docker/docker` v28.x (CVE-2026-34040 HIGH) via ory/x's vendored dockertest helper; the fix lives only in `moby/moby` v29 and ory/x is embedded via a local replace, so it can't be bumped without forking. Held until Ory migrates ory/x to moby v29."
@@ -423,7 +415,7 @@
     "category": "Coordination & mesh",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Validating, recursive, caching DNS resolver."
   },
   {
