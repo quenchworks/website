@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { images as catalog } from '../data/images';
 import { roadmap, roadmapTotal, roadmapCategories, byPriority, blockedCount, blockedList } from '../data/roadmap';
+import { updatesSorted, updatesChecked, updatesOpen } from '../data/updates';
 
 const shipped = catalog.filter((e) => e.status === 'available');
 const total = shipped.length + roadmapTotal;
@@ -90,6 +91,48 @@ const blockedGrouped = catsOf(blockedList);
         }
       </dl>
     </section>
+
+    <!-- update queue: newer upstream releases of apps already in the catalog -->
+    <details open class="group mt-16" id="updates">
+      <summary class="mb-6 flex cursor-pointer list-none items-center gap-4 [&::-webkit-details-marker]:hidden">
+        <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Update queue</h2>
+        <span class="h-px flex-1 bg-line"></span>
+        <span class="font-mono text-xs tabular-nums text-ash">{updatesOpen} open</span>
+        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+      </summary>
+      <p class="mb-4 max-w-3xl text-sm text-ash">
+        Newer upstream releases of apps already in the catalog, from the version check on
+        <time datetime={updatesChecked}>{updatesChecked}</time>. Each one ships only after its image passes the
+        0-CVE gate and its boot test, and its chart is re-pinned to the new digest.
+      </p>
+      <div class="overflow-x-auto rounded-xl border border-line">
+        <table class="w-full min-w-[36rem] text-left text-sm">
+          <thead class="bg-graphite font-mono text-[10px] uppercase tracking-widest text-ash">
+            <tr>
+              <th scope="col" class="px-4 py-3 font-normal">App</th>
+              <th scope="col" class="px-4 py-3 font-normal">From</th>
+              <th scope="col" class="px-4 py-3 font-normal">To</th>
+              <th scope="col" class="px-4 py-3 font-normal">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-line">
+            {
+              updatesSorted.map((u) => (
+                <tr class="align-top">
+                  <td class="px-4 py-3 font-medium text-paper">{u.app}</td>
+                  <td class="px-4 py-3 font-mono text-xs text-ash">{u.from}</td>
+                  <td class="px-4 py-3 font-mono text-xs text-paper">{u.to}</td>
+                  <td class="px-4 py-3">
+                    <span class={`rounded px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest ${u.status === 'shipped' || u.status === 'building' || u.status === 'queued' ? 'border border-paper/50 text-paper' : 'border border-dashed border-ash/50 text-ash'}`}>{u.status}</span>
+                    {u.note && <p class="mt-2 max-w-md text-xs text-ash">{u.note}</p>}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </details>
 
     <!-- available -->
     <details open class="group mt-16">
