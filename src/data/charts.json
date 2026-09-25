@@ -3164,6 +3164,33 @@
     ]
   },
   {
+    "slug": "ory-hydra",
+    "name": "ory-hydra",
+    "category": "Identity",
+    "summary": "Ory Hydra, the OAuth 2.0 and OpenID Connect provider. Built from source like upstream's Linux release (cgo, sqlite, hsm, json1); one binary serves the public (4444) and admin (4445) APIs and runs migrations and the admin CLI.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "26.2.0",
+    "description": "Ory Hydra, the OAuth 2.0 and OpenID Connect provider: public and admin APIs, SQL migrations at start, bundled or external PostgreSQL. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/ory-hydra",
+    "imageDigest": "sha256:f95fa79894f8f2a0c12b0b601f43240952221220246240c12d4ea92c4b0f817f",
+    "repositoryID": "a3561eff-d97c-42cf-af44-5d3846767984",
+    "upstream": "https://www.ory.sh/hydra",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ory-hydra",
+    "images": [
+      {
+        "name": "ory-hydra",
+        "image": "ghcr.io/quenchworks/images/ory-hydra@sha256:f95fa79894f8f2a0c12b0b601f43240952221220246240c12d4ea92c4b0f817f"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:ac1fe2437d63a388219ef71431929c3eb579da202c187f771682fbe507f9a60f"
+      }
+    ]
+  },
+  {
     "slug": "perses",
     "name": "perses",
     "category": "Observability",
@@ -4105,6 +4132,30 @@
       {
         "name": "typesense",
         "image": "ghcr.io/quenchworks/images/typesense@sha256:87df3003f399d86b68bbdbb55a254e125b709a01abd9ebc770c9cbf95072c731"
+      }
+    ]
+  },
+  {
+    "slug": "unbound",
+    "name": "unbound",
+    "category": "Coordination",
+    "summary": "Unbound, the validating, recursive, caching DNS resolver from NLnet Labs. Built from source with libevent, expat and dnscrypt; a nonroot config on port 5053 with DNSSEC validation and answers for private ranges only.",
+    "tier": "standard",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.26.1",
+    "description": "Unbound, the validating, recursive, caching DNS resolver from NLnet Labs: DNSSEC on, private networks only, extra server, forward and local-zone config from values. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/unbound",
+    "imageDigest": "sha256:100ed663fabe3e155c52baa39ba5bd5b458a4a4ae07779e2dc3cd0dc70876db0",
+    "repositoryID": "0b0dafae-3ea0-4179-94b0-36f43a873b02",
+    "port": 53,
+    "upstream": "https://nlnetlabs.nl/projects/unbound/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/unbound",
+    "images": [
+      {
+        "name": "unbound",
+        "image": "ghcr.io/quenchworks/images/unbound@sha256:100ed663fabe3e155c52baa39ba5bd5b458a4a4ae07779e2dc3cd0dc70876db0"
       }
     ]
   },
