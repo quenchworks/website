@@ -1,5 +1,5 @@
 # Build stage: Yarn (Classic) installs the full set and builds.
-FROM ghcr.io/quenchworks/images/yarn:4.17.1 AS build
+FROM ghcr.io/quenchworks/images/yarn:4.18.1 AS build
 USER root
 WORKDIR /app
 ENV YARN_CACHE_FOLDER=/tmp/yarn
@@ -10,7 +10,7 @@ COPY . .
 RUN ["yarn", "build"]
 
 # Prod-deps stage: a clean install of production dependencies only.
-FROM ghcr.io/quenchworks/images/yarn:4.17.1 AS prod-deps
+FROM ghcr.io/quenchworks/images/yarn:4.18.1 AS prod-deps
 USER root
 WORKDIR /app
 ENV YARN_CACHE_FOLDER=/tmp/yarn
