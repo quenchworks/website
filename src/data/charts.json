@@ -4131,6 +4131,33 @@
     ]
   },
   {
+    "slug": "trivy-operator",
+    "name": "trivy-operator",
+    "category": "Security & supply chain",
+    "summary": "Trivy Operator, the Kubernetes operator that continuously scans workloads, configurations, RBAC and the cluster with Trivy and stores the results as CRDs (VulnerabilityReport, ConfigAuditReport, ...). Built from source with the coherent module floor.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.34.0",
+    "description": "Trivy Operator: continuous in-cluster security scanning with Trivy, results stored as Kubernetes CRDs (vulnerabilities, config audits, RBAC assessments, exposed secrets, SBOMs). Scan Jobs run the QuenchWorks trivy-scanner image. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/trivy-operator",
+    "imageDigest": "sha256:1f4887533cd15878869e7e0edc85d818a61f8b468c7d64c203df1322d05d275f",
+    "repositoryID": "3c0f5ff6-1bbf-4866-a2f6-cbc41862bca3",
+    "upstream": "https://aquasecurity.github.io/trivy-operator",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/trivy-operator",
+    "images": [
+      {
+        "name": "trivy-operator",
+        "image": "ghcr.io/quenchworks/images/trivy-operator@sha256:1f4887533cd15878869e7e0edc85d818a61f8b468c7d64c203df1322d05d275f"
+      },
+      {
+        "name": "trivy-scanner",
+        "image": "ghcr.io/quenchworks/images/trivy-scanner:0.74.0"
+      }
+    ]
+  },
+  {
     "slug": "tyk",
     "name": "tyk",
     "category": "Gateway",
