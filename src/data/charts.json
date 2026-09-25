@@ -4160,6 +4160,30 @@
     ]
   },
   {
+    "slug": "uptime-kuma",
+    "name": "uptime-kuma",
+    "category": "Observability",
+    "summary": "Uptime Kuma, the self-hosted uptime monitor and status-page server (HTTP, TCP, ping, DNS, database and more). The tagged server with pinned npm production deps and the release's prebuilt UI on Node 24; SQLite in DATA_DIR by default.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "2.5.5",
+    "description": "Uptime Kuma, the self-hosted uptime monitor and status-page server, with SQLite on a PVC. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/uptime-kuma",
+    "imageDigest": "sha256:2a0c5532d127c73e338e43155dd063cb072c51a4ded0931889a9f8ac93ac174c",
+    "repositoryID": "d65a4c9e-9401-471d-aa05-505c3b0063ec",
+    "port": 3001,
+    "upstream": "https://uptime.kuma.pet",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/uptime-kuma",
+    "images": [
+      {
+        "name": "uptime-kuma",
+        "image": "ghcr.io/quenchworks/images/uptime-kuma@sha256:2a0c5532d127c73e338e43155dd063cb072c51a4ded0931889a9f8ac93ac174c"
+      }
+    ]
+  },
+  {
     "slug": "valkey",
     "name": "Valkey",
     "category": "Cache",
@@ -4473,6 +4497,30 @@
       {
         "name": "xyops",
         "image": "ghcr.io/quenchworks/images/xyops@sha256:a67f65fd856b6fdda36ebe6b6c898d7c38e138cb10dbc9c7182711f0d5bdf0d7"
+      }
+    ]
+  },
+  {
+    "slug": "zipkin",
+    "name": "zipkin",
+    "category": "Observability",
+    "summary": "Zipkin, the distributed tracing server (HTTP, gRPC, Kafka, RabbitMQ and ActiveMQ collection, the query API and the Lens UI on 9411). The official exec jar with 66 library jars swapped to fixed releases; the legacy Pulsar and Scribe collectors are removed.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "3.6.1",
+    "description": "Zipkin, the distributed tracing server: HTTP and gRPC span collection, the query API and the Lens UI, with in-memory, Elasticsearch, Cassandra or MySQL storage. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/zipkin",
+    "imageDigest": "sha256:897eec062fdd72cae314f27b57f9d1b4e8d8ddc5195c682064fabe42754a48f8",
+    "repositoryID": "75e3d7b4-ec78-4224-ac5b-d3d7dcc1d0c2",
+    "port": 9411,
+    "upstream": "https://zipkin.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/zipkin",
+    "images": [
+      {
+        "name": "zipkin",
+        "image": "ghcr.io/quenchworks/images/zipkin@sha256:897eec062fdd72cae314f27b57f9d1b4e8d8ddc5195c682064fabe42754a48f8"
       }
     ]
   },
