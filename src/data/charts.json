@@ -1702,6 +1702,34 @@
     ]
   },
   {
+    "slug": "hubble-ui",
+    "name": "hubble-ui",
+    "category": "Coordination & mesh",
+    "summary": "Hubble UI, Cilium's web UI for the service map and live network flows. The React frontend built from source and served by a Wolfi nginx that proxies the API to hubble-ui-backend in the same pod.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.13.6",
+    "description": "Hubble UI, Cilium's web UI for the service map and live network flows: the frontend and its backend in one pod, reading from Hubble Relay. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/hubble-ui",
+    "imageDigest": "sha256:7848c34ad688b75bd6d86a9535c9a2ca2e41f289921bcebef8921ac20f853e27",
+    "repositoryID": "a6f21438-9d6d-45c3-9312-54b4a44e7e18",
+    "port": 80,
+    "upstream": "https://cilium.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/hubble-ui",
+    "images": [
+      {
+        "name": "hubble-ui",
+        "image": "ghcr.io/quenchworks/images/hubble-ui@sha256:7848c34ad688b75bd6d86a9535c9a2ca2e41f289921bcebef8921ac20f853e27"
+      },
+      {
+        "name": "hubble-ui-backend",
+        "image": "ghcr.io/quenchworks/images/hubble-ui-backend@sha256:873c92b4782357e5f35b5af160c87c1bbf5a17737b2f7b4a176678ce51d97e60"
+      }
+    ]
+  },
+  {
     "slug": "hydra",
     "name": "hydra",
     "category": "Identity",
