@@ -1631,6 +1631,30 @@
     ]
   },
   {
+    "slug": "hubble-relay",
+    "name": "hubble-relay",
+    "category": "Coordination & mesh",
+    "summary": "Hubble Relay, Cilium's cluster-wide aggregator of Hubble network-flow observability (one Observer API across every node). Built from the cilium/cilium source with the vulnerable modules floated.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.20.2",
+    "description": "Hubble Relay, Cilium's cluster-wide aggregator of Hubble network-flow observability: one Observer API over every node's Hubble server, for the hubble CLI and Hubble UI. Runs next to an existing Cilium install. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/hubble-relay",
+    "imageDigest": "sha256:ce92ccf4136abc45349b32a188b680567dd7f541cc693c89e26e63565bd18049",
+    "repositoryID": "47efcd04-89ca-4b54-ab6d-4218e4402605",
+    "port": 80,
+    "upstream": "https://cilium.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/hubble-relay",
+    "images": [
+      {
+        "name": "hubble-relay",
+        "image": "ghcr.io/quenchworks/images/hubble-relay@sha256:ce92ccf4136abc45349b32a188b680567dd7f541cc693c89e26e63565bd18049"
+      }
+    ]
+  },
+  {
     "slug": "hydra",
     "name": "hydra",
     "category": "Identity",
@@ -2837,6 +2861,30 @@
       {
         "name": "neo4j",
         "image": "ghcr.io/quenchworks/images/neo4j@sha256:a7821216126cc1242257fd3ed7aba02cbda45791e1dfa5c58c9134a4202de6a7"
+      }
+    ]
+  },
+  {
+    "slug": "nessie",
+    "name": "nessie",
+    "category": "Databases & engines",
+    "summary": "Project Nessie, the transactional catalog for data lakehouse tables (Git-like branches and commits over Iceberg, plus the Iceberg REST catalog). The official Quarkus uber-jar on a Wolfi JRE 21.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.108.8",
+    "description": "Project Nessie, the transactional catalog for data lakehouse tables: Git-like branches, tags and commits over Iceberg metadata, plus the Iceberg REST catalog API. In-memory, RocksDB on a PVC, or JDBC version store. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/nessie",
+    "imageDigest": "sha256:227b8d69593ac4bee4ac239130e6fbe59bdbdd7879c0242b5001d0596085a50f",
+    "repositoryID": "8dda153e-9706-4e4d-9457-dc144f09122f",
+    "port": 19120,
+    "upstream": "https://projectnessie.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/nessie",
+    "images": [
+      {
+        "name": "nessie",
+        "image": "ghcr.io/quenchworks/images/nessie@sha256:227b8d69593ac4bee4ac239130e6fbe59bdbdd7879c0242b5001d0596085a50f"
       }
     ]
   },
