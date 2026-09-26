@@ -3990,6 +3990,56 @@
     ]
   },
   {
+    "slug": "postgres-ha-stack",
+    "name": "postgres-ha-stack",
+    "category": "Stacks",
+    "summary": "Hardened PostgreSQL HA stack: a 3-node Patroni cluster with automatic failover, PgBouncer pooling in front of the elected leader, postgres_exporter on the leader, and Prometheus + Grafana with the postgres_exporter overview dashboard.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Hardened PostgreSQL HA stack: a 3-node Patroni cluster with automatic failover, PgBouncer pooling in front of the elected leader, postgres_exporter on the leader, and Prometheus + Grafana with the postgres_exporter overview dashboard. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "9d95ad7a-c488-4051-8849-1f81533342e4",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/postgres-ha-stack",
+    "stack": true,
+    "components": [
+      "postgresql",
+      "pgbouncer",
+      "prometheus",
+      "grafana"
+    ],
+    "images": [
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      },
+      {
+        "name": "pgbouncer",
+        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:d066975c823555e37d2cf7d51a0c9ec8b0d68f4654dbe51481ce47ed03c9481f"
+      },
+      {
+        "name": "postgres-exporter",
+        "image": "ghcr.io/quenchworks/images/postgres-exporter@sha256:e7dfea0c79bf106078d5d9985106dde12395e7db0bef70a0a4c08d71c9675d93"
+      },
+      {
+        "name": "prometheus",
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:4b7e7a1342831602a31232c1dce40d8ea6a14bb44d6acb3aa095c029e1520d55"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/postgres/postgres",
+      "https://github.com/patroni/patroni",
+      "https://github.com/pgbouncer/pgbouncer",
+      "https://github.com/prometheus-community/postgres_exporter"
+    ]
+  },
+  {
     "slug": "postgresql",
     "name": "PostgreSQL",
     "category": "Relational",
