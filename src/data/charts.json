@@ -4910,6 +4910,30 @@
     ]
   },
   {
+    "slug": "trino",
+    "name": "trino",
+    "category": "Databases & engines",
+    "summary": "Trino, the distributed SQL query engine for federated analytics. Assembled from upstream's release assets on Wolfi openjdk-25 with the jmx, memory, tpcds, tpch and postgresql connectors; the airlift launcher is rebuilt from source. Fault-tolerant execution and the spooling protocol (exchange-filesystem, spooling-filesystem) are left out.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "483",
+    "description": "Trino, the distributed SQL query engine for federated analytics, as a coordinator plus workers. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/trino",
+    "imageDigest": "sha256:9d5a642b3e21b47f38c0f31da740fe252198d8bc2179ac94c14637d00595fe03",
+    "repositoryID": "edaa77e1-dd88-40ff-b082-f6e7de4010ca",
+    "port": 8080,
+    "upstream": "https://github.com/trinodb/trino",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/trino",
+    "images": [
+      {
+        "name": "trino",
+        "image": "ghcr.io/quenchworks/images/trino@sha256:9d5a642b3e21b47f38c0f31da740fe252198d8bc2179ac94c14637d00595fe03"
+      }
+    ]
+  },
+  {
     "slug": "trivy-operator",
     "name": "trivy-operator",
     "category": "Security & supply chain",
