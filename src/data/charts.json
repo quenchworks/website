@@ -414,6 +414,49 @@
     ]
   },
   {
+    "slug": "cache-stack",
+    "name": "cache-stack",
+    "category": "Stacks",
+    "summary": "Hardened cache stack with metrics: Valkey (Redis-compatible) with a redis_exporter sidecar, Prometheus discovering it in the release namespace, and Grafana with the Prometheus datasource and the redis_exporter dashboard provisioned.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.0.0",
+    "description": "Hardened cache stack with metrics: Valkey (Redis-compatible) with a redis_exporter sidecar, Prometheus discovering it in the release namespace, and Grafana with the Prometheus datasource and the redis_exporter dashboard provisioned. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "dc949220-7ad8-4196-b8c7-ad40cc8ad907",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/cache-stack",
+    "stack": true,
+    "components": [
+      "valkey",
+      "prometheus",
+      "grafana"
+    ],
+    "images": [
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:9203d82de95544c95f9cde104f2a23b699423cfed9cc27251f09b51d45f93762"
+      },
+      {
+        "name": "redis-exporter",
+        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:b71e8375f58003e5679e4a708ed5663417c73cce7122bb12be54792b27939931"
+      },
+      {
+        "name": "prometheus",
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:4b7e7a1342831602a31232c1dce40d8ea6a14bb44d6acb3aa095c029e1520d55"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/valkey-io/valkey",
+      "https://github.com/oliver006/redis_exporter"
+    ]
+  },
+  {
     "slug": "caddy",
     "name": "Caddy",
     "category": "Gateway",
@@ -3640,6 +3683,30 @@
       {
         "name": "openldap",
         "image": "ghcr.io/quenchworks/images/openldap@sha256:5c8829c326dcc70acc825c09e749f6cc99e1efbee85a6080418c910f27daf536"
+      }
+    ]
+  },
+  {
+    "slug": "openresty",
+    "name": "openresty",
+    "category": "Gateway",
+    "summary": "OpenResty, nginx with LuaJIT and the lua-nginx-module set for scriptable proxies and web apps. Built from source on Wolfi against the system OpenSSL, PCRE2 and zlib, shell-free, nonroot, read-only rootfs. Server blocks go in /etc/nginx/conf.d.",
+    "tier": "standard",
+    "license": "BSD-2-Clause",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.31.1.1",
+    "description": "OpenResty: nginx with LuaJIT for scriptable proxies, API gateways and web apps. Hardened by QuenchWorks as a from-source, shell-free, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/openresty",
+    "imageDigest": "sha256:eac33404c9e6c004916f657c103e689118af6b827f8146dbbb198da3438bef63",
+    "repositoryID": "dba1bef7-2592-416f-99d9-f8ca5d608210",
+    "port": 8080,
+    "upstream": "https://openresty.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/openresty",
+    "images": [
+      {
+        "name": "openresty",
+        "image": "ghcr.io/quenchworks/images/openresty@sha256:eac33404c9e6c004916f657c103e689118af6b827f8146dbbb198da3438bef63"
       }
     ]
   },
