@@ -9,10 +9,9 @@
 // Idempotent and re-runnable:  node scripts/gen-og.mjs
 
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { tmpdir } from 'node:os';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
@@ -107,14 +106,10 @@ mkdirSync(outDir, { recursive: true });
 let count = 0;
 for (const app of apps.values()) {
   const svg = buildSvg(app);
-  const tmp = join(tmpdir(), `qw-og-${app.slug}.svg`);
-  writeFileSync(tmp, svg);
-  try {
-    execFileSync(RSVG, ['-w', '1200', '-h', '630', tmp, '-o', join(outDir, `${app.slug}.png`)]);
-    count++;
-  } finally {
-    rmSync(tmp, { force: true });
-  }
+  // rsvg-convert reads the SVG from stdin when given no input file, so nothing
+  // is written to the shared temp dir.
+  execFileSync(RSVG, ['-w', '1200', '-h', '630', '-o', join(outDir, `${app.slug}.png`)], { input: svg });
+  count++;
 }
 
 console.log(`Generated ${count} OG image(s) into public/og/`);

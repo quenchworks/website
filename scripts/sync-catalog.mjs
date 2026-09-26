@@ -14,6 +14,17 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as parseYaml } from 'yaml';
 
+// A Chart.yaml source that points at our own GitHub org. Parsed rather than
+// regex-matched, so a URL that merely contains the text elsewhere is not dropped.
+function isQuenchworksRepo(s) {
+  try {
+    const u = new URL(s);
+    return u.hostname === 'github.com' && u.pathname.toLowerCase().startsWith('/quenchworks/');
+  } catch {
+    return false;
+  }
+}
+
 const here = dirname(fileURLToPath(import.meta.url));
 const websiteRoot = resolve(here, '..');
 const repoRoot = resolve(websiteRoot, '..'); // __QuenchWorks__
@@ -214,7 +225,7 @@ for (const slug of chartDirs.sort()) {
   // Stacks have no single upstream — list the bundled components' upstream
   // projects from Chart.yaml sources (drop the quenchworks self-refs).
   const upstreams = isStack && Array.isArray(chartYaml?.sources)
-    ? chartYaml.sources.map(String).filter((s) => !/github\.com\/quenchworks/i.test(s))
+    ? chartYaml.sources.map(String).filter((s) => !isQuenchworksRepo(s))
     : undefined;
 
   const entry = {
