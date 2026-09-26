@@ -1475,6 +1475,40 @@
     ]
   },
   {
+    "slug": "flux",
+    "name": "flux",
+    "category": "Datastore",
+    "summary": "Hardened flux image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "2.9.5",
+    "description": "Flux, the CNCF GitOps toolkit: source, kustomize, helm and notification controllers with their CRDs, reconciling a cluster from Git, OCI and Helm repositories. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/flux",
+    "repositoryID": "96475352-03a6-4174-903e-df2d4960a946",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/flux",
+    "images": [
+      {
+        "name": "flux-source-controller",
+        "image": "ghcr.io/quenchworks/images/flux-source-controller@sha256:92497be696e0d4eb5d2c4c24fc572b2b731ea876be3aa55fc670c45e0ced08cf"
+      },
+      {
+        "name": "flux-kustomize-controller",
+        "image": "ghcr.io/quenchworks/images/flux-kustomize-controller@sha256:e8f8b6ebd54bee81637792eb77a2af58719d0dcc7305b34e69b2a8440db9dad3"
+      },
+      {
+        "name": "flux-helm-controller",
+        "image": "ghcr.io/quenchworks/images/flux-helm-controller@sha256:092c8f165a1ff602b995334809731fb2a223d0437528b2791e8d56ef967ad544"
+      },
+      {
+        "name": "flux-notification-controller",
+        "image": "ghcr.io/quenchworks/images/flux-notification-controller@sha256:cf142b6dbb1dfdd0d6d491823a082e11fafe237a61b05c9de4c79bc2ceda0008"
+      }
+    ]
+  },
+  {
     "slug": "forgejo",
     "name": "forgejo",
     "category": "Git",
