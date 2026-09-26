@@ -12,6 +12,10 @@ const prop: Record<string, string> = {
   'logging-stack': 'Cluster-wide log aggregation and browsing, ready to query.',
   'tracing-stack': 'Distributed tracing with an OTLP ingest gateway, ready for your services.',
   'identity-stack': 'SSO via OIDC and SAML in front of your apps, with a database that comes with it.',
+  'postgres-ha-stack': 'A 3-node PostgreSQL cluster that fails over on its own, with pooling and dashboards.',
+  'cache-stack': 'A Redis-compatible cache with its metrics already on a dashboard.',
+  'streaming-stack': 'Kafka with a schema registry, a REST proxy and a web console, already connected.',
+  'secrets-stack': 'A self-initializing secrets vault with single sign-on for people and tokens for services.',
 };
 
 // Per-locale link prefix. This is the en page, so no prefix.
@@ -22,7 +26,7 @@ const chartsHref = '/charts';
 
 <Base
   title="Stacks · QuenchWorks"
-  description="Curated, hardened, operator-free observability and identity stacks. Deploy a full system with one helm install instead of assembling six charts by hand."
+  description="Curated, hardened, operator-free stacks for observability, identity, databases, caching, streaming and secrets. Deploy a full system with one helm install instead of assembling six charts by hand."
 >
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks,type:Stacks">

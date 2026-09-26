@@ -35,4 +35,24 @@ export const STACKS: Stack[] = [
     name: 'Identity Stack',
     components: ['Keycloak', 'PostgreSQL', 'oauth2-proxy'],
   },
+  {
+    slug: 'postgres-ha-stack',
+    name: 'Postgres HA Stack',
+    components: ['PostgreSQL', 'Patroni', 'PgBouncer', 'postgres_exporter', 'Prometheus', 'Grafana'],
+  },
+  {
+    slug: 'cache-stack',
+    name: 'Cache Stack',
+    components: ['Valkey', 'redis_exporter', 'Prometheus', 'Grafana'],
+  },
+  {
+    slug: 'streaming-stack',
+    name: 'Streaming Stack',
+    components: ['Kafka', 'Karapace', 'AKHQ'],
+  },
+  {
+    slug: 'secrets-stack',
+    name: 'Secrets Stack',
+    components: ['OpenBao', 'Keycloak'],
+  },
 ];

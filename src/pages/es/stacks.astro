@@ -13,6 +13,10 @@ const prop: Record<string, string> = {
   'logging-stack': 'Agregación y exploración de logs de todo el clúster, listas para consultar.',
   'tracing-stack': 'Trazado distribuido con una pasarela de ingesta OTLP, lista para tus servicios.',
   'identity-stack': 'SSO mediante OIDC y SAML delante de tus aplicaciones, con una base de datos incluida.',
+  'postgres-ha-stack': 'Un clúster PostgreSQL de 3 nodos que conmuta por error solo, con pooling y paneles.',
+  'cache-stack': 'Una caché compatible con Redis con sus métricas ya en un panel.',
+  'streaming-stack': 'Kafka con registro de esquemas, proxy REST y consola web, ya conectados.',
+  'secrets-stack': 'Un almacén de secretos que se inicializa solo, con inicio de sesión único para personas y tokens para servicios.',
 };
 
 // Prefijo de enlace por idioma. Esta es la página en español.
@@ -23,7 +27,7 @@ const chartsHref = '/es/charts';
 
 <Base
   title="Stacks · QuenchWorks"
-  description="Stacks de observabilidad e identidad curados, endurecidos y sin operadores. Despliega un sistema completo con un solo helm install en lugar de ensamblar seis charts a mano."
+  description="Stacks curados, endurecidos y sin operadores para observabilidad, identidad, bases de datos, caché, streaming y secretos. Despliega un sistema completo con un solo helm install en lugar de ensamblar seis charts a mano."
 >
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks,type:Stacks">
