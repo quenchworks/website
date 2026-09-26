@@ -201,8 +201,8 @@
     "category": "CI/CD & registry",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Pipeline-based continuous integration system backed by PostgreSQL."
+    "priority": "exploring",
+    "note": "Pipeline-based continuous integration system backed by PostgreSQL. Held 2026-09-26: Concourse workers run containerd or Guardian and need a privileged root container, so only the web node could meet the nonroot rule, and a web node without in-cluster workers runs no builds."
   },
   {
     "name": "Apache NiFi",
@@ -217,7 +217,7 @@
     "category": "Workflow & data",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Distributed SQL query engine for federated analytics across data sources."
   },
   {
@@ -761,7 +761,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Virtual Kubernetes clusters inside a namespace."
+    "note": "Virtual Kubernetes clusters inside a namespace. Recipe committed 2026-09-26: the syncer gates clean on 0.35, 0.36 and 0.37; the image bundles Wolfi kube-apiserver and kube-controller-manager 1.36, which carry a LOW otel finding until Wolfi publishes 1.36.4-r10. Ships, with its chart, when it does."
   },
   {
     "name": "kube-vip",
