@@ -128,14 +128,14 @@
       "app": "code-server",
       "from": "4.138.0",
       "to": "4.139.1",
-      "status": "queued"
+      "status": "shipped"
     },
     {
-      "app": "istiod",
+      "app": "istio-proxyv2",
       "from": "1.29.7 / 1.30.4",
       "to": "1.29.8 / 1.30.5",
-      "status": "queued",
-      "note": "Patch releases on both lines; 1.31 is a new line to evaluate."
+      "status": "held",
+      "note": "istiod already ships 1.29.8, 1.30.5 and 1.31.1. The proxy needs Istio's own Bazel-built Envoy and is not buildable here."
     },
     {
       "app": "pulumi",
@@ -147,13 +147,14 @@
       "app": "renovate",
       "from": "44.115.4",
       "to": "44.115.10",
-      "status": "queued"
+      "status": "shipped"
     },
     {
       "app": "step-cli",
       "from": "0.30.6",
       "to": "0.31.0",
-      "status": "queued"
+      "status": "shipped",
+      "note": "The step CLI bundled in the step-ca image; step-ca itself stays 0.30.2."
     },
     {
       "app": "weaviate",
