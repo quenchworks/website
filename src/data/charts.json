@@ -2600,6 +2600,29 @@
     ]
   },
   {
+    "slug": "kserve",
+    "name": "kserve",
+    "category": "Datastore",
+    "summary": "Hardened kserve image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.21.0",
+    "description": "KServe: serve ML models on Kubernetes from InferenceService resources, with autoscaling and canary rollouts. Runs in Standard mode (plain Deployments), so it needs neither Knative nor Istio nor cert-manager; the CRDs ship with the chart. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/kserve-controller",
+    "imageDigest": "sha256:62478dbc9d9e74e5f1987be51c3df11383408d8745a77a28639c2b3a14f2a77d",
+    "repositoryID": "03c73437-fcb0-4607-849e-648d4b301cf9",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kserve",
+    "images": [
+      {
+        "name": "kserve-controller",
+        "image": "ghcr.io/quenchworks/images/kserve-controller@sha256:62478dbc9d9e74e5f1987be51c3df11383408d8745a77a28639c2b3a14f2a77d"
+      }
+    ]
+  },
+  {
     "slug": "kube-state-metrics",
     "name": "kube-state-metrics",
     "category": "Observability",
