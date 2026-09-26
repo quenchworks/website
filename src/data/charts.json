@@ -877,6 +877,38 @@
     ]
   },
   {
+    "slug": "dependency-track",
+    "name": "dependency-track",
+    "category": "Security & supply chain",
+    "summary": "OWASP Dependency-Track API server, the SBOM analysis platform that tracks components across projects and flags known vulnerabilities, outdated and license-risky dependencies. Official dist on a hardened Java 25 JRE, with its vulnerable freemarker jar replaced. Needs PostgreSQL.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "5.1.1",
+    "description": "OWASP Dependency-Track, the SBOM analysis platform: the API server, the web UI behind one address, and a bundled PostgreSQL. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/dependency-track",
+    "imageDigest": "sha256:cb8b5cb2ac1f186003eca81353864a7b2899bd21e33db25b2a55e97e54fc17ff",
+    "repositoryID": "2a821fe5-0aac-4e50-8710-3672ae861a70",
+    "port": 8080,
+    "upstream": "https://dependencytrack.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/dependency-track",
+    "images": [
+      {
+        "name": "dependency-track",
+        "image": "ghcr.io/quenchworks/images/dependency-track@sha256:cb8b5cb2ac1f186003eca81353864a7b2899bd21e33db25b2a55e97e54fc17ff"
+      },
+      {
+        "name": "dependency-track-frontend",
+        "image": "ghcr.io/quenchworks/images/dependency-track-frontend@sha256:e33caa28408159ed660fbdacc2d426c5131a38da399945b007ddd81dd9ab67e6"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      }
+    ]
+  },
+  {
     "slug": "descheduler",
     "name": "descheduler",
     "category": "Coordination",
