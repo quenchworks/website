@@ -2017,6 +2017,34 @@
     ]
   },
   {
+    "slug": "hasura",
+    "name": "hasura",
+    "category": "Databases & engines",
+    "summary": "Hasura GraphQL Engine, an instant GraphQL API with permissions over PostgreSQL. The Apache-2.0 Community Edition server and console, taken by digest from upstream's -ce images and repackaged on Wolfi; telemetry off.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "2.50.3",
+    "description": "Hardened Hasura GraphQL Engine (Community Edition) on a 0-CVE nonroot image, with a bundled PostgreSQL metadata database.",
+    "imageRepository": "ghcr.io/quenchworks/images/hasura",
+    "imageDigest": "sha256:2f4d008c54b0da96bc4372b8379e6e5515f431ed02a6a8dcb1a4f66ba9811168",
+    "repositoryID": "8682deb1-ac91-4449-8e84-fff3e40de208",
+    "port": 8080,
+    "upstream": "https://github.com/hasura/graphql-engine",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/hasura",
+    "images": [
+      {
+        "name": "hasura",
+        "image": "ghcr.io/quenchworks/images/hasura@sha256:2f4d008c54b0da96bc4372b8379e6e5515f431ed02a6a8dcb1a4f66ba9811168"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      }
+    ]
+  },
+  {
     "slug": "headscale",
     "name": "headscale",
     "category": "Coordination & mesh",
@@ -3276,10 +3304,10 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
+    "chartVersion": "0.0.2",
     "appVersion": "1.0.0",
     "description": "Hardened machine-learning stack: JupyterHub notebooks, the MLflow tracking server and model registry, and Label Studio for data labeling, wired together in one install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
-    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
+    "repositoryID": "4aaaf235-8151-4493-be32-1cee9a4140de",
     "upstream": "https://quench-works.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ml-stack",
     "stack": true,
