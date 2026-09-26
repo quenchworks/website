@@ -667,18 +667,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "26.7.14.3",
     "description": "Column-oriented OLAP database for real-time analytical queries over very large datasets, with high ingest rates and fast aggregations. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/clickhouse",
-    "imageDigest": "sha256:ee0272aa3ceba7530b27fa68c37199403c4b6b5dba60c9d580131f45ab9f274c",
+    "imageDigest": "sha256:f7532d0729860d21f29324f1aad1c163bdf02442224616c3fdef6bb2ae83fc4a",
     "repositoryID": "1ad6f385-dcc4-4892-b1f9-f3fb12a906e0",
     "upstream": "https://github.com/ClickHouse/ClickHouse",
     "chartRef": "oci://ghcr.io/quenchworks/charts/clickhouse",
     "images": [
       {
         "name": "clickhouse",
-        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:ee0272aa3ceba7530b27fa68c37199403c4b6b5dba60c9d580131f45ab9f274c"
+        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:f7532d0729860d21f29324f1aad1c163bdf02442224616c3fdef6bb2ae83fc4a"
       }
     ]
   },
@@ -1741,6 +1741,29 @@
       {
         "name": "postgresql",
         "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      }
+    ]
+  },
+  {
+    "slug": "gitlab-runner",
+    "name": "gitlab-runner",
+    "category": "CI/CD & registry",
+    "summary": "GitLab Runner, the agent that runs GitLab CI jobs, here for the Kubernetes executor. Built from source (static Go, golang.org/x and otel floated) with upstream's version stamps, so executors pull the matching helper image.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "19.4.1",
+    "description": "GitLab Runner with the Kubernetes executor: runs GitLab CI jobs as pods in your cluster. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/gitlab-runner",
+    "imageDigest": "sha256:5f45e3aef44bca372c57778365560eee983d0946de0c746cb37f46106c1a5575",
+    "repositoryID": "252eb621-3aa4-44ed-be2c-a99fc11e1b03",
+    "upstream": "https://gitlab.com/gitlab-org/gitlab-runner",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/gitlab-runner",
+    "images": [
+      {
+        "name": "gitlab-runner",
+        "image": "ghcr.io/quenchworks/images/gitlab-runner@sha256:5f45e3aef44bca372c57778365560eee983d0946de0c746cb37f46106c1a5575"
       }
     ]
   },
