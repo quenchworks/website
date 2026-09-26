@@ -1823,6 +1823,38 @@
     "caution": true
   },
   {
+    "slug": "guacamole",
+    "name": "guacamole",
+    "category": "Apps & productivity",
+    "summary": "Apache Guacamole, clientless remote desktop in the browser for RDP, VNC, SSH and telnet hosts, as the web app (pair it with guacd). Assembled from Apache's release artifacts on Tomcat 9 and Wolfi openjdk-21 with the PostgreSQL auth extension; logback and jackson swapped to fixed versions inside the WAR. Configured through environment variables.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.6.0",
+    "description": "Apache Guacamole, clientless remote desktop in the browser for RDP, VNC, SSH and telnet: the web app, the guacd proxy daemon and PostgreSQL in one install. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/guacamole",
+    "imageDigest": "sha256:642ae691b03777ea053628a2df213edfebd9f83d294d1b9133ef52fd7df37639",
+    "repositoryID": "286e55d0-bc56-4b29-b7e4-bc5f1e2f1fd1",
+    "port": 8080,
+    "upstream": "https://github.com/apache/guacamole-client",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/guacamole",
+    "images": [
+      {
+        "name": "guacamole",
+        "image": "ghcr.io/quenchworks/images/guacamole@sha256:642ae691b03777ea053628a2df213edfebd9f83d294d1b9133ef52fd7df37639"
+      },
+      {
+        "name": "guacd",
+        "image": "ghcr.io/quenchworks/images/guacd@sha256:c2aa2a8412dbba8fbc7dc2901d11a1a1a2bb335619d7647e430b549add174937"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      }
+    ]
+  },
+  {
     "slug": "haproxy",
     "name": "HAProxy",
     "category": "Gateway",
