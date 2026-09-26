@@ -298,8 +298,8 @@
     "category": "Observability",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Visualization and dashboards UI for OpenSearch.",
+    "priority": "exploring",
+    "note": "Visualization UI for OpenSearch. Measured 2026-09-26 at 3.8.0: the full bundle has 12 vulnerable npm packages, among them maplibre-gl 5.2.0 (CRITICAL, fixed only in 6.x) compiled into the maps, observability and anomaly-detection plugin bundles. The min distribution drops those plugins, leaving 7 patch-level fixes, but dompurify 3.4.11 is compiled into the Discover and chat UI bundles, so swapping node_modules would clear the scan and still ship the vulnerable code. Needs a from-source UI build (yarn build of OSD) to ship honestly.",
     "blocked": true,
     "blockedReason": "OpenSearch Dashboards bundles Node dependencies pinned below their CVE fixes, so the image cannot reach 0 fixable CVEs without diverging from the upstream bundle. Built and tested; held until upstream updates them."
   },
@@ -389,8 +389,8 @@
     "category": "Databases & engines",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Distributed graph database over pluggable storage backends."
+    "priority": "exploring",
+    "note": "Distributed graph database over pluggable storage backends. Measured 2026-09-26: the newest release (1.1.0, 2024-11) carries 57 vulnerable packages (4 CRITICAL, 35 HIGH) in its dist. The project is active but has not released since; shipping at 0 CVEs needs a from-source Maven build with dependency management across the tree."
   },
   {
     "name": "Hasura GraphQL Engine",
@@ -453,7 +453,7 @@
     "category": "CI/CD & registry",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "GitOps toolkit of controllers for continuous delivery on Kubernetes."
   },
   {
