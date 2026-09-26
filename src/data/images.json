@@ -1,5 +1,31 @@
 [
   {
+    "slug": "actions-runner",
+    "name": "actions-runner",
+    "category": "CI/CD & registry",
+    "summary": "GitHub's self-hosted Actions runner on Wolfi, laid out like GitHub's own image (/home/runner, uid 1001) so it drops into ARC scale sets. JavaScript actions run on Wolfi's Node 24 (node20 actions included); the bundled npm and the end-of-life Node 20 are removed. Standalone, it registers from RUNNER_URL and RUNNER_TOKEN. Image only, no chart.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "2.337.0",
+    "versions": [
+      {
+        "version": "2.337.0",
+        "size": "127.5 MB",
+        "published": "2026-09-26T09:43:36Z",
+        "digest": "sha256:a03dd908c145407857568650397984e4ac5287835850dc5f27bcf752c4d3763b"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/actions/runner",
+    "source": "https://github.com/actions/runner/releases",
+    "image": "ghcr.io/quenchworks/images/actions-runner"
+  },
+  {
     "slug": "activemq",
     "name": "activemq",
     "category": "Messaging",
@@ -479,13 +505,43 @@
     "status": "available",
     "license": "MIT",
     "licenseClean": "clean",
-    "version": "2026.5.7",
+    "version": "2026.5.7, 2026.5.6, 2026.5.5, 2026.5.4, 2026.5.3, 2026.2.4",
     "versions": [
       {
         "version": "2026.5.7",
         "size": "230.2 MB",
         "published": "2026-09-20T07:41:18Z",
         "digest": "sha256:b4875b308fa3d76dbdf2a2ae3dbc693e9675d1b6065cea7f0b34e30776f478d4"
+      },
+      {
+        "version": "2026.5.6",
+        "size": "230.2 MB",
+        "published": "2026-09-19T19:47:51Z",
+        "digest": "sha256:33c2f7efc4a37e4166f256af23a55c3d1116689bdb90da6b61e8748a0f3ca537"
+      },
+      {
+        "version": "2026.5.5",
+        "size": "229.7 MB",
+        "published": "2026-07-22T08:49:06Z",
+        "digest": "sha256:526d2699dd324454434a50da781f3bd33bf4df22fc60de2a4544a15bb49e78b0"
+      },
+      {
+        "version": "2026.5.4",
+        "size": "229.7 MB",
+        "published": "2026-07-15T12:52:11Z",
+        "digest": "sha256:ef7829c26e2c201994250dd21bfa4b4d9d971a40153a17ee1ca1550d6ee79d3f"
+      },
+      {
+        "version": "2026.5.3",
+        "size": "229.7 MB",
+        "published": "2026-07-08T10:44:09Z",
+        "digest": "sha256:6da496edc1c0e2059a472c06fa2d5c3415b17115099bb5d39505f63d4e4f7c1d"
+      },
+      {
+        "version": "2026.2.4",
+        "size": "229.9 MB",
+        "published": "2026-07-01T12:05:15Z",
+        "digest": "sha256:9ec4a3c0bf0a3f69f03ea23d36f30d5035a54457d1e9cd55318a531697a35549"
       }
     ],
     "arches": [
@@ -1237,13 +1293,13 @@
     "status": "available",
     "license": "AGPL-3.0+",
     "licenseClean": "agpl",
-    "version": "1.0.17",
+    "version": "1.0.18",
     "versions": [
       {
-        "version": "1.0.17",
-        "size": "99.9 MB",
-        "published": "2026-08-26T21:06:56Z",
-        "digest": "sha256:f128e512c9c07a7906222663085ccc5a61090a77a97a2fee4cb1a78d1819ed2b"
+        "version": "1.0.18",
+        "size": "103.4 MB",
+        "published": "2026-09-26T08:50:23Z",
+        "digest": "sha256:b8c5d35e00e02645b6f2d93ea674f726d5c05e87934ae1fed3389aa685f625ae"
       }
     ],
     "arches": [
@@ -2907,19 +2963,19 @@
     "status": "available",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "version": "1.18.1, 1.19.2",
+    "version": "1.20.0, 1.19.2",
     "versions": [
       {
-        "version": "1.18.1",
-        "size": "124.3 MB",
-        "published": "2026-09-19T05:13:52Z",
-        "digest": "sha256:ba04a93125346ee448d94cdf8a8d89a7761c650dd2da19d68ab07c191ff31395"
+        "version": "1.20.0",
+        "size": "114.8 MB",
+        "published": "2026-09-26T09:31:09Z",
+        "digest": "sha256:67c0bb88362789246e44bf09e92e8f5a79637bd11e29b635ccfef32467cd4bfb"
       },
       {
         "version": "1.19.2",
         "size": "112.1 MB",
-        "published": "2026-09-19T05:13:46Z",
-        "digest": "sha256:8d3af650334ba7c6a517717d4f0a6baa512d695761ea7107024ff75fe6270701"
+        "published": "2026-09-26T09:31:08Z",
+        "digest": "sha256:074053e4cb45fc0df8c58e0d3246e255ce64fe03a2d777a2e520838e24bc4a02"
       }
     ],
     "arches": [
@@ -5592,9 +5648,9 @@
     "versions": [
       {
         "version": "2.7.0",
-        "size": "41.2 MB",
-        "published": "2026-09-24T09:04:34Z",
-        "digest": "sha256:6f2b68757901aa902057e495188452efd67e11cc6dc700cf816d56f23de3e37b"
+        "size": "41.3 MB",
+        "published": "2026-09-26T10:32:56Z",
+        "digest": "sha256:dd1693a91c9d642a094b8dfc3913ee080316b5b6e927cea0f8f45b892a380d5b"
       }
     ],
     "arches": [

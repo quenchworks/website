@@ -741,7 +741,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.23",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, 0-CVE image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -755,7 +755,7 @@
       },
       {
         "name": "coolify-realtime",
-        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:f128e512c9c07a7906222663085ccc5a61090a77a97a2fee4cb1a78d1819ed2b"
+        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:b8c5d35e00e02645b6f2d93ea674f726d5c05e87934ae1fed3389aa685f625ae"
       },
       {
         "name": "coolify-helper",
@@ -779,18 +779,18 @@
     "tier": "standard",
     "license": "AGPL-3.0+",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.7",
-    "appVersion": "1.0.17",
+    "chartVersion": "0.0.9",
+    "appVersion": "1.0.18",
     "description": "Coolify's realtime component: a Pusher-compatible soketi WebSocket server (:6001) plus a node-pty terminal bridge (:6002), the pub/sub tier the Coolify UI subscribes to. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify-realtime",
-    "imageDigest": "sha256:f128e512c9c07a7906222663085ccc5a61090a77a97a2fee4cb1a78d1819ed2b",
+    "imageDigest": "sha256:b8c5d35e00e02645b6f2d93ea674f726d5c05e87934ae1fed3389aa685f625ae",
     "repositoryID": "bbc3aa3f-f63d-4d77-8293-70d4c8b05435",
     "upstream": "https://github.com/coollabsio/coolify",
     "chartRef": "oci://ghcr.io/quenchworks/charts/coolify-realtime",
     "images": [
       {
         "name": "coolify-realtime",
-        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:f128e512c9c07a7906222663085ccc5a61090a77a97a2fee4cb1a78d1819ed2b"
+        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:b8c5d35e00e02645b6f2d93ea674f726d5c05e87934ae1fed3389aa685f625ae"
       }
     ]
   },
@@ -3600,18 +3600,18 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.18",
     "appVersion": "2.7.0",
     "description": "Open-source secrets and encryption management for tokens, keys, and certificates, with dynamic secrets and leasing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/openbao",
-    "imageDigest": "sha256:6f2b68757901aa902057e495188452efd67e11cc6dc700cf816d56f23de3e37b",
+    "imageDigest": "sha256:dd1693a91c9d642a094b8dfc3913ee080316b5b6e927cea0f8f45b892a380d5b",
     "repositoryID": "8d6b6290-58a0-40c4-9b6d-3604faf59685",
     "upstream": "https://github.com/openbao/openbao",
     "chartRef": "oci://ghcr.io/quenchworks/charts/openbao",
     "images": [
       {
         "name": "openbao",
-        "image": "ghcr.io/quenchworks/images/openbao@sha256:6f2b68757901aa902057e495188452efd67e11cc6dc700cf816d56f23de3e37b"
+        "image": "ghcr.io/quenchworks/images/openbao@sha256:dd1693a91c9d642a094b8dfc3913ee080316b5b6e927cea0f8f45b892a380d5b"
       }
     ]
   },
@@ -4461,6 +4461,44 @@
         "name": "seaweedfs",
         "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:be19f91d040bd277669f764927e7ad2728a1f6b3cd241a08c1bb0af2048c54c0"
       }
+    ]
+  },
+  {
+    "slug": "secrets-stack",
+    "name": "secrets-stack",
+    "category": "Stacks",
+    "summary": "OpenBao behind Keycloak sign-in: OpenBao auto-unseals and configures itself on first start (KV v2, OIDC for people, JWT for workloads, a break-glass admin), trusting a Keycloak realm the stack imports.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "OpenBao behind Keycloak sign-in: OpenBao auto-unseals and configures itself on first start (KV v2, OIDC for people, JWT for workloads, a break-glass admin), trusting a Keycloak realm the stack imports. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "4d6d8aa4-7640-4bb8-a0cf-1edcda7eea09",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/secrets-stack",
+    "stack": true,
+    "components": [
+      "openbao",
+      "keycloak"
+    ],
+    "images": [
+      {
+        "name": "openbao",
+        "image": "ghcr.io/quenchworks/images/openbao@sha256:dd1693a91c9d642a094b8dfc3913ee080316b5b6e927cea0f8f45b892a380d5b"
+      },
+      {
+        "name": "keycloak",
+        "image": "ghcr.io/quenchworks/images/keycloak@sha256:ff8d99f4b5f0c570651bdf343c3e6de940712fe6a4b2de7195542376f33f3f2f"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/openbao/openbao",
+      "https://github.com/keycloak/keycloak"
     ]
   },
   {
