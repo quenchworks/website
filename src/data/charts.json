@@ -414,6 +414,30 @@
     ]
   },
   {
+    "slug": "buildkit",
+    "name": "buildkit",
+    "category": "Security & supply chain",
+    "summary": "BuildKit, the concurrent container image build engine behind docker build, as the rootless variant: buildkitd runs under rootlesskit as uid 1001 on Wolfi runc and fuse-overlayfs, with buildctl in the same image. Built from source with its containerd, go-archive and otel modules floated.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.33.0",
+    "description": "BuildKit, the concurrent container image build engine behind docker build, running rootless. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/buildkit",
+    "imageDigest": "sha256:b0b5d1a3ae91df1c7a06fe482dabf83d1bc0e5f1f3223e5143e199ed810e92c4",
+    "repositoryID": "e7f0d85e-dc99-42c8-bf50-40c820a7148d",
+    "port": 1234,
+    "upstream": "https://github.com/moby/buildkit",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/buildkit",
+    "images": [
+      {
+        "name": "buildkit",
+        "image": "ghcr.io/quenchworks/images/buildkit@sha256:b0b5d1a3ae91df1c7a06fe482dabf83d1bc0e5f1f3223e5143e199ed810e92c4"
+      }
+    ]
+  },
+  {
     "slug": "cache-stack",
     "name": "cache-stack",
     "category": "Stacks",
