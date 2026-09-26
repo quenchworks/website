@@ -2716,6 +2716,34 @@
     ]
   },
   {
+    "slug": "label-studio",
+    "name": "label-studio",
+    "category": "Machine learning & AI",
+    "summary": "Label Studio, the open-source data labeling tool for text, images, audio, video and time series, with a web UI and a token-authenticated REST API. Packaged from PyPI on Wolfi python-3.13; runs on SQLite by default or PostgreSQL. The SDK's brush-to-COCO export is not included (it needs a bundled OpenCV).",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.23.1",
+    "description": "Hardened Label Studio data labeling tool on a 0-CVE nonroot image, with a bundled PostgreSQL database.",
+    "imageRepository": "ghcr.io/quenchworks/images/label-studio",
+    "imageDigest": "sha256:fcaff9893e4272c9a9883db65dde94c81cc7f15b053b4e20be13c5c416b2a42e",
+    "repositoryID": "3f28878f-238e-4bb6-add7-205b428213bc",
+    "port": 8080,
+    "upstream": "https://github.com/HumanSignal/label-studio",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/label-studio",
+    "images": [
+      {
+        "name": "label-studio",
+        "image": "ghcr.io/quenchworks/images/label-studio@sha256:fcaff9893e4272c9a9883db65dde94c81cc7f15b053b4e20be13c5c416b2a42e"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      }
+    ]
+  },
+  {
     "slug": "lgtm-stack",
     "name": "lgtm-stack",
     "category": "Stacks",
@@ -3238,6 +3266,54 @@
         "name": "postgresql",
         "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
       }
+    ]
+  },
+  {
+    "slug": "ml-stack",
+    "name": "ml-stack",
+    "category": "Stacks",
+    "summary": "Hardened machine-learning stack: JupyterHub notebooks, the MLflow tracking server and model registry, and Label Studio for data labeling, wired together in one install.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.0.0",
+    "description": "Hardened machine-learning stack: JupyterHub notebooks, the MLflow tracking server and model registry, and Label Studio for data labeling, wired together in one install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ml-stack",
+    "stack": true,
+    "components": [
+      "mlflow",
+      "jupyterhub",
+      "label-studio"
+    ],
+    "images": [
+      {
+        "name": "mlflow",
+        "image": "ghcr.io/quenchworks/images/mlflow@sha256:e9132003d55d5a41ec2f33c86287a0d363f4915cf08aa062dbd676134d6655e3"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:4c0580fd2968b8d6e8fb008e0eb74b55c54464b041c235842e4d1cc37ed9a445"
+      },
+      {
+        "name": "jupyterhub",
+        "image": "ghcr.io/quenchworks/images/jupyterhub@sha256:1ee8b5eb9059f6fa49e632a58800dd39b014bde4b15c0d88fac67b58929b4899"
+      },
+      {
+        "name": "configurable-http-proxy",
+        "image": "ghcr.io/quenchworks/images/configurable-http-proxy@sha256:3a0fc43f02e95cb78ff77327fc78400b4da0ec1a34c003e513b1f3b435c99a23"
+      },
+      {
+        "name": "label-studio",
+        "image": "ghcr.io/quenchworks/images/label-studio@sha256:fcaff9893e4272c9a9883db65dde94c81cc7f15b053b4e20be13c5c416b2a42e"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/mlflow/mlflow",
+      "https://github.com/jupyterhub/jupyterhub",
+      "https://github.com/HumanSignal/label-studio"
     ]
   },
   {

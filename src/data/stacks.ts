@@ -55,4 +55,9 @@ export const STACKS: Stack[] = [
     name: 'Secrets Stack',
     components: ['OpenBao', 'Keycloak'],
   },
+  {
+    slug: 'ml-stack',
+    name: 'ML Stack',
+    components: ['JupyterHub', 'MLflow', 'Label Studio', 'PostgreSQL'],
+  },
 ];
