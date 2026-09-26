@@ -592,16 +592,8 @@
     "category": "Security & supply chain",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Daemonless OCI image builder. Held 2026-09-25: building images inside a container needs user namespaces (subuid maps, setuid newuidmap, relaxed seccomp), which a nonroot, capability-free image cannot provide; ship it with the node-agent exception tier."
-  },
-  {
-    "name": "Podman",
-    "category": "Security & supply chain",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
     "priority": "next",
-    "note": "Daemonless container engine and Docker CLI replacement."
+    "note": "Daemonless OCI image builder. Unheld 2026-09-26: the Podman image runs rootless in a privileged pod with setuid newuidmap and /etc/subuid, the same setup Buildah needs; build it the same way."
   },
   {
     "name": "ko",
