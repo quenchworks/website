@@ -99,9 +99,9 @@
     {
       "app": "coolify-realtime",
       "from": "1.0.17",
-      "to": "1.0.20",
-      "status": "queued",
-      "note": "The ESM block is fixed (decode-uri-component 0.5.0 gets a CommonJS entry, shipped 2026-09-26), so the new tag can be built."
+      "to": "1.0.18",
+      "status": "shipped",
+      "note": "Shipped 1.0.18, the version Coolify v4.3.23 pins; 1.0.19-next and 1.0.20 are Docker Hub tags no Coolify release installs."
     },
     {
       "app": "documentdb",
@@ -179,22 +179,22 @@
       "app": "grafana-alloy",
       "from": "1.18.1 / 1.19.2",
       "to": "1.19.2 / 1.20.0",
-      "status": "queued",
+      "status": "shipped",
       "note": "New 1.20 line; the recipe keeps the newest two minor lines, so 1.18 drops."
     },
     {
       "app": "authentik",
       "from": "2026.5.7",
       "to": "2026.8.3",
-      "status": "queued",
+      "status": "building",
       "note": "New 2026.8 line; the image ships the newest release."
     },
     {
       "app": "nextcloud",
       "from": "34.0.4",
       "to": "35.0.1",
-      "status": "queued",
-      "note": "New major; the image ships the newest release. The 34 recipe carries a webauthn-lib source port that has to be re-checked."
+      "status": "held",
+      "note": "35 still pins webauthn-lib ^4.9.1, so the 4->5 port stays, but 35 changed the code it replaces: Manager::finishAuthentication now returns AuthenticatorData and the login controller calls isUserVerified() on it. The 34-era port returns true, which would break every WebAuthn login. Needs a re-port plus the credential replay proof; 34.0.4 stays until then."
     },
     {
       "app": "jdk / jre",
