@@ -4915,6 +4915,50 @@
     ]
   },
   {
+    "slug": "sigstore-stack",
+    "name": "sigstore-stack",
+    "category": "Stacks",
+    "summary": "Self-hosted Sigstore: the Fulcio certificate authority, the Rekor v2 transparency log and the Timestamp Authority in one install, for keyless signing with cosign against your own infrastructure.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Self-hosted Sigstore: the Fulcio certificate authority, the Rekor v2 transparency log and the Timestamp Authority in one install, for keyless signing with cosign against your own infrastructure. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "4cfa0c3a-d87f-44a2-a39f-ec380e014b4a",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/sigstore-stack",
+    "stack": true,
+    "components": [
+      "fulcio",
+      "rekor-tiles",
+      "timestamp-authority"
+    ],
+    "images": [
+      {
+        "name": "fulcio",
+        "image": "ghcr.io/quenchworks/images/fulcio@sha256:a7be717074886a5589590e8cc01b2fdc48084e0d24c4a3bc9f6b878dfc3b3c98"
+      },
+      {
+        "name": "rekor-tiles",
+        "image": "ghcr.io/quenchworks/images/rekor-tiles@sha256:4a51c3565f88789ff8d8dc2c808a32b67ee6b34f509d8b58dd80e1d403febdc2"
+      },
+      {
+        "name": "caddy",
+        "image": "ghcr.io/quenchworks/images/caddy@sha256:8e89a25b3251eedd7a4b1867e81168de2848a480deb2a1b164d07a16a3b71c84"
+      },
+      {
+        "name": "timestamp-authority",
+        "image": "ghcr.io/quenchworks/images/timestamp-authority@sha256:383b3ced033dc77c5ba806107f80a6fc454466a875864af5cf9d086c9eebef21"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/sigstore/fulcio",
+      "https://github.com/sigstore/rekor-tiles",
+      "https://github.com/sigstore/timestamp-authority"
+    ]
+  },
+  {
     "slug": "skywalking",
     "name": "skywalking",
     "category": "Observability",

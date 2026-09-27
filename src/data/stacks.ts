@@ -60,4 +60,9 @@ export const STACKS: Stack[] = [
     name: 'ML Stack',
     components: ['JupyterHub', 'MLflow', 'Label Studio', 'PostgreSQL'],
   },
+  {
+    slug: 'sigstore-stack',
+    name: 'Sigstore Stack',
+    components: ['Fulcio', 'Rekor v2', 'Timestamp Authority', 'Caddy'],
+  },
 ];
