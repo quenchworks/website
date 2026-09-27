@@ -4707,6 +4707,34 @@
     ]
   },
   {
+    "slug": "rekor-tiles",
+    "name": "rekor-tiles",
+    "category": "Security & supply chain",
+    "summary": "Rekor v2, the Sigstore transparency log, rebuilt on Trillian Tessera tiles: it needs no Trillian or MySQL. Built from source with the POSIX storage backend, where the tile directory is the read API.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "2.3.0",
+    "description": "Rekor v2, the Sigstore transparency log on Trillian Tessera tiles: a StatefulSet with the log on a PVC, a generated ed25519 checkpoint key, and Caddy serving the tiles as the read API. No Trillian or MySQL. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/rekor-tiles",
+    "imageDigest": "sha256:4a51c3565f88789ff8d8dc2c808a32b67ee6b34f509d8b58dd80e1d403febdc2",
+    "repositoryID": "dc1505c6-77e8-46fc-8d50-b93b22de0195",
+    "port": 3000,
+    "upstream": "https://github.com/sigstore/rekor-tiles",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/rekor-tiles",
+    "images": [
+      {
+        "name": "rekor-tiles",
+        "image": "ghcr.io/quenchworks/images/rekor-tiles@sha256:4a51c3565f88789ff8d8dc2c808a32b67ee6b34f509d8b58dd80e1d403febdc2"
+      },
+      {
+        "name": "caddy",
+        "image": "ghcr.io/quenchworks/images/caddy@sha256:8e89a25b3251eedd7a4b1867e81168de2848a480deb2a1b164d07a16a3b71c84"
+      }
+    ]
+  },
+  {
     "slug": "rethinkdb",
     "name": "rethinkdb",
     "category": "Databases & engines",
