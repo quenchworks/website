@@ -90,4 +90,9 @@ export const STACKS: Stack[] = [
     name: 'Ingress Stack',
     components: ['ingress-nginx', 'cert-manager', 'Cluster CA issuer'],
   },
+  {
+    slug: 'supply-chain-stack',
+    name: 'Supply Chain Stack',
+    components: ['Kyverno', 'trivy-operator', 'Signed-image policy'],
+  },
 ];
