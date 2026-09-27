@@ -3043,6 +3043,46 @@
     ]
   },
   {
+    "slug": "llm-stack",
+    "name": "llm-stack",
+    "category": "Stacks",
+    "summary": "Self-hosted LLM stack: Ollama runs the models, LiteLLM serves them through one OpenAI-compatible API with a generated key, and Qdrant stores embeddings for retrieval.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Self-hosted LLM stack: Ollama runs the models, LiteLLM serves them through one OpenAI-compatible API with a generated key, and Qdrant stores embeddings for retrieval. The models you list are pulled at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "ff84a3b9-4bf9-49fd-be69-4b4e771b851a",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/llm-stack",
+    "stack": true,
+    "components": [
+      "ollama",
+      "litellm",
+      "qdrant"
+    ],
+    "images": [
+      {
+        "name": "ollama",
+        "image": "ghcr.io/quenchworks/images/ollama@sha256:dfb68575295c9f774cc3df3482564f5b252fca4f1c29f2cf58f816db0074e3e5"
+      },
+      {
+        "name": "litellm",
+        "image": "ghcr.io/quenchworks/images/litellm@sha256:6bfa27876d7601ec0475fefa4d26bdd6ea6e376ba6155035b26c508c46054672"
+      },
+      {
+        "name": "qdrant",
+        "image": "ghcr.io/quenchworks/images/qdrant@sha256:104776395b01731957498a25b8349fda67ec7f817e237526af71dfafc9a5340d"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/ollama/ollama",
+      "https://github.com/BerriAI/litellm",
+      "https://github.com/qdrant/qdrant"
+    ]
+  },
+  {
     "slug": "logging-stack",
     "name": "logging-stack",
     "category": "Stacks",

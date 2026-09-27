@@ -70,4 +70,9 @@ export const STACKS: Stack[] = [
     name: 'GitOps Stack',
     components: ['Argo CD', 'Argo Rollouts', 'Argo Workflows', 'Argo Events', 'NATS'],
   },
+  {
+    slug: 'llm-stack',
+    name: 'LLM Stack',
+    components: ['Ollama', 'LiteLLM', 'Qdrant'],
+  },
 ];
