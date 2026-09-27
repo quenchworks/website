@@ -65,4 +65,9 @@ export const STACKS: Stack[] = [
     name: 'Sigstore Stack',
     components: ['Fulcio', 'Rekor v2', 'Timestamp Authority', 'Caddy'],
   },
+  {
+    slug: 'gitops-stack',
+    name: 'GitOps Stack',
+    components: ['Argo CD', 'Argo Rollouts', 'Argo Workflows', 'Argo Events', 'NATS'],
+  },
 ];

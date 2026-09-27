@@ -1792,6 +1792,68 @@
     ]
   },
   {
+    "slug": "gitops-stack",
+    "name": "gitops-stack",
+    "category": "Stacks",
+    "summary": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "de6a254c-cbaa-4b14-88cc-30670ebc943f",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/gitops-stack",
+    "stack": true,
+    "components": [
+      "argocd",
+      "argo-rollouts",
+      "argo-workflows",
+      "argo-events"
+    ],
+    "images": [
+      {
+        "name": "argocd",
+        "image": "ghcr.io/quenchworks/images/argocd@sha256:f1947896cfc7fdb5072c7033bef556974a7679fff3fd0b6505864b84af5faea4"
+      },
+      {
+        "name": "redis",
+        "image": "ghcr.io/quenchworks/images/redis@sha256:9a525827b9e4ed199538bd1b31d41faf903377c2fa5f24a149eb6ae365070e55"
+      },
+      {
+        "name": "argo-rollouts",
+        "image": "ghcr.io/quenchworks/images/argo-rollouts@sha256:6c1bd0f0feb69940b7a25fdd15cd6269cde97cbc85c548c15178598ab83c39f0"
+      },
+      {
+        "name": "argo-workflows",
+        "image": "ghcr.io/quenchworks/images/argo-workflows@sha256:21ee2a679f596a18aa54c11f9eb77d9b7d63bdc8f506444199cf61742be08747"
+      },
+      {
+        "name": "argo-events",
+        "image": "ghcr.io/quenchworks/images/argo-events@sha256:401e4bbadaf9cc26eec92c2bd70b24f0e2d2e660e250d0efe990718a8f18af07"
+      },
+      {
+        "name": "nats",
+        "image": "ghcr.io/quenchworks/images/nats@sha256:2cd50c9efb5742e2806ee71fc71a4bff42776bf97d8313a93e7ae55bbb009c46"
+      },
+      {
+        "name": "nats-server-config-reloader",
+        "image": "ghcr.io/quenchworks/images/nats-server-config-reloader@sha256:9f03a8bb3549cf5ebc5b8cda5e8d2d67ce4d2e4dbcba8507ed6b6e244b77aaff"
+      },
+      {
+        "name": "prometheus-nats-exporter",
+        "image": "ghcr.io/quenchworks/images/prometheus-nats-exporter@sha256:fa786a70abda58e681254d229dd322e9517b2e8339e0789c43363134b647b012"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/argoproj/argo-cd",
+      "https://github.com/argoproj/argo-rollouts",
+      "https://github.com/argoproj/argo-workflows",
+      "https://github.com/argoproj/argo-events"
+    ]
+  },
+  {
     "slug": "gogs",
     "name": "gogs",
     "category": "Git",
