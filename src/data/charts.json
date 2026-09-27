@@ -2881,6 +2881,50 @@
     ]
   },
   {
+    "slug": "lakehouse-stack",
+    "name": "lakehouse-stack",
+    "category": "Stacks",
+    "summary": "Hardened open lakehouse: Trino queries Apache Iceberg tables cataloged by Nessie and stored in SeaweedFS over S3, wired together with generated S3 keys and a bucket created at install.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Hardened open lakehouse: Trino queries Apache Iceberg tables cataloged by Nessie and stored in SeaweedFS over S3, wired together with generated S3 keys and a bucket created at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "1ee7f195-4485-4dc4-bfe7-991a1c23e4b9",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/lakehouse-stack",
+    "stack": true,
+    "components": [
+      "trino",
+      "nessie",
+      "seaweedfs"
+    ],
+    "images": [
+      {
+        "name": "trino",
+        "image": "ghcr.io/quenchworks/images/trino@sha256:8b30191aeee4809874a0b3515090671028f76dc681d9185e02bfd62ed614c81f"
+      },
+      {
+        "name": "nessie",
+        "image": "ghcr.io/quenchworks/images/nessie@sha256:227b8d69593ac4bee4ac239130e6fbe59bdbdd7879c0242b5001d0596085a50f"
+      },
+      {
+        "name": "seaweedfs",
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:be19f91d040bd277669f764927e7ad2728a1f6b3cd241a08c1bb0af2048c54c0"
+      },
+      {
+        "name": "rclone",
+        "image": "ghcr.io/quenchworks/images/rclone@sha256:283c1e9a365c3ab48f92713469e9cc9a61c1377b81b2908c69bae19c3843e105"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/trinodb/trino",
+      "https://github.com/projectnessie/nessie",
+      "https://github.com/seaweedfs/seaweedfs"
+    ]
+  },
+  {
     "slug": "lgtm-stack",
     "name": "lgtm-stack",
     "category": "Stacks",
@@ -5516,11 +5560,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "483",
     "description": "Trino, the distributed SQL query engine for federated analytics, as a coordinator plus workers. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/trino",
-    "imageDigest": "sha256:9d5a642b3e21b47f38c0f31da740fe252198d8bc2179ac94c14637d00595fe03",
+    "imageDigest": "sha256:8b30191aeee4809874a0b3515090671028f76dc681d9185e02bfd62ed614c81f",
     "repositoryID": "edaa77e1-dd88-40ff-b082-f6e7de4010ca",
     "port": 8080,
     "upstream": "https://github.com/trinodb/trino",
@@ -5528,7 +5572,7 @@
     "images": [
       {
         "name": "trino",
-        "image": "ghcr.io/quenchworks/images/trino@sha256:9d5a642b3e21b47f38c0f31da740fe252198d8bc2179ac94c14637d00595fe03"
+        "image": "ghcr.io/quenchworks/images/trino@sha256:8b30191aeee4809874a0b3515090671028f76dc681d9185e02bfd62ed614c81f"
       }
     ]
   },

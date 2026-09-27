@@ -75,4 +75,9 @@ export const STACKS: Stack[] = [
     name: 'LLM Stack',
     components: ['Ollama', 'LiteLLM', 'Qdrant'],
   },
+  {
+    slug: 'lakehouse-stack',
+    name: 'Lakehouse Stack',
+    components: ['Trino', 'Nessie', 'SeaweedFS', 'Apache Iceberg'],
+  },
 ];
