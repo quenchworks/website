@@ -478,8 +478,8 @@
     "category": "Databases & engines",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery."
+    "priority": "next",
+    "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image."
   },
   {
     "name": "MongoDB Community Operator",
@@ -576,8 +576,8 @@
     "category": "Security & supply chain",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Programmable CI/CD engine that runs pipelines in containers."
+    "priority": "planned",
+    "note": "Programmable CI/CD engine that runs pipelines in containers. Sized 2026-09-27: the CLI is plain Go, but the engine image bundles runc, CNI plugins and the Go, Python and TypeScript SDK runtimes as builtin content that upstream builds with Dagger itself. A multi-day build; not started."
   },
   {
     "name": "TruffleHog",
