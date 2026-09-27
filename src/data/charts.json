@@ -2387,6 +2387,56 @@
     ]
   },
   {
+    "slug": "ingress-stack",
+    "name": "ingress-stack",
+    "category": "Stacks",
+    "summary": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation. Bring your own ACME issuer for public certificates. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "1f0a96f3-a5b0-41c9-b718-a4817e8acd0b",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ingress-stack",
+    "stack": true,
+    "components": [
+      "ingress-nginx",
+      "cert-manager"
+    ],
+    "images": [
+      {
+        "name": "ingress-nginx-controller",
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:cc9001b2995029c121bba0a2c3abd11b67dbc5ab630cbe0cb2c002b9ee239f1c"
+      },
+      {
+        "name": "cert-manager-controller",
+        "image": "ghcr.io/quenchworks/images/cert-manager-controller@sha256:6b5c41a86c2fa9e71087498003d183db006fde0cfee2cc3657c5879cd9621139"
+      },
+      {
+        "name": "cert-manager-webhook",
+        "image": "ghcr.io/quenchworks/images/cert-manager-webhook@sha256:dcbad200602199855cf0e7901a470379b08afac585cf868ebbc002ebf411f720"
+      },
+      {
+        "name": "cert-manager-cainjector",
+        "image": "ghcr.io/quenchworks/images/cert-manager-cainjector@sha256:7df29eb359f0a15da1ff767c4182f12b88dc7dc9fd70240a97f25cbac8ecb0d8"
+      },
+      {
+        "name": "cert-manager-acmesolver",
+        "image": "ghcr.io/quenchworks/images/cert-manager-acmesolver@sha256:1873301a404e8ae03b75bd447c677dfe7475ba01313d2f7648e4b994b0e7060d"
+      },
+      {
+        "name": "kubectl",
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:4033ac5e5f359739cf017a256188a8da7592edae86e452c6327dc4865a66a580"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/kubernetes/ingress-nginx",
+      "https://github.com/cert-manager/cert-manager"
+    ]
+  },
+  {
     "slug": "istiod",
     "name": "istiod",
     "category": "Coordination & mesh",

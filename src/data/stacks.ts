@@ -85,4 +85,9 @@ export const STACKS: Stack[] = [
     name: 'Backup Stack',
     components: ['Velero', 'Velero AWS plugin', 'SeaweedFS'],
   },
+  {
+    slug: 'ingress-stack',
+    name: 'Ingress Stack',
+    components: ['ingress-nginx', 'cert-manager', 'Cluster CA issuer'],
+  },
 ];
