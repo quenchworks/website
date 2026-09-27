@@ -703,6 +703,30 @@
     ]
   },
   {
+    "slug": "clamav",
+    "name": "clamav",
+    "category": "Security & supply chain",
+    "summary": "ClamAV antivirus engine built from the release tarball. clamd scans streams over TCP 3310 for apps that check uploads, freshclam keeps the signature database current, and clamscan runs one-off scans. Two lines, 1.5 and the 1.4 LTS.",
+    "tier": "standard",
+    "license": "GPL-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.5.4",
+    "description": "ClamAV antivirus engine, built from source: clamd scans streams over TCP 3310 for apps that check uploads, with a freshclam sidecar keeping signatures current. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/clamav",
+    "imageDigest": "sha256:c470cb121cf3cd2cf92fed503ab65d91a503b7116e9426e4ba2c2994a0e9dd51",
+    "repositoryID": "a141562a-d17d-4b39-9c19-787d460156d8",
+    "port": 3310,
+    "upstream": "https://www.clamav.net",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/clamav",
+    "images": [
+      {
+        "name": "clamav",
+        "image": "ghcr.io/quenchworks/images/clamav@sha256:c470cb121cf3cd2cf92fed503ab65d91a503b7116e9426e4ba2c2994a0e9dd51"
+      }
+    ]
+  },
+  {
     "slug": "clickhouse",
     "name": "ClickHouse",
     "category": "Analytical",
