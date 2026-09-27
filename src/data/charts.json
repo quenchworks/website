@@ -4724,6 +4724,30 @@
     ]
   },
   {
+    "slug": "powerdns",
+    "name": "powerdns",
+    "category": "Coordination",
+    "summary": "PowerDNS Authoritative Server, built from the release tarball. Serves zones from LMDB by default, which needs no schema and supports DNSSEC and zone creation over the HTTP API, with the gsqlite3, gpgsql, gmysql and bind backends compiled in. Listens on 5353 as nonroot.",
+    "tier": "standard",
+    "license": "GPL-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "5.1.4",
+    "description": "PowerDNS Authoritative Server, built from source. Serves zones from LMDB on a persistent volume, with the HTTP API for zone management and external-dns. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/powerdns",
+    "imageDigest": "sha256:a9a0c1b66f1513e309a60eda1dfbca732fc07c8f374f0d549fcb316da000fa34",
+    "repositoryID": "81044945-9b66-4be8-8341-89980090581f",
+    "port": 53,
+    "upstream": "https://www.powerdns.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/powerdns",
+    "images": [
+      {
+        "name": "powerdns",
+        "image": "ghcr.io/quenchworks/images/powerdns@sha256:a9a0c1b66f1513e309a60eda1dfbca732fc07c8f374f0d549fcb316da000fa34"
+      }
+    ]
+  },
+  {
     "slug": "prefect",
     "name": "prefect",
     "category": "Workflow",
