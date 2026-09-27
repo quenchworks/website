@@ -4810,6 +4810,30 @@
     ]
   },
   {
+    "slug": "powerdns-recursor",
+    "name": "powerdns-recursor",
+    "category": "Coordination",
+    "summary": "PowerDNS Recursor, the caching DNS resolver, built from the release tarball. Serves resolution to RFC 1918 and CGN clients by default (never an open resolver), with DNS over TLS to upstreams and Lua scripting. Listens on 5353 as nonroot.",
+    "tier": "standard",
+    "license": "GPL-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "5.4.6",
+    "description": "PowerDNS Recursor, the caching DNS resolver, built from source. Resolves for private-network clients only, with DNSSEC validation, forward zones and local auth zones. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/powerdns-recursor",
+    "imageDigest": "sha256:5dc5a735915b24c97c4d5ac69d582bce660ee4c185d03a66705eeca0b168ba0f",
+    "repositoryID": "e2e4ff1c-0812-4fd7-befa-b01b3acfccfc",
+    "port": 53,
+    "upstream": "https://www.powerdns.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/powerdns-recursor",
+    "images": [
+      {
+        "name": "powerdns-recursor",
+        "image": "ghcr.io/quenchworks/images/powerdns-recursor@sha256:5dc5a735915b24c97c4d5ac69d582bce660ee4c185d03a66705eeca0b168ba0f"
+      }
+    ]
+  },
+  {
     "slug": "prefect",
     "name": "prefect",
     "category": "Workflow",
