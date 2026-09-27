@@ -80,4 +80,9 @@ export const STACKS: Stack[] = [
     name: 'Lakehouse Stack',
     components: ['Trino', 'Nessie', 'SeaweedFS', 'Apache Iceberg'],
   },
+  {
+    slug: 'backup-stack',
+    name: 'Backup Stack',
+    components: ['Velero', 'Velero AWS plugin', 'SeaweedFS'],
+  },
 ];

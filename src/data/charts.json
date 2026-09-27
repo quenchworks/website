@@ -390,6 +390,49 @@
     ]
   },
   {
+    "slug": "backup-stack",
+    "name": "backup-stack",
+    "category": "Stacks",
+    "summary": "Hardened Kubernetes backup: Velero with its AWS plugin, backing up to SeaweedFS over S3 in the same install, with generated keys, a bucket created at install and the backup location already configured.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Hardened Kubernetes backup: Velero with its AWS plugin, backing up to SeaweedFS over S3 in the same install, with generated keys, a bucket created at install and the backup location already configured. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "37f18e5b-c2a2-4ef9-8e60-bdc9a2c4d5cb",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/backup-stack",
+    "stack": true,
+    "components": [
+      "velero",
+      "seaweedfs"
+    ],
+    "images": [
+      {
+        "name": "velero",
+        "image": "ghcr.io/quenchworks/images/velero@sha256:62d3d577726f723c7c68205f73f80b36f4def12e1eaf4e1e8a86a0de2eb3bc97"
+      },
+      {
+        "name": "velero-plugin-for-aws",
+        "image": "ghcr.io/quenchworks/images/velero-plugin-for-aws@sha256:1f5ad24c95e960be5868f4d2e47474748d753ed46fc357fe1a16a769f2266196"
+      },
+      {
+        "name": "seaweedfs",
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:be19f91d040bd277669f764927e7ad2728a1f6b3cd241a08c1bb0af2048c54c0"
+      },
+      {
+        "name": "rclone",
+        "image": "ghcr.io/quenchworks/images/rclone@sha256:283c1e9a365c3ab48f92713469e9cc9a61c1377b81b2908c69bae19c3843e105"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/vmware-tanzu/velero",
+      "https://github.com/vmware-tanzu/velero-plugin-for-aws",
+      "https://github.com/seaweedfs/seaweedfs"
+    ]
+  },
+  {
     "slug": "blackbox-exporter",
     "name": "blackbox-exporter",
     "category": "Metrics/Exporter",
@@ -5834,7 +5877,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.7",
+    "chartVersion": "0.1.8",
     "appVersion": "1.18.3",
     "description": "Velero, the CNCF backup and disaster-recovery controller for Kubernetes cluster resources and persistent volumes. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Runs the velero server as a single Deployment; object-store and volume-snapshot backends are plugged in as initContainers.",
     "imageRepository": "ghcr.io/quenchworks/images/velero",
