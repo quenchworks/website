@@ -91,6 +91,11 @@ export const STACKS: Stack[] = [
     components: ['ingress-nginx', 'cert-manager', 'Cluster CA issuer'],
   },
   {
+    slug: 'dns-stack',
+    name: 'DNS Stack',
+    components: ['PowerDNS Authoritative', 'external-dns', 'Zone setup Job'],
+  },
+  {
     slug: 'supply-chain-stack',
     name: 'Supply Chain Stack',
     components: ['Kyverno', 'trivy-operator', 'Signed-image policy'],

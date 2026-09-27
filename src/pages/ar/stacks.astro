@@ -22,6 +22,7 @@ const prop: Record<string, string> = {
   'llm-stack': 'نماذج محلية خلف واجهة API واحدة متوافقة مع OpenAI، مع قاعدة بيانات متجهات للاسترجاع وتنزيل النماذج عند التثبيت.',
   'lakehouse-stack': 'استعلامات SQL على جداول Apache Iceberg في تخزين S3 الخاص بك، مع الكتالوج والمفاتيح والـ bucket موصولة مسبقًا.',
   'backup-stack': 'نسخ احتياطي واستعادة للـ namespaces إلى تخزين S3 مثبّت بجانبها، مع المفاتيح والـ bucket وموقع النسخ الاحتياطي مضبوطة مسبقًا.',
+  'dns-stack': 'يخدم PowerDNS مناطقك ويملؤها external-dns من خدمات Services وIngresses المُعلَّمة، عبر مفتاح API واحد مُولَّد.',
   'ingress-stack': 'متحكّم ingress مع cert-manager وسلطة شهادات للعنقود، ليحصل أي Ingress على شهادة TLS بتعليق توضيحي واحد.',
   'supply-chain-stack': 'لا يُسمح إلا بصور QuenchWorks الموقّعة في الـ namespaces التي تضع عليها التسمية، مع التحقق عبر Sigstore، وفحص ما يعمل.',
 };
@@ -34,7 +35,7 @@ const chartsHref = '/ar/charts';
 
 <Base
   title="الحزم · QuenchWorks"
-  description="حزم منسّقة ومُحصّنة للمراقبة والهوية وقواعد البيانات والتخزين المؤقت والبث والأسرار وتعلّم الآلة والنماذج اللغوية وlakehouse وGitOps والنسخ الاحتياطي وingress وضبط سلسلة التوريد. انشر نظامًا كاملًا بأمر helm install واحد بدلًا من تجميع ستة charts يدويًا."
+  description="حزم منسّقة ومُحصّنة للمراقبة والهوية وقواعد البيانات والتخزين المؤقت والبث والأسرار وتعلّم الآلة والنماذج اللغوية وlakehouse وGitOps والنسخ الاحتياطي وingress وDNS وضبط سلسلة التوريد. انشر نظامًا كاملًا بأمر helm install واحد بدلًا من تجميع ستة charts يدويًا."
 >
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:الحزم,type:Stacks">
