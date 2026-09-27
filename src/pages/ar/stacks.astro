@@ -34,7 +34,7 @@ const chartsHref = '/ar/charts';
 
 <Base
   title="الحزم · QuenchWorks"
-  description="حزم منسّقة ومُحصّنة وبدون مشغّلات للمراقبة والهوية وقواعد البيانات والتخزين المؤقت والبث والأسرار. انشر نظامًا كاملًا بأمر helm install واحد بدلًا من تجميع ستة charts يدويًا."
+  description="حزم منسّقة ومُحصّنة للمراقبة والهوية وقواعد البيانات والتخزين المؤقت والبث والأسرار وتعلّم الآلة والنماذج اللغوية وlakehouse وGitOps والنسخ الاحتياطي وingress وضبط سلسلة التوريد. انشر نظامًا كاملًا بأمر helm install واحد بدلًا من تجميع ستة charts يدويًا."
 >
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:الحزم,type:Stacks">
@@ -47,8 +47,9 @@ const chartsHref = '/ar/charts';
       نظام جاهز للعمل من تثبيت واحد.
     </p>
     <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      كل حزمة بدون مشغّلات: Helm بحت، بدون CRDs وبدون مشغّلات لتشغيلها. ما تنشره هو بالضبط
-      الوصلات التي يمكنك قراءتها في الـ chart.
+      معظم الحزم بدون مشغّلات: Helm بحت، بدون CRDs وبدون مشغّلات لتشغيلها، وما تنشره هو بالضبط
+      الوصلات التي يمكنك قراءتها في الـ chart. أربع منها مبنية حول متحكّم وتثبّت الـ CRDs الخاصة به:
+      GitOps (Argo)، والنسخ الاحتياطي (Velero)، وingress (cert-manager)، وسلسلة التوريد (Kyverno).
     </p>
 
     <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">

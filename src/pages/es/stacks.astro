@@ -35,7 +35,7 @@ const chartsHref = '/es/charts';
 
 <Base
   title="Stacks · QuenchWorks"
-  description="Stacks curados, endurecidos y sin operadores para observabilidad, identidad, bases de datos, caché, streaming y secretos. Despliega un sistema completo con un solo helm install en lugar de ensamblar seis charts a mano."
+  description="Stacks curados y endurecidos para observabilidad, identidad, bases de datos, caché, streaming, secretos, ML y LLM, lakehouse, GitOps, backup, ingress y control de la cadena de suministro. Despliega un sistema completo con un solo helm install en lugar de ensamblar seis charts a mano."
 >
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks,type:Stacks">
@@ -48,8 +48,10 @@ const chartsHref = '/es/charts';
       averiguar cómo se comunican, obtienes un sistema funcionando con una sola instalación.
     </p>
     <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      Cada stack es sin operadores: Helm puro, sin CRDs ni operadores que ejecutar. Lo que
-      despliegas es exactamente el cableado que puedes leer en el chart.
+      La mayoría de los stacks no usan operadores: Helm puro, sin CRDs ni operadores que ejecutar, y lo
+      que despliegas es exactamente el cableado que puedes leer en el chart. Cuatro giran en torno a un
+      controlador e instalan sus CRDs: GitOps (Argo), backup (Velero), ingress (cert-manager) y cadena
+      de suministro (Kyverno).
     </p>
 
     <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
