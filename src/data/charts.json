@@ -420,7 +420,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "1.0.0",
     "description": "Hardened Kubernetes backup: Velero with its AWS plugin, backing up to SeaweedFS over S3 in the same install, with generated keys, a bucket created at install and the backup location already configured. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "37f18e5b-c2a2-4ef9-8e60-bdc9a2c4d5cb",
@@ -438,7 +438,7 @@
       },
       {
         "name": "velero-plugin-for-aws",
-        "image": "ghcr.io/quenchworks/images/velero-plugin-for-aws@sha256:1f5ad24c95e960be5868f4d2e47474748d753ed46fc357fe1a16a769f2266196"
+        "image": "ghcr.io/quenchworks/images/velero-plugin-for-aws@sha256:a2af491eb57220c77c4076206729216ffbc61d3f52d68c13126c6486b5a7b111"
       },
       {
         "name": "seaweedfs",
@@ -3134,7 +3134,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.26",
+    "chartVersion": "0.0.27",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free LGTM observability superset in one install: Loki (logs) + Grafana (the single pane) + Tempo (traces) + VictoriaMetrics (Prometheus-compatible metrics) + an OpenTelemetry Collector (OTLP ingest) + Alertmanager. Grafana gets three pre-provisioned datasources — VictoriaMetrics (default), Loki, Tempo — so metrics, logs and traces are explorable side by side out of the box. VictoriaMetrics scrapes pods via annotation-based service discovery; Vector ships every pod's logs to Loki; apps send OTLP traces to the collector, which forwards to Tempo. No operator, no CRDs. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed. node-exporter and Vector take host access by design (cluster metrics + logs); both are toggleable.",
     "repositoryID": "69ed1b3c-ab58-474a-828b-f64cf9dff72e",
@@ -3151,7 +3151,7 @@
     "images": [
       {
         "name": "victoriametrics",
-        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:393e4b861aabf4dff629eafba2ffb8c276a190465ef3ffb92dc001e1f1e9d5d8"
+        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:f4fa0ea581874fbe6d4c39c7534c73c3324e5f181d723354e5fab6ae0ebbebd4"
       },
       {
         "name": "loki",
@@ -5214,18 +5214,18 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
-    "appVersion": "10.3.6",
+    "chartVersion": "0.0.15",
+    "appVersion": "10.3.7",
     "description": "Lightweight distributed relational database built on SQLite with Raft consensus (Go). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rqlite",
-    "imageDigest": "sha256:73d332844562bc47428ac6d94a239997691385c87dda392c3e064ea40f2c6a1a",
+    "imageDigest": "sha256:86e4d17d3f99669de540f96b5def41b9c3f23fbaa3a5e88ee5ff0e158ca598e2",
     "repositoryID": "e66bc57f-d10d-4e7c-a13d-a663d33c3d32",
     "upstream": "https://rqlite.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/rqlite",
     "images": [
       {
         "name": "rqlite",
-        "image": "ghcr.io/quenchworks/images/rqlite@sha256:73d332844562bc47428ac6d94a239997691385c87dda392c3e064ea40f2c6a1a"
+        "image": "ghcr.io/quenchworks/images/rqlite@sha256:86e4d17d3f99669de540f96b5def41b9c3f23fbaa3a5e88ee5ff0e158ca598e2"
       }
     ]
   },
@@ -6275,11 +6275,11 @@
     "tier": "low",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
-    "appVersion": "1.152.0",
+    "chartVersion": "0.0.19",
+    "appVersion": "1.153.0",
     "description": "Fast, cost-efficient time-series database that speaks PromQL and Prometheus remote_write. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/victoriametrics",
-    "imageDigest": "sha256:393e4b861aabf4dff629eafba2ffb8c276a190465ef3ffb92dc001e1f1e9d5d8",
+    "imageDigest": "sha256:f4fa0ea581874fbe6d4c39c7534c73c3324e5f181d723354e5fab6ae0ebbebd4",
     "repositoryID": "18aeaade-1bb0-4b11-9787-f80599ccde32",
     "port": 8428,
     "upstream": "https://github.com/VictoriaMetrics/VictoriaMetrics",
@@ -6287,7 +6287,7 @@
     "images": [
       {
         "name": "victoriametrics",
-        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:393e4b861aabf4dff629eafba2ffb8c276a190465ef3ffb92dc001e1f1e9d5d8"
+        "image": "ghcr.io/quenchworks/images/victoriametrics@sha256:f4fa0ea581874fbe6d4c39c7534c73c3324e5f181d723354e5fab6ae0ebbebd4"
       }
     ]
   },
