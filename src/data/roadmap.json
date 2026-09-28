@@ -71,7 +71,7 @@
     "license": "LGPL-3.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Continuous code-quality and security inspection."
+    "note": "Continuous code-quality and security inspection. Measured 2026-09-28: the 26.9 Community distribution carries 72 findings (4 critical), most inside its bundled Elasticsearch 9.4.3 (x-pack modules, transport-netty4) and in fat jars (sonar-application, the scanner engine). Needs the embedded Elasticsearch rebuilt or swapped before it can gate clean."
   },
   {
     "name": "Dokploy",
@@ -318,7 +318,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Runtime security and threat detection using kernel and eBPF events."
+    "note": "Runtime security and threat detection using kernel and eBPF events. Measured 2026-09-28: the official 0.45.0 tarball bundles OpenSSL 3.1.4 (end of life) and zlib 1.3.1 statically; the public Wolfi falco-no-driver apk stops at 0.44.0-r0, whose container plugin (libcontainer.so, Go) scans at 57 findings. Needs a source build of Falco, falcosecurity/libs and the container plugin against system libraries."
   },
   {
     "name": "Wazuh",
