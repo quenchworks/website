@@ -5126,6 +5126,58 @@
     "image": "ghcr.io/quenchworks/images/mariadb-operator"
   },
   {
+    "slug": "mastodon",
+    "name": "mastodon",
+    "category": "Apps & productivity",
+    "summary": "Mastodon, the federated social network server (web and sidekiq). Built from the release tag on a hardened Wolfi ruby-4.0 runtime with every gem compiled from source against Wolfi's libvips, libpq, ICU and libxml2, and the web assets compiled at build time, so no Node ships at runtime. Nonroot, read-only rootfs; PostgreSQL and Redis are external. The streaming server is a separate image.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "4.7.2",
+    "versions": [
+      {
+        "version": "4.7.2",
+        "size": "325.3 MB",
+        "published": "2026-09-29T15:34:54Z",
+        "digest": "sha256:32d80f7e7799acfe015778d6f08115740ed920592787b24c3e839152557e84a2"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://joinmastodon.org",
+    "source": "https://github.com/mastodon/mastodon",
+    "image": "ghcr.io/quenchworks/images/mastodon"
+  },
+  {
+    "slug": "mastodon-streaming",
+    "name": "mastodon-streaming",
+    "category": "Apps & productivity",
+    "summary": "The Mastodon streaming API server (Node), the companion to the mastodon image, on a hardened Wolfi nodejs-24 runtime with only the streaming workspace's production dependencies. Nonroot, read-only rootfs. Image only, no chart; the mastodon chart deploys it.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "4.7.2",
+    "versions": [
+      {
+        "version": "4.7.2",
+        "size": "63.3 MB",
+        "published": "2026-09-29T15:36:24Z",
+        "digest": "sha256:a7fee98f8a8e85cc68b4799b53cae0b22a07f973b7b86c3ebf42743d2dbd2415"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://joinmastodon.org",
+    "source": "https://github.com/mastodon/mastodon",
+    "image": "ghcr.io/quenchworks/images/mastodon-streaming"
+  },
+  {
     "slug": "matomo",
     "name": "matomo",
     "category": "Apps & productivity",
