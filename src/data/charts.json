@@ -420,7 +420,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "1.0.0",
     "description": "Hardened Kubernetes backup: Velero with its AWS plugin, backing up to SeaweedFS over S3 in the same install, with generated keys, a bucket created at install and the backup location already configured. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "37f18e5b-c2a2-4ef9-8e60-bdc9a2c4d5cb",
@@ -442,7 +442,7 @@
       },
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:be19f91d040bd277669f764927e7ad2728a1f6b3cd241a08c1bb0af2048c54c0"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:10e43740cdf4fb4aa821d2272df73214dbccc34c48dd5ef854f4f22f62d6df8d"
       },
       {
         "name": "rclone",
@@ -628,11 +628,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
-    "appVersion": "6.9.6",
+    "chartVersion": "0.0.13",
+    "appVersion": "6.9.7",
     "description": "Centrifugo, the scalable real-time messaging server (WebSocket, SSE, HTTP-streaming, GRPC) with JWT auth, an admin UI, and a server HTTP API. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/centrifugo",
-    "imageDigest": "sha256:5312d9af2d0361fb36381fc3d177287c1a82f029eda2bc1f5e3b154e6408404f",
+    "imageDigest": "sha256:a83620c83955b2889f9bd5feea0382ed480b0abc42de98dd15bc08be69f525c6",
     "repositoryID": "5d46994a-a414-4969-8080-eae14a7aa36a",
     "port": 8000,
     "upstream": "https://centrifugal.dev",
@@ -640,7 +640,7 @@
     "images": [
       {
         "name": "centrifugo",
-        "image": "ghcr.io/quenchworks/images/centrifugo@sha256:5312d9af2d0361fb36381fc3d177287c1a82f029eda2bc1f5e3b154e6408404f"
+        "image": "ghcr.io/quenchworks/images/centrifugo@sha256:a83620c83955b2889f9bd5feea0382ed480b0abc42de98dd15bc08be69f525c6"
       }
     ]
   },
@@ -757,18 +757,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
-    "appVersion": "26.7.15.52",
+    "chartVersion": "0.0.25",
+    "appVersion": "26.7.16.2",
     "description": "Column-oriented OLAP database for real-time analytical queries over very large datasets, with high ingest rates and fast aggregations. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/clickhouse",
-    "imageDigest": "sha256:ae9ecee7771d1ed2c764897a1b9176cc21ae2fcb25c78ead316c5557d32880f9",
+    "imageDigest": "sha256:192cb0c37ad29704677cc6ac1a841ca9b3dc6ac7ea84bef74baa28e0c89cef3e",
     "repositoryID": "1ad6f385-dcc4-4892-b1f9-f3fb12a906e0",
     "upstream": "https://github.com/ClickHouse/ClickHouse",
     "chartRef": "oci://ghcr.io/quenchworks/charts/clickhouse",
     "images": [
       {
         "name": "clickhouse",
-        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:ae9ecee7771d1ed2c764897a1b9176cc21ae2fcb25c78ead316c5557d32880f9"
+        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:192cb0c37ad29704677cc6ac1a841ca9b3dc6ac7ea84bef74baa28e0c89cef3e"
       }
     ]
   },
@@ -1459,18 +1459,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
-    "appVersion": "1.9.1",
+    "chartVersion": "0.0.7",
+    "appVersion": "1.9.2",
     "description": "Envoy Gateway, the CNCF Gateway API control plane that provisions and configures fleets of Envoy proxies from GatewayClass/Gateway/HTTPRoute and its own gateway.envoyproxy.io policy CRDs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships only Envoy Gateway's own CRDs -- the Gateway API CRDs are owned by the separate quench gateway-api-crds chart and must be installed first.",
     "imageRepository": "ghcr.io/quenchworks/images/envoy-gateway",
-    "imageDigest": "sha256:75166c2b7e12c27acc42c095b939a6643b5b052f45ba7fe2ec0eaa64ed9c73bf",
+    "imageDigest": "sha256:2039caf9793000ef04a59423ad378bf2f9a041482cd4c7a18d34c9d92882cc73",
     "repositoryID": "e97ef0c4-d17c-4a5c-8f7c-84780a21bfb8",
     "upstream": "https://gateway.envoyproxy.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/envoy-gateway",
     "images": [
       {
         "name": "envoy-gateway",
-        "image": "ghcr.io/quenchworks/images/envoy-gateway@sha256:75166c2b7e12c27acc42c095b939a6643b5b052f45ba7fe2ec0eaa64ed9c73bf"
+        "image": "ghcr.io/quenchworks/images/envoy-gateway@sha256:2039caf9793000ef04a59423ad378bf2f9a041482cd4c7a18d34c9d92882cc73"
       },
       {
         "name": "envoy",
@@ -3090,7 +3090,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "1.0.0",
     "description": "Hardened open lakehouse: Trino queries Apache Iceberg tables cataloged by Nessie and stored in SeaweedFS over S3, wired together with generated S3 keys and a bucket created at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "1ee7f195-4485-4dc4-bfe7-991a1c23e4b9",
@@ -3113,7 +3113,7 @@
       },
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:be19f91d040bd277669f764927e7ad2728a1f6b3cd241a08c1bb0af2048c54c0"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:10e43740cdf4fb4aa821d2272df73214dbccc34c48dd5ef854f4f22f62d6df8d"
       },
       {
         "name": "rclone",
@@ -3580,11 +3580,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.17",
+    "chartVersion": "0.0.18",
     "appVersion": "1.53.2",
     "description": "Fast, typo-tolerant full-text search engine with an instant-search API, easy to embed for site and in-app search with relevant results out of the box. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/meilisearch",
-    "imageDigest": "sha256:81f45bc56d61050e05994fdffcd35e2c029b5fb3bd4ef8ec86a125bf7c484518",
+    "imageDigest": "sha256:e269ac67fdebad54b8cdb1e44245d357796f0ff935d545cc52b99d5058ce9a86",
     "repositoryID": "280e461c-2cdb-42e6-9600-705b68755883",
     "port": 7700,
     "upstream": "https://github.com/meilisearch/meilisearch",
@@ -3592,7 +3592,7 @@
     "images": [
       {
         "name": "meilisearch",
-        "image": "ghcr.io/quenchworks/images/meilisearch@sha256:81f45bc56d61050e05994fdffcd35e2c029b5fb3bd4ef8ec86a125bf7c484518"
+        "image": "ghcr.io/quenchworks/images/meilisearch@sha256:e269ac67fdebad54b8cdb1e44245d357796f0ff935d545cc52b99d5058ce9a86"
       }
     ]
   },
@@ -4266,11 +4266,11 @@
     "tier": "standard",
     "license": "LGPL-3.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
-    "appVersion": "19.0.20260928",
+    "chartVersion": "0.0.4",
+    "appVersion": "19.0.20260929",
     "description": "Odoo Community Edition, the Python ERP and business apps suite (CRM, sales, inventory, accounting, website), with the bundled PostgreSQL, the filestore on a PVC, the base module installed on first start and a generated admin password. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/odoo",
-    "imageDigest": "sha256:fb7b9b31f618b0dd175b6cdc5b2324c24d9ed2e45cfc1ba2106327939639e071",
+    "imageDigest": "sha256:3766183921cb0b49a1e207c8fd4bdf94f3ef1bdc0b8920a2ca66f244b3868291",
     "repositoryID": "990522b0-2649-4f53-9c07-2914b719546e",
     "port": 8069,
     "upstream": "https://www.odoo.com",
@@ -4278,7 +4278,7 @@
     "images": [
       {
         "name": "odoo",
-        "image": "ghcr.io/quenchworks/images/odoo@sha256:fb7b9b31f618b0dd175b6cdc5b2324c24d9ed2e45cfc1ba2106327939639e071"
+        "image": "ghcr.io/quenchworks/images/odoo@sha256:3766183921cb0b49a1e207c8fd4bdf94f3ef1bdc0b8920a2ca66f244b3868291"
       },
       {
         "name": "postgresql",
@@ -4659,11 +4659,11 @@
     "tier": "standard",
     "license": "HPND",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
-    "appVersion": "4.7.2",
+    "chartVersion": "0.0.12",
+    "appVersion": "4.7.3",
     "description": "PostgreSQL connection pooler, load balancer and query router. Pools client connections, spreads read-only queries across replicas, and fails over to a new primary automatically. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pgpool",
-    "imageDigest": "sha256:55b82e469be0654aa79641d3b8f5cc960aaa14650966748f987adbe393325812",
+    "imageDigest": "sha256:2f9ae9ab768cb83a6d5b9d857007d62e51921d0bb53b22628267a360de034a8d",
     "repositoryID": "a4b2c7da-4403-4221-82ca-561028a2e744",
     "port": 9999,
     "upstream": "https://git.postgresql.org/gitweb/?p=pgpool2.git",
@@ -4671,7 +4671,7 @@
     "images": [
       {
         "name": "pgpool",
-        "image": "ghcr.io/quenchworks/images/pgpool@sha256:55b82e469be0654aa79641d3b8f5cc960aaa14650966748f987adbe393325812"
+        "image": "ghcr.io/quenchworks/images/pgpool@sha256:2f9ae9ab768cb83a6d5b9d857007d62e51921d0bb53b22628267a360de034a8d"
       },
       {
         "name": "postgresql",
@@ -5336,11 +5336,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
-    "appVersion": "4.47",
+    "chartVersion": "0.0.24",
+    "appVersion": "4.48",
     "description": "Fast distributed storage for blobs, objects, and files (S3 API) built on Facebook's Haystack design, with O(1) disk seeks for billions of small files. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/seaweedfs",
-    "imageDigest": "sha256:be19f91d040bd277669f764927e7ad2728a1f6b3cd241a08c1bb0af2048c54c0",
+    "imageDigest": "sha256:10e43740cdf4fb4aa821d2272df73214dbccc34c48dd5ef854f4f22f62d6df8d",
     "repositoryID": "c0e22525-4794-4f13-a436-671e0a536544",
     "port": 8333,
     "upstream": "https://github.com/seaweedfs/seaweedfs",
@@ -5348,7 +5348,7 @@
     "images": [
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:be19f91d040bd277669f764927e7ad2728a1f6b3cd241a08c1bb0af2048c54c0"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:10e43740cdf4fb4aa821d2272df73214dbccc34c48dd5ef854f4f22f62d6df8d"
       }
     ]
   },
@@ -5746,11 +5746,11 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
-    "appVersion": "0.10.9",
+    "chartVersion": "0.0.3",
+    "appVersion": "0.10.10",
     "description": "Terralist, a private Terraform and OpenTofu registry for modules and providers: the registry protocol, a web UI, OAuth login (GitHub, GitLab, Bitbucket, OIDC) and API keys, on SQLite, PostgreSQL or MySQL. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/terralist",
-    "imageDigest": "sha256:f3192fc73095d4d459499d720eace86fc51b81f6e02e3bc7b250f6c157a538f7",
+    "imageDigest": "sha256:d630db3ada521aff48effd30ae7215e6c0dd9435391dc2b65008560c168d68f1",
     "repositoryID": "cdad728e-d2e5-4b1f-8443-35f37e697ba4",
     "port": 5758,
     "upstream": "https://www.terralist.io",
@@ -5758,7 +5758,7 @@
     "images": [
       {
         "name": "terralist",
-        "image": "ghcr.io/quenchworks/images/terralist@sha256:f3192fc73095d4d459499d720eace86fc51b81f6e02e3bc7b250f6c157a538f7"
+        "image": "ghcr.io/quenchworks/images/terralist@sha256:d630db3ada521aff48effd30ae7215e6c0dd9435391dc2b65008560c168d68f1"
       }
     ]
   },
