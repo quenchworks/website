@@ -641,7 +641,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Kubernetes operator for running and managing Kafka. Sized 2026-09-25: two from-source images, the operator (a Maven multi-module build; the release ships only install YAML) and Strimzi's own Kafka image, whose run scripts and agents the operator drives; the QuenchWorks kafka image does not have that layout."
+    "note": "Kubernetes operator for running and managing Kafka. Sized 2026-09-25: two from-source images, the operator (a Maven multi-module build; the release ships only install YAML) and Strimzi's own Kafka image, whose run scripts and agents the operator drives; the QuenchWorks kafka image does not have that layout. Measured 2026-09-29: Wolfi packages Strimzi too (strimzi-kafka-operator with kafka-strimzi-compat), but at 1.0.0-r4 against upstream 1.2.0, and that stack scans at 849 fixable findings (59 critical, 353 high), including jackson-databind 2.21.2 and the JMX exporter; so it still needs the from-source build."
   },
   {
     "name": "Apicurio Registry",
