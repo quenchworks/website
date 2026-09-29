@@ -61,6 +61,37 @@
       }
     ]
   },
+  "activemq-artemis": {
+    "image": "ghcr.io/quenchworks/images/activemq-artemis",
+    "version": "2.57.0",
+    "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.57.0",
+        "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "adc": {
     "image": "ghcr.io/quenchworks/images/adc",
     "version": "0.27.1",
@@ -187,29 +218,175 @@
     "version": "0.28.0",
     "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 2,
+    "medium": 4,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 6,
+    "fixable": 6,
+    "grade": "D",
+    "score": 34,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.1.5",
+        "fixed": "3.2.2, 3.1.6",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.1.5",
+        "fixed": "3.1.6, 3.2.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.1.5",
+        "fixed": "3.1.6, 3.2.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.28.0",
         "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 2,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 6,
+        "fixable": 6,
+        "grade": "D",
+        "score": 34,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.1.5",
+            "fixed": "3.2.2, 3.1.6",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.1.5",
+            "fixed": "3.1.6, 3.2.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.1.5",
+            "fixed": "3.1.6, 3.2.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -319,8 +496,8 @@
   },
   "apisix": {
     "image": "ghcr.io/quenchworks/images/apisix",
-    "version": "3.18.0",
-    "tag": "ghcr.io/quenchworks/images/apisix:3.18.0",
+    "version": "3.19.0",
+    "tag": "ghcr.io/quenchworks/images/apisix:3.19.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -333,8 +510,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "3.18.0",
-        "tag": "ghcr.io/quenchworks/images/apisix:3.18.0",
+        "version": "3.19.0",
+        "tag": "ghcr.io/quenchworks/images/apisix:3.19.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -384,27 +561,15 @@
     "version": "1.9.11",
     "tag": "ghcr.io/quenchworks/images/argo-events:1.9.11",
     "critical": 0,
-    "high": 1,
+    "high": 0,
     "medium": 0,
     "low": 0,
     "unknown": 2,
-    "total": 3,
+    "total": 2,
     "fixable": 0,
-    "grade": "D",
-    "score": 86,
+    "grade": "A",
+    "score": 96,
     "cves": [
-      {
-        "id": "CVE-2025-30204",
-        "severity": "HIGH",
-        "pkg": "github.com/golang-jwt/jwt",
-        "installed": "v3.2.2+incompatible",
-        "fixed": null,
-        "title": "golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing",
-        "url": "https://avd.aquasec.com/nvd/cve-2025-30204",
-        "targets": [
-          "usr/bin/argo-events"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -424,27 +589,15 @@
         "version": "1.9.11",
         "tag": "ghcr.io/quenchworks/images/argo-events:1.9.11",
         "critical": 0,
-        "high": 1,
+        "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 2,
-        "total": 3,
+        "total": 2,
         "fixable": 0,
-        "grade": "D",
-        "score": 86,
+        "grade": "A",
+        "score": 96,
         "cves": [
-          {
-            "id": "CVE-2025-30204",
-            "severity": "HIGH",
-            "pkg": "github.com/golang-jwt/jwt",
-            "installed": "v3.2.2+incompatible",
-            "fixed": null,
-            "title": "golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2025-30204",
-            "targets": [
-              "usr/bin/argo-events"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -1436,8 +1589,8 @@
   },
   "buildkite-agent": {
     "image": "ghcr.io/quenchworks/images/buildkite-agent",
-    "version": "4.0.6",
-    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.6",
+    "version": "4.0.8",
+    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.8",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -1463,62 +1616,62 @@
     ],
     "versions": [
       {
+        "version": "4.0.8",
+        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.8",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/buildkite-agent"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "4.0.7",
+        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.7",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/buildkite-agent"
+            ]
+          }
+        ]
+      },
+      {
         "version": "4.0.6",
         "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.6",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
-        "cves": [
-          {
-            "id": "GO-2026-5932",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
-            "fixed": null,
-            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-            "url": "https://go.dev/issue/44226",
-            "targets": [
-              "usr/bin/buildkite-agent"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "4.0.5",
-        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.5",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
-        "cves": [
-          {
-            "id": "GO-2026-5932",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
-            "fixed": null,
-            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-            "url": "https://go.dev/issue/44226",
-            "targets": [
-              "usr/bin/buildkite-agent"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "4.0.4",
-        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -1841,36 +1994,110 @@
     "version": "5.0.9",
     "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.0.9",
         "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
   "centrifugo": {
     "image": "ghcr.io/quenchworks/images/centrifugo",
-    "version": "6.9.6",
-    "tag": "ghcr.io/quenchworks/images/centrifugo:6.9.6",
+    "version": "6.9.7",
+    "tag": "ghcr.io/quenchworks/images/centrifugo:6.9.7",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -1896,8 +2123,8 @@
     ],
     "versions": [
       {
-        "version": "6.9.6",
-        "tag": "ghcr.io/quenchworks/images/centrifugo:6.9.6",
+        "version": "6.9.7",
+        "tag": "ghcr.io/quenchworks/images/centrifugo:6.9.7",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -2562,8 +2789,8 @@
   },
   "clickhouse": {
     "image": "ghcr.io/quenchworks/images/clickhouse",
-    "version": "26.9.4.3",
-    "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.4.3",
+    "version": "26.9.5.2",
+    "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.5.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -2576,8 +2803,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "26.9.4.3",
-        "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.4.3",
+        "version": "26.9.5.2",
+        "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.5.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -2590,8 +2817,8 @@
         "cves": []
       },
       {
-        "version": "26.7.15.52",
-        "tag": "ghcr.io/quenchworks/images/clickhouse:26.7.15.52",
+        "version": "26.7.16.2",
+        "tag": "ghcr.io/quenchworks/images/clickhouse:26.7.16.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -2701,14 +2928,74 @@
     "tag": "ghcr.io/quenchworks/images/code-server:4.139.1",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 5,
     "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "total": 6,
+    "fixable": 5,
+    "grade": "C",
+    "score": 54,
     "cves": [
+      {
+        "id": "CVE-2026-101910",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-101910",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.4.0",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-101913",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-101913",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.4.0",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-85024",
+        "severity": "MEDIUM",
+        "pkg": "undici",
+        "installed": "7.29.0",
+        "fixed": "6.28.1, 7.29.1, 8.10.2",
+        "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "GHSA-wx77-rp39-c6vg",
         "severity": "LOW",
@@ -2728,14 +3015,74 @@
         "tag": "ghcr.io/quenchworks/images/code-server:4.139.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 5,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 6,
+        "fixable": 5,
+        "grade": "C",
+        "score": 54,
         "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.4.0",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.4.0",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-85024",
+            "severity": "MEDIUM",
+            "pkg": "undici",
+            "installed": "7.29.0",
+            "fixed": "6.28.1, 7.29.1, 8.10.2",
+            "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -3425,29 +3772,103 @@
     "version": "6.4.5",
     "tag": "ghcr.io/quenchworks/images/cratedb:6.4.5",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "6.4.5",
         "tag": "ghcr.io/quenchworks/images/cratedb:6.4.5",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -4183,8 +4604,8 @@
   },
   "duckdb": {
     "image": "ghcr.io/quenchworks/images/duckdb",
-    "version": "1.5.5",
-    "tag": "ghcr.io/quenchworks/images/duckdb:1.5.5",
+    "version": "1.5.6",
+    "tag": "ghcr.io/quenchworks/images/duckdb:1.5.6",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -4197,8 +4618,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.5.5",
-        "tag": "ghcr.io/quenchworks/images/duckdb:1.5.5",
+        "version": "1.5.6",
+        "tag": "ghcr.io/quenchworks/images/duckdb:1.5.6",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4245,27 +4666,15 @@
     "version": "2.11.0",
     "tag": "ghcr.io/quenchworks/images/easegress:2.11.0",
     "critical": 0,
-    "high": 1,
+    "high": 0,
     "medium": 0,
     "low": 0,
     "unknown": 2,
-    "total": 3,
+    "total": 2,
     "fixable": 0,
-    "grade": "D",
-    "score": 86,
+    "grade": "A",
+    "score": 96,
     "cves": [
-      {
-        "id": "CVE-2025-30204",
-        "severity": "HIGH",
-        "pkg": "github.com/golang-jwt/jwt",
-        "installed": "v3.2.2+incompatible",
-        "fixed": null,
-        "title": "golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing",
-        "url": "https://avd.aquasec.com/nvd/cve-2025-30204",
-        "targets": [
-          "usr/bin/easegress-server"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -4285,27 +4694,15 @@
         "version": "2.11.0",
         "tag": "ghcr.io/quenchworks/images/easegress:2.11.0",
         "critical": 0,
-        "high": 1,
+        "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 2,
-        "total": 3,
+        "total": 2,
         "fixable": 0,
-        "grade": "D",
-        "score": 86,
+        "grade": "A",
+        "score": 96,
         "cves": [
-          {
-            "id": "CVE-2025-30204",
-            "severity": "HIGH",
-            "pkg": "github.com/golang-jwt/jwt",
-            "installed": "v3.2.2+incompatible",
-            "fixed": null,
-            "title": "golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2025-30204",
-            "targets": [
-              "usr/bin/easegress-server"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -4325,27 +4722,15 @@
         "version": "2.10.1",
         "tag": "ghcr.io/quenchworks/images/easegress:2.10.1",
         "critical": 0,
-        "high": 1,
+        "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 2,
-        "total": 3,
+        "total": 2,
         "fixable": 0,
-        "grade": "D",
-        "score": 86,
+        "grade": "A",
+        "score": 96,
         "cves": [
-          {
-            "id": "CVE-2025-30204",
-            "severity": "HIGH",
-            "pkg": "github.com/golang-jwt/jwt",
-            "installed": "v3.2.2+incompatible",
-            "fixed": null,
-            "title": "golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2025-30204",
-            "targets": [
-              "usr/bin/easegress-server"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -4365,27 +4750,15 @@
         "version": "2.9.4",
         "tag": "ghcr.io/quenchworks/images/easegress:2.9.4",
         "critical": 0,
-        "high": 1,
+        "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 2,
-        "total": 3,
+        "total": 2,
         "fixable": 0,
-        "grade": "D",
-        "score": 86,
+        "grade": "A",
+        "score": 96,
         "cves": [
-          {
-            "id": "CVE-2025-30204",
-            "severity": "HIGH",
-            "pkg": "github.com/golang-jwt/jwt",
-            "installed": "v3.2.2+incompatible",
-            "fixed": null,
-            "title": "golang-jwt/jwt: jwt-go allows excessive memory allocation during header parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2025-30204",
-            "targets": [
-              "usr/bin/easegress-server"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -4585,8 +4958,8 @@
   },
   "envoy-gateway": {
     "image": "ghcr.io/quenchworks/images/envoy-gateway",
-    "version": "1.9.1",
-    "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.9.1",
+    "version": "1.9.2",
+    "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.9.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -4612,8 +4985,8 @@
     ],
     "versions": [
       {
-        "version": "1.9.1",
-        "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.9.1",
+        "version": "1.9.2",
+        "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.9.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4639,8 +5012,8 @@
         ]
       },
       {
-        "version": "1.8.4",
-        "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.8.4",
+        "version": "1.8.5",
+        "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.8.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4655,7 +5028,7 @@
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
             "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
+            "installed": "v0.57.0",
             "fixed": null,
             "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
             "url": "https://go.dev/issue/44226",
@@ -5143,57 +5516,205 @@
     "version": "2.1.0",
     "tag": "ghcr.io/quenchworks/images/floci:2.1.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.1.0",
         "tag": "ghcr.io/quenchworks/images/floci:2.1.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "2.0.1",
         "tag": "ghcr.io/quenchworks/images/floci:2.0.1",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "2.0.0",
         "tag": "ghcr.io/quenchworks/images/floci:2.0.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -5202,29 +5723,103 @@
     "version": "2.1.0",
     "tag": "ghcr.io/quenchworks/images/floci-full:2.1.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.1.0",
         "tag": "ghcr.io/quenchworks/images/floci-full:2.1.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -5261,8 +5856,8 @@
   },
   "fluentd": {
     "image": "ghcr.io/quenchworks/images/fluentd",
-    "version": "1.19.3",
-    "tag": "ghcr.io/quenchworks/images/fluentd:1.19.3",
+    "version": "1.19.4",
+    "tag": "ghcr.io/quenchworks/images/fluentd:1.19.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -5275,8 +5870,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.19.3",
-        "tag": "ghcr.io/quenchworks/images/fluentd:1.19.3",
+        "version": "1.19.4",
+        "tag": "ghcr.io/quenchworks/images/fluentd:1.19.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5341,6 +5936,120 @@
             "url": "https://go.dev/issue/44226",
             "targets": [
               "usr/bin/helm-controller"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "flux-image-automation-controller": {
+    "image": "ghcr.io/quenchworks/images/flux-image-automation-controller",
+    "version": "1.2.5",
+    "tag": "ghcr.io/quenchworks/images/flux-image-automation-controller:1.2.5",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 1,
+    "total": 1,
+    "fixable": 0,
+    "grade": "A",
+    "score": 98,
+    "cves": [
+      {
+        "id": "GO-2026-5932",
+        "severity": "UNKNOWN",
+        "pkg": "golang.org/x/crypto",
+        "installed": "v0.56.0",
+        "fixed": null,
+        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+        "url": "https://go.dev/issue/44226",
+        "targets": [
+          "usr/bin/image-automation-controller"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.2.5",
+        "tag": "ghcr.io/quenchworks/images/flux-image-automation-controller:1.2.5",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/image-automation-controller"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "flux-image-reflector-controller": {
+    "image": "ghcr.io/quenchworks/images/flux-image-reflector-controller",
+    "version": "1.2.5",
+    "tag": "ghcr.io/quenchworks/images/flux-image-reflector-controller:1.2.5",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 1,
+    "total": 1,
+    "fixable": 0,
+    "grade": "A",
+    "score": 98,
+    "cves": [
+      {
+        "id": "GO-2026-5932",
+        "severity": "UNKNOWN",
+        "pkg": "golang.org/x/crypto",
+        "installed": "v0.56.0",
+        "fixed": null,
+        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+        "url": "https://go.dev/issue/44226",
+        "targets": [
+          "usr/bin/image-reflector-controller"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.2.5",
+        "tag": "ghcr.io/quenchworks/images/flux-image-reflector-controller:1.2.5",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/image-reflector-controller"
             ]
           }
         ]
@@ -5518,10 +6227,10 @@
       }
     ]
   },
-  "flyway": {
-    "image": "ghcr.io/quenchworks/images/flyway",
-    "version": "13.8.0",
-    "tag": "ghcr.io/quenchworks/images/flyway:13.8.0",
+  "flux-source-watcher": {
+    "image": "ghcr.io/quenchworks/images/flux-source-watcher",
+    "version": "2.2.4",
+    "tag": "ghcr.io/quenchworks/images/flux-source-watcher:2.2.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -5534,8 +6243,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "13.8.0",
-        "tag": "ghcr.io/quenchworks/images/flyway:13.8.0",
+        "version": "2.2.4",
+        "tag": "ghcr.io/quenchworks/images/flux-source-watcher:2.2.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5546,6 +6255,111 @@
         "grade": "A+",
         "score": 100,
         "cves": []
+      }
+    ]
+  },
+  "flyway": {
+    "image": "ghcr.io/quenchworks/images/flyway",
+    "version": "13.8.0",
+    "tag": "ghcr.io/quenchworks/images/flyway:13.8.0",
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 0,
+    "unknown": 0,
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "13.8.0",
+        "tag": "ghcr.io/quenchworks/images/flyway:13.8.0",
+        "critical": 0,
+        "high": 1,
+        "medium": 2,
+        "low": 0,
+        "unknown": 0,
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -5781,15 +6595,39 @@
     "version": "6.65.0",
     "tag": "ghcr.io/quenchworks/images/ghost:6.65.0",
     "critical": 0,
-    "high": 3,
-    "medium": 1,
+    "high": 5,
+    "medium": 6,
     "low": 0,
     "unknown": 0,
-    "total": 4,
-    "fixable": 0,
+    "total": 11,
+    "fixable": 7,
     "grade": "D",
-    "score": 66,
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-84292",
+        "severity": "HIGH",
+        "pkg": "fast-uri",
+        "installed": "3.1.6",
+        "fixed": "2.4.6, 3.1.7, 4.1.4",
+        "title": "fast-uri: fast-uri: Authority Injection via Unvalidated Port Serialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84292",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-84394",
+        "severity": "HIGH",
+        "pkg": "fast-uri",
+        "installed": "3.1.6",
+        "fixed": "2.4.6, 3.1.7, 4.1.4",
+        "title": "fast-uri: fast-uri: Host confusion via unbalanced URI brackets can bypass security policies",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84394",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2022-37620",
         "severity": "HIGH",
@@ -5827,6 +6665,66 @@
         ]
       },
       {
+        "id": "CVE-2026-85024",
+        "severity": "MEDIUM",
+        "pkg": "undici",
+        "installed": "6.28.0",
+        "fixed": "6.28.1, 7.29.1, 8.10.2",
+        "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-85024",
+        "severity": "MEDIUM",
+        "pkg": "undici",
+        "installed": "7.29.0",
+        "fixed": "6.28.1, 7.29.1, 8.10.2",
+        "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-85024",
+        "severity": "MEDIUM",
+        "pkg": "undici",
+        "installed": "8.10.0",
+        "fixed": "6.28.1, 7.29.1, 8.10.2",
+        "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "GHSA-6vj9-mwq6-2f5v",
+        "severity": "MEDIUM",
+        "pkg": "nodemailer",
+        "installed": "10.0.1",
+        "fixed": "10.0.2",
+        "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+        "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "GHSA-6vj9-mwq6-2f5v",
+        "severity": "MEDIUM",
+        "pkg": "nodemailer",
+        "installed": "9.1.1",
+        "fixed": "10.0.2",
+        "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+        "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
         "id": "GHSA-984p-xq9m-4rjw",
         "severity": "MEDIUM",
         "pkg": "express-brute",
@@ -5844,15 +6742,39 @@
         "version": "6.65.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.65.0",
         "critical": 0,
-        "high": 3,
-        "medium": 1,
+        "high": 5,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 0,
+        "total": 11,
+        "fixable": 7,
         "grade": "D",
-        "score": 66,
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-84292",
+            "severity": "HIGH",
+            "pkg": "fast-uri",
+            "installed": "3.1.6",
+            "fixed": "2.4.6, 3.1.7, 4.1.4",
+            "title": "fast-uri: fast-uri: Authority Injection via Unvalidated Port Serialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84292",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-84394",
+            "severity": "HIGH",
+            "pkg": "fast-uri",
+            "installed": "3.1.6",
+            "fixed": "2.4.6, 3.1.7, 4.1.4",
+            "title": "fast-uri: fast-uri: Host confusion via unbalanced URI brackets can bypass security policies",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84394",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2022-37620",
             "severity": "HIGH",
@@ -5885,6 +6807,66 @@
             "fixed": null,
             "title": "extract-zip: github.com/maxogden/extract-zip: extract-zip: Arbitrary file write and information disclosure via symlink validation bypass",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56876",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-85024",
+            "severity": "MEDIUM",
+            "pkg": "undici",
+            "installed": "6.28.0",
+            "fixed": "6.28.1, 7.29.1, 8.10.2",
+            "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-85024",
+            "severity": "MEDIUM",
+            "pkg": "undici",
+            "installed": "7.29.0",
+            "fixed": "6.28.1, 7.29.1, 8.10.2",
+            "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-85024",
+            "severity": "MEDIUM",
+            "pkg": "undici",
+            "installed": "8.10.0",
+            "fixed": "6.28.1, 7.29.1, 8.10.2",
+            "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "10.0.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "9.1.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
             "targets": [
               "Node.js"
             ]
@@ -6351,29 +7333,103 @@
     "version": "9.8.0",
     "tag": "ghcr.io/quenchworks/images/gradle:9.8.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "9.8.0",
         "tag": "ghcr.io/quenchworks/images/gradle:9.8.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -6436,8 +7492,8 @@
   },
   "grafana-alloy": {
     "image": "ghcr.io/quenchworks/images/grafana-alloy",
-    "version": "1.20.0",
-    "tag": "ghcr.io/quenchworks/images/grafana-alloy:1.20.0",
+    "version": "1.20.1",
+    "tag": "ghcr.io/quenchworks/images/grafana-alloy:1.20.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6463,8 +7519,8 @@
     ],
     "versions": [
       {
-        "version": "1.20.0",
-        "tag": "ghcr.io/quenchworks/images/grafana-alloy:1.20.0",
+        "version": "1.20.1",
+        "tag": "ghcr.io/quenchworks/images/grafana-alloy:1.20.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -6523,15 +7579,51 @@
     "version": "7.1.9",
     "tag": "ghcr.io/quenchworks/images/graylog:7.1.9",
     "critical": 0,
-    "high": 0,
-    "medium": 1,
+    "high": 2,
+    "medium": 5,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "C",
-    "score": 96,
+    "total": 7,
+    "fixable": 6,
+    "grade": "D",
+    "score": 30,
     "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2025-48924",
         "severity": "MEDIUM",
@@ -6550,15 +7642,51 @@
         "version": "7.1.9",
         "tag": "ghcr.io/quenchworks/images/graylog:7.1.9",
         "critical": 0,
-        "high": 0,
-        "medium": 1,
+        "high": 2,
+        "medium": 5,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "C",
-        "score": 96,
+        "total": 7,
+        "fixable": 6,
+        "grade": "D",
+        "score": 30,
         "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2025-48924",
             "severity": "MEDIUM",
@@ -6637,29 +7765,103 @@
     "version": "1.6.0",
     "tag": "ghcr.io/quenchworks/images/guacamole:1.6.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.6.0",
         "tag": "ghcr.io/quenchworks/images/guacamole:1.6.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -7537,6 +8739,111 @@
       }
     ]
   },
+  "homepage": {
+    "image": "ghcr.io/quenchworks/images/homepage",
+    "version": "2.4.0",
+    "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 3,
+    "low": 0,
+    "unknown": 0,
+    "total": 3,
+    "fixable": 3,
+    "grade": "C",
+    "score": 73,
+    "cves": [
+      {
+        "id": "CVE-2026-101910",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.5.0",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-101913",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.5.0",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-85024",
+        "severity": "MEDIUM",
+        "pkg": "undici",
+        "installed": "8.10.0",
+        "fixed": "6.28.1, 7.29.1, 8.10.2",
+        "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "2.4.0",
+        "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 3,
+        "low": 0,
+        "unknown": 0,
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.5.0",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.5.0",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-85024",
+            "severity": "MEDIUM",
+            "pkg": "undici",
+            "installed": "8.10.0",
+            "fixed": "6.28.1, 7.29.1, 8.10.2",
+            "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "httpd": {
     "image": "ghcr.io/quenchworks/images/httpd",
     "version": "2.4.68",
@@ -7815,26 +9122,14 @@
     "tag": "ghcr.io/quenchworks/images/influxdb:2.9.1",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 2,
+    "total": 1,
     "fixable": 0,
-    "grade": "C",
-    "score": 94,
+    "grade": "A",
+    "score": 98,
     "cves": [
-      {
-        "id": "CVE-2024-28180",
-        "severity": "MEDIUM",
-        "pkg": "gopkg.in/square/go-jose.v2",
-        "installed": "v2.5.1",
-        "fixed": null,
-        "title": "jose-go: improper handling of highly compressed data",
-        "url": "https://avd.aquasec.com/nvd/cve-2024-28180",
-        "targets": [
-          "usr/bin/influxd"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -7854,26 +9149,14 @@
         "tag": "ghcr.io/quenchworks/images/influxdb:2.9.1",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 2,
+        "total": 1,
         "fixable": 0,
-        "grade": "C",
-        "score": 94,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2024-28180",
-            "severity": "MEDIUM",
-            "pkg": "gopkg.in/square/go-jose.v2",
-            "installed": "v2.5.1",
-            "fixed": null,
-            "title": "jose-go: improper handling of highly compressed data",
-            "url": "https://avd.aquasec.com/nvd/cve-2024-28180",
-            "targets": [
-              "usr/bin/influxd"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -8366,29 +9649,103 @@
     "version": "5.6.3",
     "tag": "ghcr.io/quenchworks/images/jmeter:5.6.3",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.6.3",
         "tag": "ghcr.io/quenchworks/images/jmeter:5.6.3",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -8558,29 +9915,103 @@
     "version": "4.3.1",
     "tag": "ghcr.io/quenchworks/images/kafka:4.3.1",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.3.1",
         "tag": "ghcr.io/quenchworks/images/kafka:4.3.1",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -8679,29 +10110,103 @@
     "version": "26.7.4",
     "tag": "ghcr.io/quenchworks/images/keycloak:26.7.4",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "26.7.4",
         "tag": "ghcr.io/quenchworks/images/keycloak:26.7.4",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -9912,8 +11417,8 @@
   },
   "litellm": {
     "image": "ghcr.io/quenchworks/images/litellm",
-    "version": "1.102.1",
-    "tag": "ghcr.io/quenchworks/images/litellm:1.102.1",
+    "version": "1.103.0",
+    "tag": "ghcr.io/quenchworks/images/litellm:1.103.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -9926,8 +11431,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.102.1",
-        "tag": "ghcr.io/quenchworks/images/litellm:1.102.1",
+        "version": "1.103.0",
+        "tag": "ghcr.io/quenchworks/images/litellm:1.103.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10636,8 +12141,8 @@
   },
   "meilisearch": {
     "image": "ghcr.io/quenchworks/images/meilisearch",
-    "version": "1.54.0",
-    "tag": "ghcr.io/quenchworks/images/meilisearch:1.54.0",
+    "version": "1.54.1",
+    "tag": "ghcr.io/quenchworks/images/meilisearch:1.54.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -10649,6 +12154,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.54.1",
+        "tag": "ghcr.io/quenchworks/images/meilisearch:1.54.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.54.0",
         "tag": "ghcr.io/quenchworks/images/meilisearch:1.54.0",
@@ -10666,20 +12185,6 @@
       {
         "version": "1.53.2",
         "tag": "ghcr.io/quenchworks/images/meilisearch:1.53.2",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "1.53.1",
-        "tag": "ghcr.io/quenchworks/images/meilisearch:1.53.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10711,6 +12216,37 @@
       {
         "version": "1.6.45",
         "tag": "ghcr.io/quenchworks/images/memcached:1.6.45",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "metabase": {
+    "image": "ghcr.io/quenchworks/images/metabase",
+    "version": "0.63.18",
+    "tag": "ghcr.io/quenchworks/images/metabase:0.63.18",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.63.18",
+        "tag": "ghcr.io/quenchworks/images/metabase:0.63.18",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10990,8 +12526,8 @@
   },
   "mongodb": {
     "image": "ghcr.io/quenchworks/images/mongodb",
-    "version": "8.0.32",
-    "tag": "ghcr.io/quenchworks/images/mongodb:8.0.32",
+    "version": "9.0.2",
+    "tag": "ghcr.io/quenchworks/images/mongodb:9.0.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -11003,6 +12539,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "9.0.2",
+        "tag": "ghcr.io/quenchworks/images/mongodb:9.0.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "8.0.32",
         "tag": "ghcr.io/quenchworks/images/mongodb:8.0.32",
@@ -11243,14 +12793,38 @@
     "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
     "critical": 0,
     "high": 0,
-    "medium": 4,
+    "medium": 6,
     "low": 0,
     "unknown": 0,
-    "total": 4,
-    "fixable": 0,
+    "total": 6,
+    "fixable": 2,
     "grade": "C",
-    "score": 84,
+    "score": 66,
     "cves": [
+      {
+        "id": "CVE-2026-85024",
+        "severity": "MEDIUM",
+        "pkg": "undici",
+        "installed": "7.29.0",
+        "fixed": "6.28.1, 7.29.1, 8.10.2",
+        "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "GHSA-6vj9-mwq6-2f5v",
+        "severity": "MEDIUM",
+        "pkg": "nodemailer",
+        "installed": "9.1.1",
+        "fixed": "10.0.2",
+        "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+        "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2024-1899",
         "severity": "MEDIUM",
@@ -11306,14 +12880,38 @@
         "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
         "critical": 0,
         "high": 0,
-        "medium": 4,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 0,
+        "total": 6,
+        "fixable": 2,
         "grade": "C",
-        "score": 84,
+        "score": 66,
         "cves": [
+          {
+            "id": "CVE-2026-85024",
+            "severity": "MEDIUM",
+            "pkg": "undici",
+            "installed": "7.29.0",
+            "fixed": "6.28.1, 7.29.1, 8.10.2",
+            "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "9.1.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2024-1899",
             "severity": "MEDIUM",
@@ -11372,28 +12970,78 @@
     "tag": "ghcr.io/quenchworks/images/n8n-runners:2.40.7",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 4,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 4,
+    "fixable": 4,
+    "grade": "C",
+    "score": 64,
+    "cves": [
+      {
+        "id": "CVE-2026-101910",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-101913",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.40.7",
         "tag": "ghcr.io/quenchworks/images/n8n-runners:2.40.7",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 64,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -11873,56 +13521,156 @@
     "tag": "ghcr.io/quenchworks/images/node:26.10.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 4,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 4,
+    "fixable": 4,
+    "grade": "C",
+    "score": 64,
+    "cves": [
+      {
+        "id": "CVE-2026-101910",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-101913",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "26.10.0",
         "tag": "ghcr.io/quenchworks/images/node:26.10.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 64,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "24.21.0",
         "tag": "ghcr.io/quenchworks/images/node:24.21.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 64,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "22.23.2",
         "tag": "ghcr.io/quenchworks/images/node:22.23.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "C",
+        "score": 64,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -12210,6 +13958,37 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "odoo": {
+    "image": "ghcr.io/quenchworks/images/odoo",
+    "version": "19.0.20260929",
+    "tag": "ghcr.io/quenchworks/images/odoo:19.0.20260929",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "19.0.20260929",
+        "tag": "ghcr.io/quenchworks/images/odoo:19.0.20260929",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -12732,29 +14511,175 @@
     "version": "3.8.0",
     "tag": "ghcr.io/quenchworks/images/opensearch:3.8.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 18,
+    "medium": 36,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 54,
+    "fixable": 54,
+    "grade": "D",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.2.1",
+        "fixed": "3.2.2, 3.1.6",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.2.1",
+        "fixed": "3.1.6, 3.2.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.2.1",
+        "fixed": "3.1.6, 3.2.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.8.0",
         "tag": "ghcr.io/quenchworks/images/opensearch:3.8.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 18,
+        "medium": 36,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 54,
+        "fixable": 54,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.2.1",
+            "fixed": "3.2.2, 3.1.6",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.2.1",
+            "fixed": "3.1.6, 3.2.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.2.1",
+            "fixed": "3.1.6, 3.2.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -13398,8 +15323,8 @@
   },
   "pgpool": {
     "image": "ghcr.io/quenchworks/images/pgpool",
-    "version": "4.7.2",
-    "tag": "ghcr.io/quenchworks/images/pgpool:4.7.2",
+    "version": "4.7.3",
+    "tag": "ghcr.io/quenchworks/images/pgpool:4.7.3",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13412,8 +15337,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "4.7.2",
-        "tag": "ghcr.io/quenchworks/images/pgpool:4.7.2",
+        "version": "4.7.3",
+        "tag": "ghcr.io/quenchworks/images/pgpool:4.7.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13426,8 +15351,8 @@
         "cves": []
       },
       {
-        "version": "4.6.7",
-        "tag": "ghcr.io/quenchworks/images/pgpool:4.6.7",
+        "version": "4.6.8",
+        "tag": "ghcr.io/quenchworks/images/pgpool:4.6.8",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13440,8 +15365,8 @@
         "cves": []
       },
       {
-        "version": "4.5.12",
-        "tag": "ghcr.io/quenchworks/images/pgpool:4.5.12",
+        "version": "4.5.13",
+        "tag": "ghcr.io/quenchworks/images/pgpool:4.5.13",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13606,8 +15531,8 @@
   },
   "pnpm": {
     "image": "ghcr.io/quenchworks/images/pnpm",
-    "version": "12.7.0",
-    "tag": "ghcr.io/quenchworks/images/pnpm:12.7.0",
+    "version": "12.8.1",
+    "tag": "ghcr.io/quenchworks/images/pnpm:12.8.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13620,8 +15545,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "12.7.0",
-        "tag": "ghcr.io/quenchworks/images/pnpm:12.7.0",
+        "version": "12.8.1",
+        "tag": "ghcr.io/quenchworks/images/pnpm:12.8.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13634,8 +15559,8 @@
         "cves": []
       },
       {
-        "version": "11.28.0",
-        "tag": "ghcr.io/quenchworks/images/pnpm:11.28.0",
+        "version": "11.28.2",
+        "tag": "ghcr.io/quenchworks/images/pnpm:11.28.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -14436,29 +16361,103 @@
     "version": "4.2.4",
     "tag": "ghcr.io/quenchworks/images/pulsar:4.2.4",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.2.4",
         "tag": "ghcr.io/quenchworks/images/pulsar:4.2.4",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -14903,8 +16902,8 @@
   },
   "redis-exporter": {
     "image": "ghcr.io/quenchworks/images/redis-exporter",
-    "version": "1.92.0",
-    "tag": "ghcr.io/quenchworks/images/redis-exporter:1.92.0",
+    "version": "1.92.1",
+    "tag": "ghcr.io/quenchworks/images/redis-exporter:1.92.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -14929,6 +16928,33 @@
       }
     ],
     "versions": [
+      {
+        "version": "1.92.1",
+        "tag": "ghcr.io/quenchworks/images/redis-exporter:1.92.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/redis_exporter"
+            ]
+          }
+        ]
+      },
       {
         "version": "1.92.0",
         "tag": "ghcr.io/quenchworks/images/redis-exporter:1.92.0",
@@ -14982,33 +17008,37 @@
             ]
           }
         ]
-      },
+      }
+    ]
+  },
+  "redmine": {
+    "image": "ghcr.io/quenchworks/images/redmine",
+    "version": "7.0.1",
+    "tag": "ghcr.io/quenchworks/images/redmine:7.0.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
       {
-        "version": "1.91.0",
-        "tag": "ghcr.io/quenchworks/images/redis-exporter:1.91.0",
+        "version": "7.0.1",
+        "tag": "ghcr.io/quenchworks/images/redmine:7.0.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 1,
-        "total": 1,
+        "unknown": 0,
+        "total": 0,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
-        "cves": [
-          {
-            "id": "GO-2026-5932",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
-            "fixed": null,
-            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-            "url": "https://go.dev/issue/44226",
-            "targets": [
-              "usr/bin/redis_exporter"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -15125,8 +17155,8 @@
   },
   "renovate": {
     "image": "ghcr.io/quenchworks/images/renovate",
-    "version": "44.115.12",
-    "tag": "ghcr.io/quenchworks/images/renovate:44.115.12",
+    "version": "44.118.1",
+    "tag": "ghcr.io/quenchworks/images/renovate:44.118.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -15139,8 +17169,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "44.115.12",
-        "tag": "ghcr.io/quenchworks/images/renovate:44.115.12",
+        "version": "44.118.1",
+        "tag": "ghcr.io/quenchworks/images/renovate:44.118.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -15187,8 +17217,8 @@
   },
   "rqlite": {
     "image": "ghcr.io/quenchworks/images/rqlite",
-    "version": "10.3.6",
-    "tag": "ghcr.io/quenchworks/images/rqlite:10.3.6",
+    "version": "10.3.7",
+    "tag": "ghcr.io/quenchworks/images/rqlite:10.3.7",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -15214,8 +17244,8 @@
     ],
     "versions": [
       {
-        "version": "10.3.6",
-        "tag": "ghcr.io/quenchworks/images/rqlite:10.3.6",
+        "version": "10.3.7",
+        "tag": "ghcr.io/quenchworks/images/rqlite:10.3.7",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -15521,8 +17551,8 @@
   },
   "seaweedfs": {
     "image": "ghcr.io/quenchworks/images/seaweedfs",
-    "version": "4.47",
-    "tag": "ghcr.io/quenchworks/images/seaweedfs:4.47",
+    "version": "4.48",
+    "tag": "ghcr.io/quenchworks/images/seaweedfs:4.48",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -15537,7 +17567,7 @@
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
-        "installed": "v0.56.0",
+        "installed": "v0.57.0",
         "fixed": null,
         "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
         "url": "https://go.dev/issue/44226",
@@ -15548,8 +17578,8 @@
     ],
     "versions": [
       {
-        "version": "4.47",
-        "tag": "ghcr.io/quenchworks/images/seaweedfs:4.47",
+        "version": "4.48",
+        "tag": "ghcr.io/quenchworks/images/seaweedfs:4.48",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -15564,7 +17594,7 @@
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
             "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
+            "installed": "v0.57.0",
             "fixed": null,
             "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
             "url": "https://go.dev/issue/44226",
@@ -15669,29 +17699,103 @@
     "version": "11.0.0",
     "tag": "ghcr.io/quenchworks/images/skywalking:11.0.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.18.9",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "11.0.0",
         "tag": "ghcr.io/quenchworks/images/skywalking:11.0.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.18.9",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -15700,15 +17804,27 @@
     "version": "10.0.0",
     "tag": "ghcr.io/quenchworks/images/solr:10.0.0",
     "critical": 0,
-    "high": 1,
-    "medium": 0,
+    "high": 2,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
+    "total": 4,
+    "fixable": 3,
     "grade": "D",
-    "score": 90,
+    "score": 57,
     "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-44825",
         "severity": "HIGH",
@@ -15720,6 +17836,30 @@
         "targets": [
           "Java"
         ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
       }
     ],
     "versions": [
@@ -15727,15 +17867,27 @@
         "version": "10.0.0",
         "tag": "ghcr.io/quenchworks/images/solr:10.0.0",
         "critical": 0,
-        "high": 1,
-        "medium": 0,
+        "high": 2,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
+        "total": 4,
+        "fixable": 3,
         "grade": "D",
-        "score": 90,
+        "score": 57,
         "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-44825",
             "severity": "HIGH",
@@ -15744,6 +17896,30 @@
             "fixed": null,
             "title": "solr: Apache Solr: Remote attacker gains administrative access via hardcoded credentials in Basic Authentication setup.",
             "url": "https://avd.aquasec.com/nvd/cve-2026-44825",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
             "targets": [
               "Java"
             ]
@@ -16480,8 +18656,8 @@
   },
   "terralist": {
     "image": "ghcr.io/quenchworks/images/terralist",
-    "version": "0.10.9",
-    "tag": "ghcr.io/quenchworks/images/terralist:0.10.9",
+    "version": "0.10.10",
+    "tag": "ghcr.io/quenchworks/images/terralist:0.10.10",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -16507,8 +18683,8 @@
     ],
     "versions": [
       {
-        "version": "0.10.9",
-        "tag": "ghcr.io/quenchworks/images/terralist:0.10.9",
+        "version": "0.10.10",
+        "tag": "ghcr.io/quenchworks/images/terralist:0.10.10",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16532,6 +18708,68 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "tetragon": {
+    "image": "ghcr.io/quenchworks/images/tetragon",
+    "version": "1.7.1",
+    "tag": "ghcr.io/quenchworks/images/tetragon:1.7.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.7.1",
+        "tag": "ghcr.io/quenchworks/images/tetragon:1.7.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "tetragon-operator": {
+    "image": "ghcr.io/quenchworks/images/tetragon-operator",
+    "version": "1.7.1",
+    "tag": "ghcr.io/quenchworks/images/tetragon-operator:1.7.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.7.1",
+        "tag": "ghcr.io/quenchworks/images/tetragon-operator:1.7.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -16886,29 +19124,175 @@
     "version": "483",
     "tag": "ghcr.io/quenchworks/images/trino:483",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 14,
+    "medium": 28,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 42,
+    "fixable": 42,
+    "grade": "D",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.2.1",
+        "fixed": "3.2.2, 3.1.6",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.2.1",
+        "fixed": "3.1.6, 3.2.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.22.1",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "tools.jackson.core:jackson-databind",
+        "installed": "3.2.1",
+        "fixed": "3.1.6, 3.2.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "483",
         "tag": "ghcr.io/quenchworks/images/trino:483",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 14,
+        "medium": 28,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 42,
+        "fixable": 42,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.2.1",
+            "fixed": "3.2.2, 3.1.6",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.2.1",
+            "fixed": "3.1.6, 3.2.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.22.1",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "tools.jackson.core:jackson-databind",
+            "installed": "3.2.1",
+            "fixed": "3.1.6, 3.2.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -17236,56 +19620,204 @@
     "tag": "ghcr.io/quenchworks/images/unleash:8.2.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "C",
+    "score": 73,
+    "cves": [
+      {
+        "id": "CVE-2026-101910",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-101913",
+        "severity": "MEDIUM",
+        "pkg": "ip-address",
+        "installed": "10.3.1",
+        "fixed": "10.5.1",
+        "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "GHSA-6vj9-mwq6-2f5v",
+        "severity": "MEDIUM",
+        "pkg": "nodemailer",
+        "installed": "9.1.1",
+        "fixed": "10.0.2",
+        "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+        "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "8.2.0",
         "tag": "ghcr.io/quenchworks/images/unleash:8.2.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "9.1.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "8.1.0",
         "tag": "ghcr.io/quenchworks/images/unleash:8.1.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "9.1.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "8.0.3",
         "tag": "ghcr.io/quenchworks/images/unleash:8.0.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-101910",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101910",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-101913",
+            "severity": "MEDIUM",
+            "pkg": "ip-address",
+            "installed": "10.3.1",
+            "fixed": "10.5.1",
+            "title": "ip-address is a library for parsing and manipulating IPv4 and IPv6 add ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-101913",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "9.1.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -17295,35 +19827,85 @@
     "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.5",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 82,
+    "cves": [
+      {
+        "id": "CVE-2026-85024",
+        "severity": "MEDIUM",
+        "pkg": "undici",
+        "installed": "6.28.0",
+        "fixed": "6.28.1, 7.29.1, 8.10.2",
+        "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "GHSA-6vj9-mwq6-2f5v",
+        "severity": "MEDIUM",
+        "pkg": "nodemailer",
+        "installed": "9.1.1",
+        "fixed": "10.0.2",
+        "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+        "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.5.5",
         "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.5",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-85024",
+            "severity": "MEDIUM",
+            "pkg": "undici",
+            "installed": "6.28.0",
+            "fixed": "6.28.1, 7.29.1, 8.10.2",
+            "title": "undici: undici: Denial of Service via unhandled error in WebSocket permessage-deflate decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85024",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "9.1.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
   "uv": {
     "image": "ghcr.io/quenchworks/images/uv",
-    "version": "0.12.18",
-    "tag": "ghcr.io/quenchworks/images/uv:0.12.18",
+    "version": "0.12.20",
+    "tag": "ghcr.io/quenchworks/images/uv:0.12.20",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -17336,36 +19918,36 @@
     "cves": [],
     "versions": [
       {
+        "version": "0.12.20",
+        "tag": "ghcr.io/quenchworks/images/uv:0.12.20",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "0.12.19",
+        "tag": "ghcr.io/quenchworks/images/uv:0.12.19",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
         "version": "0.12.18",
         "tag": "ghcr.io/quenchworks/images/uv:0.12.18",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.12.17",
-        "tag": "ghcr.io/quenchworks/images/uv:0.12.17",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.12.16",
-        "tag": "ghcr.io/quenchworks/images/uv:0.12.16",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -17614,8 +20196,8 @@
   },
   "velero": {
     "image": "ghcr.io/quenchworks/images/velero",
-    "version": "1.18.3",
-    "tag": "ghcr.io/quenchworks/images/velero:1.18.3",
+    "version": "1.18.4",
+    "tag": "ghcr.io/quenchworks/images/velero:1.18.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -17641,8 +20223,8 @@
     ],
     "versions": [
       {
-        "version": "1.18.3",
-        "tag": "ghcr.io/quenchworks/images/velero:1.18.3",
+        "version": "1.18.4",
+        "tag": "ghcr.io/quenchworks/images/velero:1.18.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -17671,8 +20253,8 @@
   },
   "velero-plugin-for-aws": {
     "image": "ghcr.io/quenchworks/images/velero-plugin-for-aws",
-    "version": "1.14.3",
-    "tag": "ghcr.io/quenchworks/images/velero-plugin-for-aws:1.14.3",
+    "version": "1.14.4",
+    "tag": "ghcr.io/quenchworks/images/velero-plugin-for-aws:1.14.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -17685,8 +20267,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.14.3",
-        "tag": "ghcr.io/quenchworks/images/velero-plugin-for-aws:1.14.3",
+        "version": "1.14.4",
+        "tag": "ghcr.io/quenchworks/images/velero-plugin-for-aws:1.14.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -17733,8 +20315,8 @@
   },
   "victoriametrics": {
     "image": "ghcr.io/quenchworks/images/victoriametrics",
-    "version": "1.152.0",
-    "tag": "ghcr.io/quenchworks/images/victoriametrics:1.152.0",
+    "version": "1.153.0",
+    "tag": "ghcr.io/quenchworks/images/victoriametrics:1.153.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -17747,8 +20329,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.152.0",
-        "tag": "ghcr.io/quenchworks/images/victoriametrics:1.152.0",
+        "version": "1.153.0",
+        "tag": "ghcr.io/quenchworks/images/victoriametrics:1.153.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -18026,29 +20608,103 @@
     "version": "41.0.1",
     "tag": "ghcr.io/quenchworks/images/wildfly:41.0.1",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "41.0.1",
         "tag": "ghcr.io/quenchworks/images/wildfly:41.0.1",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -18207,28 +20863,54 @@
     "tag": "ghcr.io/quenchworks/images/xyops:1.1.2",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "GHSA-6vj9-mwq6-2f5v",
+        "severity": "MEDIUM",
+        "pkg": "nodemailer",
+        "installed": "9.1.1",
+        "fixed": "10.0.2",
+        "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+        "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.1.2",
         "tag": "ghcr.io/quenchworks/images/xyops:1.1.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "GHSA-6vj9-mwq6-2f5v",
+            "severity": "MEDIUM",
+            "pkg": "nodemailer",
+            "installed": "9.1.1",
+            "fixed": "10.0.2",
+            "title": "Nodemailer: Process-global DNS cache reuses TLS `servername` across transports, enabling cross-tenant SMTP credential disclosure",
+            "url": "https://github.com/advisories/GHSA-6vj9-mwq6-2f5v",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -18296,36 +20978,110 @@
     "version": "3.6.1",
     "tag": "ghcr.io/quenchworks/images/zipkin:3.6.1",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 67,
+    "cves": [
+      {
+        "id": "CVE-2026-68497",
+        "severity": "HIGH",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-19032",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-83557",
+        "severity": "MEDIUM",
+        "pkg": "com.fasterxml.jackson.core:jackson-databind",
+        "installed": "2.21.5",
+        "fixed": "2.18.10, 2.21.6, 2.22.2",
+        "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.6.1",
         "tag": "ghcr.io/quenchworks/images/zipkin:3.6.1",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-68497",
+            "severity": "HIGH",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: CPU Denial of Service via unbounded numeric parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-68497",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-19032",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: Jackson-databind: Uncontrolled URI scheme resolution in Path deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19032",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-83557",
+            "severity": "MEDIUM",
+            "pkg": "com.fasterxml.jackson.core:jackson-databind",
+            "installed": "2.21.5",
+            "fixed": "2.18.10, 2.21.6, 2.22.2",
+            "title": "com.fasterxml.jackson.core/jackson-databind: tools.jackson.core/jackson-databind: jackson-databind: Path traversal via incomplete type validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-83557",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
   "zitadel": {
     "image": "ghcr.io/quenchworks/images/zitadel",
-    "version": "4.19.1",
-    "tag": "ghcr.io/quenchworks/images/zitadel:4.19.1",
+    "version": "4.19.2",
+    "tag": "ghcr.io/quenchworks/images/zitadel:4.19.2",
     "critical": 0,
     "high": 0,
     "medium": 1,
@@ -18363,8 +21119,8 @@
     ],
     "versions": [
       {
-        "version": "4.19.1",
-        "tag": "ghcr.io/quenchworks/images/zitadel:4.19.1",
+        "version": "4.19.2",
+        "tag": "ghcr.io/quenchworks/images/zitadel:4.19.2",
         "critical": 0,
         "high": 0,
         "medium": 1,
