@@ -114,4 +114,9 @@ jobs:
           git commit -m "chore(security): nightly Trivy scan of all catalog images" \
                      -m "Per-version severity counts, grade/score, and the deduped per-CVE detail (id, severity, package, installed/fixed version, title, advisory URL, affected targets) the detail pages and the /api/v1/security endpoints serve." \
                      -m "Co-Authored-By: QuenchWorks <info@quench-works.com>"
-          git push
+          # the scan takes ~10 minutes, so main has usually moved by now: rebase, then push
+          for i in 1 2 3; do
+            git pull --rebase -q origin main && git push && exit 0
+            sleep 5
+          done
+          echo "could not push security.json after 3 attempts"; exit 1
