@@ -112,7 +112,7 @@
     "license": "GPL-3.0-or-later",
     "licenseClean": "agpl",
     "priority": "planned",
-    "note": "PHP learning management system backed by MySQL, MariaDB, or PostgreSQL."
+    "note": "PHP learning management system backed by MySQL, MariaDB, or PostgreSQL. Measured 2026-09-29 at 5.2.3: the PHP side is fixable (5.2 runs composer install at build, so guzzle, psr7, aws-sdk-php, php-jwt, slim and jmespath float like mediawiki), but the H5P editor ships a prebuilt CKEditor 5 43.0.0 bundle (CVE-2024-45613, CVE-2026-28343 fixed only in 47.6.0; lodash-es CVE-2026-4800 HIGH). The fix is a four-major rebuild of a custom H5P build nothing would test, so the image is held until Moodle updates that bundle."
   },
   {
     "name": "SuiteCRM",
