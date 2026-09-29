@@ -96,7 +96,7 @@
     "license": "GPL-2.0-or-later",
     "licenseClean": "agpl",
     "priority": "planned",
-    "note": "Ruby discussion and forum platform backed by PostgreSQL and Redis."
+    "note": "Ruby discussion and forum platform backed by PostgreSQL and Redis. Measured 2026-09-29 at 2026.9.0: the Gemfile.lock and pnpm-lock.yaml scan clean and Wolfi has ruby-3.4, ImageMagick 7, pngquant and oxipng, but two native gems ship only prebuilt binaries the scanner cannot see into: libv8-node (V8 for mini_racer, which PrettyText needs; a source build is a multi-hour Node V8 compile per arch) and sass-embedded (a bundled dart-sass, needed at runtime for theme CSS; Wolfi has the Dart SDK, so that half is buildable). Held on the V8 build."
   },
   {
     "name": "Moodle",
