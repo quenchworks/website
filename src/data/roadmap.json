@@ -83,14 +83,6 @@
     "cleanAlternative": "Coolify (Apache-2.0), already shipped."
   },
   {
-    "name": "Joomla",
-    "category": "Apps & productivity",
-    "license": "GPL-2.0-or-later",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "PHP CMS backed by MySQL or MariaDB. Measured 2026-09-29: the recipe builds and gates clean except the vendored web-auth/webauthn-lib 4.5.2 (CVE-2024-39912, fixed 4.9.0). Joomla pins 4.5.2 on every branch and 4.9 is not a drop-in for its passkey plugin, so the image is held until upstream moves."
-  },
-  {
     "name": "Discourse",
     "category": "Apps & productivity",
     "license": "GPL-2.0-or-later",
@@ -154,7 +146,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Pipeline-based continuous integration system backed by PostgreSQL. Held 2026-09-26: Concourse workers run containerd or Guardian and need a privileged root container, so only the web node could meet the nonroot rule, and a web node without in-cluster workers runs no builds."
+    "note": "Pipeline-based continuous integration system backed by PostgreSQL. Images shipped 2026-09-30 (web and worker, with the registry-image and time resource types bundled, plus concourse-git-resource). The worker runs root and privileged, which containerd needs. Chart held 2026-09-30: under kind on GitHub's Ubuntu 24.04 runners, task containers fail to mount /sys in their user namespace, while the same install runs tasks elsewhere; the release waits for that cause."
   },
   {
     "name": "Apache Druid",
