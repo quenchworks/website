@@ -384,11 +384,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.25",
+    "chartVersion": "0.1.26",
     "appVersion": "2026.8.3",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
-    "imageDigest": "sha256:2fc334374b8c59477ec7522214bbc447f7c702e4a94dbbdedd57650465f4b1a3",
+    "imageDigest": "sha256:123120ff36efa31be9c0c002146c0a48e94e4d992683faff5028738ab32ab066",
     "repositoryID": "50bb4aa5-5b51-4158-bafa-3e0a9204ef5b",
     "port": 80,
     "upstream": "https://goauthentik.io",
@@ -396,7 +396,7 @@
     "images": [
       {
         "name": "authentik",
-        "image": "ghcr.io/quenchworks/images/authentik@sha256:2fc334374b8c59477ec7522214bbc447f7c702e4a94dbbdedd57650465f4b1a3"
+        "image": "ghcr.io/quenchworks/images/authentik@sha256:123120ff36efa31be9c0c002146c0a48e94e4d992683faff5028738ab32ab066"
       },
       {
         "name": "postgresql",
@@ -1888,11 +1888,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.29",
+    "chartVersion": "0.0.30",
     "appVersion": "1.27.3",
     "description": "Lightweight self-hosted Git service with repositories, issues, pull requests, and built-in CI/CD (Actions). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/gitea",
-    "imageDigest": "sha256:5dd27e37a92d35fb5ad7d4b504c9710f0559fea9f854b48f49bebf45cd137f2d",
+    "imageDigest": "sha256:afea10a56d1051c65e3c9a4148b0ea7ed8051a4746854002ee17c8ad8189759f",
     "repositoryID": "7fc07dfc-0e91-4ef3-ba34-5cc905c8195e",
     "port": 3000,
     "upstream": "https://github.com/go-gitea/gitea",
@@ -1900,7 +1900,7 @@
     "images": [
       {
         "name": "gitea",
-        "image": "ghcr.io/quenchworks/images/gitea@sha256:5dd27e37a92d35fb5ad7d4b504c9710f0559fea9f854b48f49bebf45cd137f2d"
+        "image": "ghcr.io/quenchworks/images/gitea@sha256:afea10a56d1051c65e3c9a4148b0ea7ed8051a4746854002ee17c8ad8189759f"
       },
       {
         "name": "postgresql",
@@ -2073,7 +2073,7 @@
     "tier": "standard",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "7.1.9",
     "description": "Hardened Graylog log management server on a 0-CVE nonroot image, with bundled MongoDB (config/metadata) and OpenSearch (log storage) backends. NOTE the SSPL-1.0 license (source-available, not OSI-approved).",
     "imageRepository": "ghcr.io/quenchworks/images/graylog",
@@ -2093,7 +2093,7 @@
       },
       {
         "name": "opensearch",
-        "image": "ghcr.io/quenchworks/images/opensearch@sha256:33fe319196e90c0db9112444056006906f196eea2a8d256d11d10446e3260cae"
+        "image": "ghcr.io/quenchworks/images/opensearch@sha256:36f153657718e39bdfdecc8f3fd8c6fb1a788462f543fcfc5c5a3f02a411a2c3"
       }
     ],
     "caution": true
@@ -2658,18 +2658,18 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "6.0.1",
     "description": "JupyterHub, multi-user Jupyter notebooks on Kubernetes: the hub, configurable-http-proxy and KubeSpawner, with notebook servers as pods. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/jupyterhub",
-    "imageDigest": "sha256:0f3223ae012bb9dee01f79a4e7ddf1adb4a2124445f42ffe71f7ddaf0cd55b3b",
+    "imageDigest": "sha256:bbee65ec5abb2c40bda4972efb877cdf0af833871c6059a5eff16f7f3b0a4bfd",
     "repositoryID": "6a8c8ce9-322f-4bd1-b187-0682e8bec78d",
     "upstream": "https://github.com/jupyterhub/jupyterhub",
     "chartRef": "oci://ghcr.io/quenchworks/charts/jupyterhub",
     "images": [
       {
         "name": "jupyterhub",
-        "image": "ghcr.io/quenchworks/images/jupyterhub@sha256:0f3223ae012bb9dee01f79a4e7ddf1adb4a2124445f42ffe71f7ddaf0cd55b3b"
+        "image": "ghcr.io/quenchworks/images/jupyterhub@sha256:bbee65ec5abb2c40bda4972efb877cdf0af833871c6059a5eff16f7f3b0a4bfd"
       },
       {
         "name": "configurable-http-proxy",
@@ -3308,7 +3308,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "1.0.0",
     "description": "Self-hosted LLM stack: Ollama runs the models, LiteLLM serves them through one OpenAI-compatible API with a generated key, and Qdrant stores embeddings for retrieval. The models you list are pulled at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "ff84a3b9-4bf9-49fd-be69-4b4e771b851a",
@@ -3323,7 +3323,7 @@
     "images": [
       {
         "name": "ollama",
-        "image": "ghcr.io/quenchworks/images/ollama@sha256:dfb68575295c9f774cc3df3482564f5b252fca4f1c29f2cf58f816db0074e3e5"
+        "image": "ghcr.io/quenchworks/images/ollama@sha256:d2304f1f84c16b6e43c98a839097d56ec51b527b684904b6d17a4714ca8f9578"
       },
       {
         "name": "litellm",
@@ -3806,7 +3806,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "1.0.0",
     "description": "Hardened machine-learning stack: JupyterHub notebooks, the MLflow tracking server and model registry, and Label Studio for data labeling, wired together in one install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "4aaaf235-8151-4493-be32-1cee9a4140de",
@@ -3829,7 +3829,7 @@
       },
       {
         "name": "jupyterhub",
-        "image": "ghcr.io/quenchworks/images/jupyterhub@sha256:0f3223ae012bb9dee01f79a4e7ddf1adb4a2124445f42ffe71f7ddaf0cd55b3b"
+        "image": "ghcr.io/quenchworks/images/jupyterhub@sha256:bbee65ec5abb2c40bda4972efb877cdf0af833871c6059a5eff16f7f3b0a4bfd"
       },
       {
         "name": "configurable-http-proxy",
@@ -4085,11 +4085,11 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.17",
+    "chartVersion": "0.0.18",
     "appVersion": "34.0.4",
     "description": "Hardened Nextcloud (self-hosted content collaboration / file-sync platform) on a 0-CVE nonroot php-fpm + nginx image, with a bundled MariaDB backend.",
     "imageRepository": "ghcr.io/quenchworks/images/nextcloud",
-    "imageDigest": "sha256:2226849781169661535b1c5e7a8076d4aeca9c7baa2e1cc65a73e4e3602c4801",
+    "imageDigest": "sha256:4ae8a704633482427a6750efbd5993a43bf86a602e9ac797ae420462a13688b1",
     "repositoryID": "33b3c589-42d5-4619-9f11-be2aa944d2a0",
     "port": 8080,
     "upstream": "https://nextcloud.com",
@@ -4097,7 +4097,7 @@
     "images": [
       {
         "name": "nextcloud",
-        "image": "ghcr.io/quenchworks/images/nextcloud@sha256:2226849781169661535b1c5e7a8076d4aeca9c7baa2e1cc65a73e4e3602c4801"
+        "image": "ghcr.io/quenchworks/images/nextcloud@sha256:4ae8a704633482427a6750efbd5993a43bf86a602e9ac797ae420462a13688b1"
       },
       {
         "name": "mariadb",
@@ -4342,11 +4342,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
+    "chartVersion": "0.0.24",
     "appVersion": "0.34.4",
     "description": "Ollama, the local large-language-model runtime that pulls and serves open models (Llama, Mistral, Gemma, Qwen, ...) over a simple REST API. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image, cosign-signed and pinned by digest. CPU-only; runs as a StatefulSet with a persistent /models volume.",
     "imageRepository": "ghcr.io/quenchworks/images/ollama",
-    "imageDigest": "sha256:dfb68575295c9f774cc3df3482564f5b252fca4f1c29f2cf58f816db0074e3e5",
+    "imageDigest": "sha256:d2304f1f84c16b6e43c98a839097d56ec51b527b684904b6d17a4714ca8f9578",
     "repositoryID": "519e0ec6-71ee-4015-9a03-73b8bf208cde",
     "port": 11434,
     "upstream": "https://ollama.com",
@@ -4354,7 +4354,7 @@
     "images": [
       {
         "name": "ollama",
-        "image": "ghcr.io/quenchworks/images/ollama@sha256:dfb68575295c9f774cc3df3482564f5b252fca4f1c29f2cf58f816db0074e3e5"
+        "image": "ghcr.io/quenchworks/images/ollama@sha256:d2304f1f84c16b6e43c98a839097d56ec51b527b684904b6d17a4714ca8f9578"
       }
     ]
   },
@@ -4531,18 +4531,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.9",
+    "chartVersion": "0.1.10",
     "appVersion": "3.8.0",
     "description": "Search and analytics suite with a Kibana-style dashboards UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opensearch",
-    "imageDigest": "sha256:33fe319196e90c0db9112444056006906f196eea2a8d256d11d10446e3260cae",
+    "imageDigest": "sha256:36f153657718e39bdfdecc8f3fd8c6fb1a788462f543fcfc5c5a3f02a411a2c3",
     "repositoryID": "19bdd691-33a2-4882-8662-4871a10038fe",
     "upstream": "https://github.com/opensearch-project/OpenSearch",
     "chartRef": "oci://ghcr.io/quenchworks/charts/opensearch",
     "images": [
       {
         "name": "opensearch",
-        "image": "ghcr.io/quenchworks/images/opensearch@sha256:33fe319196e90c0db9112444056006906f196eea2a8d256d11d10446e3260cae"
+        "image": "ghcr.io/quenchworks/images/opensearch@sha256:36f153657718e39bdfdecc8f3fd8c6fb1a788462f543fcfc5c5a3f02a411a2c3"
       }
     ]
   },
@@ -4655,11 +4655,11 @@
     "tier": "standard",
     "license": "PostgreSQL",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "9.18",
     "description": "pgAdmin 4, the web administration and development UI for PostgreSQL: query tool, ERD, schema diff, backup and restore, in server mode with its accounts and settings on a PVC. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pgadmin",
-    "imageDigest": "sha256:a989540d10b62056c2763d0e0e59e3921d0fde64a8570932cbbcae1e26ffe310",
+    "imageDigest": "sha256:38f4fa269c592f60f2abd5a1362c7636c17ee4b322404968d09bc665dc501e0d",
     "repositoryID": "329fa243-686a-4fe5-91e5-aeff3336a7f0",
     "port": 5050,
     "upstream": "https://www.pgadmin.org",
@@ -4667,7 +4667,7 @@
     "images": [
       {
         "name": "pgadmin",
-        "image": "ghcr.io/quenchworks/images/pgadmin@sha256:a989540d10b62056c2763d0e0e59e3921d0fde64a8570932cbbcae1e26ffe310"
+        "image": "ghcr.io/quenchworks/images/pgadmin@sha256:38f4fa269c592f60f2abd5a1362c7636c17ee4b322404968d09bc665dc501e0d"
       }
     ]
   },
@@ -5365,18 +5365,18 @@
     "tier": "low",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.15",
-    "appVersion": "2026.3.1",
+    "chartVersion": "0.0.16",
+    "appVersion": "2026.3.2",
     "description": "High-throughput, low-latency wide-column store, API-compatible with Apache Cassandra and DynamoDB. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/scylladb",
-    "imageDigest": "sha256:1f2368a3cdf376016705aacbfdaa8ee2d70cae0cb2f2df54408d89b07a340a45",
+    "imageDigest": "sha256:4a9a9808b8c2b5c225ffb21e7d293a9cbd624eb781172dda5b8979b56a7d4c6e",
     "repositoryID": "c7b3870a-4c0f-47a7-a129-f34c038e1614",
     "upstream": "https://github.com/scylladb/scylladb",
     "chartRef": "oci://ghcr.io/quenchworks/charts/scylladb",
     "images": [
       {
         "name": "scylladb",
-        "image": "ghcr.io/quenchworks/images/scylladb@sha256:1f2368a3cdf376016705aacbfdaa8ee2d70cae0cb2f2df54408d89b07a340a45"
+        "image": "ghcr.io/quenchworks/images/scylladb@sha256:4a9a9808b8c2b5c225ffb21e7d293a9cbd624eb781172dda5b8979b56a7d4c6e"
       }
     ]
   },
@@ -5518,7 +5518,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "11.0.0",
     "description": "Hardened Apache SkyWalking OAP (Observability Analysis Platform) backend — APM metrics/traces/logs collector — on a 0-CVE nonroot image, with an optional bundled OpenSearch storage backend.",
     "imageRepository": "ghcr.io/quenchworks/images/skywalking",
@@ -5533,7 +5533,7 @@
       },
       {
         "name": "opensearch",
-        "image": "ghcr.io/quenchworks/images/opensearch@sha256:33fe319196e90c0db9112444056006906f196eea2a8d256d11d10446e3260cae"
+        "image": "ghcr.io/quenchworks/images/opensearch@sha256:36f153657718e39bdfdecc8f3fd8c6fb1a788462f543fcfc5c5a3f02a411a2c3"
       }
     ]
   },
@@ -6209,11 +6209,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "2.5.5",
     "description": "Uptime Kuma, the self-hosted uptime monitor and status-page server, with SQLite on a PVC. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/uptime-kuma",
-    "imageDigest": "sha256:8037c42b1c7033813cd57963e2c0f5a68432d75adfd5c16f658fe3bf6037c64f",
+    "imageDigest": "sha256:78489f7e84027b8f6ab739b9be5c72c7636fe7bfcb3399132700b3dca1ff8ac4",
     "repositoryID": "d65a4c9e-9401-471d-aa05-505c3b0063ec",
     "port": 3001,
     "upstream": "https://uptime.kuma.pet",
@@ -6221,7 +6221,7 @@
     "images": [
       {
         "name": "uptime-kuma",
-        "image": "ghcr.io/quenchworks/images/uptime-kuma@sha256:8037c42b1c7033813cd57963e2c0f5a68432d75adfd5c16f658fe3bf6037c64f"
+        "image": "ghcr.io/quenchworks/images/uptime-kuma@sha256:78489f7e84027b8f6ab739b9be5c72c7636fe7bfcb3399132700b3dca1ff8ac4"
       }
     ]
   },
