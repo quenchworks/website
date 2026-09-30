@@ -305,14 +305,6 @@
     "note": "Process automation and BPMN orchestration including the Zeebe engine. Checked 2026-09-27: the repository is under the Camunda License 1.0, not Apache-2.0."
   },
   {
-    "name": "gitops-stack",
-    "category": "Stacks",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Umbrella: a pluggable Git backend + Atlantis + Terralist for Terraform/OpenTofu GitOps with a private module/provider registry. Pick your forge: Gitea (default, built) or Forgejo / Gogs (lightweight, clean) / OneDev (all-in-one) / GitLab CE (heavy, mixed license). Atlantis + Gitea charts built; needs a Terralist image, the chosen forge's image, and a runner \u2014 GitHub Actions Runner or GitLab Runner, both now on the roadmap (or run runner-less)."
-  },
-  {
     "name": "messaging-stack",
     "category": "Stacks",
     "license": "Apache-2.0",
@@ -901,45 +893,12 @@
     "note": "Kyverno + Policy Reporter + Polaris (Fairwinds) \u2014 Kubernetes policy enforcement, violation reporting, and configuration best-practice validation. Operator-light (admission webhooks). Needs those images."
   },
   {
-    "name": "backup-stack",
-    "category": "Stacks",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Velero + MinIO \u2014 scheduled cluster backup/restore and PV snapshots to an in-cluster S3 target. Needs Velero + MinIO images.",
-    "cleanAlternative": "Use any external S3 (SeaweedFS/Garage, already shipped) instead of MinIO to keep it fully Apache-2.0."
-  },
-  {
-    "name": "ingress-stack",
-    "category": "Stacks",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Traefik (or ingress-nginx) + cert-manager + external-dns \u2014 production ingress with automatic TLS and DNS records. Traefik + external-dns are built; needs cert-manager."
-  },
-  {
     "name": "analytics-stack",
     "category": "Stacks",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
     "note": "Apache Superset + Trino + PostgreSQL \u2014 federated SQL analytics with self-service BI dashboards. PostgreSQL is built; needs Superset + Trino."
-  },
-  {
-    "name": "lakehouse-stack",
-    "category": "Stacks",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Trino + Apache Nessie (or Polaris) + MinIO \u2014 an Iceberg data lakehouse: query engine, versioned table catalog, and object store. Needs those images."
-  },
-  {
-    "name": "streaming-stack",
-    "category": "Stacks",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Kafka + Apache Flink + Apicurio Registry \u2014 end-to-end stream processing with schema governance. Kafka is built; needs Flink + Apicurio."
   },
   {
     "name": "orchestration-stack",
@@ -956,14 +915,6 @@
     "licenseClean": "clean",
     "priority": "exploring",
     "note": "Falco + Tetragon \u2014 eBPF-based runtime threat detection and enforcement. Privileged host/kernel access by design (like node-exporter). Needs those images."
-  },
-  {
-    "name": "supply-chain-stack",
-    "category": "Stacks",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Trivy Operator + Kubescape + Dependency-Track \u2014 continuous image, cluster-posture, and SBOM vulnerability scanning in one place. Needs those images."
   },
   {
     "name": "cost-stack",
@@ -1044,14 +995,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Observability extension: metrics-api, tap, tap-injector, web. Ship only if dashboard parity is wanted."
-  },
-  {
-    "name": "Istio proxyv2",
-    "category": "Coordination & mesh",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "pilot-agent plus Istio's OWN patched Envoy from istio/proxy, which builds with Bazel and clang rather than a source tarball and go build, and cannot reuse our stock envoy image. No recipe exists and none is attempted. Revisit as a separately scoped spike, not as a build day."
   },
   {
     "name": "Istio CNI",
