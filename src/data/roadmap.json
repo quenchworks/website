@@ -112,7 +112,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Low-code internal-tools and admin-panel builder backed by PostgreSQL and Redis. Measured 2026-09-30 (v2.4.2, no release binaries, no Wolfi package): the upstream image is all-in-one under supervisor (Java server, React editor, Node RTS and MCP, Caddy, Redis, PostgreSQL and MongoDB). MongoDB is SSPL, so a clean-room image ships the PostgreSQL server build, the editor and RTS against an external PostgreSQL and Redis. Maven and yarn builds exceed the local gate, so it is gated in CI."
+    "note": "Low-code internal-tools and admin-panel builder backed by PostgreSQL and Redis. Measured 2026-09-30 (v2.4.2, no release binaries, no Wolfi package): the upstream image is all-in-one under supervisor (Java server, React editor, Node RTS and MCP, Caddy, Redis, PostgreSQL and MongoDB). Appsmith has since removed PostgreSQL support (scripts/prepare_server_artifacts.sh builds only the MongoDB server), so the server needs MongoDB, which is SSPL. A clean image would run against an external MongoDB, or FerretDB/DocumentDB if Appsmith's use of transactions works there, which is unverified. Maven and yarn builds exceed the local gate, so it is gated in CI."
   },
   {
     "name": "Gotenberg",
