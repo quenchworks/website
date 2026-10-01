@@ -3076,6 +3076,30 @@
     ]
   },
   {
+    "slug": "kured",
+    "name": "kured",
+    "category": "Coordination",
+    "summary": "kured, the Kubernetes reboot daemon: it watches each node for a reboot-required sentinel and reboots nodes one at a time behind a lock, draining them first. Built from the release tag as one static binary, with nsenter for reaching the host; metrics on 8080.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.23.0",
+    "description": "kured, the Kubernetes reboot daemon: a DaemonSet that watches each node for a reboot-required sentinel and reboots nodes one at a time behind a lock, cordoning and draining first. Hardened by QuenchWorks as a minimal 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/kured",
+    "imageDigest": "sha256:9365cb13d78a91b5b01e2ed2345841af36cbe332c101c4948541b63fecab7670",
+    "repositoryID": "b683f1a7-2b6b-4e73-9acf-2420133aa954",
+    "port": 8080,
+    "upstream": "https://github.com/kubereboot/kured",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kured",
+    "images": [
+      {
+        "name": "kured",
+        "image": "ghcr.io/quenchworks/images/kured@sha256:9365cb13d78a91b5b01e2ed2345841af36cbe332c101c4948541b63fecab7670"
+      }
+    ]
+  },
+  {
     "slug": "kvrocks",
     "name": "kvrocks",
     "category": "Cache",
