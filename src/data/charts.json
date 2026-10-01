@@ -6386,6 +6386,29 @@
     "caution": true
   },
   {
+    "slug": "vcluster",
+    "name": "vcluster",
+    "category": "CI/CD & registry",
+    "summary": "vCluster, virtual Kubernetes clusters that run inside a namespace of a host cluster. The syncer is built from source (CGO off, floated modules); the control plane it runs, kube-apiserver and kube-controller-manager 1.36.4 built from the Kubernetes tag with kine on SQLite, ships in the same image, so no initContainer copies binaries in.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.37.2",
+    "description": "vCluster runs a virtual Kubernetes cluster inside a namespace of a host cluster: its own API server and controller manager, with workloads synced to the host. Hardened by QuenchWorks as a nonroot, 0-CVE image with the 1.36 control plane built from source, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/vcluster",
+    "imageDigest": "sha256:67031f37f2499766b39081c6e770cff934a8cc0f3526f317364d69d03cd58fc3",
+    "repositoryID": "449b532e-56ed-47b9-92af-5bea804c62d5",
+    "upstream": "https://github.com/loft-sh/vcluster",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/vcluster",
+    "images": [
+      {
+        "name": "vcluster",
+        "image": "ghcr.io/quenchworks/images/vcluster@sha256:67031f37f2499766b39081c6e770cff934a8cc0f3526f317364d69d03cd58fc3"
+      }
+    ]
+  },
+  {
     "slug": "vector",
     "name": "Vector",
     "category": "Observability",
