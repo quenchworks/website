@@ -456,6 +456,30 @@
     ]
   },
   {
+    "slug": "bind",
+    "name": "bind",
+    "category": "Coordination",
+    "summary": "ISC BIND 9, the authoritative and recursive DNS server (9.20 stable line). Wolfi's source-built named, nonroot on port 5353, with a default caching-resolver config for local networks.",
+    "tier": "standard",
+    "license": "MPL-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "9.20.29",
+    "description": "ISC BIND 9 (named): an authoritative or caching recursive DNS server, configured from named.conf and zone files in values. Hardened by QuenchWorks as a nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/bind",
+    "imageDigest": "sha256:c402b376cbb921e4688ec59a44cd934b7b5a8f30ecf89ca51e302aea3fc33674",
+    "repositoryID": "204a8820-16bd-44d5-8e88-9f1626137064",
+    "port": 53,
+    "upstream": "https://gitlab.isc.org/isc-projects/bind9",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/bind",
+    "images": [
+      {
+        "name": "bind",
+        "image": "ghcr.io/quenchworks/images/bind@sha256:c402b376cbb921e4688ec59a44cd934b7b5a8f30ecf89ca51e302aea3fc33674"
+      }
+    ]
+  },
+  {
     "slug": "blackbox-exporter",
     "name": "blackbox-exporter",
     "category": "Metrics/Exporter",
