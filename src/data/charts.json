@@ -1971,7 +1971,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "1.0.0",
     "description": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "de6a254c-cbaa-4b14-88cc-30670ebc943f",
@@ -5343,6 +5343,30 @@
       {
         "name": "caddy",
         "image": "ghcr.io/quenchworks/images/caddy@sha256:8e89a25b3251eedd7a4b1867e81168de2848a480deb2a1b164d07a16a3b71c84"
+      }
+    ]
+  },
+  {
+    "slug": "reloader",
+    "name": "reloader",
+    "category": "Coordination",
+    "summary": "Stakater Reloader, the Kubernetes controller that rolls Deployments, StatefulSets and DaemonSets when a ConfigMap or Secret they use changes. Built from the release tag as one static binary, nonroot, metrics and probes on 9090.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.4.22",
+    "description": "Stakater Reloader watches ConfigMaps and Secrets and rolls the Deployments, StatefulSets and DaemonSets that use them, so a config change reaches running pods without a manual restart. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/reloader",
+    "imageDigest": "sha256:43fa40fab76a850f6f42b5d42d4f3447ac61cee4dddbef3c89a4fb4d248f23ea",
+    "repositoryID": "bf384c20-a5e1-44fd-9fa8-2b5a19d51f3e",
+    "port": 9090,
+    "upstream": "https://github.com/stakater/Reloader",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/reloader",
+    "images": [
+      {
+        "name": "reloader",
+        "image": "ghcr.io/quenchworks/images/reloader@sha256:43fa40fab76a850f6f42b5d42d4f3447ac61cee4dddbef3c89a4fb4d248f23ea"
       }
     ]
   },
