@@ -8,6 +8,7 @@ import Footer from './Footer.astro';
 import { images } from '../data/images';
 import { charts } from '../data/charts';
 import { roadmap } from '../data/roadmap';
+import updates from '../data/updates.json';
 import { PER_PAGE } from '../pages/api/v1/_data';
 import security from '../data/security.json';
 import { getLangFromUrl, localizeUrl } from '../i18n/ui';
@@ -91,6 +92,7 @@ const resources = [
   { name: 'images', total: images.length, desc: { en: 'Hardened container images in the catalog.', ar: 'صور حاويات مُحصَّنة في الكتالوج.', es: 'Imágenes de contenedor endurecidas en el catálogo.' } },
   { name: 'charts', total: charts.length, desc: { en: 'Signed Helm charts in the catalog.', ar: 'مخططات Helm موقَّعة في الكتالوج.', es: 'Helm charts firmados en el catálogo.' } },
   { name: 'roadmap', total: roadmap.length, desc: { en: 'Apps on deck, not yet built.', ar: 'تطبيقات قادمة لم تُبنَ بعد.', es: 'Apps en cola, aún no construidas.' } },
+  { name: 'updates', total: updates.items.length, desc: { en: 'The latest daily version check: each app, from and to, and whether it shipped, was held or skipped.', ar: 'آخر فحص يومي للإصدارات: كل تطبيق ومن أي إصدار إلى أي إصدار، وهل شُحن أو عُلّق أو تُخطّي.', es: 'La última revisión diaria de versiones: cada app, de qué versión a cuál, y si se publicó, se retuvo o se omitió.' } },
 ];
 // Per-image CVE detail routes. Prerendered like everything else, so the image slug and
 // version live in the path (there is no ?image= query). `sample` links a real record.

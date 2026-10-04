@@ -8,8 +8,11 @@ import { images } from '../../../data/images';
 import { charts } from '../../../data/charts';
 import { roadmap } from '../../../data/roadmap';
 import security from '../../../data/security.json';
+import updates from '../../../data/updates.json';
 
-export const RESOURCES = { images, charts, roadmap } as const;
+// updates: the daily version check (shipped / held / skipped per app); `checked` is its date.
+export const UPDATES_CHECKED = updates.checked;
+export const RESOURCES = { images, charts, roadmap, updates: updates.items } as const;
 export type ResourceName = keyof typeof RESOURCES;
 
 export const PER_PAGE = 24;
