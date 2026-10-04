@@ -7998,9 +7998,9 @@
     "versions": [
       {
         "version": "0.9.1",
-        "size": "65.0 MB",
-        "published": "2026-09-24T09:44:15Z",
-        "digest": "sha256:e14d0e3c482d128d666ab71c6035463268c1f4dc44be039faf400624f8405f22"
+        "size": "62.2 MB",
+        "published": "2026-10-04T17:47:38Z",
+        "digest": "sha256:a4ee47b67a43e3117a197e9accc325949ecb4b0ac2c236cc581d7b941f873bd1"
       }
     ],
     "arches": [
@@ -10141,6 +10141,82 @@
     "upstream": "https://yarnpkg.com",
     "source": "https://yarnpkg.com",
     "image": "ghcr.io/quenchworks/images/yarn"
+  },
+  {
+    "slug": "zabbix-server",
+    "name": "zabbix-server",
+    "category": "Observability",
+    "summary": "Zabbix server, the collector and alerting engine of the Zabbix monitoring platform, built from source with the PostgreSQL backend. Ships the database schema under /usr/share/zabbix. SNMP checks are not included (Wolfi net-snmp has no MD5).",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "6.0.48, 7.0.31, 7.4.15",
+    "versions": [
+      {
+        "version": "6.0.48",
+        "size": "28.6 MB",
+        "published": "2026-10-04T17:55:56Z",
+        "digest": "sha256:a367ae5debc688f57fc053645bfd15104a2cea6f22260927a1866d4829f11a7e"
+      },
+      {
+        "version": "7.0.31",
+        "size": "31.4 MB",
+        "published": "2026-10-04T17:55:55Z",
+        "digest": "sha256:e1e6339fdf69627a9043361927bbd763af1578834e30e3515da1ad39aac37726"
+      },
+      {
+        "version": "7.4.15",
+        "size": "31.8 MB",
+        "published": "2026-10-04T17:55:48Z",
+        "digest": "sha256:8c0d5dc5760ca43d8c251871503330b56254769783f5761cd7c8dcc588dd6084"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/zabbix/zabbix",
+    "source": "https://cdn.zabbix.com/zabbix/sources/stable/",
+    "image": "ghcr.io/quenchworks/images/zabbix-server"
+  },
+  {
+    "slug": "zabbix-web",
+    "name": "zabbix-web",
+    "category": "Observability",
+    "summary": "Zabbix web frontend (PHP) on nginx and php-fpm, PostgreSQL backend, configured from ZBX_DB_* environment variables. Pairs with zabbix-server of the same version.",
+    "tier": "standard",
+    "status": "available",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "version": "6.0.48, 7.4.15, 7.0.31",
+    "versions": [
+      {
+        "version": "6.0.48",
+        "size": "73.1 MB",
+        "published": "2026-10-04T18:09:47Z",
+        "digest": "sha256:7cf68a4f10faece54699f6289dd6df3cdb0ae5030c88093ef16207e44ebd551b"
+      },
+      {
+        "version": "7.4.15",
+        "size": "77.3 MB",
+        "published": "2026-10-04T18:09:45Z",
+        "digest": "sha256:7b5d7649415a641b50b18dc481b15d0c222218d28e8d97758e07838e855bb88c"
+      },
+      {
+        "version": "7.0.31",
+        "size": "76.0 MB",
+        "published": "2026-10-04T18:09:42Z",
+        "digest": "sha256:c31f7b50623149b661265137d1ad85dacacad329bc14c83b719622b2ab8ebba4"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/zabbix/zabbix",
+    "source": "https://cdn.zabbix.com/zabbix/sources/stable/",
+    "image": "ghcr.io/quenchworks/images/zabbix-web"
   },
   {
     "slug": "zipkin",
