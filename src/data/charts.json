@@ -5310,6 +5310,40 @@
     ]
   },
   {
+    "slug": "profiling-stack",
+    "name": "profiling-stack",
+    "category": "Stacks",
+    "summary": "Hardened continuous profiling stack: Grafana Pyroscope (profile store and query) + Grafana with the Pyroscope datasource provisioned.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "Hardened continuous profiling stack: Grafana Pyroscope (profile store and query) + Grafana with the Pyroscope datasource provisioned. Apps push CPU and memory profiles to <release>-pyroscope:4040 (Pyroscope SDKs or Grafana Alloy); explore them in Grafana via Explore -> Pyroscope. No operator, no CRDs. Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "7081f557-1add-46fe-abb7-7d44abdd7d98",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/profiling-stack",
+    "stack": true,
+    "components": [
+      "pyroscope",
+      "grafana"
+    ],
+    "images": [
+      {
+        "name": "pyroscope",
+        "image": "ghcr.io/quenchworks/images/pyroscope@sha256:9fd3dc0ff132dd7e0ca040ecfbd178f42b8571d46b3c56ffec041a5e518696da"
+      },
+      {
+        "name": "grafana",
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:4b7e7a1342831602a31232c1dce40d8ea6a14bb44d6acb3aa095c029e1520d55"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/grafana/pyroscope",
+      "https://github.com/grafana/grafana"
+    ]
+  },
+  {
     "slug": "prometheus",
     "name": "Prometheus",
     "category": "Observability",
