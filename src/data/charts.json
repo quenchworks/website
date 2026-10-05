@@ -77,7 +77,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.26",
+    "chartVersion": "0.1.27",
     "appVersion": "3.3.2",
     "description": "Hardened Apache Airflow 3 workflow orchestration (api-server + scheduler + dag-processor + triggerer, optional Celery workers) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/airflow",
@@ -297,7 +297,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "3.4.9",
     "description": "Argo CD, the declarative GitOps continuous-delivery controller for Kubernetes. Ships the API server with its embedded React console, the repo server (git + helm + kustomize), the application controller and the applicationset controller, all from ONE hardened multi-call image. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/argocd",
@@ -348,7 +348,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.29",
+    "chartVersion": "0.0.30",
     "appVersion": "4.39.28",
     "description": "Hardened Authelia authentication and authorization server on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authelia",
@@ -384,7 +384,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.30",
+    "chartVersion": "0.1.31",
     "appVersion": "2026.8.3",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
@@ -535,7 +535,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "1.0.0",
     "description": "Hardened cache stack with metrics: Valkey (Redis-compatible) with a redis_exporter sidecar, Prometheus discovering it in the release namespace, and Grafana with the Prometheus datasource and the redis_exporter dashboard provisioned. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "dc949220-7ad8-4196-b8c7-ad40cc8ad907",
@@ -554,11 +554,11 @@
       },
       {
         "name": "redis-exporter",
-        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:1ab05fb91708c5ebc96d1e5ea77273ed4bfdf91658ea5e8f653f166a9436758b"
+        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:d5c20b4e8752537dec2aa5bd1178b69b461a61454003b6cb2352d7a605fd31a9"
       },
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:a9dc21133c231a328df5e4cd7c3987c945b7d0a580dcc45493cf4d161cefd6a4"
       },
       {
         "name": "grafana",
@@ -938,7 +938,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.33",
+    "chartVersion": "0.0.34",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, 0-CVE image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -1995,7 +1995,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "1.0.0",
     "description": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "de6a254c-cbaa-4b14-88cc-30670ebc943f",
@@ -2218,7 +2218,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.34",
+    "chartVersion": "0.0.35",
     "appVersion": "2.15.2",
     "description": "Cloud-native OCI registry with role-based access control, replication, vulnerability scanning, and image signing. This umbrella chart wires seven QuenchWorks Harbor component images (core, jobservice, registry, registryctl, portal, the optional Trivy scan adapter, and the metrics exporter) over the QuenchWorks PostgreSQL and Valkey charts, each a minimal, nonroot, 0-CVE image pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor",
@@ -2280,7 +2280,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "2.14.4",
     "description": "Monitoring stack for a QuenchWorks Harbor registry. This meta-chart deploys the QuenchWorks Prometheus and Grafana charts preconfigured for Harbor, with Prometheus scraping the harbor-exporter and the core, registry, and jobservice metrics endpoints, and Grafana provisioned with a Prometheus datasource and a Harbor dashboard covering request rate, component health, garbage collection, quota, and the task queue. All images are nonroot, 0-CVE, and pinned by digest through the sub-charts.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor-observability",
@@ -2290,7 +2290,7 @@
     "images": [
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:a9dc21133c231a328df5e4cd7c3987c945b7d0a580dcc45493cf4d161cefd6a4"
       },
       {
         "name": "grafana",
@@ -2769,18 +2769,18 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "2.3.0",
     "description": "k6 -- developer-friendly load and performance testing, scripted in JavaScript. Runs as a Job (once) or CronJob (scheduled), NOT a Deployment: k6 is a CLI that runs a test and exits. Hardened, nonroot, 0-CVE image built from source on Wolfi, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/k6",
-    "imageDigest": "sha256:bad88ae29f955614c1b30afbb025219d967ec0b0586a15ec79ece7e152495e63",
+    "imageDigest": "sha256:62dc3af5dfb60303cc9eca4554a20947d2dd922fa7379af248d84c6bf928864f",
     "repositoryID": "d329198e-81ac-479f-8326-7bd95c6c390a",
     "upstream": "https://k6.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/k6",
     "images": [
       {
         "name": "k6",
-        "image": "ghcr.io/quenchworks/images/k6@sha256:bad88ae29f955614c1b30afbb025219d967ec0b0586a15ec79ece7e152495e63"
+        "image": "ghcr.io/quenchworks/images/k6@sha256:62dc3af5dfb60303cc9eca4554a20947d2dd922fa7379af248d84c6bf928864f"
       }
     ]
   },
@@ -2863,18 +2863,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "2.21.0",
     "description": "KEDA: Kubernetes Event-Driven Autoscaling. Scales any workload from 0 to N off event sources (queues, streams, databases, Prometheus, cron and 60+ more) by driving a standard HorizontalPodAutoscaler through the ScaledObject/ScaledJob CRDs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Runs the operator and the external-metrics adapter as two deployments from one image; the adapter backs the aggregated v1beta1.external.metrics.k8s.io APIService, whose serving certificates the chart issues itself so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/keda",
-    "imageDigest": "sha256:a2985bf71a6453ddfdaec8bdec955eeb12fb5615bf509c3127bdbf152ccb007e",
+    "imageDigest": "sha256:29fbb34d5871fd90f9131c88a2c4eec92f733c7c286e167f8f75fefc6b0330f0",
     "repositoryID": "bc8e701f-5454-4aa9-a992-9e7d4008d737",
     "upstream": "https://keda.sh",
     "chartRef": "oci://ghcr.io/quenchworks/charts/keda",
     "images": [
       {
         "name": "keda",
-        "image": "ghcr.io/quenchworks/images/keda@sha256:a2985bf71a6453ddfdaec8bdec955eeb12fb5615bf509c3127bdbf152ccb007e"
+        "image": "ghcr.io/quenchworks/images/keda@sha256:29fbb34d5871fd90f9131c88a2c4eec92f733c7c286e167f8f75fefc6b0330f0"
       }
     ]
   },
@@ -3648,7 +3648,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "4.7.3",
     "description": "Mastodon, the federated social network server: web, sidekiq and streaming on QuenchWorks images, with the bundled PostgreSQL and Valkey (or external ones), the schema prepared on every start, media on a PVC, and the Rails secrets generated once and kept across upgrades. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mastodon",
@@ -4414,7 +4414,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.22",
+    "chartVersion": "0.0.23",
     "appVersion": "2.20.0",
     "description": "Hardened, operator-free observability stack: Prometheus + Grafana + Alertmanager + kube-state-metrics + node-exporter + cAdvisor, wired together for metrics, alerting, and populated Kubernetes dashboards. No Prometheus Operator, no CRDs. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed. node-exporter and cAdvisor take host access by design (the stack's purpose is node + container observability); both are toggleable.",
     "repositoryID": "b35aa9cc-1558-4053-b967-ae9f74250035",
@@ -4429,7 +4429,7 @@
     "images": [
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:a9dc21133c231a328df5e4cd7c3987c945b7d0a580dcc45493cf4d161cefd6a4"
       },
       {
         "name": "grafana",
@@ -4965,7 +4965,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "1.0.0",
     "description": "Hardened PostgreSQL HA stack: a 3-node Patroni cluster with automatic failover, PgBouncer pooling in front of the elected leader, postgres_exporter on the leader, and Prometheus + Grafana with the postgres_exporter overview dashboard. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "9d95ad7a-c488-4051-8849-1f81533342e4",
@@ -4993,7 +4993,7 @@
       },
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:a9dc21133c231a328df5e4cd7c3987c945b7d0a580dcc45493cf4d161cefd6a4"
       },
       {
         "name": "grafana",
@@ -5175,11 +5175,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "3.15.0",
     "description": "Metrics collection, storage, and alerting system that scrapes targets and runs PromQL queries. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/prometheus",
-    "imageDigest": "sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681",
+    "imageDigest": "sha256:a9dc21133c231a328df5e4cd7c3987c945b7d0a580dcc45493cf4d161cefd6a4",
     "repositoryID": "a1ea88ca-6c90-4a7d-b020-53879714aecb",
     "port": 9090,
     "upstream": "https://github.com/prometheus/prometheus",
@@ -5187,7 +5187,7 @@
     "images": [
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:88d05fd90073aef3d50f120a4485b4f4f08861ee15492d74d02bcf190bb82681"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:a9dc21133c231a328df5e4cd7c3987c945b7d0a580dcc45493cf4d161cefd6a4"
       }
     ]
   },
@@ -5365,7 +5365,7 @@
     "tier": "critical",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.25",
+    "chartVersion": "0.0.26",
     "appVersion": "8.10.2",
     "description": "In-memory key-value store used as a cache, message broker, and ephemeral datastore. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/redis",
@@ -5381,7 +5381,7 @@
       },
       {
         "name": "redis-exporter",
-        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:1ab05fb91708c5ebc96d1e5ea77273ed4bfdf91658ea5e8f653f166a9436758b"
+        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:d5c20b4e8752537dec2aa5bd1178b69b461a61454003b6cb2352d7a605fd31a9"
       }
     ]
   },
@@ -6312,7 +6312,7 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.22",
+    "chartVersion": "0.0.23",
     "appVersion": "5.14.0",
     "description": "Tyk Gateway (open-source), a fast, Go-based API gateway backed by Redis. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled Redis by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/tyk",
@@ -6436,7 +6436,7 @@
     "tier": "critical",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.26",
+    "chartVersion": "0.0.27",
     "appVersion": "9.1.2",
     "description": "BSD-licensed in-memory key-value store, the truly-open community fork of Redis 7.2. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/valkey",
@@ -6452,7 +6452,7 @@
       },
       {
         "name": "redis-exporter",
-        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:1ab05fb91708c5ebc96d1e5ea77273ed4bfdf91658ea5e8f653f166a9436758b"
+        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:d5c20b4e8752537dec2aa5bd1178b69b461a61454003b6cb2352d7a605fd31a9"
       }
     ]
   },
