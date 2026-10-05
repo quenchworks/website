@@ -549,6 +549,44 @@
     "image": "ghcr.io/quenchworks/images/authentik"
   },
   {
+    "slug": "backing-image-manager",
+    "name": "backing-image-manager",
+    "category": "Storage & platform",
+    "summary": "Longhorn's backing image server, built from the longhorn/backing-image-manager source with qemu-img, losetup and the filesystem tools it calls. longhorn-manager starts it on each node; drop-in for upstream's image, runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.13.0, 1.11.3, 1.12.1",
+    "versions": [
+      {
+        "version": "1.13.0",
+        "size": "46.4 MB",
+        "published": "2026-10-04T22:17:22Z",
+        "digest": "sha256:be6145472bca915a62a8f077898bfbf87c0e7f47d7e545dfba9823a545fe56a5"
+      },
+      {
+        "version": "1.11.3",
+        "size": "46.4 MB",
+        "published": "2026-10-04T22:17:20Z",
+        "digest": "sha256:44e84c2ce8bb6e00d1fb954256c408d3b4ea8c9c804cc7509a68270e8dd1403f"
+      },
+      {
+        "version": "1.12.1",
+        "size": "46.4 MB",
+        "published": "2026-10-04T22:17:18Z",
+        "digest": "sha256:d3942686fdbe22f15aa81efa8c44557bd5dd9ff027d1d1e7f33f5b06340f24b7"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://longhorn.io",
+    "source": "https://github.com/longhorn/backing-image-manager",
+    "image": "ghcr.io/quenchworks/images/backing-image-manager"
+  },
+  {
     "slug": "bifrost",
     "name": "bifrost",
     "category": "AI gateway",
@@ -1865,6 +1903,234 @@
     "upstream": "https://crossplane.io",
     "source": "https://github.com/crossplane/crossplane",
     "image": "ghcr.io/quenchworks/images/crossplane"
+  },
+  {
+    "slug": "csi-attacher",
+    "name": "csi-attacher",
+    "category": "Storage & platform",
+    "summary": "The Kubernetes CSI external-attacher sidecar, which attaches and detaches CSI volumes through VolumeAttachment objects. Built from source with the vulnerable modules floated, for any CSI driver (Longhorn included). Image only, no chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "4.11.0, 4.12.0, 4.13.0",
+    "versions": [
+      {
+        "version": "4.11.0",
+        "size": "18.9 MB",
+        "published": "2026-10-05T00:13:12Z",
+        "digest": "sha256:bbb61c860a66e6cae53e0d842824a3abcc2f604b2f623a9d1cb28db888e0d772"
+      },
+      {
+        "version": "4.12.0",
+        "size": "18.9 MB",
+        "published": "2026-10-05T00:13:08Z",
+        "digest": "sha256:f35b386200750b94a9b19c17e4664eebc95548f827e4607cb44c09076a3af195"
+      },
+      {
+        "version": "4.13.0",
+        "size": "19.8 MB",
+        "published": "2026-10-05T00:13:07Z",
+        "digest": "sha256:bf14937a85f247b933558b50c9ccf52b323066401a97a765f02035f9c9b3e633"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kubernetes-csi.github.io/docs/",
+    "source": "https://github.com/kubernetes-csi/external-attacher",
+    "image": "ghcr.io/quenchworks/images/csi-attacher"
+  },
+  {
+    "slug": "csi-livenessprobe",
+    "name": "csi-livenessprobe",
+    "category": "Storage & platform",
+    "summary": "The Kubernetes CSI livenessprobe sidecar, which serves /healthz by probing a CSI driver socket. Built from source with the vulnerable modules floated, for any CSI driver (Longhorn included). Image only, no chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.18.0, 2.20.0, 2.19.0",
+    "versions": [
+      {
+        "version": "2.18.0",
+        "size": "7.6 MB",
+        "published": "2026-10-05T00:14:09Z",
+        "digest": "sha256:fbc546aa484b4663a6acdfb40f2ba386823d80d86ae171680bfc223218263684"
+      },
+      {
+        "version": "2.20.0",
+        "size": "7.6 MB",
+        "published": "2026-10-05T00:14:08Z",
+        "digest": "sha256:0292b714e8383107a184446070b7f3636c032503550eb23e6aa83a5c68422285"
+      },
+      {
+        "version": "2.19.0",
+        "size": "7.6 MB",
+        "published": "2026-10-05T00:14:06Z",
+        "digest": "sha256:0e160ea2e040acd769b89f3400fd49b577ab99b92da95dd44256db7195c0f8a0"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kubernetes-csi.github.io/docs/",
+    "source": "https://github.com/kubernetes-csi/livenessprobe",
+    "image": "ghcr.io/quenchworks/images/csi-livenessprobe"
+  },
+  {
+    "slug": "csi-node-driver-registrar",
+    "name": "csi-node-driver-registrar",
+    "category": "Storage & platform",
+    "summary": "The Kubernetes CSI node-driver-registrar sidecar, which registers a node CSI driver with the kubelet (busybox included for driver preStop hooks). Built from source with the vulnerable modules floated, for any CSI driver (Longhorn included). Image only, no chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.16.0, 2.18.0, 2.17.0",
+    "versions": [
+      {
+        "version": "2.16.0",
+        "size": "11.3 MB",
+        "published": "2026-10-05T00:14:06Z",
+        "digest": "sha256:7444dc54f6cffc69fbbe178cc5a447d17bfc4a040024fca1c8663c1088b278f8"
+      },
+      {
+        "version": "2.18.0",
+        "size": "11.3 MB",
+        "published": "2026-10-05T00:14:04Z",
+        "digest": "sha256:8e5b9942dd60eb3b520fda8559993a28f44a755a04167315d586c8d5b9169e54"
+      },
+      {
+        "version": "2.17.0",
+        "size": "11.3 MB",
+        "published": "2026-10-05T00:14:02Z",
+        "digest": "sha256:9bbdb160336ade3f0eaf6ade9c194c4abca5d9ac56e3abef923ca8535cc5bc9a"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kubernetes-csi.github.io/docs/",
+    "source": "https://github.com/kubernetes-csi/node-driver-registrar",
+    "image": "ghcr.io/quenchworks/images/csi-node-driver-registrar"
+  },
+  {
+    "slug": "csi-provisioner",
+    "name": "csi-provisioner",
+    "category": "Storage & platform",
+    "summary": "The Kubernetes CSI external-provisioner sidecar, which creates and deletes CSI volumes for PersistentVolumeClaims. Built from source with the vulnerable modules floated, for any CSI driver (Longhorn included). Image only, no chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "6.1.2, 6.2.1, 6.3.0",
+    "versions": [
+      {
+        "version": "6.1.2",
+        "size": "20.3 MB",
+        "published": "2026-10-05T00:13:37Z",
+        "digest": "sha256:e4569c4aa3b38bd2ce87572ef9f1e969466a011fc0f893bf37a1b7c9e9653ce6"
+      },
+      {
+        "version": "6.2.1",
+        "size": "19.8 MB",
+        "published": "2026-10-05T00:13:35Z",
+        "digest": "sha256:cc8eec862a786b90d64add1aa103c630b956160fca59b8ab66fa4c750ea37177"
+      },
+      {
+        "version": "6.3.0",
+        "size": "20.0 MB",
+        "published": "2026-10-05T00:13:32Z",
+        "digest": "sha256:ffb81c18d8d2b7cec0ecd81036e58ec8b2f068e26bb0943bbd334d1e017c89de"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kubernetes-csi.github.io/docs/",
+    "source": "https://github.com/kubernetes-csi/external-provisioner",
+    "image": "ghcr.io/quenchworks/images/csi-provisioner"
+  },
+  {
+    "slug": "csi-resizer",
+    "name": "csi-resizer",
+    "category": "Storage & platform",
+    "summary": "The Kubernetes CSI external-resizer sidecar, which expands CSI volumes when a PersistentVolumeClaim grows. Built from source with the vulnerable modules floated, for any CSI driver (Longhorn included). Image only, no chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.2.1, 2.3.0, 2.1.0",
+    "versions": [
+      {
+        "version": "2.2.1",
+        "size": "18.9 MB",
+        "published": "2026-10-05T00:12:45Z",
+        "digest": "sha256:62a5a52174790c92c6fdbd1878479b790499253ed5548b08eec02869e855a4a6"
+      },
+      {
+        "version": "2.3.0",
+        "size": "19.9 MB",
+        "published": "2026-10-05T00:12:40Z",
+        "digest": "sha256:7656efad22795f3bd22ca1fbdf0641daa46bf29c968679382179c96acba4e0e5"
+      },
+      {
+        "version": "2.1.0",
+        "size": "18.9 MB",
+        "published": "2026-10-05T00:12:33Z",
+        "digest": "sha256:f2779d255e621c514b6c715874aa936c29ed1f95f6a5f7bf3cbf96a6b572022b"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kubernetes-csi.github.io/docs/",
+    "source": "https://github.com/kubernetes-csi/external-resizer",
+    "image": "ghcr.io/quenchworks/images/csi-resizer"
+  },
+  {
+    "slug": "csi-snapshotter",
+    "name": "csi-snapshotter",
+    "category": "Storage & platform",
+    "summary": "The Kubernetes CSI external-snapshotter sidecar, which creates and deletes CSI snapshots for VolumeSnapshotContent objects. Built from source with the vulnerable modules floated, for any CSI driver (Longhorn included). Image only, no chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "8.4.0, 8.5.0, 8.6.0",
+    "versions": [
+      {
+        "version": "8.4.0",
+        "size": "19.4 MB",
+        "published": "2026-10-05T00:15:42Z",
+        "digest": "sha256:8c8b01fefa0c7213fb21c5cfa7b5f97036077afaa9c0a23b80031a6dba32b84a"
+      },
+      {
+        "version": "8.5.0",
+        "size": "18.8 MB",
+        "published": "2026-10-05T00:15:42Z",
+        "digest": "sha256:d6977bfcfa34d4f7ff61d2de999bcb97cb8df9692923fae07f318b91adeddec5"
+      },
+      {
+        "version": "8.6.0",
+        "size": "19.0 MB",
+        "published": "2026-10-05T00:15:37Z",
+        "digest": "sha256:ac11531dc4b5de882e4b55f196e0396248f3db557ac53ce73983d648eac7dca7"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://kubernetes-csi.github.io/docs/",
+    "source": "https://github.com/kubernetes-csi/external-snapshotter",
+    "image": "ghcr.io/quenchworks/images/csi-snapshotter"
   },
   {
     "slug": "dagster",
@@ -5418,6 +5684,196 @@
     "image": "ghcr.io/quenchworks/images/loki"
   },
   {
+    "slug": "longhorn-engine",
+    "name": "longhorn-engine",
+    "category": "Storage & platform",
+    "summary": "The Longhorn v1 data engine image, built from source. It carries the static longhorn binary (with libqcow) that the engine-image DaemonSet installs on each node, tgt with Longhorn's backing store, sg_raw and longhorn-instance-manager, at the native commits Longhorn pins per release. Drop-in for upstream's image, runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.13.0, 1.11.3, 1.12.1",
+    "versions": [
+      {
+        "version": "1.13.0",
+        "size": "74.3 MB",
+        "published": "2026-10-04T23:02:21Z",
+        "digest": "sha256:a6b628ba137f4678c8ef19d0ffeb74449381720ab8ee76a69cb488e1a3e58aef"
+      },
+      {
+        "version": "1.11.3",
+        "size": "73.7 MB",
+        "published": "2026-10-04T23:02:19Z",
+        "digest": "sha256:4d85c0becca9dea31449112882f9ec862c75be0edff0fade598568d496597ab6"
+      },
+      {
+        "version": "1.12.1",
+        "size": "74.2 MB",
+        "published": "2026-10-04T23:02:17Z",
+        "digest": "sha256:e197549a5d82db36625d8444e064f19c1d58dc61873bf6fcf2ece56a69cb1501"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://longhorn.io",
+    "source": "https://github.com/longhorn/longhorn-engine",
+    "image": "ghcr.io/quenchworks/images/longhorn-engine"
+  },
+  {
+    "slug": "longhorn-instance-manager",
+    "name": "longhorn-instance-manager",
+    "category": "Storage & platform",
+    "summary": "Longhorn's instance manager, which runs engine and replica processes on each node, built from source with tgt, liblonghorn, libqcow and sg_raw at the commits Longhorn pins per release. V1 data engine only (the default); the SPDK-based v2 engine is not built into this image yet. Drop-in for upstream's image, runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.13.0, 1.11.3, 1.12.1",
+    "versions": [
+      {
+        "version": "1.13.0",
+        "size": "76.6 MB",
+        "published": "2026-10-05T01:07:09Z",
+        "digest": "sha256:87738fd35f47179dd1054fb6f2df41c9342e038f4426ad25d3640cdec65d4899"
+      },
+      {
+        "version": "1.11.3",
+        "size": "76.1 MB",
+        "published": "2026-10-05T01:07:07Z",
+        "digest": "sha256:b52346dca15e280ea6991bb5c552a2650ec3b396734e19d928c7eb4457808348"
+      },
+      {
+        "version": "1.12.1",
+        "size": "76.5 MB",
+        "published": "2026-10-05T01:07:06Z",
+        "digest": "sha256:75c87c33d84eba7169a3abac0496ac288a30c2d11da6a386de3ee4049dbf41a2"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://longhorn.io",
+    "source": "https://github.com/longhorn/longhorn-instance-manager",
+    "image": "ghcr.io/quenchworks/images/longhorn-instance-manager"
+  },
+  {
+    "slug": "longhorn-manager",
+    "name": "longhorn-manager",
+    "category": "Storage & platform",
+    "summary": "The Longhorn manager (control plane DaemonSet, CSI driver and REST API) built from the longhorn/longhorn-manager source, with the launch-manager and nsmounter scripts and the host tools upstream ships (nfs, cifs, e2fsprogs, xfsprogs, nsenter). Drop-in for upstream's manager image under upstream's Longhorn chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.13.0, 1.11.3, 1.12.1",
+    "versions": [
+      {
+        "version": "1.13.0",
+        "size": "60.1 MB",
+        "published": "2026-10-05T01:06:39Z",
+        "digest": "sha256:a77f13049fb11a378c35c558c59f792a5d732c12024122a79f021d283c3a46cd"
+      },
+      {
+        "version": "1.11.3",
+        "size": "59.4 MB",
+        "published": "2026-10-05T01:06:38Z",
+        "digest": "sha256:212d0ed29b1c50a235e11328e56d4c18befa1bb5594bf75fe308d48039c6c0b2"
+      },
+      {
+        "version": "1.12.1",
+        "size": "59.9 MB",
+        "published": "2026-10-05T01:06:37Z",
+        "digest": "sha256:62be4e9815c8ca0817cc547dbcaf7adfe2e494a960449ae2a203549296671f2f"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://longhorn.io",
+    "source": "https://github.com/longhorn/longhorn-manager",
+    "image": "ghcr.io/quenchworks/images/longhorn-manager"
+  },
+  {
+    "slug": "longhorn-share-manager",
+    "name": "longhorn-share-manager",
+    "category": "Storage & platform",
+    "summary": "Longhorn's share manager, which serves ReadWriteMany volumes over NFSv4. The Go daemon and Longhorn's nfs-ganesha fork (with its longhorn recovery backend) are built from source at the commits Longhorn pins per release. Drop-in for upstream's image, runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.11.3, 1.13.0, 1.12.1",
+    "versions": [
+      {
+        "version": "1.11.3",
+        "size": "40.7 MB",
+        "published": "2026-10-04T23:01:06Z",
+        "digest": "sha256:8dd74a3628eee4a6671db28530d2d05ae2ea77918703fb45dac80ab07bc7232e"
+      },
+      {
+        "version": "1.13.0",
+        "size": "41.0 MB",
+        "published": "2026-10-04T23:01:02Z",
+        "digest": "sha256:419f09bc87e86ddd2085ffa0b9a68ca1238fb3bd2961deadfa180e766725dd04"
+      },
+      {
+        "version": "1.12.1",
+        "size": "40.8 MB",
+        "published": "2026-10-04T23:01:01Z",
+        "digest": "sha256:db380f6fd9738ad0e08c51e3469eabca0cd24b9460bddba2bb59666f74d71698"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://longhorn.io",
+    "source": "https://github.com/longhorn/longhorn-share-manager",
+    "image": "ghcr.io/quenchworks/images/longhorn-share-manager"
+  },
+  {
+    "slug": "longhorn-ui",
+    "name": "longhorn-ui",
+    "category": "Storage & platform",
+    "summary": "The Longhorn web UI, a webpack bundle built from source on Node 20 with its bundled axios, lodash, immutable, d3-color, follow-redirects and form-data moved to fixed releases, served by nginx with upstream's launcher and /v1 proxy to longhorn-manager. Drop-in for upstream's image, uid 499 like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.13.0, 1.12.1, 1.11.3",
+    "versions": [
+      {
+        "version": "1.13.0",
+        "size": "31.3 MB",
+        "published": "2026-10-04T23:32:24Z",
+        "digest": "sha256:38dd5952d93b8b8fbf8e3ae604895cae25613eacbe791cc71334bc4e08693ba8"
+      },
+      {
+        "version": "1.12.1",
+        "size": "31.2 MB",
+        "published": "2026-10-04T23:32:23Z",
+        "digest": "sha256:2d2d7db403c90039c7c4cdb05d1916931b73b8d18dd254366cd584ef998f4097"
+      },
+      {
+        "version": "1.11.3",
+        "size": "31.2 MB",
+        "published": "2026-10-04T23:32:22Z",
+        "digest": "sha256:30203fa08b6106fb31b8ebe9d6ee24f48149f4df8412ab4e943a69e3465827dc"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://longhorn.io",
+    "source": "https://github.com/longhorn/longhorn-ui",
+    "image": "ghcr.io/quenchworks/images/longhorn-ui"
+  },
+  {
     "slug": "mailpit",
     "name": "mailpit",
     "category": "Apps & productivity",
@@ -8802,6 +9258,44 @@
     "upstream": "https://smallstep.com",
     "source": "https://github.com/smallstep/certificates",
     "image": "ghcr.io/quenchworks/images/step-ca"
+  },
+  {
+    "slug": "support-bundle-kit",
+    "name": "support-bundle-kit",
+    "category": "Storage & platform",
+    "summary": "Rancher's support-bundle-kit, which Longhorn and Harvester run to collect cluster objects, logs and node files into a support bundle. Built from source with upstream's node collector scripts, at the versions Longhorn pins per release line. Image only, no chart; runs as root like upstream.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "0.0.88, 0.0.98, 0.0.92",
+    "versions": [
+      {
+        "version": "0.0.88",
+        "size": "53.9 MB",
+        "published": "2026-10-05T00:30:10Z",
+        "digest": "sha256:378e3e02f298415615b72372bcaa88a274242feff41e4d4e2c06c067074af277"
+      },
+      {
+        "version": "0.0.98",
+        "size": "53.9 MB",
+        "published": "2026-10-05T00:30:08Z",
+        "digest": "sha256:af907318002476dc0ac4b04261d8ddfe41a317579defc01494d08bc0553116df"
+      },
+      {
+        "version": "0.0.92",
+        "size": "53.9 MB",
+        "published": "2026-10-05T00:30:08Z",
+        "digest": "sha256:b4d5f966e1f77caf6fa08e984a600245f349812cf2ae5512e0d242a73dc083c1"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/rancher/support-bundle-kit",
+    "source": "https://github.com/rancher/support-bundle-kit",
+    "image": "ghcr.io/quenchworks/images/support-bundle-kit"
   },
   {
     "slug": "syft",
