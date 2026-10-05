@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import { images as catalog } from '../data/images';
 import { roadmap, roadmapTotal, roadmapCategories, byPriority, blockedCount, blockedList } from '../data/roadmap';
 import { updatesSorted, updatesChecked, updatesOpen } from '../data/updates';
+import blockedApps from '../data/blocked-apps.json';
 
 const shipped = catalog.filter((e) => e.status === 'available');
 const total = shipped.length + roadmapTotal;
@@ -337,8 +338,8 @@ const blockedGrouped = catsOf(blockedList);
     </details>
 
     {
-      blockedCount > 0 && (
-        <section class="mt-16 rounded-2xl border border-line bg-graphite p-6 sm:p-8" aria-label="About blocked apps">
+      (blockedCount > 0 || blockedApps.length > 0) && (
+        <section class="mt-16 rounded-2xl border border-line bg-graphite p-6 sm:p-8" aria-label="About blocked apps" id="blocked">
           <div class="flex items-center gap-3">
             <span class="rounded border border-red-500/40 bg-red-500/10 px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-red-300">blocked</span>
             <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Why some apps are held</h2>
@@ -351,6 +352,31 @@ const blockedGrouped = catsOf(blockedList);
             held (not shipped) until upstream relaxes the pin or backports the fix. They go live the
             moment that lands. Nothing already in the catalog carries a known fixable CVE to get there faster.
           </p>
+          {blockedApps.length > 0 && (
+            <div class="mt-8">
+              <h3 class="font-mono text-xs uppercase tracking-widest text-paper">Held in the image factory ({blockedApps.length})</h3>
+              <p class="mt-2 max-w-2xl text-sm leading-relaxed text-ash">
+                Each hold, as written in its recipe, with the date it was last re-measured.
+              </p>
+              <ul class="mt-4 space-y-3">
+                {blockedApps.map((b) => (
+                  <li class="rounded-xl border border-line bg-ink p-4">
+                    <details>
+                      <summary class="flex cursor-pointer flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <span class="font-mono text-sm text-paper">{b.slug}</span>
+                        {b.measured && (
+                          <span class="font-mono text-[10px] uppercase tracking-widest text-ash">
+                            measured <time datetime={b.measured}>{b.measured}</time>
+                          </span>
+                        )}
+                      </summary>
+                      <pre class="mt-3 whitespace-pre-wrap font-mono text-xs leading-relaxed text-ash">{b.status}</pre>
+                    </details>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
       )
     }
