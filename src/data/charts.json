@@ -824,6 +824,30 @@
     ]
   },
   {
+    "slug": "cluster-autoscaler",
+    "name": "cluster-autoscaler",
+    "category": "Coordination",
+    "summary": "Kubernetes Cluster Autoscaler, the SIG Autoscaling controller that adds nodes when pods cannot be scheduled and removes underused ones. Every cloud provider is compiled in (AWS, Azure, GCE, Cluster API, Hetzner, kwok and the rest); same layout as upstream's image, binary at /cluster-autoscaler.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.36.1",
+    "description": "Kubernetes Cluster Autoscaler, the SIG Autoscaling controller that adds nodes when pods cannot be scheduled and removes underused ones, for every supported cloud provider. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/cluster-autoscaler",
+    "imageDigest": "sha256:e3f5a024bd8e57ef17fbff2d4e5586365f341e16dc08b70ed7e9edd1f78588c0",
+    "repositoryID": "ee9f07a5-8f8b-46dc-b0d9-325532c57560",
+    "port": 8085,
+    "upstream": "https://github.com/kubernetes/autoscaler/tree/master/cluster-autoscaler",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/cluster-autoscaler",
+    "images": [
+      {
+        "name": "cluster-autoscaler",
+        "image": "ghcr.io/quenchworks/images/cluster-autoscaler@sha256:e3f5a024bd8e57ef17fbff2d4e5586365f341e16dc08b70ed7e9edd1f78588c0"
+      }
+    ]
+  },
+  {
     "slug": "cockroachdb",
     "name": "CockroachDB",
     "category": "Relational",
