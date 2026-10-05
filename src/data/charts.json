@@ -676,7 +676,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "1.21.2",
     "description": "cert-manager: automated X.509 certificate management for Kubernetes. Issues and renews certificates from ACME (Let's Encrypt), self-signed, CA, Vault and other Issuers via the Certificate/Issuer/ClusterIssuer CRDs. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest. Runs the controller, webhook and cainjector as three deployments; the webhook self-bootstraps its serving CA and the cainjector injects that CA bundle into the admission webhooks, so no external cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/cert-manager",
@@ -686,19 +686,19 @@
     "images": [
       {
         "name": "cert-manager-controller",
-        "image": "ghcr.io/quenchworks/images/cert-manager-controller@sha256:9834ae42c92733cadfaa843708d5d7ee4d0e88cd4b5e3c64c4e2654fa4c0b87a"
+        "image": "ghcr.io/quenchworks/images/cert-manager-controller@sha256:b4e5fb14444228dba86b243c4cc7e55884b5485360674211144b83bd101b8b89"
       },
       {
         "name": "cert-manager-webhook",
-        "image": "ghcr.io/quenchworks/images/cert-manager-webhook@sha256:9984afdf668e9594522a8cf75a30fdbe146f289964e9e97115e0983f5d887e81"
+        "image": "ghcr.io/quenchworks/images/cert-manager-webhook@sha256:d342342b50a64e5729d22f44b5bd245a478fc02f76903fac016fea5effa33fc0"
       },
       {
         "name": "cert-manager-cainjector",
-        "image": "ghcr.io/quenchworks/images/cert-manager-cainjector@sha256:77e6a69dd10e6a0aef694c05a956053c404c81e24c087506e6b67acb70330cc5"
+        "image": "ghcr.io/quenchworks/images/cert-manager-cainjector@sha256:cdb9b39d2eafecb6f5cc2bce3743be11a1c986ab0c6022b87023ae3662557bd9"
       },
       {
         "name": "cert-manager-acmesolver",
-        "image": "ghcr.io/quenchworks/images/cert-manager-acmesolver@sha256:a3615bcc8dd57fee3141ab101872296432340fe06b5641643eb2383830d7fea3"
+        "image": "ghcr.io/quenchworks/images/cert-manager-acmesolver@sha256:78072e6304bbbc81c6b049f44522ef5b774657079fba4926cc957b11f2bf3a63"
       }
     ]
   },
@@ -2524,11 +2524,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.17",
+    "chartVersion": "0.0.18",
     "appVersion": "2.9.1",
     "description": "Time-series database purpose-built for ingesting and querying metrics, events, and IoT/sensor data at high write rates. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/influxdb",
-    "imageDigest": "sha256:cb37d3ca9e4499ad76061aaf4694e5869c1316a5a491421b1eb31e67e3b2cb07",
+    "imageDigest": "sha256:83600ff879fbeb67ed1a6135e8c672715461d0bde0945887433c930edc6f3028",
     "repositoryID": "d50fd427-8fa1-4a5f-8d23-71f1c7d61a06",
     "port": 8086,
     "upstream": "https://github.com/influxdata/influxdb",
@@ -2536,7 +2536,7 @@
     "images": [
       {
         "name": "influxdb",
-        "image": "ghcr.io/quenchworks/images/influxdb@sha256:cb37d3ca9e4499ad76061aaf4694e5869c1316a5a491421b1eb31e67e3b2cb07"
+        "image": "ghcr.io/quenchworks/images/influxdb@sha256:83600ff879fbeb67ed1a6135e8c672715461d0bde0945887433c930edc6f3028"
       }
     ]
   },
@@ -2571,7 +2571,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "1.0.0",
     "description": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation. Bring your own ACME issuer for public certificates. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "1f0a96f3-a5b0-41c9-b718-a4817e8acd0b",
@@ -2589,19 +2589,19 @@
       },
       {
         "name": "cert-manager-controller",
-        "image": "ghcr.io/quenchworks/images/cert-manager-controller@sha256:9834ae42c92733cadfaa843708d5d7ee4d0e88cd4b5e3c64c4e2654fa4c0b87a"
+        "image": "ghcr.io/quenchworks/images/cert-manager-controller@sha256:b4e5fb14444228dba86b243c4cc7e55884b5485360674211144b83bd101b8b89"
       },
       {
         "name": "cert-manager-webhook",
-        "image": "ghcr.io/quenchworks/images/cert-manager-webhook@sha256:9984afdf668e9594522a8cf75a30fdbe146f289964e9e97115e0983f5d887e81"
+        "image": "ghcr.io/quenchworks/images/cert-manager-webhook@sha256:d342342b50a64e5729d22f44b5bd245a478fc02f76903fac016fea5effa33fc0"
       },
       {
         "name": "cert-manager-cainjector",
-        "image": "ghcr.io/quenchworks/images/cert-manager-cainjector@sha256:77e6a69dd10e6a0aef694c05a956053c404c81e24c087506e6b67acb70330cc5"
+        "image": "ghcr.io/quenchworks/images/cert-manager-cainjector@sha256:cdb9b39d2eafecb6f5cc2bce3743be11a1c986ab0c6022b87023ae3662557bd9"
       },
       {
         "name": "cert-manager-acmesolver",
-        "image": "ghcr.io/quenchworks/images/cert-manager-acmesolver@sha256:a3615bcc8dd57fee3141ab101872296432340fe06b5641643eb2383830d7fea3"
+        "image": "ghcr.io/quenchworks/images/cert-manager-acmesolver@sha256:78072e6304bbbc81c6b049f44522ef5b774657079fba4926cc957b11f2bf3a63"
       },
       {
         "name": "kubectl",
