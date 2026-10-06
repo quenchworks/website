@@ -1,17 +1,42 @@
 {
-  "checked": "2026-10-05",
+  "checked": "2026-10-06",
   "items": [
+    {
+      "app": "bifrost",
+      "from": "2.2.5",
+      "to": "2.2.6",
+      "status": "shipped"
+    },
+    {
+      "app": "buildkite-agent",
+      "from": "4.1.0",
+      "to": "4.2.0",
+      "status": "shipped"
+    },
+    {
+      "app": "checkov",
+      "from": "3.3.22",
+      "to": "3.3.23",
+      "status": "shipped"
+    },
     {
       "app": "clickhouse",
       "from": "26.7.16.2, 26.9.5.2",
-      "to": "26.7.21.2, 26.9.10.4",
+      "to": "26.7.22.4, 26.9.11.2",
       "status": "held",
       "note": "Bespoke per-version maps; needs its own session."
     },
     {
-      "app": "descheduler",
-      "from": "0.36.0",
-      "to": "0.37.0",
+      "app": "dependency-track",
+      "from": "5.1.1",
+      "to": "5.1.2",
+      "status": "shipped",
+      "note": "Jar swaps made version-aware: 5.1.2 ships jackson 2.22.3 itself."
+    },
+    {
+      "app": "dependency-track-frontend",
+      "from": "5.1.1",
+      "to": "5.1.2",
       "status": "shipped"
     },
     {
@@ -22,6 +47,26 @@
       "note": "Release candidate."
     },
     {
+      "app": "external-secrets",
+      "from": "2.11.0",
+      "to": "2.12.0",
+      "status": "shipped",
+      "note": "2.11.0 kept for the chart's line."
+    },
+    {
+      "app": "floci",
+      "from": "2.1.0",
+      "to": "2.2.0",
+      "status": "shipped",
+      "note": "2.2.0 needs an explicit opt-in to listen on 0.0.0.0, as upstream's images set."
+    },
+    {
+      "app": "floci-full",
+      "from": "2.1.0",
+      "to": "2.2.0",
+      "status": "shipped"
+    },
+    {
       "app": "grafana",
       "from": "13.1.6",
       "to": "13.2.3",
@@ -29,54 +74,96 @@
       "note": "The 13.1 recipe carries per-version source-build work; 13.2 needs its own session."
     },
     {
-      "app": "litellm",
-      "from": "1.104.0",
-      "to": "1.103.3",
-      "status": "shipped"
+      "app": "jellyfin",
+      "from": "12.1",
+      "to": "12.2",
+      "status": "held",
+      "note": "Blocked app."
     },
     {
-      "app": "matomo",
-      "from": "5.14.0",
-      "to": "5.14.1",
+      "app": "jetty",
+      "from": "12.0.39, 12.1.13",
+      "to": "12.0.40, 12.1.14",
       "status": "shipped"
     },
     {
       "app": "meilisearch",
       "from": "1.54.3",
       "to": "1.53.3",
-      "status": "held",
-      "note": "1.53.3 is the chart's line but sits outside the build window (last three versions); the chart stays on 1.53.2 until it moves to 1.54."
+      "status": "skipped",
+      "note": "Outside the build window."
     },
     {
       "app": "metabase",
       "from": "0.63.18",
       "to": "0.63.19",
       "status": "held",
-      "note": "0.63.19 brings new netty-codec-dns and mssql-jdbc findings; 0.63.18 stays."
+      "note": "New findings in 0.63.19."
     },
     {
       "app": "odoo",
       "from": "19.0.20260929",
-      "to": "19.0.20261004",
+      "to": "19.0.20261006",
       "status": "held",
-      "note": "Nightly tarballs rotate out within days; rebuilt with the next release."
+      "note": "Nightly tarballs."
+    },
+    {
+      "app": "pnpm",
+      "from": "11.28.4, 12.9.1",
+      "to": "11.28.5, 12.10.0",
+      "status": "held",
+      "note": "Published today; waits out the release cooldown (2026-10-20)."
+    },
+    {
+      "app": "pulsar",
+      "from": "4.2.4",
+      "to": "5.0.0",
+      "status": "held",
+      "note": "New major: image first, chart after its migration notes."
+    },
+    {
+      "app": "qdrant",
+      "from": "1.19.1",
+      "to": "1.19.2",
+      "status": "shipped",
+      "note": "Needs rust 1.98."
     },
     {
       "app": "renovate",
-      "from": "44.132.5",
-      "to": "44.133.0",
+      "from": "44.133.0",
+      "to": "44.139.0",
+      "status": "held",
+      "note": "Published today and installed with npm 12: waits out the release cooldown."
+    },
+    {
+      "app": "traefik",
+      "from": "3.7.13",
+      "to": "3.7.14",
       "status": "shipped"
     },
     {
-      "app": "rqlite",
-      "from": "10.5.1",
-      "to": "10.5.2",
+      "app": "trivy-operator",
+      "from": "0.34.0",
+      "to": "0.35.0",
+      "status": "shipped",
+      "note": "Needs Go 1.27; 0.34 stays on Go 1.26."
+    },
+    {
+      "app": "vcluster",
+      "from": "0.37.2",
+      "to": "0.37.3",
       "status": "shipped"
     },
     {
-      "app": "victorialogs",
-      "from": "1.53.0",
-      "to": "1.52.1",
+      "app": "vllm",
+      "from": "0.30.0",
+      "to": "0.31.0",
+      "status": "shipped"
+    },
+    {
+      "app": "weaviate",
+      "from": "1.39.8",
+      "to": "1.39.9",
       "status": "shipped"
     }
   ]
