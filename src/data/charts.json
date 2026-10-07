@@ -2028,7 +2028,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.32",
     "appVersion": "6.67.0",
     "description": "Hardened Ghost publishing platform (Node.js CMS + membership/newsletter engine) on a 0-CVE nonroot image, with a bundled MariaDB backend.",
     "imageRepository": "ghcr.io/quenchworks/images/ghost",
@@ -2044,7 +2044,7 @@
       },
       {
         "name": "mariadb",
-        "image": "ghcr.io/quenchworks/images/mariadb@sha256:147848cf3b18956a3ba15b3db79fa81ab3bc6013048379cad06c476c0eb8eed5"
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
       }
     ]
   },
@@ -2826,7 +2826,7 @@
     "tier": "standard",
     "license": "GPL-2.0+",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.5",
     "appVersion": "6.1.4",
     "description": "Hardened Joomla CMS (PHP-FPM + nginx) on a 0-CVE nonroot image, installed by its CLI installer into a bundled MariaDB.",
     "imageRepository": "ghcr.io/quenchworks/images/joomla",
@@ -2842,7 +2842,7 @@
       },
       {
         "name": "mariadb",
-        "image": "ghcr.io/quenchworks/images/mariadb@sha256:147848cf3b18956a3ba15b3db79fa81ab3bc6013048379cad06c476c0eb8eed5"
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
       }
     ]
   },
@@ -3701,11 +3701,11 @@
     "tier": "critical",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "12.3.3",
     "description": "Community-developed relational database and drop-in MySQL successor, GPL-licensed and fully open. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mariadb",
-    "imageDigest": "sha256:147848cf3b18956a3ba15b3db79fa81ab3bc6013048379cad06c476c0eb8eed5",
+    "imageDigest": "sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b",
     "repositoryID": "2c24b359-787b-44bc-9261-d43eb1f03ffe",
     "port": 3306,
     "upstream": "https://github.com/MariaDB/server",
@@ -3713,7 +3713,7 @@
     "images": [
       {
         "name": "mariadb",
-        "image": "ghcr.io/quenchworks/images/mariadb@sha256:147848cf3b18956a3ba15b3db79fa81ab3bc6013048379cad06c476c0eb8eed5"
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
       },
       {
         "name": "mysqld-exporter",
@@ -3729,7 +3729,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "26.10.1",
     "description": "MariaDB Operator: run MariaDB and Galera clusters on Kubernetes from CRDs (MariaDB, Database, User, Grant, Backup, Restore). The CRDs ship with the chart; the operator's MariaDB pods default to the QuenchWorks mariadb image. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mariadb-operator",
@@ -3744,7 +3744,7 @@
       },
       {
         "name": "mariadb",
-        "image": "ghcr.io/quenchworks/images/mariadb@sha256:147848cf3b18956a3ba15b3db79fa81ab3bc6013048379cad06c476c0eb8eed5"
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
       },
       {
         "name": "mysqld-exporter",
@@ -4247,6 +4247,47 @@
     ]
   },
   {
+    "slug": "mysql-ha-stack",
+    "name": "mysql-ha-stack",
+    "category": "Stacks",
+    "summary": "Operator-managed HA MySQL-compatible database in one install: MariaDB Operator + a 3-node Galera cluster (synchronous multi-primary replication, automatic recovery of failed nodes).",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "26.10.1",
+    "description": "Operator-managed HA MySQL-compatible database in one install: MariaDB Operator + a 3-node Galera cluster (synchronous multi-primary replication, automatic recovery of failed nodes). Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "502d54e3-8eed-4c0b-b134-08dd9bbd124b",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mysql-ha-stack",
+    "stack": true,
+    "components": [
+      "mariadb-operator"
+    ],
+    "images": [
+      {
+        "name": "mariadb-operator",
+        "image": "ghcr.io/quenchworks/images/mariadb-operator@sha256:62d007ebdbab91443b40be1cdb7cd0c34ebd0df4374c2679114a440557a24369"
+      },
+      {
+        "name": "mariadb",
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
+      },
+      {
+        "name": "mysqld-exporter",
+        "image": "ghcr.io/quenchworks/images/mysqld-exporter@sha256:988a5eaeeed9ba05789eb80f682ffb6d80567c2b4e75abf622762177c2b8b827"
+      },
+      {
+        "name": "kubectl",
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:4033ac5e5f359739cf017a256188a8da7592edae86e452c6327dc4865a66a580"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/mariadb-operator/mariadb-operator",
+      "https://github.com/MariaDB/server"
+    ]
+  },
+  {
     "slug": "n8n",
     "name": "n8n",
     "category": "Workflow",
@@ -4376,7 +4417,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.20",
+    "chartVersion": "0.0.22",
     "appVersion": "34.0.4",
     "description": "Hardened Nextcloud (self-hosted content collaboration / file-sync platform) on a 0-CVE nonroot php-fpm + nginx image, with a bundled MariaDB backend.",
     "imageRepository": "ghcr.io/quenchworks/images/nextcloud",
@@ -4392,7 +4433,7 @@
       },
       {
         "name": "mariadb",
-        "image": "ghcr.io/quenchworks/images/mariadb@sha256:147848cf3b18956a3ba15b3db79fa81ab3bc6013048379cad06c476c0eb8eed5"
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
       }
     ]
   },
@@ -5050,7 +5091,7 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.15",
     "appVersion": "5.2.3",
     "description": "Hardened phpMyAdmin (PHP-FPM + nginx) on a 0-CVE nonroot image — a web UI for the MySQL/MariaDB servers you already run, with an optional bundled MariaDB.",
     "imageRepository": "ghcr.io/quenchworks/images/phpmyadmin",
@@ -5066,7 +5107,7 @@
       },
       {
         "name": "mariadb",
-        "image": "ghcr.io/quenchworks/images/mariadb@sha256:147848cf3b18956a3ba15b3db79fa81ab3bc6013048379cad06c476c0eb8eed5"
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
       }
     ]
   },
@@ -7374,7 +7415,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "1.10.6",
     "description": "YOURLS, the self-hosted URL shortener with click statistics, an admin UI and an API, with a bundled MariaDB. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/yourls",
