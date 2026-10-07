@@ -848,6 +848,47 @@
     ]
   },
   {
+    "slug": "cnpg-stack",
+    "name": "cnpg-stack",
+    "category": "Stacks",
+    "summary": "Operator-managed HA PostgreSQL in one install: the CloudNativePG operator + a replicated Cluster (streaming replication, automated failover, built-in metrics) + a PgBouncer Pooler in front of the primary.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.30.1",
+    "description": "Operator-managed HA PostgreSQL in one install: the CloudNativePG operator + a replicated Cluster (streaming replication, automated failover, built-in metrics) + a PgBouncer Pooler in front of the primary. Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "54fc1458-1892-4ee0-a219-fa310ee6811a",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/cnpg-stack",
+    "stack": true,
+    "components": [
+      "cloudnative-pg"
+    ],
+    "images": [
+      {
+        "name": "cloudnative-pg",
+        "image": "ghcr.io/quenchworks/images/cloudnative-pg@sha256:24ddff2c7670b28410a7f6706bd5253829a46dc7d64d8540ebf8f6ecacb5afce"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+      },
+      {
+        "name": "pgbouncer",
+        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:dffe29e1c7b9ef21225c2888190a47f3849d418a5b38bc986e1d137dfc2167af"
+      },
+      {
+        "name": "kubectl",
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:4033ac5e5f359739cf017a256188a8da7592edae86e452c6327dc4865a66a580"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/cloudnative-pg/cloudnative-pg",
+      "https://github.com/pgbouncer/pgbouncer"
+    ]
+  },
+  {
     "slug": "cockroachdb",
     "name": "CockroachDB",
     "category": "Relational",
