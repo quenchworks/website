@@ -5953,6 +5953,33 @@
     ]
   },
   {
+    "slug": "rook-ceph",
+    "name": "rook-ceph",
+    "category": "Datastore",
+    "summary": "Hardened rook-ceph image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.21.0",
+    "description": "The Rook Ceph operator: runs Ceph clusters on Kubernetes through CRDs (CephCluster, CephObjectStore, CephBlockPool, CephFilesystem). Hardened by QuenchWorks as minimal, 0-CVE images (operator built from source, Ceph 20 from Wolfi), cosign-signed and pinned by digest. CSI is not included yet.",
+    "imageRepository": "ghcr.io/quenchworks/images/rook",
+    "imageDigest": "sha256:a2ff9329d16068ac9dabc605f9d4cb39ad758c2a3a80fd0194c7db1f4dfea9e0",
+    "repositoryID": "e3fa8e96-160d-4e50-9d1d-4e4683760f96",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/rook-ceph",
+    "images": [
+      {
+        "name": "rook",
+        "image": "ghcr.io/quenchworks/images/rook@sha256:a2ff9329d16068ac9dabc605f9d4cb39ad758c2a3a80fd0194c7db1f4dfea9e0"
+      },
+      {
+        "name": "ceph",
+        "image": "ghcr.io/quenchworks/images/ceph@sha256:684f5f8a3fac736e38abee6d97c2061123bcf31f1fe71ca2260c37f65b363635"
+      }
+    ]
+  },
+  {
     "slug": "rqlite",
     "name": "rqlite",
     "category": "Relational",
