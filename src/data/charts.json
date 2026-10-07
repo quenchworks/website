@@ -5960,9 +5960,9 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.4",
     "appVersion": "1.21.0",
-    "description": "The Rook Ceph operator: runs Ceph clusters on Kubernetes through CRDs (CephCluster, CephObjectStore, CephBlockPool, CephFilesystem). Hardened by QuenchWorks as minimal, 0-CVE images (operator built from source, Ceph 20 from Wolfi), cosign-signed and pinned by digest. CSI is not included yet.",
+    "description": "The Rook Ceph operator: runs Ceph clusters on Kubernetes through CRDs (CephCluster, CephObjectStore, CephBlockPool, CephFilesystem) with Ceph CSI for RBD and CephFS volumes. Hardened by QuenchWorks as minimal, 0-CVE images (operator, CSI driver and CSI operator built from source, Ceph 20 from Wolfi), cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rook",
     "imageDigest": "sha256:a2ff9329d16068ac9dabc605f9d4cb39ad758c2a3a80fd0194c7db1f4dfea9e0",
     "repositoryID": "e3fa8e96-160d-4e50-9d1d-4e4683760f96",
@@ -5976,6 +5976,34 @@
       {
         "name": "ceph",
         "image": "ghcr.io/quenchworks/images/ceph@sha256:684f5f8a3fac736e38abee6d97c2061123bcf31f1fe71ca2260c37f65b363635"
+      },
+      {
+        "name": "ceph-csi-operator",
+        "image": "ghcr.io/quenchworks/images/ceph-csi-operator@sha256:3924621c5a1e707aceaad8a88c27781150e86532cd71db2160752f174b8d8fc2"
+      },
+      {
+        "name": "cephcsi",
+        "image": "ghcr.io/quenchworks/images/cephcsi@sha256:ae2ee763fd858b9cbe05edbc5d5a045af4e722a5dda02dfcfef102916322739d"
+      },
+      {
+        "name": "csi-provisioner",
+        "image": "ghcr.io/quenchworks/images/csi-provisioner@sha256:ffb81c18d8d2b7cec0ecd81036e58ec8b2f068e26bb0943bbd334d1e017c89de"
+      },
+      {
+        "name": "csi-attacher",
+        "image": "ghcr.io/quenchworks/images/csi-attacher@sha256:bf14937a85f247b933558b50c9ccf52b323066401a97a765f02035f9c9b3e633"
+      },
+      {
+        "name": "csi-resizer",
+        "image": "ghcr.io/quenchworks/images/csi-resizer@sha256:62a5a52174790c92c6fdbd1878479b790499253ed5548b08eec02869e855a4a6"
+      },
+      {
+        "name": "csi-snapshotter",
+        "image": "ghcr.io/quenchworks/images/csi-snapshotter@sha256:ac11531dc4b5de882e4b55f196e0396248f3db557ac53ce73983d648eac7dca7"
+      },
+      {
+        "name": "csi-node-driver-registrar",
+        "image": "ghcr.io/quenchworks/images/csi-node-driver-registrar@sha256:8e5b9942dd60eb3b520fda8559993a28f44a755a04167315d586c8d5b9169e54"
       }
     ]
   },
@@ -6734,6 +6762,30 @@
       {
         "name": "tomcat",
         "image": "ghcr.io/quenchworks/images/tomcat@sha256:3e1442b4c91c2a91773a7a2ef7e84b40a503ff86a45300c3a190ddcc8b998b43"
+      }
+    ]
+  },
+  {
+    "slug": "tomee",
+    "name": "tomee",
+    "category": "Gateway",
+    "summary": "Apache TomEE, Tomcat with the Jakarta EE Web Profile stack (OpenEJB, OpenWebBeans, MyFaces, CXF) for running Jakarta EE applications.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "10.2.0",
+    "description": "Apache TomEE, Tomcat plus the Jakarta EE Web Profile stack (OpenEJB, OpenWebBeans, MyFaces, CXF), for running Jakarta EE applications and WARs. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image built from source on Wolfi (openjdk-21-jre), cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/tomee",
+    "imageDigest": "sha256:cca276333eaee7d424d815dc7d270d443e90593b954129499fa6df1889d99e91",
+    "repositoryID": "9ef9da48-6ef8-4c8e-94fb-97b9e5c3db54",
+    "port": 8080,
+    "upstream": "https://github.com/apache/tomee",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/tomee",
+    "images": [
+      {
+        "name": "tomee",
+        "image": "ghcr.io/quenchworks/images/tomee@sha256:cca276333eaee7d424d815dc7d270d443e90593b954129499fa6df1889d99e91"
       }
     ]
   },
