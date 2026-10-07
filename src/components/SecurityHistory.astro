@@ -1,0 +1,47 @@
+---
+// Fixable findings per nightly scan for one image, from src/data/security-history.json
+// (scripts/gen-security-history.mjs walks security.json's git history). A step chart:
+// each nightly value holds until the next scan changes it. Rendered only when the image
+// had a fixable finding at some point, since a flat zero line says nothing the grade
+// does not already say.
+import history from '../data/security-history.json';
+
+interface Props { slug: string }
+const { slug } = Astro.props;
+
+const series: [string, number, number][] = (history.images as Record<string, [string, number, number][]>)[slug] ?? [];
+const day = (d: string) => Date.parse(d + 'T00:00:00Z') / 86400000;
+const from = day(history.from), to = day(history.to);
+const peak = Math.max(0, ...series.map((p) => p[1]));
+const show = series.length > 1 && peak > 0 && to > from;
+
+const W = 600, H = 80, PAD = 4;
+const x = (d: string) => PAD + ((day(d) - from) / (to - from)) * (W - 2 * PAD);
+const y = (v: number) => H - PAD - (v / peak) * (H - 2 * PAD);
+let path = '';
+series.forEach(([d, f], i) => {
+  path += i === 0 ? `M${x(d).toFixed(1)},${y(f).toFixed(1)}` : `H${x(d).toFixed(1)}V${y(f).toFixed(1)}`;
+});
+path += `H${(W - PAD).toFixed(1)}`;
+const daysWithFixable = (() => {
+  let n = 0;
+  series.forEach(([d, f], i) => {
+    const end = i + 1 < series.length ? day(series[i + 1][0]) : to;
+    if (f > 0) n += end - day(d);
+  });
+  return Math.round(n);
+})();
+const label = `Fixable findings per nightly scan, ${history.from} to ${history.to}: peak ${peak}, ${daysWithFixable} day${daysWithFixable === 1 ? '' : 's'} with any.`;
+---
+{show && (
+  <figure class="mt-4 rounded-lg bg-ink p-3">
+    <svg viewBox={`0 0 ${W} ${H}`} class="h-20 w-full" role="img" aria-label={label} preserveAspectRatio="none">
+      <line x1={PAD} x2={W - PAD} y1={H - PAD} y2={H - PAD} class="stroke-line" stroke-width="1" />
+      <path d={path} fill="none" class="stroke-amber-300" stroke-width="1.5" vector-effect="non-scaling-stroke" />
+    </svg>
+    <figcaption class="mt-2 flex flex-wrap justify-between gap-2 font-mono text-[10px] uppercase tracking-widest text-ash">
+      <span>fixable per nightly scan · peak {peak}</span>
+      <span>{daysWithFixable} of {Math.round(to - from)} days with any · {history.from} to {history.to}</span>
+    </figcaption>
+  </figure>
+)}

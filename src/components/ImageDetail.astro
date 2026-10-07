@@ -10,6 +10,7 @@ import { fetchPackageDetail } from '../data/artifacthub';
 import security from '../data/security.json';
 import CveStatus from '../components/CveStatus.astro';
 import CveReport from '../components/CveReport.astro';
+import SecurityHistory from '../components/SecurityHistory.astro';
 import { resolveAlternatives } from '../data/alternatives';
 import { slugify } from '../data/slugify';
 import { getLangFromUrl, useTranslations, localizeUrl } from '../i18n/ui';
@@ -267,6 +268,7 @@ const sevs = sec
             </div>
           ))}
         </div>
+        <SecurityHistory slug={entry.slug} />
       </section>
     )}
 
