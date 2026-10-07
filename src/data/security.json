@@ -1044,8 +1044,8 @@
   },
   "bifrost": {
     "image": "ghcr.io/quenchworks/images/bifrost",
-    "version": "2.2.5",
-    "tag": "ghcr.io/quenchworks/images/bifrost:2.2.5",
+    "version": "2.2.6",
+    "tag": "ghcr.io/quenchworks/images/bifrost:2.2.6",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -1071,8 +1071,8 @@
     ],
     "versions": [
       {
-        "version": "2.2.5",
-        "tag": "ghcr.io/quenchworks/images/bifrost:2.2.5",
+        "version": "2.2.6",
+        "tag": "ghcr.io/quenchworks/images/bifrost:2.2.6",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -1533,8 +1533,8 @@
   },
   "buildkite-agent": {
     "image": "ghcr.io/quenchworks/images/buildkite-agent",
-    "version": "4.1.0",
-    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.1.0",
+    "version": "4.2.0",
+    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.2.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -1559,6 +1559,33 @@
       }
     ],
     "versions": [
+      {
+        "version": "4.2.0",
+        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.2.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/buildkite-agent"
+            ]
+          }
+        ]
+      },
       {
         "version": "4.1.0",
         "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.1.0",
@@ -1589,33 +1616,6 @@
       {
         "version": "4.0.9",
         "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.9",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
-        "cves": [
-          {
-            "id": "GO-2026-5932",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
-            "fixed": null,
-            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-            "url": "https://go.dev/issue/44226",
-            "targets": [
-              "usr/bin/buildkite-agent"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "4.0.8",
-        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.8",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -2472,8 +2472,8 @@
   },
   "checkov": {
     "image": "ghcr.io/quenchworks/images/checkov",
-    "version": "3.3.22",
-    "tag": "ghcr.io/quenchworks/images/checkov:3.3.22",
+    "version": "3.3.23",
+    "tag": "ghcr.io/quenchworks/images/checkov:3.3.23",
     "critical": 0,
     "high": 1,
     "medium": 0,
@@ -2499,8 +2499,8 @@
     ],
     "versions": [
       {
-        "version": "3.3.22",
-        "tag": "ghcr.io/quenchworks/images/checkov:3.3.22",
+        "version": "3.3.23",
+        "tag": "ghcr.io/quenchworks/images/checkov:3.3.23",
         "critical": 0,
         "high": 1,
         "medium": 0,
@@ -3021,16 +3021,28 @@
     "image": "ghcr.io/quenchworks/images/code-server",
     "version": "4.140.0",
     "tag": "ghcr.io/quenchworks/images/code-server:4.140.0",
-    "critical": 0,
+    "critical": 1,
     "high": 0,
     "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "total": 2,
+    "fixable": 1,
+    "grade": "F",
+    "score": 69,
     "cves": [
+      {
+        "id": "CVE-2026-102422",
+        "severity": "CRITICAL",
+        "pkg": "shell-quote",
+        "installed": "1.9.0",
+        "fixed": "1.11.0",
+        "title": "shell-quote's `quote()` function emits a `{ comment }` token as `#` fo ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102422",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "GHSA-wx77-rp39-c6vg",
         "severity": "LOW",
@@ -3048,16 +3060,28 @@
       {
         "version": "4.140.0",
         "tag": "ghcr.io/quenchworks/images/code-server:4.140.0",
-        "critical": 0,
+        "critical": 1,
         "high": 0,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 2,
+        "fixable": 1,
+        "grade": "F",
+        "score": 69,
         "cves": [
+          {
+            "id": "CVE-2026-102422",
+            "severity": "CRITICAL",
+            "pkg": "shell-quote",
+            "installed": "1.9.0",
+            "fixed": "1.11.0",
+            "title": "shell-quote's `quote()` function emits a `{ comment }` token as `#` fo ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102422",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -3075,16 +3099,28 @@
       {
         "version": "4.139.1",
         "tag": "ghcr.io/quenchworks/images/code-server:4.139.1",
-        "critical": 0,
+        "critical": 1,
         "high": 0,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 2,
+        "fixable": 1,
+        "grade": "F",
+        "score": 69,
         "cves": [
+          {
+            "id": "CVE-2026-102422",
+            "severity": "CRITICAL",
+            "pkg": "shell-quote",
+            "installed": "1.9.0",
+            "fixed": "1.11.0",
+            "title": "shell-quote's `quote()` function emits a `{ comment }` token as `#` fo ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102422",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -5066,8 +5102,8 @@
   },
   "dependency-track": {
     "image": "ghcr.io/quenchworks/images/dependency-track",
-    "version": "5.1.1",
-    "tag": "ghcr.io/quenchworks/images/dependency-track:5.1.1",
+    "version": "5.1.2",
+    "tag": "ghcr.io/quenchworks/images/dependency-track:5.1.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -5080,8 +5116,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "5.1.1",
-        "tag": "ghcr.io/quenchworks/images/dependency-track:5.1.1",
+        "version": "5.1.2",
+        "tag": "ghcr.io/quenchworks/images/dependency-track:5.1.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5097,8 +5133,8 @@
   },
   "dependency-track-frontend": {
     "image": "ghcr.io/quenchworks/images/dependency-track-frontend",
-    "version": "5.1.1",
-    "tag": "ghcr.io/quenchworks/images/dependency-track-frontend:5.1.1",
+    "version": "5.1.2",
+    "tag": "ghcr.io/quenchworks/images/dependency-track-frontend:5.1.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -5111,8 +5147,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "5.1.1",
-        "tag": "ghcr.io/quenchworks/images/dependency-track-frontend:5.1.1",
+        "version": "5.1.2",
+        "tag": "ghcr.io/quenchworks/images/dependency-track-frontend:5.1.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5718,15 +5754,39 @@
     "version": "2.11.0",
     "tag": "ghcr.io/quenchworks/images/easegress:2.11.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 1,
     "low": 0,
     "unknown": 2,
-    "total": 2,
-    "fixable": 0,
-    "grade": "A",
-    "score": 96,
+    "total": 4,
+    "fixable": 2,
+    "grade": "D",
+    "score": 72,
     "cves": [
+      {
+        "id": "CVE-2026-41510",
+        "severity": "HIGH",
+        "pkg": "github.com/corazawaf/coraza/v3",
+        "installed": "v3.3.3",
+        "fixed": "3.8.1",
+        "title": "Coraza: Silent argument drop at ArgumentLimit allows bypass of ARGS-targeted rules via parameter flooding",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-41510",
+        "targets": [
+          "usr/bin/easegress-server"
+        ]
+      },
+      {
+        "id": "CVE-2026-41504",
+        "severity": "MEDIUM",
+        "pkg": "github.com/corazawaf/coraza/v3",
+        "installed": "v3.3.3",
+        "fixed": "3.8.0",
+        "title": "Coraza: Native audit-log format allows CRLF injection and log forgery via request body and header fields",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-41504",
+        "targets": [
+          "usr/bin/easegress-server"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -5746,15 +5806,39 @@
         "version": "2.11.0",
         "tag": "ghcr.io/quenchworks/images/easegress:2.11.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 1,
         "low": 0,
         "unknown": 2,
-        "total": 2,
-        "fixable": 0,
-        "grade": "A",
-        "score": 96,
+        "total": 4,
+        "fixable": 2,
+        "grade": "D",
+        "score": 72,
         "cves": [
+          {
+            "id": "CVE-2026-41510",
+            "severity": "HIGH",
+            "pkg": "github.com/corazawaf/coraza/v3",
+            "installed": "v3.3.3",
+            "fixed": "3.8.1",
+            "title": "Coraza: Silent argument drop at ArgumentLimit allows bypass of ARGS-targeted rules via parameter flooding",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-41510",
+            "targets": [
+              "usr/bin/easegress-server"
+            ]
+          },
+          {
+            "id": "CVE-2026-41504",
+            "severity": "MEDIUM",
+            "pkg": "github.com/corazawaf/coraza/v3",
+            "installed": "v3.3.3",
+            "fixed": "3.8.0",
+            "title": "Coraza: Native audit-log format allows CRLF injection and log forgery via request body and header fields",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-41504",
+            "targets": [
+              "usr/bin/easegress-server"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -5774,15 +5858,39 @@
         "version": "2.10.1",
         "tag": "ghcr.io/quenchworks/images/easegress:2.10.1",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 1,
         "low": 0,
         "unknown": 2,
-        "total": 2,
-        "fixable": 0,
-        "grade": "A",
-        "score": 96,
+        "total": 4,
+        "fixable": 2,
+        "grade": "D",
+        "score": 72,
         "cves": [
+          {
+            "id": "CVE-2026-41510",
+            "severity": "HIGH",
+            "pkg": "github.com/corazawaf/coraza/v3",
+            "installed": "v3.3.3",
+            "fixed": "3.8.1",
+            "title": "Coraza: Silent argument drop at ArgumentLimit allows bypass of ARGS-targeted rules via parameter flooding",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-41510",
+            "targets": [
+              "usr/bin/easegress-server"
+            ]
+          },
+          {
+            "id": "CVE-2026-41504",
+            "severity": "MEDIUM",
+            "pkg": "github.com/corazawaf/coraza/v3",
+            "installed": "v3.3.3",
+            "fixed": "3.8.0",
+            "title": "Coraza: Native audit-log format allows CRLF injection and log forgery via request body and header fields",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-41504",
+            "targets": [
+              "usr/bin/easegress-server"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -6414,8 +6522,8 @@
   },
   "external-secrets": {
     "image": "ghcr.io/quenchworks/images/external-secrets",
-    "version": "2.11.0",
-    "tag": "ghcr.io/quenchworks/images/external-secrets:2.11.0",
+    "version": "2.12.0",
+    "tag": "ghcr.io/quenchworks/images/external-secrets:2.12.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6440,6 +6548,33 @@
       }
     ],
     "versions": [
+      {
+        "version": "2.12.0",
+        "tag": "ghcr.io/quenchworks/images/external-secrets:2.12.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/external-secrets"
+            ]
+          }
+        ]
+      },
       {
         "version": "2.11.0",
         "tag": "ghcr.io/quenchworks/images/external-secrets:2.11.0",
@@ -6679,8 +6814,8 @@
   },
   "floci": {
     "image": "ghcr.io/quenchworks/images/floci",
-    "version": "2.1.0",
-    "tag": "ghcr.io/quenchworks/images/floci:2.1.0",
+    "version": "2.2.0",
+    "tag": "ghcr.io/quenchworks/images/floci:2.2.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6692,6 +6827,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "2.2.0",
+        "tag": "ghcr.io/quenchworks/images/floci:2.2.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "2.1.0",
         "tag": "ghcr.io/quenchworks/images/floci:2.1.0",
@@ -6719,27 +6868,13 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
-      {
-        "version": "2.0.0",
-        "tag": "ghcr.io/quenchworks/images/floci:2.0.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
       }
     ]
   },
   "floci-full": {
     "image": "ghcr.io/quenchworks/images/floci-full",
-    "version": "2.1.0",
-    "tag": "ghcr.io/quenchworks/images/floci-full:2.1.0",
+    "version": "2.2.0",
+    "tag": "ghcr.io/quenchworks/images/floci-full:2.2.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6752,8 +6887,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "2.1.0",
-        "tag": "ghcr.io/quenchworks/images/floci-full:2.1.0",
+        "version": "2.2.0",
+        "tag": "ghcr.io/quenchworks/images/floci-full:2.2.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -7465,15 +7600,27 @@
     "version": "6.67.0",
     "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
     "critical": 0,
-    "high": 3,
+    "high": 4,
     "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 4,
-    "fixable": 0,
+    "total": 5,
+    "fixable": 1,
     "grade": "D",
-    "score": 66,
+    "score": 51,
     "cves": [
+      {
+        "id": "GHSA-wq5f-xc86-pv6w",
+        "severity": "HIGH",
+        "pkg": "sharp",
+        "installed": "0.35.4",
+        "fixed": "0.35.5",
+        "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+        "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2026-19693",
         "severity": "HIGH",
@@ -7528,15 +7675,27 @@
         "version": "6.67.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
         "critical": 0,
-        "high": 3,
+        "high": 4,
         "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 0,
+        "total": 5,
+        "fixable": 1,
         "grade": "D",
-        "score": 66,
+        "score": 51,
         "cves": [
+          {
+            "id": "GHSA-wq5f-xc86-pv6w",
+            "severity": "HIGH",
+            "pkg": "sharp",
+            "installed": "0.35.4",
+            "fixed": "0.35.5",
+            "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+            "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2026-19693",
             "severity": "HIGH",
@@ -9289,15 +9448,27 @@
     "version": "2.4.0",
     "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
     "critical": 0,
-    "high": 1,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
+    "total": 2,
+    "fixable": 1,
     "grade": "D",
-    "score": 90,
+    "score": 75,
     "cves": [
+      {
+        "id": "GHSA-wq5f-xc86-pv6w",
+        "severity": "HIGH",
+        "pkg": "sharp",
+        "installed": "0.35.4",
+        "fixed": "0.35.5",
+        "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+        "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2026-93748",
         "severity": "HIGH",
@@ -9316,15 +9487,27 @@
         "version": "2.4.0",
         "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
         "critical": 0,
-        "high": 1,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
+        "total": 2,
+        "fixable": 1,
         "grade": "D",
-        "score": 90,
+        "score": 75,
         "cves": [
+          {
+            "id": "GHSA-wq5f-xc86-pv6w",
+            "severity": "HIGH",
+            "pkg": "sharp",
+            "installed": "0.35.4",
+            "fixed": "0.35.5",
+            "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+            "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2026-93748",
             "severity": "HIGH",
@@ -10182,8 +10365,8 @@
   },
   "jetty": {
     "image": "ghcr.io/quenchworks/images/jetty",
-    "version": "12.1.13",
-    "tag": "ghcr.io/quenchworks/images/jetty:12.1.13",
+    "version": "12.1.14",
+    "tag": "ghcr.io/quenchworks/images/jetty:12.1.14",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -10196,8 +10379,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "12.1.13",
-        "tag": "ghcr.io/quenchworks/images/jetty:12.1.13",
+        "version": "12.1.14",
+        "tag": "ghcr.io/quenchworks/images/jetty:12.1.14",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10210,8 +10393,8 @@
         "cves": []
       },
       {
-        "version": "12.0.39",
-        "tag": "ghcr.io/quenchworks/images/jetty:12.0.39",
+        "version": "12.0.40",
+        "tag": "ghcr.io/quenchworks/images/jetty:12.0.40",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -14070,12 +14253,12 @@
     "version": "2.40.7",
     "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
     "critical": 7,
-    "high": 6,
+    "high": 7,
     "medium": 11,
-    "low": 0,
+    "low": 1,
     "unknown": 0,
-    "total": 24,
-    "fixable": 17,
+    "total": 26,
+    "fixable": 19,
     "grade": "F",
     "score": 0,
     "cves": [
@@ -14097,7 +14280,7 @@
         "pkg": "simple-git",
         "installed": "3.36.0",
         "fixed": "4.0.1",
-        "title": "simple-git unsafe-operation guard does not block trailer command configuration",
+        "title": "simple-git: simple-git unsafe-operation guard does not block trailer command configuration",
         "url": "https://avd.aquasec.com/nvd/cve-2026-102828",
         "targets": [
           "Node.js"
@@ -14195,6 +14378,18 @@
         "fixed": "4.0.0",
         "title": "simple-git: unsafe-operations plugin bypass via git long-option abbreviation (--receive-p/--exe) -> command execution (residual of CVE-2026-28291)",
         "url": "https://avd.aquasec.com/nvd/cve-2026-102827",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-104850",
+        "severity": "HIGH",
+        "pkg": "@modelcontextprotocol/sdk",
+        "installed": "1.26.0",
+        "fixed": "1.31.0",
+        "title": "MCP TypeScript SDK: OAuth client could send credentials to an authorization server chosen by the MCP server",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-104850",
         "targets": [
           "Node.js"
         ]
@@ -14366,6 +14561,18 @@
         "targets": [
           "Node.js"
         ]
+      },
+      {
+        "id": "CVE-2026-105799",
+        "severity": "LOW",
+        "pkg": "@langchain/redis",
+        "installed": "1.0.1",
+        "fixed": "1.1.1",
+        "title": "LangChain: RediSearch Filter Injection via Unescaped Tag/Text Values",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-105799",
+        "targets": [
+          "Node.js"
+        ]
       }
     ],
     "versions": [
@@ -14373,12 +14580,12 @@
         "version": "2.40.7",
         "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
         "critical": 7,
-        "high": 6,
+        "high": 7,
         "medium": 11,
-        "low": 0,
+        "low": 1,
         "unknown": 0,
-        "total": 24,
-        "fixable": 17,
+        "total": 26,
+        "fixable": 19,
         "grade": "F",
         "score": 0,
         "cves": [
@@ -14400,7 +14607,7 @@
             "pkg": "simple-git",
             "installed": "3.36.0",
             "fixed": "4.0.1",
-            "title": "simple-git unsafe-operation guard does not block trailer command configuration",
+            "title": "simple-git: simple-git unsafe-operation guard does not block trailer command configuration",
             "url": "https://avd.aquasec.com/nvd/cve-2026-102828",
             "targets": [
               "Node.js"
@@ -14498,6 +14705,18 @@
             "fixed": "4.0.0",
             "title": "simple-git: unsafe-operations plugin bypass via git long-option abbreviation (--receive-p/--exe) -> command execution (residual of CVE-2026-28291)",
             "url": "https://avd.aquasec.com/nvd/cve-2026-102827",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-104850",
+            "severity": "HIGH",
+            "pkg": "@modelcontextprotocol/sdk",
+            "installed": "1.26.0",
+            "fixed": "1.31.0",
+            "title": "MCP TypeScript SDK: OAuth client could send credentials to an authorization server chosen by the MCP server",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-104850",
             "targets": [
               "Node.js"
             ]
@@ -14666,6 +14885,18 @@
             "fixed": null,
             "title": "sprintf-js: sprintf-js: Denial of Service via unbounded precision specifiers",
             "url": "https://avd.aquasec.com/nvd/cve-2026-97058",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-105799",
+            "severity": "LOW",
+            "pkg": "@langchain/redis",
+            "installed": "1.0.1",
+            "fixed": "1.1.1",
+            "title": "LangChain: RediSearch Filter Injection via Unescaped Tag/Text Values",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-105799",
             "targets": [
               "Node.js"
             ]
@@ -18343,8 +18574,8 @@
   },
   "qdrant": {
     "image": "ghcr.io/quenchworks/images/qdrant",
-    "version": "1.19.1",
-    "tag": "ghcr.io/quenchworks/images/qdrant:1.19.1",
+    "version": "1.19.2",
+    "tag": "ghcr.io/quenchworks/images/qdrant:1.19.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -18357,8 +18588,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.19.1",
-        "tag": "ghcr.io/quenchworks/images/qdrant:1.19.1",
+        "version": "1.19.2",
+        "tag": "ghcr.io/quenchworks/images/qdrant:1.19.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -18857,7 +19088,7 @@
         "pkg": "simple-git",
         "installed": "3.36.0",
         "fixed": "4.0.1",
-        "title": "simple-git unsafe-operation guard does not block trailer command configuration",
+        "title": "simple-git: simple-git unsafe-operation guard does not block trailer command configuration",
         "url": "https://avd.aquasec.com/nvd/cve-2026-102828",
         "targets": [
           "Node.js"
@@ -18944,7 +19175,7 @@
             "pkg": "simple-git",
             "installed": "3.36.0",
             "fixed": "4.0.1",
-            "title": "simple-git unsafe-operation guard does not block trailer command configuration",
+            "title": "simple-git: simple-git unsafe-operation guard does not block trailer command configuration",
             "url": "https://avd.aquasec.com/nvd/cve-2026-102828",
             "targets": [
               "Node.js"
@@ -21320,8 +21551,8 @@
   },
   "traefik": {
     "image": "ghcr.io/quenchworks/images/traefik",
-    "version": "3.7.13",
-    "tag": "ghcr.io/quenchworks/images/traefik:3.7.13",
+    "version": "3.7.14",
+    "tag": "ghcr.io/quenchworks/images/traefik:3.7.14",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -21336,7 +21567,7 @@
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
-        "installed": "v0.56.0",
+        "installed": "v0.57.0",
         "fixed": null,
         "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
         "url": "https://go.dev/issue/44226",
@@ -21347,8 +21578,8 @@
     ],
     "versions": [
       {
-        "version": "3.7.13",
-        "tag": "ghcr.io/quenchworks/images/traefik:3.7.13",
+        "version": "3.7.14",
+        "tag": "ghcr.io/quenchworks/images/traefik:3.7.14",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -21363,7 +21594,7 @@
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
             "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
+            "installed": "v0.57.0",
             "fixed": null,
             "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
             "url": "https://go.dev/issue/44226",
@@ -21465,8 +21696,8 @@
   },
   "trivy-operator": {
     "image": "ghcr.io/quenchworks/images/trivy-operator",
-    "version": "0.34.0",
-    "tag": "ghcr.io/quenchworks/images/trivy-operator:0.34.0",
+    "version": "0.35.0",
+    "tag": "ghcr.io/quenchworks/images/trivy-operator:0.35.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -21481,7 +21712,7 @@
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
-        "installed": "v0.56.0",
+        "installed": "v0.57.0",
         "fixed": null,
         "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
         "url": "https://go.dev/issue/44226",
@@ -21491,6 +21722,33 @@
       }
     ],
     "versions": [
+      {
+        "version": "0.35.0",
+        "tag": "ghcr.io/quenchworks/images/trivy-operator:0.35.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.57.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/trivy-operator"
+            ]
+          }
+        ]
+      },
       {
         "version": "0.34.0",
         "tag": "ghcr.io/quenchworks/images/trivy-operator:0.34.0",
@@ -21903,157 +22161,57 @@
     "version": "8.2.0",
     "tag": "ghcr.io/quenchworks/images/unleash:8.2.0",
     "critical": 0,
-    "high": 2,
+    "high": 0,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 1,
-    "grade": "D",
-    "score": 75,
-    "cves": [
-      {
-        "id": "CVE-2026-93749",
-        "severity": "HIGH",
-        "pkg": "source-map-js",
-        "installed": "1.2.1",
-        "fixed": "1.2.2",
-        "title": "source-map-js: source-map-js: Denial of Service via malformed indexed source maps",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-93749",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-93748",
-        "severity": "HIGH",
-        "pkg": "http-cache-semantics",
-        "installed": "4.2.0",
-        "fixed": null,
-        "title": "http-cache-semantics: http-cache-semantics: Information Disclosure via max-stale directive",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-93748",
-        "targets": [
-          "Node.js"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "8.2.0",
         "tag": "ghcr.io/quenchworks/images/unleash:8.2.0",
         "critical": 0,
-        "high": 2,
+        "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 1,
-        "grade": "D",
-        "score": 75,
-        "cves": [
-          {
-            "id": "CVE-2026-93749",
-            "severity": "HIGH",
-            "pkg": "source-map-js",
-            "installed": "1.2.1",
-            "fixed": "1.2.2",
-            "title": "source-map-js: source-map-js: Denial of Service via malformed indexed source maps",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-93749",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-93748",
-            "severity": "HIGH",
-            "pkg": "http-cache-semantics",
-            "installed": "4.2.0",
-            "fixed": null,
-            "title": "http-cache-semantics: http-cache-semantics: Information Disclosure via max-stale directive",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-93748",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "8.1.0",
         "tag": "ghcr.io/quenchworks/images/unleash:8.1.0",
         "critical": 0,
-        "high": 2,
+        "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 1,
-        "grade": "D",
-        "score": 75,
-        "cves": [
-          {
-            "id": "CVE-2026-93749",
-            "severity": "HIGH",
-            "pkg": "source-map-js",
-            "installed": "1.2.1",
-            "fixed": "1.2.2",
-            "title": "source-map-js: source-map-js: Denial of Service via malformed indexed source maps",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-93749",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-93748",
-            "severity": "HIGH",
-            "pkg": "http-cache-semantics",
-            "installed": "4.2.0",
-            "fixed": null,
-            "title": "http-cache-semantics: http-cache-semantics: Information Disclosure via max-stale directive",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-93748",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "8.0.3",
         "tag": "ghcr.io/quenchworks/images/unleash:8.0.3",
         "critical": 0,
-        "high": 2,
+        "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 1,
-        "grade": "D",
-        "score": 75,
-        "cves": [
-          {
-            "id": "CVE-2026-93749",
-            "severity": "HIGH",
-            "pkg": "source-map-js",
-            "installed": "1.2.1",
-            "fixed": "1.2.2",
-            "title": "source-map-js: source-map-js: Denial of Service via malformed indexed source maps",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-93749",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-93748",
-            "severity": "HIGH",
-            "pkg": "http-cache-semantics",
-            "installed": "4.2.0",
-            "fixed": null,
-            "title": "http-cache-semantics: http-cache-semantics: Information Disclosure via max-stale directive",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-93748",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -22437,8 +22595,8 @@
   },
   "vcluster": {
     "image": "ghcr.io/quenchworks/images/vcluster",
-    "version": "0.37.2",
-    "tag": "ghcr.io/quenchworks/images/vcluster:0.37.2",
+    "version": "0.37.3",
+    "tag": "ghcr.io/quenchworks/images/vcluster:0.37.3",
     "critical": 0,
     "high": 2,
     "medium": 1,
@@ -22504,8 +22662,8 @@
     ],
     "versions": [
       {
-        "version": "0.37.2",
-        "tag": "ghcr.io/quenchworks/images/vcluster:0.37.2",
+        "version": "0.37.3",
+        "tag": "ghcr.io/quenchworks/images/vcluster:0.37.3",
         "critical": 0,
         "high": 2,
         "medium": 1,
@@ -23283,8 +23441,8 @@
   },
   "vllm": {
     "image": "ghcr.io/quenchworks/images/vllm",
-    "version": "0.30.0",
-    "tag": "ghcr.io/quenchworks/images/vllm:0.30.0",
+    "version": "0.31.0",
+    "tag": "ghcr.io/quenchworks/images/vllm:0.31.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -23296,6 +23454,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "0.31.0",
+        "tag": "ghcr.io/quenchworks/images/vllm:0.31.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "0.30.0",
         "tag": "ghcr.io/quenchworks/images/vllm:0.30.0",
@@ -23314,8 +23486,8 @@
   },
   "weaviate": {
     "image": "ghcr.io/quenchworks/images/weaviate",
-    "version": "1.39.8",
-    "tag": "ghcr.io/quenchworks/images/weaviate:1.39.8",
+    "version": "1.39.9",
+    "tag": "ghcr.io/quenchworks/images/weaviate:1.39.9",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -23341,8 +23513,8 @@
     ],
     "versions": [
       {
-        "version": "1.39.8",
-        "tag": "ghcr.io/quenchworks/images/weaviate:1.39.8",
+        "version": "1.39.9",
+        "tag": "ghcr.io/quenchworks/images/weaviate:1.39.9",
         "critical": 0,
         "high": 0,
         "medium": 0,
