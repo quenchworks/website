@@ -203,7 +203,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Visualization UI for OpenSearch. Measured 2026-09-26 at 3.8.0: the full bundle has 12 vulnerable npm packages, among them maplibre-gl 5.2.0 (CRITICAL, fixed only in 6.x) compiled into the maps, observability and anomaly-detection plugin bundles. The min distribution drops those plugins, leaving 7 patch-level fixes, but dompurify 3.4.11 is compiled into the Discover and chat UI bundles, so swapping node_modules would clear the scan and still ship the vulnerable code. Needs a from-source UI build (yarn build of OSD) to ship honestly.",
+    "note": "Visualization UI for OpenSearch. Measured 2026-09-26 at 3.8.0: the full bundle has 12 vulnerable npm packages, among them maplibre-gl 5.2.0 (CRITICAL, fixed only in 6.x) compiled into the maps, observability and anomaly-detection plugin bundles. The min distribution drops those plugins, leaving 7 patch-level fixes, but dompurify 3.4.11 is compiled into the Discover and chat UI bundles, so swapping node_modules would clear the scan and still ship the vulnerable code. Needs a from-source UI build (yarn build of OSD) to ship honestly. Re-measured 2026-10-07: an image that swaps node_modules scans 0 but still carries dompurify 3.4.11/3.4.12 in 8 browser bundles and maplibre-gl 5.2.0 in 3, so it is held. Upstream main has dompurify ^3.4.13 and maplibre-gl 6.4.1; Dashboards 3.9.0 (unreleased) is the next build to measure.",
     "blocked": true,
     "blockedReason": "OpenSearch Dashboards bundles Node dependencies pinned below their CVE fixes, so the image cannot reach 0 fixable CVEs without diverging from the upstream bundle. Built and tested; held until upstream updates them."
   },
@@ -286,7 +286,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Umbrella: OpenSearch + OpenSearch Dashboards \u2014 search with a UI. Needs an opensearch-dashboards image first."
+    "note": "Umbrella: OpenSearch + OpenSearch Dashboards \u2014 search with a UI. Held 2026-10-07: chart built and gated (OpenSearch document found through Dashboards), but it bundles the opensearch-dashboards image, which is held (see that entry)."
   },
   {
     "name": "Percona PMM",
