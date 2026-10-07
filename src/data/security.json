@@ -1533,8 +1533,8 @@
   },
   "buildkite-agent": {
     "image": "ghcr.io/quenchworks/images/buildkite-agent",
-    "version": "4.2.0",
-    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.2.0",
+    "version": "4.2.1",
+    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.2.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -1559,6 +1559,33 @@
       }
     ],
     "versions": [
+      {
+        "version": "4.2.1",
+        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.2.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.56.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/buildkite-agent"
+            ]
+          }
+        ]
+      },
       {
         "version": "4.2.0",
         "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.2.0",
@@ -1589,33 +1616,6 @@
       {
         "version": "4.1.0",
         "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.1.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
-        "cves": [
-          {
-            "id": "GO-2026-5932",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
-            "fixed": null,
-            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-            "url": "https://go.dev/issue/44226",
-            "targets": [
-              "usr/bin/buildkite-agent"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "4.0.9",
-        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.0.9",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3021,28 +3021,16 @@
     "image": "ghcr.io/quenchworks/images/code-server",
     "version": "4.140.0",
     "tag": "ghcr.io/quenchworks/images/code-server:4.140.0",
-    "critical": 1,
+    "critical": 0,
     "high": 0,
     "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 2,
-    "fixable": 1,
-    "grade": "F",
-    "score": 69,
+    "total": 1,
+    "fixable": 0,
+    "grade": "B",
+    "score": 99,
     "cves": [
-      {
-        "id": "CVE-2026-102422",
-        "severity": "CRITICAL",
-        "pkg": "shell-quote",
-        "installed": "1.9.0",
-        "fixed": "1.11.0",
-        "title": "shell-quote's `quote()` function emits a `{ comment }` token as `#` fo ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-102422",
-        "targets": [
-          "Node.js"
-        ]
-      },
       {
         "id": "GHSA-wx77-rp39-c6vg",
         "severity": "LOW",
@@ -3060,28 +3048,16 @@
       {
         "version": "4.140.0",
         "tag": "ghcr.io/quenchworks/images/code-server:4.140.0",
-        "critical": 1,
+        "critical": 0,
         "high": 0,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 2,
-        "fixable": 1,
-        "grade": "F",
-        "score": 69,
+        "total": 1,
+        "fixable": 0,
+        "grade": "B",
+        "score": 99,
         "cves": [
-          {
-            "id": "CVE-2026-102422",
-            "severity": "CRITICAL",
-            "pkg": "shell-quote",
-            "installed": "1.9.0",
-            "fixed": "1.11.0",
-            "title": "shell-quote's `quote()` function emits a `{ comment }` token as `#` fo ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-102422",
-            "targets": [
-              "Node.js"
-            ]
-          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -3099,28 +3075,16 @@
       {
         "version": "4.139.1",
         "tag": "ghcr.io/quenchworks/images/code-server:4.139.1",
-        "critical": 1,
+        "critical": 0,
         "high": 0,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 2,
-        "fixable": 1,
-        "grade": "F",
-        "score": 69,
+        "total": 1,
+        "fixable": 0,
+        "grade": "B",
+        "score": 99,
         "cves": [
-          {
-            "id": "CVE-2026-102422",
-            "severity": "CRITICAL",
-            "pkg": "shell-quote",
-            "installed": "1.9.0",
-            "fixed": "1.11.0",
-            "title": "shell-quote's `quote()` function emits a `{ comment }` token as `#` fo ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-102422",
-            "targets": [
-              "Node.js"
-            ]
-          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -3947,8 +3911,8 @@
   },
   "coroot": {
     "image": "ghcr.io/quenchworks/images/coroot",
-    "version": "1.27.0",
-    "tag": "ghcr.io/quenchworks/images/coroot:1.27.0",
+    "version": "1.27.1",
+    "tag": "ghcr.io/quenchworks/images/coroot:1.27.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -3974,8 +3938,8 @@
     ],
     "versions": [
       {
-        "version": "1.27.0",
-        "tag": "ghcr.io/quenchworks/images/coroot:1.27.0",
+        "version": "1.27.1",
+        "tag": "ghcr.io/quenchworks/images/coroot:1.27.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5754,39 +5718,15 @@
     "version": "2.11.0",
     "tag": "ghcr.io/quenchworks/images/easegress:2.11.0",
     "critical": 0,
-    "high": 1,
-    "medium": 1,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 2,
-    "total": 4,
-    "fixable": 2,
-    "grade": "D",
-    "score": 72,
+    "total": 2,
+    "fixable": 0,
+    "grade": "A",
+    "score": 96,
     "cves": [
-      {
-        "id": "CVE-2026-41510",
-        "severity": "HIGH",
-        "pkg": "github.com/corazawaf/coraza/v3",
-        "installed": "v3.3.3",
-        "fixed": "3.8.1",
-        "title": "Coraza: Silent argument drop at ArgumentLimit allows bypass of ARGS-targeted rules via parameter flooding",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41510",
-        "targets": [
-          "usr/bin/easegress-server"
-        ]
-      },
-      {
-        "id": "CVE-2026-41504",
-        "severity": "MEDIUM",
-        "pkg": "github.com/corazawaf/coraza/v3",
-        "installed": "v3.3.3",
-        "fixed": "3.8.0",
-        "title": "Coraza: Native audit-log format allows CRLF injection and log forgery via request body and header fields",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41504",
-        "targets": [
-          "usr/bin/easegress-server"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -5806,39 +5746,15 @@
         "version": "2.11.0",
         "tag": "ghcr.io/quenchworks/images/easegress:2.11.0",
         "critical": 0,
-        "high": 1,
-        "medium": 1,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 2,
-        "total": 4,
-        "fixable": 2,
-        "grade": "D",
-        "score": 72,
+        "total": 2,
+        "fixable": 0,
+        "grade": "A",
+        "score": 96,
         "cves": [
-          {
-            "id": "CVE-2026-41510",
-            "severity": "HIGH",
-            "pkg": "github.com/corazawaf/coraza/v3",
-            "installed": "v3.3.3",
-            "fixed": "3.8.1",
-            "title": "Coraza: Silent argument drop at ArgumentLimit allows bypass of ARGS-targeted rules via parameter flooding",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41510",
-            "targets": [
-              "usr/bin/easegress-server"
-            ]
-          },
-          {
-            "id": "CVE-2026-41504",
-            "severity": "MEDIUM",
-            "pkg": "github.com/corazawaf/coraza/v3",
-            "installed": "v3.3.3",
-            "fixed": "3.8.0",
-            "title": "Coraza: Native audit-log format allows CRLF injection and log forgery via request body and header fields",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41504",
-            "targets": [
-              "usr/bin/easegress-server"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -5858,39 +5774,15 @@
         "version": "2.10.1",
         "tag": "ghcr.io/quenchworks/images/easegress:2.10.1",
         "critical": 0,
-        "high": 1,
-        "medium": 1,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 2,
-        "total": 4,
-        "fixable": 2,
-        "grade": "D",
-        "score": 72,
+        "total": 2,
+        "fixable": 0,
+        "grade": "A",
+        "score": 96,
         "cves": [
-          {
-            "id": "CVE-2026-41510",
-            "severity": "HIGH",
-            "pkg": "github.com/corazawaf/coraza/v3",
-            "installed": "v3.3.3",
-            "fixed": "3.8.1",
-            "title": "Coraza: Silent argument drop at ArgumentLimit allows bypass of ARGS-targeted rules via parameter flooding",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41510",
-            "targets": [
-              "usr/bin/easegress-server"
-            ]
-          },
-          {
-            "id": "CVE-2026-41504",
-            "severity": "MEDIUM",
-            "pkg": "github.com/corazawaf/coraza/v3",
-            "installed": "v3.3.3",
-            "fixed": "3.8.0",
-            "title": "Coraza: Native audit-log format allows CRLF injection and log forgery via request body and header fields",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41504",
-            "targets": [
-              "usr/bin/easegress-server"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -7600,27 +7492,15 @@
     "version": "6.67.0",
     "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
     "critical": 0,
-    "high": 4,
+    "high": 3,
     "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 5,
-    "fixable": 1,
+    "total": 4,
+    "fixable": 0,
     "grade": "D",
-    "score": 51,
+    "score": 66,
     "cves": [
-      {
-        "id": "GHSA-wq5f-xc86-pv6w",
-        "severity": "HIGH",
-        "pkg": "sharp",
-        "installed": "0.35.4",
-        "fixed": "0.35.5",
-        "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
-        "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
-        "targets": [
-          "Node.js"
-        ]
-      },
       {
         "id": "CVE-2026-19693",
         "severity": "HIGH",
@@ -7675,27 +7555,15 @@
         "version": "6.67.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
         "critical": 0,
-        "high": 4,
+        "high": 3,
         "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 5,
-        "fixable": 1,
+        "total": 4,
+        "fixable": 0,
         "grade": "D",
-        "score": 51,
+        "score": 66,
         "cves": [
-          {
-            "id": "GHSA-wq5f-xc86-pv6w",
-            "severity": "HIGH",
-            "pkg": "sharp",
-            "installed": "0.35.4",
-            "fixed": "0.35.5",
-            "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
-            "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
-            "targets": [
-              "Node.js"
-            ]
-          },
           {
             "id": "CVE-2026-19693",
             "severity": "HIGH",
@@ -8483,8 +8351,8 @@
   },
   "grype": {
     "image": "ghcr.io/quenchworks/images/grype",
-    "version": "0.120.0",
-    "tag": "ghcr.io/quenchworks/images/grype:0.120.0",
+    "version": "0.120.1",
+    "tag": "ghcr.io/quenchworks/images/grype:0.120.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -8510,8 +8378,8 @@
     ],
     "versions": [
       {
-        "version": "0.120.0",
-        "tag": "ghcr.io/quenchworks/images/grype:0.120.0",
+        "version": "0.120.1",
+        "tag": "ghcr.io/quenchworks/images/grype:0.120.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -9448,27 +9316,15 @@
     "version": "2.4.0",
     "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
     "critical": 0,
-    "high": 2,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 1,
+    "total": 1,
+    "fixable": 0,
     "grade": "D",
-    "score": 75,
+    "score": 90,
     "cves": [
-      {
-        "id": "GHSA-wq5f-xc86-pv6w",
-        "severity": "HIGH",
-        "pkg": "sharp",
-        "installed": "0.35.4",
-        "fixed": "0.35.5",
-        "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
-        "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
-        "targets": [
-          "Node.js"
-        ]
-      },
       {
         "id": "CVE-2026-93748",
         "severity": "HIGH",
@@ -9487,27 +9343,15 @@
         "version": "2.4.0",
         "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
         "critical": 0,
-        "high": 2,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 1,
+        "total": 1,
+        "fixable": 0,
         "grade": "D",
-        "score": 75,
+        "score": 90,
         "cves": [
-          {
-            "id": "GHSA-wq5f-xc86-pv6w",
-            "severity": "HIGH",
-            "pkg": "sharp",
-            "installed": "0.35.4",
-            "fixed": "0.35.5",
-            "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
-            "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
-            "targets": [
-              "Node.js"
-            ]
-          },
           {
             "id": "CVE-2026-93748",
             "severity": "HIGH",
@@ -12512,8 +12356,8 @@
   },
   "livekit": {
     "image": "ghcr.io/quenchworks/images/livekit",
-    "version": "1.13.7",
-    "tag": "ghcr.io/quenchworks/images/livekit:1.13.7",
+    "version": "1.13.8",
+    "tag": "ghcr.io/quenchworks/images/livekit:1.13.8",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -12528,7 +12372,7 @@
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
-        "installed": "v0.56.0",
+        "installed": "v0.57.0",
         "fixed": null,
         "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
         "url": "https://go.dev/issue/44226",
@@ -12539,8 +12383,8 @@
     ],
     "versions": [
       {
-        "version": "1.13.7",
-        "tag": "ghcr.io/quenchworks/images/livekit:1.13.7",
+        "version": "1.13.8",
+        "tag": "ghcr.io/quenchworks/images/livekit:1.13.8",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -12555,7 +12399,7 @@
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
             "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
+            "installed": "v0.57.0",
             "fixed": null,
             "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
             "url": "https://go.dev/issue/44226",
@@ -20425,8 +20269,8 @@
   },
   "syft": {
     "image": "ghcr.io/quenchworks/images/syft",
-    "version": "1.54.0",
-    "tag": "ghcr.io/quenchworks/images/syft:1.54.0",
+    "version": "1.54.1",
+    "tag": "ghcr.io/quenchworks/images/syft:1.54.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -20452,8 +20296,8 @@
     ],
     "versions": [
       {
-        "version": "1.54.0",
-        "tag": "ghcr.io/quenchworks/images/syft:1.54.0",
+        "version": "1.54.1",
+        "tag": "ghcr.io/quenchworks/images/syft:1.54.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -24105,8 +23949,8 @@
   },
   "zot": {
     "image": "ghcr.io/quenchworks/images/zot",
-    "version": "2.1.21",
-    "tag": "ghcr.io/quenchworks/images/zot:2.1.21",
+    "version": "2.1.22",
+    "tag": "ghcr.io/quenchworks/images/zot:2.1.22",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -24121,7 +23965,7 @@
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
-        "installed": "v0.56.0",
+        "installed": "v0.57.0",
         "fixed": null,
         "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
         "url": "https://go.dev/issue/44226",
@@ -24132,8 +23976,8 @@
     ],
     "versions": [
       {
-        "version": "2.1.21",
-        "tag": "ghcr.io/quenchworks/images/zot:2.1.21",
+        "version": "2.1.22",
+        "tag": "ghcr.io/quenchworks/images/zot:2.1.22",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -24148,7 +23992,7 @@
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
             "pkg": "golang.org/x/crypto",
-            "installed": "v0.56.0",
+            "installed": "v0.57.0",
             "fixed": null,
             "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
             "url": "https://go.dev/issue/44226",
