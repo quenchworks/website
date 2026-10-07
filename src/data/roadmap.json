@@ -319,7 +319,7 @@
     "license": "MIT",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option."
+    "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option. Measured 2026-10-07 at 16.8.5 (47 findings): jackson-databind/core 2.22.2 in lib/ swap cleanly, but Hazelcast 5.7.0 (its newest release) relocates jackson 2.21.2 and tools.jackson 3.1.2 under com/hazelcast/shaded/, which needs a bytecode relocation rewrite or a Hazelcast release; logback 1.4.14 needs the 1.5 line; boot/ ships prebuilt Tanuki wrapper binaries."
   },
   {
     "name": "Percona XtraDB Cluster Operator",
