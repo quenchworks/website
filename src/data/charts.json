@@ -4797,6 +4797,30 @@
     ]
   },
   {
+    "slug": "opensearch-dashboards",
+    "name": "opensearch-dashboards",
+    "category": "Search",
+    "summary": "The web UI for OpenSearch, for search, dashboards and visualizations. Ships without the security plugins, matching the opensearch image.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.3",
+    "appVersion": "3.8.0",
+    "description": "OpenSearch Dashboards, the web UI for OpenSearch search, dashboards and visualizations. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/opensearch-dashboards",
+    "imageDigest": "sha256:fe8e7e8565296ddd38037ff9c31590fe5901b70cf3b257d5a14ea9552a4edd38",
+    "repositoryID": "ed006249-1faa-4465-8c13-6a11ab0c1bbe",
+    "port": 5601,
+    "upstream": "https://github.com/opensearch-project/OpenSearch-Dashboards",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/opensearch-dashboards",
+    "images": [
+      {
+        "name": "opensearch-dashboards",
+        "image": "ghcr.io/quenchworks/images/opensearch-dashboards@sha256:fe8e7e8565296ddd38037ff9c31590fe5901b70cf3b257d5a14ea9552a4edd38"
+      }
+    ]
+  },
+  {
     "slug": "otel-collector",
     "name": "OpenTelemetry Collector",
     "category": "Observability",
@@ -4870,29 +4894,6 @@
       {
         "name": "postgresql",
         "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
-      }
-    ]
-  },
-  {
-    "slug": "percona-xtradb-cluster-operator",
-    "name": "percona-xtradb-cluster-operator",
-    "category": "Databases & engines",
-    "summary": "The Percona Operator for MySQL based on Percona XtraDB Cluster: synchronous multi-primary Galera clusters with HAProxy or ProxySQL, backups and point-in-time recovery, managed through CRDs. Built from source; it deploys Percona's database images.",
-    "tier": "standard",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "chartVersion": "0.0.1",
-    "appVersion": "1.20.0",
-    "description": "The Percona Operator for MySQL based on Percona XtraDB Cluster: synchronous multi-primary Galera clusters with HAProxy or ProxySQL, backups and point-in-time recovery, from CRDs. The CRDs ship with the chart; the operator is namespace-scoped and deploys Percona's database images. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
-    "imageRepository": "ghcr.io/quenchworks/images/percona-xtradb-cluster-operator",
-    "imageDigest": "sha256:8f718c83e130163ab12198c4ece6c5e30eaa4c84fd9265710890f342358fcd4c",
-    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
-    "upstream": "https://github.com/percona/percona-xtradb-cluster-operator",
-    "chartRef": "oci://ghcr.io/quenchworks/charts/percona-xtradb-cluster-operator",
-    "images": [
-      {
-        "name": "percona-xtradb-cluster-operator",
-        "image": "ghcr.io/quenchworks/images/percona-xtradb-cluster-operator@sha256:8f718c83e130163ab12198c4ece6c5e30eaa4c84fd9265710890f342358fcd4c"
       }
     ]
   },
@@ -5720,6 +5721,80 @@
     ]
   },
   {
+    "slug": "registry-stack",
+    "name": "registry-stack",
+    "category": "Stacks",
+    "summary": "One self-hosted artifact registry in one install: Harbor (container images and OCI Helm charts, with Trivy scanning) + Terralist (a private Terraform/OpenTofu module and provider registry).",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.0.0",
+    "description": "One self-hosted artifact registry in one install: Harbor (container images and OCI Helm charts, with Trivy scanning) + Terralist (a private Terraform/OpenTofu module and provider registry). Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "b5d83452-d2c5-452a-959c-f6f7fe2da9eb",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/registry-stack",
+    "stack": true,
+    "components": [
+      "harbor",
+      "terralist"
+    ],
+    "images": [
+      {
+        "name": "harbor-core",
+        "image": "ghcr.io/quenchworks/images/harbor-core@sha256:719cff2ddd72a3a9f37063c20072853b0ed43a575a2e0d9178791e5458d94afd"
+      },
+      {
+        "name": "harbor-jobservice",
+        "image": "ghcr.io/quenchworks/images/harbor-jobservice@sha256:cfb734a07189ab14ee3824c4273242fd8285fc6a75c65e74b123101a47f91a26"
+      },
+      {
+        "name": "harbor-registry",
+        "image": "ghcr.io/quenchworks/images/harbor-registry@sha256:2badfda089fb49eefc385b89ee6309f55e6b8b35fce7b7212a55276bc8ced123"
+      },
+      {
+        "name": "harbor-registryctl",
+        "image": "ghcr.io/quenchworks/images/harbor-registryctl@sha256:492b2187262120eb0c0586559494318e57c4e552e2dc35535ed527771afacd97"
+      },
+      {
+        "name": "harbor-portal",
+        "image": "ghcr.io/quenchworks/images/harbor-portal@sha256:ec5ae590c21a0e7f542a9eacd0ea306b1d4679d5be0ed6cafcee8adad128d6bb"
+      },
+      {
+        "name": "harbor-trivy-adapter",
+        "image": "ghcr.io/quenchworks/images/harbor-trivy-adapter@sha256:41d7d5b6f4de5f9877c84a0ffa25d7f9e8fece06d53e1c4cdef10949285df759"
+      },
+      {
+        "name": "harbor-exporter",
+        "image": "ghcr.io/quenchworks/images/harbor-exporter@sha256:740fc6d5c828e0845856cff3fd38b7ef62da8ea0639ce7caacebfc574115a03f"
+      },
+      {
+        "name": "nginx",
+        "image": "ghcr.io/quenchworks/images/nginx@sha256:276ba1a05037587566e80a26c4d0431277b5097cc55178c5895055e8d98c986e"
+      },
+      {
+        "name": "busybox",
+        "image": "ghcr.io/quenchworks/images/busybox@sha256:b851333cd0a8a05a4b7569f4f1007f4e237b34295f84033e6ab6aa428fb33eef"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+      },
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:b10dd145a2a8e35039d218b68806b2bc6158223b1970b773de986a1dbe209487"
+      },
+      {
+        "name": "terralist",
+        "image": "ghcr.io/quenchworks/images/terralist@sha256:0e1cbb2f4b3ac0e81f75713292d67c0c63625bfad8efc968c5291465364073e3"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/goharbor/harbor",
+      "https://github.com/terralist/terralist"
+    ]
+  },
+  {
     "slug": "rekor-tiles",
     "name": "rekor-tiles",
     "category": "Security & supply chain",
@@ -5887,6 +5962,40 @@
         "name": "sealed-secrets",
         "image": "ghcr.io/quenchworks/images/sealed-secrets@sha256:878f4709dad802441de546e468cce71b53ee34cfae0b63153957eac41b07370c"
       }
+    ]
+  },
+  {
+    "slug": "search-stack",
+    "name": "search-stack",
+    "category": "Stacks",
+    "summary": "Hardened search with a UI in one install: OpenSearch (search and analytics engine, HA cluster or one node) + OpenSearch Dashboards (Discover, dashboards, visualizations, Dev Tools) wired to it.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "3.8.0",
+    "description": "Hardened search with a UI in one install: OpenSearch (search and analytics engine, HA cluster or one node) + OpenSearch Dashboards (Discover, dashboards, visualizations, Dev Tools) wired to it. Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "92338b64-c108-44d5-b0a3-74b8467f341f",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/search-stack",
+    "stack": true,
+    "components": [
+      "opensearch",
+      "opensearch-dashboards"
+    ],
+    "images": [
+      {
+        "name": "opensearch",
+        "image": "ghcr.io/quenchworks/images/opensearch@sha256:4a1f055ef5955555dce39e007d933336029e713f1a3da55a44a2bfbb4eb15be2"
+      },
+      {
+        "name": "opensearch-dashboards",
+        "image": "ghcr.io/quenchworks/images/opensearch-dashboards@sha256:fe8e7e8565296ddd38037ff9c31590fe5901b70cf3b257d5a14ea9552a4edd38"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/opensearch-project/OpenSearch",
+      "https://github.com/opensearch-project/OpenSearch-Dashboards"
     ]
   },
   {
