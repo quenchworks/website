@@ -786,6 +786,33 @@
     ]
   },
   {
+    "slug": "cilium",
+    "name": "cilium",
+    "category": "Coordination & mesh",
+    "summary": "The Cilium agent (cilium-agent, cilium-dbg, cilium-health, hubble, the BPF sources, CNI loopback and upstream's init scripts) built from the cilium/cilium source with the same module floats as cilium-operator, on Wolfi's clang/llc, bpftool, iproute2 and iptables. Drop-in for upstream's agent image; runs as root on the node like upstream.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.20.2",
+    "description": "Cilium networking for Kubernetes: the eBPF agent DaemonSet (CNI, IPAM through CiliumNodes, network policy, VXLAN overlay) with the QuenchWorks Cilium Operator as a dependency. Hardened by QuenchWorks: the agent built from source on Wolfi, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/cilium",
+    "imageDigest": "sha256:3aca8420ec1d477c429fe9af10eb27bfeb36c3cb4db55959dedbb44e02e9b213",
+    "repositoryID": "64a616e6-cfb9-4c11-b400-8cc1c513ef19",
+    "upstream": "https://cilium.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/cilium",
+    "images": [
+      {
+        "name": "cilium",
+        "image": "ghcr.io/quenchworks/images/cilium@sha256:3aca8420ec1d477c429fe9af10eb27bfeb36c3cb4db55959dedbb44e02e9b213"
+      },
+      {
+        "name": "cilium-operator",
+        "image": "ghcr.io/quenchworks/images/cilium-operator@sha256:128b7cf631cb0da37d658d6a43f432cb52b606f50c24c7dd801c75ad3010e01d"
+      }
+    ]
+  },
+  {
     "slug": "cilium-operator",
     "name": "cilium-operator",
     "category": "Coordination & mesh",
