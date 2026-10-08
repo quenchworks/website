@@ -294,7 +294,7 @@
     "license": "AGPL-3.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Percona Monitoring and Management \u2014 deep MySQL/PostgreSQL/MongoDB observability (query analytics) built on Prometheus, Grafana and VictoriaMetrics. AGPL, OSI-approved."
+    "note": "Percona Monitoring and Management \u2014 deep MySQL/PostgreSQL/MongoDB observability (query analytics) built on Prometheus, Grafana and VictoriaMetrics. AGPL, OSI-approved. Sized 2026-10-08 at v3.9.1 (no release binaries): pmm-server is one container that an Ansible playbook assembles on Oracle Linux 9 from eight RPMs built in the repo (pmm-managed, qan-api2, vmproxy, pmm-dump, pmm-ui, percona-dashboards) plus Percona forks of Grafana (12.4.5, frontend changes, so a full Node build unlike our grafana image) and VictoriaMetrics (pmm-6401-v1.149.0), with ClickHouse, PostgreSQL 14, nginx and supervisord in the same image. Several images of work plus a multi-process supervisor design; it waits for local gates (the btrfs metadata hold)."
   },
   {
     "name": "Tiny RDM",
