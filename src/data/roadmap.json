@@ -674,7 +674,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Observability extension: metrics-api, tap, tap-injector, web. Ship only if dashboard parity is wanted."
+    "note": "Observability extension: metrics-api, tap, tap-injector, web. Ship only if dashboard parity is wanted. Measured 2026-10-08: metrics-api and tap images shipped (tap also runs the tap-injector). The web dashboard is held: its bundled JavaScript carries decode-uri-component 0.2.2 (fix only in ESM-only 0.5.0, required as CommonJS), linkify-it 2.2.0 (fix three majors up), path-to-regexp 1.8.0 and moment 2.29.4, which an image scan cannot see inside the webpack bundle."
   },
   {
     "name": "Istio CNI",
