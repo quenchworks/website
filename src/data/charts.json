@@ -2812,6 +2812,29 @@
     ]
   },
   {
+    "slug": "istio-cni",
+    "name": "istio-cni",
+    "category": "Coordination & mesh",
+    "summary": "Istio's CNI node agent (upstream install-cni) with the istio-cni plugin, built from source from the same istio/istio tags as istiod, plus Wolfi iptables (legacy and nft) for ambient-mode redirection. A privileged node agent by design.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.30.5",
+    "description": "Istio CNI node agent for ambient mode: a DaemonSet that chains the istio-cni plugin into the node's CNI configuration and redirects each ambient pod's traffic to the node's ztunnel. Pairs with the QuenchWorks istiod and ztunnel charts. Hardened by QuenchWorks: built from source on Wolfi, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/istio-cni",
+    "imageDigest": "sha256:4d79d3c3892beb45b250f26152c2f69a5fb51829a51fc5ba827c6796665c1de7",
+    "repositoryID": "e71ee2c1-47a0-49e9-a73d-a63455f4804e",
+    "upstream": "https://istio.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/istio-cni",
+    "images": [
+      {
+        "name": "istio-cni",
+        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:4d79d3c3892beb45b250f26152c2f69a5fb51829a51fc5ba827c6796665c1de7"
+      }
+    ]
+  },
+  {
     "slug": "istiod",
     "name": "istiod",
     "category": "Coordination & mesh",
@@ -2819,7 +2842,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "1.30.5",
     "description": "Istio's control plane (istiod): xDS discovery server, certificate authority and namespace-scoped mesh configuration, packaged from a from-source, nonroot, 0-CVE QuenchWorks image pinned by digest. This chart ships the CONTROL PLANE ONLY: the Istio data-plane proxy (proxyv2) is built from Istio's own Bazel/clang Envoy fork and is not part of the QuenchWorks catalog yet, so pair this istiod with upstream proxy images or wait for the QuenchWorks data plane.",
     "imageRepository": "ghcr.io/quenchworks/images/istiod",
@@ -7823,6 +7846,29 @@
       {
         "name": "zot",
         "image": "ghcr.io/quenchworks/images/zot@sha256:4e2a9d896b2c920e36d36d956981f86a556d02d796ccd398a692f2f6533a7b68"
+      }
+    ]
+  },
+  {
+    "slug": "ztunnel",
+    "name": "ztunnel",
+    "category": "Coordination & mesh",
+    "summary": "Istio's ambient-mode node proxy (ztunnel, Rust), built from source from the istio/ztunnel tags on the same three lines as istiod, with aws-lc TLS and jemalloc as upstream builds it, over Wolfi iptables.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.30.5",
+    "description": "Istio ztunnel, the per-node L4 proxy of ambient mode: it gives every ambient pod a SPIFFE identity and carries its traffic over mutual TLS (HBONE), with no sidecars. Pairs with the QuenchWorks istiod and istio-cni charts. Hardened by QuenchWorks: built from source, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/ztunnel",
+    "imageDigest": "sha256:61b0e274990afb158e85c1ee6189f2f68f72790c788654d922eff317f75d314b",
+    "repositoryID": "2dc3d3f2-be40-48ff-aaa0-a51e120ce39d",
+    "upstream": "https://istio.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/ztunnel",
+    "images": [
+      {
+        "name": "ztunnel",
+        "image": "ghcr.io/quenchworks/images/ztunnel@sha256:61b0e274990afb158e85c1ee6189f2f68f72790c788654d922eff317f75d314b"
       }
     ]
   }

@@ -30,7 +30,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Service mesh built on Envoy. The control plane SHIPPED as istiod (1.29.7, 1.30.4, 1.31.0, with a chart); the wave is held on the data plane, Istio proxyv2, which has no melange-buildable path. Measured 2026-09-20."
+    "note": "Service mesh built on Envoy. Ambient mode SHIPPED 2026-10-08: istiod, istio-cni and ztunnel charts on 1.30.5, gated on mTLS (HBONE) traffic between two pods. Still held: L7 waypoints and sidecar mode, which need the Istio proxyv2 image, which has no melange-buildable path."
   },
   {
     "name": "Consul",
@@ -675,22 +675,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Observability extension: metrics-api, tap, tap-injector, web. Ship only if dashboard parity is wanted. Measured 2026-10-08: metrics-api and tap images shipped (tap also runs the tap-injector). The web dashboard is held: its bundled JavaScript carries decode-uri-component 0.2.2 (fix only in ESM-only 0.5.0, required as CommonJS), linkify-it 2.2.0 (fix three majors up), path-to-regexp 1.8.0 and moment 2.29.4, which an image scan cannot see inside the webpack bundle."
-  },
-  {
-    "name": "Istio CNI",
-    "category": "Coordination & mesh",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Privileged node agent; hostPath + privileged. The node-agent exception-tier hold lifted 2026-10-08: calico-node, rook-ceph CSI and the Secrets Store CSI Driver already ship as privileged node plugins. Image shipped 2026-10-08 (from source, 0-CVE); the chart waits until the mesh's data plane ships so a kind gate can test it."
-  },
-  {
-    "name": "Istio ztunnel",
-    "category": "Coordination & mesh",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Rust node proxy for Istio ambient mode. Skip if we ship sidecar mode only. Image shipped 2026-10-08 (from source, 0-CVE); the chart waits until the mesh's data plane ships so a kind gate can test it."
   },
   {
     "name": "Cilium Envoy",
