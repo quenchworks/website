@@ -5,7 +5,8 @@
 // (category/summary/upstream/cleanAlternative), license/tier/status, arches,
 // and every published version with size/digest/date. This script just converts
 // that into src/data/{images,charts}.json. Charts also read the
-// chart dirs under ../charts/quench for chart-version/port facts.
+// chart dirs under ../charts/quench for chart-version/port facts; a changed
+// chart version is listed only once GHCR serves it (see chartPublished).
 //
 // Run: `node scripts/sync-catalog.mjs` (wired into predev/prebuild).
 
@@ -174,6 +175,29 @@ for (const [slug, a] of Object.entries(lockApps)) {
 // 2) charts.json — chart dirs + per-app editorial/license from the lock
 // ──────────────────────────────────────────────────────────────────────────
 const charts = [];
+// A chart version is listed only once GHCR serves it: the charts repo holds a
+// bumped Chart.yaml for the minutes (or days, if its gate fails) before the
+// release workflow publishes it. Charts whose version matches the current
+// charts.json skip the check, so a normal sync makes a handful of requests.
+const prevCharts = new Map(
+  (existsSync(resolve(outDir, 'charts.json')) ? JSON.parse(readFileSync(resolve(outDir, 'charts.json'), 'utf8')) : [])
+    .map((c) => [c.slug, c]),
+);
+const OCI_ACCEPT = 'application/vnd.oci.image.manifest.v1+json, application/vnd.oci.image.index.v1+json';
+async function chartPublished(slug, version) {
+  const repo = `quenchworks/charts/${slug}`;
+  const tok = await fetch(`https://ghcr.io/token?scope=repository:${repo}:pull`);
+  if (tok.status === 403) return false; // no public package by that name yet
+  if (!tok.ok) throw new Error(`token for ${repo}: HTTP ${tok.status}`);
+  const { token } = await tok.json();
+  const res = await fetch(`https://ghcr.io/v2/${repo}/manifests/${version}`, {
+    method: 'HEAD',
+    headers: { Authorization: `Bearer ${token}`, Accept: OCI_ACCEPT },
+  });
+  if (res.ok) return true;
+  if (res.status === 404) return false; // the package exists without this tag
+  throw new Error(`${repo}:${version}: HTTP ${res.status}`);
+}
 let chartDirs = [];
 try {
   chartDirs = readdirSync(chartsDir, { withFileTypes: true })
@@ -256,6 +280,21 @@ for (const slug of chartDirs.sort()) {
   if (licenseClean === 'caution') {
     entry.caution = true;
     if (a.cleanAlternative) entry.cleanAlternative = a.cleanAlternative;
+  }
+  const prev = prevCharts.get(slug);
+  if (entry.chartVersion !== prev?.chartVersion) {
+    let published;
+    try {
+      published = await chartPublished(slug, entry.chartVersion);
+    } catch (err) {
+      console.error(`✗ cannot check ${slug} ${entry.chartVersion} on GHCR (${err.message}); refusing to guess.`);
+      process.exit(1);
+    }
+    if (!published) {
+      console.warn(`! ${slug} ${entry.chartVersion} is not on GHCR yet: ${prev ? `keeping ${prev.chartVersion}` : 'left out'}.`);
+      if (prev) charts.push(prev);
+      continue;
+    }
   }
   charts.push(entry);
 }
