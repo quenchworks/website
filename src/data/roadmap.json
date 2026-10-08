@@ -637,14 +637,6 @@
     "note": "OpenCost + Prometheus + Grafana \u2014 Kubernetes cost monitoring and allocation dashboards; an add-on to the observability stack. Prometheus + Grafana are built; needs OpenCost."
   },
   {
-    "name": "Secrets Store CSI Driver",
-    "category": "Secrets & identity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "CSI driver that mounts secrets from external stores (Vault, cloud KMS) as volumes. Held 2026-09-25: a CSI node plugin runs privileged with bidirectional mount propagation on hostPath, so it waits on the node-agent exception tier with Linkerd CNI and Istio CNI."
-  },
-  {
     "name": "Kubescape Operator",
     "category": "Security & supply chain",
     "license": "Apache-2.0",
@@ -698,7 +690,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Privileged node agent (alternative to proxy-init). Needs the node-agent exception tier."
+    "note": "Privileged node agent (alternative to proxy-init). The node-agent exception-tier hold lifted 2026-10-08: calico-node, rook-ceph CSI and the Secrets Store CSI Driver already ship as privileged node plugins."
   },
   {
     "name": "Linkerd Viz",
@@ -714,7 +706,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Privileged node agent; hostPath + privileged. Needs the node-agent exception tier."
+    "note": "Privileged node agent; hostPath + privileged. The node-agent exception-tier hold lifted 2026-10-08: calico-node, rook-ceph CSI and the Secrets Store CSI Driver already ship as privileged node plugins."
   },
   {
     "name": "Istio ztunnel",
