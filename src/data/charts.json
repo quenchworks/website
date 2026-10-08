@@ -4087,6 +4087,45 @@
     ]
   },
   {
+    "slug": "mesh-stack",
+    "name": "mesh-stack",
+    "category": "Stacks",
+    "summary": "Istio ambient mesh in one install: istiod (control plane and certificate authority), the istio-cni node agent and ztunnel, wired for ambient so every pod in a labelled namespace talks mutual TLS with a SPIFFE identity, with no sidecars.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.30.5",
+    "description": "Istio ambient mesh in one install: istiod (control plane and certificate authority), the istio-cni node agent and ztunnel, wired for ambient so every pod in a labelled namespace talks mutual TLS with a SPIFFE identity, with no sidecars. All QuenchWorks images are 0-CVE, pinned by digest and cosign-signed.",
+    "repositoryID": "d980b7c9-f12e-42f4-8608-89b535e6c96a",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mesh-stack",
+    "stack": true,
+    "components": [
+      "istiod",
+      "istio-cni",
+      "ztunnel"
+    ],
+    "images": [
+      {
+        "name": "istiod",
+        "image": "ghcr.io/quenchworks/images/istiod@sha256:85914e5b57ec9a78da530ff4783f47f4e4dc95c5aab162f185abc7d26fb8ba81"
+      },
+      {
+        "name": "istio-cni",
+        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:4d79d3c3892beb45b250f26152c2f69a5fb51829a51fc5ba827c6796665c1de7"
+      },
+      {
+        "name": "ztunnel",
+        "image": "ghcr.io/quenchworks/images/ztunnel@sha256:61b0e274990afb158e85c1ee6189f2f68f72790c788654d922eff317f75d314b"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/istio/istio",
+      "https://github.com/istio/ztunnel"
+    ]
+  },
+  {
     "slug": "metabase",
     "name": "metabase",
     "category": "Apps & productivity",

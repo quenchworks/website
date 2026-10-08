@@ -124,6 +124,12 @@ export const STACKS: Stack[] = [
     group: 'platform',
   },
   {
+    slug: 'mesh-stack',
+    name: 'Mesh Stack',
+    components: ['istiod', 'Istio CNI', 'ztunnel (ambient mTLS)'],
+    group: 'platform',
+  },
+  {
     slug: 'supply-chain-stack',
     name: 'Supply Chain Stack',
     components: ['Kyverno', 'trivy-operator', 'Signed-image policy'],
