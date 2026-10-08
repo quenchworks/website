@@ -86,6 +86,21 @@ const sevs: [string, number][] = secRec
     ]
   : [];
 
+// Every image the chart deploys, resolved against the catalog: the ref's digest
+// (or tag) names the exact image version, and that version's Trivy grade comes
+// from the nightly scan. Refs outside the catalog render unlinked, ungraded.
+const deployRefs = entry.images?.length ? entry.images : pinnedImage ? [{ name: entry.slug, image: pinnedImage }] : [];
+const deployed = deployRefs.map(({ image: ref }) => {
+  const [repoTag, digest] = ref.split('@');
+  const tagAt = repoTag.lastIndexOf(':') > repoTag.lastIndexOf('/') ? repoTag.lastIndexOf(':') : -1;
+  const repo = tagAt >= 0 ? repoTag.slice(0, tagAt) : repoTag;
+  const tag = tagAt >= 0 ? repoTag.slice(tagAt + 1) : undefined;
+  const img = images.find((i) => i.image === repo && i.status === 'available');
+  const ver = (digest && img?.versions?.find((v) => v.digest === digest)?.version) || tag;
+  const sec = img && ver ? (security as Record<string, any>)[img.slug]?.versions?.find((v: any) => v.version === ver) : undefined;
+  return { ref, name: img?.slug ?? repo.split('/').pop(), slug: img?.slug, version: ver, grade: sec?.grade as string | undefined };
+});
+
 const titleSuffix = isLatest ? '' : ` ${version}`;
 
 const ld = {
@@ -246,17 +261,35 @@ const ld = {
       <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{isLatest ? t('chart.install.labelLatest') : `${t('chart.install.labelPinnedPre')} ${version})`}</p>
       <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>helm install my-{entry.slug} {installRef} --version {version}</code></pre>
 
-      {isLatest && entry.images?.length ? (
+      {isLatest && deployed.length > 0 && (
         <>
-          <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('chart.install.deploys')}</p>
-          <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>{entry.images.map((i) => i.image).join('\n')}</code></pre>
+          <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{deployed.length > 1 ? t('chart.install.deploysMany') : t('chart.install.deploys')}</p>
+          <ul class="mt-2 divide-y divide-line rounded-xl border border-line bg-ink">
+            {deployed.map((d) => (
+              <li class="px-4 py-3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex flex-wrap items-baseline gap-2 font-mono text-sm">
+                    {d.slug
+                      ? <a href={l(`/images/${d.slug}`)} class="text-paper underline-offset-4 hover:underline">{d.name}</a>
+                      : <span class="text-paper">{d.name}</span>}
+                    {d.version && <span class="text-xs tabular-nums text-ash" dir="ltr">{d.version}</span>}
+                  </div>
+                  {d.grade && (
+                    <span
+                      class:list={['rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest tabular-nums', GRADE_CHIP[gradeTone(d.grade)]]}
+                      dir="ltr"
+                      dir="ltr"
+                      aria-label={`${t('chart.install.gradeLabel')} ${d.grade}`}
+                      title={`${t('chart.install.gradeLabel')} ${d.grade}`}
+                    >{d.grade}</span>
+                  )}
+                </div>
+                <code class="mt-1 block break-all font-mono text-[11px] text-ash" dir="ltr">{d.ref}</code>
+              </li>
+            ))}
+          </ul>
         </>
-      ) : isLatest && pinnedImage ? (
-        <>
-          <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('chart.install.deploys')}</p>
-          <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>{pinnedImage}</code></pre>
-        </>
-      ) : null}
+      )}
 
       {entry.components?.length && (
         <>
