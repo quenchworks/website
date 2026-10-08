@@ -4413,6 +4413,30 @@
     "cleanAlternative": "FerretDB + DocumentDB — MongoDB-wire-compatible and truly open (Apache-2.0 / PostgreSQL)."
   },
   {
+    "slug": "mongodb-exporter",
+    "name": "mongodb-exporter",
+    "category": "Metrics/Exporter",
+    "summary": "Prometheus exporter that collects MongoDB diagnostic data, replica-set status, and collection statistics and exposes them as metrics for monitoring.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.53.0",
+    "description": "Prometheus exporter for MongoDB (Percona's): server status, replica set, database and collection statistics, as a standalone Deployment pointed at any MongoDB server. Hardened by QuenchWorks: built from source on Wolfi, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/mongodb-exporter",
+    "imageDigest": "sha256:9d31bec4e977d89a260af5eb925a87227a6b344d813aecdd7dc817b9ec622169",
+    "repositoryID": "6e00bdb5-dc10-4571-9f6f-7ccb87045ad6",
+    "port": 9216,
+    "upstream": "https://github.com/percona/mongodb_exporter",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mongodb-exporter",
+    "images": [
+      {
+        "name": "mongodb-exporter",
+        "image": "ghcr.io/quenchworks/images/mongodb-exporter@sha256:9d31bec4e977d89a260af5eb925a87227a6b344d813aecdd7dc817b9ec622169"
+      }
+    ]
+  },
+  {
     "slug": "mosquitto",
     "name": "mosquitto",
     "category": "Messaging",
@@ -4502,6 +4526,30 @@
     "upstreams": [
       "https://github.com/mariadb-operator/mariadb-operator",
       "https://github.com/MariaDB/server"
+    ]
+  },
+  {
+    "slug": "mysqld-exporter",
+    "name": "mysqld-exporter",
+    "category": "Metrics/Exporter",
+    "summary": "Prometheus exporter that collects MySQL and MariaDB server status, InnoDB, replication, and query statistics and exposes them as metrics for monitoring.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.20.0",
+    "description": "Prometheus exporter for MySQL and MariaDB: server status, InnoDB, replication and query statistics, as a standalone Deployment pointed at any MySQL-protocol server. Hardened by QuenchWorks: built from source on Wolfi, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/mysqld-exporter",
+    "imageDigest": "sha256:988a5eaeeed9ba05789eb80f682ffb6d80567c2b4e75abf622762177c2b8b827",
+    "repositoryID": "6d158f9e-3646-4ea1-90aa-3ee060357ebd",
+    "port": 9104,
+    "upstream": "https://github.com/prometheus/mysqld_exporter",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/mysqld-exporter",
+    "images": [
+      {
+        "name": "mysqld-exporter",
+        "image": "ghcr.io/quenchworks/images/mysqld-exporter@sha256:988a5eaeeed9ba05789eb80f682ffb6d80567c2b4e75abf622762177c2b8b827"
+      }
     ]
   },
   {
@@ -4726,6 +4774,30 @@
       {
         "name": "nifi",
         "image": "ghcr.io/quenchworks/images/nifi@sha256:ac51c98e9e37c430231cda6ff227f9633a3acd9096d88c80a67f0f690cea4560"
+      }
+    ]
+  },
+  {
+    "slug": "node-exporter",
+    "name": "node-exporter",
+    "category": "Metrics/Exporter",
+    "summary": "Prometheus exporter for host-level hardware and OS metrics (CPU, memory, disk, network) on Linux machines.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.12.1",
+    "description": "Prometheus node_exporter as a DaemonSet: CPU, memory, disk, filesystem, network and kernel metrics for every node, read from the host's /proc, /sys and root filesystem. Hardened by QuenchWorks: built from source on Wolfi, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/node-exporter",
+    "imageDigest": "sha256:33cb1038d69be70c546543261be6a93d515b7fc9c171c85c5aa18e6bafceeb6b",
+    "repositoryID": "c995aac4-0884-46df-b50e-6b539458d60e",
+    "port": 9100,
+    "upstream": "https://github.com/prometheus/node_exporter",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/node-exporter",
+    "images": [
+      {
+        "name": "node-exporter",
+        "image": "ghcr.io/quenchworks/images/node-exporter@sha256:33cb1038d69be70c546543261be6a93d515b7fc9c171c85c5aa18e6bafceeb6b"
       }
     ]
   },
@@ -5530,6 +5602,30 @@
     ]
   },
   {
+    "slug": "postgres-exporter",
+    "name": "postgres-exporter",
+    "category": "Metrics/Exporter",
+    "summary": "Prometheus exporter that collects PostgreSQL activity, replication, and performance stats and exposes them as metrics for monitoring.",
+    "tier": "critical",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "0.20.1",
+    "description": "Prometheus exporter for PostgreSQL: server, database, replication, lock and statement statistics, as a standalone Deployment pointed at any PostgreSQL server. Hardened by QuenchWorks: built from source on Wolfi, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/postgres-exporter",
+    "imageDigest": "sha256:e7dfea0c79bf106078d5d9985106dde12395e7db0bef70a0a4c08d71c9675d93",
+    "repositoryID": "73f13608-a66d-450c-b617-33decd9a1eba",
+    "port": 9187,
+    "upstream": "https://github.com/prometheus-community/postgres_exporter",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/postgres-exporter",
+    "images": [
+      {
+        "name": "postgres-exporter",
+        "image": "ghcr.io/quenchworks/images/postgres-exporter@sha256:e7dfea0c79bf106078d5d9985106dde12395e7db0bef70a0a4c08d71c9675d93"
+      }
+    ]
+  },
+  {
     "slug": "postgres-ha-stack",
     "name": "postgres-ha-stack",
     "category": "Stacks",
@@ -5985,6 +6081,30 @@
         "name": "redis",
         "image": "ghcr.io/quenchworks/images/redis@sha256:9a525827b9e4ed199538bd1b31d41faf903377c2fa5f24a149eb6ae365070e55"
       },
+      {
+        "name": "redis-exporter",
+        "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:d5c20b4e8752537dec2aa5bd1178b69b461a61454003b6cb2352d7a605fd31a9"
+      }
+    ]
+  },
+  {
+    "slug": "redis-exporter",
+    "name": "redis-exporter",
+    "category": "Metrics/Exporter",
+    "summary": "Prometheus exporter that scrapes Redis and Valkey runtime stats and exposes them as metrics for dashboards and alerts.",
+    "tier": "critical",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.93.0",
+    "description": "Prometheus exporter for Redis and Valkey: memory, clients, keyspace, replication and command statistics, as a standalone Deployment pointed at any Redis-protocol server. Hardened by QuenchWorks: built from source on Wolfi, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/redis-exporter",
+    "imageDigest": "sha256:d5c20b4e8752537dec2aa5bd1178b69b461a61454003b6cb2352d7a605fd31a9",
+    "repositoryID": "a2ddaa57-c0bd-4950-a819-8bf26271fc7f",
+    "port": 9121,
+    "upstream": "https://github.com/oliver006/redis_exporter",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/redis-exporter",
+    "images": [
       {
         "name": "redis-exporter",
         "image": "ghcr.io/quenchworks/images/redis-exporter@sha256:d5c20b4e8752537dec2aa5bd1178b69b461a61454003b6cb2352d7a605fd31a9"
