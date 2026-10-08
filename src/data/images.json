@@ -4848,6 +4848,44 @@
     "image": "ghcr.io/quenchworks/images/ingress-nginx"
   },
   {
+    "slug": "istio-cni",
+    "name": "istio-cni",
+    "category": "Coordination & mesh",
+    "summary": "Istio's CNI node agent (upstream install-cni) with the istio-cni plugin, built from source from the same istio/istio tags as istiod, plus Wolfi iptables (legacy and nft) for ambient-mode redirection. A privileged node agent by design.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.31.1, 1.30.5, 1.29.8",
+    "versions": [
+      {
+        "version": "1.31.1",
+        "size": "51.3 MB",
+        "published": "2026-10-08T11:14:23Z",
+        "digest": "sha256:27cd76099e2f0ef66af94369b75a9e9753f7bf377deb87a2fae0849d6a93cd4e"
+      },
+      {
+        "version": "1.30.5",
+        "size": "50.8 MB",
+        "published": "2026-10-08T11:14:23Z",
+        "digest": "sha256:4d79d3c3892beb45b250f26152c2f69a5fb51829a51fc5ba827c6796665c1de7"
+      },
+      {
+        "version": "1.29.8",
+        "size": "50.3 MB",
+        "published": "2026-10-08T11:14:20Z",
+        "digest": "sha256:24a7d1ac483c4d2bbf2a5a0877fff45841cb80fd8e37172b2e968a0ff4575c2c"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://istio.io",
+    "source": "https://github.com/istio/istio",
+    "image": "ghcr.io/quenchworks/images/istio-cni"
+  },
+  {
     "slug": "istio-proxyv2",
     "name": "istio-proxyv2",
     "category": "Coordination & mesh",
@@ -5886,9 +5924,9 @@
     "versions": [
       {
         "version": "0.3.501",
-        "size": "77.5 MB",
-        "published": "2026-10-08T05:57:05Z",
-        "digest": "sha256:6024eff79fcc684aa11f889b7baf3ebc6c54ec6e963defb2f85220f70b66d1d0"
+        "size": "78.2 MB",
+        "published": "2026-10-08T11:05:59Z",
+        "digest": "sha256:5595f72b2a2b966398ef6617643d4cbe4fe6e343e9532e5ac05d22bce6d06147"
       }
     ],
     "arches": [
@@ -6078,6 +6116,32 @@
     "upstream": "https://github.com/HumanSignal/label-studio",
     "source": "https://pypi.org/project/label-studio/",
     "image": "ghcr.io/quenchworks/images/label-studio"
+  },
+  {
+    "slug": "linkerd-cni",
+    "name": "linkerd-cni",
+    "category": "Coordination & mesh",
+    "summary": "Linkerd's CNI plugin (the alternative to the proxy-init init container), its installer and the Rust cni-repair-controller, built from source from the linkerd/linkerd2-proxy-init cni-plugin tag with upstream's image layout, so the linkerd2-cni chart runs it unchanged. A privileged node agent by design.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.7.0",
+    "versions": [
+      {
+        "version": "1.7.0",
+        "size": "19.2 MB",
+        "published": "2026-10-08T11:12:19Z",
+        "digest": "sha256:7d785f41e199a19e19ecfd61255296cc205ea5ef4d1c8a2f58b4d7e3dc62dbf1"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://linkerd.io",
+    "source": "https://github.com/linkerd/linkerd2-proxy-init",
+    "image": "ghcr.io/quenchworks/images/linkerd-cni"
   },
   {
     "slug": "linkerd-control-plane",
