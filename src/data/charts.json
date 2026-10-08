@@ -189,7 +189,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "2.2.0",
     "description": "The Apache APISIX Ingress Controller: the Kubernetes control plane that reconciles the apisix.apache.org CRDs (ApisixRoute, ApisixUpstream, ApisixConsumer, GatewayProxy, ...), native Ingress and Gateway API into an APISIX data plane's Admin API. Runs the controller with its required adc sidecar, ships the twelve apisix.apache.org CRDs, and wires an IngressClass and GatewayProxy at the APISIX of your choice. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/apisix-ingress-controller",
@@ -204,7 +204,7 @@
       },
       {
         "name": "adc",
-        "image": "ghcr.io/quenchworks/images/adc@sha256:7153bf3551ceb629a524138de01e920182eb671460ce5ea886a760e00d48ed6b"
+        "image": "ghcr.io/quenchworks/images/adc@sha256:52ec406c3abfa83076673a63e86cc818e3835ba0177f80c3c903bcb0a72b9be4"
       }
     ]
   },
@@ -843,11 +843,11 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "1.5.4",
     "description": "ClamAV antivirus engine, built from source: clamd scans streams over TCP 3310 for apps that check uploads, with a freshclam sidecar keeping signatures current. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/clamav",
-    "imageDigest": "sha256:c470cb121cf3cd2cf92fed503ab65d91a503b7116e9426e4ba2c2994a0e9dd51",
+    "imageDigest": "sha256:40f85bf837f24d3d49d154be3388a9112a5be5a87ec502c208e09ddd28533825",
     "repositoryID": "a141562a-d17d-4b39-9c19-787d460156d8",
     "port": 3310,
     "upstream": "https://www.clamav.net",
@@ -855,7 +855,7 @@
     "images": [
       {
         "name": "clamav",
-        "image": "ghcr.io/quenchworks/images/clamav@sha256:c470cb121cf3cd2cf92fed503ab65d91a503b7116e9426e4ba2c2994a0e9dd51"
+        "image": "ghcr.io/quenchworks/images/clamav@sha256:40f85bf837f24d3d49d154be3388a9112a5be5a87ec502c208e09ddd28533825"
       }
     ]
   },
@@ -1270,18 +1270,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "6.4.5",
     "description": "CrateDB, the distributed SQL database for time series, logs and full-text search, as a StatefulSet with a PVC per node: PostgreSQL wire protocol and an HTTP SQL endpoint, one node or a cluster. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cratedb",
-    "imageDigest": "sha256:71ed1f92f9f644469eeb460eb63fa5109a84478acd15a01099a250332cb2cca5",
+    "imageDigest": "sha256:9a1eccd5346da0f27e9744f83ec433be90aa91382e5094e307fceca0da9f3003",
     "repositoryID": "980647cc-ab1a-40a6-8ed1-5c25b453b501",
     "upstream": "https://cratedb.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cratedb",
     "images": [
       {
         "name": "cratedb",
-        "image": "ghcr.io/quenchworks/images/cratedb@sha256:71ed1f92f9f644469eeb460eb63fa5109a84478acd15a01099a250332cb2cca5"
+        "image": "ghcr.io/quenchworks/images/cratedb@sha256:9a1eccd5346da0f27e9744f83ec433be90aa91382e5094e307fceca0da9f3003"
       }
     ]
   },
@@ -1345,7 +1345,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "1.18.4",
     "description": "Dapr, the distributed application runtime: the control plane (operator, placement, sentry, sidecar injector, scheduler) and the injected daprd sidecar, all from one hardened QuenchWorks image. Upstream's Dapr chart with every image pinned by digest; nonroot, 0-CVE, cosign-signed.",
     "imageRepository": "ghcr.io/quenchworks/images/dapr",
@@ -1355,7 +1355,7 @@
     "images": [
       {
         "name": "dapr",
-        "image": "ghcr.io/quenchworks/images/dapr@sha256:18f52bcf5431aad78ffe8ba8a375b1c03c8caed44aaccd8725c4aadd7b225c3d"
+        "image": "ghcr.io/quenchworks/images/dapr@sha256:1eb1764b21a016082bc6febf22b00cf67011d223ecfe20542b4aeabf60cdace4"
       }
     ]
   },
@@ -2556,11 +2556,11 @@
     "tier": "standard",
     "license": "GPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "2.4.0",
     "description": "Homepage, a services and bookmarks dashboard with live widgets for hundreds of self-hosted apps, configured from values and able to discover services from Kubernetes. Hardened by QuenchWorks, built from source, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/homepage",
-    "imageDigest": "sha256:b63a85533463ed4278aaa073b41f09fea901d49d988ad063f680e5619c4fb64f",
+    "imageDigest": "sha256:f926d1c36dda2deb6118a2136ae81a841f1da967376870b7dc3059e908f0802c",
     "repositoryID": "d77818f6-6a51-4867-be55-2e2869e21291",
     "port": 3000,
     "upstream": "https://gethomepage.dev",
@@ -2568,7 +2568,7 @@
     "images": [
       {
         "name": "homepage",
-        "image": "ghcr.io/quenchworks/images/homepage@sha256:b63a85533463ed4278aaa073b41f09fea901d49d988ad063f680e5619c4fb64f"
+        "image": "ghcr.io/quenchworks/images/homepage@sha256:f926d1c36dda2deb6118a2136ae81a841f1da967376870b7dc3059e908f0802c"
       }
     ]
   },
@@ -3493,7 +3493,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.0.0",
     "description": "Hardened open lakehouse: Trino queries Apache Iceberg tables cataloged by Nessie and stored in SeaweedFS over S3, wired together with generated S3 keys and a bucket created at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "1ee7f195-4485-4dc4-bfe7-991a1c23e4b9",
@@ -3508,7 +3508,7 @@
     "images": [
       {
         "name": "trino",
-        "image": "ghcr.io/quenchworks/images/trino@sha256:b88f7496147991d9f66607713062d51e29faca296482c7919d4711029e0af684"
+        "image": "ghcr.io/quenchworks/images/trino@sha256:a8b5e2d864cd648863f847b7c15b9a8b0b424d300b1e8360fed0516878b20ed9"
       },
       {
         "name": "nessie",
@@ -6782,7 +6782,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "1.7.1",
     "description": "Tetragon eBPF runtime security: an agent on every node that sees process execution, file access and network activity in the kernel, with TracingPolicy CRDs for custom hooks and enforcement. Hardened by QuenchWorks, images built from source, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/tetragon",
@@ -6792,7 +6792,7 @@
     "images": [
       {
         "name": "tetragon",
-        "image": "ghcr.io/quenchworks/images/tetragon@sha256:cbacfcd34c1d995ea819764f3ac5004711c418afbbb3ba316a139598dd685b90"
+        "image": "ghcr.io/quenchworks/images/tetragon@sha256:cbb5884f3b57c7817f129072a394476d01f8c653acfa8d4c138bc9db0cdfe41b"
       },
       {
         "name": "tetragon-operator",
@@ -7042,11 +7042,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "483",
     "description": "Trino, the distributed SQL query engine for federated analytics, as a coordinator plus workers. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/trino",
-    "imageDigest": "sha256:b88f7496147991d9f66607713062d51e29faca296482c7919d4711029e0af684",
+    "imageDigest": "sha256:a8b5e2d864cd648863f847b7c15b9a8b0b424d300b1e8360fed0516878b20ed9",
     "repositoryID": "edaa77e1-dd88-40ff-b082-f6e7de4010ca",
     "port": 8080,
     "upstream": "https://github.com/trinodb/trino",
@@ -7054,7 +7054,7 @@
     "images": [
       {
         "name": "trino",
-        "image": "ghcr.io/quenchworks/images/trino@sha256:b88f7496147991d9f66607713062d51e29faca296482c7919d4711029e0af684"
+        "image": "ghcr.io/quenchworks/images/trino@sha256:a8b5e2d864cd648863f847b7c15b9a8b0b424d300b1e8360fed0516878b20ed9"
       }
     ]
   },
