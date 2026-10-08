@@ -380,14 +380,6 @@
     "note": "Deep secret scanner across repos and filesystems."
   },
   {
-    "name": "Kubescape",
-    "category": "Security & supply chain",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Kubernetes security, posture, and compliance scanner. Blocked 2026-09-25: 4.0.14 links github.com/docker/docker v28.5.2 (CVE-2026-33997, fixed only in moby 29.3.1, unreachable from the +incompatible module) through armosec/armoapi-go, whose newest v0.0.763 still requires it."
-  },
-  {
     "name": "KubeVirt",
     "category": "CI/CD & registry",
     "license": "Apache-2.0",
@@ -642,7 +634,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "In-cluster Kubescape components (operator, scanner, kubevuln) for continuous posture and vulnerability scanning. Distinct from the Kubescape CLI."
+    "note": "In-cluster Kubescape components (operator, scanner, kubevuln) for continuous posture and vulnerability scanning. Distinct from the Kubescape CLI. Unblock path measured 2026-10-08 with the Kubescape CLI (shipped): docker/docker v28.5.2 is VEXed when go list -deps shows only client packages, and the otel family floats as one 1.47.0 train. All five components (operator, kubevuln, storage, node-agent, synchronizer) link the same docker/docker, so each needs the same check."
   },
   {
     "name": "Higress",
