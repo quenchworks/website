@@ -3,7 +3,14 @@ import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
+import StackList from '../../components/StackList.astro';
 import { STACKS } from '../../data/stacks';
+import { fetchArtifactHub } from '../../data/artifacthub';
+import { useTranslations } from '../../i18n/ui';
+
+// Live chart versions + Trivy grades at build time; falls back gracefully if AH is unreachable.
+const ah = await fetchArtifactHub();
+const t = useTranslations('es');
 
 // Propuesta de valor traducida por stack (por slug). Los datos estructurales
 // (nombre/componentes/slug) se comparten en ../../data/stacks.
@@ -28,8 +35,6 @@ const prop: Record<string, string> = {
   'supply-chain-stack': 'Admite solo imágenes de QuenchWorks firmadas en los namespaces que etiquetes, verificadas contra Sigstore, y escanea lo que se ejecuta.',
 };
 
-// Prefijo de enlace por idioma. Esta es la página en español.
-const chartHref = (slug: string) => `/es/charts/${slug}`;
 const quickstartHref = '/es/docs/chart-quickstart';
 const chartsHref = '/es/charts';
 ---
@@ -40,7 +45,12 @@ const chartsHref = '/es/charts';
 >
   <Header />
   <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks,type:Stacks">
-    <p class="font-mono text-xs uppercase tracking-widest text-ash">Stacks</p>
+    <div class="flex flex-wrap items-center gap-3">
+      <p class="font-mono text-xs uppercase tracking-widest text-ash">Stacks</p>
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">
+        <span class="text-base font-bold tabular-nums text-paper">{STACKS.length}</span> {t('stacks.count')}
+      </span>
+    </div>
     <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Sistemas completos, un solo helm install</h1>
     <p class="mt-4 max-w-2xl leading-relaxed text-ash">
       Los stacks son charts paraguas curados que agrupan los mismos componentes endurecidos que
@@ -55,32 +65,9 @@ const chartsHref = '/es/charts';
       de suministro (Kyverno).
     </p>
 
-    <div class="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
-      {
-        STACKS.map((s) => (
-          <div class="rounded-xl border border-line bg-graphite p-6">
-            <h2 class="text-xl font-semibold tracking-tight text-paper">{s.name}</h2>
-            <p class="mt-2 leading-relaxed text-ash">{prop[s.slug]}</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              {s.components.map((c) => (
-                <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-                  {c}
-                </span>
-              ))}
-            </div>
-            <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-sm text-paper"><code>helm install {s.slug} oci://ghcr.io/quenchworks/charts/{s.slug}</code></pre>
-            <a
-              href={chartHref(s.slug)}
-              class="mt-4 inline-flex rounded-lg border border-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-paper transition-colors hover:bg-ink"
-            >
-              Ver chart
-            </a>
-          </div>
-        ))
-      }
-    </div>
+    <StackList prop={prop} ah={ah} />
 
-    <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
+    <section class="mt-16 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
       <p class="text-base text-paper">Las mismas piezas endurecidas, preensambladas.</p>
       <p class="mt-2 text-sm text-ash">Explora todos los charts, o lee la guía rápida para desplegar el primero.</p>
       <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">

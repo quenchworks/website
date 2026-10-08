@@ -1,0 +1,287 @@
+---
+/**
+ * The /stacks browser, in the same frame as the charts catalog (CatalogList):
+ * search box, one row of mutually exclusive filter chips, and a card grid. Every
+ * stack is a chart, so each card carries that chart's live version and Trivy grade.
+ *
+ * Stacks add two things a chart card has not: the wiring (the components, drawn as
+ * a tree under the stack) and a copyable `helm install` line. Below the grid, the
+ * component index answers "which stack gives me X": each building block with the
+ * number of stacks that include it, and a click filters the grid to them.
+ *
+ * Eighteen stacks fit on one page, so there is no pager: filtering is a visibility
+ * toggle over server-rendered cards, and the full list stays crawlable.
+ */
+import CveStatus from './CveStatus.astro';
+import type { AhFacts } from '../data/artifacthub';
+import { STACKS, STACK_GROUPS } from '../data/stacks';
+import { charts } from '../data/charts';
+import { getLangFromUrl, localizeUrl, useTranslations } from '../i18n/ui';
+
+interface Props {
+  /** Localized one-line value proposition per stack, keyed by slug. */
+  prop: Record<string, string>;
+  /** Live ArtifactHub facts keyed by slug. */
+  ah: Record<string, AhFacts>;
+}
+const { prop, ah } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const chartBase = localizeUrl(lang, '/charts');
+
+const chartBySlug = new Map(charts.map((c) => [c.slug, c]));
+
+const cards = STACKS.map((s) => {
+  const live = ah[s.slug];
+  return {
+    ...s,
+    version: live?.version ?? chartBySlug.get(s.slug)?.chartVersion ?? null,
+    live,
+    install: `helm install ${s.slug} oci://ghcr.io/quenchworks/charts/${s.slug}`,
+    // Lowercased haystack for the search box: name, slug, components, value prop.
+    haystack: [s.name, s.slug, ...s.components, prop[s.slug] ?? ''].join(' ').toLowerCase(),
+  };
+});
+
+// Component index: every building block, how many stacks wire it in, most shared first.
+const usage = new Map<string, number>();
+for (const s of STACKS) for (const c of s.components) usage.set(c, (usage.get(c) ?? 0) + 1);
+const index = [...usage.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+
+const chip =
+  'filter-btn rounded-lg border border-line px-3.5 py-1.5 font-mono text-xs uppercase tracking-widest text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink';
+---
+
+<div class="relative mt-8">
+  <label for="stack-search" class="sr-only">{t('stacks.searchLabel')}</label>
+  <svg
+    class="pointer-events-none absolute start-3.5 top-1/2 size-4 -translate-y-1/2 text-ash"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="11" cy="11" r="7"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+  <input
+    id="stack-search"
+    type="search"
+    placeholder={t('stacks.searchPlaceholder')}
+    autocomplete="off"
+    spellcheck={false}
+    class="w-full rounded-lg border border-line bg-graphite py-2.5 ps-10 pe-4 font-mono text-sm text-paper placeholder:text-ash focus:border-paper/40 focus:outline-none"
+  />
+</div>
+
+<div class="mb-8 mt-4 flex flex-wrap gap-2" role="group" aria-label={t('stacks.filterLabel')}>
+  <button type="button" data-filter="all" class={chip} aria-pressed="true">{t('catalog.list.filterAll')}</button>
+  {STACK_GROUPS.map((g) => (
+    <button type="button" data-filter={g} class={chip} aria-pressed="false">{t(`stacks.group.${g}` as any)}</button>
+  ))}
+  <button type="button" data-filter="operator-free" class={chip} aria-pressed="false">{t('stacks.operatorFree')}</button>
+</div>
+
+<div class="mb-4 flex min-h-5 flex-wrap items-center justify-between gap-4">
+  <p class="font-mono text-xs uppercase tracking-widest text-ash" id="stack-count" role="status">
+    <span class="tabular-nums text-paper">{cards.length}</span> {t('stacks.count')}
+  </p>
+  <p class="hidden items-center gap-3 font-mono text-xs uppercase tracking-widest text-ash" id="stack-empty">
+    <span>{t('stacks.noMatch')}</span>
+    <button type="button" id="stack-clear" class="rounded border border-line px-2 py-0.5 text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper">{t('catalog.list.clearFilters')}</button>
+  </p>
+</div>
+
+<ul id="stack-grid" class="grid grid-cols-1 gap-3 md:grid-cols-2">
+  {cards.map((s, i) => (
+    <li
+      class="stack-card"
+      data-reveal
+      style={`--i:${i}`}
+      data-group={s.group}
+      data-operator={s.operator ? 'true' : 'false'}
+      data-components={JSON.stringify(s.components)}
+      data-haystack={s.haystack}
+    >
+      {/* The whole card is clickable through the stretched title link; the copy
+          button sits above it (z-10) so it stays its own control. No nested
+          interactive elements inside an <a>. */}
+      <article class="group relative flex h-full flex-col gap-4 rounded-xl border border-line bg-graphite p-5 transition-colors duration-200 hover:border-paper/40 focus-within:border-paper/40">
+        <div class="flex items-start justify-between gap-3">
+          <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
+            <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
+          </span>
+          <CveStatus total={s.live?.securityTotal} sec={s.live?.security} cleanLabel="0 CVE" />
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold leading-tight">
+            <a href={`${chartBase}/${s.slug}`} class="after:absolute after:inset-0 after:rounded-xl focus:outline-none">{s.name}</a>
+          </h2>
+          <p class="mt-2 text-sm leading-relaxed text-ash">{prop[s.slug]}</p>
+        </div>
+
+        {/* The wiring, as a tree: what one install brings up. */}
+        <div class="rounded-lg bg-ink px-4 py-3 font-mono text-xs leading-6" dir="ltr">
+          <p class="text-paper">{s.slug}</p>
+          <ul aria-label={`${s.components.length} ${t('stacks.components')}`}>
+            {s.components.map((c, j) => (
+              <li class="flex gap-2 text-ash">
+                <span class="select-none text-line" aria-hidden="true">{j === s.components.length - 1 ? '└─' : '├─'}</span>
+                <span>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[10px] uppercase tracking-widest text-ash">
+          {s.version && <span class="tabular-nums text-paper">{t('catalog.list.chartV')}{s.version}</span>}
+          {s.version && <span class="text-line" aria-hidden="true">·</span>}
+          <span class="tabular-nums">{s.components.length} {t('stacks.components')}</span>
+          <span class="text-line" aria-hidden="true">·</span>
+          <span>{s.operator ? t('stacks.installsCrds') : t('stacks.operatorFree')}</span>
+        </p>
+
+        <div class="relative z-10 mt-auto flex items-stretch overflow-hidden rounded-lg border border-line bg-ink" dir="ltr">
+          <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap px-3 py-2.5 font-mono text-xs text-paper">{s.install}</code>
+          <button
+            type="button"
+            class="copy-btn shrink-0 border-s border-line px-3 font-mono text-[10px] uppercase tracking-widest text-ash transition-colors duration-200 hover:bg-graphite hover:text-paper"
+            data-copy={s.install}
+            aria-label={`${t('stacks.copyLabel')}: ${s.slug}`}
+          >{t('stacks.copy')}</button>
+        </div>
+      </article>
+    </li>
+  ))}
+</ul>
+
+<section class="mt-16" aria-labelledby="stack-index-title">
+  <h2 id="stack-index-title" class="text-2xl font-bold tracking-tight">{t('stacks.indexTitle')}</h2>
+  <p class="mt-2 max-w-2xl text-sm leading-relaxed text-ash">{t('stacks.indexDesc')}</p>
+  <div class="mt-6 flex flex-wrap gap-2">
+    {index.map(([c, n]) => (
+      <button
+        type="button"
+        class="component-btn inline-flex items-center gap-2 rounded-lg border border-line bg-graphite px-3 py-1.5 font-mono text-xs text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper aria-pressed:border-paper aria-pressed:bg-paper aria-pressed:text-ink"
+        data-component={c}
+        aria-pressed="false"
+        aria-label={`${c}: ${n} ${n === 1 ? t('stacks.inOne') : t('stacks.inMany')}`}
+      >
+        <span>{c}</span>
+        <span class="tabular-nums opacity-70" aria-hidden="true">{n}</span>
+      </button>
+    ))}
+  </div>
+</section>
+
+<script
+  is:inline
+  id="stack-i18n"
+  type="application/json"
+  set:html={JSON.stringify({ count: t('stacks.count'), copied: t('stacks.copied'), copy: t('stacks.copy') })}
+/>
+
+<script>
+  const i18n = JSON.parse(document.getElementById('stack-i18n')?.textContent || '{}');
+  const search = document.querySelector<HTMLInputElement>('#stack-search');
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const componentBtns = document.querySelectorAll<HTMLButtonElement>('.component-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.stack-card');
+  const count = document.getElementById('stack-count');
+  const empty = document.getElementById('stack-empty');
+  const grid = document.getElementById('stack-grid');
+
+  let filter = 'all';
+  let component = '';
+
+  function apply() {
+    const q = (search?.value ?? '').trim().toLowerCase();
+    let shown = 0;
+    cards.forEach((card) => {
+      const group = card.dataset.group;
+      const operator = card.dataset.operator === 'true';
+      const comps: string[] = JSON.parse(card.dataset.components || '[]');
+      const ok =
+        (filter === 'all' || (filter === 'operator-free' ? !operator : group === filter)) &&
+        (!component || comps.includes(component)) &&
+        (!q || (card.dataset.haystack ?? '').includes(q));
+      card.hidden = !ok;
+      if (ok) shown++;
+    });
+    if (count) count.innerHTML = `<span class="tabular-nums text-paper">${shown}</span> ${i18n.count}`;
+    empty?.classList.toggle('hidden', shown > 0);
+    empty?.classList.toggle('flex', shown === 0);
+    // Reflect state in the URL so a filtered view can be shared.
+    const p = new URLSearchParams();
+    if (q) p.set('q', q);
+    if (filter !== 'all') p.set('filter', filter);
+    if (component) p.set('component', component);
+    const qs = p.toString();
+    history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+  }
+
+  function press(btns: NodeListOf<HTMLButtonElement>, match: (b: HTMLButtonElement) => boolean) {
+    btns.forEach((b) => b.setAttribute('aria-pressed', String(match(b))));
+  }
+
+  filterBtns.forEach((b) =>
+    b.addEventListener('click', () => {
+      filter = b.dataset.filter ?? 'all';
+      press(filterBtns, (x) => x === b);
+      apply();
+    }),
+  );
+
+  componentBtns.forEach((b) =>
+    b.addEventListener('click', () => {
+      const c = b.dataset.component ?? '';
+      component = component === c ? '' : c;
+      press(componentBtns, (x) => x.dataset.component === component);
+      apply();
+      if (component) grid?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    }),
+  );
+
+  search?.addEventListener('input', apply);
+
+  document.getElementById('stack-clear')?.addEventListener('click', () => {
+    filter = 'all';
+    component = '';
+    if (search) search.value = '';
+    press(filterBtns, (x) => x.dataset.filter === 'all');
+    press(componentBtns, () => false);
+    apply();
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach((b) =>
+    b.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(b.dataset.copy ?? '');
+        b.textContent = i18n.copied;
+        setTimeout(() => (b.textContent = i18n.copy), 1500);
+      } catch {
+        /* clipboard blocked: the command stays selectable in the code block */
+      }
+    }),
+  );
+
+  // Restore a shared view: ?q=&filter=&component=
+  const p = new URLSearchParams(location.search);
+  if (p.get('q') && search) search.value = p.get('q') ?? '';
+  const f = p.get('filter');
+  if (f && [...filterBtns].some((b) => b.dataset.filter === f)) {
+    filter = f;
+    press(filterBtns, (x) => x.dataset.filter === f);
+  }
+  const c = p.get('component');
+  if (c && [...componentBtns].some((b) => b.dataset.component === c)) {
+    component = c;
+    press(componentBtns, (x) => x.dataset.component === c);
+  }
+  if (p.toString()) apply();
+</script>
