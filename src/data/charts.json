@@ -3636,9 +3636,9 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.1.0",
     "appVersion": "26.8.4",
-    "description": "Linkerd's control plane, from-source on QuenchWorks 0-CVE images pinned by digest: the destination service-profile/xDS controller and (optionally) the identity certificate authority and the Rust policy controller. Tracks Linkerd EDGE releases, since upstream has not cut a stable release since stable-2.14.10 (Feb 2024) and gates stable commercially. Sidecar injection (proxy-injector/sp-validator) and the linkerd-proxy data plane land in a later chart.",
+    "description": "Linkerd service mesh, control plane and data plane (edge release line): destination with the policy server, identity (the mesh CA) and the proxy injector, each running its own proxy, so annotated workloads get mutual TLS. Uses the QuenchWorks linkerd-cni chart instead of linkerd-init. Hardened by QuenchWorks: built from source, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/linkerd",
     "repositoryID": "5d8dfd19-2961-4b0b-9420-5a2f4e34729a",
     "upstream": "https://quench-works.com",
@@ -3650,7 +3650,34 @@
       },
       {
         "name": "linkerd-policy-controller",
-        "image": "ghcr.io/quenchworks/images/linkerd-policy-controller@sha256:567128faa4e6f5977f979f2d6ac4fedffd2fe4075f4e83ab6dcf996290da6398"
+        "image": "ghcr.io/quenchworks/images/linkerd-policy-controller@sha256:78a21206127303d398735dfcaac0a292cb294f9077a5f22d8e4ce15149e2ff5b"
+      },
+      {
+        "name": "linkerd-proxy",
+        "image": "ghcr.io/quenchworks/images/linkerd-proxy@sha256:640deeb1fd4f89ba3310e0334f31b2d4608e4eaf03b6d531ebd8bec68aa56842"
+      }
+    ]
+  },
+  {
+    "slug": "linkerd-cni",
+    "name": "linkerd-cni",
+    "category": "Coordination & mesh",
+    "summary": "Linkerd's CNI plugin (the alternative to the proxy-init init container), its installer and the Rust cni-repair-controller, built from source from the linkerd/linkerd2-proxy-init cni-plugin tag with upstream's image layout, so the linkerd2-cni chart runs it unchanged. A privileged node agent by design.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "1.7.0",
+    "description": "Linkerd CNI plugin: a DaemonSet that chains the linkerd-cni plugin into each node's CNI configuration so meshed pods get their traffic redirected to the Linkerd proxy without the privileged linkerd-init container. Pairs with the QuenchWorks linkerd chart (cniEnabled). Hardened by QuenchWorks: built from source on Wolfi, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/linkerd-cni",
+    "imageDigest": "sha256:7d785f41e199a19e19ecfd61255296cc205ea5ef4d1c8a2f58b4d7e3dc62dbf1",
+    "repositoryID": "ae631f26-1bd2-462c-adf2-942a4068ff47",
+    "upstream": "https://linkerd.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/linkerd-cni",
+    "images": [
+      {
+        "name": "linkerd-cni",
+        "image": "ghcr.io/quenchworks/images/linkerd-cni@sha256:7d785f41e199a19e19ecfd61255296cc205ea5ef4d1c8a2f58b4d7e3dc62dbf1"
       }
     ]
   },
@@ -6637,18 +6664,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "3.1.0",
     "description": "Apache Storm, distributed real-time stream processing: Nimbus, supervisors and the UI from one image, with a bundled ZooKeeper. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image on Wolfi (openjdk-25-jre), cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/storm",
-    "imageDigest": "sha256:04489dd03d33b8ecf6c71a53639cab73a9c85196c0d97b00c89f7049f2eae131",
+    "imageDigest": "sha256:7244f1f290dae4b57e9a51a037347465a3e4be7187ddf0c7cfb6211729edbc11",
     "repositoryID": "17a1821e-a79b-46c5-afd4-888fa5e394f0",
     "upstream": "https://github.com/apache/storm",
     "chartRef": "oci://ghcr.io/quenchworks/charts/storm",
     "images": [
       {
         "name": "storm",
-        "image": "ghcr.io/quenchworks/images/storm@sha256:04489dd03d33b8ecf6c71a53639cab73a9c85196c0d97b00c89f7049f2eae131"
+        "image": "ghcr.io/quenchworks/images/storm@sha256:7244f1f290dae4b57e9a51a037347465a3e4be7187ddf0c7cfb6211729edbc11"
       },
       {
         "name": "zookeeper",
