@@ -3272,6 +3272,44 @@
     ]
   },
   {
+    "slug": "kubescape-operator",
+    "name": "kubescape-operator",
+    "category": "Security & supply chain",
+    "summary": "Kubescape's in-cluster operator, which schedules and triggers configuration and vulnerability scans for the other Kubescape components. Built from source.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.2.172",
+    "description": "Kubescape in-cluster: the operator, the configuration scanner (ksserver), the image vulnerability scanner (kubevuln) and the storage API server that keeps the results as Kubernetes objects. Hardened by QuenchWorks: every component built from source on Wolfi, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/kubescape-operator",
+    "repositoryID": "REPLACE_WITH_REPOSITORY_ID",
+    "upstream": "https://kubescape.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kubescape-operator",
+    "images": [
+      {
+        "name": "kubescape-operator",
+        "image": "ghcr.io/quenchworks/images/kubescape-operator@sha256:380f6aa0575b93167830728c29eb81f9ba671818cfc7f66aea41031e82dba13b"
+      },
+      {
+        "name": "kubescape",
+        "image": "ghcr.io/quenchworks/images/kubescape@sha256:0a7e0daf9c5b84e6a0b0e5a4ac4edab135fc302ae2d7571cf42dc4167a861143"
+      },
+      {
+        "name": "kubevuln",
+        "image": "ghcr.io/quenchworks/images/kubevuln@sha256:6024eff79fcc684aa11f889b7baf3ebc6c54ec6e963defb2f85220f70b66d1d0"
+      },
+      {
+        "name": "kubectl",
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:4033ac5e5f359739cf017a256188a8da7592edae86e452c6327dc4865a66a580"
+      },
+      {
+        "name": "kubescape-storage",
+        "image": "ghcr.io/quenchworks/images/kubescape-storage@sha256:689d0bbddb12c2d30053beaa919fd95a2fdd035d71269d90b792ca6011a6bf2c"
+      }
+    ]
+  },
+  {
     "slug": "kubo",
     "name": "kubo",
     "category": "Object storage",
