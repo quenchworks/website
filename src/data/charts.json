@@ -2769,7 +2769,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "1.0.0",
     "description": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation. Bring your own ACME issuer for public certificates. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "1f0a96f3-a5b0-41c9-b718-a4817e8acd0b",
@@ -2783,7 +2783,7 @@
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:cc9001b2995029c121bba0a2c3abd11b67dbc5ab630cbe0cb2c002b9ee239f1c"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:bfc9db97a1e7943090f33a349e07467fb6e19bca7e3a24c88d4b40c49c2403be"
       },
       {
         "name": "cert-manager-controller",
@@ -2803,7 +2803,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:4033ac5e5f359739cf017a256188a8da7592edae86e452c6327dc4865a66a580"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:d5c4037b5c931585adcd7d8c997f094c9b8b90e56600ed2ff0f585b1b6b48cee"
       }
     ],
     "upstreams": [
@@ -4151,7 +4151,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "1.30.5",
     "description": "Istio ambient mesh in one install: istiod (control plane and certificate authority), the istio-cni node agent and ztunnel, wired for ambient so every pod in a labelled namespace talks mutual TLS with a SPIFFE identity, with no sidecars. All QuenchWorks images are 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "d980b7c9-f12e-42f4-8608-89b535e6c96a",
@@ -4166,11 +4166,11 @@
     "images": [
       {
         "name": "istiod",
-        "image": "ghcr.io/quenchworks/images/istiod@sha256:85914e5b57ec9a78da530ff4783f47f4e4dc95c5aab162f185abc7d26fb8ba81"
+        "image": "ghcr.io/quenchworks/images/istiod@sha256:0a18a58ee596b5b24d14f34ee283c12bfaf2cacc164eb19eb45eb6d676728cdd"
       },
       {
         "name": "istio-cni",
-        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:4d79d3c3892beb45b250f26152c2f69a5fb51829a51fc5ba827c6796665c1de7"
+        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:ed19a9e726297ba76411b4f1195475a223fed7c11ffe79c3d91a99a0f88aed3a"
       },
       {
         "name": "ztunnel",
@@ -4525,7 +4525,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "26.10.1",
     "description": "Operator-managed HA MySQL-compatible database in one install: MariaDB Operator + a 3-node Galera cluster (synchronous multi-primary replication, automatic recovery of failed nodes). Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "502d54e3-8eed-4c0b-b134-08dd9bbd124b",
@@ -4538,7 +4538,7 @@
     "images": [
       {
         "name": "mariadb-operator",
-        "image": "ghcr.io/quenchworks/images/mariadb-operator@sha256:62d007ebdbab91443b40be1cdb7cd0c34ebd0df4374c2679114a440557a24369"
+        "image": "ghcr.io/quenchworks/images/mariadb-operator@sha256:358f27b2403d266e351e48aaf3d82e5f8d14fd76c393b5013b284a3e10b95a68"
       },
       {
         "name": "mariadb",
@@ -6558,7 +6558,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "1.0.0",
     "description": "OpenBao behind Keycloak sign-in: OpenBao auto-unseals and configures itself on first start (KV v2, OIDC for people, JWT for workloads, a break-glass admin), trusting a Keycloak realm the stack imports. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "4d6d8aa4-7640-4bb8-a0cf-1edcda7eea09",
@@ -6576,7 +6576,7 @@
       },
       {
         "name": "keycloak",
-        "image": "ghcr.io/quenchworks/images/keycloak@sha256:bb29de8d63b0b763ad823dfb696b2f740b6473693e1e892a94f7722f85a355f2"
+        "image": "ghcr.io/quenchworks/images/keycloak@sha256:0f96c1ae6014d5252b1a00f3d80dd4e3dbed2ffdad9c1a85dd3b022f721f92f2"
       },
       {
         "name": "postgresql",
