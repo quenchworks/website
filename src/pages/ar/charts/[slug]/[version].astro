@@ -1,11 +1,11 @@
 ---
-// Per-version chart pages: /charts/<slug>/<version>. Emits every release EXCEPT
-// the newest (which lives at the base /charts/<slug> page). These show the
+// Per-version chart pages: /charts/<slug>/<version>. Emits the older releases the
+// version switcher lists (CHART_VERSION_PAGES); the newest lives at /charts/<slug>. These show the
 // pinned --version install, the release date, and the standard verify block —
 // no per-version ArtifactHub fetch, so build time stays flat. getStaticPaths
 // calls fetchPackageDetail once per chart to read the version history.
 import ChartDetail from '../../../../components/ChartDetail.astro';
-import { charts, type ChartEntry } from '../../../../data/charts';
+import { charts, CHART_VERSION_PAGES, type ChartEntry } from '../../../../data/charts';
 import { fetchPackageDetail, type AhDetail } from '../../../../data/artifacthub';
 
 type VersionPath = {
@@ -25,8 +25,9 @@ export async function getStaticPaths() {
       batch.map(async (e) => {
         const ah = await fetchPackageDetail(e.slug);
         const versions = ah?.versions ?? [];
-        // Skip the newest (index 0): that's the base page.
-        return versions.slice(1).map((v) => ({
+        // Skip the newest (index 0): that's the base page. Older ones past the
+        // switcher's cap get no page (see CHART_VERSION_PAGES).
+        return versions.slice(1, CHART_VERSION_PAGES).map((v) => ({
           params: { slug: e.slug, version: v.version },
           props: { entry: e, version: v.version, ah, versionTs: v.ts },
         }));

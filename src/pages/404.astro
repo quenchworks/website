@@ -41,4 +41,12 @@ const links = [
     </nav>
   </main>
   <Footer />
+  <!-- Only the newest few chart versions get a page (CHART_VERSION_PAGES); an older
+       /charts/<slug>/<version> link lands here, so forward it to the chart page. -->
+  <script is:inline>
+    (function () {
+      var m = location.pathname.match(/^(\/ar|\/es)?\/charts\/([^/]+)\/[^/]+\/?$/);
+      if (m && m[2] !== 'category' && m[2] !== 'page') location.replace((m[1] || '') + '/charts/' + m[2]);
+    })();
+  </script>
 </Base>

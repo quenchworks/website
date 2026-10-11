@@ -39,6 +39,12 @@ export const charts = data as ChartEntry[];
 /** Card count per static catalog page (real URL-based pagination). */
 export const PAGE_SIZE = 12;
 
+// Chart versions that get a page: the newest (base page) plus the older ones the
+// version switcher lists. A chart is patch-bumped on every image re-pin, so a full
+// history ran to ~2,900 pages per locale and pushed dist toward Cloudflare Pages'
+// 20,000-file cap. Older version URLs land on 404.html, which forwards to the chart.
+export const CHART_VERSION_PAGES = 3;
+
 export const chartCount = charts.length;
 export const chartCategories = [...new Set(charts.map((c) => c.category))].sort();
 export const chartTiers: Tier[] = ['critical', 'standard', 'low'];

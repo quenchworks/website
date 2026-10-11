@@ -4,7 +4,7 @@ import { gradeTone, GRADE_CHIP } from '../data/grade';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import VersionSwitcher from '../components/VersionSwitcher.astro';
-import { ghcr, type ChartEntry } from '../data/charts';
+import { ghcr, CHART_VERSION_PAGES, type ChartEntry } from '../data/charts';
 import { images } from '../data/images';
 import security from '../data/security.json';
 import CveReport from '../components/CveReport.astro';
@@ -153,7 +153,7 @@ const ld = {
 
     <p class="mt-6 max-w-2xl text-ash">{summary}</p>
 
-    <VersionSwitcher section="charts" slug={entry.slug} versions={versions} current={version} max={3} />
+    <VersionSwitcher section="charts" slug={entry.slug} versions={versions} current={version} max={CHART_VERSION_PAGES} />
 
     {!isLatest && (
       <section class="mt-6 rounded-xl border border-line bg-graphite p-5">
