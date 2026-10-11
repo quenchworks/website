@@ -77,7 +77,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.33",
+    "chartVersion": "0.1.34",
     "appVersion": "3.3.2",
     "description": "Hardened Apache Airflow 3 workflow orchestration (api-server + scheduler + dag-processor + triggerer, optional Celery workers) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/airflow",
@@ -93,7 +93,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "valkey",
@@ -348,7 +348,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.36",
+    "chartVersion": "0.0.37",
     "appVersion": "4.39.28",
     "description": "Hardened Authelia authentication and authorization server on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authelia",
@@ -364,7 +364,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "valkey",
@@ -384,7 +384,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.38",
+    "chartVersion": "0.1.39",
     "appVersion": "2026.8.3",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
@@ -400,7 +400,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "valkey",
@@ -890,7 +890,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "1.30.1",
     "description": "CloudNativePG, the Kubernetes operator for PostgreSQL high availability: replicas, automated failover and backups, running clusters on the QuenchWorks PostgreSQL image. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cloudnative-pg",
@@ -905,7 +905,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -941,7 +941,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "1.30.1",
     "description": "Operator-managed HA PostgreSQL in one install: the CloudNativePG operator + a replicated Cluster (streaming replication, automated failover, built-in metrics) + a PgBouncer Pooler in front of the primary. Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "54fc1458-1892-4ee0-a219-fa310ee6811a",
@@ -958,11 +958,11 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "pgbouncer",
-        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:dffe29e1c7b9ef21225c2888190a47f3849d418a5b38bc986e1d137dfc2167af"
+        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:310584cf7f94d9ac43af3518b439adc2b9f5905192c5c6137389d55a9d9ef90e"
       },
       {
         "name": "kubectl",
@@ -1113,7 +1113,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.40",
+    "chartVersion": "0.0.41",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, 0-CVE image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -1135,7 +1135,7 @@
       },
       {
         "name": "postgresql-15",
-        "image": "ghcr.io/quenchworks/images/postgresql-15@sha256:26a2b81309dbb23d8a4bb8deef53ba0a9a5ff0153a5df298e789bd3520da49ab"
+        "image": "ghcr.io/quenchworks/images/postgresql-15@sha256:2edf721d5ed00f113f5304e30a7cad0589fea39a034b46f52b27da9e3dd1f792"
       },
       {
         "name": "redis",
@@ -1317,7 +1317,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.13.25",
     "description": "Dagster, the asset-oriented data orchestrator: webserver (UI), daemon (schedules, sensors, run queue) and PostgreSQL instance storage. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/dagster",
@@ -1333,7 +1333,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -1367,7 +1367,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "5.1.2",
     "description": "OWASP Dependency-Track, the SBOM analysis platform: the API server, the web UI behind one address, and a bundled PostgreSQL. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/dependency-track",
@@ -1387,7 +1387,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -1470,7 +1470,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "1.0.0",
     "description": "Self-hosted DNS for Kubernetes: PowerDNS Authoritative serves the zones and external-dns writes records into it from annotated Services and Ingresses, through the PowerDNS API with a key the stack generates. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "a7e64c38-4522-409f-b9cb-085ce6a84391",
@@ -1484,7 +1484,7 @@
     "images": [
       {
         "name": "powerdns",
-        "image": "ghcr.io/quenchworks/images/powerdns@sha256:a9a0c1b66f1513e309a60eda1dfbca732fc07c8f374f0d549fcb316da000fa34"
+        "image": "ghcr.io/quenchworks/images/powerdns@sha256:4871175e5f7e9f0fafb5557ff6ef63f7466f801bd25eaffd0350e08e68f4c765"
       },
       {
         "name": "external-dns",
@@ -2142,7 +2142,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.36",
+    "chartVersion": "0.0.37",
     "appVersion": "1.27.3",
     "description": "Lightweight self-hosted Git service with repositories, issues, pull requests, and built-in CI/CD (Actions). Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/gitea",
@@ -2158,7 +2158,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -2360,7 +2360,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "1.6.0",
     "description": "Apache Guacamole, clientless remote desktop in the browser for RDP, VNC, SSH and telnet: the web app, the guacd proxy daemon and PostgreSQL in one install. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/guacamole",
@@ -2380,7 +2380,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -2416,7 +2416,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.43",
+    "chartVersion": "0.0.44",
     "appVersion": "2.15.2",
     "description": "Cloud-native OCI registry with role-based access control, replication, vulnerability scanning, and image signing. This umbrella chart wires seven QuenchWorks Harbor component images (core, jobservice, registry, registryctl, portal, the optional Trivy scan adapter, and the metrics exporter) over the QuenchWorks PostgreSQL and Valkey charts, each a minimal, nonroot, 0-CVE image pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor",
@@ -2462,7 +2462,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "valkey",
@@ -2504,7 +2504,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "2.50.3",
     "description": "Hardened Hasura GraphQL Engine (Community Edition) on a 0-CVE nonroot image, with a bundled PostgreSQL metadata database.",
     "imageRepository": "ghcr.io/quenchworks/images/hasura",
@@ -2520,7 +2520,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -2656,7 +2656,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "26.2.0",
     "description": "OAuth2 / OpenID Connect server (Ory Hydra) — a certified, standards-compliant token and consent service that sits in front of your own login UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/hydra",
@@ -2671,7 +2671,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -2683,7 +2683,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.26",
+    "chartVersion": "0.0.27",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free self-hosted SSO/identity stack: Keycloak (OIDC/SAML identity provider) + PostgreSQL (Keycloak's database) + oauth2-proxy (an auth proxy you place in front of any upstream app to authenticate users against Keycloak), wired together so you get single sign-on in front of your apps out of the box. No operator, no CRDs. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed.",
     "repositoryID": "9a0c364f-4e7b-4fac-adc3-559b1865e28b",
@@ -2701,7 +2701,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "oauth2-proxy",
@@ -3107,7 +3107,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.38",
+    "chartVersion": "0.0.39",
     "appVersion": "26.7.5",
     "description": "Open-source identity and access management server providing SSO, user federation, and OAuth2/OIDC and SAML for apps and APIs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/keycloak",
@@ -3123,7 +3123,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -3209,7 +3209,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "26.2.0",
     "description": "Identity server (Ory Kratos) — API-first identity management: registration, login, MFA, account recovery and profile management with no vendor-locked UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/kratos",
@@ -3224,7 +3224,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -3492,7 +3492,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.23.2",
     "description": "Hardened Label Studio data labeling tool on a 0-CVE nonroot image, with a bundled PostgreSQL database.",
     "imageRepository": "ghcr.io/quenchworks/images/label-studio",
@@ -3508,7 +3508,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -3968,7 +3968,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "4.7.3",
     "description": "Mastodon, the federated social network server: web, sidekiq and streaming on QuenchWorks images, with the bundled PostgreSQL and Valkey (or external ones), the schema prepared on every start, media on a PVC, and the Rails secrets generated once and kept across upgrades. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mastodon",
@@ -3988,7 +3988,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "valkey",
@@ -4028,7 +4028,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.32",
+    "chartVersion": "0.0.33",
     "appVersion": "11.11.1",
     "description": "Open-source, self-hosted team collaboration and messaging platform (Team Edition) — channels, direct messages, and file sharing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/mattermost",
@@ -4044,7 +4044,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -4190,7 +4190,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "0.63.18",
     "description": "Metabase open-source edition: self-service BI and dashboards, with its application database on a bundled PostgreSQL. Hardened by QuenchWorks, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/metabase",
@@ -4206,7 +4206,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -4292,7 +4292,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "2.3.3",
     "description": "Minimalist, opinionated feed reader (Go, single binary) backed by PostgreSQL. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled PostgreSQL by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/miniflux",
@@ -4308,7 +4308,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -4320,7 +4320,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "1.0.0",
     "description": "Hardened machine-learning stack: JupyterHub notebooks, the MLflow tracking server and model registry, and Label Studio for data labeling, wired together in one install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "4aaaf235-8151-4493-be32-1cee9a4140de",
@@ -4339,7 +4339,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "jupyterhub",
@@ -4368,7 +4368,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.31",
+    "chartVersion": "0.0.32",
     "appVersion": "3.16.1",
     "description": "Hardened MLflow Tracking Server (experiment tracking + model registry) on a 0-CVE nonroot image, with a bundled PostgreSQL backend store.",
     "imageRepository": "ghcr.io/quenchworks/images/mlflow",
@@ -4384,7 +4384,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -4965,7 +4965,7 @@
     "tier": "standard",
     "license": "LGPL-3.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "19.0.20260929",
     "description": "Odoo Community Edition, the Python ERP and business apps suite (CRM, sales, inventory, accounting, website), with the bundled PostgreSQL, the filestore on a PVC, the base module installed on first start and a generated admin password. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/odoo",
@@ -4981,7 +4981,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -5279,7 +5279,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "26.2.0",
     "description": "Ory Hydra, the OAuth 2.0 and OpenID Connect provider: public and admin APIs, SQL migrations at start, bundled or external PostgreSQL. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/ory-hydra",
@@ -5294,7 +5294,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -5354,11 +5354,11 @@
     "tier": "standard",
     "license": "ISC",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "1.25.2",
     "description": "Lightweight connection pooler for PostgreSQL that fronts thousands of client connections with a small backend pool, cutting per-connection overhead. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pgbouncer",
-    "imageDigest": "sha256:d066975c823555e37d2cf7d51a0c9ec8b0d68f4654dbe51481ce47ed03c9481f",
+    "imageDigest": "sha256:429aab7a75a46178f3506c59c461a6a19c5b102ff16b428b7e13226d2997b075",
     "repositoryID": "464615b6-6f41-496a-a458-d27fea6e29e5",
     "port": 6432,
     "upstream": "https://github.com/pgbouncer/pgbouncer",
@@ -5366,11 +5366,11 @@
     "images": [
       {
         "name": "pgbouncer",
-        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:d066975c823555e37d2cf7d51a0c9ec8b0d68f4654dbe51481ce47ed03c9481f"
+        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:429aab7a75a46178f3506c59c461a6a19c5b102ff16b428b7e13226d2997b075"
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -5382,7 +5382,7 @@
     "tier": "standard",
     "license": "HPND",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "4.7.3",
     "description": "PostgreSQL connection pooler, load balancer and query router. Pools client connections, spreads read-only queries across replicas, and fails over to a new primary automatically. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pgpool",
@@ -5398,7 +5398,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -5663,7 +5663,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.0.0",
     "description": "Hardened PostgreSQL HA stack: a 3-node Patroni cluster with automatic failover, PgBouncer pooling in front of the elected leader, postgres_exporter on the leader, and Prometheus + Grafana with the postgres_exporter overview dashboard. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "9d95ad7a-c488-4051-8849-1f81533342e4",
@@ -5679,11 +5679,11 @@
     "images": [
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "pgbouncer",
-        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:d066975c823555e37d2cf7d51a0c9ec8b0d68f4654dbe51481ce47ed03c9481f"
+        "image": "ghcr.io/quenchworks/images/pgbouncer@sha256:429aab7a75a46178f3506c59c461a6a19c5b102ff16b428b7e13226d2997b075"
       },
       {
         "name": "postgres-exporter",
@@ -5713,11 +5713,11 @@
     "tier": "critical",
     "license": "PostgreSQL",
     "licenseClean": "clean",
-    "chartVersion": "0.0.28",
+    "chartVersion": "0.0.29",
     "appVersion": "18.6",
     "description": "Advanced open-source relational database (v18.x) with strong SQL, ACID transactions, JSON, and a rich extension ecosystem. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/postgresql",
-    "imageDigest": "sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50",
+    "imageDigest": "sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655",
     "repositoryID": "f73f0b94-2c4e-4918-8720-8152e260e2b1",
     "port": 5432,
     "upstream": "https://github.com/postgres/postgres",
@@ -5725,7 +5725,7 @@
     "images": [
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "postgres-exporter",
@@ -5741,11 +5741,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "0.107.0",
     "description": "PostgreSQL 17 plus the open DocumentDB extension, providing BSON document storage and queries. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/postgres-documentdb",
-    "imageDigest": "sha256:19638f358b403600667e5d0ed1442e46b133d7c567431ba1185dec46e5e256b5",
+    "imageDigest": "sha256:dead6793a6579985683979989c9dfa4bf43f377fcddbdff631fd2f781129501f",
     "repositoryID": "4d6304a8-b68f-41dd-8f4e-4d4faf64acb0",
     "port": 5432,
     "upstream": "https://github.com/FerretDB/documentdb",
@@ -5753,7 +5753,7 @@
     "images": [
       {
         "name": "postgres-documentdb",
-        "image": "ghcr.io/quenchworks/images/postgres-documentdb@sha256:19638f358b403600667e5d0ed1442e46b133d7c567431ba1185dec46e5e256b5"
+        "image": "ghcr.io/quenchworks/images/postgres-documentdb@sha256:dead6793a6579985683979989c9dfa4bf43f377fcddbdff631fd2f781129501f"
       },
       {
         "name": "postgres-exporter",
@@ -5769,11 +5769,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "16.3",
     "description": "PostgREST, a standalone web server that turns a PostgreSQL database directly into a RESTful API, with authorization derived from the database's own roles and row-level security. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Ships a bundled PostgreSQL by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/postgrest",
-    "imageDigest": "sha256:efeb0bd0742bf73c1335405413b973051c753b00b1fd185893574d5354a0f554",
+    "imageDigest": "sha256:e80006838819d736acd7d3bffc3907614a652c1ca67923430cd59d3309bdba04",
     "repositoryID": "a0b71180-05b0-4c5e-8996-ebbb894cea1e",
     "port": 3000,
     "upstream": "https://postgrest.org",
@@ -5781,11 +5781,11 @@
     "images": [
       {
         "name": "postgrest",
-        "image": "ghcr.io/quenchworks/images/postgrest@sha256:efeb0bd0742bf73c1335405413b973051c753b00b1fd185893574d5354a0f554"
+        "image": "ghcr.io/quenchworks/images/postgrest@sha256:e80006838819d736acd7d3bffc3907614a652c1ca67923430cd59d3309bdba04"
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -5797,11 +5797,11 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "5.1.4",
     "description": "PowerDNS Authoritative Server, built from source. Serves zones from LMDB on a persistent volume, with the HTTP API for zone management and external-dns. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/powerdns",
-    "imageDigest": "sha256:a9a0c1b66f1513e309a60eda1dfbca732fc07c8f374f0d549fcb316da000fa34",
+    "imageDigest": "sha256:4871175e5f7e9f0fafb5557ff6ef63f7466f801bd25eaffd0350e08e68f4c765",
     "repositoryID": "81044945-9b66-4be8-8341-89980090581f",
     "port": 53,
     "upstream": "https://www.powerdns.com",
@@ -5809,7 +5809,7 @@
     "images": [
       {
         "name": "powerdns",
-        "image": "ghcr.io/quenchworks/images/powerdns@sha256:a9a0c1b66f1513e309a60eda1dfbca732fc07c8f374f0d549fcb316da000fa34"
+        "image": "ghcr.io/quenchworks/images/powerdns@sha256:4871175e5f7e9f0fafb5557ff6ef63f7466f801bd25eaffd0350e08e68f4c765"
       }
     ]
   },
@@ -5821,11 +5821,11 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "5.4.7",
     "description": "PowerDNS Recursor, the caching DNS resolver, built from source. Resolves for private-network clients only, with DNSSEC validation, forward zones and local auth zones. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/powerdns-recursor",
-    "imageDigest": "sha256:1c007e6ec42b4566713ac952f28a9ea9a83b54a94a70b7eac9b3d8fc419dc312",
+    "imageDigest": "sha256:d25cb6cc57e10bb9ef8d9aae9b7eeb1f29cf8f88103a4d8a3767017e0e334b01",
     "repositoryID": "e2e4ff1c-0812-4fd7-befa-b01b3acfccfc",
     "port": 53,
     "upstream": "https://www.powerdns.com",
@@ -5833,7 +5833,7 @@
     "images": [
       {
         "name": "powerdns-recursor",
-        "image": "ghcr.io/quenchworks/images/powerdns-recursor@sha256:1c007e6ec42b4566713ac952f28a9ea9a83b54a94a70b7eac9b3d8fc419dc312"
+        "image": "ghcr.io/quenchworks/images/powerdns-recursor@sha256:d25cb6cc57e10bb9ef8d9aae9b7eeb1f29cf8f88103a4d8a3767017e0e334b01"
       }
     ]
   },
@@ -5845,7 +5845,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "3.8.8",
     "description": "Prefect, the Python-native workflow orchestration server: API, UI and background services with PostgreSQL storage, plus an optional process worker. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/prefect",
@@ -5861,7 +5861,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -5955,11 +5955,11 @@
     "tier": "standard",
     "license": "GPL-3.0+",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "3.0.9",
     "description": "ProxySQL, the MySQL-protocol proxy: connection pooling, read/write splitting, query routing and backend failover for MySQL and MariaDB. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/proxysql",
-    "imageDigest": "sha256:5b637cb0e3e481e60046c5b21e9a0f842bdbe68a3beb62009a4f959805fdcb61",
+    "imageDigest": "sha256:e5e6ab7da8094d2420c6e9d8e388882e2740521fd8927a46fe4316074d842ad0",
     "repositoryID": "93c649c5-0964-4bc0-a521-80ccd58b03b4",
     "port": 3306,
     "upstream": "https://proxysql.com",
@@ -5967,7 +5967,7 @@
     "images": [
       {
         "name": "proxysql",
-        "image": "ghcr.io/quenchworks/images/proxysql@sha256:5b637cb0e3e481e60046c5b21e9a0f842bdbe68a3beb62009a4f959805fdcb61"
+        "image": "ghcr.io/quenchworks/images/proxysql@sha256:e5e6ab7da8094d2420c6e9d8e388882e2740521fd8927a46fe4316074d842ad0"
       }
     ]
   },
@@ -6173,7 +6173,7 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "7.0.2",
     "description": "Redmine, the Ruby on Rails project management and issue tracker (issues, wikis, time tracking, Gantt, REST API), with the bundled PostgreSQL, attachments on a PVC, the schema migrated and default data loaded on first start, and a generated admin password. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/redmine",
@@ -6189,7 +6189,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -6201,7 +6201,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "1.0.0",
     "description": "One self-hosted artifact registry in one install: Harbor (container images and OCI Helm charts, with Trivy scanning) + Terralist (a private Terraform/OpenTofu module and provider registry). Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "b5d83452-d2c5-452a-959c-f6f7fe2da9eb",
@@ -6251,7 +6251,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       },
       {
         "name": "valkey",
@@ -6558,7 +6558,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.0.0",
     "description": "OpenBao behind Keycloak sign-in: OpenBao auto-unseals and configures itself on first start (KV v2, OIDC for people, JWT for workloads, a break-glass admin), trusting a Keycloak realm the stack imports. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "4d6d8aa4-7640-4bb8-a0cf-1edcda7eea09",
@@ -6580,7 +6580,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ],
     "upstreams": [
@@ -6998,7 +6998,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.31",
     "appVersion": "1.32.0",
     "description": "Durable workflow orchestration engine that persists execution state so long-running, multi-step processes survive crashes and resume exactly where they left off. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/temporal",
@@ -7013,7 +7013,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -7460,7 +7460,7 @@
     "tier": "standard",
     "license": "AGPL-3.0+",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "8.2.0",
     "description": "Unleash, the feature-flag and gradual-rollout server: flags, activation strategies, segments, environments, the admin UI and the client and frontend APIs, on PostgreSQL (bundled or external). Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/unleash",
@@ -7967,7 +7967,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "7.4.15",
     "description": "Zabbix, the enterprise monitoring platform: the server, the web frontend and PostgreSQL in one install. Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/zabbix-server",
@@ -7986,7 +7986,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
@@ -8022,7 +8022,7 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.31",
     "appVersion": "4.19.4",
     "description": "Open-source identity infrastructure — a cloud-native OIDC/OAuth2/SAML identity and access management server with multi-tenancy, self-service, and a built-in management API/console. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Bundles PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/zitadel",
@@ -8038,7 +8038,7 @@
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:48aebfed6b703fc2e8582aff8382063ea6c06b62d8b735e1b13da306182d1f50"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:e3b4a823a4eb9f6863a0f87b2cd6b2d710f0f5977372b4161873d1861c180655"
       }
     ]
   },
