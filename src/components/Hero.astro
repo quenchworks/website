@@ -6,6 +6,7 @@ import { githubStars } from '../data/github';
 import { fetchArtifactHub } from '../data/artifacthub';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { getLangFromUrl, useTranslations } from '../i18n/ui';
+import securityHistory from '../data/security-history.json';
 // shipped end-to-end = apps with both an available image and a chart.
 const shipped = Math.min(availableCount, chartCount);
 
@@ -15,10 +16,12 @@ const shipped = Math.min(availableCount, chartCount);
 const ahFacts = await fetchArtifactHub();
 const ahKeys = Object.keys(ahFacts);
 const cveTotal = ahKeys.reduce((s, k) => s + (ahFacts[k].securityTotal ?? 0), 0);
-// Fixable CVEs are the ones a rebuild can clear; catalog-wide this is 0 today. We
-// surface it next to the open count so "N open" never reads as contradicting the
-// "0 fixable CVEs" claim elsewhere on the page (open ≠ fixable).
+// Fixable CVEs are the ones a rebuild can clear. We surface them next to the open
+// count so "N open" never reads as contradicting the "0 fixable CVEs" claim elsewhere
+// on the page (open ≠ fixable), plus how many images a rebuild still has to reach and
+// the date of the scan the numbers come from, so a spike reads as what it is.
 const fixableTotal = ahKeys.reduce((s, k) => s + (ahFacts[k].security?.fixable ?? 0), 0);
+const rebuildCount = ahKeys.filter((k) => (ahFacts[k].security?.fixable ?? 0) > 0).length;
 const cveLive = ahKeys.length > 0; // we actually got scan data back
 
 // Gate the star chip: a tiny count reads as "unadopted" to a skeptic, so only
@@ -46,8 +49,14 @@ const chartsHref = getRelativeLocaleUrl(lang, '/charts');
       <span class="font-bold tabular-nums text-paper">{chartCount}</span> {t('hero.statCharts')} · {
         cveLive && cveTotal > 0 ? (
           <>
-            <span class="font-bold tabular-nums text-amber-400">{cveTotal}</span> open ·{' '}
-            <span class="font-bold tabular-nums text-paper">{fixableTotal}</span> fixable {cveTotal === 1 ? 'CVE' : 'CVEs'}
+            <span class="font-bold tabular-nums text-amber-400">{cveTotal}</span> {t('hero.statOpen')} ·{' '}
+            <span class="font-bold tabular-nums text-paper">{fixableTotal}</span> {t('hero.statFixable')}
+            {rebuildCount > 0 && (
+              <>
+                {' '}· <span class="font-bold tabular-nums text-paper">{rebuildCount}</span> {t('hero.statRebuild')}
+              </>
+            )}
+            {' '}· {t('hero.statScanned')} <time class="tabular-nums" datetime={securityHistory.to}>{securityHistory.to}</time>
           </>
         ) : (
           t('hero.statCves')

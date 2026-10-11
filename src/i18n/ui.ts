@@ -47,6 +47,10 @@ export const ui = {
     'hero.statImages': 'hardened images',
     'hero.statCharts': 'signed charts',
     'hero.statCves': '0 fixable CVEs',
+    'hero.statOpen': 'open',
+    'hero.statFixable': 'fixable CVEs',
+    'hero.statRebuild': 'images awaiting rebuild',
+    'hero.statScanned': 'scanned',
     'footer.builtBy': 'Built by',
     // --- Homepage sections (Demo, Features, Catalog, Cta) ---
     // INITIAL translations for review.
@@ -343,6 +347,10 @@ export const ui = {
     'hero.statImages': 'صورة محصّنة',
     'hero.statCharts': 'مخطط موقّع',
     'hero.statCves': '0 ثغرة قابلة للإصلاح',
+    'hero.statOpen': 'مفتوحة',
+    'hero.statFixable': 'ثغرة قابلة للإصلاح',
+    'hero.statRebuild': 'صورة بانتظار إعادة البناء',
+    'hero.statScanned': 'آخر فحص',
     'footer.builtBy': 'بناه',
     // --- أقسام الصفحة الرئيسية (عرض، مزايا، كتالوج، دعوة لاتخاذ إجراء) ---
     // ترجمات أولية للمراجعة.
@@ -640,6 +648,10 @@ export const ui = {
     'hero.statImages': 'imágenes endurecidas',
     'hero.statCharts': 'charts firmados',
     'hero.statCves': '0 CVE corregibles',
+    'hero.statOpen': 'abiertos',
+    'hero.statFixable': 'CVE corregibles',
+    'hero.statRebuild': 'imágenes pendientes de reconstrucción',
+    'hero.statScanned': 'escaneo del',
     'footer.builtBy': 'Hecho por',
     // --- Secciones de la página de inicio (Demo, Features, Catalog, Cta) ---
     // Traducciones iniciales para revisión.
