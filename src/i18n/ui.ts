@@ -39,7 +39,7 @@ export const ui = {
     'footer.tagline':
       'MIT licensed. Built independently, not affiliated with any upstream vendor.',
     'hero.title':
-      'Hardened, zero-CVE images and charts for the infrastructure you run.',
+      'QuenchWorks: hardened, zero-CVE images and charts for the infrastructure you run.',
     'hero.subtitle':
       'datastores shipped end-to-end as small nonroot container images and signed Helm charts. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, digest-pinned, and multi-arch. Free and independent.',
     'hero.cta.primary': 'Browse the charts',
@@ -339,7 +339,7 @@ export const ui = {
     'footer.project': 'المشروع',
     'footer.tagline':
       'مرخّص بموجب MIT. مبني بشكل مستقل وغير تابع لأي مورّد خارجي.',
-    'hero.title': 'صور ومخططات مُحصّنة وخالية من الثغرات للبنية التحتية التي تُشغّلها.',
+    'hero.title': 'QuenchWorks: صور ومخططات مُحصّنة وخالية من الثغرات للبنية التحتية التي تُشغّلها.',
     'hero.subtitle':
       'قواعد بيانات تُسلّم بالكامل كصور حاويات صغيرة تعمل بدون صلاحيات الجذر ومخططات Helm موقّعة. مبنية من المصدر على Wolfi، ومفحوصة حتى صفر ثغرات قابلة للإصلاح، وموقّعة بـ cosign، ومثبّتة بالبصمة الرقمية، ومتعددة المعماريات. مجانية ومستقلة.',
     'hero.cta.primary': 'تصفّح المخططات',
@@ -640,7 +640,7 @@ export const ui = {
     'footer.tagline':
       'Con licencia MIT. Desarrollado de forma independiente, sin afiliación con ningún proveedor.',
     'hero.title':
-      'Imágenes y charts reforzados y sin CVE para la infraestructura que ejecutas.',
+      'QuenchWorks: imágenes y charts reforzados y sin CVE para la infraestructura que ejecutas.',
     'hero.subtitle':
       'bases de datos entregadas de extremo a extremo como pequeñas imágenes de contenedor sin root y charts de Helm firmados. Compiladas desde el código fuente en Wolfi, analizadas hasta cero CVE corregibles, firmadas con cosign, fijadas por digest y multiarquitectura. Libre e independiente.',
     'hero.cta.primary': 'Explorar los charts',
