@@ -141,14 +141,6 @@
     "note": "Self-hosted media server for movies, music, and live TV. Built 2026-09-29 from Wolfi's jellyfin 12.1 apks and it gates clean (0 fixable CVEs, boot test passes), but it is held: libSkiaSharp.so, a prebuilt NuGet binary from a Debian 10 clang 13 build, statically links libjpeg-turbo 2.1.5.1 (behind several upstream security fixes), libpng and other image libraries the scanner cannot see. Needs Skia built against the system libraries. The recipe is committed as blocked."
   },
   {
-    "name": "Concourse",
-    "category": "CI/CD & registry",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Pipeline-based continuous integration system backed by PostgreSQL. Images shipped 2026-09-30 (web and worker, with the registry-image and time resource types bundled, plus concourse-git-resource). The worker runs root and privileged, which containerd needs. Chart held 2026-09-30: under kind on GitHub's Ubuntu 24.04 runners, task containers fail to mount /sys in their user namespace, while the same install runs tasks elsewhere; the release waits for that cause."
-  },
-  {
     "name": "Apache Druid",
     "category": "Workflow & data",
     "license": "Apache-2.0",
@@ -386,14 +378,6 @@
     "licenseClean": "clean",
     "priority": "exploring",
     "note": "Run virtual machines as Kubernetes workloads. Sized 2026-10-08 at v1.9.0: upstream assembles its images with Bazel from CentOS Stream 9 RPMs (libvirt, qemu-kvm, passt). Wolfi has qemu 11.1.2 but no libvirt or passt package, so virt-launcher needs both built from source alongside the Go components (virt-operator, virt-api, virt-controller, virt-handler); it waits for local gates."
-  },
-  {
-    "name": "Strimzi",
-    "category": "Messaging & streaming",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Kubernetes operator for running and managing Kafka. Sized 2026-09-25: two from-source images, the operator (a Maven multi-module build; the release ships only install YAML) and Strimzi's own Kafka image, whose run scripts and agents the operator drives; the QuenchWorks kafka image does not have that layout. Measured 2026-09-29: Wolfi packages Strimzi too (strimzi-kafka-operator with kafka-strimzi-compat), but at 1.0.0-r4 against upstream 1.2.0, and that stack scans at 849 fixable findings (59 critical, 353 high), including jackson-databind 2.21.2 and the JMX exporter; so it still needs the from-source build."
   },
   {
     "name": "Apicurio Registry",
@@ -659,14 +643,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Java + Angular, 3 components (gateway, management-api, management-ui), needs MongoDB or JDBC plus Elasticsearch. Heaviest gateway in the wave."
-  },
-  {
-    "name": "Linkerd Viz",
-    "category": "Coordination & mesh",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "The Viz chart SHIPPED 2026-10-08 (metrics-api, tap, tap-injector; gated on linkerd viz stat and tap over mTLS). Still held: the web dashboard image, whose bundled JavaScript carries decode-uri-component 0.2.2, linkify-it 2.2.0, path-to-regexp 1.8.0 and moment 2.29.4, which the image scan cannot see."
   },
   {
     "name": "Cilium Envoy",
