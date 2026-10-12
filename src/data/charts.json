@@ -535,7 +535,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "1.0.0",
     "description": "Hardened cache stack with metrics: Valkey (Redis-compatible) with a redis_exporter sidecar, Prometheus discovering it in the release namespace, and Grafana with the Prometheus datasource and the redis_exporter dashboard provisioned. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "dc949220-7ad8-4196-b8c7-ad40cc8ad907",
@@ -562,7 +562,7 @@
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       }
     ],
     "upstreams": [
@@ -2478,7 +2478,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "2.14.4",
     "description": "Monitoring stack for a QuenchWorks Harbor registry. This meta-chart deploys the QuenchWorks Prometheus and Grafana charts preconfigured for Harbor, with Prometheus scraping the harbor-exporter and the core, registry, and jobservice metrics endpoints, and Grafana provisioned with a Prometheus datasource and a Harbor dashboard covering request rate, component health, garbage collection, quota, and the task queue. All images are nonroot, 0-CVE, and pinned by digest through the sub-charts.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor-observability",
@@ -2492,7 +2492,7 @@
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       }
     ]
   },
@@ -3564,7 +3564,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.34",
+    "chartVersion": "0.0.35",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free LGTM observability superset in one install: Loki (logs) + Grafana (the single pane) + Tempo (traces) + VictoriaMetrics (Prometheus-compatible metrics) + an OpenTelemetry Collector (OTLP ingest) + Alertmanager. Grafana gets three pre-provisioned datasources — VictoriaMetrics (default), Loki, Tempo — so metrics, logs and traces are explorable side by side out of the box. VictoriaMetrics scrapes pods via annotation-based service discovery; Vector ships every pod's logs to Loki; apps send OTLP traces to the collector, which forwards to Tempo. No operator, no CRDs. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed. node-exporter and Vector take host access by design (cluster metrics + logs); both are toggleable.",
     "repositoryID": "69ed1b3c-ab58-474a-828b-f64cf9dff72e",
@@ -3589,7 +3589,7 @@
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       },
       {
         "name": "tempo",
@@ -3823,7 +3823,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "0.58.0",
     "description": "Hardened, operator-free logging stack: Loki + Grafana + Vector, wired together for cluster log aggregation and browsing. Vector ships every pod's logs to Loki; Grafana queries Loki through a pre-provisioned datasource with a ready-made logs dashboard. No CRDs, no logging operator. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed. Vector runs as a host DaemonSet (read-only node log dirs) by design — that is the deliberate, toggleable trade-off for a log shipper.",
     "repositoryID": "09e18838-4b6d-4c27-ad7c-708b3aff8bc2",
@@ -3841,7 +3841,7 @@
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       },
       {
         "name": "vector",
@@ -4910,7 +4910,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.26",
+    "chartVersion": "0.0.27",
     "appVersion": "2.20.0",
     "description": "Hardened, operator-free observability stack: Prometheus + Grafana + Alertmanager + kube-state-metrics + node-exporter + cAdvisor, wired together for metrics, alerting, and populated Kubernetes dashboards. No Prometheus Operator, no CRDs. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed. node-exporter and cAdvisor take host access by design (the stack's purpose is node + container observability); both are toggleable.",
     "repositoryID": "b35aa9cc-1558-4053-b967-ae9f74250035",
@@ -4929,7 +4929,7 @@
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       },
       {
         "name": "alertmanager",
@@ -4965,11 +4965,11 @@
     "tier": "standard",
     "license": "LGPL-3.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.9",
-    "appVersion": "19.0.20260929",
+    "chartVersion": "0.0.10",
+    "appVersion": "19.0.20261012",
     "description": "Odoo Community Edition, the Python ERP and business apps suite (CRM, sales, inventory, accounting, website), with the bundled PostgreSQL, the filestore on a PVC, the base module installed on first start and a generated admin password. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/odoo",
-    "imageDigest": "sha256:3f7cb6d0ddbcedc627a5a4c6d9643875651c1b681e707b5f28614cc07e6e95e9",
+    "imageDigest": "sha256:5dbae026d6c64cb2ef4f66464e40b78d52aed14938106903c376436ba032b33e",
     "repositoryID": "990522b0-2649-4f53-9c07-2914b719546e",
     "port": 8069,
     "upstream": "https://www.odoo.com",
@@ -4977,7 +4977,7 @@
     "images": [
       {
         "name": "odoo",
-        "image": "ghcr.io/quenchworks/images/odoo@sha256:3f7cb6d0ddbcedc627a5a4c6d9643875651c1b681e707b5f28614cc07e6e95e9"
+        "image": "ghcr.io/quenchworks/images/odoo@sha256:5dbae026d6c64cb2ef4f66464e40b78d52aed14938106903c376436ba032b33e"
       },
       {
         "name": "postgresql",
@@ -5663,7 +5663,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.9",
+    "chartVersion": "0.0.10",
     "appVersion": "1.0.0",
     "description": "Hardened PostgreSQL HA stack: a 3-node Patroni cluster with automatic failover, PgBouncer pooling in front of the elected leader, postgres_exporter on the leader, and Prometheus + Grafana with the postgres_exporter overview dashboard. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "9d95ad7a-c488-4051-8849-1f81533342e4",
@@ -5695,7 +5695,7 @@
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       }
     ],
     "upstreams": [
@@ -5873,7 +5873,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.9",
     "appVersion": "1.0.0",
     "description": "Hardened continuous profiling stack: Grafana Pyroscope (profile store and query) + Grafana with the Pyroscope datasource provisioned. Apps push CPU and memory profiles to <release>-pyroscope:4040 (Pyroscope SDKs or Grafana Alloy); explore them in Grafana via Explore -> Pyroscope. No operator, no CRDs. Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "7081f557-1add-46fe-abb7-7d44abdd7d98",
@@ -5887,11 +5887,11 @@
     "images": [
       {
         "name": "pyroscope",
-        "image": "ghcr.io/quenchworks/images/pyroscope@sha256:e4cab7dbdbc83fc9061e91429c77f5179888e6956d1459f2fa23447cc71af243"
+        "image": "ghcr.io/quenchworks/images/pyroscope@sha256:08ab8f04e193690d7b0de76c36a190a0b2c4f4fe213e6ec4a477a2f003e08831"
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       }
     ],
     "upstreams": [
@@ -5979,18 +5979,18 @@
     "tier": "low",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.22",
-    "appVersion": "4.2.4",
+    "chartVersion": "0.1.0",
+    "appVersion": "5.0.0",
     "description": "Cloud-native distributed messaging and streaming platform with multi-tenancy, geo-replication, and tiered storage that separates compute from storage. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pulsar",
-    "imageDigest": "sha256:1b3a533f66077baf5dd0335637f030f502fe09600566de2806ff212aff4abd08",
+    "imageDigest": "sha256:1d74e1e7c73c648b246677161913b5fe5585e80391446bb0c1015166f428e59d",
     "repositoryID": "6820f31e-b254-41f1-bced-a801f69cca0b",
     "upstream": "https://github.com/apache/pulsar",
     "chartRef": "oci://ghcr.io/quenchworks/charts/pulsar",
     "images": [
       {
         "name": "pulsar",
-        "image": "ghcr.io/quenchworks/images/pulsar@sha256:1b3a533f66077baf5dd0335637f030f502fe09600566de2806ff212aff4abd08"
+        "image": "ghcr.io/quenchworks/images/pulsar@sha256:1d74e1e7c73c648b246677161913b5fe5585e80391446bb0c1015166f428e59d"
       }
     ]
   },
@@ -7273,7 +7273,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.17",
+    "chartVersion": "0.0.18",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free distributed tracing stack: Tempo (trace store/query) + Grafana (Tempo datasource + trace exploration) + an OpenTelemetry Collector gateway that receives OTLP from your apps and forwards spans to Tempo. No operator, no CRDs. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed. Apps send traces to <release>-otel-collector:4317 (OTLP gRPC) / :4318 (OTLP HTTP); explore them in Grafana via Explore -> Tempo.",
     "repositoryID": "5371e037-2138-4f64-8004-d31b0b01d339",
@@ -7291,7 +7291,7 @@
       },
       {
         "name": "grafana",
-        "image": "ghcr.io/quenchworks/images/grafana@sha256:65dc8356ef03e38ec44f39a66b45d3c6523a6e6f44d91062216f6a3a1eaee3e2"
+        "image": "ghcr.io/quenchworks/images/grafana@sha256:dc5f670bac19c33670a33db6f724907093e8037a5578086643bb117088db9fd7"
       },
       {
         "name": "otel-collector",
