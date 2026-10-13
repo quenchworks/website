@@ -77,11 +77,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.34",
+    "chartVersion": "0.1.35",
     "appVersion": "3.3.2",
     "description": "Hardened Apache Airflow 3 workflow orchestration (api-server + scheduler + dag-processor + triggerer, optional Celery workers) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/airflow",
-    "imageDigest": "sha256:752869ed3357f1706a5c67b5ebf8173fcddbceea8219e3401154638bebb2002a",
+    "imageDigest": "sha256:999bc4a314e8d0440df75578832bf8313b209f0bcc232c28f5c4348942d5ff5f",
     "repositoryID": "176f09db-d12c-4541-867b-9f5c91340731",
     "port": 8080,
     "upstream": "https://airflow.apache.org",
@@ -89,7 +89,7 @@
     "images": [
       {
         "name": "airflow",
-        "image": "ghcr.io/quenchworks/images/airflow@sha256:752869ed3357f1706a5c67b5ebf8173fcddbceea8219e3401154638bebb2002a"
+        "image": "ghcr.io/quenchworks/images/airflow@sha256:999bc4a314e8d0440df75578832bf8313b209f0bcc232c28f5c4348942d5ff5f"
       },
       {
         "name": "postgresql",
@@ -408,11 +408,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.39",
+    "chartVersion": "0.1.41",
     "appVersion": "2026.8.3",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
-    "imageDigest": "sha256:719bf3593f9dfc641037d56d5d0076f93d5a19fcad28dd712432091730f5830b",
+    "imageDigest": "sha256:442373bfbe40ec2a8a38c7b16e9d640c6df863772168dba3fee817d76ba4b0c9",
     "repositoryID": "50bb4aa5-5b51-4158-bafa-3e0a9204ef5b",
     "port": 80,
     "upstream": "https://goauthentik.io",
@@ -420,7 +420,7 @@
     "images": [
       {
         "name": "authentik",
-        "image": "ghcr.io/quenchworks/images/authentik@sha256:719bf3593f9dfc641037d56d5d0076f93d5a19fcad28dd712432091730f5830b"
+        "image": "ghcr.io/quenchworks/images/authentik@sha256:442373bfbe40ec2a8a38c7b16e9d640c6df863772168dba3fee817d76ba4b0c9"
       },
       {
         "name": "postgresql",
@@ -1059,11 +1059,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "4.139.1",
     "description": "code-server (VS Code in the browser) by Coder, hardened by QuenchWorks as a minimal, nonroot, 0-CVE image on Wolfi, cosign-signed and pinned by digest. Runs as a single-replica Deployment with a persistent workspace ($HOME) and PASSWORD login.",
     "imageRepository": "ghcr.io/quenchworks/images/code-server",
-    "imageDigest": "sha256:b7bb72ef1818f9961892efd521e45a288cb8f20a94b56145b220c2c536b1bc39",
+    "imageDigest": "sha256:36e0ecb2918b8a1c93ff7a8bfe14b837645cbfce355a32fb5f0a6a088ee3ca37",
     "repositoryID": "dbd5173d-2b60-41bb-adce-a6a86bf22075",
     "port": 8080,
     "upstream": "https://coder.com",
@@ -1071,7 +1071,7 @@
     "images": [
       {
         "name": "code-server",
-        "image": "ghcr.io/quenchworks/images/code-server@sha256:b7bb72ef1818f9961892efd521e45a288cb8f20a94b56145b220c2c536b1bc39"
+        "image": "ghcr.io/quenchworks/images/code-server@sha256:36e0ecb2918b8a1c93ff7a8bfe14b837645cbfce355a32fb5f0a6a088ee3ca37"
       }
     ]
   },
@@ -1863,18 +1863,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "2.11.0",
     "description": "External Secrets Operator: syncs secrets from external APIs (Vault, cloud secret managers, and more) into Kubernetes Secrets via ExternalSecret/SecretStore CRDs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Runs the single ESO binary as three deployments (controller, webhook, cert-controller); the cert-controller manages the webhook's self-signed CA, so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/external-secrets",
-    "imageDigest": "sha256:ce9b756e90dc7d80535c52fb3d3fcb208861efe55b9be968a59b0fc56633d24a",
+    "imageDigest": "sha256:ca9c105a4f0c013fa8191f3410358ec84fa9640ecc2c1aa1a0ed5af50e411fa0",
     "repositoryID": "a43cf3cf-e802-4bd6-8910-40e27275bb18",
     "upstream": "https://external-secrets.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/external-secrets",
     "images": [
       {
         "name": "external-secrets",
-        "image": "ghcr.io/quenchworks/images/external-secrets@sha256:ce9b756e90dc7d80535c52fb3d3fcb208861efe55b9be968a59b0fc56633d24a"
+        "image": "ghcr.io/quenchworks/images/external-secrets@sha256:ca9c105a4f0c013fa8191f3410358ec84fa9640ecc2c1aa1a0ed5af50e411fa0"
       }
     ]
   },
@@ -3137,18 +3137,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "6.2.4",
     "description": "Karapace, the Kafka schema registry (Avro, JSON Schema, Protobuf) and REST proxy, Confluent-API compatible. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/karapace",
-    "imageDigest": "sha256:24d58f752fc3a4dd4cc2abe9e57dd9bdc733f10060b4ffe0830047879ed37ecb",
+    "imageDigest": "sha256:41d4d5e75e11d23055a07bd27271bae2f5ef56a99eeaf23d86085ab0172c2a93",
     "repositoryID": "ec23d510-b2c1-454e-8a69-d299a86e12eb",
     "upstream": "https://karapace.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/karapace",
     "images": [
       {
         "name": "karapace",
-        "image": "ghcr.io/quenchworks/images/karapace@sha256:24d58f752fc3a4dd4cc2abe9e57dd9bdc733f10060b4ffe0830047879ed37ecb"
+        "image": "ghcr.io/quenchworks/images/karapace@sha256:41d4d5e75e11d23055a07bd27271bae2f5ef56a99eeaf23d86085ab0172c2a93"
       }
     ]
   },
@@ -3811,11 +3811,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "1.103.4",
     "description": "LiteLLM proxy: one OpenAI-compatible API to call, route, budget and log 100+ LLM providers. Hardened by QuenchWorks as an MIT-only build (no proprietary enterprise package), nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/litellm",
-    "imageDigest": "sha256:ed7baa09ffc5ec48da088755e9d1e8962e73701dd70df5fe9b817f7f83832091",
+    "imageDigest": "sha256:50e9b958e120a2b28906788bf60658db629f79ec77623a7d535c0ce574e0c36a",
     "repositoryID": "98d4025d-0f2b-4053-b2fd-27080d87ffc6",
     "port": 4000,
     "upstream": "https://www.litellm.ai",
@@ -3823,7 +3823,7 @@
     "images": [
       {
         "name": "litellm",
-        "image": "ghcr.io/quenchworks/images/litellm@sha256:ed7baa09ffc5ec48da088755e9d1e8962e73701dd70df5fe9b817f7f83832091"
+        "image": "ghcr.io/quenchworks/images/litellm@sha256:50e9b958e120a2b28906788bf60658db629f79ec77623a7d535c0ce574e0c36a"
       }
     ]
   },
@@ -3859,7 +3859,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "1.0.0",
     "description": "Self-hosted LLM stack: Ollama runs the models, LiteLLM serves them through one OpenAI-compatible API with a generated key, and Qdrant stores embeddings for retrieval. The models you list are pulled at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "ff84a3b9-4bf9-49fd-be69-4b4e771b851a",
@@ -3878,7 +3878,7 @@
       },
       {
         "name": "litellm",
-        "image": "ghcr.io/quenchworks/images/litellm@sha256:ed7baa09ffc5ec48da088755e9d1e8962e73701dd70df5fe9b817f7f83832091"
+        "image": "ghcr.io/quenchworks/images/litellm@sha256:50e9b958e120a2b28906788bf60658db629f79ec77623a7d535c0ce574e0c36a"
       },
       {
         "name": "qdrant",
@@ -4396,7 +4396,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.17",
+    "chartVersion": "0.0.18",
     "appVersion": "1.0.0",
     "description": "Hardened machine-learning stack: JupyterHub notebooks, the MLflow tracking server and model registry, and Label Studio for data labeling, wired together in one install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "4aaaf235-8151-4493-be32-1cee9a4140de",
@@ -4411,7 +4411,7 @@
     "images": [
       {
         "name": "mlflow",
-        "image": "ghcr.io/quenchworks/images/mlflow@sha256:644f33f5e46ff11a38bf9e348774c94c81204cdb279df1eded18df247ae67518"
+        "image": "ghcr.io/quenchworks/images/mlflow@sha256:96c3aa3d91b403427c195a664fa24320312f2d03dc43a94f50a907da0b4d7e12"
       },
       {
         "name": "postgresql",
@@ -4444,11 +4444,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.32",
+    "chartVersion": "0.0.33",
     "appVersion": "3.16.1",
     "description": "Hardened MLflow Tracking Server (experiment tracking + model registry) on a 0-CVE nonroot image, with a bundled PostgreSQL backend store.",
     "imageRepository": "ghcr.io/quenchworks/images/mlflow",
-    "imageDigest": "sha256:644f33f5e46ff11a38bf9e348774c94c81204cdb279df1eded18df247ae67518",
+    "imageDigest": "sha256:96c3aa3d91b403427c195a664fa24320312f2d03dc43a94f50a907da0b4d7e12",
     "repositoryID": "bcb02e82-89ea-4710-aec5-ff9942283d2b",
     "port": 5000,
     "upstream": "https://mlflow.org",
@@ -4456,7 +4456,7 @@
     "images": [
       {
         "name": "mlflow",
-        "image": "ghcr.io/quenchworks/images/mlflow@sha256:644f33f5e46ff11a38bf9e348774c94c81204cdb279df1eded18df247ae67518"
+        "image": "ghcr.io/quenchworks/images/mlflow@sha256:96c3aa3d91b403427c195a664fa24320312f2d03dc43a94f50a907da0b4d7e12"
       },
       {
         "name": "postgresql",
@@ -5406,11 +5406,11 @@
     "tier": "standard",
     "license": "PostgreSQL",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "9.18",
     "description": "pgAdmin 4, the web administration and development UI for PostgreSQL: query tool, ERD, schema diff, backup and restore, in server mode with its accounts and settings on a PVC. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/pgadmin",
-    "imageDigest": "sha256:3dee3feaf86921ab7cb669a4ce9ba72cddb24037c4ddee5a3885ddb6bee3c1a0",
+    "imageDigest": "sha256:b360157974f55b5a2a123409fcf0d09a9fe8bff56e46c4c2d4ba9b395fc87314",
     "repositoryID": "329fa243-686a-4fe5-91e5-aeff3336a7f0",
     "port": 5050,
     "upstream": "https://www.pgadmin.org",
@@ -5418,7 +5418,7 @@
     "images": [
       {
         "name": "pgadmin",
-        "image": "ghcr.io/quenchworks/images/pgadmin@sha256:3dee3feaf86921ab7cb669a4ce9ba72cddb24037c4ddee5a3885ddb6bee3c1a0"
+        "image": "ghcr.io/quenchworks/images/pgadmin@sha256:b360157974f55b5a2a123409fcf0d09a9fe8bff56e46c4c2d4ba9b395fc87314"
       }
     ]
   },
@@ -5921,11 +5921,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "3.8.8",
     "description": "Prefect, the Python-native workflow orchestration server: API, UI and background services with PostgreSQL storage, plus an optional process worker. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/prefect",
-    "imageDigest": "sha256:656242a1af9a2d3379640f511afd5bf2db6c7fdc04574ea1d3781098706f6e40",
+    "imageDigest": "sha256:8bb6ad37a430855514aa4c5d0c095d9e22c9e695ecfd22309ce78e1e4a182866",
     "repositoryID": "7337408a-f643-4f54-8a10-783ca3eaf63e",
     "port": 4200,
     "upstream": "https://www.prefect.io",
@@ -5933,7 +5933,7 @@
     "images": [
       {
         "name": "prefect",
-        "image": "ghcr.io/quenchworks/images/prefect@sha256:656242a1af9a2d3379640f511afd5bf2db6c7fdc04574ea1d3781098706f6e40"
+        "image": "ghcr.io/quenchworks/images/prefect@sha256:8bb6ad37a430855514aa4c5d0c095d9e22c9e695ecfd22309ce78e1e4a182866"
       },
       {
         "name": "postgresql",
@@ -6941,7 +6941,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "1.0.0",
     "description": "Hardened event-streaming stack: a KRaft Kafka cluster, the Karapace schema registry and REST proxy, and the AKHQ web console, wired together in one install. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "1a4af9f1-9838-4c60-a88c-837d661694f0",
@@ -6960,7 +6960,7 @@
       },
       {
         "name": "karapace",
-        "image": "ghcr.io/quenchworks/images/karapace@sha256:24d58f752fc3a4dd4cc2abe9e57dd9bdc733f10060b4ffe0830047879ed37ecb"
+        "image": "ghcr.io/quenchworks/images/karapace@sha256:41d4d5e75e11d23055a07bd27271bae2f5ef56a99eeaf23d86085ab0172c2a93"
       },
       {
         "name": "akhq",
@@ -7875,11 +7875,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "0.30.0",
     "description": "vLLM, the high-throughput OpenAI-compatible inference/serving engine for open LLMs. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, 0-CVE image, cosign-signed and pinned by digest. CPU-only; runs as a StatefulSet that serves a user-supplied model over an OpenAI-compatible REST API, with a persistent Hugging Face cache volume.",
     "imageRepository": "ghcr.io/quenchworks/images/vllm",
-    "imageDigest": "sha256:2eb890c789d2ab94801f06c55e2e5f6e8e3d5a342e6b797458466d136867535b",
+    "imageDigest": "sha256:e71553871f4a244c1f978f8d46ef231d65eaecab51ebe85c0d785b0b43565486",
     "repositoryID": "6953f63b-89cf-4793-8f39-75b8287c2f7f",
     "port": 8000,
     "upstream": "https://docs.vllm.ai",
@@ -7887,7 +7887,7 @@
     "images": [
       {
         "name": "vllm",
-        "image": "ghcr.io/quenchworks/images/vllm@sha256:2eb890c789d2ab94801f06c55e2e5f6e8e3d5a342e6b797458466d136867535b"
+        "image": "ghcr.io/quenchworks/images/vllm@sha256:e71553871f4a244c1f978f8d46ef231d65eaecab51ebe85c0d785b0b43565486"
       }
     ]
   },
