@@ -1165,7 +1165,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.41",
+    "chartVersion": "0.0.42",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, 0-CVE image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -1183,7 +1183,7 @@
       },
       {
         "name": "coolify-helper",
-        "image": "ghcr.io/quenchworks/images/coolify-helper@sha256:49bd4d1dcd5c107d280f48f3d039589efcded6ed767c63c050c73dfe63e21d90"
+        "image": "ghcr.io/quenchworks/images/coolify-helper@sha256:5994f9fd2289e247da59394bf99d5a05c4cfbaf474506012c1d910036738ef07"
       },
       {
         "name": "postgresql-15",
@@ -1273,11 +1273,11 @@
     "tier": "low",
     "license": "BUSL-1.1",
     "licenseClean": "caution",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "5.27.1",
     "description": "Cosmian KMS -- KMIP 2.1 key management server with PKCS#11 and Google/Microsoft CSE support, the only KMIP speaker in this catalog. Shipped under BUSL-1.1, which is NOT OSI-approved AND caps production use at 2 vCPUs while barring third-party offering; read the licence before deploying. Built non-FIPS against current OpenSSL, so NOT FIPS 140-3 despite upstream's description. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cosmian-kms",
-    "imageDigest": "sha256:5ee27ef571a018dc810b2aac053ae3ec118312e58ccea8d96a04cdb564c097b9",
+    "imageDigest": "sha256:bb9373952a6f06dbc30bb2a68e3ea226eb7adac1d08653bb780c011b39fbb2e7",
     "repositoryID": "b24e184f-e1a2-4418-930e-e94e6900fc04",
     "port": 9998,
     "upstream": "https://github.com/Cosmian/kms",
@@ -1285,7 +1285,7 @@
     "images": [
       {
         "name": "cosmian-kms",
-        "image": "ghcr.io/quenchworks/images/cosmian-kms@sha256:5ee27ef571a018dc810b2aac053ae3ec118312e58ccea8d96a04cdb564c097b9"
+        "image": "ghcr.io/quenchworks/images/cosmian-kms@sha256:bb9373952a6f06dbc30bb2a68e3ea226eb7adac1d08653bb780c011b39fbb2e7"
       }
     ],
     "caution": true
@@ -1560,11 +1560,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "0.114.0",
     "description": "Self-contained MongoDB-compatible server bundling PostgreSQL, the DocumentDB extension, and a wire gateway. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/documentdb",
-    "imageDigest": "sha256:b15b2db61ec65c62263f09e3b9d19f4e3daa33546c75455d678ce38d56ca3746",
+    "imageDigest": "sha256:4ff8f98b32f87b953b20e9ada25906be0439b8fde891d332fd0db0952a00ee87",
     "repositoryID": "8a88d701-6590-4e8f-9739-822208f2633f",
     "port": 10260,
     "upstream": "https://github.com/documentdb/documentdb",
@@ -1572,7 +1572,7 @@
     "images": [
       {
         "name": "documentdb",
-        "image": "ghcr.io/quenchworks/images/documentdb@sha256:b15b2db61ec65c62263f09e3b9d19f4e3daa33546c75455d678ce38d56ca3746"
+        "image": "ghcr.io/quenchworks/images/documentdb@sha256:4ff8f98b32f87b953b20e9ada25906be0439b8fde891d332fd0db0952a00ee87"
       }
     ]
   },
@@ -2412,7 +2412,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "1.7.21",
     "description": "Grist, the self-hosted spreadsheet-database with Python formulas run in a pyodide sandbox, with SQLite on a PVC. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/grist",
@@ -3640,7 +3640,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.36",
+    "chartVersion": "0.0.37",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free LGTM observability superset in one install: Loki (logs) + Grafana (the single pane) + Tempo (traces) + VictoriaMetrics (Prometheus-compatible metrics) + an OpenTelemetry Collector (OTLP ingest) + Alertmanager. Grafana gets three pre-provisioned datasources — VictoriaMetrics (default), Loki, Tempo — so metrics, logs and traces are explorable side by side out of the box. VictoriaMetrics scrapes pods via annotation-based service discovery; Vector ships every pod's logs to Loki; apps send OTLP traces to the collector, which forwards to Tempo. No operator, no CRDs. All component images are QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed. node-exporter and Vector take host access by design (cluster metrics + logs); both are toggleable.",
     "repositoryID": "69ed1b3c-ab58-474a-828b-f64cf9dff72e",
@@ -3681,7 +3681,7 @@
       },
       {
         "name": "vector",
-        "image": "ghcr.io/quenchworks/images/vector@sha256:f3f79b717813aeb5364b33b79ddb8227eb4db8faf99380a6b1ad2cd02958c668"
+        "image": "ghcr.io/quenchworks/images/vector@sha256:6ebe2c55233d5904bfb515675e95c98c01d93b2f6ecdea92cc1c7389e547fda9"
       },
       {
         "name": "kube-state-metrics",
@@ -3859,7 +3859,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
+    "chartVersion": "0.0.24",
     "appVersion": "1.0.0",
     "description": "Self-hosted LLM stack: Ollama runs the models, LiteLLM serves them through one OpenAI-compatible API with a generated key, and Qdrant stores embeddings for retrieval. The models you list are pulled at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "ff84a3b9-4bf9-49fd-be69-4b4e771b851a",
@@ -3882,7 +3882,7 @@
       },
       {
         "name": "qdrant",
-        "image": "ghcr.io/quenchworks/images/qdrant@sha256:a8a595950d34baed827c09b3a31cae0a50bc6f29fe8798cbc15f8e71bd124533"
+        "image": "ghcr.io/quenchworks/images/qdrant@sha256:c9ec047729db9a6c34612fa5d3119c8fcdf1f650a26154a28eaf15eda1b9e1d0"
       }
     ],
     "upstreams": [
@@ -3899,7 +3899,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.20",
+    "chartVersion": "0.0.21",
     "appVersion": "0.58.0",
     "description": "Hardened, operator-free logging stack: Loki + Grafana + Vector, wired together for cluster log aggregation and browsing. Vector ships every pod's logs to Loki; Grafana queries Loki through a pre-provisioned datasource with a ready-made logs dashboard. No CRDs, no logging operator. All components are QuenchWorks-hardened, nonroot, 0-CVE images pinned by digest and cosign-signed. Vector runs as a host DaemonSet (read-only node log dirs) by design — that is the deliberate, toggleable trade-off for a log shipper.",
     "repositoryID": "09e18838-4b6d-4c27-ad7c-708b3aff8bc2",
@@ -3921,7 +3921,7 @@
       },
       {
         "name": "vector",
-        "image": "ghcr.io/quenchworks/images/vector@sha256:f3f79b717813aeb5364b33b79ddb8227eb4db8faf99380a6b1ad2cd02958c668"
+        "image": "ghcr.io/quenchworks/images/vector@sha256:6ebe2c55233d5904bfb515675e95c98c01d93b2f6ecdea92cc1c7389e547fda9"
       }
     ],
     "upstreams": [
@@ -4179,11 +4179,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "1.53.3",
     "description": "Fast, typo-tolerant full-text search engine with an instant-search API, easy to embed for site and in-app search with relevant results out of the box. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/meilisearch",
-    "imageDigest": "sha256:e6f2890eb264031dda64e1871b7385e8d822ca077fff92b74f2604f807d34136",
+    "imageDigest": "sha256:784c28a4fcf49fdb34c162c1c4dbf6cd4177923fb2e300af950df8f9cc49e4df",
     "repositoryID": "280e461c-2cdb-42e6-9600-705b68755883",
     "port": 7700,
     "upstream": "https://github.com/meilisearch/meilisearch",
@@ -4191,7 +4191,7 @@
     "images": [
       {
         "name": "meilisearch",
-        "image": "ghcr.io/quenchworks/images/meilisearch@sha256:e6f2890eb264031dda64e1871b7385e8d822ca077fff92b74f2604f807d34136"
+        "image": "ghcr.io/quenchworks/images/meilisearch@sha256:784c28a4fcf49fdb34c162c1c4dbf6cd4177923fb2e300af950df8f9cc49e4df"
       }
     ]
   },
@@ -6102,11 +6102,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "1.19.2",
     "description": "Vector database and similarity-search engine for AI embeddings, powering semantic search, recommendations, and RAG with filtered nearest-neighbor queries. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/qdrant",
-    "imageDigest": "sha256:a8a595950d34baed827c09b3a31cae0a50bc6f29fe8798cbc15f8e71bd124533",
+    "imageDigest": "sha256:c9ec047729db9a6c34612fa5d3119c8fcdf1f650a26154a28eaf15eda1b9e1d0",
     "repositoryID": "a2deb908-d256-44ff-a71b-fe4c316619d0",
     "port": 6333,
     "upstream": "https://github.com/qdrant/qdrant",
@@ -6114,7 +6114,7 @@
     "images": [
       {
         "name": "qdrant",
-        "image": "ghcr.io/quenchworks/images/qdrant@sha256:a8a595950d34baed827c09b3a31cae0a50bc6f29fe8798cbc15f8e71bd124533"
+        "image": "ghcr.io/quenchworks/images/qdrant@sha256:c9ec047729db9a6c34612fa5d3119c8fcdf1f650a26154a28eaf15eda1b9e1d0"
       }
     ]
   },
@@ -7710,18 +7710,18 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "0.58.0",
     "description": "High-performance observability pipeline that collects, transforms, and routes logs, metrics, and traces between sources and sinks. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/vector",
-    "imageDigest": "sha256:f3f79b717813aeb5364b33b79ddb8227eb4db8faf99380a6b1ad2cd02958c668",
+    "imageDigest": "sha256:6ebe2c55233d5904bfb515675e95c98c01d93b2f6ecdea92cc1c7389e547fda9",
     "repositoryID": "8f957e7a-a457-4ec0-8e5b-b6761b06463d",
     "upstream": "https://github.com/vectordotdev/vector",
     "chartRef": "oci://ghcr.io/quenchworks/charts/vector",
     "images": [
       {
         "name": "vector",
-        "image": "ghcr.io/quenchworks/images/vector@sha256:f3f79b717813aeb5364b33b79ddb8227eb4db8faf99380a6b1ad2cd02958c668"
+        "image": "ghcr.io/quenchworks/images/vector@sha256:6ebe2c55233d5904bfb515675e95c98c01d93b2f6ecdea92cc1c7389e547fda9"
       }
     ]
   },
