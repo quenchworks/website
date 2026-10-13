@@ -8,14 +8,6 @@
     "note": "Scalable vector database for AI workloads. Measured 2026-09-30: releases ship only compose files and Wolfi has no package, so it is a from-source build: the C++ core through conan (about a hundred packages, often fetched as prebuilt binaries the scanner cannot see) plus a Rust component, a multi-hour build. Held until Wolfi packages it or a scanned from-source conan build is scoped."
   },
   {
-    "name": "Apache Spark",
-    "category": "Workflow & data",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Unified batch and stream analytics engine. Measured 2026-09-24: the 4.2.0 distribution carries 99 findings, including Jetty 12.1.8 shaded into spark-core (fixed in 12.1.10), so it needs a from-source build. The Wolfi spark-4.0/4.1 packages were measured too (78 and 92 findings): Hive 2.3 jars, the YARN shuffle jar and shaded Jetty 11.0.26 remain, so the build must drop the hive and yarn profiles."
-  },
-  {
     "name": "Redpanda",
     "category": "Messaging & streaming",
     "license": "BSL-1.1",
