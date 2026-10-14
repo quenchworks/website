@@ -2095,6 +2095,34 @@
     ]
   },
   {
+    "slug": "friendica",
+    "name": "friendica",
+    "category": "Apps & productivity",
+    "summary": "Friendica, the federated social network server (ActivityPub, Diaspora, OStatus). The official friendica-full release on a hardened Wolfi php-8.3-fpm + nginx runtime (nonroot, read-only rootfs, supervisord) with the background worker daemon built in. Vendored PHP libraries and browser assets are floated to fixed releases. The installer writes local.config.php to a mounted config directory and the schema to an external MariaDB or MySQL. Ships the newest release.",
+    "tier": "standard",
+    "license": "AGPL-3.0+",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.2",
+    "appVersion": "2026.05",
+    "description": "Hardened Friendica federated social network (PHP-FPM + nginx + worker daemon) on a 0-CVE nonroot image, installed by its CLI installer into a bundled MariaDB.",
+    "imageRepository": "ghcr.io/quenchworks/images/friendica",
+    "imageDigest": "sha256:0ccf2ae5dc7b13a0fce915e428d99fdac84a93da71a6d09e96e92f85a142e3e9",
+    "repositoryID": "985b2901-54e4-4971-abbf-b1cb803b69b4",
+    "port": 8080,
+    "upstream": "https://friendi.ca",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/friendica",
+    "images": [
+      {
+        "name": "friendica",
+        "image": "ghcr.io/quenchworks/images/friendica@sha256:0ccf2ae5dc7b13a0fce915e428d99fdac84a93da71a6d09e96e92f85a142e3e9"
+      },
+      {
+        "name": "mariadb",
+        "image": "ghcr.io/quenchworks/images/mariadb@sha256:7f436d3b5f96c9b81892d5aa7ddc1a937297411fcf53b13c8877f3a3e440032b"
+      }
+    ]
+  },
+  {
     "slug": "fulcio",
     "name": "fulcio",
     "category": "Security & supply chain",
