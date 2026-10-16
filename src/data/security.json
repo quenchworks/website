@@ -852,14 +852,26 @@
         "tag": "ghcr.io/quenchworks/images/argo-workflows:4.0.13",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 3,
-        "total": 3,
+        "total": 4,
         "fixable": 0,
-        "grade": "A",
-        "score": 94,
+        "grade": "C",
+        "score": 90,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/workflow-controller"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -881,14 +893,26 @@
         "tag": "ghcr.io/quenchworks/images/argo-workflows:3.7.18",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 3,
-        "total": 3,
+        "total": 4,
         "fixable": 0,
-        "grade": "A",
-        "score": 94,
+        "grade": "C",
+        "score": 90,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/workflow-controller"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -1031,43 +1055,622 @@
     "version": "10.0.112",
     "tag": "ghcr.io/quenchworks/images/aspnet:10.0.112",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 12,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 15,
+    "fixable": 15,
+    "grade": "D",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-84008",
+        "severity": "HIGH",
+        "pkg": "aspnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84008",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84008",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96958",
+        "severity": "HIGH",
+        "pkg": "aspnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96958",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96958",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96959",
+        "severity": "HIGH",
+        "pkg": "aspnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96959",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96959",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96960",
+        "severity": "HIGH",
+        "pkg": "aspnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96960",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96960",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-70162",
+        "severity": "MEDIUM",
+        "pkg": "aspnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-70162",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-70162",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "10.0.112",
         "tag": "ghcr.io/quenchworks/images/aspnet:10.0.112",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 12,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 15,
+        "fixable": 15,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "aspnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "aspnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "aspnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "aspnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "aspnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:6efc72f51d397c99d75bc6e5c07571dcdc0ebf50dba622f4220a2c71b6373ce8 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "9.0.121",
         "tag": "ghcr.io/quenchworks/images/aspnet:9.0.121",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 15,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 18,
+        "fixable": 18,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-70159",
+            "severity": "HIGH",
+            "pkg": "aspnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70159 - ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70159",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70159 - ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70159",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70159 - ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "aspnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "aspnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "aspnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "aspnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "aspnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1193,28 +1796,78 @@
     "tag": "ghcr.io/quenchworks/images/authentik:2026.8.3",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 82,
+    "cves": [
+      {
+        "id": "CVE-2026-12345",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14",
+        "installed": "3.14.8_git20261008-r1",
+        "fixed": "3.14.8_git20261014-r0",
+        "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+        "targets": [
+          "ghcr.io/quenchworks/images/authentik@sha256:442373bfbe40ec2a8a38c7b16e9d640c6df863772168dba3fee817d76ba4b0c9 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-12345",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14-base",
+        "installed": "3.14.8_git20261008-r1",
+        "fixed": "3.14.8_git20261014-r0",
+        "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+        "targets": [
+          "ghcr.io/quenchworks/images/authentik@sha256:442373bfbe40ec2a8a38c7b16e9d640c6df863772168dba3fee817d76ba4b0c9 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2026.8.3",
         "tag": "ghcr.io/quenchworks/images/authentik:2026.8.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-12345",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14",
+            "installed": "3.14.8_git20261008-r1",
+            "fixed": "3.14.8_git20261014-r0",
+            "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+            "targets": [
+              "ghcr.io/quenchworks/images/authentik@sha256:442373bfbe40ec2a8a38c7b16e9d640c6df863772168dba3fee817d76ba4b0c9 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-12345",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14-base",
+            "installed": "3.14.8_git20261008-r1",
+            "fixed": "3.14.8_git20261014-r0",
+            "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+            "targets": [
+              "ghcr.io/quenchworks/images/authentik@sha256:442373bfbe40ec2a8a38c7b16e9d640c6df863772168dba3fee817d76ba4b0c9 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1554,14 +2207,26 @@
     "tag": "ghcr.io/quenchworks/images/buildah:1.45.2",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 1,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "grade": "C",
+    "score": 94,
     "cves": [
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/buildah"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -1581,14 +2246,26 @@
         "tag": "ghcr.io/quenchworks/images/buildah:1.45.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/buildah"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -1608,14 +2285,26 @@
         "tag": "ghcr.io/quenchworks/images/buildah:1.44.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/buildah"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -2552,6 +3241,37 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "cassandra": {
+    "image": "ghcr.io/quenchworks/images/cassandra",
+    "version": "5.0.9",
+    "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "5.0.9",
+        "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -3702,9 +4422,9 @@
     "tag": "ghcr.io/quenchworks/images/cockroachdb:26.2.7",
     "critical": 0,
     "high": 3,
-    "medium": 21,
+    "medium": 24,
     "low": 1,
-    "unknown": 4,
+    "unknown": 1,
     "total": 29,
     "fixable": 29,
     "grade": "D",
@@ -3754,6 +4474,30 @@
         "fixed": "1.26.9, 1.27.2",
         "title": "net/http: golang: golang: Cross-user response poisoning via desynchronized HTTP CONNECT connections",
         "url": "https://avd.aquasec.com/nvd/cve-2026-56866",
+        "targets": [
+          "usr/bin/cockroach"
+        ]
+      },
+      {
+        "id": "CVE-2026-78659",
+        "severity": "MEDIUM",
+        "pkg": "stdlib",
+        "installed": "v1.25.13",
+        "fixed": "1.26.9, 1.27.2",
+        "title": "When \"Trailer\" headers are sent by a client, the HTTP server internall ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78659",
+        "targets": [
+          "usr/bin/cockroach"
+        ]
+      },
+      {
+        "id": "CVE-2026-78660",
+        "severity": "MEDIUM",
+        "pkg": "stdlib",
+        "installed": "v1.25.13",
+        "fixed": "1.26.9, 1.27.2",
+        "title": "Historically, we have been rather lax about malformed framing-related  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-78660",
         "targets": [
           "usr/bin/cockroach"
         ]
@@ -3927,6 +4671,18 @@
         ]
       },
       {
+        "id": "CVE-2026-94440",
+        "severity": "MEDIUM",
+        "pkg": "stdlib",
+        "installed": "v1.25.13",
+        "fixed": "1.26.9, 1.27.2",
+        "title": "Parsing a multipart form can bypass memory limits and read an arbitrar ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-94440",
+        "targets": [
+          "usr/bin/cockroach"
+        ]
+      },
+      {
         "id": "CVE-2026-94448",
         "severity": "MEDIUM",
         "pkg": "stdlib",
@@ -4011,42 +4767,6 @@
         ]
       },
       {
-        "id": "CVE-2026-78659",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "v1.25.13",
-        "fixed": "1.26.9, 1.27.2",
-        "title": "When \"Trailer\" headers are sent by a client, the HTTP server internall ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-78659",
-        "targets": [
-          "usr/bin/cockroach"
-        ]
-      },
-      {
-        "id": "CVE-2026-78660",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "v1.25.13",
-        "fixed": "1.26.9, 1.27.2",
-        "title": "Historically, we have been rather lax about malformed framing-related  ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-78660",
-        "targets": [
-          "usr/bin/cockroach"
-        ]
-      },
-      {
-        "id": "CVE-2026-94440",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "v1.25.13",
-        "fixed": "1.26.9, 1.27.2",
-        "title": "Parsing a multipart form can bypass memory limits and read an arbitrar ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-94440",
-        "targets": [
-          "usr/bin/cockroach"
-        ]
-      },
-      {
         "id": "CVE-2026-97030",
         "severity": "UNKNOWN",
         "pkg": "stdlib",
@@ -4065,9 +4785,9 @@
         "tag": "ghcr.io/quenchworks/images/cockroachdb:26.2.7",
         "critical": 0,
         "high": 3,
-        "medium": 21,
+        "medium": 24,
         "low": 1,
-        "unknown": 4,
+        "unknown": 1,
         "total": 29,
         "fixable": 29,
         "grade": "D",
@@ -4117,6 +4837,30 @@
             "fixed": "1.26.9, 1.27.2",
             "title": "net/http: golang: golang: Cross-user response poisoning via desynchronized HTTP CONNECT connections",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56866",
+            "targets": [
+              "usr/bin/cockroach"
+            ]
+          },
+          {
+            "id": "CVE-2026-78659",
+            "severity": "MEDIUM",
+            "pkg": "stdlib",
+            "installed": "v1.25.13",
+            "fixed": "1.26.9, 1.27.2",
+            "title": "When \"Trailer\" headers are sent by a client, the HTTP server internall ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-78659",
+            "targets": [
+              "usr/bin/cockroach"
+            ]
+          },
+          {
+            "id": "CVE-2026-78660",
+            "severity": "MEDIUM",
+            "pkg": "stdlib",
+            "installed": "v1.25.13",
+            "fixed": "1.26.9, 1.27.2",
+            "title": "Historically, we have been rather lax about malformed framing-related  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-78660",
             "targets": [
               "usr/bin/cockroach"
             ]
@@ -4290,6 +5034,18 @@
             ]
           },
           {
+            "id": "CVE-2026-94440",
+            "severity": "MEDIUM",
+            "pkg": "stdlib",
+            "installed": "v1.25.13",
+            "fixed": "1.26.9, 1.27.2",
+            "title": "Parsing a multipart form can bypass memory limits and read an arbitrar ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-94440",
+            "targets": [
+              "usr/bin/cockroach"
+            ]
+          },
+          {
             "id": "CVE-2026-94448",
             "severity": "MEDIUM",
             "pkg": "stdlib",
@@ -4369,42 +5125,6 @@
             "fixed": "1.26.9, 1.27.2",
             "title": "os: golang: golang: Directory traversal via Windows junction handling",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56857",
-            "targets": [
-              "usr/bin/cockroach"
-            ]
-          },
-          {
-            "id": "CVE-2026-78659",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.25.13",
-            "fixed": "1.26.9, 1.27.2",
-            "title": "When \"Trailer\" headers are sent by a client, the HTTP server internall ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-78659",
-            "targets": [
-              "usr/bin/cockroach"
-            ]
-          },
-          {
-            "id": "CVE-2026-78660",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.25.13",
-            "fixed": "1.26.9, 1.27.2",
-            "title": "Historically, we have been rather lax about malformed framing-related  ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-78660",
-            "targets": [
-              "usr/bin/cockroach"
-            ]
-          },
-          {
-            "id": "CVE-2026-94440",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.25.13",
-            "fixed": "1.26.9, 1.27.2",
-            "title": "Parsing a multipart form can bypass memory limits and read an arbitrar ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-94440",
             "targets": [
               "usr/bin/cockroach"
             ]
@@ -4574,14 +5294,28 @@
     "tag": "ghcr.io/quenchworks/images/concourse:8.3.1",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 3,
     "low": 1,
     "unknown": 6,
-    "total": 7,
+    "total": 10,
     "fixable": 0,
-    "grade": "B",
-    "score": 87,
+    "grade": "C",
+    "score": 75,
     "cves": [
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/local/concourse/resource-bin/registry-image/check",
+          "usr/local/concourse/resource-bin/registry-image/in",
+          "usr/local/concourse/resource-bin/registry-image/out"
+        ]
+      },
       {
         "id": "GHSA-g98v-hv3f-hcfr",
         "severity": "LOW",
@@ -4618,14 +5352,28 @@
         "tag": "ghcr.io/quenchworks/images/concourse:8.3.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 1,
         "unknown": 6,
-        "total": 7,
+        "total": 10,
         "fixable": 0,
-        "grade": "B",
-        "score": 87,
+        "grade": "C",
+        "score": 75,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/local/concourse/resource-bin/registry-image/check",
+              "usr/local/concourse/resource-bin/registry-image/in",
+              "usr/local/concourse/resource-bin/registry-image/out"
+            ]
+          },
           {
             "id": "GHSA-g98v-hv3f-hcfr",
             "severity": "LOW",
@@ -4753,13 +5501,13 @@
     "tag": "ghcr.io/quenchworks/images/connaisseur:3.13.0",
     "critical": 0,
     "high": 2,
-    "medium": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 1,
-    "total": 4,
+    "total": 5,
     "fixable": 0,
     "grade": "D",
-    "score": 74,
+    "score": 70,
     "cves": [
       {
         "id": "CVE-2026-41567",
@@ -4798,6 +5546,18 @@
         ]
       },
       {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "app/bin/connaisseur"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -4816,13 +5576,13 @@
         "tag": "ghcr.io/quenchworks/images/connaisseur:3.13.0",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 4,
+        "total": 5,
         "fixable": 0,
         "grade": "D",
-        "score": 74,
+        "score": 70,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -4856,6 +5616,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "app/bin/connaisseur"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "app/bin/connaisseur"
             ]
@@ -4879,13 +5651,13 @@
         "tag": "ghcr.io/quenchworks/images/connaisseur:3.12.0",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 4,
+        "total": 5,
         "fixable": 0,
         "grade": "D",
-        "score": 74,
+        "score": 70,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -4919,6 +5691,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "app/bin/connaisseur"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "app/bin/connaisseur"
             ]
@@ -4942,13 +5726,13 @@
         "tag": "ghcr.io/quenchworks/images/connaisseur:3.11.1",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 4,
+        "total": 5,
         "fixable": 0,
         "grade": "D",
-        "score": 74,
+        "score": 70,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -4982,6 +5766,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "app/bin/connaisseur"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "app/bin/connaisseur"
             ]
@@ -5041,12 +5837,24 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 1,
-    "total": 1,
-    "fixable": 0,
+    "unknown": 2,
+    "total": 2,
+    "fixable": 1,
     "grade": "A",
-    "score": 98,
+    "score": 91,
     "cves": [
+      {
+        "id": "CVE-2026-109413",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/yaml",
+        "installed": "v7.4.15",
+        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+        "targets": [
+          "var/www/html/vendor/composer/installed.json"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -5068,12 +5876,24 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 1,
-        "total": 1,
-        "fixable": 0,
+        "unknown": 2,
+        "total": 2,
+        "fixable": 1,
         "grade": "A",
-        "score": 98,
+        "score": 91,
         "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v7.4.15",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -7137,43 +7957,430 @@
     "version": "10.0.112",
     "tag": "ghcr.io/quenchworks/images/dotnet-runtime:10.0.112",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 8,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 10,
+    "fixable": 10,
+    "grade": "D",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-84008",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84008",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96958",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96958",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96959",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96959",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96960",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-96960",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-70162",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-70162",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.112-r4",
+        "fixed": "10.0.113-r1",
+        "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "10.0.112",
         "tag": "ghcr.io/quenchworks/images/dotnet-runtime:10.0.112",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 8,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 10,
+        "fixable": 10,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.112-r4",
+            "fixed": "10.0.113-r1",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:06e6954daee5fe003bfa38feec1994e8c64d29a0eec32d7369b58d80b124cd43 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "9.0.121",
         "tag": "ghcr.io/quenchworks/images/dotnet-runtime:9.0.121",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 10,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 12,
+        "fixable": 12,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-70159",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70159 - ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70159",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70159 - ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84008",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-84008 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96958",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96958 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96959",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96959 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-96960",
+            "severity": "HIGH",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-96960 - .NET and Visual Studio Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-9",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-70162",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-9-runtime",
+            "installed": "9.0.121-r2",
+            "fixed": "9.0.122-r0",
+            "title": "Microsoft Security Advisory CVE-2026-70162 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -9473,14 +10680,26 @@
         "tag": "ghcr.io/quenchworks/images/gitlab-runner:19.3.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/gitlab-runner"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -9500,14 +10719,26 @@
         "tag": "ghcr.io/quenchworks/images/gitlab-runner:19.2.4",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/gitlab-runner"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -9586,15 +10817,111 @@
     "version": "3.3.0",
     "tag": "ghcr.io/quenchworks/images/gitness:3.3.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 4,
+    "medium": 4,
     "low": 0,
     "unknown": 1,
-    "total": 1,
-    "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "total": 9,
+    "fixable": 7,
+    "grade": "D",
+    "score": 7,
     "cves": [
+      {
+        "id": "CVE-2026-100351",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.147.0",
+        "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
+      {
+        "id": "CVE-2026-100352",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.148.0",
+        "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
+      {
+        "id": "CVE-2026-100353",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.149.0",
+        "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
+      {
+        "id": "CVE-2026-100354",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.149.0",
+        "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
+      {
+        "id": "CVE-2026-100347",
+        "severity": "MEDIUM",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.145.0",
+        "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
+      {
+        "id": "CVE-2026-100348",
+        "severity": "MEDIUM",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.145.0",
+        "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/distribution/distribution/v3",
+        "installed": "v3.1.1",
+        "fixed": "3.1.2",
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.2+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -9613,15 +10940,111 @@
         "version": "3.3.0",
         "tag": "ghcr.io/quenchworks/images/gitness:3.3.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 4,
+        "medium": 4,
         "low": 0,
         "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "total": 9,
+        "fixable": 7,
+        "grade": "D",
+        "score": 7,
         "cves": [
+          {
+            "id": "CVE-2026-100351",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.147.0",
+            "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
+          {
+            "id": "CVE-2026-100352",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.148.0",
+            "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
+          {
+            "id": "CVE-2026-100353",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.149.0",
+            "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
+          {
+            "id": "CVE-2026-100354",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.149.0",
+            "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
+          {
+            "id": "CVE-2026-100347",
+            "severity": "MEDIUM",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.145.0",
+            "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
+          {
+            "id": "CVE-2026-100348",
+            "severity": "MEDIUM",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.145.0",
+            "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/distribution/distribution/v3",
+            "installed": "v3.1.1",
+            "fixed": "3.1.2",
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.2+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -9833,15 +11256,87 @@
     "version": "13.1.7",
     "tag": "ghcr.io/quenchworks/images/grafana:13.1.7",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 4,
+    "medium": 2,
     "low": 0,
     "unknown": 1,
-    "total": 1,
-    "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "total": 7,
+    "fixable": 6,
+    "grade": "D",
+    "score": 20,
     "cves": [
+      {
+        "id": "CVE-2026-100351",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.147.0",
+        "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
+        "targets": [
+          "usr/share/grafana/bin/grafana"
+        ]
+      },
+      {
+        "id": "CVE-2026-100352",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.148.0",
+        "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
+        "targets": [
+          "usr/share/grafana/bin/grafana"
+        ]
+      },
+      {
+        "id": "CVE-2026-100353",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.149.0",
+        "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
+        "targets": [
+          "usr/share/grafana/bin/grafana"
+        ]
+      },
+      {
+        "id": "CVE-2026-100354",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.149.0",
+        "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
+        "targets": [
+          "usr/share/grafana/bin/grafana"
+        ]
+      },
+      {
+        "id": "CVE-2026-100347",
+        "severity": "MEDIUM",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.145.0",
+        "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
+        "targets": [
+          "usr/share/grafana/bin/grafana"
+        ]
+      },
+      {
+        "id": "CVE-2026-100348",
+        "severity": "MEDIUM",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.145.0",
+        "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
+        "targets": [
+          "usr/share/grafana/bin/grafana"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -9860,15 +11355,87 @@
         "version": "13.1.7",
         "tag": "ghcr.io/quenchworks/images/grafana:13.1.7",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 4,
+        "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "total": 7,
+        "fixable": 6,
+        "grade": "D",
+        "score": 20,
         "cves": [
+          {
+            "id": "CVE-2026-100351",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.147.0",
+            "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
+            "targets": [
+              "usr/share/grafana/bin/grafana"
+            ]
+          },
+          {
+            "id": "CVE-2026-100352",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.148.0",
+            "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
+            "targets": [
+              "usr/share/grafana/bin/grafana"
+            ]
+          },
+          {
+            "id": "CVE-2026-100353",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.149.0",
+            "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
+            "targets": [
+              "usr/share/grafana/bin/grafana"
+            ]
+          },
+          {
+            "id": "CVE-2026-100354",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.149.0",
+            "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
+            "targets": [
+              "usr/share/grafana/bin/grafana"
+            ]
+          },
+          {
+            "id": "CVE-2026-100347",
+            "severity": "MEDIUM",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.145.0",
+            "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
+            "targets": [
+              "usr/share/grafana/bin/grafana"
+            ]
+          },
+          {
+            "id": "CVE-2026-100348",
+            "severity": "MEDIUM",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.145.0",
+            "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
+            "targets": [
+              "usr/share/grafana/bin/grafana"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -10728,13 +12295,13 @@
     "tag": "ghcr.io/quenchworks/images/harbor-registry:2.15.4",
     "critical": 0,
     "high": 1,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 1,
-    "total": 2,
+    "total": 3,
     "fixable": 0,
     "grade": "D",
-    "score": 88,
+    "score": 84,
     "cves": [
       {
         "id": "CVE-2020-26160",
@@ -10744,6 +12311,18 @@
         "fixed": null,
         "title": "jwt-go: access restriction bypass vulnerability",
         "url": "https://avd.aquasec.com/nvd/cve-2020-26160",
+        "targets": [
+          "usr/bin/registry"
+        ]
+      },
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3-patch-redis",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
         "targets": [
           "usr/bin/registry"
         ]
@@ -10767,13 +12346,13 @@
         "tag": "ghcr.io/quenchworks/images/harbor-registry:2.15.4",
         "critical": 0,
         "high": 1,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 2,
+        "total": 3,
         "fixable": 0,
         "grade": "D",
-        "score": 88,
+        "score": 84,
         "cves": [
           {
             "id": "CVE-2020-26160",
@@ -10783,6 +12362,18 @@
             "fixed": null,
             "title": "jwt-go: access restriction bypass vulnerability",
             "url": "https://avd.aquasec.com/nvd/cve-2020-26160",
+            "targets": [
+              "usr/bin/registry"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3-patch-redis",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/registry"
             ]
@@ -10938,14 +12529,26 @@
     "tag": "ghcr.io/quenchworks/images/harbor-trivy-adapter:2.15.4",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 1,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "grade": "C",
+    "score": 94,
     "cves": [
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.2+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/scanner-trivy"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -10965,14 +12568,26 @@
         "tag": "ghcr.io/quenchworks/images/harbor-trivy-adapter:2.15.4",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.2+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/scanner-trivy"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -12228,12 +13843,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-109413",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/yaml",
+        "installed": "v6.4.41",
+        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+        "targets": [
+          "var/www/html/libraries/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "6.2.0",
@@ -12242,12 +13870,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.41",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "6.1.4",
@@ -12256,12 +13897,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.41",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "5.4.10",
@@ -12270,12 +13924,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.41",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -13169,16 +14836,28 @@
     "image": "ghcr.io/quenchworks/images/kserve-controller",
     "version": "0.21.0",
     "tag": "ghcr.io/quenchworks/images/kserve-controller:0.21.0",
-    "critical": 0,
+    "critical": 1,
     "high": 0,
     "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 1,
-    "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "total": 2,
+    "fixable": 1,
+    "grade": "F",
+    "score": 68,
     "cves": [
+      {
+        "id": "CVE-2026-77524",
+        "severity": "CRITICAL",
+        "pkg": "github.com/kedacore/keda/v2",
+        "installed": "v2.20.2",
+        "fixed": "2.21.0",
+        "title": "KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-77524",
+        "targets": [
+          "usr/bin/manager"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -13196,16 +14875,28 @@
       {
         "version": "0.21.0",
         "tag": "ghcr.io/quenchworks/images/kserve-controller:0.21.0",
-        "critical": 0,
+        "critical": 1,
         "high": 0,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "total": 2,
+        "fixable": 1,
+        "grade": "F",
+        "score": 68,
         "cves": [
+          {
+            "id": "CVE-2026-77524",
+            "severity": "CRITICAL",
+            "pkg": "github.com/kedacore/keda/v2",
+            "installed": "v2.20.2",
+            "fixed": "2.21.0",
+            "title": "KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-77524",
+            "targets": [
+              "usr/bin/manager"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -13596,13 +15287,13 @@
     "tag": "ghcr.io/quenchworks/images/kubescape:4.0.15",
     "critical": 0,
     "high": 6,
-    "medium": 3,
+    "medium": 6,
     "low": 0,
     "unknown": 3,
-    "total": 12,
+    "total": 15,
     "fixable": 0,
     "grade": "D",
-    "score": 22,
+    "score": 10,
     "cves": [
       {
         "id": "CVE-2026-41567",
@@ -13647,6 +15338,20 @@
         ]
       },
       {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/downloader",
+          "usr/bin/ksserver",
+          "usr/bin/kubescape"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -13667,13 +15372,13 @@
         "tag": "ghcr.io/quenchworks/images/kubescape:4.0.15",
         "critical": 0,
         "high": 6,
-        "medium": 3,
+        "medium": 6,
         "low": 0,
         "unknown": 3,
-        "total": 12,
+        "total": 15,
         "fixable": 0,
         "grade": "D",
-        "score": 22,
+        "score": 10,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -13718,6 +15423,20 @@
             ]
           },
           {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/downloader",
+              "usr/bin/ksserver",
+              "usr/bin/kubescape"
+            ]
+          },
+          {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
             "pkg": "golang.org/x/crypto",
@@ -13741,10 +15460,10 @@
     "tag": "ghcr.io/quenchworks/images/kubescape-node-agent:0.3.275",
     "critical": 0,
     "high": 10,
-    "medium": 7,
+    "medium": 9,
     "low": 0,
     "unknown": 2,
-    "total": 19,
+    "total": 21,
     "fixable": 0,
     "grade": "D",
     "score": 0,
@@ -13877,6 +15596,19 @@
         ]
       },
       {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/node-agent",
+          "usr/bin/sbom-scanner"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -13896,10 +15628,10 @@
         "tag": "ghcr.io/quenchworks/images/kubescape-node-agent:0.3.275",
         "critical": 0,
         "high": 10,
-        "medium": 7,
+        "medium": 9,
         "low": 0,
         "unknown": 2,
-        "total": 19,
+        "total": 21,
         "fixable": 0,
         "grade": "D",
         "score": 0,
@@ -14032,6 +15764,19 @@
             ]
           },
           {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/node-agent",
+              "usr/bin/sbom-scanner"
+            ]
+          },
+          {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
             "pkg": "golang.org/x/crypto",
@@ -14054,13 +15799,13 @@
     "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.181",
     "critical": 0,
     "high": 4,
-    "medium": 2,
+    "medium": 3,
     "low": 0,
     "unknown": 1,
-    "total": 7,
+    "total": 8,
     "fixable": 0,
     "grade": "D",
-    "score": 50,
+    "score": 46,
     "cves": [
       {
         "id": "CVE-2026-41567",
@@ -14135,6 +15880,18 @@
         ]
       },
       {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/operator"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -14153,13 +15910,13 @@
         "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.181",
         "critical": 0,
         "high": 4,
-        "medium": 2,
+        "medium": 3,
         "low": 0,
         "unknown": 1,
-        "total": 7,
+        "total": 8,
         "fixable": 0,
         "grade": "D",
-        "score": 50,
+        "score": 46,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -14229,6 +15986,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/operator"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/operator"
             ]
@@ -14533,13 +16302,13 @@
     "tag": "ghcr.io/quenchworks/images/kubevuln:0.3.546",
     "critical": 0,
     "high": 4,
-    "medium": 4,
+    "medium": 6,
     "low": 0,
     "unknown": 2,
-    "total": 10,
+    "total": 12,
     "fixable": 0,
     "grade": "D",
-    "score": 40,
+    "score": 32,
     "cves": [
       {
         "id": "CVE-2026-41567",
@@ -14594,6 +16363,19 @@
         ]
       },
       {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/kubevuln",
+          "usr/bin/sbom-scanner"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -14613,13 +16395,13 @@
         "tag": "ghcr.io/quenchworks/images/kubevuln:0.3.546",
         "critical": 0,
         "high": 4,
-        "medium": 4,
+        "medium": 6,
         "low": 0,
         "unknown": 2,
-        "total": 10,
+        "total": 12,
         "fixable": 0,
         "grade": "D",
-        "score": 40,
+        "score": 32,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -14668,6 +16450,19 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/kubevuln",
+              "usr/bin/sbom-scanner"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/kubevuln",
               "usr/bin/sbom-scanner"
@@ -16662,12 +18457,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-109413",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/yaml",
+        "installed": "v7.4.12",
+        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+        "targets": [
+          "var/www/html/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.46.2",
@@ -16676,12 +18484,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v7.4.12",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "1.45.6",
@@ -16690,12 +18511,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.40",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "1.43.11",
@@ -16704,12 +18538,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.52",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -17910,12 +19757,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-108082",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/http-foundation",
+        "installed": "v6.4.42",
+        "fixed": "7.1.0, 7.2.0, 7.3.0, 7.4.19, 5.4.54, 6.1.0, 6.3.0, 6.4.0, 6.4.46, 7.4.0, 8.1.0, 8.1.7, 6.2.0",
+        "title": "CVE-2026-108082: ReDoS in HeaderUtils::split() Reachable Through the Cache-Control Request Header",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-108082",
+        "targets": [
+          "var/www/html/3rdparty/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "34.0.4",
@@ -17924,12 +19784,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-108082",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/http-foundation",
+            "installed": "v6.4.42",
+            "fixed": "7.1.0, 7.2.0, 7.3.0, 7.4.19, 5.4.54, 6.1.0, 6.3.0, 6.4.0, 6.4.46, 7.4.0, 8.1.0, 8.1.7, 6.2.0",
+            "title": "CVE-2026-108082: ReDoS in HeaderUtils::split() Reachable Through the Cache-Control Request Header",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-108082",
+            "targets": [
+              "var/www/html/3rdparty/composer/installed.json"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -20169,12 +22042,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-109449",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/expression-language",
+        "installed": "v5.4.45",
+        "fixed": "5.0.0, 5.1.0, 5.4.0, 6.2.0, 6.3.0, 6.4.0, 7.3.0, 5.3.0, 5.4.54, 6.1.0, 7.1.0, 7.2.0, 7.4.0, 8.1.0, 8.1.9, 5.2.0, 6.4.48, 7.4.21, 3.0.0, 4.0.0",
+        "title": "CVE-2026-109449: Unbounded Nesting in the Expression Parser Lets Untrusted Expressions Crash the Process",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-109449",
+        "targets": [
+          "var/www/html/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.2.3",
@@ -20183,12 +22069,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109449",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/expression-language",
+            "installed": "v5.4.45",
+            "fixed": "5.0.0, 5.1.0, 5.4.0, 6.2.0, 6.3.0, 6.4.0, 7.3.0, 5.3.0, 5.4.54, 6.1.0, 7.1.0, 7.2.0, 7.4.0, 8.1.0, 8.1.9, 5.2.0, 6.4.48, 7.4.21, 3.0.0, 4.0.0",
+            "title": "CVE-2026-109449: Unbounded Nesting in the Expression Parser Lets Untrusted Expressions Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109449",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -20414,14 +22313,26 @@
     "tag": "ghcr.io/quenchworks/images/podman:6.1.4",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 1,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "grade": "C",
+    "score": 94,
     "cves": [
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/podman"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -20441,14 +22352,26 @@
         "tag": "ghcr.io/quenchworks/images/podman:6.1.4",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/podman"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -20468,14 +22391,26 @@
         "tag": "ghcr.io/quenchworks/images/podman:6.0.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/podman"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -21472,28 +23407,78 @@
     "tag": "ghcr.io/quenchworks/images/python:3.14.8",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 82,
+    "cves": [
+      {
+        "id": "CVE-2026-12345",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14",
+        "installed": "3.14.8_git20261008-r1",
+        "fixed": "3.14.8_git20261014-r0",
+        "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+        "targets": [
+          "ghcr.io/quenchworks/images/python@sha256:8a51b3cb5322b787c783ad5a7465c6f148759fdfec25c07e77ecaa963058478a (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-12345",
+        "severity": "MEDIUM",
+        "pkg": "python-3.14-base",
+        "installed": "3.14.8_git20261008-r1",
+        "fixed": "3.14.8_git20261014-r0",
+        "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+        "targets": [
+          "ghcr.io/quenchworks/images/python@sha256:8a51b3cb5322b787c783ad5a7465c6f148759fdfec25c07e77ecaa963058478a (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.14.8",
         "tag": "ghcr.io/quenchworks/images/python:3.14.8",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-12345",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14",
+            "installed": "3.14.8_git20261008-r1",
+            "fixed": "3.14.8_git20261014-r0",
+            "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:8a51b3cb5322b787c783ad5a7465c6f148759fdfec25c07e77ecaa963058478a (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-12345",
+            "severity": "MEDIUM",
+            "pkg": "python-3.14-base",
+            "installed": "3.14.8_git20261008-r1",
+            "fixed": "3.14.8_git20261014-r0",
+            "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
+            "targets": [
+              "ghcr.io/quenchworks/images/python@sha256:8a51b3cb5322b787c783ad5a7465c6f148759fdfec25c07e77ecaa963058478a (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "3.13.16",
@@ -22791,14 +24776,26 @@
     "tag": "ghcr.io/quenchworks/images/skopeo:1.24.1",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 1,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "grade": "C",
+    "score": 94,
     "cves": [
+      {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/skopeo"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -22818,14 +24815,26 @@
         "tag": "ghcr.io/quenchworks/images/skopeo:1.24.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "grade": "C",
+        "score": 94,
         "cves": [
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+            "targets": [
+              "usr/bin/skopeo"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -25144,13 +27153,13 @@
     "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.2",
     "critical": 0,
     "high": 2,
-    "medium": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 1,
-    "total": 4,
+    "total": 5,
     "fixable": 0,
     "grade": "D",
-    "score": 74,
+    "score": 70,
     "cves": [
       {
         "id": "CVE-2026-41567",
@@ -25189,6 +27198,18 @@
         ]
       },
       {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/trufflehog"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -25207,13 +27228,13 @@
         "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.2",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 4,
+        "total": 5,
         "fixable": 0,
         "grade": "D",
-        "score": 74,
+        "score": 70,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -25247,6 +27268,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/trufflehog"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/trufflehog"
             ]
@@ -25270,13 +27303,13 @@
         "tag": "ghcr.io/quenchworks/images/trufflehog:3.98.1",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 4,
+        "total": 5,
         "fixable": 0,
         "grade": "D",
-        "score": 74,
+        "score": 70,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -25310,6 +27343,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/trufflehog"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/trufflehog"
             ]
@@ -25333,13 +27378,13 @@
         "tag": "ghcr.io/quenchworks/images/trufflehog:3.97.9",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 4,
+        "total": 5,
         "fixable": 0,
         "grade": "D",
-        "score": 74,
+        "score": 70,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -25373,6 +27418,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/trufflehog"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/trufflehog"
             ]
@@ -26133,13 +28190,13 @@
     "tag": "ghcr.io/quenchworks/images/vcluster:0.37.3",
     "critical": 0,
     "high": 2,
-    "medium": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 5,
-    "total": 8,
+    "total": 9,
     "fixable": 0,
     "grade": "D",
-    "score": 66,
+    "score": 62,
     "cves": [
       {
         "id": "CVE-2026-41567",
@@ -26178,6 +28235,18 @@
         ]
       },
       {
+        "id": "CVE-2026-85747",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/distribution",
+        "installed": "v2.8.3+incompatible",
+        "fixed": null,
+        "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
+        "targets": [
+          "usr/bin/vcluster"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -26200,13 +28269,13 @@
         "tag": "ghcr.io/quenchworks/images/vcluster:0.37.3",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 5,
-        "total": 8,
+        "total": 9,
         "fixable": 0,
         "grade": "D",
-        "score": 66,
+        "score": 62,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -26240,6 +28309,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/vcluster"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/vcluster"
             ]
@@ -26267,13 +28348,13 @@
         "tag": "ghcr.io/quenchworks/images/vcluster:0.36.3",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 5,
-        "total": 8,
+        "total": 9,
         "fixable": 0,
         "grade": "D",
-        "score": 66,
+        "score": 62,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -26307,6 +28388,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/vcluster"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/vcluster"
             ]
@@ -26334,13 +28427,13 @@
         "tag": "ghcr.io/quenchworks/images/vcluster:0.35.4",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 5,
-        "total": 8,
+        "total": 9,
         "fixable": 0,
         "grade": "D",
-        "score": 66,
+        "score": 62,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -26374,6 +28467,18 @@
             "fixed": null,
             "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/vcluster"
+            ]
+          },
+          {
+            "id": "CVE-2026-85747",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/distribution",
+            "installed": "v2.8.3+incompatible",
+            "fixed": null,
+            "title": "Distribution is a toolkit to pack, ship, store, and deliver container  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/vcluster"
             ]
@@ -27598,12 +29703,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-109413",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/yaml",
+        "installed": "v5.4.53",
+        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+        "targets": [
+          "usr/share/zabbix/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "7.4.15",
@@ -27612,12 +29730,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.53",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "usr/share/zabbix/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "7.0.31",
@@ -27626,12 +29757,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.53",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "usr/share/zabbix/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "6.0.48",
@@ -27640,12 +29784,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-109413",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.53",
+            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
+            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
+            "targets": [
+              "usr/share/zabbix/vendor/composer/installed.json"
+            ]
+          }
+        ]
       }
     ]
   },
