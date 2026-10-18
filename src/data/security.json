@@ -296,37 +296,6 @@
       }
     ]
   },
-  "activemq": {
-    "image": "ghcr.io/quenchworks/images/activemq",
-    "version": "6.3.2",
-    "tag": "ghcr.io/quenchworks/images/activemq:6.3.2",
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
-    "versions": [
-      {
-        "version": "6.3.2",
-        "tag": "ghcr.io/quenchworks/images/activemq:6.3.2",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      }
-    ]
-  },
   "adc": {
     "image": "ghcr.io/quenchworks/images/adc",
     "version": "0.27.1",
@@ -4453,9 +4422,9 @@
     "tag": "ghcr.io/quenchworks/images/cockroachdb:26.2.7",
     "critical": 0,
     "high": 3,
-    "medium": 24,
+    "medium": 25,
     "low": 1,
-    "unknown": 1,
+    "unknown": 0,
     "total": 29,
     "fixable": 29,
     "grade": "D",
@@ -4774,6 +4743,18 @@
         ]
       },
       {
+        "id": "CVE-2026-97030",
+        "severity": "MEDIUM",
+        "pkg": "stdlib",
+        "installed": "v1.25.13",
+        "fixed": "1.26.9, 1.27.2",
+        "title": "A trusted template author may have previously written a valid template ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-97030",
+        "targets": [
+          "usr/bin/cockroach"
+        ]
+      },
+      {
         "id": "CVE-2026-97032",
         "severity": "MEDIUM",
         "pkg": "stdlib",
@@ -4796,18 +4777,6 @@
         "targets": [
           "usr/bin/cockroach"
         ]
-      },
-      {
-        "id": "CVE-2026-97030",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "v1.25.13",
-        "fixed": "1.26.9, 1.27.2",
-        "title": "A trusted template author may have previously written a valid template ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-97030",
-        "targets": [
-          "usr/bin/cockroach"
-        ]
       }
     ],
     "versions": [
@@ -4816,9 +4785,9 @@
         "tag": "ghcr.io/quenchworks/images/cockroachdb:26.2.7",
         "critical": 0,
         "high": 3,
-        "medium": 24,
+        "medium": 25,
         "low": 1,
-        "unknown": 1,
+        "unknown": 0,
         "total": 29,
         "fixable": 29,
         "grade": "D",
@@ -5137,6 +5106,18 @@
             ]
           },
           {
+            "id": "CVE-2026-97030",
+            "severity": "MEDIUM",
+            "pkg": "stdlib",
+            "installed": "v1.25.13",
+            "fixed": "1.26.9, 1.27.2",
+            "title": "A trusted template author may have previously written a valid template ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-97030",
+            "targets": [
+              "usr/bin/cockroach"
+            ]
+          },
+          {
             "id": "CVE-2026-97032",
             "severity": "MEDIUM",
             "pkg": "stdlib",
@@ -5156,18 +5137,6 @@
             "fixed": "1.26.9, 1.27.2",
             "title": "os: golang: golang: Directory traversal via Windows junction handling",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56857",
-            "targets": [
-              "usr/bin/cockroach"
-            ]
-          },
-          {
-            "id": "CVE-2026-97030",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.25.13",
-            "fixed": "1.26.9, 1.27.2",
-            "title": "A trusted template author may have previously written a valid template ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97030",
             "targets": [
               "usr/bin/cockroach"
             ]
@@ -5879,8 +5848,8 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/yaml",
         "installed": "v7.4.15",
-        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+        "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
         "targets": [
           "var/www/html/vendor/composer/installed.json"
@@ -5918,8 +5887,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v7.4.15",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "var/www/html/vendor/composer/installed.json"
@@ -8679,6 +8648,37 @@
       }
     ]
   },
+  "elasticsearch": {
+    "image": "ghcr.io/quenchworks/images/elasticsearch",
+    "version": "9.5.5",
+    "tag": "ghcr.io/quenchworks/images/elasticsearch:9.5.5",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "9.5.5",
+        "tag": "ghcr.io/quenchworks/images/elasticsearch:9.5.5",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "elixir": {
     "image": "ghcr.io/quenchworks/images/elixir",
     "version": "1.19.5",
@@ -9570,6 +9570,37 @@
       {
         "version": "2.0.1",
         "tag": "ghcr.io/quenchworks/images/floci:2.0.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "floci-full": {
+    "image": "ghcr.io/quenchworks/images/floci-full",
+    "version": "2.2.0",
+    "tag": "ghcr.io/quenchworks/images/floci-full:2.2.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.2.0",
+        "tag": "ghcr.io/quenchworks/images/floci-full:2.2.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10786,22 +10817,34 @@
     "version": "3.3.0",
     "tag": "ghcr.io/quenchworks/images/gitness:3.3.0",
     "critical": 0,
-    "high": 4,
+    "high": 5,
     "medium": 4,
     "low": 0,
     "unknown": 1,
-    "total": 9,
-    "fixable": 7,
+    "total": 10,
+    "fixable": 8,
     "grade": "D",
-    "score": 7,
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-100349",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.146.0",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil pointer dereference in response validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100349",
+        "targets": [
+          "usr/bin/gitness"
+        ]
+      },
       {
         "id": "CVE-2026-100351",
         "severity": "HIGH",
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.147.0",
-        "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Authentication bypass via URL path decoding discrepancy",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
         "targets": [
           "usr/bin/gitness"
@@ -10813,7 +10856,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.148.0",
-        "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via improper handling of non-finite numeric values",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
         "targets": [
           "usr/bin/gitness"
@@ -10825,7 +10868,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.149.0",
-        "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil-pointer dereference in request decoding",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
         "targets": [
           "usr/bin/gitness"
@@ -10837,7 +10880,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.149.0",
-        "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unbounded recursion during schema validation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
         "targets": [
           "usr/bin/gitness"
@@ -10849,7 +10892,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.145.0",
-        "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unsupported HTTP methods on static paths",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
         "targets": [
           "usr/bin/gitness"
@@ -10861,7 +10904,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.145.0",
-        "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+        "title": "kin-openapi is a Go project for handling OpenAPI files. Prior to 0.145 ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
         "targets": [
           "usr/bin/gitness"
@@ -10909,22 +10952,34 @@
         "version": "3.3.0",
         "tag": "ghcr.io/quenchworks/images/gitness:3.3.0",
         "critical": 0,
-        "high": 4,
+        "high": 5,
         "medium": 4,
         "low": 0,
         "unknown": 1,
-        "total": 9,
-        "fixable": 7,
+        "total": 10,
+        "fixable": 8,
         "grade": "D",
-        "score": 7,
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-100349",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.146.0",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil pointer dereference in response validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100349",
+            "targets": [
+              "usr/bin/gitness"
+            ]
+          },
           {
             "id": "CVE-2026-100351",
             "severity": "HIGH",
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.147.0",
-            "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Authentication bypass via URL path decoding discrepancy",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
             "targets": [
               "usr/bin/gitness"
@@ -10936,7 +10991,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.148.0",
-            "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via improper handling of non-finite numeric values",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
             "targets": [
               "usr/bin/gitness"
@@ -10948,7 +11003,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.149.0",
-            "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil-pointer dereference in request decoding",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
             "targets": [
               "usr/bin/gitness"
@@ -10960,7 +11015,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.149.0",
-            "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unbounded recursion during schema validation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
             "targets": [
               "usr/bin/gitness"
@@ -10972,7 +11027,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.145.0",
-            "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unsupported HTTP methods on static paths",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
             "targets": [
               "usr/bin/gitness"
@@ -10984,7 +11039,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.145.0",
-            "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+            "title": "kin-openapi is a Go project for handling OpenAPI files. Prior to 0.145 ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
             "targets": [
               "usr/bin/gitness"
@@ -11225,22 +11280,34 @@
     "version": "13.1.7",
     "tag": "ghcr.io/quenchworks/images/grafana:13.1.7",
     "critical": 0,
-    "high": 4,
+    "high": 5,
     "medium": 2,
     "low": 0,
     "unknown": 1,
-    "total": 7,
-    "fixable": 6,
+    "total": 8,
+    "fixable": 7,
     "grade": "D",
-    "score": 20,
+    "score": 5,
     "cves": [
+      {
+        "id": "CVE-2026-100349",
+        "severity": "HIGH",
+        "pkg": "github.com/getkin/kin-openapi",
+        "installed": "v0.144.0",
+        "fixed": "0.146.0",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil pointer dereference in response validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-100349",
+        "targets": [
+          "usr/share/grafana/bin/grafana"
+        ]
+      },
       {
         "id": "CVE-2026-100351",
         "severity": "HIGH",
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.147.0",
-        "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Authentication bypass via URL path decoding discrepancy",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
         "targets": [
           "usr/share/grafana/bin/grafana"
@@ -11252,7 +11319,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.148.0",
-        "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via improper handling of non-finite numeric values",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
         "targets": [
           "usr/share/grafana/bin/grafana"
@@ -11264,7 +11331,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.149.0",
-        "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil-pointer dereference in request decoding",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
         "targets": [
           "usr/share/grafana/bin/grafana"
@@ -11276,7 +11343,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.149.0",
-        "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unbounded recursion during schema validation",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
         "targets": [
           "usr/share/grafana/bin/grafana"
@@ -11288,7 +11355,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.145.0",
-        "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+        "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unsupported HTTP methods on static paths",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
         "targets": [
           "usr/share/grafana/bin/grafana"
@@ -11300,7 +11367,7 @@
         "pkg": "github.com/getkin/kin-openapi",
         "installed": "v0.144.0",
         "fixed": "0.145.0",
-        "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+        "title": "kin-openapi is a Go project for handling OpenAPI files. Prior to 0.145 ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
         "targets": [
           "usr/share/grafana/bin/grafana"
@@ -11324,22 +11391,34 @@
         "version": "13.1.7",
         "tag": "ghcr.io/quenchworks/images/grafana:13.1.7",
         "critical": 0,
-        "high": 4,
+        "high": 5,
         "medium": 2,
         "low": 0,
         "unknown": 1,
-        "total": 7,
-        "fixable": 6,
+        "total": 8,
+        "fixable": 7,
         "grade": "D",
-        "score": 20,
+        "score": 5,
         "cves": [
+          {
+            "id": "CVE-2026-100349",
+            "severity": "HIGH",
+            "pkg": "github.com/getkin/kin-openapi",
+            "installed": "v0.144.0",
+            "fixed": "0.146.0",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil pointer dereference in response validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-100349",
+            "targets": [
+              "usr/share/grafana/bin/grafana"
+            ]
+          },
           {
             "id": "CVE-2026-100351",
             "severity": "HIGH",
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.147.0",
-            "title": "kin-openapi: ValidationHandler security-requirement bypass via encoded-path operation confusion",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Authentication bypass via URL path decoding discrepancy",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100351",
             "targets": [
               "usr/share/grafana/bin/grafana"
@@ -11351,7 +11430,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.148.0",
-            "title": "kin-openapi: YAML NaN/Inf Values Bypass Built-in Guards and Panic via OAS 3.1 Validation Path",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via improper handling of non-finite numeric values",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100352",
             "targets": [
               "usr/share/grafana/bin/grafana"
@@ -11363,7 +11442,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.149.0",
-            "title": "kin-openapi: Incomplete Fix for GHSA-p6wj-qrr4-pgh5: Three Unpatched nil-Items Panic Paths in openapi3filter",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via nil-pointer dereference in request decoding",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100353",
             "targets": [
               "usr/share/grafana/bin/grafana"
@@ -11375,7 +11454,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.149.0",
-            "title": "kin-openapi: Uncontrolled Recursion on Circular allOf/anyOf/oneOf Schemas Causes Fatal Process Crash",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unbounded recursion during schema validation",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100354",
             "targets": [
               "usr/share/grafana/bin/grafana"
@@ -11387,7 +11466,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.145.0",
-            "title": "kin-openapi: Unauthenticated panic (DoS) in openapi3filter legacy router via non-canonical/unsupported HTTP method on a static path",
+            "title": "github.com/getkin/kin-openapi: kin-openapi: Denial of Service via unsupported HTTP methods on static paths",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100347",
             "targets": [
               "usr/share/grafana/bin/grafana"
@@ -11399,7 +11478,7 @@
             "pkg": "github.com/getkin/kin-openapi",
             "installed": "v0.144.0",
             "fixed": "0.145.0",
-            "title": "kin-openapi spec loader panics on a self-referential additionalProperties $ref (nil-pointer DoS)",
+            "title": "kin-openapi is a Go project for handling OpenAPI files. Prior to 0.145 ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-100348",
             "targets": [
               "usr/share/grafana/bin/grafana"
@@ -13698,6 +13777,33 @@
             ]
           }
         ]
+      },
+      {
+        "version": "2.564",
+        "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.564",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.57.0",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/git-lfs"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -13796,8 +13902,8 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/yaml",
         "installed": "v6.4.41",
-        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+        "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
         "targets": [
           "var/www/html/libraries/vendor/composer/installed.json"
@@ -13823,8 +13929,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v6.4.41",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "var/www/html/libraries/vendor/composer/installed.json"
@@ -13850,8 +13956,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v6.4.41",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "var/www/html/libraries/vendor/composer/installed.json"
@@ -13877,8 +13983,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v6.4.41",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "var/www/html/libraries/vendor/composer/installed.json"
@@ -14794,7 +14900,7 @@
         "pkg": "github.com/kedacore/keda/v2",
         "installed": "v2.20.2",
         "fixed": "2.21.0",
-        "title": "KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication",
+        "title": "github.com/kedacore/keda: KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication",
         "url": "https://avd.aquasec.com/nvd/cve-2026-77524",
         "targets": [
           "usr/bin/manager"
@@ -14833,7 +14939,7 @@
             "pkg": "github.com/kedacore/keda/v2",
             "installed": "v2.20.2",
             "fixed": "2.21.0",
-            "title": "KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication",
+            "title": "github.com/kedacore/keda: KEDA: Privilege escalation from namespace admin to cluster admin via KEDA TriggerAuthentication",
             "url": "https://avd.aquasec.com/nvd/cve-2026-77524",
             "targets": [
               "usr/bin/manager"
@@ -18101,28 +18207,78 @@
     "tag": "ghcr.io/quenchworks/images/mastodon:4.7.3",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 84,
+    "cves": [
+      {
+        "id": "GHSA-w3mx-4vv9-hjpg",
+        "severity": "MEDIUM",
+        "pkg": "css_parser",
+        "installed": "3.0.0",
+        "fixed": ">= 3.3.0",
+        "title": "Arbitrary local-file read via attacker-controlled `@import` into `load_file!` (the `base_dir` branch of `add_block!`) - incomplete fix of GHSA-9pmc-p236-855h",
+        "url": "https://github.com/advisories/GHSA-w3mx-4vv9-hjpg",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-84w7-hpvm-rxx2",
+        "severity": "UNKNOWN",
+        "pkg": "css_parser",
+        "installed": "3.0.0",
+        "fixed": ">= 3.2.0",
+        "title": "ReDoS - expand_shorthand! regex (RE_FUNCTIONS) backtracks exponentially on an unclosed CSS function value",
+        "url": "https://github.com/advisories/GHSA-84w7-hpvm-rxx2",
+        "targets": [
+          "Ruby"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.7.3",
         "tag": "ghcr.io/quenchworks/images/mastodon:4.7.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 84,
+        "cves": [
+          {
+            "id": "GHSA-w3mx-4vv9-hjpg",
+            "severity": "MEDIUM",
+            "pkg": "css_parser",
+            "installed": "3.0.0",
+            "fixed": ">= 3.3.0",
+            "title": "Arbitrary local-file read via attacker-controlled `@import` into `load_file!` (the `base_dir` branch of `add_block!`) - incomplete fix of GHSA-9pmc-p236-855h",
+            "url": "https://github.com/advisories/GHSA-w3mx-4vv9-hjpg",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-84w7-hpvm-rxx2",
+            "severity": "UNKNOWN",
+            "pkg": "css_parser",
+            "installed": "3.0.0",
+            "fixed": ">= 3.2.0",
+            "title": "ReDoS - expand_shorthand! regex (RE_FUNCTIONS) backtracks exponentially on an unclosed CSS function value",
+            "url": "https://github.com/advisories/GHSA-84w7-hpvm-rxx2",
+            "targets": [
+              "Ruby"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -18410,8 +18566,8 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/yaml",
         "installed": "v7.4.12",
-        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+        "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
         "targets": [
           "var/www/html/vendor/composer/installed.json"
@@ -18437,8 +18593,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v7.4.12",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "var/www/html/vendor/composer/installed.json"
@@ -18464,8 +18620,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v6.4.40",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "var/www/html/vendor/composer/installed.json"
@@ -18491,8 +18647,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v5.4.52",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "var/www/html/vendor/composer/installed.json"
@@ -19710,8 +19866,8 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/http-foundation",
         "installed": "v6.4.42",
-        "fixed": "7.1.0, 7.2.0, 7.3.0, 7.4.19, 5.4.54, 6.1.0, 6.3.0, 6.4.0, 6.4.46, 7.4.0, 8.1.0, 8.1.7, 6.2.0",
-        "title": "CVE-2026-108082: ReDoS in HeaderUtils::split() Reachable Through the Cache-Control Request Header",
+        "fixed": "6.4.46, 7.1.0, 7.3.0, 6.1.0, 6.3.0, 6.4.0, 7.2.0, 7.4.0, 7.4.19, 8.1.0, 8.1.7, 5.4.54, 6.2.0",
+        "title": "Symfony is a PHP framework for web and console applications and a set  ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-108082",
         "targets": [
           "var/www/html/3rdparty/composer/installed.json"
@@ -19737,8 +19893,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v6.4.42",
-            "fixed": "7.1.0, 7.2.0, 7.3.0, 7.4.19, 5.4.54, 6.1.0, 6.3.0, 6.4.0, 6.4.46, 7.4.0, 8.1.0, 8.1.7, 6.2.0",
-            "title": "CVE-2026-108082: ReDoS in HeaderUtils::split() Reachable Through the Cache-Control Request Header",
+            "fixed": "6.4.46, 7.1.0, 7.3.0, 6.1.0, 6.3.0, 6.4.0, 7.2.0, 7.4.0, 7.4.19, 8.1.0, 8.1.7, 5.4.54, 6.2.0",
+            "title": "Symfony is a PHP framework for web and console applications and a set  ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-108082",
             "targets": [
               "var/www/html/3rdparty/composer/installed.json"
@@ -21995,8 +22151,8 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/expression-language",
         "installed": "v5.4.45",
-        "fixed": "5.0.0, 5.1.0, 5.4.0, 6.2.0, 6.3.0, 6.4.0, 7.3.0, 5.3.0, 5.4.54, 6.1.0, 7.1.0, 7.2.0, 7.4.0, 8.1.0, 8.1.9, 5.2.0, 6.4.48, 7.4.21, 3.0.0, 4.0.0",
-        "title": "CVE-2026-109449: Unbounded Nesting in the Expression Parser Lets Untrusted Expressions Crash the Process",
+        "fixed": "5.0.0, 5.4.0, 6.2.0, 7.4.0, 7.4.21, 4.0.0, 5.2.0, 6.4.0, 7.1.0, 7.3.0, 5.1.0, 5.4.54, 6.3.0, 6.4.48, 8.1.9, 3.0.0, 5.3.0, 6.1.0, 7.2.0, 8.1.0",
+        "title": "InSymfony Expression Language versions prior to 5.4.54, 6.4.48, 7.4.21 ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-109449",
         "targets": [
           "var/www/html/vendor/composer/installed.json"
@@ -22022,8 +22178,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/expression-language",
             "installed": "v5.4.45",
-            "fixed": "5.0.0, 5.1.0, 5.4.0, 6.2.0, 6.3.0, 6.4.0, 7.3.0, 5.3.0, 5.4.54, 6.1.0, 7.1.0, 7.2.0, 7.4.0, 8.1.0, 8.1.9, 5.2.0, 6.4.48, 7.4.21, 3.0.0, 4.0.0",
-            "title": "CVE-2026-109449: Unbounded Nesting in the Expression Parser Lets Untrusted Expressions Crash the Process",
+            "fixed": "5.0.0, 5.4.0, 6.2.0, 7.4.0, 7.4.21, 4.0.0, 5.2.0, 6.4.0, 7.1.0, 7.3.0, 5.1.0, 5.4.54, 6.3.0, 6.4.48, 8.1.9, 3.0.0, 5.3.0, 6.1.0, 7.2.0, 8.1.0",
+            "title": "InSymfony Expression Language versions prior to 5.4.54, 6.4.48, 7.4.21 ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109449",
             "targets": [
               "var/www/html/vendor/composer/installed.json"
@@ -24404,28 +24560,54 @@
     "tag": "ghcr.io/quenchworks/images/scylladb:2026.3.3",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-58494",
+        "severity": "MEDIUM",
+        "pkg": "wasmtime-wasi",
+        "installed": "24.0.9",
+        "fixed": "24.0.11, 36.0.12, 45.0.3, 46.0.1",
+        "title": "wasmtime: Wasmtime: Overwrite host files via insufficient permission checks in wasmtime-wasi",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-58494",
+        "targets": [
+          "usr/share/doc/scylladb/Cargo.lock"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2026.3.3",
         "tag": "ghcr.io/quenchworks/images/scylladb:2026.3.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-58494",
+            "severity": "MEDIUM",
+            "pkg": "wasmtime-wasi",
+            "installed": "24.0.9",
+            "fixed": "24.0.11, 36.0.12, 45.0.3, 46.0.1",
+            "title": "wasmtime: Wasmtime: Overwrite host files via insufficient permission checks in wasmtime-wasi",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-58494",
+            "targets": [
+              "usr/share/doc/scylladb/Cargo.lock"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -26111,15 +26293,27 @@
     "version": "1.9.1",
     "tag": "ghcr.io/quenchworks/images/temporal-cli:1.9.1",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 1,
-    "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "total": 2,
+    "fixable": 1,
+    "grade": "D",
+    "score": 83,
     "cves": [
+      {
+        "id": "CVE-2026-102941",
+        "severity": "HIGH",
+        "pkg": "github.com/gomarkdown/markdown",
+        "installed": "v0.0.0-20260411013819-759bbc3e3207",
+        "fixed": "0.0.0-20260724235538-61af6e1e6971",
+        "title": "gomarkdown/markdown IsSafeURL panics on short URLs",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102941",
+        "targets": [
+          "usr/bin/temporal"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -26138,15 +26332,27 @@
         "version": "1.9.1",
         "tag": "ghcr.io/quenchworks/images/temporal-cli:1.9.1",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "total": 2,
+        "fixable": 1,
+        "grade": "D",
+        "score": 83,
         "cves": [
+          {
+            "id": "CVE-2026-102941",
+            "severity": "HIGH",
+            "pkg": "github.com/gomarkdown/markdown",
+            "installed": "v0.0.0-20260411013819-759bbc3e3207",
+            "fixed": "0.0.0-20260724235538-61af6e1e6971",
+            "title": "gomarkdown/markdown IsSafeURL panics on short URLs",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102941",
+            "targets": [
+              "usr/bin/temporal"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -26165,15 +26371,27 @@
         "version": "1.8.3",
         "tag": "ghcr.io/quenchworks/images/temporal-cli:1.8.3",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "total": 2,
+        "fixable": 1,
+        "grade": "D",
+        "score": 83,
         "cves": [
+          {
+            "id": "CVE-2026-102941",
+            "severity": "HIGH",
+            "pkg": "github.com/gomarkdown/markdown",
+            "installed": "v0.0.0-20260411013819-759bbc3e3207",
+            "fixed": "0.0.0-20260724235538-61af6e1e6971",
+            "title": "gomarkdown/markdown IsSafeURL panics on short URLs",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102941",
+            "targets": [
+              "usr/bin/temporal"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -26192,15 +26410,27 @@
         "version": "1.8.2",
         "tag": "ghcr.io/quenchworks/images/temporal-cli:1.8.2",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "total": 2,
+        "fixable": 1,
+        "grade": "D",
+        "score": 83,
         "cves": [
+          {
+            "id": "CVE-2026-102941",
+            "severity": "HIGH",
+            "pkg": "github.com/gomarkdown/markdown",
+            "installed": "v0.0.0-20260411013819-759bbc3e3207",
+            "fixed": "0.0.0-20260724235538-61af6e1e6971",
+            "title": "gomarkdown/markdown IsSafeURL panics on short URLs",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102941",
+            "targets": [
+              "usr/bin/temporal"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -29656,8 +29886,8 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/yaml",
         "installed": "v5.4.53",
-        "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-        "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+        "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+        "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
         "targets": [
           "usr/share/zabbix/vendor/composer/installed.json"
@@ -29683,8 +29913,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v5.4.53",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "usr/share/zabbix/vendor/composer/installed.json"
@@ -29710,8 +29940,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v5.4.53",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "usr/share/zabbix/vendor/composer/installed.json"
@@ -29737,8 +29967,8 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v5.4.53",
-            "fixed": "5.4.0, 6.4.45, 8.1.6, 5.0.0, 6.4.0, 7.3.0, 3.0.0, 4.0.0, 5.3.0, 5.4.54, 7.1.0, 7.4.18, 8.1.0, 5.1.0, 6.1.0, 6.2.0, 6.3.0, 7.2.0, 7.4.0, 5.2.0",
-            "title": "CVE-2026-109413: Unbounded Recursion in the YAML Inline Lexer Lets a Single Document Crash the Process",
+            "fixed": "7.4.0, 7.4.18, 5.0.0, 5.4.54, 6.1.0, 6.2.0, 6.3.0, 8.1.6, 3.0.0, 5.1.0, 5.3.0, 6.4.45, 8.1.0, 5.2.0, 6.4.0, 7.1.0, 7.2.0, 4.0.0, 5.4.0, 7.3.0",
+            "title": "In Symfony YAML prior to versions5.4.54,6.4.45,7.4.18, and8.1.6,Yaml\\P ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-109413",
             "targets": [
               "usr/share/zabbix/vendor/composer/installed.json"
