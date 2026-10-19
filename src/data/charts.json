@@ -408,11 +408,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.42",
+    "chartVersion": "0.1.43",
     "appVersion": "2026.8.4",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a 0-CVE image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
-    "imageDigest": "sha256:fb4f9adb43e919618d73510a1dd3884c18bcc15f0c73fe3bcf14a2be3b6adb83",
+    "imageDigest": "sha256:061a420dc091788084deed24168a0292857b4c0295cb12dd4c2a0f4445e8ffca",
     "repositoryID": "50bb4aa5-5b51-4158-bafa-3e0a9204ef5b",
     "port": 80,
     "upstream": "https://goauthentik.io",
@@ -420,7 +420,7 @@
     "images": [
       {
         "name": "authentik",
-        "image": "ghcr.io/quenchworks/images/authentik@sha256:fb4f9adb43e919618d73510a1dd3884c18bcc15f0c73fe3bcf14a2be3b6adb83"
+        "image": "ghcr.io/quenchworks/images/authentik@sha256:061a420dc091788084deed24168a0292857b4c0295cb12dd4c2a0f4445e8ffca"
       },
       {
         "name": "postgresql",
@@ -1165,7 +1165,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.43",
+    "chartVersion": "0.0.44",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, 0-CVE image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -1175,7 +1175,7 @@
     "images": [
       {
         "name": "coolify-app",
-        "image": "ghcr.io/quenchworks/images/coolify-app@sha256:148a23e86141ab24a9cf32bccaec9767f9d393d436a6d8a1cf89a7b68ca55bd7"
+        "image": "ghcr.io/quenchworks/images/coolify-app@sha256:e066fd657105521cc75f337c9627f7cf52cd0e8cf74d0d4c4eb6198b70cce066"
       },
       {
         "name": "coolify-realtime",
@@ -3039,11 +3039,11 @@
     "tier": "standard",
     "license": "GPL-2.0+",
     "licenseClean": "clean",
-    "chartVersion": "0.0.9",
+    "chartVersion": "0.0.10",
     "appVersion": "6.1.4",
     "description": "Hardened Joomla CMS (PHP-FPM + nginx) on a 0-CVE nonroot image, installed by its CLI installer into a bundled MariaDB.",
     "imageRepository": "ghcr.io/quenchworks/images/joomla",
-    "imageDigest": "sha256:490e8554e5bd160229318124eb575ffb238aaca80822850db5804d5711279ec5",
+    "imageDigest": "sha256:fd58dd0c4c2623ebc64cfd6149dd16b6e8ec0330197de2f9309bf2855b5d9f9e",
     "repositoryID": "871dd6bc-43ac-44ea-8fd2-4d12db07c860",
     "port": 8080,
     "upstream": "https://www.joomla.org",
@@ -3051,7 +3051,7 @@
     "images": [
       {
         "name": "joomla",
-        "image": "ghcr.io/quenchworks/images/joomla@sha256:490e8554e5bd160229318124eb575ffb238aaca80822850db5804d5711279ec5"
+        "image": "ghcr.io/quenchworks/images/joomla@sha256:fd58dd0c4c2623ebc64cfd6149dd16b6e8ec0330197de2f9309bf2855b5d9f9e"
       },
       {
         "name": "mariadb",
@@ -4072,11 +4072,11 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "4.7.3",
     "description": "Mastodon, the federated social network server: web, sidekiq and streaming on QuenchWorks images, with the bundled PostgreSQL and Valkey (or external ones), the schema prepared on every start, media on a PVC, and the Rails secrets generated once and kept across upgrades. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mastodon",
-    "imageDigest": "sha256:c40dce473c71c463692369f961907050149fcae1bf600f3a08f222d06774da0d",
+    "imageDigest": "sha256:82a16c151e33b4420ac88c61f91532dac0373a4715b78f380cf9ea8f2dff3a18",
     "repositoryID": "6d89ce95-fcaf-4acc-9bd0-5c80c92ea795",
     "port": 3000,
     "upstream": "https://joinmastodon.org",
@@ -4084,7 +4084,7 @@
     "images": [
       {
         "name": "mastodon",
-        "image": "ghcr.io/quenchworks/images/mastodon@sha256:c40dce473c71c463692369f961907050149fcae1bf600f3a08f222d06774da0d"
+        "image": "ghcr.io/quenchworks/images/mastodon@sha256:82a16c151e33b4420ac88c61f91532dac0373a4715b78f380cf9ea8f2dff3a18"
       },
       {
         "name": "mastodon-streaming",
@@ -4183,11 +4183,11 @@
     "tier": "standard",
     "license": "GPL-2.0+",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "1.46.2",
     "description": "Hardened MediaWiki (PHP-FPM + nginx) on a 0-CVE nonroot image. Installs its schema on first start, into SQLite by default or an external MySQL or PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/mediawiki",
-    "imageDigest": "sha256:a2f149d40c52850b72e47b40aeea23b3647ce72d258b4a79f1de1c600862402f",
+    "imageDigest": "sha256:f6dbb4f8477f31995493bad08b91ca1f06d89d94e0aecf6df73ecb8efb90594c",
     "repositoryID": "e2891daf-7b8a-47c2-8334-4e91e6f30b79",
     "port": 8080,
     "upstream": "https://www.mediawiki.org",
@@ -4195,7 +4195,7 @@
     "images": [
       {
         "name": "mediawiki",
-        "image": "ghcr.io/quenchworks/images/mediawiki@sha256:a2f149d40c52850b72e47b40aeea23b3647ce72d258b4a79f1de1c600862402f"
+        "image": "ghcr.io/quenchworks/images/mediawiki@sha256:f6dbb4f8477f31995493bad08b91ca1f06d89d94e0aecf6df73ecb8efb90594c"
       }
     ]
   },
@@ -5514,11 +5514,11 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "5.2.3",
     "description": "Hardened phpMyAdmin (PHP-FPM + nginx) on a 0-CVE nonroot image — a web UI for the MySQL/MariaDB servers you already run, with an optional bundled MariaDB.",
     "imageRepository": "ghcr.io/quenchworks/images/phpmyadmin",
-    "imageDigest": "sha256:6a013ebf97fd154aed64059139fcceff311acacd8567a504bc1581890a0dbe1a",
+    "imageDigest": "sha256:9824396c5c3935ca0888e71d30044efb7933e5ab642c908d0f6c2eaa64e7e384",
     "repositoryID": "5dcd2dc8-2d37-4a92-a1a7-d8d1a885ca54",
     "port": 8080,
     "upstream": "https://www.phpmyadmin.net",
@@ -5526,7 +5526,7 @@
     "images": [
       {
         "name": "phpmyadmin",
-        "image": "ghcr.io/quenchworks/images/phpmyadmin@sha256:6a013ebf97fd154aed64059139fcceff311acacd8567a504bc1581890a0dbe1a"
+        "image": "ghcr.io/quenchworks/images/phpmyadmin@sha256:9824396c5c3935ca0888e71d30044efb7933e5ab642c908d0f6c2eaa64e7e384"
       },
       {
         "name": "mariadb",
@@ -6605,18 +6605,18 @@
     "tier": "low",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "2026.3.3",
     "description": "High-throughput, low-latency wide-column store, API-compatible with Apache Cassandra and DynamoDB. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/scylladb",
-    "imageDigest": "sha256:b63d0491719160c2b72e575b696d57d57f27235c2e6249d5e10022bb3459b4eb",
+    "imageDigest": "sha256:0d3a444b548c8915d5ff122e4ef860f9e199ce78bd827df797e9e510bf82fafd",
     "repositoryID": "c7b3870a-4c0f-47a7-a129-f34c038e1614",
     "upstream": "https://github.com/scylladb/scylladb",
     "chartRef": "oci://ghcr.io/quenchworks/charts/scylladb",
     "images": [
       {
         "name": "scylladb",
-        "image": "ghcr.io/quenchworks/images/scylladb@sha256:b63d0491719160c2b72e575b696d57d57f27235c2e6249d5e10022bb3459b4eb"
+        "image": "ghcr.io/quenchworks/images/scylladb@sha256:0d3a444b548c8915d5ff122e4ef860f9e199ce78bd827df797e9e510bf82fafd"
       }
     ]
   },
@@ -7084,7 +7084,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.0.0",
     "description": "Admission-time supply-chain control: Kyverno admits only QuenchWorks images signed by the QuenchWorks build workflows (cosign keyless, checked against Sigstore) in the namespaces you label, and trivy-operator scans what runs. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "ab2d955a-bb77-4e26-bdda-c9c058646097",
@@ -7106,11 +7106,11 @@
       },
       {
         "name": "trivy-operator",
-        "image": "ghcr.io/quenchworks/images/trivy-operator@sha256:22d4dd8a873268856b97f0bad5a2896f0d6d1d6571a153f6f5e016b064205328"
+        "image": "ghcr.io/quenchworks/images/trivy-operator@sha256:e940e0f7ada04995870cbf650ac06a52b2840faafb7820627c32515cd794f77a"
       },
       {
         "name": "trivy-scanner",
-        "image": "ghcr.io/quenchworks/images/trivy-scanner:0.74.0"
+        "image": "ghcr.io/quenchworks/images/trivy-scanner:0.75.0@sha256:6e2175bd0471799e6e6aee707dedbd3ba9cff5ba3613f1c3688c958146dd5a94"
       }
     ],
     "upstreams": [
