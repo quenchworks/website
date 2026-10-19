@@ -733,6 +733,29 @@
     ]
   },
   {
+    "slug": "camel-k",
+    "name": "camel-k",
+    "category": "Workflow",
+    "summary": "Apache Camel K, the Kubernetes operator that builds and runs Camel integrations (Integration, Pipe and Kamelet CRDs) as native cloud workloads. kamel built from source on Wolfi OpenJDK 17 and Maven 3.9, so integration builds run on a scanned toolchain.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "2.11.0",
+    "description": "Apache Camel K operator: build and run Camel integrations on Kubernetes from CRDs (Integration, Pipe, Kamelet, IntegrationPlatform). Integration builds run inside the operator on the image's Wolfi OpenJDK 17 and Maven 3.9 and push to the registry you configure. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/camel-k",
+    "imageDigest": "sha256:00f444c182ff344b015964553cfa2b78139d870e1274471df9b6d0eb097f4b15",
+    "repositoryID": "cadb2d5b-8a9b-427c-b3c4-64b47e6f7d0d",
+    "upstream": "https://camel.apache.org/camel-k/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/camel-k",
+    "images": [
+      {
+        "name": "camel-k",
+        "image": "ghcr.io/quenchworks/images/camel-k@sha256:00f444c182ff344b015964553cfa2b78139d870e1274471df9b6d0eb097f4b15"
+      }
+    ]
+  },
+  {
     "slug": "cassandra",
     "name": "Cassandra",
     "category": "Wide-column",
@@ -6869,6 +6892,34 @@
       {
         "name": "csi-livenessprobe",
         "image": "ghcr.io/quenchworks/images/csi-livenessprobe@sha256:7ec2df136e30883a869c957ab2d043ce5402d65abe02475395ed4ae8e9b7a6d7"
+      }
+    ]
+  },
+  {
+    "slug": "selenium-grid",
+    "name": "selenium-grid",
+    "category": "Datastore",
+    "summary": "Hardened selenium-grid image, built from source on Wolfi.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.2",
+    "appVersion": "4.51.0",
+    "description": "Selenium Grid 4, the WebDriver grid for browser automation: a hub (router, distributor, session queue, event bus) and headless Firefox nodes that register with it. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/selenium-server",
+    "imageDigest": "sha256:558c0a80e50e568d58764279defde74293a6f5bf9ab836f430efaed96d9d7db5",
+    "repositoryID": "6b0a2431-1ecd-4705-97f7-02eea81718b2",
+    "port": 4444,
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/selenium-grid",
+    "images": [
+      {
+        "name": "selenium-server",
+        "image": "ghcr.io/quenchworks/images/selenium-server@sha256:558c0a80e50e568d58764279defde74293a6f5bf9ab836f430efaed96d9d7db5"
+      },
+      {
+        "name": "selenium-node-firefox",
+        "image": "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:2b0a29eda53ab7605f3c6dfd7bf33d66e14a13262f27be3b9726a3a292027d06"
       }
     ]
   },
