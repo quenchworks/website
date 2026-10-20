@@ -52,7 +52,8 @@ const BTN_IDLE = 'border-line bg-graphite text-ash hover:border-paper/40 hover:t
 const BTN_DISABLED = 'border-line/60 bg-graphite/50 text-ash/40 cursor-not-allowed';
 ---
 
-<header class="max-w-2xl" data-pagefind-body data-pagefind-meta={`title:${heading},type:${isImages ? 'Images' : 'Charts'}`}>
+<header class="max-w-2xl" data-pagefind-body data-pagefind-meta={`title:${heading}`}>
+    <span hidden data-pagefind-meta={`type:${isImages ? 'Images' : 'Charts'}`}></span>
   <div class="flex flex-wrap items-center gap-3">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">{isImages ? 'Images' : 'Charts'}</p>
     <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">

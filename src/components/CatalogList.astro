@@ -107,7 +107,8 @@ const dataset = all.map((e) => {
 // a data attribute the script reads).
 ---
 
-<header class="max-w-2xl" data-pagefind-body data-pagefind-meta={`title:${headerTitle},type:${headerType}`}>
+<header class="max-w-2xl" data-pagefind-body data-pagefind-meta={`title:${headerTitle}`}>
+    <span hidden data-pagefind-meta={`type:${headerType}`}></span>
   <div class="flex flex-wrap items-center gap-3">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">{headerType}</p>
     <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">

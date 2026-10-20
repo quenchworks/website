@@ -132,7 +132,8 @@ const ld = {
   <Header />
   {/* Only the newest version is indexed: ~2,000 older-version pages per locale
       doubled the Pagefind fragments past Cloudflare Pages' 20,000-file cap. */}
-  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body={isLatest ? '' : undefined} data-pagefind-meta={isLatest ? `title:${entry.name} chart,type:Chart` : undefined}>
+  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body={isLatest ? '' : undefined} data-pagefind-meta={isLatest ? `title:${entry.name} chart` : undefined}>
+    {isLatest && <span hidden data-pagefind-meta="type:Chart"></span>}
     <nav class="flex flex-wrap items-center gap-2 font-mono text-xs uppercase tracking-widest text-ash" aria-label="Breadcrumb">
       <a href={l('/charts')} class="transition-colors hover:text-paper">{t('detail.breadcrumb.charts')}</a>
       <span class="text-line" aria-hidden="true">/</span>
