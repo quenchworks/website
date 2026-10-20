@@ -402,7 +402,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "ML pipeline orchestration on Kubernetes."
+    "note": "ML pipeline orchestration on Kubernetes. Partly built 2026-10-20 (2.17.2): api-server, persistence agent, scheduled workflow controller, driver, launcher and frontend images ship 0-CVE (images 405e86c8). The chart is held: v2 runs need the ML Metadata store server, whose binary (Wolfi 1.17.1, upstream 1.21.0) statically links sqlite 3.39.2, zlib 1.2.12, gRPC 1.46.3, MariaDB Connector/C 3.0.8 and libpq 12.1, invisible to the scanner. Unblock: an MLMD release on current libraries, or our own Bazel build against Wolfi system libraries."
   },
   {
     "name": "TensorFlow Serving",
