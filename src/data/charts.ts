@@ -30,6 +30,7 @@ export interface ChartEntry {
   components?: string[]; // for stacks: the bundled component chart names
   images?: { name: string; image: string }[]; // every image the chart deploys (stacks bundle many)
   upstreams?: string[]; // for stacks: the bundled components' upstream projects
+  valuesKeys?: string[]; // top- and second-level values.yaml keys, for search
 }
 
 export const ghcr = 'ghcr.io/quenchworks';

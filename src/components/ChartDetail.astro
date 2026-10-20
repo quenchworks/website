@@ -103,6 +103,17 @@ const deployed = deployRefs.map(({ image: ref }) => {
 
 const titleSuffix = isLatest ? '' : ` ${version}`;
 
+// Values keys grouped under their top-level key (auth: enabled existingSecret). The
+// leaves stand as bare words because Pagefind skips the parts of auth.existingSecret
+// whenever another page has the bare word, so "existingSecret" would miss most charts.
+const valuesGroups = new Map<string, string[]>();
+for (const k of entry.valuesKeys ?? []) {
+  const dot = k.indexOf('.');
+  const top = dot < 0 ? k : k.slice(0, dot);
+  if (!valuesGroups.has(top)) valuesGroups.set(top, []);
+  if (dot >= 0) valuesGroups.get(top)!.push(k.slice(dot + 1));
+}
+
 const ld = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -312,6 +323,16 @@ const ld = {
         {isLatest && <div class="flex justify-between gap-3"><dt class="text-ash">{t('chart.field.valuesSchema')}</dt><dd class="font-medium">{ah?.hasValuesSchema ? t('chart.field.yes') : t('chart.field.no')}</dd></div>}
         {releaseDate && <div class="flex justify-between gap-3"><dt class="text-ash">{isLatest ? t('chart.field.lastPublished') : t('chart.field.released')}</dt><dd class="font-medium">{releaseDate}</dd></div>}
       </dl>
+
+      {/* The values keys make the chart findable in search by the setting it exposes. */}
+      {isLatest && entry.valuesKeys?.length && (
+        <details class="mt-5">
+          <summary class="cursor-pointer font-mono text-xs uppercase tracking-widest text-ash hover:text-paper">{t('chart.valuesKeys.heading')}</summary>
+          <ul class="mt-2 space-y-1 break-words font-mono text-[11px] leading-relaxed text-ash" dir="ltr">
+            {[...valuesGroups].map(([top, kids]) => <li><span class="text-paper">{top}</span>{kids.length ? `: ${kids.join(' ')}` : ''}</li>)}
+          </ul>
+        </details>
+      )}
 
       <p class="mt-5 font-mono text-xs uppercase tracking-widest text-ash">{t('chart.verify.heading')}</p>
       <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code>cosign verify {ghcr}/charts/{entry.slug}:{version} \

@@ -85,6 +85,19 @@ function deriveLicenseClean(license) {
   return 'clean'; // Apache/BSD/MIT/PostgreSQL/MPL/GPL-2.0 etc.
 }
 
+// Top- and second-level values.yaml keys (persistence, persistence.size), so the
+// site search finds a chart by the setting it exposes. Capped to keep Pagefind small.
+function valuesKeys(values) {
+  const isMap = (v) => v && typeof v === 'object' && !Array.isArray(v);
+  if (!isMap(values)) return undefined;
+  const keys = [];
+  for (const [k, v] of Object.entries(values)) {
+    keys.push(k);
+    if (isMap(v)) for (const c of Object.keys(v)) keys.push(`${k}.${c}`);
+  }
+  return keys.length ? [...new Set(keys)].slice(0, 300) : undefined;
+}
+
 function servicePort(values) {
   const svc = values?.service;
   if (svc && (typeof svc.port === 'number' || typeof svc.port === 'string')) return svc.port;
@@ -276,6 +289,7 @@ for (const slug of chartDirs.sort()) {
     components: components && components.length ? components : undefined,
     images: chartImages && chartImages.length ? chartImages : undefined,
     upstreams: upstreams && upstreams.length ? upstreams : undefined,
+    valuesKeys: valuesKeys(valuesYaml),
   };
   if (licenseClean === 'caution') {
     entry.caution = true;
