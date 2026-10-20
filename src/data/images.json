@@ -5782,6 +5782,162 @@
     "image": "ghcr.io/quenchworks/images/keycloak"
   },
   {
+    "slug": "kfp-api-server",
+    "name": "kfp-api-server",
+    "category": "Machine learning & AI",
+    "summary": "The Kubeflow Pipelines API server, which stores pipelines, runs, experiments and recurring runs in MySQL and compiles each run to an Argo Workflow. Built from source, linking Wolfi's SQLite instead of a vendored copy.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.17.2",
+    "versions": [
+      {
+        "version": "2.17.2",
+        "size": "34.3 MB",
+        "published": "2026-10-20T09:21:35Z",
+        "digest": "sha256:8a9e6395124a5aca87ddd6cb8fc4f32fb7b90a4674d1a0804c5e4f3c8358fe69"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.kubeflow.org/docs/components/pipelines/",
+    "source": "https://github.com/kubeflow/pipelines",
+    "image": "ghcr.io/quenchworks/images/kfp-api-server"
+  },
+  {
+    "slug": "kfp-driver",
+    "name": "kfp-driver",
+    "category": "Machine learning & AI",
+    "summary": "The Kubeflow Pipelines v2 driver, the step Argo runs before every task to resolve inputs, check the cache and record executions in ML Metadata. Built from source.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.17.2",
+    "versions": [
+      {
+        "version": "2.17.2",
+        "size": "26.9 MB",
+        "published": "2026-10-20T09:21:06Z",
+        "digest": "sha256:a6b73302d239d62d06997b80fccf610aec4f7c05a31d31ccb7c606c33b0b57d8"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.kubeflow.org/docs/components/pipelines/",
+    "source": "https://github.com/kubeflow/pipelines",
+    "image": "ghcr.io/quenchworks/images/kfp-driver"
+  },
+  {
+    "slug": "kfp-frontend",
+    "name": "kfp-frontend",
+    "category": "Machine learning & AI",
+    "summary": "The Kubeflow Pipelines UI, the React client and the Node server that serves it and proxies the API server, artifacts and pod logs. Built from source with its npm dependencies pinned to fixed releases.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.17.2",
+    "versions": [
+      {
+        "version": "2.17.2",
+        "size": "70.1 MB",
+        "published": "2026-10-20T09:20:17Z",
+        "digest": "sha256:2201857fad70f5da2790e3e2b6cb32e8fa38d31f88c0d6323e4889e316de1b58"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.kubeflow.org/docs/components/pipelines/",
+    "source": "https://github.com/kubeflow/pipelines",
+    "image": "ghcr.io/quenchworks/images/kfp-frontend"
+  },
+  {
+    "slug": "kfp-launcher",
+    "name": "kfp-launcher",
+    "category": "Machine learning & AI",
+    "summary": "The Kubeflow Pipelines v2 launcher, a static binary copied into every task container that runs the user command and moves input and output artifacts through the object store. Built from source.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.17.2",
+    "versions": [
+      {
+        "version": "2.17.2",
+        "size": "25.6 MB",
+        "published": "2026-10-20T09:20:53Z",
+        "digest": "sha256:a3b08c4f2a47f8ae49e55378ceeab16df40a8e8978dd66f150b9f777be37f130"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.kubeflow.org/docs/components/pipelines/",
+    "source": "https://github.com/kubeflow/pipelines",
+    "image": "ghcr.io/quenchworks/images/kfp-launcher"
+  },
+  {
+    "slug": "kfp-persistence-agent",
+    "name": "kfp-persistence-agent",
+    "category": "Machine learning & AI",
+    "summary": "The Kubeflow Pipelines persistence agent, which watches Argo Workflows and ScheduledWorkflows and reports run state back to the API server. Built from source.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.17.2",
+    "versions": [
+      {
+        "version": "2.17.2",
+        "size": "15.6 MB",
+        "published": "2026-10-20T09:20:37Z",
+        "digest": "sha256:05c390a1b7ab8b8e261cdf62b49d51db995dd782e8591da4c477df45685168c0"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.kubeflow.org/docs/components/pipelines/",
+    "source": "https://github.com/kubeflow/pipelines",
+    "image": "ghcr.io/quenchworks/images/kfp-persistence-agent"
+  },
+  {
+    "slug": "kfp-scheduled-workflow-controller",
+    "name": "kfp-scheduled-workflow-controller",
+    "category": "Machine learning & AI",
+    "summary": "The Kubeflow Pipelines ScheduledWorkflow controller, which starts recurring and cron-scheduled pipeline runs. Built from source.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.17.2",
+    "versions": [
+      {
+        "version": "2.17.2",
+        "size": "18.4 MB",
+        "published": "2026-10-20T09:20:55Z",
+        "digest": "sha256:9b654c440fdfc10c310917a86ded25898c32154a57b9252eb28c99e26209aaf9"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://www.kubeflow.org/docs/components/pipelines/",
+    "source": "https://github.com/kubeflow/pipelines",
+    "image": "ghcr.io/quenchworks/images/kfp-scheduled-workflow-controller"
+  },
+  {
     "slug": "kgateway",
     "name": "kgateway",
     "category": "Gateway",
