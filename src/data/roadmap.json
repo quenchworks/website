@@ -482,7 +482,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Alibaba's Istio+Envoy-based gateway. Two components (higress-core, higress-console) and it inherits Istio/Envoy build weight."
+    "note": "Alibaba's Istio+Envoy-based gateway. Two components (higress-core, higress-console) and it inherits Istio/Envoy build weight. Measured 2026-10-20 at v2.2.5: the gateway image runs Higress's own patched Envoy (a Bazel build, hours per arch, past the CI budget; same wall as Cilium Envoy) plus pilot-agent, and scans 163 Go findings; the controller scans 85 Go findings on top of 446 Ubuntu ones. The Go parts are buildable; the patched Envoy is the hold."
   },
   {
     "name": "Apache ShenYu",
