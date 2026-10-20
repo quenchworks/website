@@ -2655,6 +2655,84 @@
     "image": "ghcr.io/quenchworks/images/dapr"
   },
   {
+    "slug": "datahub-frontend",
+    "name": "datahub-frontend",
+    "category": "Analytical",
+    "summary": "DataHub frontend, the Play server for the DataHub React UI, login and GraphQL proxy. Upstream's release taken by digest and repackaged on a Wolfi JRE 25 with fixed jars; ships no default login (the chart provides the admin credential).",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.7.0.1",
+    "versions": [
+      {
+        "version": "1.7.0.1",
+        "size": "636.3 MB",
+        "published": "2026-10-20T11:02:46Z",
+        "digest": "sha256:f417ca1b3784a2c2fab1027a710494d05227920174fae0bb49dfe87ab114fa2c"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/datahub-project/datahub",
+    "source": "https://hub.docker.com/r/acryldata/datahub-frontend-react",
+    "image": "ghcr.io/quenchworks/images/datahub-frontend"
+  },
+  {
+    "slug": "datahub-gms",
+    "name": "datahub-gms",
+    "category": "Analytical",
+    "summary": "DataHub GMS, the metadata service of the DataHub data catalog: REST, OpenAPI and GraphQL APIs with the Kafka consumers embedded. Upstream's release war taken by digest and repackaged on a Wolfi JRE 25, with the vulnerable jars swapped and the jackson copies inside hazelcast and auth-api rebuilt from fixed releases.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.7.0.1",
+    "versions": [
+      {
+        "version": "1.7.0.1",
+        "size": "639.9 MB",
+        "published": "2026-10-20T10:54:52Z",
+        "digest": "sha256:5cb81778e07034d80c66cdbf95edbd48b8ddd9671f3cfa53f68fbc03dda3d615"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/datahub-project/datahub",
+    "source": "https://hub.docker.com/r/acryldata/datahub-gms",
+    "image": "ghcr.io/quenchworks/images/datahub-gms"
+  },
+  {
+    "slug": "datahub-upgrade",
+    "name": "datahub-upgrade",
+    "category": "Analytical",
+    "summary": "DataHub upgrade job, whose SystemUpdate task creates the SQL table, Kafka topics and search indices a fresh DataHub install needs. Upstream's release jar taken by digest and repackaged on a Wolfi JRE 25 with fixed jars, including the jackson copies bundled in hazelcast, parquet and auth-api.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "1.7.0.1",
+    "versions": [
+      {
+        "version": "1.7.0.1",
+        "size": "674.7 MB",
+        "published": "2026-10-20T10:47:43Z",
+        "digest": "sha256:7d4452a171f27fc059ff306181ea22c8aa13fb057579e76842788d41095a1576"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/datahub-project/datahub",
+    "source": "https://hub.docker.com/r/acryldata/datahub-upgrade",
+    "image": "ghcr.io/quenchworks/images/datahub-upgrade"
+  },
+  {
     "slug": "deno",
     "name": "deno",
     "category": "Language runtime",
