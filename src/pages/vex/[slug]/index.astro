@@ -1,52 +1,9 @@
 ---
-import Base from '../../../layouts/Base.astro';
-import Header from '../../../components/Header.astro';
-import Footer from '../../../components/Footer.astro';
-import { vex, productLabel, justificationLabel, type VexEntry } from '../../../data/vex';
+import VexDetail from '../../../components/VexDetail.astro';
+import { vex, type VexEntry } from '../../../data/vex';
 
 export const getStaticPaths = () => vex.map((e) => ({ params: { slug: e.slug }, props: { e } }));
-
 const { e } = Astro.props as { e: VexEntry };
 ---
 
-<Base
-  title={`${e.name} VEX · QuenchWorks`}
-  description={`${e.statements.length} OpenVEX statement(s) for the QuenchWorks ${e.name} image, each with the evidence that rules the finding out.`}
->
-  <Header />
-  <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta={`title:${e.name} VEX`}>
-    <p class="font-mono text-xs uppercase tracking-widest text-ash">
-      <a href="/vex/" class="transition-colors duration-200 hover:text-paper">VEX</a>
-      <span class="text-line" aria-hidden="true"> / </span>{e.name}
-    </p>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{e.name}</h1>
-    <p class="mt-4 leading-relaxed text-ash">
-      {e.statements.length} {e.statements.length === 1 ? 'statement' : 'statements'}, issued {e.date}.
-      Each one is a scanner finding that is not exploitable in this image, and why.
-    </p>
-    <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
-      <a href={`/images/${e.slug}`} class="rounded-lg border border-line px-3.5 py-1.5 text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper">Image</a>
-      <a href={`/${e.path}`} class="rounded-lg border border-line px-3.5 py-1.5 text-ash transition-colors duration-200 hover:border-paper/40 hover:text-paper">OpenVEX JSON</a>
-    </div>
-    <p class="mt-3 break-all font-mono text-[11px] text-ash">@id {e.id}</p>
-
-    <ol class="mt-10 space-y-4">
-      {e.statements.map((s) => (
-        <li class="rounded-xl border border-line bg-graphite p-5">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <h2 class="font-mono text-sm font-semibold text-paper">{s.vulnerability.name}</h2>
-            <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-              {s.status.replaceAll('_', ' ')}{s.justification ? ` · ${justificationLabel(s.justification)}` : ''}
-            </span>
-          </div>
-          <ul class="mt-3 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
-            {s.products.map((p) => <li class="rounded bg-ink px-2 py-0.5" title={p['@id']}>{productLabel(p['@id'])}</li>)}
-          </ul>
-          {s.impact_statement && <p class="mt-4 text-sm leading-relaxed text-ash">{s.impact_statement}</p>}
-          {s.action_statement && <p class="mt-3 text-sm leading-relaxed text-ash">{s.action_statement}</p>}
-        </li>
-      ))}
-    </ol>
-  </main>
-  <Footer />
-</Base>
+<VexDetail lang="en" e={e} />

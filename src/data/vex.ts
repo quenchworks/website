@@ -3,6 +3,7 @@
 // raw documents served at each @id (src/pages/vex/[...path].ts).
 import raw from './vex.json';
 import images from './images.json';
+import { PAGE_SIZE } from './images';
 
 export interface VexStatement {
   vulnerability: { name: string };
@@ -32,6 +33,9 @@ export const vex: VexEntry[] = (raw as { slug: string; path: string; doc: any }[
   statements: v.doc.statements ?? [],
 }));
 
+// Same 12-card pages as /images and /charts: page 1 at /vex, pages 2..N at /vex/page/<n>.
+export const vexPages = Math.max(1, Math.ceil(vex.length / PAGE_SIZE));
+
 export const statementCount = vex.reduce((n, v) => n + v.statements.length, 0);
 
 /** "pkg:cargo/russh@0.64.1" -> "russh 0.64.1"; anything else as written. */
@@ -39,5 +43,3 @@ export const productLabel = (purl: string) => {
   const m = purl.match(/^pkg:[^/]+\/(?:[^@]+\/)?([^@/]+)@(.+)$/);
   return m ? `${decodeURIComponent(m[1])} ${decodeURIComponent(m[2])}` : purl;
 };
-
-export const justificationLabel = (j?: string) => (j ? j.replaceAll('_', ' ') : '');

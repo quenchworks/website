@@ -1,0 +1,11 @@
+---
+import VexIndex from '../../../../components/VexIndex.astro';
+import { vexPages } from '../../../../data/vex';
+
+// Pages 2..N; page 1 is /vex itself.
+export const getStaticPaths = () =>
+  Array.from({ length: vexPages - 1 }, (_, i) => ({ params: { page: String(i + 2) } }));
+const current = Number(Astro.params.page);
+---
+
+<VexIndex lang="ar" current={current} />
