@@ -367,6 +367,12 @@ const vex = readdirSync(appsDir)
   .filter(Boolean)
   .sort((a, b) => a.slug.localeCompare(b.slug));
 writeFileSync(resolve(outDir, 'vex.json'), JSON.stringify(vex, null, 2) + '\n');
+// The raw documents have no extension; mark exactly those paths as JSON (a /vex/* rule would
+// also hit the HTML pages at /vex/ and /vex/<slug>/).
+writeFileSync(
+  resolve(websiteRoot, 'public', '_headers'),
+  vex.map((v) => `/${v.path}\n  Content-Type: application/json; charset=utf-8\n`).join(''),
+);
 
 const avail = images.filter((i) => i.status === 'available').length;
 const cautionCount = images.filter((i) => i.caution).length;
