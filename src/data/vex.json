@@ -572,6 +572,32 @@
     }
   },
   {
+    "slug": "ghost",
+    "path": "vex/ghost/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/ghost/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-118764"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/minimatch@3.1.5"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: minimatch before 11.0.1 expands attacker-controlled **/.. segments in firstPhasePreProcess() and compares them pairwise in secondPhasePreProcess(), run at optimizationLevel 2 or higher. Those functions and the optimizationLevel option arrived with the minimatch 7+ rewrite; 3.1.5 is the old single-file implementation. Verified 2026-11-01 on the npm tarball minimatch-3.1.5.tgz: grep -c 'firstPhasePreProcess\\|optimizationLevel' package/minimatch.js returned 0. The 10.x copies in this image are overridden to 11.0.1 instead (melange.yaml)."
+        }
+      ]
+    }
+  },
+  {
     "slug": "grafana",
     "path": "vex/grafana/2026-08-27",
     "doc": {
@@ -632,6 +658,58 @@
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
           "impact_statement": "PROVEN false-positive: the fix is in the pinned commit. Alloy 1.20.0 pins Loki by commit 5cf8c23a258d (2026-09-15, from Loki main), which Go renders as the pseudo-version v3.0.0-20260915071729-5cf8c23a258d; Trivy compares its v3.0.0 base against the advisory's '< 3.6.4' and flags it. The fix (GHSA-497x-rrr9-68jp, double-encoded path traversal in the Ruler API namespace) is grafana/loki PR #20437, merged to main on 2026-01-15 as 9f5d215c07344d1ff93821b1bfd4c37b23e885c1 and backported to release-3.6.x as #20463 for the 3.6.4 tag. Verified with the GitHub compare API rather than by date: 9f5d215c...5cf8c23a258d is status=ahead, ahead_by=2097, behind_by=0, so the pinned commit contains the fix. v3.6.4 itself shows as diverged only because it lives on the release branch. Scoped to this exact pseudo-version: a different Loki commit must be re-checked."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "grist",
+    "path": "vex/grist/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/grist/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-118764"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/minimatch@3.1.5"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: minimatch before 11.0.1 expands attacker-controlled **/.. segments in firstPhasePreProcess() and compares them pairwise in secondPhasePreProcess(), run at optimizationLevel 2 or higher. Those functions and the optimizationLevel option arrived with the minimatch 7+ rewrite; 3.1.5 is the old single-file implementation. Verified 2026-11-01 on the npm tarball minimatch-3.1.5.tgz: grep -c 'firstPhasePreProcess\\|optimizationLevel' package/minimatch.js returned 0. The 3.1.5 copy in grist 1.7.21 is pulled by glob 7 and readdir-glob 1.1.1 (yarn.lock)."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-118773"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/glob@10.5.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: in glob 9.0.0 to 14.0.1 the abort branches of walkCB/walkCB2/walkCBSync/walkCB2Sync (src/walker.ts) invoke callbacks without returning after an AbortSignal fires, so traversal continues past the timeout. The branches are reached only when a caller passes the signal option. In grist 1.7.21 glob 10.5.0 is required by typeorm 0.3.31 and archiver-utils 5.0.2 (yarn.lock; mocha is a dev dependency, removed by yarn install --production). typeorm calls glob.sync(dir) with no options (util/DirectoryExportedClassesLoader.js:32 and :58); archiver-utils calls glob.sync(pattern, options) in file.js:65 and the word signal appears nowhere in that package; its only consumer here, zip-stream 6.0.1, uses util.defaults, sanitizePath and dateify (index.js:62, :77, :91) and never file.expand. Grist does not depend on glob directly. Verified 2026-11-01 with grep over the npm tarballs of typeorm 0.3.31, archiver-utils 5.0.2 and zip-stream 6.0.1."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-118764"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/minimatch@9.0.9"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_cannot_be_controlled_by_adversary",
+          "impact_statement": "The advisory needs an attacker-controlled glob pattern with **/.. segments. In the grist 1.7.21 production tree minimatch 9.0.9 is reached only through glob 10.5.0 (its other dependents, typescript-estree and mocha, are dev dependencies). glob 10.5.0 is called by typeorm with the TypeORM entity, migration and subscriber globs built from a code constant in app/server/lib/dbUtils.ts:183-191 (`${codeRoot}/app/gen-server/entity/*.js` and siblings), and archiver-utils' glob path is never called (zip-stream 6.0.1 uses only defaults, sanitizePath and dateify). No request or document value reaches a glob pattern. Verified 2026-11-01 by grep over the grist v1.7.21 source and the npm tarballs of typeorm 0.3.31, archiver-utils 5.0.2 and zip-stream 6.0.1."
         }
       ]
     }
@@ -1330,13 +1408,13 @@
   },
   {
     "slug": "n8n",
-    "path": "vex/n8n/2026-10-12",
+    "path": "vex/n8n/2026-11-01",
     "doc": {
       "@context": "https://openvex.dev/ns/v0.2.0",
-      "@id": "https://quench-works.com/vex/n8n/2026-10-12",
+      "@id": "https://quench-works.com/vex/n8n/2026-11-01",
       "author": "QuenchWorks <info@quench-works.com>",
-      "timestamp": "2026-10-12T00:00:00Z",
-      "version": 1,
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 3,
       "statements": [
         {
           "vulnerability": {
@@ -1389,6 +1467,97 @@
           "status": "not_affected",
           "justification": "vulnerable_code_not_in_execute_path",
           "impact_statement": "Measured 2026-10-12 on n8n 2.40.7 (published sha256:cfb73b45). GHSA-v5rq-49vh-5v5c: parseEnv drops VISUAL, so an attacker-set VISUAL editor is not flagged and git launches it during an interactive operation. That needs a git process, and this image ships no git executable: apko.yaml installs only wolfi-baselayout, ca-certificates-bundle, tzdata, nodejs-24 and quench-n8n; the image file list (crane export) has no file named git and only ldconfig and node in /usr/bin. Verified inside the image: simpleGit().env({VISUAL}) followed by a push rejects with spawn git ENOENT; simpleGit().version() returns installed=false. n8n also never forwards caller env to git: the Git node passes a fresh object holding only GIT_TERMINAL_PROMPT and GIT_ALLOW_PROTOCOL (n8n-nodes-base 2.40.2 dist/nodes/Git/Git.node.js:490). test.sh fails the build if any executable named git appears."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-109461"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/%40azure/msal-node@5.1.5"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory (GHSA for @azure/msal-node >=5.0.0-beta.0 <7.1.0): an origin validation error in the authorization code flow can disclose parameters passed to acquireTokenByCode to an attacker-controlled endpoint; the stated workaround is to pass only the auth code to acquireTokenByCode. In n8n 2.40.7 this 5.1.5 copy is nested under node_modules/@microsoft/agents-hosting (1.6.1, pulled by @n8n/n8n-nodes-langchain 2.40.3), so only agents-hosting can load it. Its single importer is dist/src/auth/msalTokenProvider.js (require at line 11), which uses only acquireTokenByClientCredential (:228), acquireTokenOnBehalfOf (:201) and its certificate, managed-identity and agentic wrappers (:118-336). Verified 2026-11-01 on the npm tarball agents-hosting-1.6.1.tgz: grep -rlE 'acquireTokenByCode|getAuthCodeUrl|AuthorizationCodeRequest' over the package returned no file. The other msal-node copies in the image move to 7.1.0 through @azure/identity 4.14.1. No agents-hosting release moves past msal-node 5.6.0 (1.9.1, 2026-11-01)."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115905"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@8.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipStreamReader (src/read/stream.rs) extracts by Local File Header names while ZipArchive trusts the Central Directory; exploitation needs the streaming reader, which agent-browser never uses. zip 8.2.0 is linked only into the prebuilt agent-browser binaries (opt/n8n/node_modules/agent-browser/bin/agent-browser-linux-x64 and -arm64, agent-browser 0.26.0, pulled by @n8n/mcp-browser). In the v0.26.0 source (tag 717d1b09e1c841a4c0206033886a1a861e3ca5d9) cli/Cargo.toml:31 declares zip 8.2.0 with default-features = false and features = [\"deflate\"], and cli/Cargo.lock lists agent-browser as its only dependent, so no other crate turns on more features. The crate is used only by extract_zip in cli/src/install.rs:334-380 (the `agent-browser install` Chrome download): zip::ZipArchive::new over an in-memory cursor (:340), then by_index (:344) with enclosed_name() and its own starts_with(dest) containment check. Verified 2026-11-01: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|by_index|by_name' cli/src returns only install.rs:340 and :344, and grep for ZipStreamReader|read_zipfile_from_stream|extract_unwrapped returns nothing. Even agent-browser 0.41.0 (newest, 2026-10-29) still locks zip 8.2.0."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115906"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@8.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: the AES entry reader (src/aes.rs) skips its HMAC check on premature EOF. That reader exists only with the aes-crypto feature, which this copy does not enable, so the AES code is not compiled in. zip 8.2.0 is linked only into the prebuilt agent-browser binaries (opt/n8n/node_modules/agent-browser/bin/agent-browser-linux-x64 and -arm64, agent-browser 0.26.0, pulled by @n8n/mcp-browser). In the v0.26.0 source (tag 717d1b09e1c841a4c0206033886a1a861e3ca5d9) cli/Cargo.toml:31 declares zip 8.2.0 with default-features = false and features = [\"deflate\"], and cli/Cargo.lock lists agent-browser as its only dependent, so no other crate turns on more features. The crate is used only by extract_zip in cli/src/install.rs:334-380 (the `agent-browser install` Chrome download): zip::ZipArchive::new over an in-memory cursor (:340), then by_index (:344) with enclosed_name() and its own starts_with(dest) containment check. Verified 2026-11-01: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|by_index|by_name' cli/src returns only install.rs:340 and :344, and grep for ZipStreamReader|read_zipfile_from_stream|extract_unwrapped returns nothing. Even agent-browser 0.41.0 (newest, 2026-10-29) still locks zip 8.2.0."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115907"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@8.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: the Shrink/Reduce/Implode decoders of the legacy-zip feature preallocate from an attacker-controlled size. legacy-zip is not enabled on this copy, so those decoders are not compiled in. zip 8.2.0 is linked only into the prebuilt agent-browser binaries (opt/n8n/node_modules/agent-browser/bin/agent-browser-linux-x64 and -arm64, agent-browser 0.26.0, pulled by @n8n/mcp-browser). In the v0.26.0 source (tag 717d1b09e1c841a4c0206033886a1a861e3ca5d9) cli/Cargo.toml:31 declares zip 8.2.0 with default-features = false and features = [\"deflate\"], and cli/Cargo.lock lists agent-browser as its only dependent, so no other crate turns on more features. The crate is used only by extract_zip in cli/src/install.rs:334-380 (the `agent-browser install` Chrome download): zip::ZipArchive::new over an in-memory cursor (:340), then by_index (:344) with enclosed_name() and its own starts_with(dest) containment check. Verified 2026-11-01: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|by_index|by_name' cli/src returns only install.rs:340 and :344, and grep for ZipStreamReader|read_zipfile_from_stream|extract_unwrapped returns nothing. Even agent-browser 0.41.0 (newest, 2026-10-29) still locks zip 8.2.0."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115908"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@8.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipArchive::extract and extract_unwrapped_root_dir validate symlink targets lexically and can write outside the extraction directory. Neither is called; agent-browser writes each entry itself after enclosed_name() and a containment check. zip 8.2.0 is linked only into the prebuilt agent-browser binaries (opt/n8n/node_modules/agent-browser/bin/agent-browser-linux-x64 and -arm64, agent-browser 0.26.0, pulled by @n8n/mcp-browser). In the v0.26.0 source (tag 717d1b09e1c841a4c0206033886a1a861e3ca5d9) cli/Cargo.toml:31 declares zip 8.2.0 with default-features = false and features = [\"deflate\"], and cli/Cargo.lock lists agent-browser as its only dependent, so no other crate turns on more features. The crate is used only by extract_zip in cli/src/install.rs:334-380 (the `agent-browser install` Chrome download): zip::ZipArchive::new over an in-memory cursor (:340), then by_index (:344) with enclosed_name() and its own starts_with(dest) containment check. Verified 2026-11-01: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|by_index|by_name' cli/src returns only install.rs:340 and :344, and grep for ZipStreamReader|read_zipfile_from_stream|extract_unwrapped returns nothing. Even agent-browser 0.41.0 (newest, 2026-10-29) still locks zip 8.2.0."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115909"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@8.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipArchive::extract preallocates a symlink target from an attacker-controlled ZIP64 size. ZipArchive::extract is never called. zip 8.2.0 is linked only into the prebuilt agent-browser binaries (opt/n8n/node_modules/agent-browser/bin/agent-browser-linux-x64 and -arm64, agent-browser 0.26.0, pulled by @n8n/mcp-browser). In the v0.26.0 source (tag 717d1b09e1c841a4c0206033886a1a861e3ca5d9) cli/Cargo.toml:31 declares zip 8.2.0 with default-features = false and features = [\"deflate\"], and cli/Cargo.lock lists agent-browser as its only dependent, so no other crate turns on more features. The crate is used only by extract_zip in cli/src/install.rs:334-380 (the `agent-browser install` Chrome download): zip::ZipArchive::new over an in-memory cursor (:340), then by_index (:344) with enclosed_name() and its own starts_with(dest) containment check. Verified 2026-11-01: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|by_index|by_name' cli/src returns only install.rs:340 and :344, and grep for ZipStreamReader|read_zipfile_from_stream|extract_unwrapped returns nothing. Even agent-browser 0.41.0 (newest, 2026-10-29) still locks zip 8.2.0."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-118764"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/minimatch@3.1.5"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: minimatch before 11.0.1 expands attacker-controlled **/.. segments in firstPhasePreProcess() and compares them pairwise in secondPhasePreProcess(), run at optimizationLevel 2 or higher. Those functions and the optimizationLevel option arrived with the minimatch 7+ rewrite; 3.1.5 is the old single-file implementation. Verified 2026-11-01 on the npm tarball minimatch-3.1.5.tgz: grep -c 'firstPhasePreProcess\\|optimizationLevel' package/minimatch.js returned 0. The minimatch 10 copies are overridden to 11.0.1 instead (melange.yaml)."
         }
       ]
     }
@@ -1636,6 +1805,58 @@
           "status": "not_affected",
           "justification": "vulnerable_code_cannot_be_controlled_by_adversary",
           "impact_statement": "CVE-2026-58494 (GHSA-4ch3-9j33-3pmj) lets a guest overwrite a host file exposed read-only in one preopened directory by hard-linking or renaming it into a second preopen that allows writes; it needs at least two preopened directories with different FilePerms. wasmtime-wasi 24.0.9 is in /opt/scylladb/libexec/scylla only for WASM user-defined functions (an experimental feature, off unless enabled). At release commit d80b3d6ca26b5457c1b59b47046fab27fa1953f3, rust/wasmtime_bindings/src/lib.rs:194 builds the only WASI context as WasiCtxBuilder::new().build_p1() with no preopened_dir, and grep -n 'preopen' over that file returns 0 matches, so a guest has no host directory capability at all and no file to link, rename or open. The recipe pins the lock per scylla build and fails on any new build until this is re-checked. Verified 2026-10-19."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "selenium-node-firefox",
+    "path": "vex/selenium-node-firefox/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/selenium-node-firefox/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115905"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@2.4.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipStreamReader (src/read/stream.rs) extracts by Local File Header names while ZipArchive trusts the Central Directory; exploitation needs the streaming reader, which geckodriver never uses. geckodriver here is Wolfi's geckodriver 0.37.1 apk (/usr/bin/geckodriver); 0.37.1 is the newest upstream release (2026-07-20). Its Cargo.toml:49 declares zip with default-features = false and features [\"deflate-flate2\", \"flate2\"], Cargo.lock resolves zip 2.4.2 with geckodriver as its only dependent, and the crate is used only by unzip_buffer in src/capabilities.rs:819 (called at :579 for the moz:firefoxOptions profile): zip::ZipArchive::new over an in-memory Cursor (:821), then by_index (:829), an explicit rejection of symlink entries, enclosed_name(), and its own file writes. Verified 2026-11-01 on the v0.37.1 source: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|read_zipfile_from_stream|ZipStreamReader|by_index|by_name' src returns only capabilities.rs:821 and :829."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115906"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@2.4.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: the AES entry reader (src/aes.rs) skips its HMAC check on premature EOF. That reader exists only with zip's aes-crypto feature, which geckodriver does not enable, so the AES code is not compiled in. geckodriver here is Wolfi's geckodriver 0.37.1 apk (/usr/bin/geckodriver); 0.37.1 is the newest upstream release (2026-07-20). Its Cargo.toml:49 declares zip with default-features = false and features [\"deflate-flate2\", \"flate2\"], Cargo.lock resolves zip 2.4.2 with geckodriver as its only dependent, and the crate is used only by unzip_buffer in src/capabilities.rs:819 (called at :579 for the moz:firefoxOptions profile): zip::ZipArchive::new over an in-memory Cursor (:821), then by_index (:829), an explicit rejection of symlink entries, enclosed_name(), and its own file writes. Verified 2026-11-01 on the v0.37.1 source: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|read_zipfile_from_stream|ZipStreamReader|by_index|by_name' src returns only capabilities.rs:821 and :829."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115909"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@2.4.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipArchive::extract preallocates a symlink target from an attacker-controlled ZIP64 size. ZipArchive::extract is never called, and geckodriver refuses symlink entries outright. geckodriver here is Wolfi's geckodriver 0.37.1 apk (/usr/bin/geckodriver); 0.37.1 is the newest upstream release (2026-07-20). Its Cargo.toml:49 declares zip with default-features = false and features [\"deflate-flate2\", \"flate2\"], Cargo.lock resolves zip 2.4.2 with geckodriver as its only dependent, and the crate is used only by unzip_buffer in src/capabilities.rs:819 (called at :579 for the moz:firefoxOptions profile): zip::ZipArchive::new over an in-memory Cursor (:821), then by_index (:829), an explicit rejection of symlink entries, enclosed_name(), and its own file writes. Verified 2026-11-01 on the v0.37.1 source: grep -rnE 'zip::|ZipArchive|ZipWriter|\\.extract\\(|read_zipfile_from_stream|ZipStreamReader|by_index|by_name' src returns only capabilities.rs:821 and :829."
         }
       ]
     }
