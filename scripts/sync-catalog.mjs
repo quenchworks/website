@@ -349,6 +349,25 @@ const blocked = readdirSync(appsDir)
   .sort((a, b) => a.slug.localeCompare(b.slug));
 writeFileSync(resolve(outDir, 'blocked-apps.json'), JSON.stringify(blocked, null, 2) + '\n');
 
+// OpenVEX documents shipped with the images (images/apps/<slug>/vex.openvex.json). Each names
+// itself https://quench-works.com/vex/<slug>/<date> in its @id, so the site must serve the
+// document at exactly that path; src/pages/vex/[...path].ts does, from this file.
+const SITE = 'https://quench-works.com/';
+const vex = readdirSync(appsDir)
+  .filter((slug) => existsSync(resolve(appsDir, slug, 'vex.openvex.json')))
+  .map((slug) => {
+    const doc = JSON.parse(readFileSync(resolve(appsDir, slug, 'vex.openvex.json'), 'utf8'));
+    const id = String(doc['@id'] ?? '');
+    if (!id.startsWith(SITE + 'vex/')) {
+      console.warn(`! ${slug}: VEX @id ${id || '(none)'} is not under ${SITE}vex/, not published`);
+      return null;
+    }
+    return { slug, path: id.slice(SITE.length), doc };
+  })
+  .filter(Boolean)
+  .sort((a, b) => a.slug.localeCompare(b.slug));
+writeFileSync(resolve(outDir, 'vex.json'), JSON.stringify(vex, null, 2) + '\n');
+
 const avail = images.filter((i) => i.status === 'available').length;
 const cautionCount = images.filter((i) => i.caution).length;
 console.log(

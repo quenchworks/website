@@ -1,0 +1,1960 @@
+[
+  {
+    "slug": "airflow",
+    "path": "vex/airflow/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/airflow/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-111943"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/py3.12-grpcio-1.83"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "PROVEN false-positive. Measured 2026-11-01. CVE-2026-111943 is a Go standard library flaw (crypto/x509 accepts untrusted intermediate certificates); Wolfi's secdb files it against the grpc-1.83 origin, so every subpackage inherits it and the fix revision 1.83.1-r6 is not in the public index (newest py3.12-grpcio-1.83 is 1.83.1-r0). The subpackage this image ships contains no Go code: extracting py3.12-grpcio-1.83-1.83.1-r0.apk gives 140 files, all Python sources, dist-info, BUILD.bazel files and one native module, grpc/_cython/cygrpc.cpython-312-x86_64-linux-gnu.so, a Cython/C++ extension whose .PKGINFO depends only on abseil, c-ares, re2, OpenSSL, zlib and libstdc++. readelf -S on that .so lists no .go.buildinfo, .gopclntab or .note.go.buildid section and strings finds no crypto/x509. or runtime.goexit symbol, so the Go crypto/x509 code the advisory names is not present."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "buildkit",
+    "path": "vex/buildkit/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/buildkit/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "GHSA-cq8v-f236-94qc"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rand@0.9.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "GHSA-cq8v-f236-94qc makes rand unsound only when BOTH its log and thread_rng features are enabled and a custom logger calls rand::rng() while ThreadRng reseeds; the unsafe path is the log call inside the reseeding core. rand 0.9.2 reaches the image only in Wolfi libpathrs 0.2.5 (/usr/lib/libpathrs.so.0.2.5, a runc dependency), built from tag v0.2.5 commit 080908395e75a32a5c4dbe9b318bf93643429f9f with that tag Cargo.lock, which ships at /usr/share/doc/libpathrs/Cargo.lock. libpathrs Cargo.toml:78 declares rand = { version = \"0.9\", optional = true } with default features (no log), and the lock entry for rand 0.9.2 lists only rand_chacha and rand_core as dependencies: log, the optional dependency the log feature enables, is not resolved, so the log feature and the logging calls in rand are not compiled into the library. The recipe fails the build if libpathrs leaves 0.2.5 or the rand lock entry gains log. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "calico-node",
+    "path": "vex/calico-node/2026-10-08",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/calico-node/2026-10-08",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54332"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/calico-node-3.32"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-10-08 on calico-node 3.32.0. The advisory is Wolfi's, keyed to the package calico-node-3.32 3.32.0-r4 (fixed in 3.32.2-r3, a revision not in the public APKINDEX on 2026-10-08), and its vulnerable code is the Go module github.com/gopacket/gopacket linked into that package's Go binaries. Listing every ELF file of calico-node-3.32-3.32.0-r4.apk and checking each for Go build info showed exactly two Go binaries, /usr/bin/calico-node and /usr/bin/mountns; the rest are the C BIRD daemons and BPF objects in /usr/lib/calico/bpf. This image replaces both binaries with quench-calico-node (melange `replaces: calico-node-3.32`), built from the v3.32.0 tag with the floor pass. Verified by the build itself: melange.yaml runs `go version -m` on both replacement binaries and fails if github.com/gopacket/gopacket is below v1.6.1; and the gate's binary scan of /usr/bin/calico-node (run 37707336807) reported none of these advisories, only cel-go, since floored. The vulnerable github.com/gopacket/gopacket code is therefore not present in the image; only the package record of the replaced apk still carries the version."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54345"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/calico-node-3.32"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-10-08 on calico-node 3.32.0. The advisory is Wolfi's, keyed to the package calico-node-3.32 3.32.0-r4 (fixed in 3.32.2-r3, a revision not in the public APKINDEX on 2026-10-08), and its vulnerable code is the Go module github.com/gopacket/gopacket linked into that package's Go binaries. Listing every ELF file of calico-node-3.32-3.32.0-r4.apk and checking each for Go build info showed exactly two Go binaries, /usr/bin/calico-node and /usr/bin/mountns; the rest are the C BIRD daemons and BPF objects in /usr/lib/calico/bpf. This image replaces both binaries with quench-calico-node (melange `replaces: calico-node-3.32`), built from the v3.32.0 tag with the floor pass. Verified by the build itself: melange.yaml runs `go version -m` on both replacement binaries and fails if github.com/gopacket/gopacket is below v1.6.1; and the gate's binary scan of /usr/bin/calico-node (run 37707336807) reported none of these advisories, only cel-go, since floored. The vulnerable github.com/gopacket/gopacket code is therefore not present in the image; only the package record of the replaced apk still carries the version."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-65819"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/calico-node-3.32"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-10-08 on calico-node 3.32.0. The advisory is Wolfi's, keyed to the package calico-node-3.32 3.32.0-r4 (fixed in 3.32.2-r3, a revision not in the public APKINDEX on 2026-10-08), and its vulnerable code is the Go module github.com/gopacket/gopacket linked into that package's Go binaries. Listing every ELF file of calico-node-3.32-3.32.0-r4.apk and checking each for Go build info showed exactly two Go binaries, /usr/bin/calico-node and /usr/bin/mountns; the rest are the C BIRD daemons and BPF objects in /usr/lib/calico/bpf. This image replaces both binaries with quench-calico-node (melange `replaces: calico-node-3.32`), built from the v3.32.0 tag with the floor pass. Verified by the build itself: melange.yaml runs `go version -m` on both replacement binaries and fails if github.com/gopacket/gopacket is below v1.6.1; and the gate's binary scan of /usr/bin/calico-node (run 37707336807) reported none of these advisories, only cel-go, since floored. The vulnerable github.com/gopacket/gopacket code is therefore not present in the image; only the package record of the replaced apk still carries the version."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84303"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/calico-node-3.32"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-10-08 on calico-node 3.32.0. The advisory is Wolfi's, keyed to the package calico-node-3.32 3.32.0-r4 (fixed in 3.32.2-r3, a revision not in the public APKINDEX on 2026-10-08), and its vulnerable code is the Go module google.golang.org/grpc linked into that package's Go binaries. Listing every ELF file of calico-node-3.32-3.32.0-r4.apk and checking each for Go build info showed exactly two Go binaries, /usr/bin/calico-node and /usr/bin/mountns; the rest are the C BIRD daemons and BPF objects in /usr/lib/calico/bpf. This image replaces both binaries with quench-calico-node (melange `replaces: calico-node-3.32`), built from the v3.32.0 tag with the floor pass. Verified by the build itself: melange.yaml runs `go version -m` on both replacement binaries and fails if google.golang.org/grpc is below v1.83.2; and the gate's binary scan of /usr/bin/calico-node (run 37707336807) reported none of these advisories, only cel-go, since floored. The vulnerable google.golang.org/grpc code is therefore not present in the image; only the package record of the replaced apk still carries the version."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84304"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/calico-node-3.32"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-10-08 on calico-node 3.32.0. The advisory is Wolfi's, keyed to the package calico-node-3.32 3.32.0-r4 (fixed in 3.32.2-r3, a revision not in the public APKINDEX on 2026-10-08), and its vulnerable code is the Go module google.golang.org/grpc linked into that package's Go binaries. Listing every ELF file of calico-node-3.32-3.32.0-r4.apk and checking each for Go build info showed exactly two Go binaries, /usr/bin/calico-node and /usr/bin/mountns; the rest are the C BIRD daemons and BPF objects in /usr/lib/calico/bpf. This image replaces both binaries with quench-calico-node (melange `replaces: calico-node-3.32`), built from the v3.32.0 tag with the floor pass. Verified by the build itself: melange.yaml runs `go version -m` on both replacement binaries and fails if google.golang.org/grpc is below v1.83.2; and the gate's binary scan of /usr/bin/calico-node (run 37707336807) reported none of these advisories, only cel-go, since floored. The vulnerable google.golang.org/grpc code is therefore not present in the image; only the package record of the replaced apk still carries the version."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84445"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/calico-node-3.32"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-10-08 on calico-node 3.32.0. The advisory is Wolfi's, keyed to the package calico-node-3.32 3.32.0-r4 (fixed in 3.32.2-r3, a revision not in the public APKINDEX on 2026-10-08), and its vulnerable code is the Go module google.golang.org/grpc linked into that package's Go binaries. Listing every ELF file of calico-node-3.32-3.32.0-r4.apk and checking each for Go build info showed exactly two Go binaries, /usr/bin/calico-node and /usr/bin/mountns; the rest are the C BIRD daemons and BPF objects in /usr/lib/calico/bpf. This image replaces both binaries with quench-calico-node (melange `replaces: calico-node-3.32`), built from the v3.32.0 tag with the floor pass. Verified by the build itself: melange.yaml runs `go version -m` on both replacement binaries and fails if google.golang.org/grpc is below v1.83.2; and the gate's binary scan of /usr/bin/calico-node (run 37707336807) reported none of these advisories, only cel-go, since floored. The vulnerable google.golang.org/grpc code is therefore not present in the image; only the package record of the replaced apk still carries the version."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-81870"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/calico-node-3.32"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-10-08 on calico-node 3.32.0. The advisory is Wolfi's, keyed to the package calico-node-3.32 3.32.0-r4 (fixed in 3.32.2-r3, a revision not in the public APKINDEX on 2026-10-08), and its vulnerable code is the Go module go.opentelemetry.io/otel/exporters/otlp/otlptrace linked into that package's Go binaries. Listing every ELF file of calico-node-3.32-3.32.0-r4.apk and checking each for Go build info showed exactly two Go binaries, /usr/bin/calico-node and /usr/bin/mountns; the rest are the C BIRD daemons and BPF objects in /usr/lib/calico/bpf. This image replaces both binaries with quench-calico-node (melange `replaces: calico-node-3.32`), built from the v3.32.0 tag with the floor pass. Verified by the build itself: melange.yaml runs `go version -m` on both replacement binaries and fails if go.opentelemetry.io/otel/exporters/otlp/otlptrace is below v1.45.0; and the gate's binary scan of /usr/bin/calico-node (run 37707336807) reported none of these advisories, only cel-go, since floored. The vulnerable go.opentelemetry.io/otel/exporters/otlp/otlptrace code is therefore not present in the image; only the package record of the replaced apk still carries the version."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "concourse",
+    "path": "vex/concourse/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/concourse/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 2,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2020-5415"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/concourse/dex@v1.14.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "inline_mitigations_already_exist",
+          "impact_statement": "PROVEN false-positive, measured 2026-09-29 on 8.3.1. CVE-2020-5415 is Concourse's own advisory (GitLab login mapped the user's display name to the user identity, allowing impersonation). Its fixed versions mix two version spaces: Concourse releases 6.3.1 and 6.4.1, and a concourse/dex pseudo-version 0.0.0-20200730150203-821b48abfd88. The dex fork is now tagged v1.14.0 (committer date 2026-05-19), which sorts below 6.3.1, so every current dex release matches by construction. Checked the code rather than the numbers: in v1.14.0 connector/gitlab/gitlab.go sets PreferredUsername to user.Username (the GitLab login) and Username to the display name; Concourse 8.3.1 authorizes team membership on the token's preferred_username first (atc/api/accessor/accessor.go:236, userName() returns the preferred_username claim when set), and skymarshal passes claims.PreferredUsername to its display user id generator (skymarshal/token/access_token.go:108-114). The identity Concourse matches against a team's GitLab user allow-list is therefore the login, which a user cannot set to someone else's; the display name the 2020 flaw keyed on is not what authorizes."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-cq8v-f236-94qc"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rand@0.9.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "GHSA-cq8v-f236-94qc makes rand unsound only when BOTH its log and thread_rng features are enabled and a custom logger calls rand::rng() while ThreadRng reseeds; the unsafe path is the log call inside the reseeding core. rand 0.9.2 reaches the image only in Wolfi libpathrs 0.2.5 (/usr/lib/libpathrs.so.0.2.5, a runc dependency), built from tag v0.2.5 commit 080908395e75a32a5c4dbe9b318bf93643429f9f with that tag Cargo.lock, which ships at /usr/share/doc/libpathrs/Cargo.lock. libpathrs Cargo.toml:78 declares rand = { version = \"0.9\", optional = true } with default features (no log), and the lock entry for rand 0.9.2 lists only rand_chacha and rand_core as dependencies: log, the optional dependency the log feature enables, is not resolved, so the log feature and the logging calls in rand are not compiled into the library. The recipe fails the build if libpathrs leaves 0.2.5 or the rand lock entry gains log. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "connaisseur",
+    "path": "vex/connaisseur/2026-10-05",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/connaisseur/2026-10-05",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-05T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. connaisseur (./cmd/connaisseur) imports only github.com/docker/docker/registry and api/types/registry, in internal/validator/notaryv1/notaryserver/client.go:20-21 and simple_cred_store.go:7, to authenticate against Notary v1 registries. Checked with `go list -deps ./cmd/connaisseur` at v3.11.1, v3.12.0 and v3.13.0: no daemon, plugin manager or API server package is in the build. The build fails if one is ever linked. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "coolify-helper",
+    "path": "vex/coolify-helper/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/coolify-helper/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "GHSA-7gcf-g7xr-8hxj"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/serde_with@2.3.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "GHSA-7gcf-g7xr-8hxj is a panic in serde_with's KeyValueMap serializer. nixpacks 1.41.0 (the last release; serde_with 2.x, fix only in 3.21.0) uses serde_with only for the #[serde_with::skip_serializing_none] attribute (src/nixpacks/nix/pkg.rs:5, plan/phase.rs:14 and :50, plan/mod.rs:29); grep for KeyValueMap over nixpacks src returned 0 matches. KeyValueMap is a generic serde_as adapter that is only compiled when named, so its code is not in the binary. The recipe fails the build if nixpacks ever names KeyValueMap. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-mc8h-8q98-g5hr"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/remove_dir_all@0.5.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "GHSA-mc8h-8q98-g5hr is a TOCTOU race in remove_dir_all's own directory walk. nixpacks reaches remove_dir_all 0.5.3 only through tempdir 0.3.7 (TempDir drop, tempdir src/lib.rs:326). Read the source of remove_dir_all 0.5.3: src/lib.rs compiles its own fs module only under cfg(windows) and on every other target is `pub use std::fs::remove_dir_all`, so this Linux image runs the standard library implementation (rust 1.96, which carries the CVE-2022-21658 fix), not the vulnerable walk. The 0.5 line has no fixed release. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "cosmian-kms",
+    "path": "vex/cosmian-kms/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/cosmian-kms/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2025-4432"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/ring@0.16.20"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "CVE-2025-4432 (RUSTSEC-2025-0009) is a panic in ring's AES functions (AES-GCM / QUIC header protection counter arithmetic) when overflow checks are on. Cosmian KMS 5.27.0 links ring 0.16.20 only through scratchstack-aws-signature 0.10.6 (Cargo.lock at tag 5.27.0: it is the only package listing ring 0.16.20; 5.27.1 and 5.28.0 carry no ring 0.16). Read the source of scratchstack-aws-signature 0.10.6: it imports only ring::hmac (src/hmac.rs:1, HMAC_SHA256) and ring::digest (src/signature.rs:20, SHA256); no ring::aead or AES call exists, grep for aead|aes over its src returned 0 matches. The AES code is therefore never executed. ring 0.16 has no fixed release (fix is 0.17.12). The recipe fails the build if any other crate depends on ring 0.16. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "dive",
+    "path": "vex/dive/2026-10-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/dive/2026-10-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-01T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. dive (main package .) links only the API types and the client from the module: github.com/docker/docker/api, api/types/* and client, plus github.com/moby/moby/api/types/plugin (types only). Checked with `go list -deps .` at v0.13.1 with docker v28.5.2: no daemon, plugin manager or API server package is in the build, and dive never calls the client's plugin endpoints. The build fails if a daemon, plugin or api/server package is ever linked. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "documentdb",
+    "path": "vex/documentdb/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/documentdb/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-48504"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/opentelemetry_sdk@0.30.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "CVE-2026-48504 is unbounded parsing of an inbound W3C baggage header in opentelemetry_sdk BaggagePropagator::extract_with_context. The documentdb gateway (pg_documentdb_gw) ships opentelemetry_sdk 0.30.0 on the 0.114-0 and 0.116-0 lines; 0.117-0 already carries the fixed 0.32.1, and 0.30 to 0.32 is a breaking bump. grep for Baggage over pg_documentdb_gw at v0.114-0 and v0.116-0 returned 0 matches. v0.116-0 installs only TraceContextPropagator (documentdb_gateway_core/src/telemetry/telemetry_manager.rs:100) and parses traceparent itself from the request comment (telemetry/context_propagation.rs:38, no propagator); v0.114-0 installs no propagator at all. The MongoDB wire protocol carries no baggage header, so BaggagePropagator is never constructed. The recipe fails the build if any gateway source names a Baggage type. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "easegress",
+    "path": "vex/easegress/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/easegress/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "GHSA-2hw4-c9m4-f2fj"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/knative.dev/pkg@v0.0.0-20231102061027-a6c730fd81f7"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory is the missing http.MaxBytesReader in the admission webhook handler, knative.dev/pkg/webhook/admission.go:109-117. Easegress reaches knative.dev/pkg only indirectly (go.mod line 382, via knative.dev/serving and knative.dev/client for the FaaS controller) and links API, logging, controller and injection packages of it. Verified with `go list -deps ./cmd/server ./cmd/client` at v2.9.4, v2.10.1 and v2.11.0: 30 knative.dev/pkg packages each, zero under knative.dev/pkg/webhook. The recipe runs the same go list after the build and fails if knative.dev/pkg/webhook is ever linked."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "emissary",
+    "path": "vex/emissary/2026-10-05",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/emissary/2026-10-05",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-05T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2024-9042"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is the kubelet's node log query handler (pkg/kubelet) on Windows nodes."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2025-0426"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is the kubelet's checkpoint API (pkg/kubelet)."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2025-13281"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is kube-controller-manager's Portworx volume plugin (pkg/volume/portworx)."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2025-5187"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is kube-apiserver's NodeRestriction admission plugin (plugin/pkg/admission/noderestriction)."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "emissary-apiext",
+    "path": "vex/emissary-apiext/2026-10-05",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/emissary-apiext/2026-10-05",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-05T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2024-9042"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is the kubelet's node log query handler (pkg/kubelet) on Windows nodes."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2025-0426"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is the kubelet's checkpoint API (pkg/kubelet)."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2025-13281"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is kube-controller-manager's Portworx volume plugin (pkg/volume/portworx)."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2025-5187"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/k8s.io/kubernetes@v1.30.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "emissary-ingress links only API-type and utility packages of k8s.io/kubernetes v1.30.3: apiext links pkg/util/node, busyambassador pkg/apis/{apps,autoscaling,core,core/v1,extensions/v1beta1,networking,networking/v1,networking/v1beta1}, pkg/api/v1/service, pkg/features, pkg/util/node and pkg/util/parsers . Checked with `go list -deps ./cmd/apiext ./cmd/busyambassador` at v4.1.0: no kubelet, volume plugin, controller or admission plugin package is in either build, and the build fails if one is ever linked. The vulnerable code is kube-apiserver's NodeRestriction admission plugin (plugin/pkg/admission/noderestriction)."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "external-secrets",
+    "path": "vex/external-secrets/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/external-secrets/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-25727"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/time@0.3.46"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-25727 is stack exhaustion in the time crate when PARSING untrusted input with the RFC 2822 format (parsing::parsable Rfc2822 and its comment combinators), fixed in 0.3.47. time 0.3.46 reaches the image only inside core.wasm of github.com/1password/onepassword-sdk-go v0.4.1 (internal/wasm/core.wasm, go:embed, closed source, used by both 2.11.0 and 2.12.0 go.mod line 195), which external-secrets embeds in /usr/bin/external-secrets. core.wasm keeps a full wasm name section (971494 bytes); grep -aoE '_ZN4time[^ ]*' core.wasm lists 13 parsing symbols and the only well-known parser present is Rfc3339 (time::parsing::parsable ... Rfc3339 parse_offset_date_time); grep -aci rfc2822 core.wasm returned 0, and no time-0.3.46/src/parsing/combinator/rfc/rfc2822.rs source path is present. The RFC 2822 parser is not compiled in. The recipe fails the build if the name section disappears or any rfc2822 symbol appears. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "falco",
+    "path": "vex/falco/2026-10-19",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/falco/2026-10-19",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-19T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. The module ships only inside the container plugin's Go worker (libcontainer.so). Checked with `go list -deps -tags containers_image_openpgp .` on plugins/container v0.7.5 go-worker after this recipe's floats (2026-10-19): it links github.com/docker/docker/client, api and api/types/* only, and from the new module paths moby/moby/api types and moby/moby/client; no daemon, plugin, api/server or pkg/authorization package of either path. The recipe fails the build if one is ever linked. The fix (29.3.1) exists only under the moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "garage",
+    "path": "vex/garage/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/garage/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2025-53605"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/protobuf@2.28.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "CVE-2025-53605 is uncontrolled recursion in protobuf 2.x when PARSING a message with nested unknown groups (CodedInputStream, reached through Message::parse_from / merge_from). Garage 2.3.0 and 2.4.1 link protobuf 2.28.0 only through prometheus 0.13.4 and opentelemetry-prometheus 0.10.0 (cargo tree -i protobuf with the release features lists no other parent), and 3.x is a breaking major neither crate supports. grep -rnE 'parse_from|merge_from|CodedInputStream' over prometheus-0.13.4/src and opentelemetry-prometheus-0.10.0/src returned 0 matches: both only build MetricFamily structs (opentelemetry-prometheus lib.rs:449-536, RepeatedField::from_vec) and prometheus only writes protobuf in encoder/pb.rs:30. The merge_from impls exist only as generated Message trait code in prometheus proto/proto_model.rs with no caller. Garage serves /metrics through TextEncoder (src/api/admin/special.rs:52) and its sources name no protobuf type (git grep at v2.3.0 and v2.4.1). No input reaches a protobuf decoder. The recipe fails the build if garage sources ever name protobuf or ProtobufEncoder. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "grafana",
+    "path": "vex/grafana/2026-08-27",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/grafana/2026-08-27",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-08-27T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-21728"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/grafana/tempo@v1.5.1-0.20260427112133-525d1bab07e0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. The advisory is a denial of service in the Tempo SERVER's query path (large queries against pkg/api, pkg/traceql and tempodb). Grafana is a Tempo CLIENT: it links github.com/grafana/tempo solely for the generated protobuf message types used to speak OTLP over the wire, and it does not contain or run any Tempo server component. Verified against the built binary rather than reasoned about: `strings` over usr/share/grafana/bin/grafana lists only github.com/grafana/tempo/pkg/tempopb and its common/v1, resource/v1 and trace/v1 subpackages, and an explicit search for each tree the advisory concerns returns 0 matches -- tempodb 0, modules/ 0, pkg/api 0, cmd/tempo 0, pkg/traceql 0. The vulnerable code is absent from the shipped artifact, so it cannot be reached. Note the finding is also permanent by construction, not staleness: Grafana pins Tempo by commit, which renders as v1.5.1-0.<pseudo>, and every fixed Tempo release (2.8.4, 2.9.2, 2.10.2) declares `module github.com/grafana/tempo` with no /vN suffix, so `go list -m github.com/grafana/tempo@v2.10.3` is refused outright -- no fixed version is obtainable under the path Grafana requires."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-28377"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/grafana/tempo@v1.5.1-0.20260427112133-525d1bab07e0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. The advisory discloses an S3 encryption key through the Tempo SERVER's /status endpoint. Grafana ships no Tempo server, no Tempo HTTP API and no Tempo storage backend: it links github.com/grafana/tempo only for the generated protobuf message types it uses as a client. Verified on the built binary, not inferred: an explicit search of usr/share/grafana/bin/grafana returns 0 matches for grafana/tempo/pkg/api, 0 for grafana/tempo/pkg/util/status and 0 for grafana/tempo/backend/s3, while the only tempo packages present are pkg/tempopb and its common/v1, resource/v1, trace/v1 subpackages. There is no S3 backend and no /status handler in this artifact to disclose anything. As with CVE-2026-21728 the version can never satisfy the scanner either: Grafana pins Tempo by commit (v1.5.1-0.<pseudo>) and the fixed 2.10.3 release keeps `module github.com/grafana/tempo` without a /vN suffix, so Go refuses to resolve it under that path."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "grafana-alloy",
+    "path": "vex/grafana-alloy/2026-09-26",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/grafana-alloy/2026-09-26",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-09-26T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-21726"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/grafana/loki/v3@v3.0.0-20260915071729-5cf8c23a258d"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive: the fix is in the pinned commit. Alloy 1.20.0 pins Loki by commit 5cf8c23a258d (2026-09-15, from Loki main), which Go renders as the pseudo-version v3.0.0-20260915071729-5cf8c23a258d; Trivy compares its v3.0.0 base against the advisory's '< 3.6.4' and flags it. The fix (GHSA-497x-rrr9-68jp, double-encoded path traversal in the Ruler API namespace) is grafana/loki PR #20437, merged to main on 2026-01-15 as 9f5d215c07344d1ff93821b1bfd4c37b23e885c1 and backported to release-3.6.x as #20463 for the 3.6.4 tag. Verified with the GitHub compare API rather than by date: 9f5d215c...5cf8c23a258d is status=ahead, ahead_by=2097, behind_by=0, so the pinned commit contains the fix. v3.6.4 itself shows as diverged only because it lives on the release branch. Scoped to this exact pseudo-version: a different Loki commit must be re-checked."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "guacamole",
+    "path": "vex/guacamole/2026-10-22",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/guacamole/2026-10-22",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-22T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-113730"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/ognl/ognl@3.4.4"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_cannot_be_controlled_by_adversary",
+          "impact_statement": "CVE-2026-113730 (GHSA-crwc-vw2r-qr6m) lets an OGNL EXPRESSION reach blocked methods through java.lang.reflect proxies, bypassing the stricter-invocation block list. It needs the attacker to author the expression text. Here ognl 3.4.4 exists only relocated to org/apache/ibatis/ognl inside mybatis-3.5.19.jar, nested in /etc/guacamole/extensions/guacamole-auth-jdbc-postgresql-1.6.0.jar (checked with unzip -l on the published 1.6.0 image: META-INF/maven/ognl/ognl/pom.properties version=3.4.4; no other ognl copy in any of the image's 83 jars). MyBatis evaluates OGNL only for expressions written in mapper XML: the 21 *Mapper.xml files shipped in that jar hold the only expressions, all constant, e.g. UserPermissionMapper.xml:76 test=\"caseSensitivity.caseSensitiveUsernames()\"; the ${caseSensitivity}/${entityID}/${groups}/${column} placeholders are <include> properties fixed at parse time (SystemPermissionMapper.xml:42-43). Request data reaches MyBatis only as #{...} bound parameter values, never as expression text, and no Guacamole class references org.apache.ibatis.ognl directly (grep of guacamole-auth-jdbc-base-1.6.0.jar). The fix is unreleased for this path: mybatis 3.5.19 is the newest release on Maven Central and still shades ognl 3.4.4 (master moved to 3.4.16, not yet released). Drop this statement when a mybatis release ships ognl 3.4.13 or later inside a Guacamole JDBC extension."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "jenkins-inbound-agent",
+    "path": "vex/jenkins-inbound-agent/2026-09-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/jenkins-inbound-agent/2026-09-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-09-17T09:33:07.871271Z",
+      "version": 3,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2025-48924"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. Wolfi records this advisory against the package ORIGIN `jenkins-2` (verified in https://packages.wolfi.dev/os/security.json), and Trivy inherits it onto every jenkins-2 subpackage -- jenkins-docker-agent-openjdk-21, jenkins-remoting, jenkins-utils -- even though the vulnerable library ships only in the Jenkins CONTROLLER (jenkins.war): org.apache.commons/commons-lang3. This is the Jenkins INBOUND AGENT image, which contains no controller and no such library. Re-verified 2026-08-27 by full-layer extraction of the built image: the only jars present are remoting-3355.v388858a_47b_33.jar (with the agent.jar/slave.jar symlinks) and the JDK's jrt-fs.jar; `unzip -l` over both plus a raw byte grep of every other file in the layer return 0 matches for com/fasterxml/jackson, org/apache/mina, org/apache/sshd, org/apache/commons/lang3 and org/springframework. The vulnerable code is not present, so the finding is not exploitable here. (Secondary evidence that the advisory is mis-keyed: its fixed-version does not exist for origin jenkins-2, which Wolfi caps at 2.566-r1 -- 2.572/2.574/2.577/2.579 are published only under the separate o:jenkins-docker controller origin.)"
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-47065"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. Wolfi records this advisory against the package ORIGIN `jenkins-2` (verified in https://packages.wolfi.dev/os/security.json), and Trivy inherits it onto every jenkins-2 subpackage -- jenkins-docker-agent-openjdk-21, jenkins-remoting, jenkins-utils -- even though the vulnerable library ships only in the Jenkins CONTROLLER (jenkins.war): Apache MINA. This is the Jenkins INBOUND AGENT image, which contains no controller and no such library. Re-verified 2026-08-27 by full-layer extraction of the built image: the only jars present are remoting-3355.v388858a_47b_33.jar (with the agent.jar/slave.jar symlinks) and the JDK's jrt-fs.jar; `unzip -l` over both plus a raw byte grep of every other file in the layer return 0 matches for com/fasterxml/jackson, org/apache/mina, org/apache/sshd, org/apache/commons/lang3 and org/springframework. The vulnerable code is not present, so the finding is not exploitable here. (Secondary evidence that the advisory is mis-keyed: its fixed-version does not exist for origin jenkins-2, which Wolfi caps at 2.566-r1 -- 2.572/2.574/2.577/2.579 are published only under the separate o:jenkins-docker controller origin.)"
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54512"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. These advisories are Wolfi apk secdb entries keyed to the shared package origin 'o:jenkins-2' and are inherited by every jenkins-2 subpackage (jenkins-docker-agent, jenkins-remoting, jenkins-utils) from the Jenkins CONTROLLER (jenkins.war), where the vulnerable libraries actually live (jackson-databind, Apache MINA/sshd, Spring Security, and Jenkins core for CVE-2026-2332). This is the Jenkins INBOUND AGENT image, which does NOT ship the controller or any of those libraries. Verified by full-layer extraction: the image ships only remoting-*.jar (with agent.jar/slave.jar symlinks) plus the JDK's jrt-fs.jar; a grep for jackson/databind/mina/sshd/springframework across every layer returns 0 matches. The vulnerable code is not present in this image, so the reported CVEs are not exploitable here."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54513"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. These advisories are Wolfi apk secdb entries keyed to the shared package origin 'o:jenkins-2' and are inherited by every jenkins-2 subpackage (jenkins-docker-agent, jenkins-remoting, jenkins-utils) from the Jenkins CONTROLLER (jenkins.war), where the vulnerable libraries actually live (jackson-databind, Apache MINA/sshd, Spring Security, and Jenkins core for CVE-2026-2332). This is the Jenkins INBOUND AGENT image, which does NOT ship the controller or any of those libraries. Verified by full-layer extraction: the image ships only remoting-*.jar (with agent.jar/slave.jar symlinks) plus the JDK's jrt-fs.jar; a grep for jackson/databind/mina/sshd/springframework across every layer returns 0 matches. The vulnerable code is not present in this image, so the reported CVEs are not exploitable here."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54514"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. These advisories are Wolfi apk secdb entries keyed to the shared package origin 'o:jenkins-2' and are inherited by every jenkins-2 subpackage (jenkins-docker-agent, jenkins-remoting, jenkins-utils) from the Jenkins CONTROLLER (jenkins.war), where the vulnerable libraries actually live (jackson-databind, Apache MINA/sshd, Spring Security, and Jenkins core for CVE-2026-2332). This is the Jenkins INBOUND AGENT image, which does NOT ship the controller or any of those libraries. Verified by full-layer extraction: the image ships only remoting-*.jar (with agent.jar/slave.jar symlinks) plus the JDK's jrt-fs.jar; a grep for jackson/databind/mina/sshd/springframework across every layer returns 0 matches. The vulnerable code is not present in this image, so the reported CVEs are not exploitable here."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54515"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. Wolfi records this advisory against the package ORIGIN `jenkins-2` (verified in https://packages.wolfi.dev/os/security.json), and Trivy inherits it onto every jenkins-2 subpackage -- jenkins-docker-agent-openjdk-21, jenkins-remoting, jenkins-utils -- even though the vulnerable library ships only in the Jenkins CONTROLLER (jenkins.war): jackson-databind. This is the Jenkins INBOUND AGENT image, which contains no controller and no such library. Re-verified 2026-08-27 by full-layer extraction of the built image: the only jars present are remoting-3355.v388858a_47b_33.jar (with the agent.jar/slave.jar symlinks) and the JDK's jrt-fs.jar; `unzip -l` over both plus a raw byte grep of every other file in the layer return 0 matches for com/fasterxml/jackson, org/apache/mina, org/apache/sshd, org/apache/commons/lang3 and org/springframework. The vulnerable code is not present, so the finding is not exploitable here. (Secondary evidence that the advisory is mis-keyed: its fixed-version does not exist for origin jenkins-2, which Wolfi caps at 2.566-r1 -- 2.572/2.574/2.577/2.579 are published only under the separate o:jenkins-docker controller origin.)"
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54516"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. These advisories are Wolfi apk secdb entries keyed to the shared package origin 'o:jenkins-2' and are inherited by every jenkins-2 subpackage (jenkins-docker-agent, jenkins-remoting, jenkins-utils) from the Jenkins CONTROLLER (jenkins.war), where the vulnerable libraries actually live (jackson-databind, Apache MINA/sshd, Spring Security, and Jenkins core for CVE-2026-2332). This is the Jenkins INBOUND AGENT image, which does NOT ship the controller or any of those libraries. Verified by full-layer extraction: the image ships only remoting-*.jar (with agent.jar/slave.jar symlinks) plus the JDK's jrt-fs.jar; a grep for jackson/databind/mina/sshd/springframework across every layer returns 0 matches. The vulnerable code is not present in this image, so the reported CVEs are not exploitable here."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54517"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. These advisories are Wolfi apk secdb entries keyed to the shared package origin 'o:jenkins-2' and are inherited by every jenkins-2 subpackage (jenkins-docker-agent, jenkins-remoting, jenkins-utils) from the Jenkins CONTROLLER (jenkins.war), where the vulnerable libraries actually live (jackson-databind, Apache MINA/sshd, Spring Security, and Jenkins core for CVE-2026-2332). This is the Jenkins INBOUND AGENT image, which does NOT ship the controller or any of those libraries. Verified by full-layer extraction: the image ships only remoting-*.jar (with agent.jar/slave.jar symlinks) plus the JDK's jrt-fs.jar; a grep for jackson/databind/mina/sshd/springframework across every layer returns 0 matches. The vulnerable code is not present in this image, so the reported CVEs are not exploitable here."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54518"
+          },
+          "products": [
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-docker-agent-openjdk-21"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-remoting"
+            },
+            {
+              "@id": "pkg:apk/wolfi/jenkins-utils"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive. These advisories are Wolfi apk secdb entries keyed to the shared package origin 'o:jenkins-2' and are inherited by every jenkins-2 subpackage (jenkins-docker-agent, jenkins-remoting, jenkins-utils) from the Jenkins CONTROLLER (jenkins.war), where the vulnerable libraries actually live (jackson-databind, Apache MINA/sshd, Spring Security, and Jenkins core for CVE-2026-2332). This is the Jenkins INBOUND AGENT image, which does NOT ship the controller or any of those libraries. Verified by full-layer extraction: the image ships only remoting-*.jar (with agent.jar/slave.jar symlinks) plus the JDK's jrt-fs.jar; a grep for jackson/databind/mina/sshd/springframework across every layer returns 0 matches. The vulnerable code is not present in this image, so the reported CVEs are not exploitable here."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "joomla",
+    "path": "vex/joomla/2026-09-30",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/joomla/2026-09-30",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-09-30T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2024-39912"
+          },
+          "products": [
+            {
+              "@id": "pkg:composer/web-auth/webauthn-lib@4.5.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive for the flagged component, measured 2026-09-30 on the Joomla 6.1.4 Full_Package. CVE-2024-39912 (GHSA-875x-g8p7-5w27) is a username-enumeration flaw in web-auth/webauthn-lib's ProfileBasedRequestOptionsBuilder: it returns assertion options without allowedCredentials when no user is found. Joomla pins webauthn-lib 4.5.2 exactly on every branch (6.1.4 and 5.4.9 composer.json). Verified on the archive: libraries/vendor/web-auth/webauthn-lib holds 78 PHP files and `grep -r ProfileBasedRequestOptionsBuilder` over the whole Joomla tree returns 0 matches, so the vulnerable class is not present. Joomla builds its own assertion options instead (plugins/system/webauthn/src/Authentication.php getPubkeyRequestOptions, called from PluginTraits/AjaxHandlerChallenge.php). That code has its own, separate behaviour: an unknown username becomes an empty User and gets an empty credential list, exactly like a real user with no passkey, so the response reveals whether an account has a registered passkey rather than whether it exists. Upgrading webauthn-lib would not change that Joomla code path, and it is not the flaw this advisory describes."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kgateway",
+    "path": "vex/kgateway/2026-08-27",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/kgateway/2026-08-27",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-08-27T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2019-14993"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "PROVEN false-positive. The advisory is against istio/envoy -- Istio's FORK of the Envoy C++ proxy -- and is a denial of service from mishandled regular expressions on long URIs. This image ships no Istio Envoy and no istio-proxy: its data plane binary is Wolfi's stock envoy apk, and the control-plane image carries that same stock envoy only for `envoy --mode validate`. Verified on the built artifact rather than reasoned about: `strings` over usr/bin/kgateway returns 0 matches for istio.io/istio/pkg/envoy and 0 for istio.io/istio/istioctl, and the image contains no istio-proxy binary at all. The vulnerable component is a different program in a different language. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2022-23635"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "PROVEN false-positive. The advisory is an unauthenticated denial of service against ISTIOD, reached through the pilot-discovery control plane's XDS/debug endpoints. This image runs no istiod. Verified on the built artifact: `strings` over usr/bin/kgateway returns 0 matches for istio.io/istio/pilot/cmd (the pilot-discovery entrypoint), 0 for pilot-discovery and 0 for istio.io/istio/istioctl. What IS linked is the library subset kgateway's waypoint/ambient and ServiceEntry translation uses -- pilot/pkg/model, pilot/pkg/serviceregistry, pilot/pkg/security, pkg/kube, pkg/config -- none of which serves an XDS or debug listener in this binary; kgateway's own xDS server is its own code on port 9977. There is no istiod process here to attack. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2022-31045"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "PROVEN false-positive. The advisory is unsafe memory access in Istio's METADATA EXCHANGE filter, which is C++/Wasm code living in istio/proxy and compiled into the istio-proxy sidecar binary -- not Go code in the istio.io/istio module Trivy matched. This image ships no istio-proxy and no Wasm extension. Verified on the built artifact: the only matches for metadata_exchange in usr/bin/kgateway are Envoy extension NAME strings that appear in generated xDS config, and `strings` returns 0 matches for istio.io/istio/pkg/envoy, 0 for istio.io/istio/pilot/cmd and 0 for istioctl; there is no filter implementation in the artifact. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2021-39155"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, of the 'scanner read the version metadata, not the artifact' kind. The advisory is an Istio AuthorizationPolicy bypass: host matching was case sensitive, so a request with a differently-cased Host header evaded hosts/notHosts rules. It was fixed in 1.9.8 / 1.10.4 / 1.11.1 (2021-08). The authz code this binary links is from istio master four years later, and it carries the remedy: read the source at the pinned commit -- pilot/pkg/security/authz/matcher/string.go at f18fd540c0e8 -- and every string matcher constructor (StringMatcherExact, StringMatcherPrefix, StringMatcherSuffix) takes an explicit ignoreCase parameter and sets StringMatcher.IgnoreCase, which is precisely the case-insensitivity the fix introduced; the pre-fix code had no such parameter. Verified which packages ship, too: `strings` over usr/bin/kgateway shows only pilot/pkg/security/authz/{model,builder,matcher}, the library kgateway's waypoint translation calls to build Envoy RBAC matchers, with no istiod around it. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2021-39156"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, of the 'scanner read the version metadata, not the artifact' kind. The advisory is the sibling of CVE-2021-39155: a URI fragment let a request bypass AuthorizationPolicy path rules, fixed in the same 1.9.8 / 1.10.4 / 1.11.1 releases (2021-08). The istio authz tree linked into this binary is from master at f18fd540c0e8 (2026-06-05), roughly five years and about 10,277 commits past the 1.11.1 fix line, so the pre-fix path matcher is not the code that ships. Verified what is actually linked rather than assuming: `strings` over usr/bin/kgateway shows only pilot/pkg/security/authz/{model,builder,matcher} plus pilot/pkg/{model,serviceregistry,security,util}, i.e. the translation library kgateway's waypoint integration uses; istiod itself is absent (0 matches for pilot/cmd, 0 for pilot-discovery, 0 for istioctl), so there is no Istio request path in this image to bypass. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kubescape",
+    "path": "vex/kubescape/2026-10-08b",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/kubescape/2026-10-08b",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "version": 2,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. The image's three binaries (kubescape, ksserver from ./httphandler, downloader) link only Docker client code. Checked with `go list -deps` on each in the CI build (images run 37738537104, both arches): every one linked github.com/docker/docker/client, api, the api/types packages, pkg/homedir and pkg/namesgenerator, plus the split github.com/moby/moby/api and moby/moby/client modules, and no daemon, plugin manager, api/server or pkg/authorization package. The build fails if one is ever linked. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kubescape-node-agent",
+    "path": "vex/kubescape-node-agent/2026-10-08",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/kubescape-node-agent/2026-10-08",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. Checked with `go list -deps` on both binaries in the CI build (images run 37738632616, both arches): node-agent v0.3.258 (./cmd) and ./cmd/sbom-scanner each link github.com/docker/docker/client, api, the api/types packages and pkg/homedir, and from github.com/moby/moby only pkg/stringid (a random ID helper); no daemon, plugin manager, api/server or pkg/authorization package of either module path. The build fails if one is ever linked. The fix (29.3.1) exists only under the new moby module path, so the +incompatible modules cannot be floated to it."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/moby/moby@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. Checked with `go list -deps` on both binaries in the CI build (images run 37738632616, both arches): node-agent v0.3.258 (./cmd) and ./cmd/sbom-scanner each link github.com/docker/docker/client, api, the api/types packages and pkg/homedir, and from github.com/moby/moby only pkg/stringid (a random ID helper); no daemon, plugin manager, api/server or pkg/authorization package of either module path. The build fails if one is ever linked. The fix (29.3.1) exists only under the new moby module path, so the +incompatible modules cannot be floated to it."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-34040"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/moby/moby@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-34040 is an authorization bypass in the Moby daemon's AuthZ plugin handling of API requests. Checked with `go list -deps` on both binaries in the CI build (images run 37738632616, both arches): node-agent v0.3.258 (./cmd) and ./cmd/sbom-scanner each link github.com/docker/docker/client, api, the api/types packages and pkg/homedir, and from github.com/moby/moby only pkg/stringid (a random ID helper); no daemon, plugin manager, api/server or pkg/authorization package of either module path. The build fails if one is ever linked. The fix (29.3.1) exists only under the new moby module path, so the +incompatible modules cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kubescape-operator",
+    "path": "vex/kubescape-operator/2026-10-08",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/kubescape-operator/2026-10-08",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. Checked with `go list -deps .` in the CI build (images run 37736326583, both arches): the operator v0.2.172 links github.com/docker/docker/client, api and the api/types packages, and from github.com/moby/moby only pkg/stringid (a random ID helper); no daemon, plugin manager, api/server or pkg/authorization package of either module path. The build fails if one is ever linked. The fix (29.3.1) exists only under the new moby module path, so the +incompatible modules cannot be floated to it."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/moby/moby@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. Checked with `go list -deps .` in the CI build (images run 37736326583, both arches): the operator v0.2.172 links github.com/docker/docker/client, api and the api/types packages, and from github.com/moby/moby only pkg/stringid (a random ID helper); no daemon, plugin manager, api/server or pkg/authorization package of either module path. The build fails if one is ever linked. The fix (29.3.1) exists only under the new moby module path, so the +incompatible modules cannot be floated to it."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-34040"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/moby/moby@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-34040 is an authorization bypass in the Moby daemon's AuthZ plugin handling of API requests. Checked with `go list -deps .` in the CI build (images run 37736326583, both arches): the operator v0.2.172 links github.com/docker/docker/client, api and the api/types packages, and from github.com/moby/moby only pkg/stringid (a random ID helper); no daemon, plugin manager, api/server or pkg/authorization package of either module path. The build fails if one is ever linked. The fix (29.3.1) exists only under the new moby module path, so the +incompatible modules cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kubescape-storage",
+    "path": "vex/kubescape-storage/2026-10-08",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/kubescape-storage/2026-10-08",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. Kubescape storage v0.0.348 links at most Docker API type definitions. Checked with `go list -deps` on all three binaries in the CI build (images run 37735425296, both arches): the storage server (.) linked no github.com/docker/docker package, and ./cmd/migration and ./cmd/cpexport each linked only api/types/filters, api/types/registry and api/types/versions, with no client, daemon, plugin manager or api/server package. The build fails if daemon, plugin or api/server code is ever linked. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kubescape-synchronizer",
+    "path": "vex/kubescape-synchronizer/2026-10-08",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/kubescape-synchronizer/2026-10-08",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. The Kubescape synchronizer v0.0.166 links only Docker API type definitions. Checked with `go list -deps` on both binaries in the CI build (images run 37734562285, both arches): ./cmd/client and ./cmd/server each linked github.com/docker/docker/api/types/filters, api/types/registry and api/types/versions, and no client, daemon, plugin manager or api/server package. The build fails if daemon, plugin or api/server code is ever linked. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kubevuln",
+    "path": "vex/kubevuln/2026-10-08",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/kubevuln/2026-10-08",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-08T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. kubevuln v0.3.501 links only Docker API type definitions. Checked with `go list -deps` on both binaries in the CI build (images run 37733699814, both arches): ./cmd/http and ./cmd/sbom-scanner each linked github.com/docker/docker/api/types/filters, api/types/registry and api/types/versions, and no client, daemon, plugin manager or api/server package. The build fails if daemon, plugin or api/server code is ever linked. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "litellm",
+    "path": "vex/litellm/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/litellm/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "GHSA-36hh-v3qg-5jq4"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/pyo3@0.26.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "PROVEN not reachable. GHSA-36hh is unchecked index + n in pyo3 Iterator::nth/nth_back for PyList/PyTuple iterators (pyo3-0.26.0 src/types/tuple.rs:377/433, list.rs:651/846), reached only by code that calls nth, nth_back, skip or step_by on such an iterator. pyo3 0.26.0 is linked here only by fastuuid 0.14.0 (litellm/_uuid.py imports it), the newest release, whose code does not build on pyo3 0.29 (downcast renamed; cargo build measured 2026-10-13). Checked the fastuuid 0.14.0 sdist: src/lib.rs (517 lines) never iterates a Python list or tuple; the one tuple it takes, UUID(fields=...), is read by fields.len() and get_item(0..5) (src/lib.rs:118-123). grep for iter(, nth, skip, step_by, rev( and new_closure over src/lib.rs returned 0. pyo3 0.26.0 itself calls nth/nth_back only in its #[cfg(test)] modules (grep over src/). The recipe fails the build if any of those calls appears in fastuuid. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-chgr-c6px-7xpp"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/pyo3@0.26.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "PROVEN not reachable. GHSA-chgr is PyCFunction::new_closure accepting a closure without a Sync bound (pyo3-0.26.0 src/types/function.rs:73). pyo3 0.26.0 is linked here only by fastuuid 0.14.0, the newest release, which does not build on pyo3 0.29 (measured 2026-10-13). grep for new_closure over the fastuuid 0.14.0 sdist src/ returned 0: fastuuid defines only #[pyclass]/#[pyfunction] items and creates no closure-backed function, so the unsound constructor is never called. The recipe fails the build if new_closure appears in fastuuid src/lib.rs. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "meilisearch",
+    "path": "vex/meilisearch/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/meilisearch/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115905"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@7.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipStreamReader (src/read/stream.rs) extracts by Local File Header names while ZipArchive trusts the Central Directory; exploitation needs the streaming reader, which nothing here calls. zip 7.2.0 is linked into /usr/bin/meilisearch only through candle-core 0.9.2 (checksum c15b675b80d994b2eadb20a4bbe434eabeb454eac3ee5e2b4cf6f147ee9be091), the sole dependent of zip 7.2.0 in the v1.53.3, v1.55.0 and v1.56.0 Cargo.lock files (meilisearch's own zip 6.0.0 is a build-dependency of crates/meilisearch/build.rs for the mini-dashboard and is not in the binary). candle-core declares zip ^7.2.0 with default-features = false and no features (crates.io dependency table for 0.9.2), so the unified feature set of this copy is empty. candle-core reads archives only with zip::ZipArchive::new plus by-name entry reads (src/npy.rs:286, :308, :383, :411, :425; src/pickle.rs:677, :773) and writes with zip::ZipWriter (src/npy.rs:359). Verified 2026-11-01 on the crates.io 0.9.2 source: grep -rnE 'ZipStreamReader|read_zipfile_from_stream|\\.extract|extract_unwrapped' over src returned nothing. No fixed 7.x release exists (fix 9.x); candle-core 0.11.1 still requires zip ^7.2.0. "
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115906"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@7.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: the AES entry reader (src/aes.rs) skips its HMAC check on premature EOF. That reader exists only with the aes-crypto feature, which is not enabled on this copy, so the AES code is not compiled in. zip 7.2.0 is linked into /usr/bin/meilisearch only through candle-core 0.9.2 (checksum c15b675b80d994b2eadb20a4bbe434eabeb454eac3ee5e2b4cf6f147ee9be091), the sole dependent of zip 7.2.0 in the v1.53.3, v1.55.0 and v1.56.0 Cargo.lock files (meilisearch's own zip 6.0.0 is a build-dependency of crates/meilisearch/build.rs for the mini-dashboard and is not in the binary). candle-core declares zip ^7.2.0 with default-features = false and no features (crates.io dependency table for 0.9.2), so the unified feature set of this copy is empty. candle-core reads archives only with zip::ZipArchive::new plus by-name entry reads (src/npy.rs:286, :308, :383, :411, :425; src/pickle.rs:677, :773) and writes with zip::ZipWriter (src/npy.rs:359). Verified 2026-11-01 on the crates.io 0.9.2 source: grep -rnE 'ZipStreamReader|read_zipfile_from_stream|\\.extract|extract_unwrapped' over src returned nothing. No fixed 7.x release exists (fix 9.x); candle-core 0.11.1 still requires zip ^7.2.0. "
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115907"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@7.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "The advisory: the Shrink/Reduce/Implode decoders of the legacy-zip feature preallocate from an attacker-controlled size. legacy-zip is not enabled on this copy (it is not even a zip 7.2.0 default), so those decoders are not compiled in. zip 7.2.0 is linked into /usr/bin/meilisearch only through candle-core 0.9.2 (checksum c15b675b80d994b2eadb20a4bbe434eabeb454eac3ee5e2b4cf6f147ee9be091), the sole dependent of zip 7.2.0 in the v1.53.3, v1.55.0 and v1.56.0 Cargo.lock files (meilisearch's own zip 6.0.0 is a build-dependency of crates/meilisearch/build.rs for the mini-dashboard and is not in the binary). candle-core declares zip ^7.2.0 with default-features = false and no features (crates.io dependency table for 0.9.2), so the unified feature set of this copy is empty. candle-core reads archives only with zip::ZipArchive::new plus by-name entry reads (src/npy.rs:286, :308, :383, :411, :425; src/pickle.rs:677, :773) and writes with zip::ZipWriter (src/npy.rs:359). Verified 2026-11-01 on the crates.io 0.9.2 source: grep -rnE 'ZipStreamReader|read_zipfile_from_stream|\\.extract|extract_unwrapped' over src returned nothing. No fixed 7.x release exists (fix 9.x); candle-core 0.11.1 still requires zip ^7.2.0. "
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115908"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@7.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipArchive::extract and extract_unwrapped_root_dir validate symlink targets lexically and can write outside the extraction directory. Neither extraction function is called here. zip 7.2.0 is linked into /usr/bin/meilisearch only through candle-core 0.9.2 (checksum c15b675b80d994b2eadb20a4bbe434eabeb454eac3ee5e2b4cf6f147ee9be091), the sole dependent of zip 7.2.0 in the v1.53.3, v1.55.0 and v1.56.0 Cargo.lock files (meilisearch's own zip 6.0.0 is a build-dependency of crates/meilisearch/build.rs for the mini-dashboard and is not in the binary). candle-core declares zip ^7.2.0 with default-features = false and no features (crates.io dependency table for 0.9.2), so the unified feature set of this copy is empty. candle-core reads archives only with zip::ZipArchive::new plus by-name entry reads (src/npy.rs:286, :308, :383, :411, :425; src/pickle.rs:677, :773) and writes with zip::ZipWriter (src/npy.rs:359). Verified 2026-11-01 on the crates.io 0.9.2 source: grep -rnE 'ZipStreamReader|read_zipfile_from_stream|\\.extract|extract_unwrapped' over src returned nothing. No fixed 7.x release exists (fix 9.x); candle-core 0.11.1 still requires zip ^7.2.0. "
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115909"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@7.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: ZipArchive::extract preallocates a symlink target from an attacker-controlled ZIP64 size. ZipArchive::extract is never called here. zip 7.2.0 is linked into /usr/bin/meilisearch only through candle-core 0.9.2 (checksum c15b675b80d994b2eadb20a4bbe434eabeb454eac3ee5e2b4cf6f147ee9be091), the sole dependent of zip 7.2.0 in the v1.53.3, v1.55.0 and v1.56.0 Cargo.lock files (meilisearch's own zip 6.0.0 is a build-dependency of crates/meilisearch/build.rs for the mini-dashboard and is not in the binary). candle-core declares zip ^7.2.0 with default-features = false and no features (crates.io dependency table for 0.9.2), so the unified feature set of this copy is empty. candle-core reads archives only with zip::ZipArchive::new plus by-name entry reads (src/npy.rs:286, :308, :383, :411, :425; src/pickle.rs:677, :773) and writes with zip::ZipWriter (src/npy.rs:359). Verified 2026-11-01 on the crates.io 0.9.2 source: grep -rnE 'ZipStreamReader|read_zipfile_from_stream|\\.extract|extract_unwrapped' over src returned nothing. No fixed 7.x release exists (fix 9.x); candle-core 0.11.1 still requires zip ^7.2.0. "
+        }
+      ]
+    }
+  },
+  {
+    "slug": "metabase",
+    "path": "vex/metabase/2026-09-28",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/metabase/2026-09-28",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-09-28T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2025-59250"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.2.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false positive: 13.2.1 is the fixed release. GHSA for CVE-2025-59250 lists the 13.2 range as '>= 13.2.0.jre11, < 13.2.1.jre11', first patched 13.2.1.jre11. The .jre11 suffix is the JRE build flavour, not a version step, and Metabase's jar records the artifact as version=13.2.1 in META-INF/maven/com.microsoft.sqlserver/mssql-jdbc/pom.properties. Trivy then compares 13.2.1 against 13.2.1.jre11 and finds it lower. Scoped to 13.2.1; any other mssql-jdbc version must be re-checked."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "n8n",
+    "path": "vex/n8n/2026-10-12",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/n8n/2026-10-12",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-12T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-102826"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/simple-git@3.36.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "Measured 2026-10-12 on n8n 2.40.7 (published sha256:cfb73b45). GHSA-g4wm-2vf7-vfgr: the blockUnsafeOperationsPlugin denylist misses include.path / includeIf, so a -c include.path=<file> argument reaches git, and git then loads that file and runs a command it names. The command runs only inside a git process, and this image ships no git executable: apko.yaml installs only wolfi-baselayout, ca-certificates-bundle, tzdata, nodejs-24 and quench-n8n; the full image file list (crane export, 263k entries) has no file named git and only ldconfig and node in /usr/bin; no shell either. Verified inside the image: simpleGit with config include.path plus a push carrying --receive-p rejects with spawn git ENOENT, and simpleGit().version() returns installed=false. n8n source control also refuses to start without git (cli dist/modules/source-control.ee/source-control-git.service.ee.js:74 Git binary not found). test.sh fails the build if any executable named git appears, so this statement cannot outlive its precondition."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-102827"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/simple-git@3.36.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "Measured 2026-10-12 on n8n 2.40.7 (published sha256:cfb73b45). GHSA-858h-whjf-mvg5: git accepts abbreviated long options (--receive-p, --exe) that the denylist does not match, so git push runs the named command. The command runs only inside a git process, and this image ships no git executable: apko.yaml installs only wolfi-baselayout, ca-certificates-bundle, tzdata, nodejs-24 and quench-n8n; the image file list (crane export) has no file named git and only ldconfig and node in /usr/bin. Verified inside the image: git.push with --receive-p=touch /tmp/pwn rejects with spawn git ENOENT and no file is created; simpleGit().version() returns installed=false. The n8n Git node also rejects push targets starting with a hyphen (n8n-nodes-base 2.40.2 dist/nodes/Git/Git.node.js:311). test.sh fails the build if any executable named git appears."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-102828"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/simple-git@3.36.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "Measured 2026-10-12 on n8n 2.40.7 (published sha256:cfb73b45). GHSA-x6jw-m9v5-85vh: trailer.<token>.cmd is not on the denylist, so git interpret-trailers runs the configured command. That needs a git process, and this image ships no git executable: apko.yaml installs only wolfi-baselayout, ca-certificates-bundle, tzdata, nodejs-24 and quench-n8n; the image file list (crane export) has no file named git and only ldconfig and node in /usr/bin. Verified inside the image: simple-git calls reject with spawn git ENOENT and simpleGit().version() returns installed=false. n8n never runs interpret-trailers or commit --trailer (grep over the n8n 2.40.7 and n8n-nodes-base 2.40.2 dist: 0 matches), and the Git node addConfig allows only user.email, user.name, remote.origin.url by default (dist/nodes/Git/descriptions/AddConfigDescription.js:4). test.sh fails the build if any executable named git appears."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-102829"
+          },
+          "products": [
+            {
+              "@id": "pkg:npm/%40simple-git/argv-parser@1.1.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "Measured 2026-10-12 on n8n 2.40.7 (published sha256:cfb73b45). GHSA-v5rq-49vh-5v5c: parseEnv drops VISUAL, so an attacker-set VISUAL editor is not flagged and git launches it during an interactive operation. That needs a git process, and this image ships no git executable: apko.yaml installs only wolfi-baselayout, ca-certificates-bundle, tzdata, nodejs-24 and quench-n8n; the image file list (crane export) has no file named git and only ldconfig and node in /usr/bin. Verified inside the image: simpleGit().env({VISUAL}) followed by a push rejects with spawn git ENOENT; simpleGit().version() returns installed=false. n8n also never forwards caller env to git: the Git node passes a fresh object holding only GIT_TERMINAL_PROMPT and GIT_ALLOW_PROTOCOL (n8n-nodes-base 2.40.2 dist/nodes/Git/Git.node.js:490). test.sh fails the build if any executable named git appears."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "nextcloud",
+    "path": "vex/nextcloud/2026-09-30",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/nextcloud/2026-09-30",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-09-30T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84308"
+          },
+          "products": [
+            {
+              "@id": "pkg:composer/phpseclib/phpseclib@2.0.55"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "PROVEN false-positive, measured 2026-09-30 on the published nextcloud 34.0.4 image. CVE-2026-84308 (GHSA-q97c-8qh3-fpc6) is a timing leak in phpseclib's pure-PHP X25519 scalar multiplication: the advisory names phpseclib/Math/PrimeField/Integer.php, phpseclib/Crypt/EC/BaseCurves/Montgomery.php, and the Crypt/EC/Formats/Keys/MontgomeryPrivate.php and PKCS8.php key paths. Elliptic-curve support only exists from phpseclib 3.0. Nextcloud 34 requires phpseclib ^2.0.55 (nextcloud/3rdparty v34.0.4 composer.json), and the image ships phpseclib 2.0.55 under var/www/html/3rdparty/phpseclib/phpseclib/phpseclib. Verified on the exported image filesystem: its Crypt directory holds only AES, Base, Blowfish, DES, Hash, Random, RC2, RC4, Rijndael, RSA, TripleDES and Twofish, and `find` for Montgomery*.php, any Crypt/EC path or any PrimeField path returns 0 matches. The vulnerable code is not in the image. The advisory's fixed versions are 3.0.57 and 4.0.1 only: no 2.0.x release fixes it because 2.0.x never had the code. Nextcloud 35 moves to phpseclib ^3.0.55, where this statement stops applying and the real fix is required."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "prefect",
+    "path": "vex/prefect/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/prefect/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "GHSA-36hh-v3qg-5jq4"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/pyo3@0.28.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_cannot_be_controlled_by_adversary",
+          "impact_statement": "PROVEN not reachable with attacker-sized n. GHSA-36hh is unchecked index + n in pyo3 Iterator::nth/nth_back for PyList/PyTuple iterators (pyo3-0.28.3 src/types/tuple.rs:393 `self.index + n`, list.rs:674/869); it needs n near usize::MAX to wrap. pyo3 0.28.3 is linked here only by burner-redis 0.1.7 (docket's in-memory Redis), the newest release, whose code does not build on pyo3 0.29 (downcast renamed; measured with cargo build on 2026-10-13). Checked the burner-redis 0.1.7 sdist: the only list/tuple iterator calls that reach nth are args.iter().skip(1) or .skip(2) on the PyTuple of dispatch_pipeline_command (src/lib.rs:2944, skips at :3021, :3062, :3084, :3109, :3285, :3370, :3538, :3553, :3648, :3659); Skip calls nth with that literal on a fresh iterator (index 0), so index + n is at most 2 and cannot wrap. grep for nth, nth_back, step_by and rev() over src/lib.rs returned 0; the .skip() calls in scripting.rs and store.rs iterate Rust VecDeque/BTreeMap, not pyo3 types. pyo3 0.28.3 itself calls nth/nth_back only in its #[cfg(test)] modules (grep over src/). The recipe fails the build if any .skip() takes another argument or nth/nth_back/step_by/rev appears. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-chgr-c6px-7xpp"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/pyo3@0.28.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_cannot_be_controlled_by_adversary",
+          "impact_statement": "PROVEN not exploitable here. GHSA-chgr is PyCFunction::new_closure accepting a closure that is Send but not Sync, so concurrent calls from two Python threads could race on non-Sync captured state. pyo3 0.28.3 is linked here only by burner-redis 0.1.7 (newest release; its code does not build on pyo3 0.29, measured 2026-10-13), and its sdist has exactly one new_closure call (src/lib.rs:402-410): the atexit save hook, which captures an Arc<Store> and a String and only calls store.save(&path). Both captures are Sync: the same Arc<Store> is downgraded and moved into a tokio task at src/lib.rs:416-418, which the compiler accepts only when Store is Send + Sync, and String is Sync. A closure whose captured state is all Sync cannot data-race when called concurrently, which is exactly what the missing bound would have enforced. grep -c new_closure over src/ returned 1. The recipe fails the build if the count changes. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "quickwit",
+    "path": "vex/quickwit/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/quickwit/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "GHSA-82j2-j2ch-gfr8"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.101.7"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The CRL BIT STRING panic needs CRL parsing with RevocationOptions in a rustls 0.21 verifier. rustls-webpki 0.101.7 is linked only through rustls 0.21.12 <- hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0 (hyper-0.14 legacy client), measured with `cargo tree -e features -i rustls@0.21.12` on quickwit v0.9.1 with this recipe's feature set. aws-smithy-runtime 1.12.0 builds that legacy client only in src/client/defaults.rs:85 (compiled out when default-https-client is on, which aws-config enables here) and :100 (only for a BehaviorVersion older than v2026_01_12). quickwit-aws/src/lib.rs:58-72 loads the one SdkConfig with BehaviorVersion::v2026_01_12() and an explicit http_client built with tls::Provider::Rustls(CryptoMode::AwsLc), the rustls 0.23 stack; grep over every src/*.rs found no older BehaviorVersion and no hyper_014. The recipe fails the build if either changes. No rustls 0.21 verifier is ever constructed, so certificate path validation and CRL parsing in webpki 0.101.7 never run. The 0.101.x line has no fixed release (fix is 0.103.13). Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-965h-392x-2mh5"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.101.7"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The URI name constraint bug needs certificate path validation by a rustls 0.21 verifier. rustls-webpki 0.101.7 is linked only through rustls 0.21.12 <- hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0 (hyper-0.14 legacy client), measured with `cargo tree -e features -i rustls@0.21.12` on quickwit v0.9.1 with this recipe's feature set. aws-smithy-runtime 1.12.0 builds that legacy client only in src/client/defaults.rs:85 (compiled out when default-https-client is on, which aws-config enables here) and :100 (only for a BehaviorVersion older than v2026_01_12). quickwit-aws/src/lib.rs:58-72 loads the one SdkConfig with BehaviorVersion::v2026_01_12() and an explicit http_client built with tls::Provider::Rustls(CryptoMode::AwsLc), the rustls 0.23 stack; grep over every src/*.rs found no older BehaviorVersion and no hyper_014. The recipe fails the build if either changes. No rustls 0.21 verifier is ever constructed, so certificate path validation and CRL parsing in webpki 0.101.7 never run. The 0.101.x line has no fixed release (fix is 0.103.13). Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-xgp8-3hg3-c2mh"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.101.7"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The wildcard name constraint bug needs certificate path validation by a rustls 0.21 verifier. rustls-webpki 0.101.7 is linked only through rustls 0.21.12 <- hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0 (hyper-0.14 legacy client), measured with `cargo tree -e features -i rustls@0.21.12` on quickwit v0.9.1 with this recipe's feature set. aws-smithy-runtime 1.12.0 builds that legacy client only in src/client/defaults.rs:85 (compiled out when default-https-client is on, which aws-config enables here) and :100 (only for a BehaviorVersion older than v2026_01_12). quickwit-aws/src/lib.rs:58-72 loads the one SdkConfig with BehaviorVersion::v2026_01_12() and an explicit http_client built with tls::Provider::Rustls(CryptoMode::AwsLc), the rustls 0.23 stack; grep over every src/*.rs found no older BehaviorVersion and no hyper_014. The recipe fails the build if either changes. No rustls 0.21 verifier is ever constructed, so certificate path validation and CRL parsing in webpki 0.101.7 never run. The 0.101.x line has no fixed release (fix is 0.103.13). Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-cq8v-f236-94qc"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rand@0.7.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "GHSA-cq8v-f236-94qc makes rand unsound only when its log feature is enabled and a custom logger calls thread_rng. rand 0.7.3 enters through http-types 2.12.0 <- azure_core 0.21.0 (quickwit-storage azure). `cargo tree -e features -i rand@0.7.3` on quickwit v0.9.1 with this recipe's feature set shows only the alloc, std and default features; log is absent, so the logging code in rand 0.7.3 (cfg feature log) is not compiled. The 0.7 line has no fixed release. The recipe runs the same cargo tree check and fails the build if the log feature ever appears. Verified 2026-10-13."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "rustfs",
+    "path": "vex/rustfs/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/rustfs/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 2,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-111061"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/russh@0.63.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "russh 0.63.3 is listed only because the image ships the 1.0.1 tag Cargo.lock at /usr/share/doc/rustfs/Cargo.lock (so Trivy can see the crates of the prebuilt binary, which has no cargo-auditable section); the crate is not compiled into /usr/bin/rustfs. In tag 1.0.1 (commit 6de965ae3c965a78ff819fbcd7acd4aa44177d92) russh is optional: crates/protocols/Cargo.toml:180 declares russh = { workspace = true, optional = true } and crates/protocols/Cargo.toml:110 enables it only through the sftp feature; rustfs/Cargo.toml:60 sets default = [ftps, webdav, gcs] and rustfs/Cargo.toml:66 is the only route to rustfs-protocols/sftp. The musl release jobs build with features empty (.github/workflows/build.yml:216-217) via cargo build --release -p rustfs (build.yml:439), so sftp is off; the other russh user is the e2e_test test crate, not part of that build. Verified 2026-10-22: grep -aoE over the sha256-pinned 1.0.1 musl binaries found 383 (x86_64) and 382 (aarch64) registry/src crate-version paths, tokio-1.53.1 among them, and 0 matching russh, so the russh SSH agent handling code is not present. The recipe fails the build if any russh crate path appears in the binary or if the binary stops carrying crate paths. Versions 1.0.2 and 1.0.3 lock russh 0.64.1 and need no statement."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-111062"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/russh@0.63.3"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "russh 0.63.3 is listed only because the image ships the 1.0.1 tag Cargo.lock at /usr/share/doc/rustfs/Cargo.lock (so Trivy can see the crates of the prebuilt binary, which has no cargo-auditable section); the crate is not compiled into /usr/bin/rustfs. In tag 1.0.1 (commit 6de965ae3c965a78ff819fbcd7acd4aa44177d92) russh is optional: crates/protocols/Cargo.toml:180 declares russh = { workspace = true, optional = true } and crates/protocols/Cargo.toml:110 enables it only through the sftp feature; rustfs/Cargo.toml:60 sets default = [ftps, webdav, gcs] and rustfs/Cargo.toml:66 is the only route to rustfs-protocols/sftp. The musl release jobs build with features empty (.github/workflows/build.yml:216-217) via cargo build --release -p rustfs (build.yml:439), so sftp is off; the other russh user is the e2e_test test crate, not part of that build. Verified 2026-10-22: grep -aoE over the sha256-pinned 1.0.1 musl binaries found 383 (x86_64) and 382 (aarch64) registry/src crate-version paths, tokio-1.53.1 among them, and 0 matching russh, so the russh server publickey authentication code is not present. The recipe fails the build if any russh crate path appears in the binary or if the binary stops carrying crate paths. Versions 1.0.2 and 1.0.3 lock russh 0.64.1 and need no statement."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-116794"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/russh@0.63.3"
+            },
+            {
+              "@id": "pkg:cargo/russh@0.64.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "russh 0.63.3 (1.0.1) and 0.64.1 (1.0.4) is listed only because the image ships the tag Cargo.lock at /usr/share/doc/rustfs/Cargo.lock (the prebuilt binary has no cargo-auditable section); the crate is not compiled into /usr/bin/rustfs. russh is optional in the rustfs-protocols crate and enabled only by the sftp feature (tag 1.0.4 commit 46337942d55f3a8e6a97b147ca98d9ea8115555d: crates/protocols/Cargo.toml:179 russh = { workspace = true, optional = true }, crates/protocols/Cargo.toml:109 sftp = [dep:russh, ...]; rustfs/Cargo.toml:60 default = [ftps, webdav, gcs], rustfs/Cargo.toml:66 the only route to rustfs-protocols/sftp); the 1.0.1 tag has the same shape (see the CVE-2026-111061 statement). The other russh user, e2e_test, is a test crate outside the release build. Verified 2026-11-01: grep -aoE over the sha256-pinned musl binaries found 383 (1.0.4 x86_64), 379 (1.0.4 aarch64) and 383 (1.0.1 x86_64) registry/src crate-version paths and 0 matching russh or pageant, so the russh SSH agent server confirm-constraint handling code is not present. The recipe fails the build if any russh crate path appears in the binary or if the binary stops carrying crate paths."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-116696"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/russh@0.63.3"
+            },
+            {
+              "@id": "pkg:cargo/russh@0.64.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "russh 0.63.3 (1.0.1) and 0.64.1 (1.0.4) is listed only because the image ships the tag Cargo.lock at /usr/share/doc/rustfs/Cargo.lock (the prebuilt binary has no cargo-auditable section); the crate is not compiled into /usr/bin/rustfs. russh is optional in the rustfs-protocols crate and enabled only by the sftp feature (tag 1.0.4 commit 46337942d55f3a8e6a97b147ca98d9ea8115555d: crates/protocols/Cargo.toml:179 russh = { workspace = true, optional = true }, crates/protocols/Cargo.toml:109 sftp = [dep:russh, ...]; rustfs/Cargo.toml:60 default = [ftps, webdav, gcs], rustfs/Cargo.toml:66 the only route to rustfs-protocols/sftp); the 1.0.1 tag has the same shape (see the CVE-2026-111061 statement). The other russh user, e2e_test, is a test crate outside the release build. Verified 2026-11-01: grep -aoE over the sha256-pinned musl binaries found 383 (1.0.4 x86_64), 379 (1.0.4 aarch64) and 383 (1.0.1 x86_64) registry/src crate-version paths and 0 matching russh or pageant, so the russh SSH agent server constraint parsing code is not present. The recipe fails the build if any russh crate path appears in the binary or if the binary stops carrying crate paths."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-116775"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/pageant@0.2.3"
+            },
+            {
+              "@id": "pkg:cargo/pageant@0.2.4"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "pageant is in the shipped tag Cargo.lock only as a dependency of russh (Cargo.lock 1.0.4: russh 0.64.1 -> pageant; no other package depends on it), and russh is not compiled into /usr/bin/rustfs. russh (the only route to pageant) is listed only because the image ships the tag Cargo.lock at /usr/share/doc/rustfs/Cargo.lock (the prebuilt binary has no cargo-auditable section); the crate is not compiled into /usr/bin/rustfs. russh is optional in the rustfs-protocols crate and enabled only by the sftp feature (tag 1.0.4 commit 46337942d55f3a8e6a97b147ca98d9ea8115555d: crates/protocols/Cargo.toml:179 russh = { workspace = true, optional = true }, crates/protocols/Cargo.toml:109 sftp = [dep:russh, ...]; rustfs/Cargo.toml:60 default = [ftps, webdav, gcs], rustfs/Cargo.toml:66 the only route to rustfs-protocols/sftp); the 1.0.1 tag has the same shape (see the CVE-2026-111061 statement). The other russh user, e2e_test, is a test crate outside the release build. Verified 2026-11-01: grep -aoE over the sha256-pinned musl binaries found 383 (1.0.4 x86_64), 379 (1.0.4 aarch64) and 383 (1.0.1 x86_64) registry/src crate-version paths and 0 matching russh or pageant, so the pageant PageantStream frame buffering code is not present. The recipe fails the build if any russh crate path appears in the binary or if the binary stops carrying crate paths."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-c8m5-c952-6cm4"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls@0.23.45"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "Applies to 1.0.1 only (1.0.4 ships rustls 0.23.46). The advisory: the derived Debug formatting of Tls12ClientSessionValue / Tls13ClientSessionValue exposes the master secret or resumption PSK, reachable only through a custom ClientSessionStore implementation that Debug-formats those values; built-in caches stay redacted (rustls-0.23.45/src/client/handy.rs:183 implements a redacting fmt::Debug for ClientSessionMemoryCache, handy.rs:12 NoClientSessionStorage stores nothing). Verified 2026-11-01: cargo fetch --locked of the 1.0.1 tag, cargo tree -p rustfs -e normal --target all -i rustls@0.23.45 lists 77 dependents; grep -rlE 'ClientSessionStore|ClientSessionValue' over the registry source of every one and over all workspace .rs files returned only rustls-0.23.45 itself, and its only implementations are handy.rs:12 and handy.rs:101. No custom session store exists in the binary, so the secret-bearing Debug impls are never called."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115905"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@8.6.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "Applies to 1.0.1 only (1.0.4 ships zip 9.1.0). The advisory: ZipStreamReader (zip src/read/stream.rs) extracts by Local File Header names while ZipArchive trusts the Central Directory, so a crafted archive differs between the two readers. Exploitation needs a streaming extractor. Verified 2026-11-01 in the 1.0.1 tag source: grep -rnE 'ZipStreamReader|read_zipfile_from_stream|zip::read::stream' over every .rs file returned nothing; the rustfs crate reads archives only through zip::ZipArchive::new (rustfs/src/connect/diagnostics/trace_runtime.rs:2532, job.rs:1831, environment.rs:848) and otherwise writes with ZipWriter; the only other dependents are rustfs-log-analyzer and the e2e_test test crate (Cargo.lock). The streaming reader code is never called."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-115907"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/zip@8.6.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Applies to 1.0.1 only (1.0.4 ships zip 9.1.0). The advisory affects only builds with the legacy-zip feature (Shrink/Reduce/Implode decoders, src/legacy/). Verified 2026-11-01: the 1.0.1 tag declares zip = \"8.6.0\" with default features (Cargo.toml:349) and every member uses zip = { workspace = true } with no extra features (rustfs/Cargo.toml:360, crates/log-analyzer/Cargo.toml:52); zip 8.6.0 default = [aes-crypto, bzip2, deflate64, deflate, lzma, ppmd, time, zstd, xz] (crates.io feature table) does not include legacy-zip, so the legacy decoders are not compiled in."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-116773"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/russh@0.63.3"
+            },
+            {
+              "@id": "pkg:cargo/russh@0.64.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "russh 0.63.3 (1.0.1) and 0.64.1 (1.0.4) is listed only because the image ships the tag Cargo.lock at /usr/share/doc/rustfs/Cargo.lock (the prebuilt binary has no cargo-auditable section); the crate is not compiled into /usr/bin/rustfs. russh is optional in the rustfs-protocols crate and enabled only by the sftp feature (tag 1.0.4 commit 46337942d55f3a8e6a97b147ca98d9ea8115555d: crates/protocols/Cargo.toml:179 russh = { workspace = true, optional = true }, crates/protocols/Cargo.toml:109 sftp = [dep:russh, ...]; rustfs/Cargo.toml:60 default = [ftps, webdav, gcs], rustfs/Cargo.toml:66 the only route to rustfs-protocols/sftp); the 1.0.1 tag has the same shape (see the CVE-2026-111061 statement). The other russh user, e2e_test, is a test crate outside the release build. Verified 2026-11-01: grep -aoE over the sha256-pinned musl binaries found 383 (1.0.4 x86_64), 379 (1.0.4 aarch64) and 383 (1.0.1 x86_64) registry/src crate-version paths and 0 matching russh or pageant, so the russh extension-handling allocation code is not present. The recipe fails the build if any russh crate path appears in the binary or if the binary stops carrying crate paths."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-116774"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/russh@0.63.3"
+            },
+            {
+              "@id": "pkg:cargo/russh@0.64.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "component_not_present",
+          "impact_statement": "russh 0.63.3 (1.0.1) and 0.64.1 (1.0.4) is listed only because the image ships the tag Cargo.lock at /usr/share/doc/rustfs/Cargo.lock (the prebuilt binary has no cargo-auditable section); the crate is not compiled into /usr/bin/rustfs. russh is optional in the rustfs-protocols crate and enabled only by the sftp feature (tag 1.0.4 commit 46337942d55f3a8e6a97b147ca98d9ea8115555d: crates/protocols/Cargo.toml:179 russh = { workspace = true, optional = true }, crates/protocols/Cargo.toml:109 sftp = [dep:russh, ...]; rustfs/Cargo.toml:60 default = [ftps, webdav, gcs], rustfs/Cargo.toml:66 the only route to rustfs-protocols/sftp); the 1.0.1 tag has the same shape (see the CVE-2026-111061 statement). The other russh user, e2e_test, is a test crate outside the release build. Verified 2026-11-01: grep -aoE over the sha256-pinned musl binaries found 383 (1.0.4 x86_64), 379 (1.0.4 aarch64) and 383 (1.0.1 x86_64) registry/src crate-version paths and 0 matching russh or pageant, so the russh channel maximum-packet-size handling code is not present. The recipe fails the build if any russh crate path appears in the binary or if the binary stops carrying crate paths."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "scylladb",
+    "path": "vex/scylladb/2026-10-13",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/scylladb/2026-10-13",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-13T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54786"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/wasmtime-wasi@24.0.9"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_cannot_be_controlled_by_adversary",
+          "impact_statement": "CVE-2026-54786 is a host resource leak in the native WASIp1 fd_renumber: a guest loops fd_renumber to exhaust host descriptors, which the advisory says needs a runtime that lets the guest acquire file descriptors (for example by opening a file); runtimes that deny file access are unaffected. wasmtime-wasi 24.0.9 is in /opt/scylladb/libexec/scylla only for WASM user-defined functions (an experimental feature, off unless enabled). At release commit d80b3d6ca26b5457c1b59b47046fab27fa1953f3, rust/wasmtime_bindings/src/lib.rs:194 builds the only WASI context as WasiCtxBuilder::new().build_p1() with no preopened_dir, no inherit_stdio and no inherit_env, and lib.rs:110 links preview1 onto it; grep -n 'preopen|inherit' over that file returned 0 matches. A guest therefore holds only the three virtual stdio descriptors and cannot open a file or socket, so it cannot obtain new descriptors to renumber in a loop. The recipe pins the lock per scylla build and fails on any new build until this is re-checked. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-58494"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/wasmtime-wasi@24.0.9"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_cannot_be_controlled_by_adversary",
+          "impact_statement": "CVE-2026-58494 (GHSA-4ch3-9j33-3pmj) lets a guest overwrite a host file exposed read-only in one preopened directory by hard-linking or renaming it into a second preopen that allows writes; it needs at least two preopened directories with different FilePerms. wasmtime-wasi 24.0.9 is in /opt/scylladb/libexec/scylla only for WASM user-defined functions (an experimental feature, off unless enabled). At release commit d80b3d6ca26b5457c1b59b47046fab27fa1953f3, rust/wasmtime_bindings/src/lib.rs:194 builds the only WASI context as WasiCtxBuilder::new().build_p1() with no preopened_dir, and grep -n 'preopen' over that file returns 0 matches, so a guest has no host directory capability at all and no file to link, rename or open. The recipe pins the lock per scylla build and fails on any new build until this is re-checked. Verified 2026-10-19."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "trufflehog",
+    "path": "vex/trufflehog/2026-10-12",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/trufflehog/2026-10-12",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-10-12T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. trufflehog (main package .) links only the API types and the client from the module, through pkg/sources/docker and go-containerregistry's pkg/v1/daemon: github.com/docker/docker/api, api/types/* and client. Checked with `go list -deps .` at 3.99.2 with docker v28.5.2 (go.mod identical at 3.98.1, same docker pin at 3.97.9): no daemon, plugin manager or API server package is in the build, and trufflehog never calls the client's plugin endpoints. The build fails if a daemon, plugin or api/server package is ever linked. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "vcluster",
+    "path": "vex/vcluster/2026-09-26",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/vcluster/2026-09-26",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-09-26T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-33997"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.5.2%2Bincompatible"
+            },
+            {
+              "@id": "pkg:golang/github.com/docker/docker@v28.3.3%2Bincompatible"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "CVE-2026-33997 is a privilege-validation bypass in the Moby daemon's plugin installation. The vCluster syncer (./cmd/vcluster) links exactly one package from the module: github.com/docker/docker/pkg/homedir, a helper that returns the user's home directory, reached through github.com/docker/cli/cli/config/credentials. Checked with `go list -deps ./cmd/vcluster` at v0.37.2 (docker v28.5.2) and v0.35.4 (docker v28.3.3): no daemon, plugin or API server package is in the build. The fix (29.3.1) exists only under the github.com/moby/moby module path, so the +incompatible module cannot be floated to it. Scoped to these exact versions: a tag that links more of docker/docker must be re-checked."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "vector",
+    "path": "vex/vector/2026-11-01",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/vector/2026-11-01",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-01T00:00:00Z",
+      "version": 3,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "GHSA-82j2-j2ch-gfr8"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.102.8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The CRL BIT STRING panic is reached only through CRL parsing with RevocationOptions, which needs a rustls 0.22 verifier this binary never constructs. rustls-webpki 0.102.8 is linked only through rustls 0.22.4 <- tokio-rustls 0.25.0 <- tonic 0.11.0 (feature tls), measured with `cargo tree -e normal,build -i rustls-webpki@0.102.8` on vector v0.58.0 and v0.59.0 with this recipe's feature set. tonic 0.11.0 builds that TLS stack only in Endpoint::tls_config (src/transport/channel/endpoint.rs:242) and Server::tls_config (src/transport/server/mod.rs:151); Endpoint::new leaves tls None (endpoint.rs:425-426). grep for ClientTlsConfig|ServerTlsConfig|.tls_config( over vector src/ and lib/ matches only src/sources/gcp_pubsub.rs (v0.59.0 :283-293, v0.58.0 :291-301), feature sources-gcp_pubsub, which this build does not enable; vector gRPC servers terminate TLS with OpenSSL (vector-core tls), not tonic. The recipe fails the build if a gcp/greptime feature or any other tonic TLS caller appears. 0.102.x has no fixed release; the fix is 0.103.13, which needs tonic 0.12+ upstream. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-pwjx-qhcg-rvj4"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.102.8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The CRL distribution point matching bug is reached only through CRL revocation checks in a rustls 0.22 verifier this binary never constructs. rustls-webpki 0.102.8 is linked only through rustls 0.22.4 <- tokio-rustls 0.25.0 <- tonic 0.11.0 (feature tls), measured with `cargo tree -e normal,build -i rustls-webpki@0.102.8` on vector v0.58.0 and v0.59.0 with this recipe's feature set. tonic 0.11.0 builds that TLS stack only in Endpoint::tls_config (src/transport/channel/endpoint.rs:242) and Server::tls_config (src/transport/server/mod.rs:151); Endpoint::new leaves tls None (endpoint.rs:425-426). grep for ClientTlsConfig|ServerTlsConfig|.tls_config( over vector src/ and lib/ matches only src/sources/gcp_pubsub.rs (v0.59.0 :283-293, v0.58.0 :291-301), feature sources-gcp_pubsub, which this build does not enable; vector gRPC servers terminate TLS with OpenSSL (vector-core tls), not tonic. The recipe fails the build if a gcp/greptime feature or any other tonic TLS caller appears. 0.102.x has no fixed release; the fix is 0.103.13, which needs tonic 0.12+ upstream. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-965h-392x-2mh5"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.102.8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The URI name constraint bug is reached only through certificate path validation by a rustls 0.22 verifier this binary never constructs. rustls-webpki 0.102.8 is linked only through rustls 0.22.4 <- tokio-rustls 0.25.0 <- tonic 0.11.0 (feature tls), measured with `cargo tree -e normal,build -i rustls-webpki@0.102.8` on vector v0.58.0 and v0.59.0 with this recipe's feature set. tonic 0.11.0 builds that TLS stack only in Endpoint::tls_config (src/transport/channel/endpoint.rs:242) and Server::tls_config (src/transport/server/mod.rs:151); Endpoint::new leaves tls None (endpoint.rs:425-426). grep for ClientTlsConfig|ServerTlsConfig|.tls_config( over vector src/ and lib/ matches only src/sources/gcp_pubsub.rs (v0.59.0 :283-293, v0.58.0 :291-301), feature sources-gcp_pubsub, which this build does not enable; vector gRPC servers terminate TLS with OpenSSL (vector-core tls), not tonic. The recipe fails the build if a gcp/greptime feature or any other tonic TLS caller appears. 0.102.x has no fixed release; the fix is 0.103.13, which needs tonic 0.12+ upstream. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-xgp8-3hg3-c2mh"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.102.8"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The wildcard name constraint bug is reached only through certificate path validation by a rustls 0.22 verifier this binary never constructs. rustls-webpki 0.102.8 is linked only through rustls 0.22.4 <- tokio-rustls 0.25.0 <- tonic 0.11.0 (feature tls), measured with `cargo tree -e normal,build -i rustls-webpki@0.102.8` on vector v0.58.0 and v0.59.0 with this recipe's feature set. tonic 0.11.0 builds that TLS stack only in Endpoint::tls_config (src/transport/channel/endpoint.rs:242) and Server::tls_config (src/transport/server/mod.rs:151); Endpoint::new leaves tls None (endpoint.rs:425-426). grep for ClientTlsConfig|ServerTlsConfig|.tls_config( over vector src/ and lib/ matches only src/sources/gcp_pubsub.rs (v0.59.0 :283-293, v0.58.0 :291-301), feature sources-gcp_pubsub, which this build does not enable; vector gRPC servers terminate TLS with OpenSSL (vector-core tls), not tonic. The recipe fails the build if a gcp/greptime feature or any other tonic TLS caller appears. 0.102.x has no fixed release; the fix is 0.103.13, which needs tonic 0.12+ upstream. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-82j2-j2ch-gfr8"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.101.7"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The CRL BIT STRING panic needs CRL parsing with RevocationOptions in a rustls 0.21 verifier. rustls-webpki 0.101.7 (vector 0.58.0 only) comes in through rustls 0.21.12 <- hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0 legacy-rustls-ring, the default hyper-0.14 client of aws-smithy-runtime 1.12.1, measured with `cargo tree -e all -i rustls-webpki@0.101.7` with this recipe's features. Vector never sends AWS traffic through it: src/aws/mod.rs:109-125 (fn connector, documented as the connector all AWS requests use because vector keeps TLS on OpenSSL) wraps vector's hyper-openssl connector (src/http.rs:260 build_tls_connector) in HyperClientBuilder, and every SDK config and credential provider is given that client: src/aws/mod.rs:143-144 and :224, src/aws/auth.rs:254, :334 and :419-421. grep for aws_config::defaults|load_defaults|load_from_env|from_env over src and lib returned 0 matches, so no config falls back to the default client. No rustls 0.21 verifier ever validates a certificate. The 0.101.x line has no fixed release (0.103.13). The recipe fails the build if a default loader appears or the OpenSSL connector changes. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-965h-392x-2mh5"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.101.7"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The URI name constraint bug needs certificate path validation by a rustls 0.21 verifier. rustls-webpki 0.101.7 (vector 0.58.0 only) comes in through rustls 0.21.12 <- hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0 legacy-rustls-ring, the default hyper-0.14 client of aws-smithy-runtime 1.12.1, measured with `cargo tree -e all -i rustls-webpki@0.101.7` with this recipe's features. Vector never sends AWS traffic through it: src/aws/mod.rs:109-125 (fn connector, documented as the connector all AWS requests use because vector keeps TLS on OpenSSL) wraps vector's hyper-openssl connector (src/http.rs:260 build_tls_connector) in HyperClientBuilder, and every SDK config and credential provider is given that client: src/aws/mod.rs:143-144 and :224, src/aws/auth.rs:254, :334 and :419-421. grep for aws_config::defaults|load_defaults|load_from_env|from_env over src and lib returned 0 matches, so no config falls back to the default client. No rustls 0.21 verifier ever validates a certificate. The 0.101.x line has no fixed release (0.103.13). The recipe fails the build if a default loader appears or the OpenSSL connector changes. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-xgp8-3hg3-c2mh"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls-webpki@0.101.7"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The wildcard name constraint bug needs certificate path validation by a rustls 0.21 verifier. rustls-webpki 0.101.7 (vector 0.58.0 only) comes in through rustls 0.21.12 <- hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0 legacy-rustls-ring, the default hyper-0.14 client of aws-smithy-runtime 1.12.1, measured with `cargo tree -e all -i rustls-webpki@0.101.7` with this recipe's features. Vector never sends AWS traffic through it: src/aws/mod.rs:109-125 (fn connector, documented as the connector all AWS requests use because vector keeps TLS on OpenSSL) wraps vector's hyper-openssl connector (src/http.rs:260 build_tls_connector) in HyperClientBuilder, and every SDK config and credential provider is given that client: src/aws/mod.rs:143-144 and :224, src/aws/auth.rs:254, :334 and :419-421. grep for aws_config::defaults|load_defaults|load_from_env|from_env over src and lib returned 0 matches, so no config falls back to the default client. No rustls 0.21 verifier ever validates a certificate. The 0.101.x line has no fixed release (0.103.13). The recipe fails the build if a default loader appears or the OpenSSL connector changes. Verified 2026-10-13."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-c8m5-c952-6cm4"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls@0.22.4"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: Debug formatting of client session values (Tls12/Tls13ClientSessionValue) leaks the master secret or resumption PSK through a custom ClientSessionStore. rustls 0.22.4 (vector 0.58.0 and 0.60.0; 0.61.0 ships only 0.23.46) is linked only through tokio-rustls 0.25.0 <- tonic 0.11.0 (feature tls), measured 2026-11-01 with cargo tree --locked -e normal,build --target all --no-default-features --features <this recipe's FEATURES> -i rustls@0.22.4 on the v0.58.0 and v0.60.0 tags. tonic 0.11.0 creates a rustls connection only in Endpoint::tls_config (src/transport/channel/endpoint.rs:242) and Server::tls_config (src/transport/server/mod.rs:151); Endpoint::new leaves tls None (endpoint.rs:425-426). grep for ClientTlsConfig|ServerTlsConfig|.tls_config( over vector src/ and lib/ matches only src/sources/gcp_pubsub.rs (feature sources-gcp_pubsub, not built here); vector terminates its own TLS with OpenSSL. No rustls 0.22 client or server connection is ever constructed, so no handshake or session store runs on this copy. The recipe fails the build if a gcp/greptime feature or any other tonic TLS caller appears. The advisory has no fixed 0.22.x release (fix 0.23.46)."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-c8m5-c952-6cm4"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls@0.21.12"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: Debug formatting of client session values (Tls12/Tls13ClientSessionValue) leaks the master secret or resumption PSK through a custom ClientSessionStore. rustls 0.21.12 (vector 0.58.0 only) comes in only through hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0, the default hyper-0.14 client of aws-smithy-runtime, measured 2026-11-01 with cargo tree --locked -e all --target all --no-default-features --features <this recipe's FEATURES> -i rustls@0.21.12 on v0.58.0 (with -e normal,build it prints nothing). Vector never sends traffic through that client: src/aws/mod.rs:109-125 (fn connector) wraps vector's hyper-openssl connector (src/http.rs:260 build_tls_connector) and every SDK config and credential provider gets that client (src/aws/mod.rs:143-144 and :224, src/aws/auth.rs:254, :334, :419-421); grep for aws_config::defaults|load_defaults|load_from_env|from_env over src and lib returned 0 matches. No rustls 0.21 connection is ever constructed, so no handshake or session store runs on this copy. The recipe fails the build if a default AWS loader appears or the OpenSSL connector changes. No fixed 0.21.x release exists (fix 0.23.46)."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-h2v8-394m-p7vv"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls@0.22.4"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: Brotli certificate decompression during a client or server handshake can allocate up to 1 GiB. rustls 0.22.4 (vector 0.58.0 and 0.60.0; 0.61.0 ships only 0.23.46) is linked only through tokio-rustls 0.25.0 <- tonic 0.11.0 (feature tls), measured 2026-11-01 with cargo tree --locked -e normal,build --target all --no-default-features --features <this recipe's FEATURES> -i rustls@0.22.4 on the v0.58.0 and v0.60.0 tags. tonic 0.11.0 creates a rustls connection only in Endpoint::tls_config (src/transport/channel/endpoint.rs:242) and Server::tls_config (src/transport/server/mod.rs:151); Endpoint::new leaves tls None (endpoint.rs:425-426). grep for ClientTlsConfig|ServerTlsConfig|.tls_config( over vector src/ and lib/ matches only src/sources/gcp_pubsub.rs (feature sources-gcp_pubsub, not built here); vector terminates its own TLS with OpenSSL. No rustls 0.22 client or server connection is ever constructed, so no handshake or session store runs on this copy. The recipe fails the build if a gcp/greptime feature or any other tonic TLS caller appears. The advisory has no fixed 0.22.x release (fix 0.23.46)."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-h2v8-394m-p7vv"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls@0.21.12"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: Brotli certificate decompression during a client or server handshake can allocate up to 1 GiB. rustls 0.21.12 (vector 0.58.0 only) comes in only through hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0, the default hyper-0.14 client of aws-smithy-runtime, measured 2026-11-01 with cargo tree --locked -e all --target all --no-default-features --features <this recipe's FEATURES> -i rustls@0.21.12 on v0.58.0 (with -e normal,build it prints nothing). Vector never sends traffic through that client: src/aws/mod.rs:109-125 (fn connector) wraps vector's hyper-openssl connector (src/http.rs:260 build_tls_connector) and every SDK config and credential provider gets that client (src/aws/mod.rs:143-144 and :224, src/aws/auth.rs:254, :334, :419-421); grep for aws_config::defaults|load_defaults|load_from_env|from_env over src and lib returned 0 matches. No rustls 0.21 connection is ever constructed, so no handshake or session store runs on this copy. The recipe fails the build if a default AWS loader appears or the OpenSSL connector changes. No fixed 0.21.x release exists (fix 0.23.46)."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-w44r-93j7-qv28"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls@0.22.4"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: a client records the server-selected key-exchange group from an unauthenticated ServerHello. rustls 0.22.4 (vector 0.58.0 and 0.60.0; 0.61.0 ships only 0.23.46) is linked only through tokio-rustls 0.25.0 <- tonic 0.11.0 (feature tls), measured 2026-11-01 with cargo tree --locked -e normal,build --target all --no-default-features --features <this recipe's FEATURES> -i rustls@0.22.4 on the v0.58.0 and v0.60.0 tags. tonic 0.11.0 creates a rustls connection only in Endpoint::tls_config (src/transport/channel/endpoint.rs:242) and Server::tls_config (src/transport/server/mod.rs:151); Endpoint::new leaves tls None (endpoint.rs:425-426). grep for ClientTlsConfig|ServerTlsConfig|.tls_config( over vector src/ and lib/ matches only src/sources/gcp_pubsub.rs (feature sources-gcp_pubsub, not built here); vector terminates its own TLS with OpenSSL. No rustls 0.22 client or server connection is ever constructed, so no handshake or session store runs on this copy. The recipe fails the build if a gcp/greptime feature or any other tonic TLS caller appears. The advisory has no fixed 0.22.x release (fix 0.23.46)."
+        },
+        {
+          "vulnerability": {
+            "name": "GHSA-w44r-93j7-qv28"
+          },
+          "products": [
+            {
+              "@id": "pkg:cargo/rustls@0.21.12"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "The advisory: a client records the server-selected key-exchange group from an unauthenticated ServerHello. rustls 0.21.12 (vector 0.58.0 only) comes in only through hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0, the default hyper-0.14 client of aws-smithy-runtime, measured 2026-11-01 with cargo tree --locked -e all --target all --no-default-features --features <this recipe's FEATURES> -i rustls@0.21.12 on v0.58.0 (with -e normal,build it prints nothing). Vector never sends traffic through that client: src/aws/mod.rs:109-125 (fn connector) wraps vector's hyper-openssl connector (src/http.rs:260 build_tls_connector) and every SDK config and credential provider gets that client (src/aws/mod.rs:143-144 and :224, src/aws/auth.rs:254, :334, :419-421); grep for aws_config::defaults|load_defaults|load_from_env|from_env over src and lib returned 0 matches. No rustls 0.21 connection is ever constructed, so no handshake or session store runs on this copy. The recipe fails the build if a default AWS loader appears or the OpenSSL connector changes. No fixed 0.21.x release exists (fix 0.23.46)."
+        }
+      ]
+    }
+  }
+]
