@@ -7801,7 +7801,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.22",
     "appVersion": "1.0.0",
     "description": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "de6a254c-cbaa-4b14-88cc-30670ebc943f",
@@ -7817,7 +7817,7 @@
     "images": [
       {
         "name": "argocd",
-        "image": "ghcr.io/quenchworks/images/argocd@sha256:8d8190df30f58d32d45762d712d08d590982dd9baa8432f318e90c6918c001df"
+        "image": "ghcr.io/quenchworks/images/argocd@sha256:2117c67822324feb09e7142c3ba34e1b7d3c9c705cb77fbaa13eb53df68840cc"
       },
       {
         "name": "redis",
@@ -7829,7 +7829,7 @@
       },
       {
         "name": "argo-workflows",
-        "image": "ghcr.io/quenchworks/images/argo-workflows@sha256:5180e0a5fdc125a3711cbdaf639e5ecbf61bd9f30d48d555b3df7ae930c3225f"
+        "image": "ghcr.io/quenchworks/images/argo-workflows@sha256:78404f7cdf3676e8e98ba3a3401681b778fce1332e3f752ded92dbcb9ced1752"
       },
       {
         "name": "argo-events",
@@ -7841,11 +7841,11 @@
       },
       {
         "name": "nats-server-config-reloader",
-        "image": "ghcr.io/quenchworks/images/nats-server-config-reloader@sha256:b5e7ffacfc4e49907a7715d8d6a7dadb9f92d5a25740e171c715cf2043f16ba1"
+        "image": "ghcr.io/quenchworks/images/nats-server-config-reloader@sha256:687b45d272df5121e6947992c0ef136bce48d573e36eda5352b7bd93bb06933b"
       },
       {
         "name": "prometheus-nats-exporter",
-        "image": "ghcr.io/quenchworks/images/prometheus-nats-exporter@sha256:97372b6fb68da341bed601674c6919462a4f29b9c9275d5b063ae8a7148824a3"
+        "image": "ghcr.io/quenchworks/images/prometheus-nats-exporter@sha256:0d99174894253cee8babcced09bf95025fa123ef678046e2eba9ae4f995b7f11"
       }
     ],
     "upstreams": [
@@ -8244,7 +8244,7 @@
     "tier": "standard",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.33",
+    "chartVersion": "0.0.35",
     "appVersion": "7.1.11",
     "description": "Hardened Graylog log management server on a 0-CVE nonroot image, with bundled MongoDB (config/metadata) and OpenSearch (log storage) backends. NOTE the SSPL-1.0 license (source-available, not OSI-approved).",
     "imageRepository": "ghcr.io/quenchworks/images/graylog",
@@ -8288,6 +8288,7 @@
       "service",
       "service.type",
       "service.port",
+      "service.httpsPort",
       "service.inputs",
       "persistence",
       "persistence.enabled",
@@ -8336,11 +8337,13 @@
       "readinessProbe",
       "customLivenessProbe",
       "customReadinessProbe",
+      "startupProbe",
       "customStartupProbe",
-      "customStartupProbe.httpGet",
-      "customStartupProbe.periodSeconds",
-      "customStartupProbe.timeoutSeconds",
-      "customStartupProbe.failureThreshold",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
       "serviceAccount",
       "serviceAccount.create",
       "serviceAccount.name",
@@ -16789,7 +16792,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "1.21.3",
     "description": "Open Policy Agent, the CNCF general-purpose policy engine for authorization, admission control, and config validation over Rego. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opa",
@@ -16821,6 +16824,12 @@
       "service",
       "service.type",
       "service.port",
+      "service.httpsPort",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
       "autoscaling",
       "autoscaling.enabled",
       "autoscaling.minReplicas",
@@ -17406,7 +17415,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.15",
+    "chartVersion": "0.1.17",
     "appVersion": "3.8.0",
     "description": "Search and analytics suite with a Kibana-style dashboards UI. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opensearch",
@@ -17418,6 +17427,10 @@
       {
         "name": "opensearch",
         "image": "ghcr.io/quenchworks/images/opensearch@sha256:7a07c11e843c677f75fb452ddb52667e634c898ec6d22acf7d066097c4be3e16"
+      },
+      {
+        "name": "nginx",
+        "image": "ghcr.io/quenchworks/images/nginx@sha256:b104b20bcc1d2a7e0ee26086c3db8f51c2262cdd4d36fab9991602209ac6a7ce"
       }
     ],
     "valuesKeys": [
@@ -17449,9 +17462,19 @@
       "single.persistence",
       "single.resources",
       "service",
+      "service.enabled",
       "service.type",
       "service.httpPort",
       "service.transportPort",
+      "service.httpsPort",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
+      "tlsProxy",
+      "tlsProxy.image",
+      "tlsProxy.resources",
       "podLabels",
       "podAnnotations",
       "nodeSelector",
@@ -20914,7 +20937,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "1.0.0",
     "description": "One self-hosted artifact registry in one install: Harbor (container images and OCI Helm charts, with Trivy scanning) + Terralist (a private Terraform/OpenTofu module and provider registry). Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "b5d83452-d2c5-452a-959c-f6f7fe2da9eb",
@@ -21819,7 +21842,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "3.8.0",
     "description": "Hardened search with a UI in one install: OpenSearch (search and analytics engine, HA cluster or one node) + OpenSearch Dashboards (Discover, dashboards, visualizations, Dev Tools) wired to it. Every image is QuenchWorks-hardened, nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "92338b64-c108-44d5-b0a3-74b8467f341f",
@@ -22205,7 +22228,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.22",
+    "chartVersion": "0.0.23",
     "appVersion": "11.0.0",
     "description": "Hardened Apache SkyWalking OAP (Observability Analysis Platform) backend — APM metrics/traces/logs collector — on a 0-CVE nonroot image, with an optional bundled OpenSearch storage backend.",
     "imageRepository": "ghcr.io/quenchworks/images/skywalking",
@@ -22999,7 +23022,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "1.0.0",
     "description": "Admission-time supply-chain control: Kyverno admits only QuenchWorks images signed by the QuenchWorks build workflows (cosign keyless, checked against Sigstore) in the namespaces you label, and trivy-operator scans what runs. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "ab2d955a-bb77-4e26-bdda-c9c058646097",
@@ -23025,7 +23048,7 @@
       },
       {
         "name": "trivy-scanner",
-        "image": "ghcr.io/quenchworks/images/trivy-scanner:0.75.0@sha256:6e2175bd0471799e6e6aee707dedbd3ba9cff5ba3613f1c3688c958146dd5a94"
+        "image": "ghcr.io/quenchworks/images/trivy-scanner:0.75.0@sha256:75ad1f630ad68dac51b788ba8e38a629087dc21ce1dde0592f2246a701936d34"
       }
     ],
     "upstreams": [
@@ -24337,7 +24360,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "0.35.0",
     "description": "Trivy Operator: continuous in-cluster security scanning with Trivy, results stored as Kubernetes CRDs (vulnerabilities, config audits, RBAC assessments, exposed secrets, SBOMs). Scan Jobs run the QuenchWorks trivy-scanner image. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/trivy-operator",
@@ -24352,7 +24375,7 @@
       },
       {
         "name": "trivy-scanner",
-        "image": "ghcr.io/quenchworks/images/trivy-scanner:0.75.0@sha256:6e2175bd0471799e6e6aee707dedbd3ba9cff5ba3613f1c3688c958146dd5a94"
+        "image": "ghcr.io/quenchworks/images/trivy-scanner:0.75.0@sha256:75ad1f630ad68dac51b788ba8e38a629087dc21ce1dde0592f2246a701936d34"
       }
     ],
     "valuesKeys": [
