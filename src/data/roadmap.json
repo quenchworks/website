@@ -370,7 +370,7 @@
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
     "priority": "exploring",
-    "note": "Real-time key-value database; community edition is AGPL. Measured 2026-11-02 on v8.2.0.0: a C server (AGPLv3, modules Apache-2.0) with 12 vendored native libraries as git submodules, which no scanner sees in the binary, so each pin is checked by hand: PCRE2 10.47, ICU 78.3 and Lua 5.4 are current; jansson, jemalloc, abseil, s2geometry, nlohmann/json, jsonschema and libbacktrace still to read. No blocker found: next is a from-source recipe (recursive clone of the tag, make, system OpenSSL from Wolfi)."
+    "note": "Real-time key-value database; community edition is AGPL. Measured 2026-11-02 on v8.2.0.0: a C server (AGPLv3, modules Apache-2.0) with 12 vendored native libraries as git submodules, which no scanner sees in the binary, so each pin is checked by hand: PCRE2 10.47, ICU 78.3 and Lua 5.4 are current, but jansson is 2.13.1 (CVE-2020-36325, fixed 2.14; Wolfi ships 2.15.1) and abseil-cpp is a February 2023 snapshot, before the CVE-2025-0838 hash-container fix (20250127). The recipe has to build those two from fixed releases in place of the submodules (abseil also feeds s2geometry, so that pairing must still compile). Doable, not started."
   },
   {
     "name": "Liquibase",
