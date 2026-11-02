@@ -209,14 +209,6 @@
     "note": "Enterprise PKI certificate authority (Community Edition) backed by a relational database. Measured 2026-10-04 on r9.6.3 (source only, no release assets): 167 vendored jars in lib/ that Trivy identifies none of, so its scan is blind there; by filename bcprov 1.84 (CVE-2026-8763, fixed 1.85) and freemarker 2.3.34 (CVE-2026-84939, fixed 2.3.35) need swaps. Buildable with Gradle on our WildFly image; a multi-session job, not a hold."
   },
   {
-    "name": "Teleport",
-    "category": "Secrets & identity",
-    "license": "AGPL-3.0-only",
-    "licenseClean": "agpl",
-    "priority": "planned",
-    "note": "Access plane providing identity-based SSH, Kubernetes, and database access. Community edition is AGPL-3.0. Measured 2026-11-02 on v18.10.0: the official dist scans 276 findings, all in its Go binaries (stdlib 1.25.11, x/net, x/crypto, grpc, go-jose, oras), which a from-source build with module floors clears. The teleport binary also embeds the Rust RDP client (no cargo-auditable section, so scanners miss it); its Cargo.lock has only rustls 0.23.40 (fixed in 0.23.46). The web UI is compiled into the binary; pnpm-lock carries 40 findings, mostly build tooling (vite, postcss, brace-expansion), plus node-forge 1.4.0 and @grpc/grpc-js. No structural blocker: next is a from-source recipe (Go, Rust and the pnpm web build)."
-  },
-  {
     "name": "KeyDB",
     "category": "Databases & engines",
     "license": "BSD-3-Clause",
