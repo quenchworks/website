@@ -238,7 +238,7 @@
     "license": "GPL-2.0-only",
     "licenseClean": "agpl",
     "priority": "planned",
-    "note": "SIEM and XDR platform with manager, indexer, and dashboard components."
+    "note": "SIEM and XDR platform with manager, indexer, and dashboard components. Measured 2026-11-02 on 4.14.9: the manager package scans 36 findings, all Python packages in its embedded framework (PyJWT, urllib3, pyasn1, setuptools; fixable by upgrading them), but that framework is Wazuh's own CPython 3.10 build (3.10 reached end of life in October 2026), so the manager needs a from-source build on a supported Python. The dashboard is an OpenSearch Dashboards fork (the same compiled-bundle hold as opensearch-dashboards) and the indexer an OpenSearch fork. 5.0.0 is at rc2 across all three; re-measure at 5.0 GA before starting."
   },
   {
     "name": "Camunda",
