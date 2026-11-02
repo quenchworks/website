@@ -1,4 +1,5 @@
 ---
+import { counted } from '../data/support';
 // Hero: minimal single column, one primary CTA (per MASTER design system).
 import { availableCount } from '../data/images';
 import { chartCount } from '../data/charts';
@@ -14,7 +15,8 @@ const shipped = Math.min(availableCount, chartCount);
 // summaries (never hardcoded). If AH is unreachable (no data), fall back to the
 // static "0 fixable CVEs" claim so the hero never shows a false count.
 const ahFacts = await fetchArtifactHub();
-const ahKeys = Object.keys(ahFacts);
+// Held / end-of-life images stay out of the totals (src/data/support.ts): no rebuild is scheduled.
+const ahKeys = Object.keys(ahFacts).filter(counted);
 const cveTotal = ahKeys.reduce((s, k) => s + (ahFacts[k].securityTotal ?? 0), 0);
 // Fixable CVEs are the ones a rebuild can clear. We surface them next to the open
 // count so "N open" never reads as contradicting the "0 fixable CVEs" claim elsewhere

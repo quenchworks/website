@@ -15,6 +15,7 @@
 import Pager from './Pager.astro';
 import type { AhFacts } from '../data/artifacthub';
 import CveStatus from '../components/CveStatus.astro';
+import { supportOf, supportKey } from '../data/support';
 import { canonicalVersions } from '../data/images';
 import { getLangFromUrl, localizeUrl, useTranslations } from '../i18n/ui';
 import { localizedSummary } from '../i18n/content';
@@ -100,6 +101,9 @@ const dataset = all.map((e) => {
     cveGrade: live?.security?.grade ?? null,
     cveScore: live?.security?.score ?? null,
     cveFixable: live?.security?.fixable ?? null,
+    // held / end-of-life (src/data/support.ts): the card shows the support chip, not a grade.
+    supportLabel: supportOf(e.slug) ? t(supportKey(supportOf(e.slug)!.state).label) : null,
+    supportNote: supportOf(e.slug) ? t(supportKey(supportOf(e.slug)!.state).note) : null,
   };
 });
 
@@ -249,7 +253,7 @@ const dataset = all.map((e) => {
                 )}
               </span>
               {e.status === 'available' ? (
-                <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" />
+                <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" slug={e.slug} />
               ) : (
                 <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">{t('catalog.list.badgePlanned')}</span>
               )}
@@ -286,7 +290,7 @@ const dataset = all.map((e) => {
             <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
               <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
             </span>
-            <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" />
+            <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" slug={e.slug} />
           </div>
           <div class="flex-1">
             <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
@@ -461,6 +465,11 @@ const dataset = all.map((e) => {
   // F critical), count tags along. Colours come from the ONE shared map in
   // src/data/grade.ts so this client-side copy can never drift from the SSR one.
   const cveBadge = (e: Entry): string => {
+    const sl: string | null = (e as any).supportLabel;
+    if (sl) {
+      const sn = esc((e as any).supportNote ?? '');
+      return `<span class="inline-flex items-center rounded border border-line px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-ash" role="img" aria-label="${sn}" title="${sn}">${esc(sl)}</span>`;
+    }
     const tot = (e as any).cveTotal;
     const grade: string | null = (e as any).cveGrade;
     const fixable: number | null = (e as any).cveFixable;

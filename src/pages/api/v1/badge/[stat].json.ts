@@ -8,7 +8,12 @@ import { availableCount } from '../../../../data/images';
 import { chartCount } from '../../../../data/charts';
 import security from '../../../../data/security.json';
 
-const cveTotal = Object.values(security as Record<string, { total: number }>).reduce((a, r) => a + r.total, 0);
+import { counted } from '../../../../data/support';
+
+// Held / end-of-life images are left out, as in /api/v1/security.json (src/data/support.ts).
+const cveTotal = Object.entries(security as Record<string, { total: number }>)
+  .filter(([slug]) => counted(slug))
+  .reduce((a, [, r]) => a + r.total, 0);
 
 // style/namedLogo/logoColor live in the endpoint JSON so every embed renders
 // for-the-badge + logo without per-README query params. images/charts/cves are

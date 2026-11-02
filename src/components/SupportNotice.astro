@@ -1,0 +1,34 @@
+---
+// Held / end-of-life notice for an image or chart page (src/data/support.ts). Renders nothing for
+// an image that is updated on schedule. Monochrome on purpose: support state is not CVE severity.
+import { supportOf, supportKey } from '../data/support';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+interface Props {
+  slug: string;
+}
+const support = supportOf(Astro.props.slug);
+const t = useTranslations(getLangFromUrl(Astro.url));
+const keys = support ? supportKey(support.state) : null;
+// The recorded reason is the build.conf STATUS block; its first paragraph is enough here.
+const reason = support?.status.split(/\n\s*\n/)[0].trim() ?? '';
+---
+{
+  support && keys && (
+    <section class="mt-6 max-w-2xl rounded-xl border border-line bg-graphite p-5" aria-label={t(keys.label)}>
+      <p class="flex flex-wrap items-center gap-2">
+        <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-ash">
+          {t(keys.label)}
+        </span>
+        {support.measured && <time class="font-mono text-[10px] tabular-nums text-ash" datetime={support.measured}>{support.measured}</time>}
+      </p>
+      <p class="mt-3 text-sm leading-relaxed text-paper">{t(keys.note)}</p>
+      {reason && (
+        <details class="mt-3 text-sm text-ash">
+          <summary class="cursor-pointer font-mono text-[10px] uppercase tracking-widest">{t('support.reason')}</summary>
+          <p class="mt-2 whitespace-pre-line font-mono text-xs leading-relaxed">{reason}</p>
+        </details>
+      )}
+    </section>
+  )
+}

@@ -1,4 +1,5 @@
 ---
+import SupportNotice from '../components/SupportNotice.astro';
 import Base from '../layouts/Base.astro';
 import { gradeTone, GRADE_CHIP } from '../data/grade';
 import Header from '../components/Header.astro';
@@ -164,6 +165,7 @@ const ld = {
     </div>
 
     <p class="mt-6 max-w-2xl text-ash">{summary}</p>
+    <SupportNotice slug={entry.slug} />
 
     <VersionSwitcher section="charts" slug={entry.slug} versions={versions} current={version} max={CHART_VERSION_PAGES} />
 

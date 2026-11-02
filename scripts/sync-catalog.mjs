@@ -328,14 +328,16 @@ charts.sort((a, b) => a.name.localeCompare(b.name));
 writeFileSync(resolve(outDir, 'images.json'), JSON.stringify(images, null, 2) + '\n');
 writeFileSync(resolve(outDir, 'charts.json'), JSON.stringify(charts, null, 2) + '\n');
 
-// Apps held in the image factory: BLOCKED=1 in images/apps/<slug>/build.conf. The reason is
+// Apps held in the image factory: BLOCKED=1 (state held) or EOL=1 (state eol, support dropped)
+// in images/apps/<slug>/build.conf; src/data/support.ts badges them and keeps their CVEs out of
+// the catalog totals. The reason is
 // the leading comment block (its STATUS header), the date the newest one it mentions, so the
 // page shows when each hold was last re-measured without anyone copying it by hand.
 const appsDir = resolve(repoRoot, 'images', 'apps');
 const blocked = readdirSync(appsDir)
   .filter((slug) => existsSync(resolve(appsDir, slug, 'build.conf')))
   .map((slug) => ({ slug, conf: readFileSync(resolve(appsDir, slug, 'build.conf'), 'utf8') }))
-  .filter(({ conf }) => /^BLOCKED=1$/m.test(conf))
+  .filter(({ conf }) => /^(BLOCKED|EOL)=1$/m.test(conf))
   .map(({ slug, conf }) => {
     const header = [];
     for (const line of conf.split('\n')) {
@@ -344,7 +346,8 @@ const blocked = readdirSync(appsDir)
     }
     const status = header.join('\n').split(/\n\s*\n/)[0].trim();
     const dates = [...status.matchAll(/\b(20\d\d-\d\d-\d\d)\b/g)].map((m) => m[1]).sort();
-    return { slug, measured: dates.at(-1) ?? null, status };
+    const state = /^EOL=1$/m.test(conf) ? 'eol' : 'held';
+    return { slug, state, measured: dates.at(-1) ?? null, status };
   })
   .sort((a, b) => a.slug.localeCompare(b.slug));
 writeFileSync(resolve(outDir, 'blocked-apps.json'), JSON.stringify(blocked, null, 2) + '\n');

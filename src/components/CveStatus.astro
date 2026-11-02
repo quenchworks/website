@@ -7,14 +7,23 @@
 // label when an item has no scan record (e.g. an umbrella chart with no single image).
 import type { SecuritySummary } from '../data/artifacthub';
 import { gradeTone, gradeNote, GRADE_CHIP, GRADE_DOT } from '../data/grade';
+import { supportOf, supportKey } from '../data/support';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
 
 interface Props {
   total?: number;
   sec?: SecuritySummary;
   dot?: boolean;
   cleanLabel: string; // localized neutral fallback, e.g. "0 CVE"
+  slug?: string; // when the image is held / end-of-life, a support chip replaces the grade
 }
-const { total, sec, dot = false, cleanLabel } = Astro.props;
+const { total, sec, dot = false, cleanLabel, slug } = Astro.props;
+// Held / end-of-life images are not rebuilt on schedule, so a grade would promise work that is
+// not coming. They get a monochrome support chip (not a severity colour: this is not severity).
+const support = slug ? supportOf(slug) : undefined;
+const t = useTranslations(getLangFromUrl(Astro.url));
+const supportLabel = support ? t(supportKey(support.state).label) : '';
+const supportNote = support ? t(supportKey(support.state).note) : '';
 
 const has = typeof total === 'number' && total > 0;
 const grade = sec?.grade ?? (typeof total === 'number' ? (has ? undefined : 'A+') : undefined);
@@ -44,7 +53,16 @@ const dotColor = GRADE_DOT[tone];
 const chipColor = GRADE_CHIP[tone];
 ---
 {
-  dot ? (
+  support ? (
+    <span
+      class="inline-flex items-center rounded border border-line px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest text-ash"
+      role="img"
+      aria-label={supportNote}
+      title={supportNote}
+    >
+      {supportLabel}
+    </span>
+  ) : dot ? (
     <span class="inline-flex items-center gap-1.5" role="img" aria-label={`Security ${label} — ${title}`} title={title}>
       <span class:list={['inline-block size-1.5 shrink-0 rounded-full', dotColor]} aria-hidden="true" />
       <span class="font-mono text-[10px] font-semibold tabular-nums tracking-wide">{label}</span>
