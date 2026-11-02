@@ -1058,18 +1058,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.29",
-    "appVersion": "3.4.12",
+    "chartVersion": "0.0.30",
+    "appVersion": "3.4.13",
     "description": "Argo CD, the declarative GitOps continuous-delivery controller for Kubernetes. Ships the API server with its embedded React console, the repo server (git + helm + kustomize), the application controller and the applicationset controller, all from ONE hardened multi-call image. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/argocd",
-    "imageDigest": "sha256:482ee05fe94fc53ee623d3195d8035efcaf5548b5ccc130bacc5e126a3eba860",
+    "imageDigest": "sha256:101eb342d5083884eeddf5f7714ad540cadecb7ef94ae66ae44fe863381e08da",
     "repositoryID": "2af33d6d-218b-44d4-9b36-b881abf95c16",
     "upstream": "https://argo-cd.readthedocs.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/argocd",
     "images": [
       {
         "name": "argocd",
-        "image": "ghcr.io/quenchworks/images/argocd@sha256:482ee05fe94fc53ee623d3195d8035efcaf5548b5ccc130bacc5e126a3eba860"
+        "image": "ghcr.io/quenchworks/images/argocd@sha256:101eb342d5083884eeddf5f7714ad540cadecb7ef94ae66ae44fe863381e08da"
       },
       {
         "name": "redis",
@@ -1711,7 +1711,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "1.0.0",
     "description": "Hardened Kubernetes backup: Velero with its AWS plugin, backing up to SeaweedFS over S3 in the same install, with generated keys, a bucket created at install and the backup location already configured. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "37f18e5b-c2a2-4ef9-8e60-bdc9a2c4d5cb",
@@ -1733,7 +1733,7 @@
       },
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:30098690bfb16aec1ef37a6d256dd1abc11c1c9b6134e26ce9395afd8e7b14c9"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:d8131745c571ce85917f85d3fafb072de8a50491f7922e824e86e3e841e1ea67"
       },
       {
         "name": "rclone",
@@ -3582,7 +3582,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "8.3.2",
     "description": "Hardened Concourse CI (web node and privileged containerd worker) on a 0-CVE image, with a bundled PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/concourse",
@@ -3644,6 +3644,12 @@
       "service.type",
       "service.port",
       "service.tsaPort",
+      "service.httpsPort",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
       "podLabels",
       "podAnnotations",
       "nodeSelector",
@@ -4838,7 +4844,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.7.0.1",
     "description": "Hardened DataHub metadata platform (GMS, React frontend and the SystemUpdate setup job) on 0-CVE nonroot images, with bundled MySQL, Kafka and Elasticsearch.",
     "imageRepository": "ghcr.io/quenchworks/images/datahub",
@@ -4873,7 +4879,7 @@
       },
       {
         "name": "elasticsearch",
-        "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:90eab8ee046aa03f60d696440d3afa4c3c9d7a3543ed4520b6cce566a37dc5d3"
+        "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:3c719534049d39c81500a9d720f2cc96fd980f58e202a1924184de822e080ea2"
       }
     ],
     "valuesKeys": [
@@ -5389,7 +5395,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "0.114.0",
     "description": "Self-contained MongoDB-compatible server bundling PostgreSQL, the DocumentDB extension, and a wire gateway. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/documentdb",
@@ -5423,6 +5429,11 @@
       "service",
       "service.type",
       "service.port",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
       "podLabels",
       "podAnnotations",
       "nodeSelector",
@@ -5768,18 +5779,18 @@
     "tier": "low",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.26",
-    "appVersion": "9.5.5",
+    "chartVersion": "0.0.27",
+    "appVersion": "9.5.6",
     "description": "Distributed search and analytics engine. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/elasticsearch",
-    "imageDigest": "sha256:90eab8ee046aa03f60d696440d3afa4c3c9d7a3543ed4520b6cce566a37dc5d3",
+    "imageDigest": "sha256:3c719534049d39c81500a9d720f2cc96fd980f58e202a1924184de822e080ea2",
     "repositoryID": "5510adc6-3400-48ab-b57c-807b6b0b815c",
     "upstream": "https://github.com/elastic/elasticsearch",
     "chartRef": "oci://ghcr.io/quenchworks/charts/elasticsearch",
     "images": [
       {
         "name": "elasticsearch",
-        "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:90eab8ee046aa03f60d696440d3afa4c3c9d7a3543ed4520b6cce566a37dc5d3"
+        "image": "ghcr.io/quenchworks/images/elasticsearch@sha256:3c719534049d39c81500a9d720f2cc96fd980f58e202a1924184de822e080ea2"
       }
     ],
     "valuesKeys": [
@@ -7953,7 +7964,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.31",
     "appVersion": "1.0.0",
     "description": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "de6a254c-cbaa-4b14-88cc-30670ebc943f",
@@ -7969,7 +7980,7 @@
     "images": [
       {
         "name": "argocd",
-        "image": "ghcr.io/quenchworks/images/argocd@sha256:482ee05fe94fc53ee623d3195d8035efcaf5548b5ccc130bacc5e126a3eba860"
+        "image": "ghcr.io/quenchworks/images/argocd@sha256:101eb342d5083884eeddf5f7714ad540cadecb7ef94ae66ae44fe863381e08da"
       },
       {
         "name": "redis",
@@ -8315,7 +8326,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "4.12.23",
     "description": "Hardened Gravitee API Management (APIM) community edition on 0-CVE nonroot images. The gateway, the management API and the console, with a bundled MongoDB. Enterprise plugins are not included.",
     "imageRepository": "ghcr.io/quenchworks/images/gravitee-apim",
@@ -8325,15 +8336,15 @@
     "images": [
       {
         "name": "gravitee-gateway",
-        "image": "ghcr.io/quenchworks/images/gravitee-gateway@sha256:ddbdb2c47ffadd32108864b884fda48875a7185fd02a51fee308632299f8fd6c"
+        "image": "ghcr.io/quenchworks/images/gravitee-gateway@sha256:ac3f3bdd7736067c580a834b6fff72cee90486580fffd38dcd2183bfc9cf1adf"
       },
       {
         "name": "gravitee-management-api",
-        "image": "ghcr.io/quenchworks/images/gravitee-management-api@sha256:4b4e0bfdeda5073d5ada3b0caf55666b216a8fa19edf6942cc5d597c98f1dc12"
+        "image": "ghcr.io/quenchworks/images/gravitee-management-api@sha256:b779d2df62a88d85abbaf5a4dda3e9a287dff1dc6d2136cf6a9b7213422362d0"
       },
       {
         "name": "gravitee-console",
-        "image": "ghcr.io/quenchworks/images/gravitee-console@sha256:454c325c53f7e717c8d20ecabd8beed6c7a65c8e418f8834bab5bca0e1dce3c9"
+        "image": "ghcr.io/quenchworks/images/gravitee-console@sha256:de604dedef01e3285836f37a47295c4bf0d4b4d73298f34f4a9d191366acaa2c"
       },
       {
         "name": "mongodb",
@@ -11334,11 +11345,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "2.13.11",
     "description": "KrakenD Community Edition, a stateless, declarative API gateway that aggregates and transforms backend responses from a single JSON config. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/krakend",
-    "imageDigest": "sha256:989f8682e068e2856a124f8bb517b5fa2ec7e43597744706fcc16341e161024c",
+    "imageDigest": "sha256:eab727ca0fb95ed483c91385e2d618b9cf372a7bce352018d69bf2aac29b590d",
     "repositoryID": "b462fa85-2c96-4547-a32a-bc919a6f5059",
     "port": 80,
     "upstream": "https://www.krakend.io",
@@ -11346,7 +11357,7 @@
     "images": [
       {
         "name": "krakend",
-        "image": "ghcr.io/quenchworks/images/krakend@sha256:989f8682e068e2856a124f8bb517b5fa2ec7e43597744706fcc16341e161024c"
+        "image": "ghcr.io/quenchworks/images/krakend@sha256:eab727ca0fb95ed483c91385e2d618b9cf372a7bce352018d69bf2aac29b590d"
       }
     ],
     "valuesKeys": [
@@ -11799,7 +11810,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.15",
     "appVersion": "0.2.204",
     "description": "Kubescape in-cluster: the operator, the configuration scanner (ksserver), the image vulnerability scanner (kubevuln) and the storage API server that keeps the results as Kubernetes objects. Hardened by QuenchWorks: every component built from source on Wolfi, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/kubescape-operator",
@@ -11817,7 +11828,7 @@
       },
       {
         "name": "kubevuln",
-        "image": "ghcr.io/quenchworks/images/kubevuln@sha256:b7fed9a4dec56483b88dba49c7d873ff5a7835ecd05ef36e54f25753648d39ce"
+        "image": "ghcr.io/quenchworks/images/kubevuln@sha256:51755af31f9e761c49e9e11e9cfdade0d0db07a3f80d271b6e4082a3876e2034"
       },
       {
         "name": "kubectl",
@@ -11829,7 +11840,7 @@
       },
       {
         "name": "kubescape-storage",
-        "image": "ghcr.io/quenchworks/images/kubescape-storage@sha256:b9e48cb88bdf4d532bb84497edbe85dbd97e4da94e1e0f4e0c4e2fb159f4ab9b"
+        "image": "ghcr.io/quenchworks/images/kubescape-storage@sha256:d486c16578bbaa20d210706ecfb81f9bab58aa9d67b4cfa2c2e1706d3e225ebf"
       }
     ],
     "valuesKeys": [
@@ -12394,7 +12405,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.26",
     "appVersion": "1.0.0",
     "description": "Hardened open lakehouse: Trino queries Apache Iceberg tables cataloged by Nessie and stored in SeaweedFS over S3, wired together with generated S3 keys and a bucket created at install. All QuenchWorks images are nonroot, 0-CVE, pinned by digest and cosign-signed.",
     "repositoryID": "1ee7f195-4485-4dc4-bfe7-991a1c23e4b9",
@@ -12417,7 +12428,7 @@
       },
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:30098690bfb16aec1ef37a6d256dd1abc11c1c9b6134e26ce9395afd8e7b14c9"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:d8131745c571ce85917f85d3fafb072de8a50491f7922e824e86e3e841e1ea67"
       },
       {
         "name": "rclone",
@@ -13487,11 +13498,11 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "4.7.4",
     "description": "Mastodon, the federated social network server: web, sidekiq and streaming on QuenchWorks images, with the bundled PostgreSQL and Valkey (or external ones), the schema prepared on every start, media on a PVC, and the Rails secrets generated once and kept across upgrades. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mastodon",
-    "imageDigest": "sha256:482aac2cacbb32f33065404399f03c479fe30bcf1766ad84b31fd21e4309c25d",
+    "imageDigest": "sha256:3441b97bf5074e3011363c4aa0bb975488278d7b25f6f9fe6202ecb63ad20c4f",
     "repositoryID": "6d89ce95-fcaf-4acc-9bd0-5c80c92ea795",
     "port": 3000,
     "upstream": "https://joinmastodon.org",
@@ -13499,7 +13510,7 @@
     "images": [
       {
         "name": "mastodon",
-        "image": "ghcr.io/quenchworks/images/mastodon@sha256:482aac2cacbb32f33065404399f03c479fe30bcf1766ad84b31fd21e4309c25d"
+        "image": "ghcr.io/quenchworks/images/mastodon@sha256:3441b97bf5074e3011363c4aa0bb975488278d7b25f6f9fe6202ecb63ad20c4f"
       },
       {
         "name": "mastodon-streaming",
@@ -16675,11 +16686,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "2.28.0",
     "description": "ntfy, the simple pub/sub HTTP notification server for sending push notifications to your phone or desktop from any script. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/ntfy",
-    "imageDigest": "sha256:6f02132a02781c9bfd4dbcdf1d3f53b510a26d2858202cbc4db3be7a6cb9baf7",
+    "imageDigest": "sha256:b7392d35fdf23a4b5e904b33157b981140f44b9db6cec4d869f056139a908f43",
     "repositoryID": "2a61f84a-eeb6-41a9-8b34-d730105b7701",
     "port": 8080,
     "upstream": "https://ntfy.sh",
@@ -16687,7 +16698,7 @@
     "images": [
       {
         "name": "ntfy",
-        "image": "ghcr.io/quenchworks/images/ntfy@sha256:6f02132a02781c9bfd4dbcdf1d3f53b510a26d2858202cbc4db3be7a6cb9baf7"
+        "image": "ghcr.io/quenchworks/images/ntfy@sha256:b7392d35fdf23a4b5e904b33157b981140f44b9db6cec4d869f056139a908f43"
       }
     ],
     "valuesKeys": [
@@ -18372,11 +18383,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
-    "appVersion": "0.55.0",
+    "chartVersion": "0.0.19",
+    "appVersion": "0.55.1",
     "description": "Perses, the CNCF open dashboard and observability visualization tool. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/perses",
-    "imageDigest": "sha256:a291ff8696a9411c33564c4b55ffcf402042c49540341c00b1e75f7d40af54a3",
+    "imageDigest": "sha256:c6bd79a9e74cccd035bf985b35af01df7fac928889633ccf2cc74e1506dc91c2",
     "repositoryID": "7a12501c-9e30-4882-aad7-fba587e08572",
     "port": 8080,
     "upstream": "https://perses.dev",
@@ -18384,7 +18395,7 @@
     "images": [
       {
         "name": "perses",
-        "image": "ghcr.io/quenchworks/images/perses@sha256:a291ff8696a9411c33564c4b55ffcf402042c49540341c00b1e75f7d40af54a3"
+        "image": "ghcr.io/quenchworks/images/perses@sha256:c6bd79a9e74cccd035bf985b35af01df7fac928889633ccf2cc74e1506dc91c2"
       }
     ],
     "valuesKeys": [
@@ -21312,11 +21323,11 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "7.0.3",
     "description": "Redmine, the Ruby on Rails project management and issue tracker (issues, wikis, time tracking, Gantt, REST API), with the bundled PostgreSQL, attachments on a PVC, the schema migrated and default data loaded on first start, and a generated admin password. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/redmine",
-    "imageDigest": "sha256:c3906d99c1136918a871ae2b3493e6b67be767997b20f421bab2a99d83f77a2c",
+    "imageDigest": "sha256:6cd37cdb5a37bae42142ce4d5537fbcde823349ba66896dc968984757d794394",
     "repositoryID": "731fd539-683f-4d0a-99a2-c5074c43ebd3",
     "port": 3000,
     "upstream": "https://www.redmine.org",
@@ -21324,7 +21335,7 @@
     "images": [
       {
         "name": "redmine",
-        "image": "ghcr.io/quenchworks/images/redmine@sha256:c3906d99c1136918a871ae2b3493e6b67be767997b20f421bab2a99d83f77a2c"
+        "image": "ghcr.io/quenchworks/images/redmine@sha256:6cd37cdb5a37bae42142ce4d5537fbcde823349ba66896dc968984757d794394"
       },
       {
         "name": "postgresql",
@@ -21739,7 +21750,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
+    "chartVersion": "0.0.12",
     "appVersion": "1.21.0",
     "description": "The Rook Ceph operator: runs Ceph clusters on Kubernetes through CRDs (CephCluster, CephObjectStore, CephBlockPool, CephFilesystem) with Ceph CSI for RBD and CephFS volumes. Hardened by QuenchWorks as minimal, 0-CVE images (operator, CSI driver and CSI operator built from source, Ceph 20 from Wolfi), cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rook",
@@ -21762,7 +21773,7 @@
       },
       {
         "name": "cephcsi",
-        "image": "ghcr.io/quenchworks/images/cephcsi@sha256:a44954bfd7d16e3a93d389a0025d17177380f19c710e1993fa2e13da02ae4733"
+        "image": "ghcr.io/quenchworks/images/cephcsi@sha256:1513034d252988b78eb874dcb7d2b7c6ed3092ebadae50884345f7bc12580641"
       },
       {
         "name": "csi-provisioner",
@@ -22416,11 +22427,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.28",
+    "chartVersion": "0.0.29",
     "appVersion": "4.48",
     "description": "Fast distributed storage for blobs, objects, and files (S3 API) built on Facebook's Haystack design, with O(1) disk seeks for billions of small files. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/seaweedfs",
-    "imageDigest": "sha256:30098690bfb16aec1ef37a6d256dd1abc11c1c9b6134e26ce9395afd8e7b14c9",
+    "imageDigest": "sha256:d8131745c571ce85917f85d3fafb072de8a50491f7922e824e86e3e841e1ea67",
     "repositoryID": "c0e22525-4794-4f13-a436-671e0a536544",
     "port": 8333,
     "upstream": "https://github.com/seaweedfs/seaweedfs",
@@ -22428,7 +22439,7 @@
     "images": [
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:30098690bfb16aec1ef37a6d256dd1abc11c1c9b6134e26ce9395afd8e7b14c9"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:d8131745c571ce85917f85d3fafb072de8a50491f7922e824e86e3e841e1ea67"
       }
     ],
     "valuesKeys": [
@@ -23914,18 +23925,18 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.37",
-    "appVersion": "1.32.1",
+    "chartVersion": "0.0.38",
+    "appVersion": "1.32.2",
     "description": "Durable workflow orchestration engine that persists execution state so long-running, multi-step processes survive crashes and resume exactly where they left off. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/temporal",
-    "imageDigest": "sha256:735f615238d77e24382f55806898a4f548e3d3574c4966de15eb617b1c44fddd",
+    "imageDigest": "sha256:2dfeea4be56db9dec73312010e874db19662e32d7531fad47befef5373b751bb",
     "repositoryID": "52dca231-7f15-4b72-8150-ed5806969292",
     "upstream": "https://github.com/temporalio/temporal",
     "chartRef": "oci://ghcr.io/quenchworks/charts/temporal",
     "images": [
       {
         "name": "temporal",
-        "image": "ghcr.io/quenchworks/images/temporal@sha256:735f615238d77e24382f55806898a4f548e3d3574c4966de15eb617b1c44fddd"
+        "image": "ghcr.io/quenchworks/images/temporal@sha256:2dfeea4be56db9dec73312010e874db19662e32d7531fad47befef5373b751bb"
       },
       {
         "name": "postgresql",
@@ -24952,7 +24963,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.14",
     "appVersion": "483",
     "description": "Trino, the distributed SQL query engine for federated analytics, as a coordinator plus workers. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/trino",
@@ -24990,6 +25001,16 @@
       "service",
       "service.type",
       "service.port",
+      "service.httpsPort",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
+      "busybox",
+      "busybox.repository",
+      "busybox.digest",
+      "busybox.pullPolicy",
       "podLabels",
       "podAnnotations",
       "nodeSelector",
