@@ -30,6 +30,68 @@
       }
     ]
   },
+  "activemq": {
+    "image": "ghcr.io/quenchworks/images/activemq",
+    "version": "6.3.3",
+    "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "6.3.3",
+        "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "activemq-artemis": {
+    "image": "ghcr.io/quenchworks/images/activemq-artemis",
+    "version": "2.57.0",
+    "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.57.0",
+        "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "adc": {
     "image": "ghcr.io/quenchworks/images/adc",
     "version": "0.27.1",
@@ -291,29 +353,199 @@
     "version": "1.8.0",
     "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 8,
+    "medium": 4,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 12,
+    "fixable": 11,
+    "grade": "D",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.4.8-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.6.0-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-108106",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-93451",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-116590",
+        "severity": "MEDIUM",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-118259",
+        "severity": "MEDIUM",
+        "pkg": "io.opentelemetry:opentelemetry-api",
+        "installed": "1.62.0",
+        "fixed": "1.67.0",
+        "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2025-48924",
+        "severity": "MEDIUM",
+        "pkg": "commons-lang:commons-lang",
+        "installed": "2.6",
+        "fixed": null,
+        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 8,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 12,
+        "fixable": 11,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.4.8-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.6.0-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-108106",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-93451",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-116590",
+            "severity": "MEDIUM",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-118259",
+            "severity": "MEDIUM",
+            "pkg": "io.opentelemetry:opentelemetry-api",
+            "installed": "1.62.0",
+            "fixed": "1.67.0",
+            "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2025-48924",
+            "severity": "MEDIUM",
+            "pkg": "commons-lang:commons-lang",
+            "installed": "2.6",
+            "fixed": null,
+            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -3016,6 +3248,37 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "cassandra": {
+    "image": "ghcr.io/quenchworks/images/cassandra",
+    "version": "5.0.9",
+    "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "5.0.9",
+        "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -6371,8 +6634,8 @@
   },
   "datahub-frontend": {
     "image": "ghcr.io/quenchworks/images/datahub-frontend",
-    "version": "1.7.0.1",
-    "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.7.0.1",
+    "version": "1.8.0",
+    "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.8.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6384,6 +6647,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.8.0",
+        "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.8.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.7.0.1",
         "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.7.0.1",
@@ -10235,306 +10512,18 @@
   },
   "ghost": {
     "image": "ghcr.io/quenchworks/images/ghost",
-    "version": "6.72.0",
-    "tag": "ghcr.io/quenchworks/images/ghost:6.72.0",
-    "critical": 1,
-    "high": 25,
-    "medium": 33,
-    "low": 4,
+    "version": "6.73.0",
+    "tag": "ghcr.io/quenchworks/images/ghost:6.73.0",
+    "critical": 0,
+    "high": 2,
+    "medium": 1,
+    "low": 0,
     "unknown": 0,
-    "total": 63,
-    "fixable": 60,
-    "grade": "F",
-    "score": 0,
+    "total": 3,
+    "fixable": 0,
+    "grade": "D",
+    "score": 76,
     "cves": [
-      {
-        "id": "GHSA-cg2g-xh64-v4q7",
-        "severity": "CRITICAL",
-        "pkg": "dompurify",
-        "installed": "3.4.16",
-        "fixed": "3.4.17",
-        "title": "DOMPurify SAFE_FOR_TEMPLATES bypass: split template expressions survive in attached shadow root content on DOM output modes",
-        "url": "https://github.com/advisories/GHSA-cg2g-xh64-v4q7",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-105482",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-        "targets": [
-          "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106069",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-        "targets": [
-          "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-109383",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109383",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109383",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109383",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109829",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109829",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109829",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109855",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "8.11.2",
-        "title": "undici: undici: Denial of Service via failed HTTP/2 WebSocket handshake",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109855",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109869",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109869",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109869",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109869",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-111181",
-        "severity": "HIGH",
-        "pkg": "body-parser",
-        "installed": "1.20.6",
-        "fixed": "2.4.0, 1.20.9",
-        "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-111181",
-        "severity": "HIGH",
-        "pkg": "body-parser",
-        "installed": "1.20.8",
-        "fixed": "2.4.0, 1.20.9",
-        "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-113872",
-        "severity": "HIGH",
-        "pkg": "multer",
-        "installed": "2.4.0",
-        "fixed": "2.5.0",
-        "title": "multer: multer: Denial of Service via aborted request during asynchronous file filtering",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-113872",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-116689",
-        "severity": "HIGH",
-        "pkg": "follow-redirects",
-        "installed": "1.16.1",
-        "fixed": "1.16.2",
-        "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87018",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87018",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87018",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87018",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-mrv2-3pqr-j5jr",
-        "severity": "HIGH",
-        "pkg": "dompurify",
-        "installed": "3.4.16",
-        "fixed": "3.4.17",
-        "title": "DOMPurify IN_PLACE: hook that removes a parent or sibling leaves the detached subtree's event handlers armed (incomplete fix for GHSA-p98j-92pf-mc4p)",
-        "url": "https://github.com/advisories/GHSA-mrv2-3pqr-j5jr",
-        "targets": [
-          "Node.js"
-        ]
-      },
       {
         "id": "CVE-2026-19693",
         "severity": "HIGH",
@@ -10560,390 +10549,6 @@
         ]
       },
       {
-        "id": "CVE-2026-105481",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-        "targets": [
-          "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106072",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-        "targets": [
-          "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106074",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-        "targets": [
-          "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-109841",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109841",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109841",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109924",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109924",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109924",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109924",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109932",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109932",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109932",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109932",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-110180",
-        "severity": "MEDIUM",
-        "pkg": "fast-uri",
-        "installed": "3.1.8",
-        "fixed": "2.4.8, 3.1.9, 4.2.3",
-        "title": "fast-uri: fast-uri: Security policy bypass via improper host canonicalization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-110180",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-110306",
-        "severity": "MEDIUM",
-        "pkg": "fast-uri",
-        "installed": "3.1.8",
-        "fixed": "2.4.8, 3.1.9, 4.2.3",
-        "title": "fast-uri: fast-uri: Cross-Site Scripting via improper URI scheme decoding",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-110306",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-110816",
-        "severity": "MEDIUM",
-        "pkg": "qs",
-        "installed": "6.16.0",
-        "fixed": "6.16.1",
-        "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-118764",
-        "severity": "MEDIUM",
-        "pkg": "minimatch",
-        "installed": "10.2.6",
-        "fixed": "11.0.1",
-        "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-118764",
-        "severity": "MEDIUM",
-        "pkg": "minimatch",
-        "installed": "9.0.9",
-        "fixed": "11.0.1",
-        "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-118773",
-        "severity": "MEDIUM",
-        "pkg": "glob",
-        "installed": "10.5.0",
-        "fixed": "14.0.2",
-        "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-118773",
-        "severity": "MEDIUM",
-        "pkg": "glob",
-        "installed": "13.0.6",
-        "fixed": "14.0.2",
-        "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87029",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "7.29.1",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87029",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87029",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.11.0",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-4ffr-jq9g-5ffx",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.0.13",
-        "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-        "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-85x2-q946-cp5h",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-        "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-85x2-q946-cp5h",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.16",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-        "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-8c8m-p3m8-cjg8",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-        "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-8c8m-p3m8-cjg8",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.16",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-        "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-g73g-hqqh-jr95",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.0.13",
-        "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-        "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-m943-m63m-w62w",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-        "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-m943-m63m-w62w",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.16",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-        "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
         "id": "GHSA-984p-xq9m-4rjw",
         "severity": "MEDIUM",
         "pkg": "express-brute",
@@ -10954,358 +10559,22 @@
         "targets": [
           "Node.js"
         ]
-      },
-      {
-        "id": "CVE-2026-106073",
-        "severity": "LOW",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-        "targets": [
-          "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-110095",
-        "severity": "LOW",
-        "pkg": "fast-uri",
-        "installed": "3.1.8",
-        "fixed": "2.4.8, 3.1.9, 4.2.3",
-        "title": "fast-uri: fast-uri: Path traversal via improper relative URI normalization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-110095",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-110725",
-        "severity": "LOW",
-        "pkg": "fast-uri",
-        "installed": "3.1.8",
-        "fixed": "2.4.8, 3.1.9, 4.2.3",
-        "title": "fast-uri: fast-uri: Cross-site scripting via unescaped colon in relative URI paths",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-110725",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-c6gr-qvv4-5v3f",
-        "severity": "LOW",
-        "pkg": "dompurify",
-        "installed": "3.4.16",
-        "fixed": "3.4.17",
-        "title": "DOMPurify: SMIL attributeName=href guard is skipped when PARSER_MEDIA_TYPE is application/xhtml+xml",
-        "url": "https://github.com/advisories/GHSA-c6gr-qvv4-5v3f",
-        "targets": [
-          "Node.js"
-        ]
       }
     ],
     "versions": [
       {
-        "version": "6.72.0",
-        "tag": "ghcr.io/quenchworks/images/ghost:6.72.0",
-        "critical": 1,
-        "high": 25,
-        "medium": 33,
-        "low": 4,
+        "version": "6.73.0",
+        "tag": "ghcr.io/quenchworks/images/ghost:6.73.0",
+        "critical": 0,
+        "high": 2,
+        "medium": 1,
+        "low": 0,
         "unknown": 0,
-        "total": 63,
-        "fixable": 60,
-        "grade": "F",
-        "score": 0,
+        "total": 3,
+        "fixable": 0,
+        "grade": "D",
+        "score": 76,
         "cves": [
-          {
-            "id": "GHSA-cg2g-xh64-v4q7",
-            "severity": "CRITICAL",
-            "pkg": "dompurify",
-            "installed": "3.4.16",
-            "fixed": "3.4.17",
-            "title": "DOMPurify SAFE_FOR_TEMPLATES bypass: split template expressions survive in attached shadow root content on DOM output modes",
-            "url": "https://github.com/advisories/GHSA-cg2g-xh64-v4q7",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109829",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109829",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109829",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109855",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "8.11.2",
-            "title": "undici: undici: Denial of Service via failed HTTP/2 WebSocket handshake",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109855",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111181",
-            "severity": "HIGH",
-            "pkg": "body-parser",
-            "installed": "1.20.6",
-            "fixed": "2.4.0, 1.20.9",
-            "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111181",
-            "severity": "HIGH",
-            "pkg": "body-parser",
-            "installed": "1.20.8",
-            "fixed": "2.4.0, 1.20.9",
-            "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-113872",
-            "severity": "HIGH",
-            "pkg": "multer",
-            "installed": "2.4.0",
-            "fixed": "2.5.0",
-            "title": "multer: multer: Denial of Service via aborted request during asynchronous file filtering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-113872",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116689",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.1",
-            "fixed": "1.16.2",
-            "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-mrv2-3pqr-j5jr",
-            "severity": "HIGH",
-            "pkg": "dompurify",
-            "installed": "3.4.16",
-            "fixed": "3.4.17",
-            "title": "DOMPurify IN_PLACE: hook that removes a parent or sibling leaves the detached subtree's event handlers armed (incomplete fix for GHSA-p98j-92pf-mc4p)",
-            "url": "https://github.com/advisories/GHSA-mrv2-3pqr-j5jr",
-            "targets": [
-              "Node.js"
-            ]
-          },
           {
             "id": "CVE-2026-19693",
             "severity": "HIGH",
@@ -11331,390 +10600,6 @@
             ]
           },
           {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109841",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109841",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109841",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110180",
-            "severity": "MEDIUM",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Security policy bypass via improper host canonicalization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110180",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110306",
-            "severity": "MEDIUM",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Cross-Site Scripting via improper URI scheme decoding",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110306",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110816",
-            "severity": "MEDIUM",
-            "pkg": "qs",
-            "installed": "6.16.0",
-            "fixed": "6.16.1",
-            "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118764",
-            "severity": "MEDIUM",
-            "pkg": "minimatch",
-            "installed": "10.2.6",
-            "fixed": "11.0.1",
-            "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118764",
-            "severity": "MEDIUM",
-            "pkg": "minimatch",
-            "installed": "9.0.9",
-            "fixed": "11.0.1",
-            "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118773",
-            "severity": "MEDIUM",
-            "pkg": "glob",
-            "installed": "10.5.0",
-            "fixed": "14.0.2",
-            "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118773",
-            "severity": "MEDIUM",
-            "pkg": "glob",
-            "installed": "13.0.6",
-            "fixed": "14.0.2",
-            "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87029",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87029",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87029",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.11.0",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-4ffr-jq9g-5ffx",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-            "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-85x2-q946-cp5h",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-            "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-85x2-q946-cp5h",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.16",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-            "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-8c8m-p3m8-cjg8",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-            "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-8c8m-p3m8-cjg8",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.16",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-            "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-g73g-hqqh-jr95",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-            "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-m943-m63m-w62w",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-            "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-m943-m63m-w62w",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.16",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-            "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
             "id": "GHSA-984p-xq9m-4rjw",
             "severity": "MEDIUM",
             "pkg": "express-brute",
@@ -11722,54 +10607,6 @@
             "fixed": null,
             "title": "Rate Limiting Bypass in express-brute",
             "url": "https://github.com/advisories/GHSA-984p-xq9m-4rjw",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:b89686e7bba9269aa011230ee5df2f74fdc1a791bfe03c04d089d8c1ba307c2b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-110095",
-            "severity": "LOW",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Path traversal via improper relative URI normalization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110095",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110725",
-            "severity": "LOW",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Cross-site scripting via unescaped colon in relative URI paths",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110725",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-c6gr-qvv4-5v3f",
-            "severity": "LOW",
-            "pkg": "dompurify",
-            "installed": "3.4.16",
-            "fixed": "3.4.17",
-            "title": "DOMPurify: SMIL attributeName=href guard is skipped when PARSER_MEDIA_TYPE is application/xhtml+xml",
-            "url": "https://github.com/advisories/GHSA-c6gr-qvv4-5v3f",
             "targets": [
               "Node.js"
             ]
@@ -11779,244 +10616,16 @@
       {
         "version": "6.67.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
-        "critical": 1,
-        "high": 20,
-        "medium": 26,
-        "low": 5,
+        "critical": 0,
+        "high": 2,
+        "medium": 1,
+        "low": 1,
         "unknown": 0,
-        "total": 52,
-        "fixable": 48,
-        "grade": "F",
-        "score": 0,
+        "total": 4,
+        "fixable": 0,
+        "grade": "D",
+        "score": 75,
         "cves": [
-          {
-            "id": "GHSA-cg2g-xh64-v4q7",
-            "severity": "CRITICAL",
-            "pkg": "dompurify",
-            "installed": "3.4.16",
-            "fixed": "3.4.17",
-            "title": "DOMPurify SAFE_FOR_TEMPLATES bypass: split template expressions survive in attached shadow root content on DOM output modes",
-            "url": "https://github.com/advisories/GHSA-cg2g-xh64-v4q7",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:e1ea09ec4334649f8d7d46633b7d02d43db529415170e1a5148b0d12a967909f (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:e1ea09ec4334649f8d7d46633b7d02d43db529415170e1a5148b0d12a967909f (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109829",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109829",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111181",
-            "severity": "HIGH",
-            "pkg": "body-parser",
-            "installed": "1.20.6",
-            "fixed": "2.4.0, 1.20.9",
-            "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111181",
-            "severity": "HIGH",
-            "pkg": "body-parser",
-            "installed": "1.20.8",
-            "fixed": "2.4.0, 1.20.9",
-            "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-113872",
-            "severity": "HIGH",
-            "pkg": "multer",
-            "installed": "2.4.0",
-            "fixed": "2.5.0",
-            "title": "multer: multer: Denial of Service via aborted request during asynchronous file filtering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-113872",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116689",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.1",
-            "fixed": "1.16.2",
-            "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-mrv2-3pqr-j5jr",
-            "severity": "HIGH",
-            "pkg": "dompurify",
-            "installed": "3.4.16",
-            "fixed": "3.4.17",
-            "title": "DOMPurify IN_PLACE: hook that removes a parent or sibling leaves the detached subtree's event handlers armed (incomplete fix for GHSA-p98j-92pf-mc4p)",
-            "url": "https://github.com/advisories/GHSA-mrv2-3pqr-j5jr",
-            "targets": [
-              "Node.js"
-            ]
-          },
           {
             "id": "CVE-2026-19693",
             "severity": "HIGH",
@@ -12042,306 +10651,6 @@
             ]
           },
           {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:e1ea09ec4334649f8d7d46633b7d02d43db529415170e1a5148b0d12a967909f (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:e1ea09ec4334649f8d7d46633b7d02d43db529415170e1a5148b0d12a967909f (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:e1ea09ec4334649f8d7d46633b7d02d43db529415170e1a5148b0d12a967909f (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109841",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109841",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110180",
-            "severity": "MEDIUM",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Security policy bypass via improper host canonicalization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110180",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110306",
-            "severity": "MEDIUM",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Cross-Site Scripting via improper URI scheme decoding",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110306",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110816",
-            "severity": "MEDIUM",
-            "pkg": "qs",
-            "installed": "6.16.0",
-            "fixed": "6.16.1",
-            "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118764",
-            "severity": "MEDIUM",
-            "pkg": "minimatch",
-            "installed": "10.2.5",
-            "fixed": "11.0.1",
-            "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118764",
-            "severity": "MEDIUM",
-            "pkg": "minimatch",
-            "installed": "9.0.9",
-            "fixed": "11.0.1",
-            "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118773",
-            "severity": "MEDIUM",
-            "pkg": "glob",
-            "installed": "10.5.0",
-            "fixed": "14.0.2",
-            "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118773",
-            "severity": "MEDIUM",
-            "pkg": "glob",
-            "installed": "13.0.6",
-            "fixed": "14.0.2",
-            "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87029",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "7.29.1",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87029",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-4ffr-jq9g-5ffx",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-            "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-85x2-q946-cp5h",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-            "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-8c8m-p3m8-cjg8",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-            "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-g73g-hqqh-jr95",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-            "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-m943-m63m-w62w",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-            "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
             "id": "GHSA-984p-xq9m-4rjw",
             "severity": "MEDIUM",
             "pkg": "express-brute",
@@ -12349,54 +10658,6 @@
             "fixed": null,
             "title": "Rate Limiting Bypass in express-brute",
             "url": "https://github.com/advisories/GHSA-984p-xq9m-4rjw",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/ghost@sha256:e1ea09ec4334649f8d7d46633b7d02d43db529415170e1a5148b0d12a967909f (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-110095",
-            "severity": "LOW",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Path traversal via improper relative URI normalization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110095",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110725",
-            "severity": "LOW",
-            "pkg": "fast-uri",
-            "installed": "3.1.8",
-            "fixed": "2.4.8, 3.1.9, 4.2.3",
-            "title": "fast-uri: fast-uri: Cross-site scripting via unescaped colon in relative URI paths",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110725",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-c6gr-qvv4-5v3f",
-            "severity": "LOW",
-            "pkg": "dompurify",
-            "installed": "3.4.16",
-            "fixed": "3.4.17",
-            "title": "DOMPurify: SMIL attributeName=href guard is skipped when PARSER_MEDIA_TYPE is application/xhtml+xml",
-            "url": "https://github.com/advisories/GHSA-c6gr-qvv4-5v3f",
             "targets": [
               "Node.js"
             ]
@@ -13323,234 +11584,18 @@
   },
   "grist": {
     "image": "ghcr.io/quenchworks/images/grist",
-    "version": "1.7.21",
-    "tag": "ghcr.io/quenchworks/images/grist:1.7.21",
+    "version": "1.7.22",
+    "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
     "critical": 0,
-    "high": 7,
-    "medium": 10,
-    "low": 2,
+    "high": 0,
+    "medium": 0,
+    "low": 1,
     "unknown": 0,
-    "total": 19,
-    "fixable": 18,
-    "grade": "D",
-    "score": 0,
+    "total": 1,
+    "fixable": 0,
+    "grade": "B",
+    "score": 99,
     "cves": [
-      {
-        "id": "CVE-2026-105482",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106069",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-111181",
-        "severity": "HIGH",
-        "pkg": "body-parser",
-        "installed": "1.20.8",
-        "fixed": "2.4.0, 1.20.9",
-        "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-111943",
-        "severity": "HIGH",
-        "pkg": "py3-pip-wheel",
-        "installed": "26.2.2-r0",
-        "fixed": "26.2.2-r2",
-        "title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111943",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-114613",
-        "severity": "HIGH",
-        "pkg": "py3-pip-wheel",
-        "installed": "26.2.2-r0",
-        "fixed": "26.2.2-r1",
-        "title": "msgpack: msgpack: Denial of Service via memory leak during map deserialization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-114613",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-116689",
-        "severity": "HIGH",
-        "pkg": "follow-redirects",
-        "installed": "1.16.1",
-        "fixed": "1.16.2",
-        "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-118664",
-        "severity": "HIGH",
-        "pkg": "decode-uri-component",
-        "installed": "0.5.0",
-        "fixed": "0.5.1",
-        "title": "decode-uri-component: decode-uri-component: Denial of Service via malformed percent-encoded input",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118664",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-105481",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106072",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106074",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-110816",
-        "severity": "MEDIUM",
-        "pkg": "qs",
-        "installed": "6.16.0",
-        "fixed": "6.16.1",
-        "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-114583",
-        "severity": "MEDIUM",
-        "pkg": "python-3.13",
-        "installed": "3.13.16_git20261016-r1",
-        "fixed": "3.13.18_git20261030-r0",
-        "title": "tarfile.tar_filter could be bypassed using crafted link entries, inclu ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-114583",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-114583",
-        "severity": "MEDIUM",
-        "pkg": "python-3.13-base",
-        "installed": "3.13.16_git20261016-r1",
-        "fixed": "3.13.18_git20261030-r0",
-        "title": "tarfile.tar_filter could be bypassed using crafted link entries, inclu ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-114583",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-115557",
-        "severity": "MEDIUM",
-        "pkg": "python-3.13",
-        "installed": "3.13.16_git20261016-r1",
-        "fixed": "3.13.18_git20261030-r0",
-        "title": "Python has added a denylist for known compromised certificates to the  ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-115557",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-115557",
-        "severity": "MEDIUM",
-        "pkg": "python-3.13-base",
-        "installed": "3.13.16_git20261016-r1",
-        "fixed": "3.13.18_git20261030-r0",
-        "title": "Python has added a denylist for known compromised certificates to the  ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-115557",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-12345",
-        "severity": "MEDIUM",
-        "pkg": "python-3.13",
-        "installed": "3.13.16_git20261016-r1",
-        "fixed": "3.13.18_git20261030-r0",
-        "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-12345",
-        "severity": "MEDIUM",
-        "pkg": "python-3.13-base",
-        "installed": "3.13.16_git20261016-r1",
-        "fixed": "3.13.18_git20261030-r0",
-        "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106073",
-        "severity": "LOW",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-        "targets": [
-          "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-        ]
-      },
       {
         "id": "CVE-2025-14505",
         "severity": "LOW",
@@ -13566,234 +11611,18 @@
     ],
     "versions": [
       {
-        "version": "1.7.21",
-        "tag": "ghcr.io/quenchworks/images/grist:1.7.21",
+        "version": "1.7.22",
+        "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
         "critical": 0,
-        "high": 7,
-        "medium": 10,
-        "low": 2,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
         "unknown": 0,
-        "total": 19,
-        "fixable": 18,
-        "grade": "D",
-        "score": 0,
+        "total": 1,
+        "fixable": 0,
+        "grade": "B",
+        "score": 99,
         "cves": [
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111181",
-            "severity": "HIGH",
-            "pkg": "body-parser",
-            "installed": "1.20.8",
-            "fixed": "2.4.0, 1.20.9",
-            "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111943",
-            "severity": "HIGH",
-            "pkg": "py3-pip-wheel",
-            "installed": "26.2.2-r0",
-            "fixed": "26.2.2-r2",
-            "title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111943",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114613",
-            "severity": "HIGH",
-            "pkg": "py3-pip-wheel",
-            "installed": "26.2.2-r0",
-            "fixed": "26.2.2-r1",
-            "title": "msgpack: msgpack: Denial of Service via memory leak during map deserialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114613",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-116689",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.1",
-            "fixed": "1.16.2",
-            "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118664",
-            "severity": "HIGH",
-            "pkg": "decode-uri-component",
-            "installed": "0.5.0",
-            "fixed": "0.5.1",
-            "title": "decode-uri-component: decode-uri-component: Denial of Service via malformed percent-encoded input",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118664",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-110816",
-            "severity": "MEDIUM",
-            "pkg": "qs",
-            "installed": "6.16.0",
-            "fixed": "6.16.1",
-            "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-114583",
-            "severity": "MEDIUM",
-            "pkg": "python-3.13",
-            "installed": "3.13.16_git20261016-r1",
-            "fixed": "3.13.18_git20261030-r0",
-            "title": "tarfile.tar_filter could be bypassed using crafted link entries, inclu ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114583",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114583",
-            "severity": "MEDIUM",
-            "pkg": "python-3.13-base",
-            "installed": "3.13.16_git20261016-r1",
-            "fixed": "3.13.18_git20261030-r0",
-            "title": "tarfile.tar_filter could be bypassed using crafted link entries, inclu ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114583",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-115557",
-            "severity": "MEDIUM",
-            "pkg": "python-3.13",
-            "installed": "3.13.16_git20261016-r1",
-            "fixed": "3.13.18_git20261030-r0",
-            "title": "Python has added a denylist for known compromised certificates to the  ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115557",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-115557",
-            "severity": "MEDIUM",
-            "pkg": "python-3.13-base",
-            "installed": "3.13.16_git20261016-r1",
-            "fixed": "3.13.18_git20261030-r0",
-            "title": "Python has added a denylist for known compromised certificates to the  ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115557",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-12345",
-            "severity": "MEDIUM",
-            "pkg": "python-3.13",
-            "installed": "3.13.16_git20261016-r1",
-            "fixed": "3.13.18_git20261030-r0",
-            "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-12345",
-            "severity": "MEDIUM",
-            "pkg": "python-3.13-base",
-            "installed": "3.13.16_git20261016-r1",
-            "fixed": "3.13.18_git20261030-r0",
-            "title": "python: python: Arbitrary file deletion via race condition during temporary directory cleanup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-12345",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/grist@sha256:4cfb3a7d6936f1bc7a7da48cacde7dc3ca98914d3649f0d99d6976724ff551ea (wolfi 20230201)"
-            ]
-          },
           {
             "id": "CVE-2025-14505",
             "severity": "LOW",
@@ -14918,817 +12747,46 @@
   },
   "homepage": {
     "image": "ghcr.io/quenchworks/images/homepage",
-    "version": "2.6.0",
-    "tag": "ghcr.io/quenchworks/images/homepage:2.6.0",
-    "critical": 2,
-    "high": 9,
-    "medium": 8,
-    "low": 2,
+    "version": "2.7.0",
+    "tag": "ghcr.io/quenchworks/images/homepage:2.7.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
     "unknown": 0,
-    "total": 21,
-    "fixable": 21,
-    "grade": "F",
-    "score": 0,
-    "cves": [
-      {
-        "id": "GHSA-2464-fhr4-w9xw",
-        "severity": "CRITICAL",
-        "pkg": "next",
-        "installed": "16.3.8",
-        "fixed": "15.5.28, 16.4.1",
-        "title": "Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used",
-        "url": "https://github.com/advisories/GHSA-2464-fhr4-w9xw",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-673q-mjm6-r5xr",
-        "severity": "CRITICAL",
-        "pkg": "next",
-        "installed": "16.3.8",
-        "fixed": "16.4.1",
-        "title": "Next.js: Unauthenticated Remote Code Execution in `use cache` functions returning typed arrays",
-        "url": "https://github.com/advisories/GHSA-673q-mjm6-r5xr",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-105482",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-        "targets": [
-          "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106069",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-        "targets": [
-          "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-109383",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109829",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109869",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-116576",
-        "severity": "HIGH",
-        "pkg": "systeminformation",
-        "installed": "5.33.13",
-        "fixed": "5.33.16",
-        "title": "systeminformation: systeminformation: Command injection via improper quotation mark sanitization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116576",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-116689",
-        "severity": "HIGH",
-        "pkg": "follow-redirects",
-        "installed": "1.16.1",
-        "fixed": "1.16.2",
-        "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87018",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-94482",
-        "severity": "HIGH",
-        "pkg": "next",
-        "installed": "16.3.8",
-        "fixed": "15.5.28, 16.4.1",
-        "title": "next: Next.js: Denial of Service via crafted requests targeting Server Actions",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-94482",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-105481",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-        "targets": [
-          "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106072",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-        "targets": [
-          "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106074",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-        "targets": [
-          "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-109841",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109924",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109932",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-111997",
-        "severity": "MEDIUM",
-        "pkg": "ip-address",
-        "installed": "10.7.1",
-        "fixed": "10.7.4",
-        "title": "ip-address: ip-address: Denial of Service via excessive percent characters in IPv6 address input",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111997",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-87029",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "8.10.2",
-        "fixed": "7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-106073",
-        "severity": "LOW",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-        "targets": [
-          "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-116673",
-        "severity": "LOW",
-        "pkg": "systeminformation",
-        "installed": "5.33.13",
-        "fixed": "5.33.14",
-        "title": "systeminformation: systeminformation: Information disclosure via path traversal in network statistics",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116673",
-        "targets": [
-          "Node.js"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
-        "version": "2.6.0",
-        "tag": "ghcr.io/quenchworks/images/homepage:2.6.0",
-        "critical": 2,
-        "high": 9,
-        "medium": 8,
-        "low": 2,
+        "version": "2.7.0",
+        "tag": "ghcr.io/quenchworks/images/homepage:2.7.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
         "unknown": 0,
-        "total": 21,
-        "fixable": 21,
-        "grade": "F",
-        "score": 0,
-        "cves": [
-          {
-            "id": "GHSA-2464-fhr4-w9xw",
-            "severity": "CRITICAL",
-            "pkg": "next",
-            "installed": "16.3.8",
-            "fixed": "15.5.28, 16.4.1",
-            "title": "Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used",
-            "url": "https://github.com/advisories/GHSA-2464-fhr4-w9xw",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-673q-mjm6-r5xr",
-            "severity": "CRITICAL",
-            "pkg": "next",
-            "installed": "16.3.8",
-            "fixed": "16.4.1",
-            "title": "Next.js: Unauthenticated Remote Code Execution in `use cache` functions returning typed arrays",
-            "url": "https://github.com/advisories/GHSA-673q-mjm6-r5xr",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109829",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116576",
-            "severity": "HIGH",
-            "pkg": "systeminformation",
-            "installed": "5.33.13",
-            "fixed": "5.33.16",
-            "title": "systeminformation: systeminformation: Command injection via improper quotation mark sanitization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116576",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116689",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.1",
-            "fixed": "1.16.2",
-            "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-94482",
-            "severity": "HIGH",
-            "pkg": "next",
-            "installed": "16.3.8",
-            "fixed": "15.5.28, 16.4.1",
-            "title": "next: Next.js: Denial of Service via crafted requests targeting Server Actions",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-94482",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109841",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111997",
-            "severity": "MEDIUM",
-            "pkg": "ip-address",
-            "installed": "10.7.1",
-            "fixed": "10.7.4",
-            "title": "ip-address: ip-address: Denial of Service via excessive percent characters in IPv6 address input",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111997",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87029",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:c7ca1b9f9902c98c5d8be617e00abfb532b46481973904970985fc2cd2bcb1d5 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-116673",
-            "severity": "LOW",
-            "pkg": "systeminformation",
-            "installed": "5.33.13",
-            "fixed": "5.33.14",
-            "title": "systeminformation: systeminformation: Information disclosure via path traversal in network statistics",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116673",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "2.4.0",
         "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
-        "critical": 2,
-        "high": 9,
-        "medium": 9,
-        "low": 2,
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
         "unknown": 0,
-        "total": 22,
-        "fixable": 22,
-        "grade": "F",
-        "score": 0,
-        "cves": [
-          {
-            "id": "GHSA-2464-fhr4-w9xw",
-            "severity": "CRITICAL",
-            "pkg": "next",
-            "installed": "16.3.8",
-            "fixed": "15.5.28, 16.4.1",
-            "title": "Next.js: Unauthenticated Remote Code Execution in Image Optimization API when SVG files are used",
-            "url": "https://github.com/advisories/GHSA-2464-fhr4-w9xw",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-673q-mjm6-r5xr",
-            "severity": "CRITICAL",
-            "pkg": "next",
-            "installed": "16.3.8",
-            "fixed": "16.4.1",
-            "title": "Next.js: Unauthenticated Remote Code Execution in `use cache` functions returning typed arrays",
-            "url": "https://github.com/advisories/GHSA-673q-mjm6-r5xr",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:e9d1b2799f06ed909c80f8b7d73f785e9898f3e3e491148d82b0d4cca67846fa (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:e9d1b2799f06ed909c80f8b7d73f785e9898f3e3e491148d82b0d4cca67846fa (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109829",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Cache poisoning and information disclosure via improper cross-origin redirect caching",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109829",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116576",
-            "severity": "HIGH",
-            "pkg": "systeminformation",
-            "installed": "5.33.1",
-            "fixed": "5.33.16",
-            "title": "systeminformation: systeminformation: Command injection via improper quotation mark sanitization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116576",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116689",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.1",
-            "fixed": "1.16.2",
-            "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-94482",
-            "severity": "HIGH",
-            "pkg": "next",
-            "installed": "16.3.8",
-            "fixed": "15.5.28, 16.4.1",
-            "title": "next: Next.js: Denial of Service via crafted requests targeting Server Actions",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-94482",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:e9d1b2799f06ed909c80f8b7d73f785e9898f3e3e491148d82b0d4cca67846fa (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:e9d1b2799f06ed909c80f8b7d73f785e9898f3e3e491148d82b0d4cca67846fa (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:e9d1b2799f06ed909c80f8b7d73f785e9898f3e3e491148d82b0d4cca67846fa (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109841",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Subresource Integrity bypass via non-lowercase algorithm tokens",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109841",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111997",
-            "severity": "MEDIUM",
-            "pkg": "ip-address",
-            "installed": "10.7.1",
-            "fixed": "10.7.4",
-            "title": "ip-address: ip-address: Denial of Service via excessive percent characters in IPv6 address input",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111997",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116674",
-            "severity": "MEDIUM",
-            "pkg": "systeminformation",
-            "installed": "5.33.1",
-            "fixed": "5.33.13",
-            "title": "systeminformation: systeminformation: Prototype pollution via crafted interface name",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116674",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87029",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "8.10.2",
-            "fixed": "7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled exception in decompress interceptor",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87029",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/homepage@sha256:e9d1b2799f06ed909c80f8b7d73f785e9898f3e3e491148d82b0d4cca67846fa (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-116673",
-            "severity": "LOW",
-            "pkg": "systeminformation",
-            "installed": "5.33.1",
-            "fixed": "5.33.14",
-            "title": "systeminformation: systeminformation: Information disclosure via path traversal in network statistics",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116673",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -22988,8 +20046,8 @@
   },
   "miniflux": {
     "image": "ghcr.io/quenchworks/images/miniflux",
-    "version": "2.3.4",
-    "tag": "ghcr.io/quenchworks/images/miniflux:2.3.4",
+    "version": "2.3.5",
+    "tag": "ghcr.io/quenchworks/images/miniflux:2.3.5",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -23015,8 +20073,8 @@
     ],
     "versions": [
       {
-        "version": "2.3.4",
-        "tag": "ghcr.io/quenchworks/images/miniflux:2.3.4",
+        "version": "2.3.5",
+        "tag": "ghcr.io/quenchworks/images/miniflux:2.3.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -28252,325 +25310,46 @@
   },
   "pnpm": {
     "image": "ghcr.io/quenchworks/images/pnpm",
-    "version": "12.10.1",
-    "tag": "ghcr.io/quenchworks/images/pnpm:12.10.1",
+    "version": "12.17.0",
+    "tag": "ghcr.io/quenchworks/images/pnpm:12.17.0",
     "critical": 0,
-    "high": 2,
-    "medium": 3,
-    "low": 1,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
     "unknown": 0,
-    "total": 6,
-    "fixable": 6,
-    "grade": "D",
-    "score": 37,
-    "cves": [
-      {
-        "id": "CVE-2026-105482",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-        "targets": [
-          "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106069",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-        "targets": [
-          "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-105481",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-        "targets": [
-          "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106072",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-        "targets": [
-          "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106074",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-        "targets": [
-          "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106073",
-        "severity": "LOW",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-        "targets": [
-          "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
-        "version": "12.10.1",
-        "tag": "ghcr.io/quenchworks/images/pnpm:12.10.1",
+        "version": "12.17.0",
+        "tag": "ghcr.io/quenchworks/images/pnpm:12.17.0",
         "critical": 0,
-        "high": 2,
-        "medium": 3,
-        "low": 1,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
         "unknown": 0,
-        "total": 6,
-        "fixable": 6,
-        "grade": "D",
-        "score": 37,
-        "cves": [
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:e105f6afa0317c7d7e008d4a4847088851fc32a97d13d2e9719ef04223581e10 (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
-        "version": "11.28.5",
-        "tag": "ghcr.io/quenchworks/images/pnpm:11.28.5",
+        "version": "11.28.10",
+        "tag": "ghcr.io/quenchworks/images/pnpm:11.28.10",
         "critical": 0,
-        "high": 5,
-        "medium": 5,
-        "low": 1,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
         "unknown": 0,
-        "total": 11,
-        "fixable": 11,
-        "grade": "D",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:c079f65184a99f927ff48c2590745a60bd6fa1e1add1e6be9cafbf78922472db (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:c079f65184a99f927ff48c2590745a60bd6fa1e1add1e6be9cafbf78922472db (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.29.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.29.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.29.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:c079f65184a99f927ff48c2590745a60bd6fa1e1add1e6be9cafbf78922472db (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:c079f65184a99f927ff48c2590745a60bd6fa1e1add1e6be9cafbf78922472db (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:c079f65184a99f927ff48c2590745a60bd6fa1e1add1e6be9cafbf78922472db (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.29.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.29.0",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/pnpm@sha256:c079f65184a99f927ff48c2590745a60bd6fa1e1add1e6be9cafbf78922472db (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -37620,298 +34399,32 @@
   },
   "xyops": {
     "image": "ghcr.io/quenchworks/images/xyops",
-    "version": "1.1.9",
-    "tag": "ghcr.io/quenchworks/images/xyops:1.1.9",
+    "version": "1.1.12",
+    "tag": "ghcr.io/quenchworks/images/xyops:1.1.12",
     "critical": 0,
-    "high": 2,
-    "medium": 8,
-    "low": 1,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
     "unknown": 0,
-    "total": 11,
-    "fixable": 11,
-    "grade": "D",
-    "score": 0,
-    "cves": [
-      {
-        "id": "CVE-2026-105482",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-        "targets": [
-          "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106069",
-        "severity": "HIGH",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-        "targets": [
-          "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-105481",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-        "targets": [
-          "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106072",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-        "targets": [
-          "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-106074",
-        "severity": "MEDIUM",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-        "targets": [
-          "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "GHSA-4ffr-jq9g-5ffx",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.12",
-        "fixed": "10.0.13",
-        "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-        "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-85x2-q946-cp5h",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.12",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-        "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-8c8m-p3m8-cjg8",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.12",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-        "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-g73g-hqqh-jr95",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.12",
-        "fixed": "10.0.13",
-        "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-        "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-m943-m63m-w62w",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.12",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-        "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-106073",
-        "severity": "LOW",
-        "pkg": "nodejs-22",
-        "installed": "22.23.2-r1",
-        "fixed": "22.23.4-r0",
-        "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-        "targets": [
-          "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
-        "version": "1.1.9",
-        "tag": "ghcr.io/quenchworks/images/xyops:1.1.9",
+        "version": "1.1.12",
+        "tag": "ghcr.io/quenchworks/images/xyops:1.1.12",
         "critical": 0,
-        "high": 2,
-        "medium": 8,
-        "low": 1,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
         "unknown": 0,
-        "total": 11,
-        "fixable": 11,
-        "grade": "D",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "GHSA-4ffr-jq9g-5ffx",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.12",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-            "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-85x2-q946-cp5h",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.12",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-            "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-8c8m-p3m8-cjg8",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.12",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-            "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-g73g-hqqh-jr95",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.12",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-            "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-m943-m63m-w62w",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.12",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-            "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-22",
-            "installed": "22.23.2-r1",
-            "fixed": "22.23.4-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/xyops@sha256:f475b8f834ed25bb31ba43ae8d0d1b7e8cb12f2bae81a049751ac0faffc00a99 (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
