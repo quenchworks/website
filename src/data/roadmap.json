@@ -214,7 +214,7 @@
     "license": "AGPL-3.0-only",
     "licenseClean": "agpl",
     "priority": "planned",
-    "note": "Access plane providing identity-based SSH, Kubernetes, and database access. Community edition is AGPL-3.0."
+    "note": "Access plane providing identity-based SSH, Kubernetes, and database access. Community edition is AGPL-3.0. Measured 2026-11-02 on v18.10.0: the official dist scans 276 findings, all in its Go binaries (stdlib 1.25.11, x/net, x/crypto, grpc, go-jose, oras), which a from-source build with module floors clears. The teleport binary also embeds the Rust RDP client (no cargo-auditable section, so scanners miss it); its Cargo.lock has only rustls 0.23.40 (fixed in 0.23.46). The web UI is compiled into the binary; pnpm-lock carries 40 findings, mostly build tooling (vite, postcss, brace-expansion), plus node-forge 1.4.0 and @grpc/grpc-js. No structural blocker: next is a from-source recipe (Go, Rust and the pnpm web build)."
   },
   {
     "name": "KeyDB",
