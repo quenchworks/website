@@ -479,10 +479,10 @@
   {
     "name": "Skipper",
     "category": "Gateways & proxies",
-    "license": "UNVERIFIED",
-    "licenseClean": "caution",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
     "priority": "planned",
-    "note": "Zalando's HTTP router. BLOCKING: GitHub reports NOASSERTION and the LICENSE fetch came back empty -- resolve the license before writing a recipe."
+    "note": "Zalando's HTTP router and Kubernetes ingress (Go). License resolved 2026-11-05: the LICENSE file is Apache-2.0 for the project, with only the pathmux subdirectory under MIT (GitHub reports NOASSERTION because of the mix). Latest v0.28.69 (2026-11-05), released almost daily: ship latest-only."
   },
   {
     "name": "Cilium Envoy",
@@ -507,5 +507,133 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "The operator that makes Consul work on Kubernetes."
+  },
+  {
+    "name": "frp",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Fast reverse proxy that exposes services behind NAT or a firewall: frps (server) and frpc (client), both static Go binaries. Researched 2026-11-05: v0.72.0 (2026-11-04), about 110k stars, active. Two images or one image with both binaries; chart for frps."
+  },
+  {
+    "name": "GOST",
+    "category": "Gateways & proxies",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "GO Simple Tunnel: multi-protocol forward proxy and tunnel (HTTP, SOCKS5, Shadowsocks, relay, TLS/QUIC/WebSocket transports, port forwarding). Researched 2026-11-05: v3.3.3 (2026-11-02), one static Go binary (go-gost/gost)."
+  },
+  {
+    "name": "Tinyproxy",
+    "category": "Gateways & proxies",
+    "license": "GPL-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Small HTTP/HTTPS forward proxy in C, a light alternative to Squid for egress filtering. Researched 2026-11-05: 1.11.3 (2026-03-07), autotools build on Wolfi, no bundled dependencies."
+  },
+  {
+    "name": "cloudflared",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Cloudflare Tunnel client: publishes in-cluster services through Cloudflare without opening inbound ports. Researched 2026-11-05: 2026.10.7 (2026-10-30), one static Go binary. Needs a Cloudflare account to be useful; the chart takes a tunnel token Secret."
+  },
+  {
+    "name": "Pomerium",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). Researched 2026-11-05: v0.34.0 (2026-11-04). RISK: it embeds an Envoy binary at build time, so it depends on our own Envoy build (see the Wolfi Envoy apk hold on emissary and kgateway) rather than the prebuilt blob, which the scanner cannot see."
+  },
+  {
+    "name": "Vouch Proxy",
+    "category": "Gateways & proxies",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "SSO for nginx: an auth_request backend that logs users in through OIDC or OAuth and sets a cookie, for apps with no login of their own. Researched 2026-11-05: active (2026-09), versions are git tags without GitHub releases, one static Go binary. Pairs with the nginx and ingress-nginx charts."
+  },
+  {
+    "name": "Odyssey",
+    "category": "Gateways & proxies",
+    "license": "BSD-3-Clause",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Yandex's multi-threaded PostgreSQL connection pooler, an alternative to PgBouncer for high connection counts. Researched 2026-11-05: v1.5.2 (2026-09-13), C with CMake, links libpq and OpenSSL from Wolfi."
+  },
+  {
+    "name": "PgDog",
+    "category": "Gateways & proxies",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "PostgreSQL pooler, load balancer and sharding proxy in Rust. Researched 2026-11-05: v0.1.63 (2026-11-02), very active. AGPL-3.0: running it unmodified is fine, but note it on the chart page. Build with cargo auditable so the scan sees its crates."
+  },
+  {
+    "name": "Sozu",
+    "category": "Gateways & proxies",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Rust reverse proxy that reconfigures and upgrades without dropping connections. Researched 2026-11-05: 2.3.4 (2026-11-04). AGPL-3.0. Build with cargo auditable."
+  },
+  {
+    "name": "Apache Traffic Server",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "High-throughput caching forward and reverse proxy (CDN-grade), an Apache top-level project. Researched 2026-11-05: 10.2.1 (tags only, no GitHub releases), C++ with CMake; dependencies (OpenSSL, PCRE2, hwloc, libcap) from Wolfi."
+  },
+  {
+    "name": "mitmproxy",
+    "category": "Gateways & proxies",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Interactive TLS-intercepting proxy for debugging and testing (mitmproxy, mitmdump, and the mitmweb UI). Researched 2026-11-05: v12.3.1 (2026-10-25), Python. Check the venv for wheels that bundle OpenSSL (memory: python wheels hide OpenSSL)."
+  },
+  {
+    "name": "Nginx Proxy Manager",
+    "category": "Gateways & proxies",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Web UI that manages nginx proxy hosts, redirects and Let's Encrypt certificates for people who do not want to write nginx config. Researched 2026-11-05: v2.16.0 (2026-09-24). Node backend plus a frontend build on top of our nginx; it needs a database (SQLite or MariaDB)."
+  },
+  {
+    "name": "Kroxylicious",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Kafka protocol proxy with filters (record encryption, multi-tenancy, schema validation) between clients and brokers. Researched 2026-11-05: v0.25.1 (2026-10-20), Java on a Wolfi JRE. Pairs with the kafka and strimzi charts."
+  },
+  {
+    "name": "OpenZiti",
+    "category": "Gateways & proxies",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Zero-trust overlay network: controller, edge routers and tunnelers that replace VPNs and open ports. Researched 2026-11-05: v2.0.8 (2026-10-08), Go. Several components (controller, router, tunnel), so plan an image per component and one chart."
+  },
+  {
+    "name": "Zoraxy",
+    "category": "Gateways & proxies",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "General-purpose reverse proxy with a web UI (virtual hosts, ACME, stream proxy, uptime monitor). Researched 2026-11-05: v3.3.5-rc5 is a prerelease, so ship the newest stable tag. Go with an embedded web UI. AGPL-3.0."
+  },
+  {
+    "name": "3proxy",
+    "category": "Gateways & proxies",
+    "license": "3proxy Public License",
+    "licenseClean": "caution",
+    "priority": "planned",
+    "note": "Tiny multi-protocol proxy suite in C (HTTP, SOCKS4/5, POP3, FTP and TCP/UDP port mapping). Researched 2026-11-05: 1.0.2 (2026-10-24). GitHub reports NOASSERTION: its own \"3proxy 0.9 Public License\" is in LICENSE. Confirm it is OSI-compatible (it may offer a choice of standard licenses) before writing a recipe."
   }
 ]
