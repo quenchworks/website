@@ -3454,15 +3454,27 @@
     "version": "3.32.0",
     "tag": "ghcr.io/quenchworks/images/calico-node:3.32.0",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 1,
     "low": 0,
     "unknown": 1,
-    "total": 2,
-    "fixable": 2,
-    "grade": "C",
-    "score": 84,
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 69,
     "cves": [
+      {
+        "id": "CVE-2026-116591",
+        "severity": "HIGH",
+        "pkg": "calico-node-3.32",
+        "installed": "3.32.0-r4",
+        "fixed": "3.32.3-r2",
+        "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+        "targets": [
+          "ghcr.io/quenchworks/images/calico-node@sha256:7dbe6506b385f038d2aabd66459e7df67942ba9671935ee7669e913622dfe8d4 (wolfi 20230201)"
+        ]
+      },
       {
         "id": "CVE-2026-119299",
         "severity": "MEDIUM",
@@ -3493,15 +3505,27 @@
         "version": "3.32.0",
         "tag": "ghcr.io/quenchworks/images/calico-node:3.32.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 2,
-        "fixable": 2,
-        "grade": "C",
-        "score": 84,
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 69,
         "cves": [
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "calico-node-3.32",
+            "installed": "3.32.0-r4",
+            "fixed": "3.32.3-r2",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+            "targets": [
+              "ghcr.io/quenchworks/images/calico-node@sha256:7dbe6506b385f038d2aabd66459e7df67942ba9671935ee7669e913622dfe8d4 (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-119299",
             "severity": "MEDIUM",
@@ -3799,6 +3823,87 @@
             "url": "https://go.dev/issue/44226",
             "targets": [
               "usr/local/bin/kamel"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cassandra": {
+    "image": "ghcr.io/quenchworks/images/cassandra",
+    "version": "5.0.9",
+    "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+    "critical": 0,
+    "high": 2,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 2,
+    "fixable": 2,
+    "grade": "D",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2026-113351",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:38f3564ba7b138b5c76a0849812caa32b56e28356583cec1afae1afb60fe6034 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-115506",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:38f3564ba7b138b5c76a0849812caa32b56e28356583cec1afae1afb60fe6034 (wolfi 20230201)"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "5.0.9",
+        "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+        "critical": 0,
+        "high": 2,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 2,
+        "fixable": 2,
+        "grade": "D",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2026-113351",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:38f3564ba7b138b5c76a0849812caa32b56e28356583cec1afae1afb60fe6034 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-115506",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:38f3564ba7b138b5c76a0849812caa32b56e28356583cec1afae1afb60fe6034 (wolfi 20230201)"
             ]
           }
         ]
@@ -5302,15 +5407,63 @@
     "version": "8.3.2",
     "tag": "ghcr.io/quenchworks/images/concourse:8.3.2",
     "critical": 0,
-    "high": 0,
+    "high": 4,
     "medium": 3,
     "low": 1,
     "unknown": 6,
-    "total": 10,
-    "fixable": 6,
-    "grade": "C",
-    "score": 45,
+    "total": 14,
+    "fixable": 10,
+    "grade": "D",
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-116591",
+        "severity": "HIGH",
+        "pkg": "containerd-2",
+        "installed": "2.4.2-r5",
+        "fixed": "2.4.2-r6",
+        "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+        "targets": [
+          "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-116591",
+        "severity": "HIGH",
+        "pkg": "containerd-shim-runc-v2-2",
+        "installed": "2.4.2-r5",
+        "fixed": "2.4.2-r6",
+        "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+        "targets": [
+          "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-116591",
+        "severity": "HIGH",
+        "pkg": "containerd-stress-2",
+        "installed": "2.4.2-r5",
+        "fixed": "2.4.2-r6",
+        "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+        "targets": [
+          "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-116591",
+        "severity": "HIGH",
+        "pkg": "ctr-2",
+        "installed": "2.4.2-r5",
+        "fixed": "2.4.2-r6",
+        "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+        "targets": [
+          "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+        ]
+      },
       {
         "id": "CVE-2026-85747",
         "severity": "MEDIUM",
@@ -5360,15 +5513,63 @@
         "version": "8.3.2",
         "tag": "ghcr.io/quenchworks/images/concourse:8.3.2",
         "critical": 0,
-        "high": 0,
+        "high": 4,
         "medium": 3,
         "low": 1,
         "unknown": 6,
-        "total": 10,
-        "fixable": 6,
-        "grade": "C",
-        "score": 45,
+        "total": 14,
+        "fixable": 10,
+        "grade": "D",
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "containerd-2",
+            "installed": "2.4.2-r5",
+            "fixed": "2.4.2-r6",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+            "targets": [
+              "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "containerd-shim-runc-v2-2",
+            "installed": "2.4.2-r5",
+            "fixed": "2.4.2-r6",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+            "targets": [
+              "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "containerd-stress-2",
+            "installed": "2.4.2-r5",
+            "fixed": "2.4.2-r6",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+            "targets": [
+              "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "ctr-2",
+            "installed": "2.4.2-r5",
+            "fixed": "2.4.2-r6",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+            "targets": [
+              "ghcr.io/quenchworks/images/concourse@sha256:b560fbec96b9831547af8c765c84b201a2e172c96012c0b85fb506a2f2dc95f7 (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-85747",
             "severity": "MEDIUM",
@@ -5929,7 +6130,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/http-foundation",
         "installed": "v7.4.22",
-        "fixed": "7.2.0, 7.4.0, 7.4.23, 8.1.11, 6.3.0, 4.0.0, 6.2.0, 6.4.0, 7.1.0, 7.3.0, 8.1.0, 6.1.0, 6.4.50, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 5.4.0, 5.4.56",
+        "fixed": "6.2.0, 7.2.0, 8.1.0, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 6.1.0, 7.3.0, 7.4.0, 4.0.0, 5.4.0, 6.4.0, 7.1.0, 6.3.0, 6.4.50, 7.4.23, 8.1.11, 5.4.56",
         "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
         "targets": [
@@ -5941,7 +6142,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/serializer",
         "installed": "v8.1.10",
-        "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+        "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
         "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
         "targets": [
@@ -5953,7 +6154,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/routing",
         "installed": "v7.4.22",
-        "fixed": "5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.3.0, 7.4.23, 4.2.0, 4.3.0, 5.4.56, 6.1.0, 7.2.0, 7.4.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 7.1.0, 8.1.11, 4.4.0, 5.2.0, 6.4.0",
+        "fixed": "5.1.0, 5.4.0, 6.2.0, 7.2.0, 7.4.0, 5.3.0, 6.1.0, 6.3.0, 7.1.0, 4.2.0, 4.3.0, 4.4.0, 5.0.0, 6.4.50, 7.3.0, 5.2.0, 5.4.56, 6.4.0, 7.4.23, 8.1.0, 8.1.11",
         "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
         "targets": [
@@ -6016,7 +6217,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v7.4.22",
-            "fixed": "7.2.0, 7.4.0, 7.4.23, 8.1.11, 6.3.0, 4.0.0, 6.2.0, 6.4.0, 7.1.0, 7.3.0, 8.1.0, 6.1.0, 6.4.50, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 5.4.0, 5.4.56",
+            "fixed": "6.2.0, 7.2.0, 8.1.0, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 6.1.0, 7.3.0, 7.4.0, 4.0.0, 5.4.0, 6.4.0, 7.1.0, 6.3.0, 6.4.50, 7.4.23, 8.1.11, 5.4.56",
             "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
             "targets": [
@@ -6028,7 +6229,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v8.1.10",
-            "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+            "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -6040,7 +6241,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/routing",
             "installed": "v7.4.22",
-            "fixed": "5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.3.0, 7.4.23, 4.2.0, 4.3.0, 5.4.56, 6.1.0, 7.2.0, 7.4.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 7.1.0, 8.1.11, 4.4.0, 5.2.0, 6.4.0",
+            "fixed": "5.1.0, 5.4.0, 6.2.0, 7.2.0, 7.4.0, 5.3.0, 6.1.0, 6.3.0, 7.1.0, 4.2.0, 4.3.0, 4.4.0, 5.0.0, 6.4.50, 7.3.0, 5.2.0, 5.4.56, 6.4.0, 7.4.23, 8.1.0, 8.1.11",
             "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
             "targets": [
@@ -6685,29 +6886,55 @@
     "version": "0.22.1",
     "tag": "ghcr.io/quenchworks/images/crane:0.22.1",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-116591",
+        "severity": "HIGH",
+        "pkg": "crane",
+        "installed": "0.22.1-r2",
+        "fixed": "0.22.1-r3",
+        "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+        "targets": [
+          "ghcr.io/quenchworks/images/crane@sha256:376c271f6cef302fc9009f08e499b291c4e1b7ae974c65b3c05721f1c2e37d69 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.22.1",
         "tag": "ghcr.io/quenchworks/images/crane:0.22.1",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "crane",
+            "installed": "0.22.1-r2",
+            "fixed": "0.22.1-r3",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+            "targets": [
+              "ghcr.io/quenchworks/images/crane@sha256:376c271f6cef302fc9009f08e499b291c4e1b7ae974c65b3c05721f1c2e37d69 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -9092,7 +9319,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/http-foundation",
         "installed": "v7.4.21",
-        "fixed": "7.2.0, 7.4.0, 7.4.23, 8.1.11, 6.3.0, 4.0.0, 6.2.0, 6.4.0, 7.1.0, 7.3.0, 8.1.0, 6.1.0, 6.4.50, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 5.4.0, 5.4.56",
+        "fixed": "6.2.0, 7.2.0, 8.1.0, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 6.1.0, 7.3.0, 7.4.0, 4.0.0, 5.4.0, 6.4.0, 7.1.0, 6.3.0, 6.4.50, 7.4.23, 8.1.11, 5.4.56",
         "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
         "targets": [
@@ -9104,7 +9331,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/serializer",
         "installed": "v7.4.21",
-        "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+        "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
         "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
         "targets": [
@@ -9116,7 +9343,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/routing",
         "installed": "v7.4.21",
-        "fixed": "5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.3.0, 7.4.23, 4.2.0, 4.3.0, 5.4.56, 6.1.0, 7.2.0, 7.4.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 7.1.0, 8.1.11, 4.4.0, 5.2.0, 6.4.0",
+        "fixed": "5.1.0, 5.4.0, 6.2.0, 7.2.0, 7.4.0, 5.3.0, 6.1.0, 6.3.0, 7.1.0, 4.2.0, 4.3.0, 4.4.0, 5.0.0, 6.4.50, 7.3.0, 5.2.0, 5.4.56, 6.4.0, 7.4.23, 8.1.0, 8.1.11",
         "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
         "targets": [
@@ -9167,7 +9394,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v7.4.21",
-            "fixed": "7.2.0, 7.4.0, 7.4.23, 8.1.11, 6.3.0, 4.0.0, 6.2.0, 6.4.0, 7.1.0, 7.3.0, 8.1.0, 6.1.0, 6.4.50, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 5.4.0, 5.4.56",
+            "fixed": "6.2.0, 7.2.0, 8.1.0, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 6.1.0, 7.3.0, 7.4.0, 4.0.0, 5.4.0, 6.4.0, 7.1.0, 6.3.0, 6.4.50, 7.4.23, 8.1.11, 5.4.56",
             "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
             "targets": [
@@ -9179,7 +9406,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v7.4.21",
-            "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+            "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -9191,7 +9418,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/routing",
             "installed": "v7.4.21",
-            "fixed": "5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.3.0, 7.4.23, 4.2.0, 4.3.0, 5.4.56, 6.1.0, 7.2.0, 7.4.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 7.1.0, 8.1.11, 4.4.0, 5.2.0, 6.4.0",
+            "fixed": "5.1.0, 5.4.0, 6.2.0, 7.2.0, 7.4.0, 5.3.0, 6.1.0, 6.3.0, 7.1.0, 4.2.0, 4.3.0, 4.4.0, 5.0.0, 6.4.50, 7.3.0, 5.2.0, 5.4.56, 6.4.0, 7.4.23, 8.1.0, 8.1.11",
             "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
             "targets": [
@@ -16822,14 +17049,14 @@
     "version": "2.566",
     "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.566",
     "critical": 0,
-    "high": 2,
+    "high": 3,
     "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 3,
-    "fixable": 3,
+    "total": 4,
+    "fixable": 4,
     "grade": "D",
-    "score": 63,
+    "score": 48,
     "cves": [
       {
         "id": "CVE-2026-113351",
@@ -16856,6 +17083,18 @@
         ]
       },
       {
+        "id": "CVE-2026-116591",
+        "severity": "HIGH",
+        "pkg": "git-lfs",
+        "installed": "3.8.0-r4",
+        "fixed": "3.8.1-r2",
+        "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:a865c9611b9d76fb86103a49ca22b1870f7c083b9ecfee0045ea55ca354f3570 (wolfi 20230201)"
+        ]
+      },
+      {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
         "pkg": "golang.org/x/crypto",
@@ -16873,14 +17112,14 @@
         "version": "2.566",
         "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.566",
         "critical": 0,
-        "high": 2,
+        "high": 3,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 3,
-        "fixable": 3,
+        "total": 4,
+        "fixable": 4,
         "grade": "D",
-        "score": 63,
+        "score": 48,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -16902,6 +17141,18 @@
             "fixed": "2.10.0-r0",
             "title": "expat: expat: Denial of Service via delayed entity amplification detection",
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:a865c9611b9d76fb86103a49ca22b1870f7c083b9ecfee0045ea55ca354f3570 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "git-lfs",
+            "installed": "3.8.0-r4",
+            "fixed": "3.8.1-r2",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
             "targets": [
               "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:a865c9611b9d76fb86103a49ca22b1870f7c083b9ecfee0045ea55ca354f3570 (wolfi 20230201)"
             ]
@@ -16924,14 +17175,14 @@
         "version": "2.565",
         "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.565",
         "critical": 0,
-        "high": 2,
+        "high": 3,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 3,
-        "fixable": 3,
+        "total": 4,
+        "fixable": 4,
         "grade": "D",
-        "score": 63,
+        "score": 48,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -16953,6 +17204,18 @@
             "fixed": "2.10.0-r0",
             "title": "expat: expat: Denial of Service via delayed entity amplification detection",
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:68bf2cfbcf1db6dec806fabf034f428ea058cdda78309c199a499d21c882799c (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "git-lfs",
+            "installed": "3.8.0-r4",
+            "fixed": "3.8.1-r2",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
             "targets": [
               "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:68bf2cfbcf1db6dec806fabf034f428ea058cdda78309c199a499d21c882799c (wolfi 20230201)"
             ]
@@ -16975,14 +17238,14 @@
         "version": "2.564",
         "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.564",
         "critical": 0,
-        "high": 2,
+        "high": 3,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 3,
-        "fixable": 3,
+        "total": 4,
+        "fixable": 4,
         "grade": "D",
-        "score": 63,
+        "score": 48,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -17004,6 +17267,18 @@
             "fixed": "2.10.0-r0",
             "title": "expat: expat: Denial of Service via delayed entity amplification detection",
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:3a8d4cb2a9fd891f5a32c4609c0e6046974454d892b8520255bbc0cf47412411 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-116591",
+            "severity": "HIGH",
+            "pkg": "git-lfs",
+            "installed": "3.8.0-r4",
+            "fixed": "3.8.1-r2",
+            "title": "github.com/klauspost/compress/zstd: klauspost/compress: Denial of Service via crafted zstd compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116591",
             "targets": [
               "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:3a8d4cb2a9fd891f5a32c4609c0e6046974454d892b8520255bbc0cf47412411 (wolfi 20230201)"
             ]
@@ -24166,7 +24441,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/serializer",
         "installed": "v7.4.10",
-        "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+        "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
         "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
         "targets": [
@@ -24217,7 +24492,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v7.4.10",
-            "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+            "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -26262,7 +26537,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/http-foundation",
         "installed": "v6.4.49",
-        "fixed": "7.2.0, 7.4.0, 7.4.23, 8.1.11, 6.3.0, 4.0.0, 6.2.0, 6.4.0, 7.1.0, 7.3.0, 8.1.0, 6.1.0, 6.4.50, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 5.4.0, 5.4.56",
+        "fixed": "6.2.0, 7.2.0, 8.1.0, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 6.1.0, 7.3.0, 7.4.0, 4.0.0, 5.4.0, 6.4.0, 7.1.0, 6.3.0, 6.4.50, 7.4.23, 8.1.11, 5.4.56",
         "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
         "targets": [
@@ -26274,7 +26549,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/serializer",
         "installed": "v6.4.49",
-        "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+        "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
         "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
         "targets": [
@@ -26286,7 +26561,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/routing",
         "installed": "v6.4.41",
-        "fixed": "5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.3.0, 7.4.23, 4.2.0, 4.3.0, 5.4.56, 6.1.0, 7.2.0, 7.4.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 7.1.0, 8.1.11, 4.4.0, 5.2.0, 6.4.0",
+        "fixed": "5.1.0, 5.4.0, 6.2.0, 7.2.0, 7.4.0, 5.3.0, 6.1.0, 6.3.0, 7.1.0, 4.2.0, 4.3.0, 4.4.0, 5.0.0, 6.4.50, 7.3.0, 5.2.0, 5.4.56, 6.4.0, 7.4.23, 8.1.0, 8.1.11",
         "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
         "targets": [
@@ -26313,7 +26588,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v6.4.49",
-            "fixed": "7.2.0, 7.4.0, 7.4.23, 8.1.11, 6.3.0, 4.0.0, 6.2.0, 6.4.0, 7.1.0, 7.3.0, 8.1.0, 6.1.0, 6.4.50, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 5.4.0, 5.4.56",
+            "fixed": "6.2.0, 7.2.0, 8.1.0, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 6.1.0, 7.3.0, 7.4.0, 4.0.0, 5.4.0, 6.4.0, 7.1.0, 6.3.0, 6.4.50, 7.4.23, 8.1.11, 5.4.56",
             "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
             "targets": [
@@ -26325,7 +26600,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v6.4.49",
-            "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+            "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -26337,7 +26612,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/routing",
             "installed": "v6.4.41",
-            "fixed": "5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.3.0, 7.4.23, 4.2.0, 4.3.0, 5.4.56, 6.1.0, 7.2.0, 7.4.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 7.1.0, 8.1.11, 4.4.0, 5.2.0, 6.4.0",
+            "fixed": "5.1.0, 5.4.0, 6.2.0, 7.2.0, 7.4.0, 5.3.0, 6.1.0, 6.3.0, 7.1.0, 4.2.0, 4.3.0, 4.4.0, 5.0.0, 6.4.50, 7.3.0, 5.2.0, 5.4.56, 6.4.0, 7.4.23, 8.1.0, 8.1.11",
             "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
             "targets": [
@@ -26364,7 +26639,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v6.4.49",
-            "fixed": "7.2.0, 7.4.0, 7.4.23, 8.1.11, 6.3.0, 4.0.0, 6.2.0, 6.4.0, 7.1.0, 7.3.0, 8.1.0, 6.1.0, 6.4.50, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 5.4.0, 5.4.56",
+            "fixed": "6.2.0, 7.2.0, 8.1.0, 3.0.0, 5.0.0, 5.1.0, 5.2.0, 5.3.0, 6.1.0, 7.3.0, 7.4.0, 4.0.0, 5.4.0, 6.4.0, 7.1.0, 6.3.0, 6.4.50, 7.4.23, 8.1.11, 5.4.56",
             "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
             "targets": [
@@ -26376,7 +26651,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v6.4.49",
-            "fixed": "8.1.0, 3.0.0, 5.4.56, 6.2.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 5.0.0, 5.4.0, 6.1.0, 4.0.0, 5.2.0, 6.3.0, 7.1.0, 5.1.0, 5.3.0, 7.2.0, 7.3.0, 7.4.0",
+            "fixed": "3.0.0, 5.0.0, 5.1.0, 6.4.0, 8.1.0, 5.2.0, 6.1.0, 6.2.0, 6.4.50, 7.1.0, 7.4.0, 4.0.0, 5.3.0, 5.4.56, 7.2.0, 7.3.0, 7.4.23, 8.1.11, 5.4.0, 6.3.0",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -26388,7 +26663,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/routing",
             "installed": "v6.4.41",
-            "fixed": "5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.3.0, 7.4.23, 4.2.0, 4.3.0, 5.4.56, 6.1.0, 7.2.0, 7.4.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 7.1.0, 8.1.11, 4.4.0, 5.2.0, 6.4.0",
+            "fixed": "5.1.0, 5.4.0, 6.2.0, 7.2.0, 7.4.0, 5.3.0, 6.1.0, 6.3.0, 7.1.0, 4.2.0, 4.3.0, 4.4.0, 5.0.0, 6.4.50, 7.3.0, 5.2.0, 5.4.56, 6.4.0, 7.4.23, 8.1.0, 8.1.11",
             "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
             "targets": [
@@ -30215,9 +30490,9 @@
     "low": 1,
     "unknown": 0,
     "total": 4,
-    "fixable": 3,
+    "fixable": 4,
     "grade": "D",
-    "score": 54,
+    "score": 49,
     "cves": [
       {
         "id": "CVE-2026-113351",
@@ -30260,7 +30535,7 @@
         "severity": "LOW",
         "pkg": "paramiko",
         "installed": "3.5.1",
-        "fixed": null,
+        "fixed": "5.0.0",
         "title": "paramiko: Paramiko: Data integrity could be compromised due to SHA-1 algorithm use",
         "url": "https://avd.aquasec.com/nvd/cve-2026-44405",
         "targets": [
@@ -30278,9 +30553,9 @@
         "low": 1,
         "unknown": 0,
         "total": 4,
-        "fixable": 3,
+        "fixable": 4,
         "grade": "D",
-        "score": 54,
+        "score": 49,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -30323,7 +30598,7 @@
             "severity": "LOW",
             "pkg": "paramiko",
             "installed": "3.5.1",
-            "fixed": null,
+            "fixed": "5.0.0",
             "title": "paramiko: Paramiko: Data integrity could be compromised due to SHA-1 algorithm use",
             "url": "https://avd.aquasec.com/nvd/cve-2026-44405",
             "targets": [
