@@ -3842,7 +3842,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "1.33.8",
     "description": "Project Contour, the CNCF Kubernetes ingress controller that programs an Envoy data plane over xDS. Serves the networking.k8s.io Ingress API plus Contour's own HTTPProxy CRD (delegation, rate limiting, per-route TLS). Hardened by QuenchWorks as minimal, nonroot, 0-CVE images, cosign-signed and pinned by digest. Runs the Contour control plane as a Deployment and the Envoy data plane as a DaemonSet, with the xDS mTLS keypairs minted in-cluster by a `contour certgen` hook Job.",
     "imageRepository": "ghcr.io/quenchworks/images/contour",
@@ -11027,18 +11027,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "2.21.0",
     "description": "KEDA: Kubernetes Event-Driven Autoscaling. Scales any workload from 0 to N off event sources (queues, streams, databases, Prometheus, cron and 60+ more) by driving a standard HorizontalPodAutoscaler through the ScaledObject/ScaledJob CRDs. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest. Runs the operator and the external-metrics adapter as two deployments from one image; the adapter backs the aggregated v1beta1.external.metrics.k8s.io APIService, whose serving certificates the chart issues itself so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/keda",
-    "imageDigest": "sha256:228b951e1a50779856aa4078ad473d2e60d431a0a56a59478264c12114250206",
+    "imageDigest": "sha256:69783f5fef03a781a7cb1aaec3f951d32c66237f47432d890d2cb669cbefbeea",
     "repositoryID": "bc8e701f-5454-4aa9-a992-9e7d4008d737",
     "upstream": "https://keda.sh",
     "chartRef": "oci://ghcr.io/quenchworks/charts/keda",
     "images": [
       {
         "name": "keda",
-        "image": "ghcr.io/quenchworks/images/keda@sha256:228b951e1a50779856aa4078ad473d2e60d431a0a56a59478264c12114250206"
+        "image": "ghcr.io/quenchworks/images/keda@sha256:69783f5fef03a781a7cb1aaec3f951d32c66237f47432d890d2cb669cbefbeea"
       }
     ],
     "valuesKeys": [
@@ -16686,11 +16686,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "1.12.1",
     "description": "Prometheus node_exporter as a DaemonSet: CPU, memory, disk, filesystem, network and kernel metrics for every node, read from the host's /proc, /sys and root filesystem. Hardened by QuenchWorks: built from source on Wolfi, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/node-exporter",
-    "imageDigest": "sha256:673630980abe4b9eca8bbbf8e0e0cf78674d545a88f49735200d132e5b10f16d",
+    "imageDigest": "sha256:55222f2c7dcab5b9253e09ff54ee5f46c2a34170ecb1d58ef3c4f8ec21e7f555",
     "repositoryID": "c995aac4-0884-46df-b50e-6b539458d60e",
     "port": 9100,
     "upstream": "https://github.com/prometheus/node_exporter",
@@ -16698,7 +16698,7 @@
     "images": [
       {
         "name": "node-exporter",
-        "image": "ghcr.io/quenchworks/images/node-exporter@sha256:673630980abe4b9eca8bbbf8e0e0cf78674d545a88f49735200d132e5b10f16d"
+        "image": "ghcr.io/quenchworks/images/node-exporter@sha256:55222f2c7dcab5b9253e09ff54ee5f46c2a34170ecb1d58ef3c4f8ec21e7f555"
       }
     ],
     "valuesKeys": [
@@ -18220,18 +18220,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.25",
+    "chartVersion": "0.0.26",
     "appVersion": "0.162.0",
     "description": "OpenTelemetry Collector that receives, processes, and exports traces, metrics, and logs, a vendor-neutral pipeline for telemetry routing. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/otel-collector",
-    "imageDigest": "sha256:df3d11b7c0e9d003d6f73f852636fae6c1a28651ec37aac20bcd6276efa806e9",
+    "imageDigest": "sha256:24f9693abb6e450e08b7801d7fa178060fb9a5f6e846777601cc07e04709ff0b",
     "repositoryID": "07621d0b-a78b-4d04-9db9-bd131e773814",
     "upstream": "https://github.com/open-telemetry/opentelemetry-collector",
     "chartRef": "oci://ghcr.io/quenchworks/charts/otel-collector",
     "images": [
       {
         "name": "otel-collector",
-        "image": "ghcr.io/quenchworks/images/otel-collector@sha256:df3d11b7c0e9d003d6f73f852636fae6c1a28651ec37aac20bcd6276efa806e9"
+        "image": "ghcr.io/quenchworks/images/otel-collector@sha256:24f9693abb6e450e08b7801d7fa178060fb9a5f6e846777601cc07e04709ff0b"
       }
     ],
     "valuesKeys": [
@@ -19914,7 +19914,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "0.107.0",
     "description": "PostgreSQL 17 plus the open DocumentDB extension, providing BSON document storage and queries. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/postgres-documentdb",
@@ -19930,7 +19930,7 @@
       },
       {
         "name": "postgres-exporter",
-        "image": "ghcr.io/quenchworks/images/postgres-exporter@sha256:ba53fc24d9ad47a9461acf293928fafb1e5d977a97d8e67065ac5b0def1fbd40"
+        "image": "ghcr.io/quenchworks/images/postgres-exporter@sha256:326aa606fad8bf323b574da8683870318c4f5ca56a35c4d3659856b33fda7bc3"
       }
     ],
     "valuesKeys": [
@@ -20305,11 +20305,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "3.8.8",
     "description": "Prefect, the Python-native workflow orchestration server: API, UI and background services with PostgreSQL storage, plus an optional process worker. Hardened by QuenchWorks, nonroot, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/prefect",
-    "imageDigest": "sha256:ad285095047d045c69630f71babcdd224b6d09f69266c34a2c276addb35724b2",
+    "imageDigest": "sha256:dd3c8ef81a481063d0a310abe178f9b990f26026c68203051a5d2371f9b6a1d5",
     "repositoryID": "7337408a-f643-4f54-8a10-783ca3eaf63e",
     "port": 4200,
     "upstream": "https://www.prefect.io",
@@ -20317,11 +20317,11 @@
     "images": [
       {
         "name": "prefect",
-        "image": "ghcr.io/quenchworks/images/prefect@sha256:ad285095047d045c69630f71babcdd224b6d09f69266c34a2c276addb35724b2"
+        "image": "ghcr.io/quenchworks/images/prefect@sha256:dd3c8ef81a481063d0a310abe178f9b990f26026c68203051a5d2371f9b6a1d5"
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:beda4af6174e30ad6ed2d9ca9a8962e2d2cb59af2ffd98a9b846b1edc41a0636"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:221c15186d136e636c8946226de40e8afcbebbb7f826974f9ddfd8003f9e658f"
       }
     ],
     "valuesKeys": [
@@ -22283,11 +22283,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "8.6.0",
     "description": "SATOSA, the IdentityPython proxy that translates between SAML2 and OpenID Connect or OAuth2 so services and identity providers that speak different protocols can federate. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/satosa",
-    "imageDigest": "sha256:09c33777c42ea361ef05b6f3666f77225731022a847cf39c04e43948bbc29e99",
+    "imageDigest": "sha256:ec6997703b74052e64e19347a5cf853488cc9e0f0ff934105a79dbbfbef2040d",
     "repositoryID": "3d958f8e-05f3-4767-bf52-b71dc36f2469",
     "port": 8080,
     "upstream": "https://github.com/IdentityPython/SATOSA",
@@ -22295,7 +22295,7 @@
     "images": [
       {
         "name": "satosa",
-        "image": "ghcr.io/quenchworks/images/satosa@sha256:09c33777c42ea361ef05b6f3666f77225731022a847cf39c04e43948bbc29e99"
+        "image": "ghcr.io/quenchworks/images/satosa@sha256:ec6997703b74052e64e19347a5cf853488cc9e0f0ff934105a79dbbfbef2040d"
       }
     ],
     "valuesKeys": [
@@ -24175,22 +24175,22 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.39",
+    "chartVersion": "0.0.40",
     "appVersion": "1.32.2",
     "description": "Durable workflow orchestration engine that persists execution state so long-running, multi-step processes survive crashes and resume exactly where they left off. Hardened by QuenchWorks as a minimal, nonroot, 0-CVE image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/temporal",
-    "imageDigest": "sha256:2dfeea4be56db9dec73312010e874db19662e32d7531fad47befef5373b751bb",
+    "imageDigest": "sha256:302ba9a9f867b36e04722bfc89b312bb6bfab0f535e8a167a377cc39e19802ec",
     "repositoryID": "52dca231-7f15-4b72-8150-ed5806969292",
     "upstream": "https://github.com/temporalio/temporal",
     "chartRef": "oci://ghcr.io/quenchworks/charts/temporal",
     "images": [
       {
         "name": "temporal",
-        "image": "ghcr.io/quenchworks/images/temporal@sha256:2dfeea4be56db9dec73312010e874db19662e32d7531fad47befef5373b751bb"
+        "image": "ghcr.io/quenchworks/images/temporal@sha256:302ba9a9f867b36e04722bfc89b312bb6bfab0f535e8a167a377cc39e19802ec"
       },
       {
         "name": "postgresql",
-        "image": "ghcr.io/quenchworks/images/postgresql@sha256:beda4af6174e30ad6ed2d9ca9a8962e2d2cb59af2ffd98a9b846b1edc41a0636"
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:221c15186d136e636c8946226de40e8afcbebbb7f826974f9ddfd8003f9e658f"
       }
     ],
     "valuesKeys": [
@@ -28196,18 +28196,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
-    "appVersion": "1.30.7",
+    "chartVersion": "0.0.7",
+    "appVersion": "1.30.8",
     "description": "Istio ztunnel, the per-node L4 proxy of ambient mode: it gives every ambient pod a SPIFFE identity and carries its traffic over mutual TLS (HBONE), with no sidecars. Pairs with the QuenchWorks istiod and istio-cni charts. Hardened by QuenchWorks: built from source, 0-CVE, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/ztunnel",
-    "imageDigest": "sha256:0525b99f1875929a61e7d8e117fe46c6bdf592424454e5f051d510d10d4ded38",
+    "imageDigest": "sha256:2fc82c4f0bf4274325a2adf47f98393351f5742e42632a170f26c3939268ca1f",
     "repositoryID": "2dc3d3f2-be40-48ff-aaa0-a51e120ce39d",
     "upstream": "https://istio.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ztunnel",
     "images": [
       {
         "name": "ztunnel",
-        "image": "ghcr.io/quenchworks/images/ztunnel@sha256:0525b99f1875929a61e7d8e117fe46c6bdf592424454e5f051d510d10d4ded38"
+        "image": "ghcr.io/quenchworks/images/ztunnel@sha256:2fc82c4f0bf4274325a2adf47f98393351f5742e42632a170f26c3939268ca1f"
       }
     ],
     "valuesKeys": [
