@@ -1,5 +1,31 @@
 [
   {
+    "slug": "activemq",
+    "path": "vex/activemq/2026-11-09",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/activemq/2026-11-09",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-09T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-56130"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/org.apache.shiro/shiro-core@2.2.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-09 on the apache-activemq-6.3.3-bin.tar.gz release the image is built from. CVE-2026-56130 is the Shiro remember-me cookie not being checked for expiry on the server; that cookie handling is shiro-web's CookieRememberMeManager. The release ships three Shiro jars, all under lib/optional: shiro-core-2.2.1, shiro-spring-2.2.1 and activemq-shiro-6.3.3 (tar -tzf); there is no shiro-web jar, so CookieRememberMeManager is not in the image. A byte scan of every class found 0 remember-me references in activemq-shiro (ActiveMQ's own ShiroPlugin, which builds a DefaultSecurityManager whose remember-me manager defaults to null) and only in shiro-spring's Spring configuration classes, which need the absent shiro-web classes and which ActiveMQ never imports; the shipped conf/activemq.xml does not mention Shiro at all. The fix exists only in Shiro 3.0.0, a major line ActiveMQ 6.3 does not use. Revisit if an ActiveMQ release adds shiro-web."
+        }
+      ]
+    }
+  },
+  {
     "slug": "airflow",
     "path": "vex/airflow/2026-11-01",
     "doc": {
@@ -312,6 +338,32 @@
     }
   },
   {
+    "slug": "datahub-frontend",
+    "path": "vex/datahub-frontend/2026-11-09",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/datahub-frontend/2026-11-09",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-09T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-56130"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/org.apache.shiro/shiro-core@2.2.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-09 on the published datahub-frontend 1.8.0 and 1.7.0.1 images (crane export). CVE-2026-56130 is the Shiro remember-me cookie not being checked for expiry on the server; that cookie handling is shiro-web's CookieRememberMeManager. Both images ship the same eleven Shiro 2.2.1 jars in datahub-frontend/lib (cache, config-core, config-ogdl, core, crypto-cipher, crypto-core, crypto-hash, event, hashes-argon2, hashes-bcrypt, lang) and no shiro-web jar, so CookieRememberMeManager is not in the image. A byte scan of every non-Shiro jar in 1.8.0 found only two classes that reference org/apache/shiro: DataHub's auth/pac4j/Shiro2AesDataEncrypter (AesCipherService, ByteSource: pac4j session encryption) and pac4j-core's ShiroPasswordEncoder (hashing). Neither touches a SecurityManager or remember-me; DataHub authenticates through pac4j and Play sessions, not Shiro subjects. The fix exists only in Shiro 3.0.0, a major line DataHub does not use."
+        }
+      ]
+    }
+  },
+  {
     "slug": "dive",
     "path": "vex/dive/2026-10-01",
     "doc": {
@@ -572,6 +624,58 @@
     }
   },
   {
+    "slug": "floci",
+    "path": "vex/floci/2026-11-09",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/floci/2026-11-09",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-09T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-12975"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/io.apicurio/apicurio-registry-schema-util-common@2.6.13.Final"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-09 on the published floci:2.4.0 image (crane export of usr/share/floci/quarkus-app; the 2.1.0, 2.3.0 and 2.4.0 lines resolve the same apicurio 2.6.13.Final). CVE-2026-12975 (GHSA-7g64-f2hm-vjxp) is an XXE/SSRF in ContentTypeUtil.isParsableXml(), which builds a SAXParserFactory without secure processing. The image ships six apicurio 2.6.13.Final jars in lib/main, and none contains a ContentTypeUtil class (every class in every jar was listed). A byte scan of every class in apicurio-registry-schema-util-common-2.6.13.Final.jar found no SAXParserFactory or isParsableXml reference; the jar holds content handles, reference finders and compatibility-rule types only. The vulnerable method is not in the image. The advisory's fixed versions are on the 3.2 and 3.3 lines, which the Quarkus build does not use. Revisit when Floci moves to apicurio 3."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "floci-full",
+    "path": "vex/floci-full/2026-11-09",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/floci-full/2026-11-09",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-09T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-12975"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/io.apicurio/apicurio-registry-schema-util-common@2.6.13.Final"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-09 on the published floci-full:2.4.0 image (crane export of usr/share/floci/quarkus-app; the 2.3.0 and 2.4.0 lines resolve the same apicurio 2.6.13.Final). CVE-2026-12975 (GHSA-7g64-f2hm-vjxp) is an XXE/SSRF in ContentTypeUtil.isParsableXml(), which builds a SAXParserFactory without secure processing. The image ships six apicurio 2.6.13.Final jars in lib/main, and none contains a ContentTypeUtil class (every class in every jar was listed). A byte scan of every class in apicurio-registry-schema-util-common-2.6.13.Final.jar found no SAXParserFactory or isParsableXml reference; the jar holds content handles, reference finders and compatibility-rule types only. The vulnerable method is not in the image. The advisory's fixed versions are on the 3.2 and 3.3 lines, which the Quarkus build does not use. Revisit when Floci moves to apicurio 3."
+        }
+      ]
+    }
+  },
+  {
     "slug": "garage",
     "path": "vex/garage/2026-10-13",
     "doc": {
@@ -684,6 +788,32 @@
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
           "impact_statement": "PROVEN false-positive: the fix is in the pinned commit. Alloy 1.20.0 pins Loki by commit 5cf8c23a258d (2026-09-15, from Loki main), which Go renders as the pseudo-version v3.0.0-20260915071729-5cf8c23a258d; Trivy compares its v3.0.0 base against the advisory's '< 3.6.4' and flags it. The fix (GHSA-497x-rrr9-68jp, double-encoded path traversal in the Ruler API namespace) is grafana/loki PR #20437, merged to main on 2026-01-15 as 9f5d215c07344d1ff93821b1bfd4c37b23e885c1 and backported to release-3.6.x as #20463 for the 3.6.4 tag. Verified with the GitHub compare API rather than by date: 9f5d215c...5cf8c23a258d is status=ahead, ahead_by=2097, behind_by=0, so the pinned commit contains the fix. v3.6.4 itself shows as diverged only because it lives on the release branch. Scoped to this exact pseudo-version: a different Loki commit must be re-checked."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "graylog",
+    "path": "vex/graylog/2026-11-05",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/graylog/2026-11-05",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-05T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-56130"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/org.apache.shiro/shiro-core@2.2.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "Measured 2026-11-05 on a local build of graylog 7.1.12 (quench-graylog-7.1.12-r0.apk, /opt/graylog/graylog.jar). CVE-2026-56130 is the Shiro remember-me cookie not being checked for expiry on the server; the cookie handling is shiro-web's CookieRememberMeManager, installed by shiro-web's DefaultWebSecurityManager. graylog.jar ships 441 org/apache/shiro classes and no org/apache/shiro/web path at all (unzip -l), so neither class is in the image. shiro-core's DefaultSecurityManager only calls a RememberMeManager when one is set, and its default is null; a byte scan of every class in graylog.jar outside org/apache/shiro found 0 that reference RememberMe, so Graylog never sets one. The remember-me path cannot run. The fix is only in Shiro 3.0.0, a major line Graylog 7.1 does not use; revisit when Graylog moves to Shiro 3 or adds shiro-web."
         }
       ]
     }
@@ -999,6 +1129,32 @@
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
           "impact_statement": "PROVEN false-positive for the flagged component, measured 2026-09-30 on the Joomla 6.1.4 Full_Package. CVE-2024-39912 (GHSA-875x-g8p7-5w27) is a username-enumeration flaw in web-auth/webauthn-lib's ProfileBasedRequestOptionsBuilder: it returns assertion options without allowedCredentials when no user is found. Joomla pins webauthn-lib 4.5.2 exactly on every branch (6.1.4 and 5.4.9 composer.json). Verified on the archive: libraries/vendor/web-auth/webauthn-lib holds 78 PHP files and `grep -r ProfileBasedRequestOptionsBuilder` over the whole Joomla tree returns 0 matches, so the vulnerable class is not present. Joomla builds its own assertion options instead (plugins/system/webauthn/src/Authentication.php getPubkeyRequestOptions, called from PluginTraits/AjaxHandlerChallenge.php). That code has its own, separate behaviour: an unknown username becomes an empty User and gets an empty credential list, exactly like a real user with no passkey, so the response reveals whether an account has a registered passkey rather than whether it exists. Upgrading webauthn-lib would not change that Joomla code path, and it is not the flaw this advisory describes."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "keycloak",
+    "path": "vex/keycloak/2026-11-09",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/keycloak/2026-11-09",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-09T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2025-59250"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/com.microsoft.sqlserver/mssql-jdbc@13.2.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-09 on a local build of keycloak 26.7.5. The image ships lib/lib/main/com.microsoft.sqlserver.mssql-jdbc-13.2.1.jre11.jar, whose sha1 (406aa00b60c1b30e1bb02e469530dd2e21f2eace) is identical to Maven Central's mssql-jdbc 13.2.1.jre11 artifact. GHSA-m494-w24q-6f7w names 13.2.1.jre11 as the fixed release of the 13.2 line (>= 13.2.0.jre11, < 13.2.1.jre11). Trivy reads the jar's Bundle-Version and pom.properties version, 13.2.1 without the .jre11 qualifier, and so does not match it against the qualified fixed versions; the code that ships is the fixed release. The jar is kept, not deleted, because kc.sh build (the custom-provider flow) needs every jar in the Quarkus application model; the --db=postgres build never loads the SQL Server driver at runtime."
         }
       ]
     }
