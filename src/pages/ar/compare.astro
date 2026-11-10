@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import CompareHonesty from '../../components/CompareHonesty.astro';
 import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
 import {
   vendors,
@@ -52,6 +53,7 @@ const groupedRows = groupTitles.map((title, g) => ({
         تأكيد حقيقة عن منافس من مصدر أولي، نُعلّمها "يختلف" أو "جزئي" بدل التخمين. تحقّق من كل
         ادّعاء بنفسك.
       </p>
+      <CompareHonesty part="live" />
     </header>
 
     <!-- Where QuenchWorks is different -->
@@ -68,6 +70,8 @@ const groupedRows = groupTitles.map((title, g) => ({
         }
       </div>
     </section>
+
+    <CompareHonesty part="short" />
 
     <!-- The providers at a glance -->
     <section class="mt-12">

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import CompareHonesty from '../components/CompareHonesty.astro';
 import { getLangFromUrl } from '../i18n/ui';
 import {
   vendors,
@@ -43,11 +44,14 @@ const groupedRows = groupTitles.map((title, g) => ({
         provenance. The differences are in access and approach. Bitnami moved its catalog to a
         commercial offering and froze a legacy registry; Chainguard gives a small free set and gates
         the rest behind a subscription; Docker opened its Hardened Images as free, Apache-2.0 source
-        in late 2025; RapidFort and Minimus are commercial platforms. QuenchWorks is free, Wolfi-built,
-        and fully public: images, signed charts pinned by digest, and build workflows anyone can read.
-        The table below is conservative on purpose. Where we could not confirm a competitor fact from a
+        in late 2025; RapidFort and Minimus are commercial platforms.
+      </p>
+      <p class="mt-4 leading-relaxed text-ash">
+        QuenchWorks is free, Wolfi-built, and fully public: images, signed charts pinned by digest, and
+        build workflows anyone can read. The table below is conservative on purpose. Where we could not confirm a competitor fact from a
         primary source, we mark it "Varies" or "Partial" rather than guess. Verify every claim yourself.
       </p>
+      <CompareHonesty part="live" />
     </header>
 
     <!-- Where QuenchWorks is different -->
@@ -64,6 +68,8 @@ const groupedRows = groupTitles.map((title, g) => ({
         }
       </div>
     </section>
+
+    <CompareHonesty part="short" />
 
     <!-- The providers at a glance -->
     <section class="mt-12">

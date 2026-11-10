@@ -1,0 +1,59 @@
+---
+// Shared by the en/ar/es compare pages. part="live": catalog size and open fixable CVEs from the
+// same ArtifactHub scan the hero reads (held and end-of-life images left out, as there).
+// part="short": what QuenchWorks does not offer.
+import { availableCount } from '../data/images';
+import { chartCount } from '../data/charts';
+import { counted } from '../data/support';
+import { fetchArtifactHub } from '../data/artifacthub';
+import securityHistory from '../data/security-history.json';
+import { getLangFromUrl, localizeUrl } from '../i18n/ui';
+import { liveCopy, shortfalls, shortfallsHeading, pick } from '../data/compare';
+
+interface Props {
+  part: 'live' | 'short';
+}
+const { part } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const fill = (k: string, n: string | number) => pick(liveCopy[k], lang).replace('{n}', String(n));
+
+let fixable: number | null = null;
+if (part === 'live') {
+  const ah = await fetchArtifactHub();
+  const keys = Object.keys(ah).filter(counted);
+  if (keys.length > 0) fixable = keys.reduce((s, k) => s + (ah[k].security?.fixable ?? 0), 0);
+}
+---
+
+{
+  part === 'live' ? (
+    <p class="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono text-xs text-ash">
+      <span class="text-paper tabular-nums">{fill('images', availableCount)}</span>
+      <span aria-hidden="true">·</span>
+      <span class="text-paper tabular-nums">{fill('charts', chartCount)}</span>
+      {fixable !== null && (
+        <Fragment>
+          <span aria-hidden="true">·</span>
+          <span class="tabular-nums">{fill('fixable', fixable)}</span>
+          <span aria-hidden="true">·</span>
+          <time datetime={securityHistory.to}>{fill('scanned', securityHistory.to)}</time>
+        </Fragment>
+      )}
+      <a href={localizeUrl(lang, '/security')} class="text-paper underline underline-offset-4 hover:text-ash">
+        {pick(liveCopy.report, lang)}
+      </a>
+    </p>
+  ) : (
+    <section class="mt-12">
+      <h2 class="font-mono text-xs uppercase tracking-widest text-ash">{pick(shortfallsHeading, lang)}</h2>
+      <ul class="mt-4 grid grid-cols-1 gap-x-8 gap-y-5 sm:grid-cols-2">
+        {shortfalls.map((s) => (
+          <li>
+            <p class="text-sm font-semibold text-paper">{pick(s.label, lang)}</p>
+            <p class="mt-1 text-sm leading-relaxed text-ash">{pick(s.body, lang)}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

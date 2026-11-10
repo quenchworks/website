@@ -1,12 +1,12 @@
 // Single source of truth for the QuenchWorks-vs-providers comparison.
 // Consumed by /compare (the full matrix) AND /alternative/[vendor] (one SEO
 // landing per competitor), in all three site languages (en/ar/es). Keeping the
-// data here means a fact is edited once and every surface — both pages, every
-// language — updates together.
+// data here means a fact is edited once and every surface (both pages, every
+// language) updates together.
 //
 // Structure vs. translation: the `vendors` order, each row's `cells` order, and
 // the neutral verdict `v` values ('Yes' | 'No' | 'Free' | 'Paid' | 'Freemium' |
-// 'Varies' | 'Partial' | 'n/a') are the same across all languages — they are the
+// 'Varies' | 'Partial' | 'n/a') are the same across all languages; they are the
 // structural keys that drive tone() and the verdict label map. Only the displayed
 // prose differs per language, so every human-facing string is an `L` triple.
 
@@ -18,7 +18,7 @@ export const pick = (v: L, lang: Lang): string => v[lang] || v.en;
 
 // Vendor order; QuenchWorks stays first so it keeps the highlighted column.
 // Each `cells` array below has one entry per vendor, in this same order.
-// Neutral by design — vendor names are not translated.
+// Neutral by design: vendor names are not translated.
 export const vendors: string[] = ['QuenchWorks', 'Bitnami', 'Chainguard', 'Docker', 'RapidFort', 'Minimus'];
 
 // URL slug for a vendor name (drives /alternative/<slug>).
@@ -141,9 +141,9 @@ export const rows: Row[] = [
       {
         v: 'No',
         n: {
-          en: 'Debian-based hardening, not Wolfi',
-          ar: 'تحصين قائم على Debian، لا Wolfi',
-          es: 'Endurecimiento basado en Debian, no Wolfi',
+          en: 'Photon OS based (Debian for legacy images), not Wolfi',
+          ar: 'قائم على Photon OS (وDebian للصور القديمة)، لا Wolfi',
+          es: 'Basado en Photon OS (Debian para imágenes heredadas), no Wolfi',
         },
       },
       {
@@ -305,7 +305,14 @@ export const rows: Row[] = [
       es: 'Procedencia de compilación SLSA',
     },
     cells: [
-      { v: 'Yes' },
+      {
+        v: 'Yes',
+        n: {
+          en: 'GitHub attestations, SLSA Build Level 2',
+          ar: 'شهادات GitHub، SLSA Build Level 2',
+          es: 'Atestaciones de GitHub, SLSA Build Level 2',
+        },
+      },
       {
         v: 'Partial',
         n: {
@@ -317,9 +324,9 @@ export const rows: Row[] = [
       {
         v: 'Yes',
         n: {
-          en: 'SLSA Build Level 2',
-          ar: 'SLSA Build Level 2',
-          es: 'SLSA Build Level 2',
+          en: 'SLSA Build Level 3 (third-party assessed)',
+          ar: 'SLSA Build Level 3 (بتقييم طرف ثالث)',
+          es: 'SLSA Build Level 3 (evaluado por un tercero)',
         },
       },
       {
@@ -668,9 +675,9 @@ export const vendorIntro: Record<string, { headline: L; body: L }> = {
       es: 'Un reemplazo gratuito y firmado para Bitnami',
     },
     body: {
-      en: 'Broadcom moved the free Bitnami secure-images catalog to a paid model in 2025, leaving teams that built on bitnami/* images and charts looking for a maintained, hardened replacement. QuenchWorks is that replacement: a free, MIT-licensed, clean-room catalog of 0-CVE container images and signed Helm charts. It is built independently from source on Wolfi — not a fork or copy of Bitnami charts — and every claim is yours to verify.',
-      ar: 'نقلت Broadcom كتالوج صور Bitnami الآمنة المجاني إلى نموذج مدفوع في 2025، تاركةً الفِرق التي بَنت على صور ومخططات bitnami/* تبحث عن بديل مُحصّن ومُتابَع. QuenchWorks هو ذلك البديل: كتالوج مجاني بترخيص MIT، مبني في غرفة نظيفة، من صور حاويات بصفر ثغرات ومخططات Helm موقّعة. وهو مبني بشكل مستقل من المصدر على Wolfi — لا فرعٌ ولا نسخةٌ من مخططات Bitnami — وكل ادّعاء لك أن تتحقّق منه.',
-      es: 'Broadcom trasladó el catálogo gratuito de imágenes seguras de Bitnami a un modelo de pago en 2025, dejando a los equipos que construyeron sobre imágenes y charts bitnami/* buscando un reemplazo reforzado y mantenido. QuenchWorks es ese reemplazo: un catálogo gratuito, con licencia MIT y de sala limpia, de imágenes de contenedor con cero CVE y charts de Helm firmados. Se construye de forma independiente desde el código fuente en Wolfi —no es un fork ni una copia de los charts de Bitnami— y cada afirmación es tuya para verificar.',
+      en: 'Broadcom moved the free Bitnami secure-images catalog to a paid model in 2025, leaving teams that built on bitnami/* images and charts looking for a maintained, hardened replacement. QuenchWorks is that replacement: a free, MIT-licensed, clean-room catalog of container images built to a 0-fixable-CVE gate, plus signed Helm charts. It is built independently from source on Wolfi. It is not a fork or copy of Bitnami charts, and every claim is yours to verify.',
+      ar: 'نقلت Broadcom كتالوج صور Bitnami الآمنة المجاني إلى نموذج مدفوع في 2025، تاركةً الفِرق التي بَنت على صور ومخططات bitnami/* تبحث عن بديل مُحصّن ومُتابَع. QuenchWorks هو ذلك البديل: كتالوج مجاني بترخيص MIT، مبني في غرفة نظيفة، من صور حاويات تمرّ ببوابة صفر ثغرات قابلة للإصلاح، ومخططات Helm موقّعة. وهو مبني بشكل مستقل من المصدر على Wolfi، وليس فرعًا ولا نسخةً من مخططات Bitnami، وكل ادّعاء لك أن تتحقّق منه.',
+      es: 'Broadcom trasladó el catálogo gratuito de imágenes seguras de Bitnami a un modelo de pago en 2025, dejando a los equipos que construyeron sobre imágenes y charts bitnami/* buscando un reemplazo reforzado y mantenido. QuenchWorks es ese reemplazo: un catálogo gratuito, con licencia MIT y de sala limpia, de imágenes de contenedor que pasan una puerta de cero CVE corregibles, más charts de Helm firmados. Se construye de forma independiente desde el código fuente en Wolfi. No es un fork ni una copia de los charts de Bitnami, y cada afirmación es tuya para verificar.',
     },
   },
   chainguard: {
@@ -680,9 +687,9 @@ export const vendorIntro: Record<string, { headline: L; body: L }> = {
       es: 'Una alternativa totalmente gratuita a Chainguard',
     },
     body: {
-      en: 'Chainguard ships excellent Wolfi-based minimal images, but the full catalog sits behind a paid subscription and a small free Starter set. QuenchWorks is also Wolfi-built and 0-CVE, but the entire catalog — images and signed Helm charts pinned by digest — is free, public, and needs no account.',
-      ar: 'تطرح Chainguard صورًا مصغّرة ممتازة قائمة على Wolfi، لكن الكتالوج الكامل يقع خلف اشتراك مدفوع ومجموعة Starter مجانية صغيرة. QuenchWorks أيضًا مبني على Wolfi وبصفر ثغرات، لكن الكتالوج بأكمله — صور ومخططات Helm موقّعة مثبّتة بالبصمة الرقمية — مجاني وعام ولا يحتاج إلى حساب.',
-      es: 'Chainguard ofrece excelentes imágenes mínimas basadas en Wolfi, pero el catálogo completo está tras una suscripción de pago y un pequeño conjunto Starter gratuito. QuenchWorks también está construido en Wolfi y con cero CVE, pero todo el catálogo —imágenes y charts de Helm firmados fijados por digest— es gratuito, público y no necesita cuenta.',
+      en: 'Chainguard ships excellent Wolfi-based minimal images, but the full catalog sits behind a paid subscription and a small free Starter set. QuenchWorks is also Wolfi-built, with a gate that fails any build carrying a fixable CVE. The whole catalog, images and signed Helm charts pinned by digest, is free, public, and needs no account.',
+      ar: 'تطرح Chainguard صورًا مصغّرة ممتازة قائمة على Wolfi، لكن الكتالوج الكامل يقع خلف اشتراك مدفوع ومجموعة Starter مجانية صغيرة. QuenchWorks أيضًا مبني على Wolfi، وبوابته تُفشل أي بناء يحمل ثغرة قابلة للإصلاح. الكتالوج بأكمله، من صور ومخططات Helm موقّعة مثبّتة بالبصمة الرقمية، مجاني وعام ولا يحتاج إلى حساب.',
+      es: 'Chainguard ofrece excelentes imágenes mínimas basadas en Wolfi, pero el catálogo completo está tras una suscripción de pago y un pequeño conjunto Starter gratuito. QuenchWorks también está construido en Wolfi, con una puerta que rechaza cualquier compilación con un CVE corregible. Todo el catálogo, imágenes y charts de Helm firmados fijados por digest, es gratuito, público y no necesita cuenta.',
     },
   },
   docker: {
@@ -692,9 +699,9 @@ export const vendorIntro: Record<string, { headline: L; body: L }> = {
       es: 'QuenchWorks frente a Docker Hardened Images',
     },
     body: {
-      en: 'Docker Hardened Images opened as a free, Apache-2.0 catalog in late 2025, built on Debian and Alpine. QuenchWorks takes a different base — every app compiled from source on Wolfi — and ships first-party signed Helm charts that pin their image by digest, so the comparison is more about approach than price.',
-      ar: 'فُتحت Docker Hardened Images ككتالوج مجاني بترخيص Apache-2.0 أواخر 2025، مبنية على Debian وAlpine. يتّخذ QuenchWorks أساسًا مختلفًا — كل تطبيق مُجمّع من المصدر على Wolfi — ويطرح مخططات Helm موقّعة من الطرف الأول تثبّت صورتها بالبصمة الرقمية، فالمقارنة عن المنهج أكثر منها عن السعر.',
-      es: 'Docker Hardened Images se abrió como un catálogo gratuito Apache-2.0 a finales de 2025, construido sobre Debian y Alpine. QuenchWorks parte de una base distinta —cada app compilada desde el código fuente en Wolfi— y ofrece charts de Helm firmados propios que fijan su imagen por digest, así que la comparación trata más del enfoque que del precio.',
+      en: 'Docker Hardened Images opened as a free, Apache-2.0 catalog in late 2025, built on Debian and Alpine. QuenchWorks takes a different base, every app compiled from source on Wolfi, and ships first-party signed Helm charts that pin their image by digest, so the comparison is more about approach than price.',
+      ar: 'فُتحت Docker Hardened Images ككتالوج مجاني بترخيص Apache-2.0 أواخر 2025، مبنية على Debian وAlpine. يتّخذ QuenchWorks أساسًا مختلفًا، إذ يُجمّع كل تطبيق من المصدر على Wolfi، ويطرح مخططات Helm موقّعة من الطرف الأول تثبّت صورتها بالبصمة الرقمية، فالمقارنة عن المنهج أكثر منها عن السعر.',
+      es: 'Docker Hardened Images se abrió como un catálogo gratuito Apache-2.0 a finales de 2025, construido sobre Debian y Alpine. QuenchWorks parte de una base distinta, cada app compilada desde el código fuente en Wolfi, y ofrece charts de Helm firmados propios que fijan su imagen por digest, así que la comparación trata más del enfoque que del precio.',
     },
   },
   rapidfort: {
@@ -704,8 +711,8 @@ export const vendorIntro: Record<string, { headline: L; body: L }> = {
       es: 'Una alternativa desde el código fuente a RapidFort',
     },
     body: {
-      en: 'RapidFort curates and optimizes upstream images to strip attack surface, as a commercial platform. QuenchWorks instead builds each app from source on Wolfi to a 0-CVE gate and ships signed Helm charts pinned by digest — free, public, and fully verifiable.',
-      ar: 'تُنسّق RapidFort الصور الرسمية وتُحسّنها لإزالة سطح الهجوم، كمنصّة تجارية. أمّا QuenchWorks فيبني كل تطبيق من المصدر على Wolfi حتى بوابة صفر ثغرات ويطرح مخططات Helm موقّعة مثبّتة بالبصمة الرقمية — مجاني وعام وقابل للتحقّق بالكامل.',
+      en: 'RapidFort curates and optimizes upstream images to strip attack surface, as a commercial platform. QuenchWorks instead builds each app from source on Wolfi to a 0-CVE gate and ships signed Helm charts pinned by digest: free, public, and fully verifiable.',
+      ar: 'تُنسّق RapidFort الصور الرسمية وتُحسّنها لإزالة سطح الهجوم، كمنصّة تجارية. أمّا QuenchWorks فيبني كل تطبيق من المصدر على Wolfi حتى بوابة صفر ثغرات ويطرح مخططات Helm موقّعة مثبّتة بالبصمة الرقمية، وهو مجاني وعام وقابل للتحقّق بالكامل.',
       es: 'RapidFort cura y optimiza imágenes oficiales para recortar la superficie de ataque, como plataforma comercial. QuenchWorks, en cambio, compila cada app desde el código fuente en Wolfi hasta una puerta de cero CVE y ofrece charts de Helm firmados fijados por digest: gratuito, público y totalmente verificable.',
     },
   },
@@ -773,7 +780,7 @@ export const ui: Record<string, L> = {
     es: 'QuenchWorks frente a {vendor}, característica a característica',
   },
   conservative: {
-    en: 'Conservative on purpose: where a fact about {vendor} could not be confirmed from a primary source, it is marked "Varies" or "Partial" rather than guessed. Verify every claim against {vendor}’s own public sources before relying on it.',
+    en: 'Conservative on purpose: where a fact about {vendor} could not be confirmed from a primary source, it is marked "Varies" or "Partial" rather than guessed. Verify every claim against {vendor}\'s own public sources before relying on it.',
     ar: 'محافظ عن قصد: حيث لم نتمكّن من تأكيد حقيقة عن {vendor} من مصدر أولي، نُعلّمها "يختلف" أو "جزئي" بدل التخمين. تحقّق من كل ادّعاء مقابل مصادر {vendor} العامة قبل أن تعتمد عليه.',
     es: 'Conservador a propósito: donde no se pudo confirmar un dato sobre {vendor} desde una fuente primaria, se marca "Varía" o "Parcial" en lugar de adivinar. Verifica cada afirmación frente a las propias fuentes públicas de {vendor} antes de depender de ella.',
   },
@@ -834,3 +841,59 @@ export const groupTitles: L[] = [
 ];
 // One group index (into groupTitles) per row, in the same order as `rows`.
 export const rowGroupIndex: number[] = [0, 1, 1, 2, 2, 2, 1, 3, 3, 3, 0];
+
+// The honest counterweight to `differentiators`: what QuenchWorks does not offer.
+// Keep each item true today; drop one the moment it stops being true.
+export const shortfallsHeading: L = {
+  en: 'Where QuenchWorks falls short',
+  ar: 'أين يقصّر QuenchWorks',
+  es: 'Dónde se queda corto QuenchWorks',
+};
+
+export const shortfalls: { label: L; body: L }[] = [
+  {
+    label: { en: 'No paid support or SLA', ar: 'لا دعم مدفوع ولا اتفاقية مستوى خدمة', es: 'Sin soporte de pago ni SLA' },
+    body: {
+      en: 'There is no support contract and no remediation deadline. Several paid providers sell both.',
+      ar: 'لا يوجد عقد دعم ولا موعد نهائي للمعالجة. عدّة مزوّدين مدفوعين يبيعون الاثنين.',
+      es: 'No hay contrato de soporte ni plazo de corrección. Varios proveedores de pago venden ambos.',
+    },
+  },
+  {
+    label: { en: 'Some images wait on upstream', ar: 'بعض الصور تنتظر المصدر', es: 'Algunas imágenes esperan al upstream' },
+    body: {
+      en: 'When a fix needs an upstream or Wolfi release, the image is marked Held and its CVEs stay open until that release. The security report lists each one.',
+      ar: 'عندما يحتاج الإصلاح إلى إصدار من المصدر أو من Wolfi، تُوسم الصورة «معلّقة» وتبقى ثغراتها مفتوحة حتى ذلك الإصدار. تقرير الأمان يسرد كلًّا منها.',
+      es: 'Cuando una corrección necesita una versión del upstream o de Wolfi, la imagen se marca como En espera y sus CVE siguen abiertos hasta esa versión. El informe de seguridad los lista uno a uno.',
+    },
+  },
+  {
+    label: { en: 'End of life means no more builds', ar: 'نهاية الدعم تعني توقّف البناء', es: 'Fin de vida significa sin más compilaciones' },
+    body: {
+      en: 'When an upstream project stops, its image moves to the End of life tab and is not rebuilt. Published tags stay pullable.',
+      ar: 'عندما يتوقّف مشروع المصدر، تنتقل صورته إلى تبويب «نهاية الدعم» ولا يُعاد بناؤها. تبقى الوسوم المنشورة قابلة للسحب.',
+      es: 'Cuando un proyecto upstream se detiene, su imagen pasa a la pestaña Fin de vida y no se vuelve a compilar. Las etiquetas publicadas siguen disponibles.',
+    },
+  },
+  {
+    label: { en: 'Charts are tested on kind', ar: 'المخططات مُختبرة على kind', es: 'Los charts se prueban en kind' },
+    body: {
+      en: 'Every chart passes an install gate on a kind cluster in CI. Managed clouds are not in the test matrix.',
+      ar: 'كل مخطط يجتاز بوابة تثبيت على عنقود kind في CI. السحابات المُدارة ليست ضمن مصفوفة الاختبار.',
+      es: 'Cada chart pasa una prueba de instalación en un clúster kind en CI. Las nubes gestionadas no están en la matriz de pruebas.',
+    },
+  },
+];
+
+// Live numbers under the intro. {n} placeholders are filled at build time.
+export const liveCopy: Record<string, L> = {
+  images: { en: '{n} images', ar: '{n} صورة', es: '{n} imágenes' },
+  charts: { en: '{n} signed charts', ar: '{n} مخططًا موقّعًا', es: '{n} charts firmados' },
+  fixable: {
+    en: '{n} fixable CVEs open in supported images',
+    ar: '{n} ثغرة قابلة للإصلاح مفتوحة في الصور المدعومة',
+    es: '{n} CVE corregibles abiertos en imágenes con soporte',
+  },
+  scanned: { en: 'scanned {n}', ar: 'فُحصت في {n}', es: 'escaneado el {n}' },
+  report: { en: 'Security report', ar: 'تقرير الأمان', es: 'Informe de seguridad' },
+};

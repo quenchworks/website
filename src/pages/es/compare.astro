@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import CompareHonesty from '../../components/CompareHonesty.astro';
 import { getLangFromUrl, localizeUrl } from '../../i18n/ui';
 import {
   vendors,
@@ -54,6 +55,7 @@ const groupedRows = groupTitles.map((title, g) => ({
         competidor desde una fuente primaria, lo marcamos "Varía" o "Parcial" en lugar de adivinar.
         Verifica cada afirmación tú mismo.
       </p>
+      <CompareHonesty part="live" />
     </header>
 
     <!-- Where QuenchWorks is different -->
@@ -70,6 +72,8 @@ const groupedRows = groupTitles.map((title, g) => ({
         }
       </div>
     </section>
+
+    <CompareHonesty part="short" />
 
     <!-- The providers at a glance -->
     <section class="mt-12">
@@ -176,7 +180,7 @@ const groupedRows = groupTitles.map((title, g) => ({
       Bitnami, Chainguard, Docker, RapidFort y Minimus representan todos una ingeniería seria, y esta
       página no es un desprecio a ninguno de ellos. Varios de ellos ofrecen también excelentes opciones
       gratuitas. QuenchWorks existe para mantener abierto un camino totalmente gratuito, totalmente
-      público y sin cuenta, con todo —desde imágenes hasta charts y flujos de compilación— a la vista.
+      público y sin cuenta, con todo a la vista: imágenes, charts y flujos de compilación.
       Verifica cualquier afirmación de aquí frente a las propias fuentes públicas de cada proveedor antes
       de depender de ella.
     </p>
