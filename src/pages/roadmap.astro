@@ -99,7 +99,7 @@ const blockedGrouped = catsOf(blockedList);
         <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Update queue</h2>
         <span class="h-px flex-1 bg-line"></span>
         <span class="font-mono text-xs tabular-nums text-ash">{updatesOpen} open</span>
-        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+        <svg class="h-3.5 w-3.5 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
       </summary>
       <p class="mb-4 max-w-3xl text-sm text-ash">
         Newer upstream releases of apps already in the catalog, from the version check on
@@ -141,7 +141,7 @@ const blockedGrouped = catsOf(blockedList);
         <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Available now</h2>
         <span class="h-px flex-1 bg-line"></span>
         <span class="font-mono text-xs tabular-nums text-ash">{shipped.length}</span>
-        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+        <svg class="h-3.5 w-3.5 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
       </summary>
       <div class="space-y-10">
         {
@@ -151,7 +151,7 @@ const blockedGrouped = catsOf(blockedList);
                 <h3 class="text-sm font-semibold text-paper">{g.cat}</h3>
                 <span class="h-px flex-1 bg-line/60"></span>
                 <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
-                <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+                <svg class="h-3 w-3 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open/cat:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
               </summary>
               <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {g.items.map((e) => (
@@ -191,7 +191,7 @@ const blockedGrouped = catsOf(blockedList);
             <h2 class="font-mono text-xs uppercase tracking-widest text-paper">Held &mdash; built, not shipped</h2>
             <span class="h-px flex-1 bg-line" />
             <span class="font-mono text-xs tabular-nums text-ash">{blockedCount}</span>
-            <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+            <svg class="h-3.5 w-3.5 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
           </summary>
           <p class="-mt-3 mb-8 max-w-2xl text-sm text-ash">
             These build and test clean but can't reach <span class="text-paper">0 fixable CVEs</span> yet &mdash; the
@@ -206,7 +206,7 @@ const blockedGrouped = catsOf(blockedList);
                   <h3 class="text-sm font-semibold text-paper">{g.cat}</h3>
                   <span class="h-px flex-1 bg-line/60"></span>
                   <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
-                  <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+                  <svg class="h-3 w-3 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open/cat:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
                 </summary>
                 <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                   {g.items.map((r) => (
@@ -254,7 +254,7 @@ const blockedGrouped = catsOf(blockedList);
         <h2 class="font-mono text-xs uppercase tracking-widest text-paper">On the roadmap</h2>
         <span class="h-px flex-1 bg-line"></span>
         <span class="font-mono text-xs tabular-nums text-ash">{openTotal}</span>
-        <span class="font-mono text-xs text-ash transition-transform duration-200 group-open:rotate-90" aria-hidden="true">&rsaquo;</span>
+        <svg class="h-3.5 w-3.5 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
       </summary>
       <p class="-mt-3 mb-8 max-w-2xl text-sm text-ash">
         Candidates, not commitments. <span class="text-paper">next</span> = strongest near-term picks;
@@ -274,7 +274,7 @@ const blockedGrouped = catsOf(blockedList);
                 <h3 class="text-sm font-semibold text-paper">{g.cat}</h3>
                 <span class="h-px flex-1 bg-line/60"></span>
                 <span class="font-mono text-[10px] tabular-nums text-ash">{g.items.length}</span>
-                <span class="font-mono text-[10px] text-ash transition-transform duration-200 group-open/cat:rotate-90" aria-hidden="true">&rsaquo;</span>
+                <svg class="h-3 w-3 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open/cat:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
               </summary>
               <ul class="grid auto-rows-fr grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {g.items.map((r) => (
@@ -361,14 +361,17 @@ const blockedGrouped = catsOf(blockedList);
               <ul class="mt-4 space-y-3">
                 {blockedApps.map((b) => (
                   <li class="rounded-xl border border-line bg-ink p-4">
-                    <details>
-                      <summary class="flex cursor-pointer flex-wrap items-baseline gap-x-3 gap-y-1">
-                        <span class="font-mono text-sm text-paper">{b.slug}</span>
-                        {b.measured && (
-                          <span class="font-mono text-[10px] uppercase tracking-widest text-ash">
-                            measured <time datetime={b.measured}>{b.measured}</time>
-                          </span>
-                        )}
+                    <details class="group/held">
+                      <summary class="flex cursor-pointer list-none items-center gap-3 rounded focus-visible:outline focus-visible:outline-1 focus-visible:outline-offset-4 focus-visible:outline-paper/60 [&::-webkit-details-marker]:hidden">
+                        <span class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-3 gap-y-1">
+                          <span class="font-mono text-sm text-paper">{b.slug}</span>
+                          {b.measured && (
+                            <span class="font-mono text-[10px] uppercase tracking-widest text-ash">
+                              measured <time datetime={b.measured}>{b.measured}</time>
+                            </span>
+                          )}
+                        </span>
+                        <svg class="h-3.5 w-3.5 shrink-0 text-ash transition-transform duration-200 motion-reduce:transition-none group-open/held:rotate-180" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4" /></svg>
                       </summary>
                       <pre class="mt-3 whitespace-pre-wrap font-mono text-xs leading-relaxed text-ash">{b.status}</pre>
                     </details>
