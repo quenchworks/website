@@ -3785,6 +3785,32 @@
     "image": "ghcr.io/quenchworks/images/filebrowser"
   },
   {
+    "slug": "filebrowser-quantum",
+    "name": "filebrowser-quantum",
+    "category": "Apps & productivity",
+    "summary": "FileBrowser Quantum, the maintained successor to File Browser: web file manager with users, shares, search and video previews. From source (Vue UI embedded in a static Go binary, no MuPDF, no analytics) on a hardened nonroot Wolfi base with Wolfi ffmpeg.",
+    "tier": "standard",
+    "status": "available",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "version": "2.0.2",
+    "versions": [
+      {
+        "version": "2.0.2",
+        "size": "91.5 MB",
+        "published": "2026-11-10T16:31:16Z",
+        "digest": "sha256:c6c89b874bdb456c3cefa91034ee24693eb96051312186b674fab59f634ce85d"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://filebrowserquantum.com",
+    "source": "https://github.com/gtsteffaniak/filebrowser",
+    "image": "ghcr.io/quenchworks/images/filebrowser-quantum"
+  },
+  {
     "slug": "flink",
     "name": "flink",
     "category": "Workflow",
@@ -6565,7 +6591,7 @@
     "slug": "kubectl",
     "name": "kubectl",
     "category": "CI/CD & registry",
-    "summary": "Hardened kubectl image with the common cluster toolbelt (helm, kustomize, jq, a busybox shell) — the 0-CVE answer to alpine/k8s and bitnami/kubectl for CI jobs and in-cluster tooling. Image only, no chart.",
+    "summary": "Hardened kubectl image with the common cluster toolbelt (helm, kustomize, jq, a busybox shell), the CVE-gated answer to alpine/k8s and bitnami/kubectl for CI jobs and in-cluster tooling. Image only, no chart.",
     "tier": "standard",
     "status": "available",
     "license": "Apache-2.0",
@@ -8693,7 +8719,7 @@
     "slug": "nifi",
     "name": "nifi",
     "category": "Workflow",
-    "summary": "Apache NiFi, the visual dataflow engine for routing, transforming and moving data between systems. Assembled from Apache's binary distribution on Wolfi openjdk-21 (118 NARs, verified 0-CVE with every NAR unpacked): the Hazelcast cache services NAR is removed and the aws NAR's wire jars move to 6.4.5.",
+    "summary": "Apache NiFi, the visual dataflow engine for routing, transforming and moving data between systems. Assembled from Apache's binary distribution on Wolfi openjdk-21 (118 NARs, scanned with every NAR unpacked): the Hazelcast cache services NAR is removed and the aws NAR's wire jars move to 6.4.5.",
     "tier": "standard",
     "status": "available",
     "license": "Apache-2.0",
@@ -8719,7 +8745,7 @@
     "slug": "node",
     "name": "node",
     "category": "Language runtime",
-    "summary": "Hardened Node.js runtime with npm, a 0-CVE signed nonroot base image for JavaScript apps. Active LTS lines (20/22/24).",
+    "summary": "Hardened Node.js runtime with npm, a CVE-gated, signed nonroot base image for JavaScript apps. Active LTS lines (20/22/24).",
     "tier": "standard",
     "status": "available",
     "license": "MIT",
@@ -10467,7 +10493,7 @@
     "slug": "python",
     "name": "python",
     "category": "Language runtime",
-    "summary": "Hardened CPython interpreter with pip, a 0-CVE signed nonroot base image to FROM for Python apps. Ships the latest 3 stable minors (no :latest).",
+    "summary": "Hardened CPython interpreter with pip, a CVE-gated, signed nonroot base image to FROM for Python apps. Ships the latest 3 stable minors (no :latest).",
     "tier": "standard",
     "status": "available",
     "license": "PSF-2.0",
@@ -12011,7 +12037,7 @@
     "slug": "terragrunt",
     "name": "terragrunt",
     "category": "CI/CD & registry",
-    "summary": "Terragrunt, the thin wrapper that keeps Terraform and OpenTofu configurations DRY, built from source with the 0-CVE OpenTofu build and git beside it. Newest line only (older lines carry findings that cannot be floated). Image only, no chart.",
+    "summary": "Terragrunt, the thin wrapper that keeps Terraform and OpenTofu configurations DRY, built from source with the CVE-gated OpenTofu build and git beside it. Newest line only (older lines carry findings that cannot be floated). Image only, no chart.",
     "tier": "standard",
     "status": "available",
     "license": "MIT",
@@ -12746,13 +12772,19 @@
     "status": "available",
     "license": "MIT",
     "licenseClean": "clean",
-    "version": "2.5.6",
+    "version": "2.5.6, 2.5.5",
     "versions": [
       {
         "version": "2.5.6",
         "size": "108.0 MB",
         "published": "2026-10-22T09:35:31Z",
         "digest": "sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87"
+      },
+      {
+        "version": "2.5.5",
+        "size": "107.7 MB",
+        "published": "2026-10-11T11:33:49Z",
+        "digest": "sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9"
       }
     ],
     "arches": [
@@ -13234,7 +13266,7 @@
     "slug": "vllm",
     "name": "vllm",
     "category": "Machine learning & AI",
-    "summary": "vLLM, the high-throughput LLM inference and serving engine with an OpenAI-compatible API. CPU build — installs vLLM's prebuilt CPU wheel (torch+cpu, no source compile, no CUDA) into a venv on a hardened Wolfi python-3.12 base, 0-CVE across ~140 Python packages. The user supplies the model; the chart runs it as a StatefulSet with a persistent model cache.",
+    "summary": "vLLM, the high-throughput LLM inference and serving engine with an OpenAI-compatible API. CPU build — installs vLLM's prebuilt CPU wheel (torch+cpu, no source compile, no CUDA) into a venv on a hardened Wolfi python-3.12 base, gated on fixable CVEs across ~140 Python packages. The user supplies the model; the chart runs it as a StatefulSet with a persistent model cache.",
     "tier": "standard",
     "status": "available",
     "license": "Apache-2.0",

@@ -8,8 +8,8 @@ const redis = charts.find((c) => c.slug === 'redis')!;
 
 const sections = [
   {
-    h: 'صفر ثغرات قابلة للإصلاح، مفروضة',
-    p: 'تمرّ كل صورة عبر بوابة Trivy تُفشل البناء عند أي ثغرة قابلة للإصلاح. نُعيد البناء وفق جدول، لأن الفحص النظيف لا يصف إلا اليوم الذي جرى فيه. النتيجة هدف متحرّك يُبقى نظيفًا، لا تدقيق لمرة واحدة.',
+    h: 'صفر ثغرات قابلة للإصلاح عند البناء',
+    p: 'تمرّ كل صورة عبر بوابة Trivy تُفشل البناء عند أي ثغرة قابلة للإصلاح. تُفحص كل صورة منشورة كل ليلة ويُعاد بناؤها حين يصدر الإصلاح. بعض الإصلاحات تنتظر إصدارًا من المصدر أو من Wolfi، فتبقى تلك الثغرات مفتوحة حتى ذلك الحين، ويسردها تقرير الأمان كلها.',
   },
   {
     h: 'مبنية من المصدر على Wolfi',
@@ -26,7 +26,7 @@ const sections = [
 ];
 ---
 
-<Base title="الأمان · QuenchWorks" description="كيف يُبقي QuenchWorks الصور عند صفر ثغرات قابلة للإصلاح: مبنية من المصدر، موقّعة بـ cosign، مثبّتة بالبصمة الرقمية، ومُعاد بناؤها وفق جدول.">
+<Base title="الأمان · QuenchWorks" description="كيف يضبط QuenchWorks الصور ببوابة الثغرات القابلة للإصلاح: مبنية من المصدر، موقّعة بـ cosign، مثبّتة بالبصمة الرقمية، تُفحص كل ليلة، وكل ثغرة مفتوحة منشورة.">
   <Header />
   <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="type:Security">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">الأمان</p>
@@ -75,12 +75,12 @@ docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:{redis.appVers
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
-      <h2 class="text-lg font-semibold tracking-tight">بوابة صفر ثغرات</h2>
+      <h2 class="text-lg font-semibold tracking-tight">بوابة الثغرات القابلة للإصلاح</h2>
       <p class="mt-2 text-sm leading-relaxed text-ash">
         يُجرى فحص Trivy في كل بناء ويُفشله بشكل قاطع عند أي ثغرة قابلة للإصلاح، من الحرجة وصولًا
         إلى المنخفضة، مع <span class="font-mono" dir="ltr">--ignore-unfixed</span> كي لا نمنع إلا
-        ما يمكننا فعليًا ترقيعه. تعمل البوابة نفسها مجددًا وفق جدول إعادة بناء، فالفحص النظيف هدف
-        متحرّك يُبقى نظيفًا مع ظهور تنبيهات جديدة, لا تدقيق لمرة واحدة.
+        ما يمكننا فعليًا ترقيعه. تستمر التنبيهات الجديدة في الظهور بعد البناء، لذا قد تحمل الصورة المنشورة ثغرات حتى إعادة
+        بنائها، أو حتى يُصدر المصدر إصلاحًا. الأعداد الحيّة لكل صورة موجودة في تقرير الأمان وفي <a href="/api/v1/security.json" dir="ltr" class="underline underline-offset-4 hover:text-paper">/api/v1/security.json</a>.
       </p>
     </section>
 

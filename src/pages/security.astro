@@ -8,8 +8,8 @@ const redis = charts.find((c) => c.slug === 'redis')!;
 
 const sections = [
   {
-    h: 'Zero fixable CVEs, enforced',
-    p: 'Every image goes through a Trivy gate that fails the build on any fixable vulnerability. We rebuild on a schedule, because a clean scan only describes the day it ran. The result is a moving target kept clean, not a one-time audit.',
+    h: 'Zero fixable CVEs at build',
+    p: 'Every image goes through a Trivy gate that fails the build on any fixable vulnerability. Every published image is rescanned nightly and rebuilt when a fix lands. Some fixes wait on an upstream or Wolfi release; those CVEs stay open until then, and the security report lists every one.',
   },
   {
     h: 'Built from source on Wolfi',
@@ -26,7 +26,7 @@ const sections = [
 ];
 ---
 
-<Base title="Security · QuenchWorks" description="How QuenchWorks keeps images at zero fixable CVEs: built from source, signed with cosign, pinned by digest, rebuilt on a schedule.">
+<Base title="Security · QuenchWorks" description="How QuenchWorks gates images on fixable CVEs: built from source, signed with cosign, pinned by digest, rescanned nightly, with every open CVE published.">
   <Header />
   <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="type:Security">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">Security</p>
@@ -75,12 +75,13 @@ docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:{redis.appVers
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
-      <h2 class="text-lg font-semibold tracking-tight">The 0-CVE gate</h2>
+      <h2 class="text-lg font-semibold tracking-tight">The fixable-CVE gate</h2>
       <p class="mt-2 text-sm leading-relaxed text-ash">
         A Trivy scan runs on every build and hard-fails it on any fixable vulnerability, from
         CRITICAL down to LOW, with <span class="font-mono">--ignore-unfixed</span> so we only block
-        on what we can actually patch. The same gate runs again on a rebuild schedule, so a clean
-        scan is a moving target kept clean as new advisories land, not a one-time audit.
+        on what we can actually patch. New advisories keep landing after a build, so a published image can carry CVEs
+        until its rebuild, or until upstream ships a fix. The live counts, per image, are in the
+        security report and at <a href="/api/v1/security.json" class="underline underline-offset-4 hover:text-paper">/api/v1/security.json</a>.
       </p>
     </section>
 

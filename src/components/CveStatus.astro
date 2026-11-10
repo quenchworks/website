@@ -37,12 +37,12 @@ const parts = sec
       .filter((k) => sec[k] > 0)
       .map((k) => `${sec[k]} ${k}`)
   : [];
-const breakdown = parts.length ? parts.join(', ') : 'no CVEs';
+const breakdown = parts.length ? parts.join(', ') : typeof total === 'number' ? 'no CVEs' : 'not scanned';
 const fixable = sec?.fixable ?? 0;
 const verPart = sec?.version ? ` (version ${sec.version})` : '';
-const fixPart = fixable > 0 ? `; ${fixable} fixable — a rebuild clears ${fixable === 1 ? 'it' : 'them'}` : '';
+const fixPart = fixable > 0 ? `; ${fixable} fixable, a rebuild clears ${fixable === 1 ? 'it' : 'them'}` : '';
 const note = gradeNote(grade);
-const notePart = note ? ` — ${note}` : '';
+const notePart = note ? `; ${note}` : '';
 const title = `Trivy scan: grade ${grade ?? (has ? '–' : 'A+')}${sec?.score != null ? ` (score ${sec.score}/100)` : ''}${verPart} — ${breakdown}${fixPart}${notePart}`;
 
 // Visible text: grade leads; the count tags along when there are CVEs.

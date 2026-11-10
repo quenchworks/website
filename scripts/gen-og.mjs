@@ -73,7 +73,7 @@ function buildSvg(app) {
     app.kind === 'chart'
       ? `ghcr.io/quenchworks/charts/${app.slug}`
       : `ghcr.io/quenchworks/images/${app.slug}`;
-  const sub = app.category ? `${xml(app.category)}  ·  hardened · 0-CVE · signed` : 'hardened · 0-CVE · signed';
+  const sub = app.category ? `${xml(app.category)}  ·  hardened · CVE-gated · signed` : 'hardened · CVE-gated · signed';
 
   return `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>

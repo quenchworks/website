@@ -8,8 +8,8 @@ const redis = charts.find((c) => c.slug === 'redis')!;
 
 const sections = [
   {
-    h: 'Cero CVE corregibles, aplicado',
-    p: 'Cada imagen pasa por una puerta de control de Trivy que hace fallar la compilación ante cualquier vulnerabilidad corregible. Reconstruimos de forma programada, porque un análisis limpio solo describe el día en que se ejecutó. El resultado es un objetivo móvil mantenido limpio, no una auditoría puntual.',
+    h: 'Cero CVE corregibles al compilar',
+    p: 'Cada imagen pasa por una puerta de control de Trivy que hace fallar la compilación ante cualquier vulnerabilidad corregible. Cada imagen publicada se reanaliza cada noche y se recompila cuando llega una corrección. Algunas correcciones esperan una versión del upstream o de Wolfi; esos CVE siguen abiertos hasta entonces, y el informe de seguridad los lista todos.',
   },
   {
     h: 'Compilado desde el código fuente en Wolfi',
@@ -26,7 +26,7 @@ const sections = [
 ];
 ---
 
-<Base title="Seguridad · QuenchWorks" description="Cómo QuenchWorks mantiene las imágenes en cero CVE corregibles: compiladas desde el código fuente, firmadas con cosign, fijadas por digest y reconstruidas de forma programada.">
+<Base title="Seguridad · QuenchWorks" description="Cómo QuenchWorks controla las imágenes frente a CVE corregibles: compiladas desde el código fuente, firmadas con cosign, fijadas por digest, reanalizadas cada noche y con cada CVE abierto publicado.">
   <Header />
   <main class="mx-auto max-w-3xl px-5 py-16" data-pagefind-body data-pagefind-meta="type:Security">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">Seguridad</p>
@@ -75,14 +75,14 @@ docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:{redis.appVers
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">
-      <h2 class="text-lg font-semibold tracking-tight">La puerta de cero CVE</h2>
+      <h2 class="text-lg font-semibold tracking-tight">La puerta de CVE corregibles</h2>
       <p class="mt-2 text-sm leading-relaxed text-ash">
         Un análisis de Trivy se ejecuta en cada compilación y la hace fallar de forma tajante ante
         cualquier vulnerabilidad corregible, de CRÍTICA a BAJA, con
         <span class="font-mono">--ignore-unfixed</span> para bloquear solo lo que realmente podemos
-        parchear. La misma puerta vuelve a ejecutarse de forma programada, así que un análisis limpio
-        es un objetivo móvil mantenido limpio a medida que aparecen nuevos avisos, no una auditoría
-        puntual.
+        parchear. Los avisos nuevos siguen llegando después de una compilación, así que una imagen publicada
+        puede tener CVE hasta su recompilación, o hasta que el upstream publique una corrección. Los
+        recuentos en vivo, por imagen, están en el informe de seguridad y en <a href="/api/v1/security.json" class="underline underline-offset-4 hover:text-paper">/api/v1/security.json</a>.
       </p>
     </section>
 

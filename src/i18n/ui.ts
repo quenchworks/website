@@ -63,14 +63,14 @@ export const ui = {
     'footer.tagline':
       'MIT licensed. Built independently, not affiliated with any upstream vendor.',
     'hero.title':
-      'QuenchWorks: hardened, zero-CVE images and charts for the infrastructure you run.',
+      'QuenchWorks: hardened images and charts for the infrastructure you run, with every open CVE published.',
     'hero.subtitle':
-      'datastores shipped end-to-end as small nonroot container images and signed Helm charts. Built from source on Wolfi, scanned to zero fixable CVEs, cosign-signed, digest-pinned, and multi-arch. Free and independent.',
+      'apps shipped end-to-end as small nonroot container images and signed Helm charts. Built from source on Wolfi, gated on fixable CVEs at build, rescanned nightly, cosign-signed, digest-pinned, and multi-arch. Free and independent.',
     'hero.cta.primary': 'Browse the charts',
     'hero.cta.secondary': 'View on GitHub',
     'hero.statImages': 'hardened images',
     'hero.statCharts': 'signed charts',
-    'hero.statCves': '0 fixable CVEs',
+    'hero.statCves': 'CVE counts in the security report',
     'hero.statOpen': 'open',
     'hero.statFixable': 'fixable CVEs',
     'support.held': 'Held',
@@ -91,7 +91,7 @@ export const ui = {
     'demo.eyebrow': 'See it work',
     'demo.title': 'Pull, verify, deploy. No account.',
     'demo.body':
-      'A real terminal, end to end: run a 0-CVE image, check its cosign signature, install the Helm chart, and watch the workload reach Running.',
+      'A real terminal, end to end: run a hardened image, check its cosign signature, install the Helm chart, and watch the workload reach Running.',
     'demo.alt':
       'Terminal: docker runs a QuenchWorks Python image and prints its version, cosign verifies the image signature, helm installs the Valkey chart, the pod reaches Running, and Valkey replies PONG.',
     'features.eyebrow': 'How it works',
@@ -99,9 +99,9 @@ export const ui = {
     'features.builtFromSource.title': 'Built from source',
     'features.builtFromSource.body':
       'We compile each app from source on Wolfi with melange, then apko assembles a small nonroot image. No Dockerfiles, and nothing inherited from another distro.',
-    'features.zeroCve.title': '0 fixable CVEs, daily',
+    'features.zeroCve.title': 'A fixable CVE fails the build',
     'features.zeroCve.body':
-      'A Trivy gate fails the build on any fixable CVE. We rebuild every day, because a clean scan only tells you about the day it ran.',
+      'A Trivy gate fails the build on any fixable CVE. Every image is rescanned nightly and rebuilt when a fix lands. A CVE that waits on an upstream release stays open, and the security report lists it.',
     'features.signed.title': 'Signed and attested',
     'features.signed.body':
       'Every image is cosign-signed, with an SLSA build-provenance attestation and an SPDX SBOM attached to the same digest. Verify all three from your own terminal.',
@@ -147,7 +147,7 @@ export const ui = {
     'catalog.list.filterCategory': 'All categories',
     'catalog.list.noMatchImages': 'No images match that search.',
     'catalog.list.noMatchCharts': 'No charts match that search.',
-    'catalog.list.badgeCve': '0 CVE',
+    'catalog.list.badgeCve': 'Not scanned',
     'catalog.list.badgePlanned': 'Planned',
     'catalog.list.versions': 'versions',
     'catalog.list.resultOne': 'result',
@@ -182,7 +182,7 @@ export const ui = {
     'detail.label.image': 'Image',
     'detail.label.runtime': 'Runtime',
     'detail.label.chart': 'Chart',
-    'detail.badge.fixableCves': '0 fixable CVEs',
+    'detail.badge.fixableCves': 'Not scanned',
     'detail.badge.cosignSigned': 'cosign signed',
     'detail.badge.spdxSbom': 'SPDX SBOM',
     'detail.badge.slsaProvenance': 'SLSA provenance',
@@ -398,14 +398,14 @@ export const ui = {
     'footer.project': 'المشروع',
     'footer.tagline':
       'مرخّص بموجب MIT. مبني بشكل مستقل وغير تابع لأي مورّد خارجي.',
-    'hero.title': 'QuenchWorks: صور ومخططات مُحصّنة وخالية من الثغرات للبنية التحتية التي تُشغّلها.',
+    'hero.title': 'QuenchWorks: صور ومخططات مُحصّنة للبنية التحتية التي تُشغّلها، وكل ثغرة مفتوحة منشورة.',
     'hero.subtitle':
-      'قواعد بيانات تُسلّم بالكامل كصور حاويات صغيرة تعمل بدون صلاحيات الجذر ومخططات Helm موقّعة. مبنية من المصدر على Wolfi، ومفحوصة حتى صفر ثغرات قابلة للإصلاح، وموقّعة بـ cosign، ومثبّتة بالبصمة الرقمية، ومتعددة المعماريات. مجانية ومستقلة.',
+      'تطبيقًا تُسلّم بالكامل كصور حاويات صغيرة تعمل بدون صلاحيات الجذر ومخططات Helm موقّعة. مبنية من المصدر على Wolfi، ولا يمرّ بناء فيه ثغرة قابلة للإصلاح، وتُفحص كل ليلة، وموقّعة بـ cosign، ومثبّتة بالبصمة الرقمية، ومتعددة المعماريات. مجانية ومستقلة.',
     'hero.cta.primary': 'تصفّح المخططات',
     'hero.cta.secondary': 'اعرض على GitHub',
     'hero.statImages': 'صورة محصّنة',
     'hero.statCharts': 'مخطط موقّع',
-    'hero.statCves': '0 ثغرة قابلة للإصلاح',
+    'hero.statCves': 'أعداد الثغرات في تقرير الأمان',
     'hero.statOpen': 'مفتوحة',
     'hero.statFixable': 'ثغرة قابلة للإصلاح',
     'support.held': 'معلّق',
@@ -426,7 +426,7 @@ export const ui = {
     'demo.eyebrow': 'شاهدها تعمل',
     'demo.title': 'اسحب، تحقّق، انشر. دون حساب.',
     'demo.body':
-      'طرفية حقيقية من البداية إلى النهاية: شغّل صورة خالية من الثغرات، وتحقّق من توقيعها بـ cosign، وثبّت مخطط Helm، وراقب وصول عبء العمل إلى حالة التشغيل.',
+      'طرفية حقيقية من البداية إلى النهاية: شغّل صورة مُحصّنة، وتحقّق من توقيعها بـ cosign، وثبّت مخطط Helm، وراقب وصول عبء العمل إلى حالة التشغيل.',
     'demo.alt':
       'الطرفية: يشغّل docker صورة Python من QuenchWorks ويطبع إصدارها، ويتحقّق cosign من توقيع الصورة، ويثبّت helm مخطط Valkey، وتصل الحاوية إلى حالة التشغيل، ويردّ Valkey بـ PONG.',
     'features.eyebrow': 'كيف تعمل',
@@ -434,9 +434,9 @@ export const ui = {
     'features.builtFromSource.title': 'مبنية من المصدر',
     'features.builtFromSource.body':
       'نُجمّع كل تطبيق من المصدر على Wolfi باستخدام melange، ثم يجمّع apko صورة صغيرة تعمل بدون صلاحيات الجذر. دون ملفات Dockerfile، ودون أي شيء موروث من توزيعة أخرى.',
-    'features.zeroCve.title': 'صفر ثغرات قابلة للإصلاح، يوميًا',
+    'features.zeroCve.title': 'الثغرة القابلة للإصلاح تُفشل البناء',
     'features.zeroCve.body':
-      'تُفشل بوابة Trivy عملية البناء عند وجود أي ثغرة قابلة للإصلاح. نُعيد البناء كل يوم، لأن الفحص النظيف لا يخبرك إلا عن اليوم الذي جرى فيه.',
+      'تُفشل بوابة Trivy عملية البناء عند وجود أي ثغرة قابلة للإصلاح. تُفحص كل صورة كل ليلة ويُعاد بناؤها حين يصدر الإصلاح. الثغرة التي تنتظر إصدارًا من المصدر تبقى مفتوحة، ويسردها تقرير الأمان.',
     'features.signed.title': 'موقّعة ومُوثّقة',
     'features.signed.body':
       'كل صورة موقّعة بـ cosign، مع شهادة منشأ بناء SLSA وقائمة مكوّنات SPDX SBOM مرفقة بالبصمة الرقمية نفسها. تحقّق من الثلاثة جميعها من طرفيتك الخاصة.',
@@ -482,7 +482,7 @@ export const ui = {
     'catalog.list.filterCategory': 'جميع الفئات',
     'catalog.list.noMatchImages': 'لا توجد صور تطابق هذا البحث.',
     'catalog.list.noMatchCharts': 'لا توجد مخططات تطابق هذا البحث.',
-    'catalog.list.badgeCve': '0 CVE',
+    'catalog.list.badgeCve': 'لم تُفحص',
     'catalog.list.badgePlanned': 'مخطّط له',
     'catalog.list.versions': 'إصدارات',
     'catalog.list.resultOne': 'نتيجة',
@@ -517,7 +517,7 @@ export const ui = {
     'detail.label.image': 'صورة',
     'detail.label.runtime': 'بيئة تشغيل',
     'detail.label.chart': 'مخطط',
-    'detail.badge.fixableCves': '0 ثغرة قابلة للإصلاح',
+    'detail.badge.fixableCves': 'لم تُفحص',
     'detail.badge.cosignSigned': 'موقّعة بـ cosign',
     'detail.badge.spdxSbom': 'SPDX SBOM',
     'detail.badge.slsaProvenance': 'منشأ SLSA',
@@ -734,14 +734,14 @@ export const ui = {
     'footer.tagline':
       'Con licencia MIT. Desarrollado de forma independiente, sin afiliación con ningún proveedor.',
     'hero.title':
-      'QuenchWorks: imágenes y charts reforzados y sin CVE para la infraestructura que ejecutas.',
+      'QuenchWorks: imágenes y charts reforzados para la infraestructura que ejecutas, con cada CVE abierto publicado.',
     'hero.subtitle':
-      'bases de datos entregadas de extremo a extremo como pequeñas imágenes de contenedor sin root y charts de Helm firmados. Compiladas desde el código fuente en Wolfi, analizadas hasta cero CVE corregibles, firmadas con cosign, fijadas por digest y multiarquitectura. Libre e independiente.',
+      'apps entregadas de extremo a extremo como pequeñas imágenes de contenedor sin root y charts de Helm firmados. Compiladas desde el código fuente en Wolfi, ninguna compilación pasa con un CVE corregible, reanalizadas cada noche, firmadas con cosign, fijadas por digest y multiarquitectura. Libre e independiente.',
     'hero.cta.primary': 'Explorar los charts',
     'hero.cta.secondary': 'Ver en GitHub',
     'hero.statImages': 'imágenes endurecidas',
     'hero.statCharts': 'charts firmados',
-    'hero.statCves': '0 CVE corregibles',
+    'hero.statCves': 'recuento de CVE en el informe de seguridad',
     'hero.statOpen': 'abiertos',
     'hero.statFixable': 'CVE corregibles',
     'support.held': 'En espera',
@@ -762,7 +762,7 @@ export const ui = {
     'demo.eyebrow': 'Míralo en acción',
     'demo.title': 'Descarga, verifica, despliega. Sin cuenta.',
     'demo.body':
-      'Una terminal real, de extremo a extremo: ejecuta una imagen sin CVE, comprueba su firma de cosign, instala el chart de Helm y observa cómo la carga de trabajo llega a Running.',
+      'Una terminal real, de extremo a extremo: ejecuta una imagen reforzada, comprueba su firma de cosign, instala el chart de Helm y observa cómo la carga de trabajo llega a Running.',
     'demo.alt':
       'Terminal: docker ejecuta una imagen de Python de QuenchWorks e imprime su versión, cosign verifica la firma de la imagen, helm instala el chart de Valkey, el pod llega a Running y Valkey responde PONG.',
     'features.eyebrow': 'Cómo funciona',
@@ -770,9 +770,9 @@ export const ui = {
     'features.builtFromSource.title': 'Compilado desde el código fuente',
     'features.builtFromSource.body':
       'Compilamos cada aplicación desde el código fuente en Wolfi con melange, y luego apko ensambla una imagen pequeña sin root. Sin Dockerfiles y sin nada heredado de otra distribución.',
-    'features.zeroCve.title': '0 CVE corregibles, a diario',
+    'features.zeroCve.title': 'Un CVE corregible hace fallar la compilación',
     'features.zeroCve.body':
-      'Una puerta de control de Trivy hace fallar la compilación ante cualquier CVE corregible. Reconstruimos cada día, porque un análisis limpio solo te dice cómo estaba el día en que se ejecutó.',
+      'Una puerta de control de Trivy hace fallar la compilación ante cualquier CVE corregible. Cada imagen se reanaliza cada noche y se recompila cuando llega una corrección. Un CVE que espera una versión del upstream sigue abierto, y el informe de seguridad lo lista.',
     'features.signed.title': 'Firmado y certificado',
     'features.signed.body':
       'Cada imagen está firmada con cosign, con una atestación de procedencia de compilación SLSA y un SBOM SPDX adjuntos al mismo digest. Verifica los tres desde tu propia terminal.',
@@ -818,7 +818,7 @@ export const ui = {
     'catalog.list.filterCategory': 'Todas las categorías',
     'catalog.list.noMatchImages': 'Ninguna imagen coincide con esa búsqueda.',
     'catalog.list.noMatchCharts': 'Ningún chart coincide con esa búsqueda.',
-    'catalog.list.badgeCve': '0 CVE',
+    'catalog.list.badgeCve': 'Sin analizar',
     'catalog.list.badgePlanned': 'Planificado',
     'catalog.list.versions': 'versiones',
     'catalog.list.resultOne': 'resultado',
@@ -853,7 +853,7 @@ export const ui = {
     'detail.label.image': 'Imagen',
     'detail.label.runtime': 'Entorno de ejecución',
     'detail.label.chart': 'Chart',
-    'detail.badge.fixableCves': '0 CVE corregibles',
+    'detail.badge.fixableCves': 'Sin analizar',
     'detail.badge.cosignSigned': 'firmada con cosign',
     'detail.badge.spdxSbom': 'SPDX SBOM',
     'detail.badge.slsaProvenance': 'procedencia SLSA',

@@ -34,10 +34,10 @@ export const GET: APIRoute = () => {
   lines.push('# QuenchWorks');
   lines.push('');
   lines.push(
-    `> Free, independent catalog of hardened, 0-CVE container images and signed Helm charts. ` +
+    `> Free, independent catalog of hardened container images and signed Helm charts, gated on fixable CVEs at build; open CVEs are published at /api/v1/security.json. ` +
       `Built from source on Wolfi, cosign-signed, and pinned by digest, with an SPDX SBOM and a ` +
       `SLSA build-provenance attestation on every image that anyone can verify. ` +
-      `${availableCount} hardened, 0-CVE container images (including base/runtime ` +
+      `${availableCount} hardened container images (including base/runtime ` +
       `images to build FROM) and ${chartCount} signed charts.`,
   );
   lines.push('');
@@ -54,7 +54,7 @@ export const GET: APIRoute = () => {
 
   lines.push('## Catalog');
   lines.push(`- [All charts](${SITE}/charts): ${chartCount} hardened, signed Helm charts`);
-  lines.push(`- [All images](${SITE}/images): ${availableCount} hardened, 0-CVE container images, including base images to build FROM`);
+  lines.push(`- [All images](${SITE}/images): ${availableCount} hardened container images, including base images to build FROM`);
   lines.push('');
 
   lines.push('## Helm charts');
@@ -73,7 +73,7 @@ export const GET: APIRoute = () => {
 
   lines.push('## About');
   lines.push(`- [How it works](${SITE}/how-it-works): The build-from-source, sign, distribute pipeline.`);
-  lines.push(`- [Security](${SITE}/security): The 0-CVE, signed, digest-pinned security model.`);
+  lines.push(`- [Security](${SITE}/security): The CVE gate, signing, digest pinning, and the live CVE report.`);
   lines.push(`- [Roadmap](${SITE}/roadmap): Apps on deck, with honest licensing notes.`);
   lines.push(`- [About](${SITE}/about): Why QuenchWorks exists and who maintains it.`);
   lines.push(`- [GitHub](https://github.com/quenchworks): Source for the images, charts, and this site.`);

@@ -282,7 +282,7 @@ const dataset = all.map((e) => {
                 )}
               </span>
               {e.status === 'available' ? (
-                <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" slug={e.slug} />
+                <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel={t('catalog.list.badgeCve')} slug={e.slug} />
               ) : (
                 <span class="rounded border border-line px-2 py-0.5 font-mono text-[10px] uppercase tracking-widest text-ash">{t('catalog.list.badgePlanned')}</span>
               )}
@@ -319,7 +319,7 @@ const dataset = all.map((e) => {
             <span class="inline-flex size-10 items-center justify-center rounded-lg border border-line bg-ink">
               <img src="/brand/icon-dark.svg" alt="" class="size-6" width="24" height="24" />
             </span>
-            <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel="0 CVE" slug={e.slug} />
+            <CveStatus total={live?.securityTotal} sec={live?.security} cleanLabel={t('catalog.list.badgeCve')} slug={e.slug} />
           </div>
           <div class="flex-1">
             <h2 class="text-base font-semibold leading-tight">{e.name}</h2>
@@ -357,6 +357,7 @@ const dataset = all.map((e) => {
   data-itembase={itemBase}
   data-page-size={pageSize}
   data-planned={t('catalog.list.badgePlanned')}
+  data-unscanned={t('catalog.list.badgeCve')}
   data-versions={t('catalog.list.versions')}
   data-chartv={t('catalog.list.chartV')}
   data-result-one={t('catalog.list.resultOne')}
@@ -400,6 +401,7 @@ const dataset = all.map((e) => {
   const kind = dataEl?.getAttribute('data-kind') ?? 'charts';
   const itemBase = dataEl?.getAttribute('data-itembase') ?? `/${kind}`;
   const tPlanned = dataEl?.getAttribute('data-planned') ?? 'Planned';
+  const tUnscanned = dataEl?.getAttribute('data-unscanned') ?? 'Not scanned';
   const tVersions = dataEl?.getAttribute('data-versions') ?? 'versions';
   const tChartV = dataEl?.getAttribute('data-chartv') ?? 'chart v';
   const tResultOne = dataEl?.getAttribute('data-result-one') ?? 'result';
@@ -505,9 +507,9 @@ const dataset = all.map((e) => {
     const has = typeof tot === 'number' && tot > 0;
     const g = grade ?? (typeof tot === 'number' ? (has ? null : 'A+') : null);
     const cls = GRADE_CHIP[gradeTone(g, has)];
-    const label = g ? `${g}${has ? '&nbsp;' + tot : ''}` : (has ? `${tot}&nbsp;CVE${tot === 1 ? '' : 's'}` : '0&nbsp;CVE');
+    const label = g ? `${g}${has ? '&nbsp;' + tot : ''}` : (has ? `${tot}&nbsp;CVE${tot === 1 ? '' : 's'}` : esc(tUnscanned));
     const note = gradeNote(g);
-    const title = esc(`Trivy scan: grade ${g ?? (has ? '–' : 'A+')}${has ? ` · ${tot} CVE${tot === 1 ? '' : 's'}` : ' · no CVEs'}${fixable ? ` · ${fixable} fixable` : ''}${note ? ` · ${note}` : ''}`);
+    const title = esc(`Trivy scan: grade ${g ?? (has ? '–' : 'A+')}${has ? ` · ${tot} CVE${tot === 1 ? '' : 's'}` : typeof tot === 'number' ? ' · no CVEs' : ' · not scanned'}${fixable ? ` · ${fixable} fixable` : ''}${note ? ` · ${note}` : ''}`);
     return `<span class="inline-flex items-center rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest tabular-nums ${cls}" role="img" aria-label="${title}" title="${title}">${label}</span>`;
   };
 

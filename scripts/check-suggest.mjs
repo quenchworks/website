@@ -28,7 +28,7 @@ const IMG = 0;
 const CHART = 1;
 const rows = [
   [IMG, 'redis', 'Redis', 'Cache', 'In-memory key-value store used as a cache and message broker.'],
-  [CHART, 'redis', 'Redis', 'Cache', 'Hardened Redis chart on a 0-CVE image.'],
+  [CHART, 'redis', 'Redis', 'Cache', 'Hardened Redis chart on a CVE-gated image.'],
   [IMG, 'redis-exporter', 0, 'Metrics/Exporter', 'Prometheus exporter for Redis.'],
   [IMG, 'valkey', 0, 'Cache', 'Fork of Redis 7.2, BSD licensed.'],
   [IMG, 'postgresql', 0, 'Relational', 'The relational database.'],
