@@ -1,5 +1,5 @@
 # Build stage: Composer installs and locks prod dependencies.
-FROM ghcr.io/quenchworks/images/composer:2.10.3 AS build
+FROM ghcr.io/quenchworks/images/composer:2.11.2 AS build
 USER root
 WORKDIR /app
 ENV COMPOSER_CACHE_DIR=/tmp/composer
