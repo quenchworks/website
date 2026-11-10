@@ -26,10 +26,10 @@ go install github.com/sigstore/cosign/v2/cmd/cosign@latest   # from source
 
 ## Verificar una imagen
 
-Apunta cosign a la imagen por su etiqueta de versión (las imágenes no tienen `:latest`) y comprueba la identidad del firmante. Sustituye `redis:8.8.0` por cualquier imagen y la versión mostrada en su [página](/es/images):
+Apunta cosign a la imagen por su etiqueta de versión (las imágenes no tienen `:latest`) y comprueba la identidad del firmante. Sustituye `redis:8.10.3` por cualquier imagen y la versión mostrada en su [página](/es/images):
 
 ```bash
-cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
+cosign verify ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -41,7 +41,7 @@ Un resultado válido imprime el sujeto del certificado, que es el flujo de traba
 Los charts son artefactos OCI, así que el mismo comando funciona contra la etiqueta de versión del chart:
 
 ```bash
-cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.36 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

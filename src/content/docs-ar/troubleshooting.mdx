@@ -13,7 +13,7 @@ order: 4
 
 ```bash
 docker pull ghcr.io/quenchworks/images/redis          # error: latest not found
-docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works
+docker pull ghcr.io/quenchworks/images/redis:8.10.3    # works
 ```
 
 استخدم دائمًا وسم إصدار (معروض في صفحة كل [صورة](/ar/images)) أو بصمة. راجع [الوسوم والإصدارات](/ar/docs/tags).
@@ -23,7 +23,7 @@ docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works
 تُرفَق الشهادات ببصمة بناء معيّن. التحقّق من بصمة قديمة، أو من بصمة سابقة لإعادة بناء، لا يجد شيئًا. تحقّق من وسم الإصدار بدلًا من ذلك، فهو يُحَلّ إلى البصمة المُشهَّدة الحالية:
 
 ```bash
-cosign verify-attestation --type https://spdx.dev/Document/v2.3 ghcr.io/quenchworks/images/redis:8.8.0 \
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

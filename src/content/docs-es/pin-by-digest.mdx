@@ -24,7 +24,7 @@ Cuando la fábrica reconstruye una imagen, un contrato de digest actualiza el ch
 Resuelve una etiqueta a su digest con crane, o léelo en la página del catálogo:
 
 ```bash
-crane digest ghcr.io/quenchworks/images/redis:8.8.0
+crane digest ghcr.io/quenchworks/images/redis:8.10.3
 # sha256:38a0c67...
 ```
 
@@ -33,7 +33,7 @@ crane digest ghcr.io/quenchworks/images/redis:8.8.0
 Si ejecutas una imagen directamente, resuelve la etiqueta a un digest una vez y luego referencia ese digest. Esto se ejecuta tal cual:
 
 ```bash
-DIGEST=$(crane digest ghcr.io/quenchworks/images/redis:8.8.0)
+DIGEST=$(crane digest ghcr.io/quenchworks/images/redis:8.10.3)
 docker pull ghcr.io/quenchworks/images/redis@$DIGEST
 ```
 

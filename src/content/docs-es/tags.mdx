@@ -9,12 +9,12 @@ Las imágenes se etiquetan por versión de la aplicación, nunca con `:latest`. 
 
 ## Etiquetas de imagen
 
-Cada imagen se etiqueta con la versión upstream de la aplicación que entrega, por ejemplo `redis:8.8.0`. Esa etiqueta es un índice multi-arch que cubre ambas arquitecturas, junto a las etiquetas por arquitectura:
+Cada imagen se etiqueta con la versión upstream de la aplicación que entrega, por ejemplo `redis:8.10.3`. Esa etiqueta es un índice multi-arch que cubre ambas arquitecturas, junto a las etiquetas por arquitectura:
 
 ```text
-ghcr.io/quenchworks/images/redis:8.8.0          # multi-arch index (amd64 + arm64)
-ghcr.io/quenchworks/images/redis:8.8.0-amd64    # single arch
-ghcr.io/quenchworks/images/redis:8.8.0-arm64    # single arch
+ghcr.io/quenchworks/images/redis:8.10.3         # multi-arch index (amd64 + arm64)
+ghcr.io/quenchworks/images/redis:8.10.3-amd64   # single arch
+ghcr.io/quenchworks/images/redis:8.10.3-arm64   # single arch
 ```
 
 <Notice type="warning">
@@ -35,11 +35,11 @@ Para una construcción que nunca se mueva por debajo de ti, fija por digest. Con
 
 ## Versiones de los charts
 
-Los charts son artefactos OCI etiquetados por el semver del chart, por ejemplo `redis:0.0.5`. Instalar sin una versión resuelve la versión publicada más alta; pasa `--version` para fijar una:
+Los charts son artefactos OCI etiquetados por el semver del chart, por ejemplo `redis:0.0.36`. Instalar sin una versión resuelve la versión publicada más alta; pasa `--version` para fijar una:
 
 ```bash
 helm install my-redis oci://ghcr.io/quenchworks/charts/redis              # latest chart
-helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.36
 ```
 
 La versión del chart es independiente de la versión de la aplicación. Un chart referencia su imagen estrictamente por digest, así que instalar un chart siempre despliega la construcción de imagen exacta que se escaneó y firmó, sea cual sea su etiqueta.
@@ -48,7 +48,7 @@ La versión del chart es independiente de la versión de la aplicación. Un char
 
 | Lo que quieres | Usa |
 | --- | --- |
-| Ejecutar o verificar la construcción actual | la etiqueta de versión, p. ej. `redis:8.8.0` |
+| Ejecutar o verificar la construcción actual | la etiqueta de versión, p. ej. `redis:8.10.3` |
 | Fijar una construcción exacta e inmutable | el digest `@sha256:...` |
 | Instalar una versión específica del chart | `helm ... --version <chart-version>` |
 

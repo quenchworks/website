@@ -23,8 +23,8 @@ Use `cosign copy` so the signature and the SBOM and provenance attestations trav
 ```bash
 # copies the image, its cosign signature, and the SBOM + provenance attestations
 cosign copy \
-  ghcr.io/quenchworks/images/redis:8.8.0 \
-  registry.internal/quenchworks/redis:8.8.0
+  ghcr.io/quenchworks/images/redis:8.10.3 \
+  registry.internal/quenchworks/redis:8.10.3
 ```
 
 If you only need the bits and will verify before the copy, `crane` or `skopeo` also work and preserve the multi-arch index:
@@ -32,8 +32,8 @@ If you only need the bits and will verify before the copy, `crane` or `skopeo` a
 ```bash
 # image only (no signature/attestations); preserves the multi-arch index
 crane copy \
-  ghcr.io/quenchworks/images/redis:8.8.0 \
-  registry.internal/quenchworks/redis:8.8.0
+  ghcr.io/quenchworks/images/redis:8.10.3 \
+  registry.internal/quenchworks/redis:8.10.3
 ```
 
 Pin by digest where you can. The version tag is convenient, but a digest is what guarantees the mirrored bytes match what was scanned and signed. Resolve one with `crane digest` (see [Pin by digest](/docs/pin-by-digest)).
@@ -43,8 +43,8 @@ Pin by digest where you can. The version tag is convenient, but a digest is what
 Charts are OCI artifacts too. Pull a version, then push it to your registry:
 
 ```bash
-helm pull oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
-helm push redis-0.0.5.tgz oci://registry.internal/charts
+helm pull oci://ghcr.io/quenchworks/charts/redis --version 0.0.36
+helm push redis-0.0.36.tgz oci://registry.internal/charts
 ```
 
 ## Repoint the chart at your registry
@@ -52,7 +52,7 @@ helm push redis-0.0.5.tgz oci://registry.internal/charts
 A chart references its image by digest under a configurable repository. Override the repository to your mirror at install time, keeping the same digest:
 
 ```bash
-helm install my-redis oci://registry.internal/charts/redis --version 0.0.5 \
+helm install my-redis oci://registry.internal/charts/redis --version 0.0.36 \
   --set image.repository=registry.internal/quenchworks/redis
 ```
 
@@ -63,7 +63,7 @@ The `quench-common` library refuses a tag-only image reference on purpose, so yo
 The signer identity does not change when you mirror, so the same check works against your registry:
 
 ```bash
-cosign verify registry.internal/quenchworks/redis:8.8.0 \
+cosign verify registry.internal/quenchworks/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

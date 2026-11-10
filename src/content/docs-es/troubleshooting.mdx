@@ -13,7 +13,7 @@ Las imágenes no tienen etiqueta `:latest`. Una referencia sin etiqueta se resue
 
 ```bash
 docker pull ghcr.io/quenchworks/images/redis          # error: latest not found
-docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works
+docker pull ghcr.io/quenchworks/images/redis:8.10.3    # works
 ```
 
 Usa siempre una etiqueta de versión (mostrada en la página de cada [imagen](/es/images)) o un digest. Consulta [Etiquetas y versiones](/es/docs/tags).
@@ -23,7 +23,7 @@ Usa siempre una etiqueta de versión (mostrada en la página de cada [imagen](/e
 Las atestaciones se adjuntan al digest de una construcción específica. Verificar un digest obsoleto, o uno anterior a una reconstrucción, no encuentra nada. Verifica en su lugar la etiqueta de versión, que se resuelve al digest atestado actual:
 
 ```bash
-cosign verify-attestation --type https://spdx.dev/Document/v2.3 ghcr.io/quenchworks/images/redis:8.8.0 \
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

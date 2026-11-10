@@ -18,7 +18,7 @@ helm install my-redis oci://ghcr.io/quenchworks/charts/redis
 Pin the chart version so an upgrade is something you do on purpose, not a surprise:
 
 ```bash
-helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
 ```
 
 ## Configure
@@ -43,8 +43,8 @@ Each chart ships a `values.schema.json`, so Helm validates what you pass before 
 Pull the values and the rendered manifests without touching the cluster:
 
 ```bash
-helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
-helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
+helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
 ```
 
 ## Verify before you install
@@ -52,7 +52,7 @@ helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
 Charts are OCI artifacts, so cosign verifies them by tag the same way it verifies an image:
 
 ```bash
-cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.35 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -64,7 +64,7 @@ A valid result prints the workflow that built the chart and its Rekor log entry.
 Upgrade to a newer chart version with the same reference:
 
 ```bash
-helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.6
+helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.36
 ```
 
 If something looks wrong, roll back to the previous revision:

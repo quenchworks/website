@@ -26,10 +26,10 @@ go install github.com/sigstore/cosign/v2/cmd/cosign@latest   # from source
 
 ## Verify an image
 
-Point cosign at the image by its version tag (images have no `:latest`) and assert the signer identity. Swap `redis:8.8.0` for any image and the version shown on its [page](/images):
+Point cosign at the image by its version tag (images have no `:latest`) and assert the signer identity. Swap `redis:8.10.3` for any image and the version shown on its [page](/images):
 
 ```bash
-cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
+cosign verify ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -41,7 +41,7 @@ A valid result prints the certificate subject, which is the exact workflow that 
 Charts are OCI artifacts, so the same command works against the chart's version tag:
 
 ```bash
-cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.36 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

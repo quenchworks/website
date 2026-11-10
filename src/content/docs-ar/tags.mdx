@@ -9,12 +9,12 @@ order: 1
 
 ## وسوم الصور
 
-تُوسَم كل صورة بإصدار التطبيق المنبع الذي تحمله، مثلًا `redis:8.8.0`. وذلك الوسم هو فهرس متعدد المعماريات يغطّي كلتا المعماريتين، إلى جانب وسوم لكل معمارية:
+تُوسَم كل صورة بإصدار التطبيق المنبع الذي تحمله، مثلًا `redis:8.10.3`. وذلك الوسم هو فهرس متعدد المعماريات يغطّي كلتا المعماريتين، إلى جانب وسوم لكل معمارية:
 
 ```text
-ghcr.io/quenchworks/images/redis:8.8.0          # multi-arch index (amd64 + arm64)
-ghcr.io/quenchworks/images/redis:8.8.0-amd64    # single arch
-ghcr.io/quenchworks/images/redis:8.8.0-arm64    # single arch
+ghcr.io/quenchworks/images/redis:8.10.3         # multi-arch index (amd64 + arm64)
+ghcr.io/quenchworks/images/redis:8.10.3-amd64   # single arch
+ghcr.io/quenchworks/images/redis:8.10.3-arm64   # single arch
 ```
 
 <Notice type="warning">
@@ -35,11 +35,11 @@ crane ls ghcr.io/quenchworks/images/redis
 
 ## إصدارات المخططات
 
-المخططات أدوات OCI موسومة بـ semver الخاص بالمخطط، مثلًا `redis:0.0.5`. التثبيت دون إصدار يُحَلّ إلى أعلى إصدار منشور؛ مرّر `--version` لتثبيت إصدار بعينه:
+المخططات أدوات OCI موسومة بـ semver الخاص بالمخطط، مثلًا `redis:0.0.36`. التثبيت دون إصدار يُحَلّ إلى أعلى إصدار منشور؛ مرّر `--version` لتثبيت إصدار بعينه:
 
 ```bash
 helm install my-redis oci://ghcr.io/quenchworks/charts/redis              # latest chart
-helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.36
 ```
 
 إصدار المخطط مستقلّ عن إصدار التطبيق. يشير المخطط إلى صورته بالبصمة حصرًا، لذا فإن تثبيت مخطط يَنشُر دائمًا بناء الصورة الذي جرى فحصه وتوقيعه بالضبط، أيًّا كان وسمه.
@@ -48,7 +48,7 @@ helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
 
 | تريد أن | استخدم |
 | --- | --- |
-| تشغّل أو تتحقّق من البناء الحالي | وسم الإصدار، مثلًا `redis:8.8.0` |
+| تشغّل أو تتحقّق من البناء الحالي | وسم الإصدار، مثلًا `redis:8.10.3` |
 | تثبّت بناءً دقيقًا وثابتًا | بصمة `@sha256:...` |
 | تثبّت إصدار مخطط بعينه | `helm ... --version <chart-version>` |
 

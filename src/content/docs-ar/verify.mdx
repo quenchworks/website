@@ -26,10 +26,10 @@ go install github.com/sigstore/cosign/v2/cmd/cosign@latest   # from source
 
 ## التحقّق من صورة
 
-وجّه cosign إلى الصورة عبر وسم إصدارها (الصور لا تحمل `:latest`) وأكّد هوية الموقّع. استبدل `redis:8.8.0` بأي صورة وبالإصدار المعروض في صفحتها [page](/ar/images):
+وجّه cosign إلى الصورة عبر وسم إصدارها (الصور لا تحمل `:latest`) وأكّد هوية الموقّع. استبدل `redis:8.10.3` بأي صورة وبالإصدار المعروض في صفحتها [page](/ar/images):
 
 ```bash
-cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
+cosign verify ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -41,7 +41,7 @@ cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
 المخططات أدوات OCI، لذا يعمل الأمر نفسه على وسم إصدار المخطط:
 
 ```bash
-cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.36 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

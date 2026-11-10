@@ -24,7 +24,7 @@ When the factory rebuilds an image, a digest contract updates the chart to the n
 Resolve a tag to its digest with crane, or read it off the catalog page:
 
 ```bash
-crane digest ghcr.io/quenchworks/images/redis:8.8.0
+crane digest ghcr.io/quenchworks/images/redis:8.10.3
 # sha256:38a0c67...
 ```
 
@@ -33,7 +33,7 @@ crane digest ghcr.io/quenchworks/images/redis:8.8.0
 If you run an image directly, resolve the tag to a digest once, then reference that digest. This runs as-is:
 
 ```bash
-DIGEST=$(crane digest ghcr.io/quenchworks/images/redis:8.8.0)
+DIGEST=$(crane digest ghcr.io/quenchworks/images/redis:8.10.3)
 docker pull ghcr.io/quenchworks/images/redis@$DIGEST
 ```
 

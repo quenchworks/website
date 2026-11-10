@@ -23,8 +23,8 @@ Usa `cosign copy` para que la firma y las atestaciones de SBOM y procedencia via
 ```bash
 # copies the image, its cosign signature, and the SBOM + provenance attestations
 cosign copy \
-  ghcr.io/quenchworks/images/redis:8.8.0 \
-  registry.internal/quenchworks/redis:8.8.0
+  ghcr.io/quenchworks/images/redis:8.10.3 \
+  registry.internal/quenchworks/redis:8.10.3
 ```
 
 Si solo necesitas los bits y vas a verificar antes de la copia, `crane` o `skopeo` también funcionan y conservan el índice multi-arch:
@@ -32,8 +32,8 @@ Si solo necesitas los bits y vas a verificar antes de la copia, `crane` o `skope
 ```bash
 # image only (no signature/attestations); preserves the multi-arch index
 crane copy \
-  ghcr.io/quenchworks/images/redis:8.8.0 \
-  registry.internal/quenchworks/redis:8.8.0
+  ghcr.io/quenchworks/images/redis:8.10.3 \
+  registry.internal/quenchworks/redis:8.10.3
 ```
 
 Fija por digest cuando puedas. La etiqueta de versión es cómoda, pero un digest es lo que garantiza que los bytes replicados coinciden con lo que se escaneó y firmó. Resuelve uno con `crane digest` (consulta [Fijar por digest](/es/docs/pin-by-digest)).
@@ -43,8 +43,8 @@ Fija por digest cuando puedas. La etiqueta de versión es cómoda, pero un diges
 Los charts también son artefactos OCI. Descarga una versión y luego súbela a tu registro:
 
 ```bash
-helm pull oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
-helm push redis-0.0.5.tgz oci://registry.internal/charts
+helm pull oci://ghcr.io/quenchworks/charts/redis --version 0.0.36
+helm push redis-0.0.36.tgz oci://registry.internal/charts
 ```
 
 ## Redirigir el chart a tu registro
@@ -52,7 +52,7 @@ helm push redis-0.0.5.tgz oci://registry.internal/charts
 Un chart referencia su imagen por digest bajo un repositorio configurable. Anula el repositorio para que apunte a tu réplica en el momento de la instalación, conservando el mismo digest:
 
 ```bash
-helm install my-redis oci://registry.internal/charts/redis --version 0.0.5 \
+helm install my-redis oci://registry.internal/charts/redis --version 0.0.36 \
   --set image.repository=registry.internal/quenchworks/redis
 ```
 
@@ -63,7 +63,7 @@ La biblioteca `quench-common` rechaza a propósito una referencia de imagen que 
 La identidad del firmante no cambia cuando replicas, así que la misma comprobación funciona contra tu registro:
 
 ```bash
-cosign verify registry.internal/quenchworks/redis:8.8.0 \
+cosign verify registry.internal/quenchworks/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

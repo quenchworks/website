@@ -18,7 +18,7 @@ helm install my-redis oci://ghcr.io/quenchworks/charts/redis
 ثبّت إصدار المخطط ليكون الترقية شيئًا تفعله عن قصد لا مفاجأةً:
 
 ```bash
-helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
 ```
 
 ## الضبط
@@ -43,8 +43,8 @@ helm install my-redis oci://ghcr.io/quenchworks/charts/redis -f my-values.yaml
 اسحب القيم والبيانات المُصيَّرة دون أن تلمس العنقود:
 
 ```bash
-helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
-helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
+helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
 ```
 
 ## تحقّق قبل أن تثبّت
@@ -52,7 +52,7 @@ helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
 المخططات أدوات OCI، فيتحقّق منها cosign عبر الوسم بالطريقة نفسها التي يتحقّق بها من صورة:
 
 ```bash
-cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.35 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -64,7 +64,7 @@ cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
 رقِّ إلى إصدار مخطط أحدث بالمرجع نفسه:
 
 ```bash
-helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.6
+helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.36
 ```
 
 إن بدا شيء خاطئًا، تراجع إلى المراجعة السابقة:

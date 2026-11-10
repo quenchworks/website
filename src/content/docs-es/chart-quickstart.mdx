@@ -18,7 +18,7 @@ helm install my-redis oci://ghcr.io/quenchworks/charts/redis
 Fija la versión del chart para que una actualización sea algo que hagas a propósito, no una sorpresa:
 
 ```bash
-helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm install my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
 ```
 
 ## Configurar
@@ -43,8 +43,8 @@ Cada chart incluye un `values.schema.json`, así que Helm valida lo que pasas an
 Descarga los valores y los manifiestos renderizados sin tocar el clúster:
 
 ```bash
-helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
-helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
+helm show values oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
+helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.35
 ```
 
 ## Verificar antes de instalar
@@ -52,7 +52,7 @@ helm template my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.5
 Los charts son artefactos OCI, así que cosign los verifica por etiqueta de la misma forma que verifica una imagen:
 
 ```bash
-cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+cosign verify ghcr.io/quenchworks/charts/redis:0.0.35 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -64,7 +64,7 @@ Un resultado válido imprime el flujo de trabajo que construyó el chart y su en
 Actualiza a una versión más reciente del chart con la misma referencia:
 
 ```bash
-helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.6
+helm upgrade my-redis oci://ghcr.io/quenchworks/charts/redis --version 0.0.36
 ```
 
 Si algo parece estar mal, revierte a la revisión anterior:

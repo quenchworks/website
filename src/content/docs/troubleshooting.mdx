@@ -13,7 +13,7 @@ Images have no `:latest` tag. A bare reference resolves to `:latest` and fails:
 
 ```bash
 docker pull ghcr.io/quenchworks/images/redis          # error: latest not found
-docker pull ghcr.io/quenchworks/images/redis:8.8.0    # works
+docker pull ghcr.io/quenchworks/images/redis:8.10.3    # works
 ```
 
 Always use a version tag (shown on each [image](/images) page) or a digest. See [Tags & versions](/docs/tags).
@@ -23,7 +23,7 @@ Always use a version tag (shown on each [image](/images) page) or a digest. See 
 Attestations attach to the digest of a specific build. Verifying a stale digest, or one from before a rebuild, finds nothing. Verify the version tag instead, which resolves to the current attested digest:
 
 ```bash
-cosign verify-attestation --type https://spdx.dev/Document/v2.3 ghcr.io/quenchworks/images/redis:8.8.0 \
+cosign verify-attestation --type https://spdx.dev/Document/v2.3 ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```

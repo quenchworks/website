@@ -9,10 +9,10 @@ Alongside its cosign signature, every image carries two more attestations attach
 
 ## See what is attached
 
-Cosign lists every referrer on an image: the signature and the two attestations. Use the image's version tag (shown on its [page](/images)); it resolves to the current multi-arch index, where the attestations are attached. Swap `redis:8.8.0` for any image and version.
+Cosign lists every referrer on an image: the signature and the two attestations. Use the image's version tag (shown on its [page](/images)); it resolves to the current multi-arch index, where the attestations are attached. Swap `redis:8.10.3` for any image and version.
 
 ```bash
-cosign tree ghcr.io/quenchworks/images/redis:8.8.0
+cosign tree ghcr.io/quenchworks/images/redis:8.10.3
 # └── Attestations
 #     ├── https://spdx.dev/Document/v2.3        (SBOM)
 #     └── https://slsa.dev/provenance/v1        (build provenance)
@@ -26,7 +26,7 @@ The provenance attestation answers "where did this come from?". It binds the ima
 
 ```bash
 cosign verify-attestation --type https://slsa.dev/provenance/v1 \
-  ghcr.io/quenchworks/images/redis:8.8.0 \
+  ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -39,7 +39,7 @@ The SBOM lists every package in the image. Verify the SBOM attestation by its ty
 
 ```bash
 cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
-  ghcr.io/quenchworks/images/redis:8.8.0 \
+  ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
@@ -48,7 +48,7 @@ To pull the SPDX document itself out and inspect it, decode the verified payload
 
 ```bash
 cosign verify-attestation --type https://spdx.dev/Document/v2.3 \
-  ghcr.io/quenchworks/images/redis:8.8.0 \
+  ghcr.io/quenchworks/images/redis:8.10.3 \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com \
   | jq -r '.payload | @base64d | fromjson | .predicate'

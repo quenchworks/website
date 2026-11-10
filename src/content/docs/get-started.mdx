@@ -31,7 +31,7 @@ Each chart documents its values on its [chart](/charts) page, and ships a `value
 The images are usable on their own, outside the charts. They are tagged by app version (there is no `:latest`), so always pull a version tag, shown on each [image](/images) page:
 
 ```bash
-docker pull ghcr.io/quenchworks/images/redis:8.8.0
+docker pull ghcr.io/quenchworks/images/redis:8.10.3
 ```
 
 Each image runs as a nonroot user (uid 1001) on a read-only root filesystem with all Linux capabilities dropped, so it sits cleanly under a restricted PodSecurity policy. Both amd64 and arm64 are built.
