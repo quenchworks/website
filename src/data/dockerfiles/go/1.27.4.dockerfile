@@ -1,5 +1,5 @@
 # Build stage: compile a fully static binary.
-FROM ghcr.io/quenchworks/images/go:1.27.3 AS build
+FROM ghcr.io/quenchworks/images/go:1.27.4 AS build
 USER root
 WORKDIR /src
 # CGO off makes the binary static; caches go to /tmp for the read-only rootfs.

@@ -452,11 +452,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.22",
+    "chartVersion": "0.0.23",
     "appVersion": "0.34.2",
     "description": "Companion to Prometheus that routes, groups, deduplicates, and silences alerts and dispatches them to email, Slack, PagerDuty, and more. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/alertmanager",
-    "imageDigest": "sha256:1b4d4e824e2061a935a5f00c1aa5fc86ed421c95e080392fa42a9ce8dbdd2c27",
+    "imageDigest": "sha256:0a201bdf1f3d3e56b8ffb7509b0d7630017d06ac106231ef15d695716a384e0f",
     "repositoryID": "ec60d3e2-eb6a-497b-b02f-f590e9844186",
     "port": 9093,
     "upstream": "https://github.com/prometheus/alertmanager",
@@ -464,7 +464,7 @@
     "images": [
       {
         "name": "alertmanager",
-        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:1b4d4e824e2061a935a5f00c1aa5fc86ed421c95e080392fa42a9ce8dbdd2c27"
+        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:0a201bdf1f3d3e56b8ffb7509b0d7630017d06ac106231ef15d695716a384e0f"
       }
     ],
     "valuesKeys": [
@@ -2917,22 +2917,22 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.14",
     "appVersion": "1.20.4",
     "description": "Cilium networking for Kubernetes: the eBPF agent DaemonSet (CNI, IPAM through CiliumNodes, network policy, VXLAN overlay) with the QuenchWorks Cilium Operator as a dependency. Hardened by QuenchWorks: the agent built from source on Wolfi, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cilium",
-    "imageDigest": "sha256:4a96c4f291c152c7cbdfb2302ac71145b6d989b9aeaa66a3972f2465e02c375a",
+    "imageDigest": "sha256:e9e864abbd6882ebfcf712b72a1c89a459289173319d2b19ff2afbe2ef440284",
     "repositoryID": "64a616e6-cfb9-4c11-b400-8cc1c513ef19",
     "upstream": "https://cilium.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cilium",
     "images": [
       {
         "name": "cilium",
-        "image": "ghcr.io/quenchworks/images/cilium@sha256:4a96c4f291c152c7cbdfb2302ac71145b6d989b9aeaa66a3972f2465e02c375a"
+        "image": "ghcr.io/quenchworks/images/cilium@sha256:e9e864abbd6882ebfcf712b72a1c89a459289173319d2b19ff2afbe2ef440284"
       },
       {
         "name": "cilium-operator",
-        "image": "ghcr.io/quenchworks/images/cilium-operator@sha256:3e0e052e1875e701fadb97655549ac3e807aed1a7bbf771da5e2f51a013aa408"
+        "image": "ghcr.io/quenchworks/images/cilium-operator@sha256:b7b2432eefc3a84a9311cf8f7f59673e09ed6145d1949faeb76d2c229f628f13"
       }
     ],
     "valuesKeys": [
@@ -2985,18 +2985,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.20.4",
     "description": "The Cilium Operator (generic variant): cluster-pool and Kubernetes IPAM for CiliumNodes, CRD registration, identity and endpoint garbage collection, and node taint removal, for a Cilium install that runs its agents with operator.enabled=false. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cilium-operator",
-    "imageDigest": "sha256:3e0e052e1875e701fadb97655549ac3e807aed1a7bbf771da5e2f51a013aa408",
+    "imageDigest": "sha256:b7b2432eefc3a84a9311cf8f7f59673e09ed6145d1949faeb76d2c229f628f13",
     "repositoryID": "2bccc143-6734-42df-a35d-40291b453b32",
     "upstream": "https://cilium.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cilium-operator",
     "images": [
       {
         "name": "cilium-operator",
-        "image": "ghcr.io/quenchworks/images/cilium-operator@sha256:3e0e052e1875e701fadb97655549ac3e807aed1a7bbf771da5e2f51a013aa408"
+        "image": "ghcr.io/quenchworks/images/cilium-operator@sha256:b7b2432eefc3a84a9311cf8f7f59673e09ed6145d1949faeb76d2c229f628f13"
       }
     ],
     "valuesKeys": [
@@ -4462,7 +4462,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.12",
     "appVersion": "1.121.3",
     "description": "Hardened Kubernetes cost monitoring stack: OpenCost (the CNCF cost model) reading cluster metrics from a bundled Prometheus, plus Grafana with that Prometheus provisioned as a datasource. Prometheus scrapes container usage from the kubelet (cAdvisor) and OpenCost's own pricing and allocation metrics; OpenCost serves cost allocation on <release>-opencost:9003. No operator, no CRDs. Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "66cf44d2-4e47-4d64-97f7-3df014556359",
@@ -4477,7 +4477,7 @@
     "images": [
       {
         "name": "opencost",
-        "image": "ghcr.io/quenchworks/images/opencost@sha256:c43675627ecbca939068c299d618b92a255c662d3a70e10d5723d463bc98c653"
+        "image": "ghcr.io/quenchworks/images/opencost@sha256:c52421b1b1eb49b584124903949ab88b0b28000090f4cd242a41aaa0a53230c7"
       },
       {
         "name": "prometheus",
@@ -6600,18 +6600,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "2.11.0",
     "description": "External Secrets Operator: syncs secrets from external APIs (Vault, cloud secret managers, and more) into Kubernetes Secrets via ExternalSecret/SecretStore CRDs. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. Runs the single ESO binary as three deployments (controller, webhook, cert-controller); the cert-controller manages the webhook's self-signed CA, so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/external-secrets",
-    "imageDigest": "sha256:eb387309fa9336fcf4be71c9dfa02071596a0764576c812b5f54b7f3fa7398c5",
+    "imageDigest": "sha256:4899496b09f1736b6d7857887861a4e693eaa909571350a0d8541223445c0bee",
     "repositoryID": "a43cf3cf-e802-4bd6-8910-40e27275bb18",
     "upstream": "https://external-secrets.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/external-secrets",
     "images": [
       {
         "name": "external-secrets",
-        "image": "ghcr.io/quenchworks/images/external-secrets@sha256:eb387309fa9336fcf4be71c9dfa02071596a0764576c812b5f54b7f3fa7398c5"
+        "image": "ghcr.io/quenchworks/images/external-secrets@sha256:4899496b09f1736b6d7857887861a4e693eaa909571350a0d8541223445c0bee"
       }
     ],
     "valuesKeys": [
@@ -7861,11 +7861,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.45",
+    "chartVersion": "0.0.46",
     "appVersion": "6.67.0",
     "description": "Hardened Ghost publishing platform (Node.js CMS + membership/newsletter engine) on a CVE-gated nonroot image, with a bundled MariaDB backend.",
     "imageRepository": "ghcr.io/quenchworks/images/ghost",
-    "imageDigest": "sha256:2be96feb9680a15441d741dc47bd3b7641473b17ccb8c92ddad79353ef873de4",
+    "imageDigest": "sha256:7828393360fae7c1c4b69c067e47440da60fbd687adde25f98d30b7615e6a565",
     "repositoryID": "5f3aa248-601d-446c-9838-0dd270fd9b4e",
     "port": 2368,
     "upstream": "https://ghost.org",
@@ -7873,7 +7873,7 @@
     "images": [
       {
         "name": "ghost",
-        "image": "ghcr.io/quenchworks/images/ghost@sha256:2be96feb9680a15441d741dc47bd3b7641473b17ccb8c92ddad79353ef873de4"
+        "image": "ghcr.io/quenchworks/images/ghost@sha256:7828393360fae7c1c4b69c067e47440da60fbd687adde25f98d30b7615e6a565"
       },
       {
         "name": "mariadb",
@@ -8526,7 +8526,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.14",
     "appVersion": "4.12.23",
     "description": "Hardened Gravitee API Management (APIM) community edition on CVE-gated nonroot images. The gateway, the management API and the console, with a bundled MongoDB. Enterprise plugins are not included.",
     "imageRepository": "ghcr.io/quenchworks/images/gravitee-apim",
@@ -8548,7 +8548,7 @@
       },
       {
         "name": "mongodb",
-        "image": "ghcr.io/quenchworks/images/mongodb@sha256:ccd312688b554a3306b8e232c33e068432647776f11f1b1bf6e3da67f29d829b"
+        "image": "ghcr.io/quenchworks/images/mongodb@sha256:0e8a25a401506d4c06b3c09034f6950fc063bf1339f76318c63bf42ab915dc78"
       }
     ],
     "valuesKeys": [
@@ -8629,7 +8629,7 @@
     "tier": "standard",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.43",
+    "chartVersion": "0.0.45",
     "appVersion": "7.1.12",
     "description": "Hardened Graylog log management server on a CVE-gated nonroot image, with bundled MongoDB (config/metadata) and OpenSearch (log storage) backends. NOTE the SSPL-1.0 license (source-available, not OSI-approved).",
     "imageRepository": "ghcr.io/quenchworks/images/graylog",
@@ -8645,7 +8645,7 @@
       },
       {
         "name": "mongodb",
-        "image": "ghcr.io/quenchworks/images/mongodb@sha256:ccd312688b554a3306b8e232c33e068432647776f11f1b1bf6e3da67f29d829b"
+        "image": "ghcr.io/quenchworks/images/mongodb@sha256:0e8a25a401506d4c06b3c09034f6950fc063bf1339f76318c63bf42ab915dc78"
       },
       {
         "name": "opensearch",
@@ -9666,11 +9666,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "1.20.4",
     "description": "Hubble Relay, Cilium's cluster-wide aggregator of Hubble network-flow observability: one Observer API over every node's Hubble server, for the hubble CLI and Hubble UI. Runs next to an existing Cilium install. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/hubble-relay",
-    "imageDigest": "sha256:ea56bc2e872a14d73e919c9308262ac83c58ec1d4484e5d95689cc36e223dd1f",
+    "imageDigest": "sha256:6a6bbaef81d77530122cf4c54cd449b7d9a713d97db63d0a34bd344875dda8c1",
     "repositoryID": "47efcd04-89ca-4b54-ab6d-4218e4402605",
     "port": 80,
     "upstream": "https://cilium.io",
@@ -9678,7 +9678,7 @@
     "images": [
       {
         "name": "hubble-relay",
-        "image": "ghcr.io/quenchworks/images/hubble-relay@sha256:ea56bc2e872a14d73e919c9308262ac83c58ec1d4484e5d95689cc36e223dd1f"
+        "image": "ghcr.io/quenchworks/images/hubble-relay@sha256:6a6bbaef81d77530122cf4c54cd449b7d9a713d97db63d0a34bd344875dda8c1"
       }
     ],
     "valuesKeys": [
@@ -12049,7 +12049,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.20",
+    "chartVersion": "0.0.21",
     "appVersion": "0.2.209",
     "description": "Kubescape in-cluster: the operator, the configuration scanner (ksserver), the image vulnerability scanner (kubevuln) and the storage API server that keeps the results as Kubernetes objects. Hardened by QuenchWorks: every component built from source on Wolfi, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/kubescape-operator",
@@ -12079,7 +12079,7 @@
       },
       {
         "name": "kubescape-storage",
-        "image": "ghcr.io/quenchworks/images/kubescape-storage@sha256:8c902f79721dc271d8e637a4525d15871d3fdb7f9ae09949f1906a7872505cb0"
+        "image": "ghcr.io/quenchworks/images/kubescape-storage@sha256:9207656c2a8621df1b8b63fd90e6ed870de1f5758eab9df893d4e06048d49ccf"
       }
     ],
     "valuesKeys": [
@@ -12711,7 +12711,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.49",
+    "chartVersion": "0.0.51",
     "appVersion": "1.0.0",
     "description": "Hardened, operator-free LGTM observability superset in one install: Loki (logs) + Grafana (the single pane) + Tempo (traces) + VictoriaMetrics (Prometheus-compatible metrics) + an OpenTelemetry Collector (OTLP ingest) + Alertmanager. Grafana gets three pre-provisioned datasources — VictoriaMetrics (default), Loki, Tempo — so metrics, logs and traces are explorable side by side out of the box. VictoriaMetrics scrapes pods via annotation-based service discovery; Vector ships every pod's logs to Loki; apps send OTLP traces to the collector, which forwards to Tempo. No operator, no CRDs. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed. node-exporter and Vector take host access by design (cluster metrics + logs); both are toggleable.",
     "repositoryID": "69ed1b3c-ab58-474a-828b-f64cf9dff72e",
@@ -12744,7 +12744,7 @@
       },
       {
         "name": "alertmanager",
-        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:1b4d4e824e2061a935a5f00c1aa5fc86ed421c95e080392fa42a9ce8dbdd2c27"
+        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:0a201bdf1f3d3e56b8ffb7509b0d7630017d06ac106231ef15d695716a384e0f"
       },
       {
         "name": "otel-collector",
@@ -13040,11 +13040,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.22",
-    "appVersion": "1.103.10",
+    "chartVersion": "0.0.23",
+    "appVersion": "1.103.11",
     "description": "LiteLLM proxy: one OpenAI-compatible API to call, route, budget and log 100+ LLM providers. Hardened by QuenchWorks as an MIT-only build (no proprietary enterprise package), nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/litellm",
-    "imageDigest": "sha256:35796262633b9f7adc0416fb4fe5c25a655ba3146daabcaf36aa0f5b4d8d9e2e",
+    "imageDigest": "sha256:9e0d158cd009983122558049bc3bf3162b1e002d99118980aa9dd7bf3cd1dc01",
     "repositoryID": "98d4025d-0f2b-4053-b2fd-27080d87ffc6",
     "port": 4000,
     "upstream": "https://www.litellm.ai",
@@ -13052,7 +13052,7 @@
     "images": [
       {
         "name": "litellm",
-        "image": "ghcr.io/quenchworks/images/litellm@sha256:35796262633b9f7adc0416fb4fe5c25a655ba3146daabcaf36aa0f5b4d8d9e2e"
+        "image": "ghcr.io/quenchworks/images/litellm@sha256:9e0d158cd009983122558049bc3bf3162b1e002d99118980aa9dd7bf3cd1dc01"
       }
     ],
     "valuesKeys": [
@@ -13230,7 +13230,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.39",
+    "chartVersion": "0.0.41",
     "appVersion": "1.0.0",
     "description": "Self-hosted LLM stack: Ollama runs the models, LiteLLM serves them through one OpenAI-compatible API with a generated key, and Qdrant stores embeddings for retrieval. The models you list are pulled at install. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "ff84a3b9-4bf9-49fd-be69-4b4e771b851a",
@@ -13249,7 +13249,7 @@
       },
       {
         "name": "litellm",
-        "image": "ghcr.io/quenchworks/images/litellm@sha256:35796262633b9f7adc0416fb4fe5c25a655ba3146daabcaf36aa0f5b4d8d9e2e"
+        "image": "ghcr.io/quenchworks/images/litellm@sha256:9e0d158cd009983122558049bc3bf3162b1e002d99118980aa9dd7bf3cd1dc01"
       },
       {
         "name": "qdrant",
@@ -15297,11 +15297,11 @@
     "tier": "standard",
     "license": "SSPL-1.0",
     "licenseClean": "caution",
-    "chartVersion": "0.0.27",
-    "appVersion": "8.0.34",
+    "chartVersion": "0.0.28",
+    "appVersion": "8.0.38",
     "description": "Document (NoSQL) database for JSON-like data. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mongodb",
-    "imageDigest": "sha256:ccd312688b554a3306b8e232c33e068432647776f11f1b1bf6e3da67f29d829b",
+    "imageDigest": "sha256:0e8a25a401506d4c06b3c09034f6950fc063bf1339f76318c63bf42ab915dc78",
     "repositoryID": "122e9823-1401-4ba1-9f9a-2b2ceacab662",
     "port": 27017,
     "upstream": "https://github.com/mongodb/mongo",
@@ -15309,7 +15309,7 @@
     "images": [
       {
         "name": "mongodb",
-        "image": "ghcr.io/quenchworks/images/mongodb@sha256:ccd312688b554a3306b8e232c33e068432647776f11f1b1bf6e3da67f29d829b"
+        "image": "ghcr.io/quenchworks/images/mongodb@sha256:0e8a25a401506d4c06b3c09034f6950fc063bf1339f76318c63bf42ab915dc78"
       },
       {
         "name": "mongodb-exporter",
@@ -15838,7 +15838,7 @@
     "tier": "standard",
     "license": "LicenseRef-n8n-Sustainable-Use-License-1.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.28",
+    "chartVersion": "0.1.29",
     "appVersion": "2.40.7",
     "description": "Fair-code workflow automation platform — a visual node editor for building integrations and automations across 400+ apps, with native AI/LLM agent nodes (Node.js). Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/n8n",
@@ -15854,7 +15854,7 @@
       },
       {
         "name": "n8n-runners",
-        "image": "ghcr.io/quenchworks/images/n8n-runners@sha256:d83872ca846d57699be691d648d948db0210baf3a3068d7f341d96a375214329"
+        "image": "ghcr.io/quenchworks/images/n8n-runners@sha256:6a55fcfd89fe76485c0d8bff31ae535a438d0494820b560ecaf3e6fa578dc090"
       }
     ],
     "valuesKeys": [
@@ -17158,7 +17158,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.36",
+    "chartVersion": "0.0.38",
     "appVersion": "2.20.0",
     "description": "Hardened, operator-free observability stack: Prometheus + Grafana + Alertmanager + kube-state-metrics + node-exporter + cAdvisor, wired together for metrics, alerting, and populated Kubernetes dashboards. No Prometheus Operator, no CRDs. All components are QuenchWorks-hardened, nonroot, CVE-gated images pinned by digest and cosign-signed. node-exporter and cAdvisor take host access by design (the stack's purpose is node + container observability); both are toggleable.",
     "repositoryID": "b35aa9cc-1558-4053-b967-ae9f74250035",
@@ -17181,7 +17181,7 @@
       },
       {
         "name": "alertmanager",
-        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:1b4d4e824e2061a935a5f00c1aa5fc86ed421c95e080392fa42a9ce8dbdd2c27"
+        "image": "ghcr.io/quenchworks/images/alertmanager@sha256:0a201bdf1f3d3e56b8ffb7509b0d7630017d06ac106231ef15d695716a384e0f"
       },
       {
         "name": "kube-state-metrics",
@@ -17469,11 +17469,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.27",
+    "chartVersion": "0.0.28",
     "appVersion": "1.21.4",
     "description": "Open Policy Agent, the CNCF general-purpose policy engine for authorization, admission control, and config validation over Rego. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opa",
-    "imageDigest": "sha256:44fe0c6fe10911c331aa7e6383421bb05a60026a2f91659d4feb93475ba7c01f",
+    "imageDigest": "sha256:aaafeddbb8e1e27f5523283c7408a2dce2c27a185b07781f19ffc4e57fdd1015",
     "repositoryID": "25598768-f4b3-4167-9be9-79c6a804c303",
     "port": 8181,
     "upstream": "https://www.openpolicyagent.org",
@@ -17481,7 +17481,7 @@
     "images": [
       {
         "name": "opa",
-        "image": "ghcr.io/quenchworks/images/opa@sha256:44fe0c6fe10911c331aa7e6383421bb05a60026a2f91659d4feb93475ba7c01f"
+        "image": "ghcr.io/quenchworks/images/opa@sha256:aaafeddbb8e1e27f5523283c7408a2dce2c27a185b07781f19ffc4e57fdd1015"
       }
     ],
     "valuesKeys": [
@@ -17729,11 +17729,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
-    "appVersion": "1.121.3",
+    "chartVersion": "0.0.9",
+    "appVersion": "1.121.4",
     "description": "OpenCost, the CNCF cost monitoring model for Kubernetes: real-time cost allocation by namespace, workload and label. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image built from source, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opencost",
-    "imageDigest": "sha256:c43675627ecbca939068c299d618b92a255c662d3a70e10d5723d463bc98c653",
+    "imageDigest": "sha256:c52421b1b1eb49b584124903949ab88b0b28000090f4cd242a41aaa0a53230c7",
     "repositoryID": "45d06351-340d-4809-a3d0-4f95ae578601",
     "port": 9003,
     "upstream": "https://opencost.io",
@@ -17741,7 +17741,7 @@
     "images": [
       {
         "name": "opencost",
-        "image": "ghcr.io/quenchworks/images/opencost@sha256:c43675627ecbca939068c299d618b92a255c662d3a70e10d5723d463bc98c653"
+        "image": "ghcr.io/quenchworks/images/opencost@sha256:c52421b1b1eb49b584124903949ab88b0b28000090f4cd242a41aaa0a53230c7"
       }
     ],
     "valuesKeys": [
@@ -19301,11 +19301,11 @@
     "tier": "standard",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
-    "appVersion": "6.2.2",
+    "chartVersion": "0.0.6",
+    "appVersion": "6.2.3",
     "description": "The Plone 6 backend (Zope with the plone.restapi REST API that Volto talks to), with ZODB FileStorage on a PVC or RelStorage on PostgreSQL. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/plone",
-    "imageDigest": "sha256:4c417ba7952b78e647351d3c7eea3f3a9eb4cc671f6fda54970212ffabd6c25f",
+    "imageDigest": "sha256:dbe249d0aba31eb2103f342a3b46dc17a5227ac4735061771fb5d036eac3df6f",
     "repositoryID": "e10c9406-a58a-4f5b-b477-b0c66e7affba",
     "port": 8080,
     "upstream": "https://plone.org",
@@ -19313,7 +19313,7 @@
     "images": [
       {
         "name": "plone",
-        "image": "ghcr.io/quenchworks/images/plone@sha256:4c417ba7952b78e647351d3c7eea3f3a9eb4cc671f6fda54970212ffabd6c25f"
+        "image": "ghcr.io/quenchworks/images/plone@sha256:dbe249d0aba31eb2103f342a3b46dc17a5227ac4735061771fb5d036eac3df6f"
       }
     ],
     "valuesKeys": [
@@ -21127,18 +21127,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "10.0.1",
     "description": "High-performance time-series SQL database for fast ingestion and queries over metrics, financial ticks, and IoT data. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/questdb",
-    "imageDigest": "sha256:d303f5537c571dad934ab851799f4534ffc62f67359929506631917199fb998e",
+    "imageDigest": "sha256:aab1eb0cd5fbbef4bfe7fada8311025d2d50367e479b0085812ccd4b11edae05",
     "repositoryID": "c8f1bd93-57f9-41dc-91ed-deef1bd43608",
     "upstream": "https://github.com/questdb/questdb",
     "chartRef": "oci://ghcr.io/quenchworks/charts/questdb",
     "images": [
       {
         "name": "questdb",
-        "image": "ghcr.io/quenchworks/images/questdb@sha256:d303f5537c571dad934ab851799f4534ffc62f67359929506631917199fb998e"
+        "image": "ghcr.io/quenchworks/images/questdb@sha256:aab1eb0cd5fbbef4bfe7fada8311025d2d50367e479b0085812ccd4b11edae05"
       }
     ],
     "valuesKeys": [
@@ -22288,11 +22288,11 @@
     "tier": "low",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.22",
-    "appVersion": "1.0.4",
+    "chartVersion": "0.0.23",
+    "appVersion": "1.0.5",
     "description": "S3-compatible, high-performance object store written in Rust with a zero-master architecture, positioned as an Apache-2.0 MinIO alternative. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rustfs",
-    "imageDigest": "sha256:e9022a09f0624ced0395a558ab24953d40b6d74fb233f3eab35f6224320f661e",
+    "imageDigest": "sha256:12f4a4e90cd42709d8094389ea8c044fcc1fe9a521c345713f5517e469311637",
     "repositoryID": "304c53e5-aaac-42f5-b1bb-aa702aaf1596",
     "port": 9000,
     "upstream": "https://github.com/rustfs/rustfs",
@@ -22300,7 +22300,7 @@
     "images": [
       {
         "name": "rustfs",
-        "image": "ghcr.io/quenchworks/images/rustfs@sha256:e9022a09f0624ced0395a558ab24953d40b6d74fb233f3eab35f6224320f661e"
+        "image": "ghcr.io/quenchworks/images/rustfs@sha256:12f4a4e90cd42709d8094389ea8c044fcc1fe9a521c345713f5517e469311637"
       }
     ],
     "valuesKeys": [
@@ -23299,18 +23299,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "1.56.2",
     "description": "SpiceDB, the Authzed open-source, Google Zanzibar-inspired database for fine-grained authorization (ReBAC/relationship-based permissions) over a gRPC API. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/spicedb",
-    "imageDigest": "sha256:b5dc7ed59aeceb7346d7c569d04ba12302914ebf9b5fc995f9d9e741308a239d",
+    "imageDigest": "sha256:0c043bab0e9b7865c8e2d5411864e6ed75c81ccb86a12ac22e1b1de9673cba0a",
     "repositoryID": "820d8604-d2b5-459b-af41-2be29d05eccf",
     "upstream": "https://authzed.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/spicedb",
     "images": [
       {
         "name": "spicedb",
-        "image": "ghcr.io/quenchworks/images/spicedb@sha256:b5dc7ed59aeceb7346d7c569d04ba12302914ebf9b5fc995f9d9e741308a239d"
+        "image": "ghcr.io/quenchworks/images/spicedb@sha256:0c043bab0e9b7865c8e2d5411864e6ed75c81ccb86a12ac22e1b1de9673cba0a"
       }
     ],
     "valuesKeys": [
@@ -25078,11 +25078,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.5",
+    "chartVersion": "0.0.6",
     "appVersion": "10.2.0",
     "description": "Apache TomEE, Tomcat plus the Jakarta EE Web Profile stack (OpenEJB, OpenWebBeans, MyFaces, CXF), for running Jakarta EE applications and WARs. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, CVE-gated image built from source on Wolfi (openjdk-21-jre), cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/tomee",
-    "imageDigest": "sha256:e60f94bcd71e25f156ab65213f20cd758126d4ba83a41d64cda5048288b2179d",
+    "imageDigest": "sha256:d3f2fc2a68d56ff96491eb42c4c86b555e49fafdb32801875dd3fe8ba7e35a10",
     "repositoryID": "9ef9da48-6ef8-4c8e-94fb-97b9e5c3db54",
     "port": 8080,
     "upstream": "https://github.com/apache/tomee",
@@ -25090,7 +25090,7 @@
     "images": [
       {
         "name": "tomee",
-        "image": "ghcr.io/quenchworks/images/tomee@sha256:e60f94bcd71e25f156ab65213f20cd758126d4ba83a41d64cda5048288b2179d"
+        "image": "ghcr.io/quenchworks/images/tomee@sha256:d3f2fc2a68d56ff96491eb42c4c86b555e49fafdb32801875dd3fe8ba7e35a10"
       }
     ],
     "valuesKeys": [
@@ -26373,18 +26373,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.11",
-    "appVersion": "0.37.6",
+    "chartVersion": "0.0.12",
+    "appVersion": "0.37.7",
     "description": "vCluster runs a virtual Kubernetes cluster inside a namespace of a host cluster: its own API server and controller manager, with workloads synced to the host. Hardened by QuenchWorks as a nonroot, CVE-gated image with the 1.36 control plane built from source, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/vcluster",
-    "imageDigest": "sha256:3941aba46f5697008a41513ec3225dee2f9f22ca82304720c4ceaf3bbb5cef47",
+    "imageDigest": "sha256:d391de65a46dbd9084b9ad45bf7ed9cdb1ad5bfe84921c5504e624e8149dacbf",
     "repositoryID": "449b532e-56ed-47b9-92af-5bea804c62d5",
     "upstream": "https://github.com/loft-sh/vcluster",
     "chartRef": "oci://ghcr.io/quenchworks/charts/vcluster",
     "images": [
       {
         "name": "vcluster",
-        "image": "ghcr.io/quenchworks/images/vcluster@sha256:3941aba46f5697008a41513ec3225dee2f9f22ca82304720c4ceaf3bbb5cef47"
+        "image": "ghcr.io/quenchworks/images/vcluster@sha256:d391de65a46dbd9084b9ad45bf7ed9cdb1ad5bfe84921c5504e624e8149dacbf"
       }
     ],
     "valuesKeys": [
@@ -27141,18 +27141,18 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.35",
-    "appVersion": "1.39.15",
+    "chartVersion": "0.0.36",
+    "appVersion": "1.39.16",
     "description": "Open-source vector database for AI-native applications: stores objects and their vector embeddings and serves low-latency semantic search over REST and gRPC. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/weaviate",
-    "imageDigest": "sha256:fd36b0a3befb6911839513b9e687bccaa2c3e27dd8d090e4b185acda5162be28",
+    "imageDigest": "sha256:f66ec27d8f57f86364c18ffd2634b4644c06c6789df7e0ed1747981202791ae6",
     "repositoryID": "59500368-862f-4896-9543-a154bb62797a",
     "upstream": "https://weaviate.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/weaviate",
     "images": [
       {
         "name": "weaviate",
-        "image": "ghcr.io/quenchworks/images/weaviate@sha256:fd36b0a3befb6911839513b9e687bccaa2c3e27dd8d090e4b185acda5162be28"
+        "image": "ghcr.io/quenchworks/images/weaviate@sha256:f66ec27d8f57f86364c18ffd2634b4644c06c6789df7e0ed1747981202791ae6"
       }
     ],
     "valuesKeys": [
