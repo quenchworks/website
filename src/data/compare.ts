@@ -182,17 +182,17 @@ export const rows: Row[] = [
   },
   {
     label: {
-      en: '0-CVE goal with daily rebuilds',
-      ar: 'هدف صفر ثغرات مع إعادة بناء يومية',
-      es: 'Objetivo de cero CVE con reconstrucciones diarias',
+      en: 'Zero-CVE goal and rescan cadence',
+      ar: 'هدف صفر ثغرات ووتيرة إعادة الفحص',
+      es: 'Objetivo de cero CVE y cadencia de reanálisis',
     },
     cells: [
       {
         v: 'Yes',
         n: {
-          en: 'Hard Trivy gate; a fixable CVE fails the build',
-          ar: 'بوابة Trivy صارمة؛ ثغرة قابلة للإصلاح تُفشل البناء',
-          es: 'Puerta de control estricta de Trivy; un CVE corregible hace fallar la compilación',
+          en: 'A fixable CVE fails the build; nightly rescan, images with a fix available rebuilt',
+          ar: 'ثغرة قابلة للإصلاح تُفشل البناء؛ فحص كل ليلة، وإعادة بناء الصور التي صدر إصلاحها',
+          es: 'Un CVE corregible hace fallar la compilación; reanálisis cada noche y recompilación de las imágenes con corrección disponible',
         },
       },
       {
