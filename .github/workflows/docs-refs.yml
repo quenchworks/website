@@ -1,0 +1,29 @@
+name: docs-refs
+
+# Every image tag and chart version the docs tell people to run must exist on GHCR.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/content/docs/**"
+      - "src/content/docs-es/**"
+      - "src/content/docs-ar/**"
+      - "scripts/check-doc-refs.mjs"
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/content/docs/**"
+      - "src/content/docs-es/**"
+      - "src/content/docs-ar/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # the runner's own Node has fetch; the script needs no packages
+      - run: node scripts/check-doc-refs.mjs
