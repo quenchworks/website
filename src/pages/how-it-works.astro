@@ -19,7 +19,7 @@ const layers = [
   {
     n: '03',
     h: 'Signed distribution',
-    p: 'Images and charts publish to GHCR as OCI artifacts and are signed with cosign using GitHub OIDC, so there is no long-lived key. When an image is rebuilt, a digest contract updates the chart to the new signed digest automatically. Everything is listed on ArtifactHub, and anyone can verify a signature from their own terminal.',
+    p: 'Images and charts publish to GHCR as OCI artifacts and are signed with cosign using GitHub OIDC, so there is no long-lived key. When an image is rebuilt, a workflow prepares the chart change that re-pins it to the new signed digest, and the chart is released only after its install gate passes on a kind cluster. Everything is listed on ArtifactHub, and anyone can verify a signature from their own terminal.',
     tags: ['GHCR', 'cosign', 'OCI', 'ArtifactHub'],
   },
 ];

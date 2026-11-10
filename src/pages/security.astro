@@ -2,6 +2,9 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import charts from '../data/charts.json';
+// The verify example uses the current redis chart and image, so the commands never point at a tag that is gone.
+const redis = charts.find((c) => c.slug === 'redis')!;
 
 const sections = [
   {
@@ -51,24 +54,24 @@ const sections = [
         the GitHub CLI.
       </p>
       <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># confirm an image was built and signed by our CI (images have no :latest)</span>
-cosign verify ghcr.io/quenchworks/images/redis:8.8.0 \
+cosign verify ghcr.io/quenchworks/images/redis:{redis.appVersion} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
 <span class="text-ash"># the same works for any chart, by its version tag</span>
-<span class="text-ash"># use the plain ref — cosign rejects an oci:// prefix here</span>
-cosign verify ghcr.io/quenchworks/charts/redis:0.0.5 \
+<span class="text-ash"># use the plain ref: cosign rejects an oci:// prefix here</span>
+cosign verify ghcr.io/quenchworks/charts/redis:{redis.chartVersion} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>
 
       <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># verify the SPDX SBOM attestation and the SLSA build provenance in one step</span>
-<span class="text-ash"># this is the right tool — not `cosign download sbom`</span>
-gh attestation verify oci://ghcr.io/quenchworks/images/redis:8.8.0 --owner quenchworks</code></pre>
+<span class="text-ash"># this is the right tool, not `cosign download sbom`</span>
+gh attestation verify oci://ghcr.io/quenchworks/images/redis:{redis.appVersion} --owner quenchworks</code></pre>
 
       <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-sm text-paper"><code><span class="text-ash"># resolve the exact sha256 digest behind the tag</span>
-docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:8.8.0 \
+docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:{redis.appVersion} \
   --format '{'{{.Manifest.Digest}}'}'
-<span class="text-ash"># charts pin this exact digest, never a tag — so what runs cannot drift</span></code></pre>
+<span class="text-ash"># charts pin this exact digest, never a tag, so what runs cannot drift</span></code></pre>
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">

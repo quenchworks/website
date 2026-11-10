@@ -17,11 +17,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'How is this different from Bitnami?',
-    a: 'Bitnami moved its supported, regularly updated catalog into the paid Tanzu Application Catalog, and its free public images now live in a legacy registry that no longer gets the same updates. QuenchWorks is an independent rebuild from source: hardened, scanned to zero fixable CVEs, signed, and pinned by digest, kept current and free. It is not affiliated with Bitnami and does not reuse their charts.',
+    a: 'Broadcom moved Bitnami\'s maintained images to Bitnami Secure Images, a paid subscription, and the old free images to a frozen Bitnami Legacy registry that gets no updates. QuenchWorks is an independent rebuild from source: hardened, scanned to zero fixable CVEs, signed, and pinned by digest, kept current and free. It is not affiliated with Bitnami and does not reuse their charts.',
   },
   {
     q: 'How is this different from Chainguard?',
-    a: 'Chainguard offers hardened images, but the maintained, current versions sit behind a paid subscription. QuenchWorks publishes its hardened, current images and charts for free. The two are not affiliated.',
+    a: 'Chainguard offers hardened images. A small Starter set is free; the rest of the catalog and older versions sit behind a paid subscription. QuenchWorks publishes its hardened, current images and charts for free. The two are not affiliated.',
   },
   {
     q: 'How do I trust and verify what I pull?',
@@ -37,7 +37,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: 'How often is everything rebuilt?',
-    a: 'Daily. The pipeline rebuilds from source and rescans on a daily cadence, so when an upstream package fixes a CVE the hardened image picks it up without you waiting on a release cycle. The digest changes when the contents change, and the chart pins the new digest.',
+    a: 'Every published image is rescanned each night. An image with a fixable finding is rebuilt from source the same night (up to 15 a night; the rest follow on later nights), and its chart is re-pinned to the new digest in a follow-up release. Images held on an upstream fix, and end-of-life images, are not rebuilt; the security report lists them.',
   },
 ];
 

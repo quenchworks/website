@@ -23,7 +23,7 @@ const layers = [
   {
     n: '03',
     h: 'Distribución firmada',
-    p: 'Las imágenes y los charts se publican en GHCR como artefactos OCI y se firman con cosign usando GitHub OIDC, de modo que no hay ninguna clave de larga duración. Cuando una imagen se reconstruye, un contrato de digest actualiza el chart al nuevo digest firmado automáticamente. Todo está listado en ArtifactHub, y cualquiera puede verificar una firma desde su propia terminal.',
+    p: 'Las imágenes y los charts se publican en GHCR como artefactos OCI y se firman con cosign usando GitHub OIDC, de modo que no hay ninguna clave de larga duración. Cuando una imagen se reconstruye, un flujo de trabajo prepara el cambio que fija el chart al nuevo digest firmado, y el chart solo se publica después de pasar su prueba de instalación en un clúster kind. Todo está listado en ArtifactHub, y cualquiera puede verificar una firma desde su propia terminal.',
     tags: ['GHCR', 'cosign', 'OCI', 'ArtifactHub'],
   },
 ];

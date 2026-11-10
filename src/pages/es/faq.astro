@@ -22,11 +22,11 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: '¿En qué se diferencia de Bitnami?',
-    a: 'Bitnami trasladó su catálogo soportado y actualizado con regularidad al Tanzu Application Catalog de pago, y sus imágenes públicas gratuitas viven ahora en un registro heredado que ya no recibe las mismas actualizaciones. QuenchWorks es una reconstrucción independiente desde el código fuente: reforzada, analizada hasta cero CVE corregibles, firmada y fijada por digest, mantenida al día y gratuita. No está afiliado a Bitnami y no reutiliza sus charts.',
+    a: 'Broadcom trasladó las imágenes mantenidas de Bitnami a Bitnami Secure Images, una suscripción de pago, y las antiguas imágenes gratuitas a un registro Bitnami Legacy congelado que no recibe actualizaciones. QuenchWorks es una reconstrucción independiente desde el código fuente: reforzada, analizada hasta cero CVE corregibles, firmada y fijada por digest, mantenida al día y gratuita. No está afiliado a Bitnami y no reutiliza sus charts.',
   },
   {
     q: '¿En qué se diferencia de Chainguard?',
-    a: 'Chainguard ofrece imágenes reforzadas, pero las versiones mantenidas y actuales están tras una suscripción de pago. QuenchWorks publica sus imágenes y charts reforzados y actuales de forma gratuita. Ambos no están afiliados.',
+    a: 'Chainguard ofrece imágenes reforzadas. Un pequeño conjunto Starter es gratuito; el resto del catálogo y las versiones anteriores están tras una suscripción de pago. QuenchWorks publica sus imágenes y charts reforzados y actuales de forma gratuita. Ambos no están afiliados.',
   },
   {
     q: '¿Cómo confío en lo que descargo y lo verifico?',
@@ -42,7 +42,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: '¿Con qué frecuencia se reconstruye todo?',
-    a: 'A diario. El pipeline reconstruye desde el código fuente y vuelve a analizar con cadencia diaria, así que cuando un paquete oficial corrige un CVE, la imagen reforzada lo recoge sin que esperes a un ciclo de versión. El digest cambia cuando cambia el contenido, y el chart fija el nuevo digest.',
+    a: 'Cada imagen publicada se vuelve a analizar cada noche. Una imagen con un hallazgo corregible se recompila desde el código fuente esa misma noche (hasta 15 por noche; el resto sigue en noches siguientes), y su chart se vuelve a fijar al nuevo digest en una versión posterior. Las imágenes en espera de una corrección upstream y las de fin de vida no se recompilan; el informe de seguridad las lista.',
   },
 ];
 
