@@ -399,41 +399,67 @@
     "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20250107",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.28.0",
         "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:akhq",
         "tag": "ghcr.io/quenchworks/images/akhq:chart:akhq",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 3,
+        "fixable": 3,
         "grade": "D",
-        "score": 70,
+        "score": 61,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -457,6 +483,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/akhq@sha256:b3af3f5b3f494eca50f196c4a7d1601caf56e8ea4a64ad698048bf0ac372e6ab (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -586,15 +624,51 @@
     "version": "1.8.0",
     "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
     "critical": 0,
-    "high": 2,
-    "medium": 0,
+    "high": 10,
+    "medium": 6,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
+    "total": 16,
+    "fixable": 15,
     "grade": "D",
-    "score": 70,
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.4.8-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.6.0-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-108106",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-113351",
         "severity": "HIGH",
@@ -618,6 +692,66 @@
         "targets": [
           "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
         ]
+      },
+      {
+        "id": "CVE-2026-93451",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-116590",
+        "severity": "MEDIUM",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-118259",
+        "severity": "MEDIUM",
+        "pkg": "io.opentelemetry:opentelemetry-api",
+        "installed": "1.62.0",
+        "fixed": "1.67.0",
+        "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-57914",
+        "severity": "MEDIUM",
+        "pkg": "org.apache.kerby:kerby-asn1",
+        "installed": "2.0.3",
+        "fixed": "2.1.2",
+        "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2025-48924",
+        "severity": "MEDIUM",
+        "pkg": "commons-lang:commons-lang",
+        "installed": "2.6",
+        "fixed": null,
+        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+        "targets": [
+          "Java"
+        ]
       }
     ],
     "versions": [
@@ -625,15 +759,51 @@
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
         "critical": 0,
-        "high": 2,
-        "medium": 0,
+        "high": 10,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 16,
+        "fixable": 15,
         "grade": "D",
-        "score": 70,
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.4.8-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.6.0-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-108106",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-113351",
             "severity": "HIGH",
@@ -656,6 +826,66 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-93451",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-116590",
+            "severity": "MEDIUM",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-118259",
+            "severity": "MEDIUM",
+            "pkg": "io.opentelemetry:opentelemetry-api",
+            "installed": "1.62.0",
+            "fixed": "1.67.0",
+            "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-57914",
+            "severity": "MEDIUM",
+            "pkg": "org.apache.kerby:kerby-asn1",
+            "installed": "2.0.3",
+            "fixed": "2.1.2",
+            "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2025-48924",
+            "severity": "MEDIUM",
+            "pkg": "commons-lang:commons-lang",
+            "installed": "2.6",
+            "fixed": null,
+            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -5705,11 +5935,11 @@
         "high": 2,
         "medium": 0,
         "low": 0,
-        "unknown": 4,
-        "total": 6,
-        "fixable": 6,
+        "unknown": 8,
+        "total": 10,
+        "fixable": 10,
         "grade": "D",
-        "score": 42,
+        "score": 14,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -5740,7 +5970,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v7.4.22",
-            "fixed": "4.0.0, 5.2.0, 5.4.56, 6.1.0, 6.3.0, 6.4.50, 6.4.0, 7.1.0, 7.4.0, 7.4.23, 5.0.0, 5.4.0, 6.2.0, 7.2.0, 7.3.0, 3.0.0, 5.1.0, 5.3.0, 8.1.0, 8.1.11",
+            "fixed": "5.4.0, 6.4.0, 7.2.0, 5.4.56, 6.1.0, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.2.0, 6.2.0, 6.4.50, 8.1.0, 5.1.0, 5.3.0, 6.3.0, 7.3.0, 7.4.0, 7.4.23, 8.1.11",
             "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
             "targets": [
@@ -5752,7 +5982,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v8.1.10",
-            "fixed": "4.0.0, 6.3.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0, 8.1.11, 5.2.0, 6.4.0, 6.4.50, 7.4.23, 5.4.0, 6.1.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 5.4.56, 6.2.0, 3.0.0",
+            "fixed": "5.0.0, 6.4.0, 7.3.0, 8.1.0, 3.0.0, 4.0.0, 5.3.0, 5.4.0, 5.4.56, 7.2.0, 5.1.0, 5.2.0, 6.2.0, 6.3.0, 7.1.0, 7.4.23, 6.1.0, 6.4.50, 7.4.0, 8.1.11",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -5764,9 +5994,57 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/routing",
             "installed": "v7.4.22",
-            "fixed": "7.1.0, 7.3.0, 6.2.0, 6.4.0, 4.3.0, 5.0.0, 5.4.0, 5.4.56, 7.2.0, 7.4.0, 5.1.0, 5.3.0, 6.3.0, 7.4.23, 8.1.0, 8.1.11, 6.4.50, 4.2.0, 4.4.0, 5.2.0, 6.1.0",
+            "fixed": "5.0.0, 5.2.0, 5.4.56, 7.4.23, 4.2.0, 4.4.0, 5.3.0, 6.1.0, 6.4.0, 8.1.11, 5.1.0, 7.2.0, 7.3.0, 7.4.0, 8.1.0, 4.3.0, 5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.1.0",
             "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-121623",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v8.1.10",
+            "fixed": "6.1.0, 6.2.0, 7.2.0, 7.4.0, 4.0.0, 5.3.0, 7.4.23, 8.1.0, 3.0.0, 5.4.0, 6.3.0, 6.4.0, 6.4.50, 7.3.0, 8.1.11, 7.1.0, 5.0.0, 5.1.0, 5.2.0, 5.4.56",
+            "title": "The Symfony Serializer component DataUriNormalizer::denormalize() matc ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121623",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-122053",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v8.1.10",
+            "fixed": "7.1.0, 7.4.0, 6.4.50, 7.2.0, 7.3.0, 7.4.23, 8.1.0, 8.1.11, 5.4.56",
+            "title": "The Symfony Serializer componentObjectNormalizertreats any attribute n ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-122053",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123339",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/http-kernel",
+            "installed": "v7.4.22",
+            "fixed": "6.3.0, 7.4.23, 8.1.0, 4.0.0, 5.2.0, 6.2.0, 6.4.0, 7.1.0, 7.4.0, 3.0.0, 6.1.0, 6.4.50, 5.1.0, 7.2.0, 7.3.0, 8.1.11, 5.0.0, 5.3.0, 5.4.0, 5.4.56",
+            "title": "Improper trust of forwarded headers inRouterListener::onKernelFinishRe ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123339",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v7.4.22",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
             "targets": [
               "var/www/html/vendor/composer/installed.json"
             ]
@@ -7170,55 +7448,130 @@
     "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.8.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "C",
+    "score": 73,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20231013",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20250107",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.8.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "1.7.0.1",
         "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.7.0.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:datahub",
         "tag": "ghcr.io/quenchworks/images/datahub-frontend:chart:datahub",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 5,
+        "fixable": 5,
         "grade": "D",
-        "score": 70,
+        "score": 43,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -7242,6 +7595,30 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/datahub-frontend@sha256:125612d6e48ebf6447a83be548096c9437161c0816cfce21caa2e158305dab76 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -7254,55 +7631,130 @@
     "tag": "ghcr.io/quenchworks/images/datahub-gms:1.8.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "C",
+    "score": 73,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20231013",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20250107",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-gms:1.8.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "1.7.0.1",
         "tag": "ghcr.io/quenchworks/images/datahub-gms:1.7.0.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:datahub",
         "tag": "ghcr.io/quenchworks/images/datahub-gms:chart:datahub",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 5,
+        "fixable": 5,
         "grade": "D",
-        "score": 70,
+        "score": 43,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -7327,6 +7779,30 @@
             "targets": [
               "ghcr.io/quenchworks/images/datahub-gms@sha256:76115f67806712870eda8be3e8088eb8a35f5a7f179549c12fa88d65db6ddd15 (wolfi 20230201)"
             ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
           }
         ]
       }
@@ -7338,55 +7814,130 @@
     "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.8.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "C",
+    "score": 73,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20231013",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20250107",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.8.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "1.7.0.1",
         "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.7.0.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "C",
+        "score": 73,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:datahub",
         "tag": "ghcr.io/quenchworks/images/datahub-upgrade:chart:datahub",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 3,
-        "fixable": 3,
+        "total": 6,
+        "fixable": 6,
         "grade": "D",
-        "score": 61,
+        "score": 34,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -7420,6 +7971,30 @@
             "fixed": "2.1.2",
             "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
             "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
             "targets": [
               "Java"
             ]
@@ -7515,41 +8090,67 @@
     "tag": "ghcr.io/quenchworks/images/dependency-track:5.1.2",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20231013",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.1.2",
         "tag": "ghcr.io/quenchworks/images/dependency-track:5.1.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:dependency-track",
         "tag": "ghcr.io/quenchworks/images/dependency-track:chart:dependency-track",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 3,
+        "fixable": 3,
         "grade": "D",
-        "score": 70,
+        "score": 61,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -7573,6 +8174,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/dependency-track@sha256:1927feef507023dbba76ac299b27a0a7fb103ea19d42cf59ea3b0c982d0d06c8 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -8378,13 +8991,13 @@
         "tag": "ghcr.io/quenchworks/images/drupal:chart:drupal",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
-        "unknown": 3,
-        "total": 5,
-        "fixable": 5,
+        "unknown": 7,
+        "total": 10,
+        "fixable": 10,
         "grade": "D",
-        "score": 49,
+        "score": 12,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -8411,11 +9024,23 @@
             ]
           },
           {
+            "id": "CVE-2026-123125",
+            "severity": "MEDIUM",
+            "pkg": "symfony/validator",
+            "installed": "v7.4.21",
+            "fixed": "6.4.50, 4.0.0, 5.0.0, 5.1.0, 5.2.0, 6.1.0, 6.3.0, 7.2.0, 7.3.0, 8.1.0, 3.0.0, 5.4.0, 5.4.56, 6.2.0, 6.4.0, 7.4.0, 8.1.11, 5.3.0, 7.1.0, 7.4.23",
+            "title": "symfony/validator: Symfony Validator: Server-Side Request Forgery via incomplete IP address validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123125",
+            "targets": [
+              "opt/drupal/vendor/composer/installed.json"
+            ]
+          },
+          {
             "id": "CVE-2026-118514",
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v7.4.21",
-            "fixed": "4.0.0, 5.2.0, 5.4.56, 6.1.0, 6.3.0, 6.4.50, 6.4.0, 7.1.0, 7.4.0, 7.4.23, 5.0.0, 5.4.0, 6.2.0, 7.2.0, 7.3.0, 3.0.0, 5.1.0, 5.3.0, 8.1.0, 8.1.11",
+            "fixed": "5.4.0, 6.4.0, 7.2.0, 5.4.56, 6.1.0, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.2.0, 6.2.0, 6.4.50, 8.1.0, 5.1.0, 5.3.0, 6.3.0, 7.3.0, 7.4.0, 7.4.23, 8.1.11",
             "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
             "targets": [
@@ -8427,7 +9052,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v7.4.21",
-            "fixed": "4.0.0, 6.3.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0, 8.1.11, 5.2.0, 6.4.0, 6.4.50, 7.4.23, 5.4.0, 6.1.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 5.4.56, 6.2.0, 3.0.0",
+            "fixed": "5.0.0, 6.4.0, 7.3.0, 8.1.0, 3.0.0, 4.0.0, 5.3.0, 5.4.0, 5.4.56, 7.2.0, 5.1.0, 5.2.0, 6.2.0, 6.3.0, 7.1.0, 7.4.23, 6.1.0, 6.4.50, 7.4.0, 8.1.11",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -8439,9 +9064,57 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/routing",
             "installed": "v7.4.21",
-            "fixed": "7.1.0, 7.3.0, 6.2.0, 6.4.0, 4.3.0, 5.0.0, 5.4.0, 5.4.56, 7.2.0, 7.4.0, 5.1.0, 5.3.0, 6.3.0, 7.4.23, 8.1.0, 8.1.11, 6.4.50, 4.2.0, 4.4.0, 5.2.0, 6.1.0",
+            "fixed": "5.0.0, 5.2.0, 5.4.56, 7.4.23, 4.2.0, 4.4.0, 5.3.0, 6.1.0, 6.4.0, 8.1.11, 5.1.0, 7.2.0, 7.3.0, 7.4.0, 8.1.0, 4.3.0, 5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.1.0",
             "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
+            "targets": [
+              "opt/drupal/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-121623",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v7.4.21",
+            "fixed": "6.1.0, 6.2.0, 7.2.0, 7.4.0, 4.0.0, 5.3.0, 7.4.23, 8.1.0, 3.0.0, 5.4.0, 6.3.0, 6.4.0, 6.4.50, 7.3.0, 8.1.11, 7.1.0, 5.0.0, 5.1.0, 5.2.0, 5.4.56",
+            "title": "The Symfony Serializer component DataUriNormalizer::denormalize() matc ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121623",
+            "targets": [
+              "opt/drupal/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-122053",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v7.4.21",
+            "fixed": "7.1.0, 7.4.0, 6.4.50, 7.2.0, 7.3.0, 7.4.23, 8.1.0, 8.1.11, 5.4.56",
+            "title": "The Symfony Serializer componentObjectNormalizertreats any attribute n ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-122053",
+            "targets": [
+              "opt/drupal/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123339",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/http-kernel",
+            "installed": "v7.4.21",
+            "fixed": "6.3.0, 7.4.23, 8.1.0, 4.0.0, 5.2.0, 6.2.0, 6.4.0, 7.1.0, 7.4.0, 3.0.0, 6.1.0, 6.4.50, 5.1.0, 7.2.0, 7.3.0, 8.1.11, 5.0.0, 5.3.0, 5.4.0, 5.4.56",
+            "title": "Improper trust of forwarded headers inRouterListener::onKernelFinishRe ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123339",
+            "targets": [
+              "opt/drupal/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v7.4.21",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
             "targets": [
               "opt/drupal/vendor/composer/installed.json"
             ]
@@ -10274,69 +10947,121 @@
     "tag": "ghcr.io/quenchworks/images/floci:2.4.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20250107",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.4.0",
         "tag": "ghcr.io/quenchworks/images/floci:2.4.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "2.3.0",
         "tag": "ghcr.io/quenchworks/images/floci:2.3.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "2.1.0",
         "tag": "ghcr.io/quenchworks/images/floci:2.1.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:floci",
         "tag": "ghcr.io/quenchworks/images/floci:chart:floci",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 3,
+        "fixable": 3,
         "grade": "D",
-        "score": 70,
+        "score": 61,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -10360,6 +11085,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/floci@sha256:58619724fc97e5d765a6eef6a4895c96af8bbb261b0dfd360f240d70350d14fc (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -10372,55 +11109,94 @@
     "tag": "ghcr.io/quenchworks/images/floci-full:2.4.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20250107",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.4.0",
         "tag": "ghcr.io/quenchworks/images/floci-full:2.4.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "2.3.0",
         "tag": "ghcr.io/quenchworks/images/floci-full:2.3.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:floci",
         "tag": "ghcr.io/quenchworks/images/floci-full:chart:floci",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 3,
+        "fixable": 3,
         "grade": "D",
-        "score": 70,
+        "score": 61,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -10444,6 +11220,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/floci-full@sha256:6cb57e6a259e4db65bcf828ed7a1d79d70cc7bac88c0fbc37f64dcdd341a5711 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250107",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -12355,42 +13143,81 @@
     "tag": "ghcr.io/quenchworks/images/gravitee-gateway:4.12.26",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20231013",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.12.26",
         "tag": "ghcr.io/quenchworks/images/gravitee-gateway:4.12.26",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "4.11.32",
         "tag": "ghcr.io/quenchworks/images/gravitee-gateway:4.11.32",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -12400,42 +13227,81 @@
     "tag": "ghcr.io/quenchworks/images/gravitee-management-api:4.12.26",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 82,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20231013",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.12.26",
         "tag": "ghcr.io/quenchworks/images/gravitee-management-api:4.12.26",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "4.11.32",
         "tag": "ghcr.io/quenchworks/images/gravitee-management-api:4.11.32",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -12445,14 +13311,26 @@
     "tag": "ghcr.io/quenchworks/images/graylog:7.1.12",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
+    "total": 2,
+    "fixable": 1,
     "grade": "C",
-    "score": 96,
+    "score": 87,
     "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20251224",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2025-48924",
         "severity": "MEDIUM",
@@ -12472,14 +13350,26 @@
         "tag": "ghcr.io/quenchworks/images/graylog:7.1.12",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
+        "total": 2,
+        "fixable": 1,
         "grade": "C",
-        "score": 96,
+        "score": 87,
         "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20251224",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2025-48924",
             "severity": "MEDIUM",
@@ -12499,13 +13389,13 @@
         "tag": "ghcr.io/quenchworks/images/graylog:chart:graylog",
         "critical": 0,
         "high": 2,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 3,
-        "fixable": 2,
+        "total": 4,
+        "fixable": 3,
         "grade": "D",
-        "score": 66,
+        "score": 57,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -12529,6 +13419,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/graylog@sha256:b0983f80818e50c77c484d122c600a13c770fc92dd60fc6e4cbb79ab0e7c67fd (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20251224",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           },
           {
@@ -15804,70 +16706,266 @@
     "version": "6.2.0",
     "tag": "ghcr.io/quenchworks/images/joomla:6.2.0",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "high": 1,
+    "medium": 1,
+    "low": 1,
+    "unknown": 1,
+    "total": 4,
+    "fixable": 4,
+    "grade": "D",
+    "score": 63,
+    "cves": [
+      {
+        "id": "CVE-2026-121971",
+        "severity": "HIGH",
+        "pkg": "symfony/http-client",
+        "installed": "v7.4.13",
+        "fixed": "5.4.0, 6.2.0, 8.1.0, 8.1.11, 5.2.0, 6.4.0, 7.3.0, 7.4.23, 4.4.0, 6.1.0, 6.3.0, 6.4.50, 7.4.0, 5.0.0, 5.3.0, 5.4.56, 7.1.0, 7.2.0, 5.1.0",
+        "title": "symfony/http-client: symfony/http-client: Information disclosure via relative URL handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-121971",
+        "targets": [
+          "var/www/html/libraries/vendor/composer/installed.json"
+        ]
+      },
+      {
+        "id": "CVE-2026-123125",
+        "severity": "MEDIUM",
+        "pkg": "symfony/validator",
+        "installed": "v6.4.37",
+        "fixed": "6.4.50, 4.0.0, 5.0.0, 5.1.0, 5.2.0, 6.1.0, 6.3.0, 7.2.0, 7.3.0, 8.1.0, 3.0.0, 5.4.0, 5.4.56, 6.2.0, 6.4.0, 7.4.0, 8.1.11, 5.3.0, 7.1.0, 7.4.23",
+        "title": "symfony/validator: Symfony Validator: Server-Side Request Forgery via incomplete IP address validation",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123125",
+        "targets": [
+          "var/www/html/libraries/vendor/composer/installed.json"
+        ]
+      },
+      {
+        "id": "CVE-2026-123119",
+        "severity": "LOW",
+        "pkg": "symfony/http-client",
+        "installed": "v7.4.13",
+        "fixed": "5.2.0, 5.3.0, 5.4.56, 6.1.0, 7.1.0, 5.0.0, 6.2.0, 6.3.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 4.4.0, 5.1.0, 7.2.0, 8.1.0, 5.4.0, 7.3.0, 7.4.0",
+        "title": "symfony/http-client: symfony/http-client: Internal network enumeration via DNS rebinding",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123119",
+        "targets": [
+          "var/www/html/libraries/vendor/composer/installed.json"
+        ]
+      },
+      {
+        "id": "CVE-2026-123792",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/yaml",
+        "installed": "v6.4.45",
+        "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+        "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+        "targets": [
+          "var/www/html/libraries/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "6.2.0",
         "tag": "ghcr.io/quenchworks/images/joomla:6.2.0",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "high": 1,
+        "medium": 1,
+        "low": 1,
+        "unknown": 1,
+        "total": 4,
+        "fixable": 4,
+        "grade": "D",
+        "score": 63,
+        "cves": [
+          {
+            "id": "CVE-2026-121971",
+            "severity": "HIGH",
+            "pkg": "symfony/http-client",
+            "installed": "v7.4.13",
+            "fixed": "5.4.0, 6.2.0, 8.1.0, 8.1.11, 5.2.0, 6.4.0, 7.3.0, 7.4.23, 4.4.0, 6.1.0, 6.3.0, 6.4.50, 7.4.0, 5.0.0, 5.3.0, 5.4.56, 7.1.0, 7.2.0, 5.1.0",
+            "title": "symfony/http-client: symfony/http-client: Information disclosure via relative URL handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121971",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123125",
+            "severity": "MEDIUM",
+            "pkg": "symfony/validator",
+            "installed": "v6.4.37",
+            "fixed": "6.4.50, 4.0.0, 5.0.0, 5.1.0, 5.2.0, 6.1.0, 6.3.0, 7.2.0, 7.3.0, 8.1.0, 3.0.0, 5.4.0, 5.4.56, 6.2.0, 6.4.0, 7.4.0, 8.1.11, 5.3.0, 7.1.0, 7.4.23",
+            "title": "symfony/validator: Symfony Validator: Server-Side Request Forgery via incomplete IP address validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123125",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123119",
+            "severity": "LOW",
+            "pkg": "symfony/http-client",
+            "installed": "v7.4.13",
+            "fixed": "5.2.0, 5.3.0, 5.4.56, 6.1.0, 7.1.0, 5.0.0, 6.2.0, 6.3.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 4.4.0, 5.1.0, 7.2.0, 8.1.0, 5.4.0, 7.3.0, 7.4.0",
+            "title": "symfony/http-client: symfony/http-client: Internal network enumeration via DNS rebinding",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123119",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.45",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "6.1.4",
         "tag": "ghcr.io/quenchworks/images/joomla:6.1.4",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "high": 1,
+        "medium": 1,
+        "low": 1,
+        "unknown": 1,
+        "total": 4,
+        "fixable": 4,
+        "grade": "D",
+        "score": 63,
+        "cves": [
+          {
+            "id": "CVE-2026-121971",
+            "severity": "HIGH",
+            "pkg": "symfony/http-client",
+            "installed": "v7.4.7",
+            "fixed": "5.4.0, 6.2.0, 8.1.0, 8.1.11, 5.2.0, 6.4.0, 7.3.0, 7.4.23, 4.4.0, 6.1.0, 6.3.0, 6.4.50, 7.4.0, 5.0.0, 5.3.0, 5.4.56, 7.1.0, 7.2.0, 5.1.0",
+            "title": "symfony/http-client: symfony/http-client: Information disclosure via relative URL handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121971",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123125",
+            "severity": "MEDIUM",
+            "pkg": "symfony/validator",
+            "installed": "v6.4.35",
+            "fixed": "6.4.50, 4.0.0, 5.0.0, 5.1.0, 5.2.0, 6.1.0, 6.3.0, 7.2.0, 7.3.0, 8.1.0, 3.0.0, 5.4.0, 5.4.56, 6.2.0, 6.4.0, 7.4.0, 8.1.11, 5.3.0, 7.1.0, 7.4.23",
+            "title": "symfony/validator: Symfony Validator: Server-Side Request Forgery via incomplete IP address validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123125",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123119",
+            "severity": "LOW",
+            "pkg": "symfony/http-client",
+            "installed": "v7.4.7",
+            "fixed": "5.2.0, 5.3.0, 5.4.56, 6.1.0, 7.1.0, 5.0.0, 6.2.0, 6.3.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 4.4.0, 5.1.0, 7.2.0, 8.1.0, 5.4.0, 7.3.0, 7.4.0",
+            "title": "symfony/http-client: symfony/http-client: Internal network enumeration via DNS rebinding",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123119",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.45",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "5.4.10",
         "tag": "ghcr.io/quenchworks/images/joomla:5.4.10",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "high": 1,
+        "medium": 1,
+        "low": 1,
+        "unknown": 1,
+        "total": 4,
+        "fixable": 4,
+        "grade": "D",
+        "score": 63,
+        "cves": [
+          {
+            "id": "CVE-2026-121971",
+            "severity": "HIGH",
+            "pkg": "symfony/http-client",
+            "installed": "v6.4.25",
+            "fixed": "5.4.0, 6.2.0, 8.1.0, 8.1.11, 5.2.0, 6.4.0, 7.3.0, 7.4.23, 4.4.0, 6.1.0, 6.3.0, 6.4.50, 7.4.0, 5.0.0, 5.3.0, 5.4.56, 7.1.0, 7.2.0, 5.1.0",
+            "title": "symfony/http-client: symfony/http-client: Information disclosure via relative URL handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121971",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123125",
+            "severity": "MEDIUM",
+            "pkg": "symfony/validator",
+            "installed": "v6.4.25",
+            "fixed": "6.4.50, 4.0.0, 5.0.0, 5.1.0, 5.2.0, 6.1.0, 6.3.0, 7.2.0, 7.3.0, 8.1.0, 3.0.0, 5.4.0, 5.4.56, 6.2.0, 6.4.0, 7.4.0, 8.1.11, 5.3.0, 7.1.0, 7.4.23",
+            "title": "symfony/validator: Symfony Validator: Server-Side Request Forgery via incomplete IP address validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123125",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123119",
+            "severity": "LOW",
+            "pkg": "symfony/http-client",
+            "installed": "v6.4.25",
+            "fixed": "5.2.0, 5.3.0, 5.4.56, 6.1.0, 7.1.0, 5.0.0, 6.2.0, 6.3.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 4.4.0, 5.1.0, 7.2.0, 8.1.0, 5.4.0, 7.3.0, 7.4.0",
+            "title": "symfony/http-client: symfony/http-client: Internal network enumeration via DNS rebinding",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123119",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.45",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:joomla",
         "tag": "ghcr.io/quenchworks/images/joomla:chart:joomla",
         "critical": 0,
-        "high": 2,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "high": 3,
+        "medium": 1,
+        "low": 1,
+        "unknown": 1,
+        "total": 6,
+        "fixable": 6,
         "grade": "D",
-        "score": 70,
+        "score": 33,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -15891,6 +16989,54 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/joomla@sha256:450dc29a5d72b2026f6740f2f040aeb61332f063f4765afdcf2e095fc60521e5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-121971",
+            "severity": "HIGH",
+            "pkg": "symfony/http-client",
+            "installed": "v7.4.7",
+            "fixed": "5.4.0, 6.2.0, 8.1.0, 8.1.11, 5.2.0, 6.4.0, 7.3.0, 7.4.23, 4.4.0, 6.1.0, 6.3.0, 6.4.50, 7.4.0, 5.0.0, 5.3.0, 5.4.56, 7.1.0, 7.2.0, 5.1.0",
+            "title": "symfony/http-client: symfony/http-client: Information disclosure via relative URL handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121971",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123125",
+            "severity": "MEDIUM",
+            "pkg": "symfony/validator",
+            "installed": "v6.4.35",
+            "fixed": "6.4.50, 4.0.0, 5.0.0, 5.1.0, 5.2.0, 6.1.0, 6.3.0, 7.2.0, 7.3.0, 8.1.0, 3.0.0, 5.4.0, 5.4.56, 6.2.0, 6.4.0, 7.4.0, 8.1.11, 5.3.0, 7.1.0, 7.4.23",
+            "title": "symfony/validator: Symfony Validator: Server-Side Request Forgery via incomplete IP address validation",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123125",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123119",
+            "severity": "LOW",
+            "pkg": "symfony/http-client",
+            "installed": "v7.4.7",
+            "fixed": "5.2.0, 5.3.0, 5.4.56, 6.1.0, 7.1.0, 5.0.0, 6.2.0, 6.3.0, 6.4.0, 6.4.50, 7.4.23, 8.1.11, 4.4.0, 5.1.0, 7.2.0, 8.1.0, 5.4.0, 7.3.0, 7.4.0",
+            "title": "symfony/http-client: symfony/http-client: Internal network enumeration via DNS rebinding",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123119",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.45",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "var/www/html/libraries/vendor/composer/installed.json"
             ]
           }
         ]
@@ -21399,39 +22545,65 @@
     "tag": "ghcr.io/quenchworks/images/mastodon:4.7.5",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-63183",
+        "severity": "MEDIUM",
+        "pkg": "omniauth",
+        "installed": "2.1.4",
+        "fixed": "2.2.0",
+        "title": "OmniAuth is a flexible authentication system utilizing Rack middleware ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-63183",
+        "targets": [
+          "Ruby"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.7.5",
         "tag": "ghcr.io/quenchworks/images/mastodon:4.7.5",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-63183",
+            "severity": "MEDIUM",
+            "pkg": "omniauth",
+            "installed": "2.1.4",
+            "fixed": "2.2.0",
+            "title": "OmniAuth is a flexible authentication system utilizing Rack middleware ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-63183",
+            "targets": [
+              "Ruby"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:mastodon",
         "tag": "ghcr.io/quenchworks/images/mastodon:chart:mastodon",
         "critical": 1,
         "high": 4,
-        "medium": 13,
+        "medium": 14,
         "low": 3,
         "unknown": 0,
-        "total": 21,
-        "fixable": 21,
+        "total": 22,
+        "fixable": 22,
         "grade": "F",
         "score": 0,
         "cves": [
@@ -21491,6 +22663,18 @@
             "fixed": "~> 8.0.5, >= 8.0.5.2, >= 8.1.4.1",
             "title": "Possible Strong Parameters bypass in Parameters#each_key in Action Pack",
             "url": "https://github.com/advisories/GHSA-wm3x-v3qw-4jh3",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "CVE-2026-63183",
+            "severity": "MEDIUM",
+            "pkg": "omniauth",
+            "installed": "2.1.4",
+            "fixed": "2.2.0",
+            "title": "OmniAuth is a flexible authentication system utilizing Rack middleware ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-63183",
             "targets": [
               "Ruby"
             ]
@@ -22019,12 +23203,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-123792",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/yaml",
+        "installed": "v7.4.18",
+        "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+        "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+        "targets": [
+          "var/www/html/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.46.2",
@@ -22033,12 +23230,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v7.4.18",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "1.45.6",
@@ -22047,12 +23257,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v6.4.45",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "1.43.11",
@@ -22061,12 +23284,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.54",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:mediawiki",
@@ -22075,11 +23311,11 @@
         "high": 2,
         "medium": 0,
         "low": 0,
-        "unknown": 1,
-        "total": 3,
-        "fixable": 3,
+        "unknown": 4,
+        "total": 6,
+        "fixable": 6,
         "grade": "D",
-        "score": 63,
+        "score": 42,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -22110,9 +23346,45 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v7.4.10",
-            "fixed": "4.0.0, 6.3.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0, 8.1.11, 5.2.0, 6.4.0, 6.4.50, 7.4.23, 5.4.0, 6.1.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 5.4.56, 6.2.0, 3.0.0",
+            "fixed": "5.0.0, 6.4.0, 7.3.0, 8.1.0, 3.0.0, 4.0.0, 5.3.0, 5.4.0, 5.4.56, 7.2.0, 5.1.0, 5.2.0, 6.2.0, 6.3.0, 7.1.0, 7.4.23, 6.1.0, 6.4.50, 7.4.0, 8.1.11",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-121623",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v7.4.10",
+            "fixed": "6.1.0, 6.2.0, 7.2.0, 7.4.0, 4.0.0, 5.3.0, 7.4.23, 8.1.0, 3.0.0, 5.4.0, 6.3.0, 6.4.0, 6.4.50, 7.3.0, 8.1.11, 7.1.0, 5.0.0, 5.1.0, 5.2.0, 5.4.56",
+            "title": "The Symfony Serializer component DataUriNormalizer::denormalize() matc ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121623",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-122053",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v7.4.10",
+            "fixed": "7.1.0, 7.4.0, 6.4.50, 7.2.0, 7.3.0, 7.4.23, 8.1.0, 8.1.11, 5.4.56",
+            "title": "The Symfony Serializer componentObjectNormalizertreats any attribute n ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-122053",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v7.4.18",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
             "targets": [
               "var/www/html/vendor/composer/installed.json"
             ]
@@ -22217,55 +23489,94 @@
     "tag": "ghcr.io/quenchworks/images/metabase:0.65.3",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20250517",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.65.3",
         "tag": "ghcr.io/quenchworks/images/metabase:0.65.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250517",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "0.63.22",
         "tag": "ghcr.io/quenchworks/images/metabase:0.63.22",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250517",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:metabase",
         "tag": "ghcr.io/quenchworks/images/metabase:chart:metabase",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 3,
+        "fixable": 3,
         "grade": "D",
-        "score": 70,
+        "score": 61,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -22289,6 +23600,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/metabase@sha256:4d8cd08b391395c57a3d13000c096c8c65562f8b5122867a6039b104be4de6d0 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20250517",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -24015,18 +25338,18 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 3,
-        "total": 3,
-        "fixable": 3,
+        "unknown": 5,
+        "total": 5,
+        "fixable": 5,
         "grade": "A",
-        "score": 79,
+        "score": 65,
         "cves": [
           {
             "id": "CVE-2026-118514",
             "severity": "UNKNOWN",
             "pkg": "symfony/http-foundation",
             "installed": "v6.4.49",
-            "fixed": "4.0.0, 5.2.0, 5.4.56, 6.1.0, 6.3.0, 6.4.50, 6.4.0, 7.1.0, 7.4.0, 7.4.23, 5.0.0, 5.4.0, 6.2.0, 7.2.0, 7.3.0, 3.0.0, 5.1.0, 5.3.0, 8.1.0, 8.1.11",
+            "fixed": "5.4.0, 6.4.0, 7.2.0, 5.4.56, 6.1.0, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.2.0, 6.2.0, 6.4.50, 8.1.0, 5.1.0, 5.3.0, 6.3.0, 7.3.0, 7.4.0, 7.4.23, 8.1.11",
             "title": "In Symfony http-foundation prior to versions 5.4.56, 6.4.50, 7.4.23, a ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118514",
             "targets": [
@@ -24038,7 +25361,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/serializer",
             "installed": "v6.4.49",
-            "fixed": "4.0.0, 6.3.0, 7.1.0, 7.2.0, 7.3.0, 7.4.0, 8.1.11, 5.2.0, 6.4.0, 6.4.50, 7.4.23, 5.4.0, 6.1.0, 8.1.0, 5.0.0, 5.1.0, 5.3.0, 5.4.56, 6.2.0, 3.0.0",
+            "fixed": "5.0.0, 6.4.0, 7.3.0, 8.1.0, 3.0.0, 4.0.0, 5.3.0, 5.4.0, 5.4.56, 7.2.0, 5.1.0, 5.2.0, 6.2.0, 6.3.0, 7.1.0, 7.4.23, 6.1.0, 6.4.50, 7.4.0, 8.1.11",
             "title": "The Symfony Serializer componentDataUriNormalizerhandles only the exac ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118515",
             "targets": [
@@ -24050,9 +25373,33 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/routing",
             "installed": "v6.4.41",
-            "fixed": "7.1.0, 7.3.0, 6.2.0, 6.4.0, 4.3.0, 5.0.0, 5.4.0, 5.4.56, 7.2.0, 7.4.0, 5.1.0, 5.3.0, 6.3.0, 7.4.23, 8.1.0, 8.1.11, 6.4.50, 4.2.0, 4.4.0, 5.2.0, 6.1.0",
+            "fixed": "5.0.0, 5.2.0, 5.4.56, 7.4.23, 4.2.0, 4.4.0, 5.3.0, 6.1.0, 6.4.0, 8.1.11, 5.1.0, 7.2.0, 7.3.0, 7.4.0, 8.1.0, 4.3.0, 5.4.0, 6.2.0, 6.3.0, 6.4.50, 7.1.0",
             "title": "The Symfony Routing componentsCompiledUrlMatcher and UrlMatcherinterpr ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-118516",
+            "targets": [
+              "var/www/html/3rdparty/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-121623",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v6.4.49",
+            "fixed": "6.1.0, 6.2.0, 7.2.0, 7.4.0, 4.0.0, 5.3.0, 7.4.23, 8.1.0, 3.0.0, 5.4.0, 6.3.0, 6.4.0, 6.4.50, 7.3.0, 8.1.11, 7.1.0, 5.0.0, 5.1.0, 5.2.0, 5.4.56",
+            "title": "The Symfony Serializer component DataUriNormalizer::denormalize() matc ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121623",
+            "targets": [
+              "var/www/html/3rdparty/composer/installed.json"
+            ]
+          },
+          {
+            "id": "CVE-2026-122053",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/serializer",
+            "installed": "v6.4.49",
+            "fixed": "7.1.0, 7.4.0, 6.4.50, 7.2.0, 7.3.0, 7.4.23, 8.1.0, 8.1.11, 5.4.56",
+            "title": "The Symfony Serializer componentObjectNormalizertreats any attribute n ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-122053",
             "targets": [
               "var/www/html/3rdparty/composer/installed.json"
             ]
@@ -25614,55 +26961,166 @@
     "tag": "ghcr.io/quenchworks/images/opensearch:3.9.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 7,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 7,
+    "fixable": 7,
+    "grade": "C",
+    "score": 37,
+    "cves": [
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20231013",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20240303",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-59171",
+        "severity": "MEDIUM",
+        "pkg": "org.json:json",
+        "installed": "20251224",
+        "fixed": "20260719",
+        "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.9.0",
         "tag": "ghcr.io/quenchworks/images/opensearch:3.9.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 7,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 7,
+        "fixable": 7,
+        "grade": "C",
+        "score": 37,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20240303",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20251224",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "3.8.0",
         "tag": "ghcr.io/quenchworks/images/opensearch:3.8.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 7,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 7,
+        "fixable": 7,
+        "grade": "C",
+        "score": 37,
+        "cves": [
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20240303",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20251224",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       },
       {
         "version": "chart:graylog",
         "tag": "ghcr.io/quenchworks/images/opensearch:chart:graylog",
         "critical": 0,
         "high": 2,
-        "medium": 0,
+        "medium": 7,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 9,
+        "fixable": 9,
         "grade": "D",
-        "score": 70,
+        "score": 7,
         "cves": [
           {
             "id": "CVE-2026-113351",
@@ -25686,6 +27144,42 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/opensearch@sha256:2cb8925bd77debc602f10a3f35a731d0511fa1f3b42c892d550ab76eb8a05479 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20231013",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20240303",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-59171",
+            "severity": "MEDIUM",
+            "pkg": "org.json:json",
+            "installed": "20251224",
+            "fixed": "20260719",
+            "title": "JSON-java: JSONTokener Has Unbounded Numeric String Resource-Exhaustion DoS",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-59171",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -27869,12 +29363,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-123824",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/config",
+        "installed": "v5.4.46",
+        "fixed": "3.0.0, 5.1.0, 5.3.0, 6.1.0, 6.3.0, 7.2.0, 7.4.23, 5.4.56, 6.2.0, 6.4.50, 7.4.0, 8.1.0, 8.1.11, 4.0.0, 5.2.0, 6.4.0, 5.0.0, 5.4.0, 7.1.0, 7.3.0",
+        "title": "The Symfony Config componentXmlUtils::parse()enables DTD validation be ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123824",
+        "targets": [
+          "var/www/html/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.2.3",
@@ -27883,12 +29390,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-123824",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/config",
+            "installed": "v5.4.46",
+            "fixed": "3.0.0, 5.1.0, 5.3.0, 6.1.0, 6.3.0, 7.2.0, 7.4.23, 5.4.56, 6.2.0, 6.4.50, 7.4.0, 8.1.0, 8.1.11, 4.0.0, 5.2.0, 6.4.0, 5.0.0, 5.4.0, 7.1.0, 7.3.0",
+            "title": "The Symfony Config componentXmlUtils::parse()enables DTD validation be ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123824",
+            "targets": [
+              "var/www/html/vendor/composer/installed.json"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -38396,12 +39916,25 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "unknown": 1,
+    "total": 1,
+    "fixable": 1,
+    "grade": "A",
+    "score": 93,
+    "cves": [
+      {
+        "id": "CVE-2026-123792",
+        "severity": "UNKNOWN",
+        "pkg": "symfony/yaml",
+        "installed": "v5.4.54",
+        "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+        "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+        "targets": [
+          "usr/share/zabbix/vendor/composer/installed.json"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "7.4.16",
@@ -38410,12 +39943,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.54",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "usr/share/zabbix/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "7.0.32",
@@ -38424,12 +39970,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.54",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "usr/share/zabbix/vendor/composer/installed.json"
+            ]
+          }
+        ]
       },
       {
         "version": "6.0.49",
@@ -38438,12 +39997,25 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "unknown": 1,
+        "total": 1,
+        "fixable": 1,
+        "grade": "A",
+        "score": 93,
+        "cves": [
+          {
+            "id": "CVE-2026-123792",
+            "severity": "UNKNOWN",
+            "pkg": "symfony/yaml",
+            "installed": "v5.4.54",
+            "fixed": "7.4.23, 8.1.0, 5.2.0, 6.3.0, 7.2.0, 8.1.11, 7.1.0, 3.0.0, 4.0.0, 5.0.0, 5.1.0, 5.4.0, 5.4.56, 6.4.0, 5.3.0, 6.1.0, 6.2.0, 6.4.50, 7.3.0, 7.4.0",
+            "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
+            "targets": [
+              "usr/share/zabbix/vendor/composer/installed.json"
+            ]
+          }
+        ]
       }
     ]
   },
