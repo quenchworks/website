@@ -3,6 +3,7 @@
 // re-run `pnpm sync`, never this file's data. This module adds types + helpers.
 
 import data from './charts.json';
+import { supportOf } from './support';
 
 export type Tier = 'critical' | 'standard' | 'low';
 export type LicenseClean = 'clean' | 'agpl' | 'caution';
@@ -37,6 +38,11 @@ export const ghcr = 'ghcr.io/quenchworks';
 
 export const charts = data as ChartEntry[];
 
+/** Charts of end-of-life apps move off the main list to their own tab; their pages stay. */
+export const isEolChart = (slug: string): boolean => supportOf(slug)?.state === 'eol';
+export const listedCharts = charts.filter((c) => !isEolChart(c.slug));
+export const eolCharts = charts.filter((c) => isEolChart(c.slug));
+
 /** Card count per static catalog page (real URL-based pagination). */
 export const PAGE_SIZE = 12;
 
@@ -46,17 +52,17 @@ export const PAGE_SIZE = 12;
 // 20,000-file cap. Older version URLs land on 404.html, which forwards to the chart.
 export const CHART_VERSION_PAGES = 3;
 
-export const chartCount = charts.length;
-export const chartCategories = [...new Set(charts.map((c) => c.category))].sort();
+export const chartCount = listedCharts.length;
+export const chartCategories = [...new Set(listedCharts.map((c) => c.category))].sort();
 export const chartTiers: Tier[] = ['critical', 'standard', 'low'];
 export const cautionCount = charts.filter((c) => c.caution).length;
 
 export function chartsByCategory(category: string): ChartEntry[] {
-  return charts.filter((c) => c.category === category);
+  return listedCharts.filter((c) => c.category === category);
 }
 
 export function categoryCounts(): Record<string, number> {
-  return charts.reduce<Record<string, number>>((acc, c) => {
+  return listedCharts.reduce<Record<string, number>>((acc, c) => {
     acc[c.category] = (acc[c.category] ?? 0) + 1;
     return acc;
   }, {});

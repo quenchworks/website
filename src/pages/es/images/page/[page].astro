@@ -3,7 +3,7 @@ import Base from '../../../../layouts/Base.astro';
 import Header from '../../../../components/Header.astro';
 import Footer from '../../../../components/Footer.astro';
 import CatalogList from '../../../../components/CatalogList.astro';
-import { images, availableCount, imageTiers, PAGE_SIZE } from '../../../../data/images';
+import { listedImages as images, eolImages, availableCount, imageTiers, PAGE_SIZE } from '../../../../data/images';
 import { fetchArtifactHub } from '../../../../data/artifacthub';
 
 // Static pages 2..N. Page 1 lives at /images (index.astro), so it is NOT
@@ -56,6 +56,7 @@ const tierFilters = imageTiers.map((t) => ({ key: t, label: t[0].toUpperCase() +
       categories={categories}
       tierFilters={tierFilters}
       pageSize={PAGE_SIZE}
+      eolCount={eolImages.length}
     />
   </main>
   <Footer />

@@ -4,6 +4,7 @@
 
 import data from './images.json';
 import { compareVersionsDesc } from './versions';
+import { supportOf } from './support';
 
 export type Tier = 'critical' | 'standard' | 'low';
 export type Status = 'available' | 'planned';
@@ -42,6 +43,11 @@ export const ghcr = 'ghcr.io/quenchworks';
 
 export const images = data as ImageEntry[];
 
+/** End-of-life images move off the main list to their own tab; their detail pages stay. */
+export const isEol = (slug: string): boolean => supportOf(slug)?.state === 'eol';
+export const listedImages = images.filter((i) => !isEol(i.slug));
+export const eolImages = images.filter((i) => isEol(i.slug));
+
 /**
  * Canonical published versions for an image: the full X.Y.Z leaf tags, newest
  * first. Floating alias tags (e.g. `10` or `10.0` when `10.0.100` exists) are
@@ -74,19 +80,21 @@ export const RUNTIME_CATEGORIES = ['Language runtime', 'Runtime base', 'Build to
 export const isRuntime = (i: ImageEntry): boolean =>
   (RUNTIME_CATEGORIES as readonly string[]).includes(i.category);
 
+// every published image, end-of-life included: detail and version pages are built from this
 export const availableImages = images.filter((i) => i.status === 'available');
-export const availableCount = availableImages.length;
+// the headline count is the supported catalog only
+export const availableCount = listedImages.filter((i) => i.status === 'available').length;
 
-export const imageCategories = [...new Set(images.map((i) => i.category))].sort();
+export const imageCategories = [...new Set(listedImages.map((i) => i.category))].sort();
 export const imageTiers: Tier[] = ['critical', 'standard', 'low'];
 export const cautionCount = images.filter((i) => i.caution).length;
 
 export function imagesByCategory(category: string): ImageEntry[] {
-  return images.filter((i) => i.category === category);
+  return listedImages.filter((i) => i.category === category);
 }
 
 export function categoryCounts(): Record<string, number> {
-  return images.reduce<Record<string, number>>((acc, i) => {
+  return listedImages.reduce<Record<string, number>>((acc, i) => {
     acc[i.category] = (acc[i.category] ?? 0) + 1;
     return acc;
   }, {});
