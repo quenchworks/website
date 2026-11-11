@@ -530,7 +530,7 @@
     "license": "MIT",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Web UI that manages nginx proxy hosts, redirects and Let's Encrypt certificates for people who do not want to write nginx config. Researched 2026-11-05: v2.16.0 (2026-09-24). Node backend plus a frontend build on top of our nginx; it needs a database (SQLite or MariaDB)."
+    "note": "Web UI that manages nginx proxy hosts, redirects and Let's Encrypt certificates for people who do not want to write nginx config. Sized 2026-11-11 at v2.16.0: one container runs OpenResty (nginx-full), the Node backend (which writes nginx config and reloads nginx), certbot with its DNS plugins (Python) and logrotate under s6. Its generated host configs listen on 80/443, so a nonroot image needs NET_BIND_SERVICE on nginx. A multi-day build: the frontend, the backend on our node, certbot in a venv, and a small supervisor."
   },
   {
     "name": "Zoraxy",
