@@ -30,37 +30,6 @@
       }
     ]
   },
-  "activemq": {
-    "image": "ghcr.io/quenchworks/images/activemq",
-    "version": "6.3.3",
-    "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
-    "versions": [
-      {
-        "version": "6.3.3",
-        "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      }
-    ]
-  },
   "activemq-artemis": {
     "image": "ghcr.io/quenchworks/images/activemq-artemis",
     "version": "2.57.0",
@@ -367,15 +336,51 @@
     "version": "1.8.0",
     "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
     "critical": 0,
-    "high": 2,
-    "medium": 0,
+    "high": 10,
+    "medium": 6,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
+    "total": 16,
+    "fixable": 15,
     "grade": "D",
-    "score": 70,
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.4.8-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.6.0-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-108106",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-113351",
         "severity": "HIGH",
@@ -399,6 +404,66 @@
         "targets": [
           "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
         ]
+      },
+      {
+        "id": "CVE-2026-93451",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-116590",
+        "severity": "MEDIUM",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-118259",
+        "severity": "MEDIUM",
+        "pkg": "io.opentelemetry:opentelemetry-api",
+        "installed": "1.62.0",
+        "fixed": "1.67.0",
+        "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-57914",
+        "severity": "MEDIUM",
+        "pkg": "org.apache.kerby:kerby-asn1",
+        "installed": "2.0.3",
+        "fixed": "2.1.2",
+        "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2025-48924",
+        "severity": "MEDIUM",
+        "pkg": "commons-lang:commons-lang",
+        "installed": "2.6",
+        "fixed": null,
+        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+        "targets": [
+          "Java"
+        ]
       }
     ],
     "versions": [
@@ -406,15 +471,51 @@
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
         "critical": 0,
-        "high": 2,
-        "medium": 0,
+        "high": 10,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 16,
+        "fixable": 15,
         "grade": "D",
-        "score": 70,
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.4.8-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.6.0-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-108106",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-113351",
             "severity": "HIGH",
@@ -437,6 +538,66 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-93451",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-116590",
+            "severity": "MEDIUM",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-118259",
+            "severity": "MEDIUM",
+            "pkg": "io.opentelemetry:opentelemetry-api",
+            "installed": "1.62.0",
+            "fixed": "1.67.0",
+            "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-57914",
+            "severity": "MEDIUM",
+            "pkg": "org.apache.kerby:kerby-asn1",
+            "installed": "2.0.3",
+            "fixed": "2.1.2",
+            "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2025-48924",
+            "severity": "MEDIUM",
+            "pkg": "commons-lang:commons-lang",
+            "installed": "2.6",
+            "fixed": null,
+            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -510,103 +671,29 @@
     "version": "1.9.11",
     "tag": "ghcr.io/quenchworks/images/argo-events:1.9.11",
     "critical": 0,
-    "high": 1,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 3,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 82,
-    "cves": [
-      {
-        "id": "CVE-2026-116587",
-        "severity": "HIGH",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-        "targets": [
-          "usr/bin/argo"
-        ]
-      },
-      {
-        "id": "CVE-2026-116585",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-        "targets": [
-          "usr/bin/argo"
-        ]
-      },
-      {
-        "id": "CVE-2026-116586",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-        "targets": [
-          "usr/bin/argo"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.9.11",
         "tag": "ghcr.io/quenchworks/images/argo-events:1.9.11",
         "critical": 0,
-        "high": 1,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 3,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-116587",
-            "severity": "HIGH",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-            "targets": [
-              "usr/bin/argo"
-            ]
-          },
-          {
-            "id": "CVE-2026-116585",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-            "targets": [
-              "usr/bin/argo"
-            ]
-          },
-          {
-            "id": "CVE-2026-116586",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-            "targets": [
-              "usr/bin/argo"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -688,115 +775,29 @@
         "version": "4.0.15",
         "tag": "ghcr.io/quenchworks/images/argo-workflows:4.0.15",
         "critical": 0,
-        "high": 3,
-        "medium": 6,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 9,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 46,
-        "cves": [
-          {
-            "id": "CVE-2026-116587",
-            "severity": "HIGH",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-            "targets": [
-              "usr/bin/argo",
-              "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          },
-          {
-            "id": "CVE-2026-116585",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-            "targets": [
-              "usr/bin/argo",
-              "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          },
-          {
-            "id": "CVE-2026-116586",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-            "targets": [
-              "usr/bin/argo",
-              "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "3.7.18",
         "tag": "ghcr.io/quenchworks/images/argo-workflows:3.7.18",
         "critical": 0,
-        "high": 3,
-        "medium": 6,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 9,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 46,
-        "cves": [
-          {
-            "id": "CVE-2026-116587",
-            "severity": "HIGH",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-            "targets": [
-              "usr/bin/argo",
-              "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          },
-          {
-            "id": "CVE-2026-116585",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-            "targets": [
-              "usr/bin/argo",
-              "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          },
-          {
-            "id": "CVE-2026-116586",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-            "targets": [
-              "usr/bin/argo",
-              "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -939,321 +940,6 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
-      {
-        "version": "9.0.121",
-        "tag": "ghcr.io/quenchworks/images/aspnet:9.0.121",
-        "critical": 4,
-        "high": 18,
-        "medium": 3,
-        "low": 0,
-        "unknown": 0,
-        "total": 25,
-        "fixable": 25,
-        "grade": "F",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlicommon1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlidec1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlienc1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-91403",
-            "severity": "CRITICAL",
-            "pkg": "ca-certificates-bundle",
-            "installed": "20260909-r2",
-            "fixed": "20260909-r3",
-            "title": "OpenJDK: Distrust eMudhra intermediate CA certificates due to security concerns",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-91403",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111943",
-            "severity": "HIGH",
-            "pkg": "ca-certificates-bundle",
-            "installed": "20260909-r2",
-            "fixed": "20260909-r3",
-            "title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111943",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-113351",
-            "severity": "HIGH",
-            "pkg": "libexpat1",
-            "installed": "2.9.0-r0",
-            "fixed": "2.10.0-r0",
-            "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-115506",
-            "severity": "HIGH",
-            "pkg": "libexpat1",
-            "installed": "2.9.0-r0",
-            "fixed": "2.10.0-r0",
-            "title": "expat: expat: Denial of Service via delayed entity amplification detection",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70159",
-            "severity": "HIGH",
-            "pkg": "aspnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet8.0: dotnet10.0: dotnet: dotnet9.0: ASP.NET Core Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70159",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet8.0: dotnet10.0: dotnet: dotnet9.0: ASP.NET Core Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70159",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet8.0: dotnet10.0: dotnet: dotnet9.0: ASP.NET Core Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84008",
-            "severity": "HIGH",
-            "pkg": "aspnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84008",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84008",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96958",
-            "severity": "HIGH",
-            "pkg": "aspnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96958",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96958",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96959",
-            "severity": "HIGH",
-            "pkg": "aspnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via unthrottled resource allocation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96959",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via unthrottled resource allocation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96959",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via unthrottled resource allocation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96960",
-            "severity": "HIGH",
-            "pkg": "aspnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via asymmetric resource consumption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96960",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via asymmetric resource consumption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96960",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via asymmetric resource consumption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70162",
-            "severity": "MEDIUM",
-            "pkg": "aspnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: dotnet: Denial of Service via specially crafted web requests",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70162",
-            "severity": "MEDIUM",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: dotnet: Denial of Service via specially crafted web requests",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70162",
-            "severity": "MEDIUM",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: dotnet: Denial of Service via specially crafted web requests",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
-            "targets": [
-              "ghcr.io/quenchworks/images/aspnet@sha256:fc766401176f5d913d8f7f603ac7d0336e357fb7b3b79db0d70f022b2653bfeb (wolfi 20230201)"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -1982,103 +1668,29 @@
     "version": "2.11.9",
     "tag": "ghcr.io/quenchworks/images/caddy:2.11.9",
     "critical": 0,
-    "high": 1,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 3,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 82,
-    "cves": [
-      {
-        "id": "CVE-2026-116587",
-        "severity": "HIGH",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-        "targets": [
-          "usr/bin/caddy"
-        ]
-      },
-      {
-        "id": "CVE-2026-116585",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-        "targets": [
-          "usr/bin/caddy"
-        ]
-      },
-      {
-        "id": "CVE-2026-116586",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-        "targets": [
-          "usr/bin/caddy"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "2.11.9",
         "tag": "ghcr.io/quenchworks/images/caddy:2.11.9",
         "critical": 0,
-        "high": 1,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 3,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-116587",
-            "severity": "HIGH",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-            "targets": [
-              "usr/bin/caddy"
-            ]
-          },
-          {
-            "id": "CVE-2026-116585",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-            "targets": [
-              "usr/bin/caddy"
-            ]
-          },
-          {
-            "id": "CVE-2026-116586",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-            "targets": [
-              "usr/bin/caddy"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -5362,225 +4974,6 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
-      {
-        "version": "9.0.121",
-        "tag": "ghcr.io/quenchworks/images/dotnet-runtime:9.0.121",
-        "critical": 4,
-        "high": 11,
-        "medium": 2,
-        "low": 0,
-        "unknown": 0,
-        "total": 17,
-        "fixable": 17,
-        "grade": "F",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlicommon1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlidec1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlienc1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-91403",
-            "severity": "CRITICAL",
-            "pkg": "ca-certificates-bundle",
-            "installed": "20260909-r2",
-            "fixed": "20260909-r3",
-            "title": "OpenJDK: Distrust eMudhra intermediate CA certificates due to security concerns",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-91403",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111943",
-            "severity": "HIGH",
-            "pkg": "ca-certificates-bundle",
-            "installed": "20260909-r2",
-            "fixed": "20260909-r3",
-            "title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111943",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70159",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet8.0: dotnet10.0: dotnet: dotnet9.0: ASP.NET Core Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70159",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet8.0: dotnet10.0: dotnet: dotnet9.0: ASP.NET Core Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70159",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84008",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84008",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84008",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96958",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96958",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET Denial of Service Vulnerability",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96958",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96959",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via unthrottled resource allocation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96959",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via unthrottled resource allocation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96959",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96960",
-            "severity": "HIGH",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via asymmetric resource consumption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-96960",
-            "severity": "HIGH",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: .NET: Denial of Service via asymmetric resource consumption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-96960",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70162",
-            "severity": "MEDIUM",
-            "pkg": "dotnet-9",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: dotnet: Denial of Service via specially crafted web requests",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-70162",
-            "severity": "MEDIUM",
-            "pkg": "dotnet-9-runtime",
-            "installed": "9.0.121-r2",
-            "fixed": "9.0.122-r0",
-            "title": "dotnet: dotnet: Denial of Service via specially crafted web requests",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-70162",
-            "targets": [
-              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:47b55b28f44a3e6e81c2ec11bf0672aef3a1ae4e2715aea0beabf58f35abeb39 (wolfi 20230201)"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -7695,26 +7088,12 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 2,
-    "total": 2,
-    "fixable": 2,
-    "grade": "A",
-    "score": 86,
-    "cves": [
-      {
-        "id": "GO-2026-5932",
-        "severity": "UNKNOWN",
-        "pkg": "golang.org/x/crypto",
-        "installed": "v0.58.0",
-        "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
-        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-        "url": "https://go.dev/issue/44226",
-        "targets": [
-          "usr/bin/frpc",
-          "usr/bin/frps"
-        ]
-      }
-    ],
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.72.0",
@@ -7723,26 +7102,12 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 2,
-        "total": 2,
-        "fixable": 2,
-        "grade": "A",
-        "score": 86,
-        "cves": [
-          {
-            "id": "GO-2026-5932",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/crypto",
-            "installed": "v0.58.0",
-            "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
-            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-            "url": "https://go.dev/issue/44226",
-            "targets": [
-              "usr/bin/frpc",
-              "usr/bin/frps"
-            ]
-          }
-        ]
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -8245,6 +7610,37 @@
       {
         "version": "0.14.3",
         "tag": "ghcr.io/quenchworks/images/gogs:0.14.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "gost": {
+    "image": "ghcr.io/quenchworks/images/gost",
+    "version": "3.3.3",
+    "tag": "ghcr.io/quenchworks/images/gost:3.3.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.3.3",
+        "tag": "ghcr.io/quenchworks/images/gost:3.3.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -9815,103 +9211,29 @@
     "version": "0.29.7",
     "tag": "ghcr.io/quenchworks/images/headscale:0.29.7",
     "critical": 0,
-    "high": 1,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 3,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 82,
-    "cves": [
-      {
-        "id": "CVE-2026-116587",
-        "severity": "HIGH",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-        "targets": [
-          "usr/bin/headscale"
-        ]
-      },
-      {
-        "id": "CVE-2026-116585",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-        "targets": [
-          "usr/bin/headscale"
-        ]
-      },
-      {
-        "id": "CVE-2026-116586",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-        "targets": [
-          "usr/bin/headscale"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.29.7",
         "tag": "ghcr.io/quenchworks/images/headscale:0.29.7",
         "critical": 0,
-        "high": 1,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 3,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-116587",
-            "severity": "HIGH",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-            "targets": [
-              "usr/bin/headscale"
-            ]
-          },
-          {
-            "id": "CVE-2026-116585",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-            "targets": [
-              "usr/bin/headscale"
-            ]
-          },
-          {
-            "id": "CVE-2026-116586",
-            "severity": "MEDIUM",
-            "pkg": "github.com/go-jose/go-jose/v3",
-            "installed": "v3.0.5",
-            "fixed": null,
-            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-            "targets": [
-              "usr/bin/headscale"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -21213,27 +20535,12 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 3,
-    "total": 3,
-    "fixable": 3,
-    "grade": "A",
-    "score": 79,
-    "cves": [
-      {
-        "id": "GO-2026-5932",
-        "severity": "UNKNOWN",
-        "pkg": "golang.org/x/crypto",
-        "installed": "v0.58.0",
-        "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
-        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-        "url": "https://go.dev/issue/44226",
-        "targets": [
-          "usr/bin/eskip",
-          "usr/bin/routesrv",
-          "usr/bin/skipper"
-        ]
-      }
-    ],
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.28.75",
@@ -21242,27 +20549,12 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 3,
-        "total": 3,
-        "fixable": 3,
-        "grade": "A",
-        "score": 79,
-        "cves": [
-          {
-            "id": "GO-2026-5932",
-            "severity": "UNKNOWN",
-            "pkg": "golang.org/x/crypto",
-            "installed": "v0.58.0",
-            "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
-            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
-            "url": "https://go.dev/issue/44226",
-            "targets": [
-              "usr/bin/eskip",
-              "usr/bin/routesrv",
-              "usr/bin/skipper"
-            ]
-          }
-        ]
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -22444,26 +21736,14 @@
         "tag": "ghcr.io/quenchworks/images/telegraf:1.39.3",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 3,
-        "fixable": 1,
+        "total": 2,
+        "fixable": 0,
         "grade": "C",
-        "score": 85,
+        "score": 94,
         "cves": [
-          {
-            "id": "CVE-2026-119299",
-            "severity": "MEDIUM",
-            "pkg": "github.com/gopacket/gopacket",
-            "installed": "v1.7.0",
-            "fixed": "1.7.2",
-            "title": "github.com/gopacket/gopacket: gopacket: Denial of Service via crafted SCTP packets",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-119299",
-            "targets": [
-              "usr/bin/telegraf"
-            ]
-          },
           {
             "id": "CVE-2026-86597",
             "severity": "MEDIUM",
@@ -22495,26 +21775,14 @@
         "tag": "ghcr.io/quenchworks/images/telegraf:1.38.4",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 3,
-        "fixable": 1,
+        "total": 2,
+        "fixable": 0,
         "grade": "C",
-        "score": 85,
+        "score": 94,
         "cves": [
-          {
-            "id": "CVE-2026-119299",
-            "severity": "MEDIUM",
-            "pkg": "github.com/gopacket/gopacket",
-            "installed": "v1.6.1",
-            "fixed": "1.7.2",
-            "title": "github.com/gopacket/gopacket: gopacket: Denial of Service via crafted SCTP packets",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-119299",
-            "targets": [
-              "usr/bin/telegraf"
-            ]
-          },
           {
             "id": "CVE-2026-86597",
             "severity": "MEDIUM",
@@ -26103,6 +25371,37 @@
       {
         "version": "0.32.0",
         "tag": "ghcr.io/quenchworks/images/vllm:0.32.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "vouch-proxy": {
+    "image": "ghcr.io/quenchworks/images/vouch-proxy",
+    "version": "0.50.0",
+    "tag": "ghcr.io/quenchworks/images/vouch-proxy:0.50.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.50.0",
+        "tag": "ghcr.io/quenchworks/images/vouch-proxy:0.50.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
