@@ -119,8 +119,8 @@
     "category": "Apps & productivity",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Data exploration and business-intelligence dashboard platform backed by a metadata database and Redis. Measured 2026-09-26: 6.1.0 (and 6.0.0) have no advisories, 5.0 does. It pins pyarrow<19, whose wheel statically embeds OpenSSL 3.3.0 and libcurl 8.7.0 (Wolfi packages pyarrow 23 and newer only), and a loose PyPI resolve pulls a flask-caching that breaks its metastore cache. Needs a build from the tag's pinned requirements, a module float, and a pyarrow swap tested against result_set.py.",
+    "priority": "planned",
+    "note": "Data exploration and business-intelligence dashboard platform backed by a metadata database and Redis. HELD 2026-11-11: 6.1.0 (latest) has 48 fixable findings in its pinned requirements (pyarrow 16.1 with a bundled OpenSSL, cryptography 46, PyJWT 2.10, pillow 11, Flask 2.3, urllib3, msgpack ...). Master already moved almost all of them (Flask 3.1, pillow 13, pyarrow 26, cryptography 50) together with code changes, so floating them onto 6.1.0 is unvalidated. Ship on the next release that carries master's pins; dnspython 2.9, paramiko 5 and pyasn1 0.6.5 are not on master yet either.",
     "blocked": true,
     "blockedReason": "Superset pins `cryptography <47`, `msgpack <1.1`, and `pyarrow <19`, all below the versions that fix current HIGH CVEs, so it cannot reach 0 fixable CVEs without diverging from upstream's own dependency constraints. Built and tested; held until upstream relaxes the pins or backports the fixes."
   },
