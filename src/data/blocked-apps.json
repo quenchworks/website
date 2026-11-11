@@ -14,8 +14,8 @@
   {
     "slug": "emissary",
     "state": "held",
-    "measured": "2026-11-01",
-    "status": "emissary (Emissary-ingress API gateway): from-source via melange, the Go\nbusyambassador plus the Python control plane (diagd) from the tag tarball, on Wolfi Envoy\n1.37 (upstream 4.1.0 ships stock Envoy 1.37.2; Wolfi envoy-1.37 is the same line). Newest\nline only for now: 3.x needs Emissary's own Envoy fork.\nSTATUS 2026-11-01: BLOCKED (BLOCKED=0 -> 1), upstream-gated on the Wolfi envoy apk. The image\n  ships Wolfi's envoy-1.37 (1.37.1-r3), which carries CVE-2026-111497 (CRITICAL, bundled brotli decoder)\n  and on 1.38 CVE-2026-111943 (HIGH). Wolfi's secdb names 1.37.8-r0 / 1.38.6-r0 / 1.38.9-r1 as\n  the fixes, but the public APKINDEX (read 2026-11-01) still tops out at 1.37.1-r3 and 1.38.1-r0\n  (memory: Wolfi fix revisions are not always public). The Go floors (x/net 0.62.0, go-jose\n  4.1.6) are already in the recipe and ship with the next build. Unblock when the APKINDEX\n  carries an envoy revision at or past those fixes: move the pin, gate, dispatch."
+    "measured": "2026-11-11",
+    "status": "Re-measured 2026-11-11: emissary v4.2.0 and kgateway v2.5.1 are out, but the public Wolfi APKINDEX still tops out at envoy-1.37 1.37.1-r3 and envoy-1.38 1.38.1-r0 (envoy-1.3x is frozen in public Wolfi). Hold.\nemissary (Emissary-ingress API gateway): from-source via melange, the Go\nbusyambassador plus the Python control plane (diagd) from the tag tarball, on Wolfi Envoy\n1.37 (upstream 4.1.0 ships stock Envoy 1.37.2; Wolfi envoy-1.37 is the same line). Newest\nline only for now: 3.x needs Emissary's own Envoy fork.\nSTATUS 2026-11-01: BLOCKED (BLOCKED=0 -> 1), upstream-gated on the Wolfi envoy apk. The image\n  ships Wolfi's envoy-1.37 (1.37.1-r3), which carries CVE-2026-111497 (CRITICAL, bundled brotli decoder)\n  and on 1.38 CVE-2026-111943 (HIGH). Wolfi's secdb names 1.37.8-r0 / 1.38.6-r0 / 1.38.9-r1 as\n  the fixes, but the public APKINDEX (read 2026-11-01) still tops out at 1.37.1-r3 and 1.38.1-r0\n  (memory: Wolfi fix revisions are not always public). The Go floors (x/net 0.62.0, go-jose\n  4.1.6) are already in the recipe and ship with the next build. Unblock when the APKINDEX\n  carries an envoy revision at or past those fixes: move the pin, gate, dispatch."
   },
   {
     "slug": "envoy",
@@ -44,14 +44,14 @@
   {
     "slug": "kgateway",
     "state": "held",
-    "measured": null,
-    "status": "kgateway: from-source via melange (Go control plane built from the release tarball).\nThis is the CONTROL PLANE only -- it implements Gateway API and programs Envoy over\nxDS. The data plane is the companion `kgateway-envoy` image (our hardened Wolfi envoy\nplus kgateway's own `envoyinit` bootstrap shim); see apps/kgateway-envoy."
+    "measured": "2026-11-11",
+    "status": "Re-measured 2026-11-11: emissary v4.2.0 and kgateway v2.5.1 are out, but the public Wolfi APKINDEX still tops out at envoy-1.37 1.37.1-r3 and envoy-1.38 1.38.1-r0 (envoy-1.3x is frozen in public Wolfi). Hold.\nkgateway: from-source via melange (Go control plane built from the release tarball).\nThis is the CONTROL PLANE only -- it implements Gateway API and programs Envoy over\nxDS. The data plane is the companion `kgateway-envoy` image (our hardened Wolfi envoy\nplus kgateway's own `envoyinit` bootstrap shim); see apps/kgateway-envoy."
   },
   {
     "slug": "kgateway-envoy",
     "state": "held",
-    "measured": null,
-    "status": "kgateway-envoy: the kgateway DATA PLANE. This is upstream's `envoy-wrapper` image,\nrebuilt clean-room: our own hardened Wolfi envoy apk (the same one behind the quench\n`envoy` image) plus kgateway's `envoyinit` bootstrap shim built from source."
+    "measured": "2026-11-11",
+    "status": "Re-measured 2026-11-11: emissary v4.2.0 and kgateway v2.5.1 are out, but the public Wolfi APKINDEX still tops out at envoy-1.37 1.37.1-r3 and envoy-1.38 1.38.1-r0 (envoy-1.3x is frozen in public Wolfi). Hold.\nkgateway-envoy: the kgateway DATA PLANE. This is upstream's `envoy-wrapper` image,\nrebuilt clean-room: our own hardened Wolfi envoy apk (the same one behind the quench\n`envoy` image) plus kgateway's `envoyinit` bootstrap shim built from source."
   },
   {
     "slug": "ml-metadata-store-server",
