@@ -473,7 +473,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Zalando's HTTP router and Kubernetes ingress (Go). License resolved 2026-11-05: the LICENSE file is Apache-2.0 for the project, with only the pathmux subdirectory under MIT (GitHub reports NOASSERTION because of the mix). Latest v0.28.69 (2026-11-05), released almost daily: ship latest-only."
   },
   {
@@ -505,7 +505,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Fast reverse proxy that exposes services behind NAT or a firewall: frps (server) and frpc (client), both static Go binaries. Researched 2026-11-05: v0.72.0 (2026-11-04), about 110k stars, active. Two images or one image with both binaries; chart for frps."
   },
   {
@@ -627,13 +627,5 @@
     "licenseClean": "caution",
     "priority": "planned",
     "note": "Tiny multi-protocol proxy suite in C (HTTP, SOCKS4/5, POP3, FTP and TCP/UDP port mapping). Researched 2026-11-05: 1.0.2 (2026-10-24). GitHub reports NOASSERTION: its own \"3proxy 0.9 Public License\" is in LICENSE. Confirm it is OSI-compatible (it may offer a choice of standard licenses) before writing a recipe."
-  },
-  {
-    "name": "FileBrowser Quantum",
-    "category": "Apps & productivity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Replacement for File Browser, whose upstream (filebrowser/filebrowser) is archived since 2026-07 (our filebrowser image is now End of life). Requested by a user (2026-09-16), researched 2026-11-09: gtsteffaniak/filebrowser, Apache-2.0, active, stable line v2.0.2-stable (2026-10-23) beside a beta line; adds OIDC SSO and per-share permissions. Build: Go backend with cgo (the upstream Docker build links MuPDF through gofitz for PDF previews and copies ffmpeg from its own image) plus a Node frontend. Plan: build MuPDF and ffmpeg support from Wolfi packages (or ship without PDF previews) rather than the prebuilt blobs, which the scanner cannot see; config is not drop-in with File Browser 2.63, so it ships as a new app with its own chart."
   }
 ]
