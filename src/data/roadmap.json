@@ -146,7 +146,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Real-time distributed OLAP datastore for low-latency analytics. Re-measured 2026-11-11 at 1.6.0: down to 10 fixable findings in 5 libraries (jackson-core/databind 2.22.2, guava 33.4.8, async-http-client 3.0.13, org.json 20250107), all inside fat or shaded jars: pinot-all and the parquet, orc, confluent-json and hadoop batch plugins, mostly as relocated copies (org.apache.pinot.shaded, pulsar.shade, shaded.parquet). Needs a relocation-aware class swap per jar plus a boot test of every component."
+    "note": "Real-time distributed OLAP datastore for low-latency analytics. Re-measured 2026-11-11 at 1.6.0: the scanner reports 10 fixable findings (jackson-core/databind 2.22.2, guava 33.4.8, async-http-client 3.0.13, org.json 20250107), but its metadata in these fat jars describes whichever copy merged first. Reading the classes themselves finds more vulnerable relocated jackson copies that carry no metadata: pulsar.shade 2.18.9 (fixed 2.18.11), awssdk thirdparty 2.21.4 (fixed 2.21.7) in pinot-all, and hadoop.shaded 2.12.7 in pinot-parquet (no fix on 2.12). Shipping it needs a relocation-aware swap of every copy per prefix (maven-shade relocation of the fixed releases), the hadoop-shaded copy moved two minors, and a boot test of every component."
   },
   {
     "name": "Open WebUI",
