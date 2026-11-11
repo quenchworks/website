@@ -8439,7 +8439,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.35",
+    "chartVersion": "0.0.36",
     "appVersion": "1.0.0",
     "description": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "de6a254c-cbaa-4b14-88cc-30670ebc943f",
@@ -11946,11 +11946,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "2.13.11",
     "description": "KrakenD Community Edition, a stateless, declarative API gateway that aggregates and transforms backend responses from a single JSON config. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/krakend",
-    "imageDigest": "sha256:fef1aab6c8b18474e3d38b14522529fda17a603bcb9426b8bb34aa6dd58b0e47",
+    "imageDigest": "sha256:edceab3656982a79e0ca92110d90c0ea18ac8e44ac905dbedc762dc9911a48fc",
     "repositoryID": "b462fa85-2c96-4547-a32a-bc919a6f5059",
     "port": 80,
     "upstream": "https://www.krakend.io",
@@ -11958,7 +11958,7 @@
     "images": [
       {
         "name": "krakend",
-        "image": "ghcr.io/quenchworks/images/krakend@sha256:fef1aab6c8b18474e3d38b14522529fda17a603bcb9426b8bb34aa6dd58b0e47"
+        "image": "ghcr.io/quenchworks/images/krakend@sha256:edceab3656982a79e0ca92110d90c0ea18ac8e44ac905dbedc762dc9911a48fc"
       }
     ],
     "valuesKeys": [
@@ -18080,18 +18080,18 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.25",
+    "chartVersion": "0.0.26",
     "appVersion": "2.7.2",
     "description": "Open-source secrets and encryption management for tokens, keys, and certificates, with dynamic secrets and leasing. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/openbao",
-    "imageDigest": "sha256:a37e1085f16849904bb4f69a160db5699fbf7af9c6c25de22ef503bc247bb700",
+    "imageDigest": "sha256:3ac31ccca43016c01fdc54b4fcaf4d638b8e9826cf6d4ed237e8ce30bdceafe2",
     "repositoryID": "8d6b6290-58a0-40c4-9b6d-3604faf59685",
     "upstream": "https://github.com/openbao/openbao",
     "chartRef": "oci://ghcr.io/quenchworks/charts/openbao",
     "images": [
       {
         "name": "openbao",
-        "image": "ghcr.io/quenchworks/images/openbao@sha256:a37e1085f16849904bb4f69a160db5699fbf7af9c6c25de22ef503bc247bb700"
+        "image": "ghcr.io/quenchworks/images/openbao@sha256:3ac31ccca43016c01fdc54b4fcaf4d638b8e9826cf6d4ed237e8ce30bdceafe2"
       }
     ],
     "valuesKeys": [
@@ -19674,7 +19674,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "1.0.0",
     "description": "Hardened internal PKI in one install: step-ca (your own certificate authority) + cert-manager (certificate lifecycle) + step-issuer (cert-manager signs through step-ca) + trust-manager (the CA root distributed to every namespace). A post-install Job wires a StepClusterIssuer and a trust Bundle, so a Certificate with issuerRef <release>-step-ca just works and every namespace gets the root in ConfigMap <release>-root-ca. Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "56114c25-6c70-4b4a-bf12-a4b05f8fc21d",
@@ -19710,7 +19710,7 @@
       },
       {
         "name": "step-issuer",
-        "image": "ghcr.io/quenchworks/images/step-issuer@sha256:b6582f22083713be3f1bd54c22410d23c86671b14d22e10574a5c100d65e2da7"
+        "image": "ghcr.io/quenchworks/images/step-issuer@sha256:d9c6d4077224c4afb00fe427e18dc7d8c89c2597be396bc7f57eb7a5cb5b618b"
       },
       {
         "name": "trust-manager",
@@ -23287,7 +23287,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.26",
     "appVersion": "1.0.0",
     "description": "OpenBao behind Keycloak sign-in: OpenBao auto-unseals and configures itself on first start (KV v2, OIDC for people, JWT for workloads, a break-glass admin), trusting a Keycloak realm the stack imports. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "4d6d8aa4-7640-4bb8-a0cf-1edcda7eea09",
@@ -23301,7 +23301,7 @@
     "images": [
       {
         "name": "openbao",
-        "image": "ghcr.io/quenchworks/images/openbao@sha256:a37e1085f16849904bb4f69a160db5699fbf7af9c6c25de22ef503bc247bb700"
+        "image": "ghcr.io/quenchworks/images/openbao@sha256:3ac31ccca43016c01fdc54b4fcaf4d638b8e9826cf6d4ed237e8ce30bdceafe2"
       },
       {
         "name": "keycloak",
@@ -23488,7 +23488,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "1.0.0",
     "description": "Self-hosted Sigstore: the Fulcio certificate authority, the Rekor v2 transparency log and the Timestamp Authority in one install, for keyless signing with cosign against your own infrastructure. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "4cfa0c3a-d87f-44a2-a39f-ec380e014b4a",
@@ -23934,18 +23934,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.15.5",
     "description": "SPIRE, the SPIFFE runtime: a spire-server StatefulSet that issues workload identities and a spire-agent DaemonSet that attests nodes (k8s_psat) and pods (k8s) and serves the Workload API on each node. Hardened by QuenchWorks, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/spire",
-    "imageDigest": "sha256:24ffd40efb11d29a96f551034b7b9afc01254d39f55b4d488245134c90856330",
+    "imageDigest": "sha256:5439a694b9f9dc37d2613d2aca5b732be9adeb2742394ca4f58e2f449c76a0b4",
     "repositoryID": "45212320-4b32-4633-a98b-85849a2cc67a",
     "upstream": "https://spiffe.io/docs/latest/spire-about/",
     "chartRef": "oci://ghcr.io/quenchworks/charts/spire",
     "images": [
       {
         "name": "spire",
-        "image": "ghcr.io/quenchworks/images/spire@sha256:24ffd40efb11d29a96f551034b7b9afc01254d39f55b4d488245134c90856330"
+        "image": "ghcr.io/quenchworks/images/spire@sha256:5439a694b9f9dc37d2613d2aca5b732be9adeb2742394ca4f58e2f449c76a0b4"
       }
     ],
     "valuesKeys": [
@@ -24182,18 +24182,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "0.12.0",
     "description": "step-issuer, smallstep's cert-manager external issuer: StepIssuer and StepClusterIssuer resources sign certificate requests through a step-ca JWK provisioner. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/step-issuer",
-    "imageDigest": "sha256:b6582f22083713be3f1bd54c22410d23c86671b14d22e10574a5c100d65e2da7",
+    "imageDigest": "sha256:d9c6d4077224c4afb00fe427e18dc7d8c89c2597be396bc7f57eb7a5cb5b618b",
     "repositoryID": "650eed10-e60f-472a-a666-bc9848c806fc",
     "upstream": "https://smallstep.com/docs/step-ca/",
     "chartRef": "oci://ghcr.io/quenchworks/charts/step-issuer",
     "images": [
       {
         "name": "step-issuer",
-        "image": "ghcr.io/quenchworks/images/step-issuer@sha256:b6582f22083713be3f1bd54c22410d23c86671b14d22e10574a5c100d65e2da7"
+        "image": "ghcr.io/quenchworks/images/step-issuer@sha256:d9c6d4077224c4afb00fe427e18dc7d8c89c2597be396bc7f57eb7a5cb5b618b"
       }
     ],
     "valuesKeys": [
@@ -26793,18 +26793,18 @@
     "tier": "low",
     "license": "BUSL-1.1",
     "licenseClean": "caution",
-    "chartVersion": "0.0.17",
+    "chartVersion": "0.0.18",
     "appVersion": "2.0.4",
     "description": "Secrets and encryption management for tokens, keys, and certificates, with dynamic secrets and leasing. Shipped under the Business Source License, which is not OSI-approved; OpenBao (MPL-2.0) is the open drop-in fork. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/vault",
-    "imageDigest": "sha256:b2539d1bfee6e81f8d4dc8451bdaa4fc6e6d40b3212e6ce70f463e111c8fda15",
+    "imageDigest": "sha256:aadc350e950d2cf7fbde01b10a9b06503961cd34e7d67cffc7bb6cd65111ab5f",
     "repositoryID": "f21e3927-e0b6-4bb2-a660-90a3795afa4f",
     "upstream": "https://github.com/hashicorp/vault",
     "chartRef": "oci://ghcr.io/quenchworks/charts/vault",
     "images": [
       {
         "name": "vault",
-        "image": "ghcr.io/quenchworks/images/vault@sha256:b2539d1bfee6e81f8d4dc8451bdaa4fc6e6d40b3212e6ce70f463e111c8fda15"
+        "image": "ghcr.io/quenchworks/images/vault@sha256:aadc350e950d2cf7fbde01b10a9b06503961cd34e7d67cffc7bb6cd65111ab5f"
       }
     ],
     "valuesKeys": [
