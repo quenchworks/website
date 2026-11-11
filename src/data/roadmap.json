@@ -146,7 +146,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Real-time distributed OLAP datastore for low-latency analytics. Measured 2026-09-28: the 1.5.1 distribution carries 444 fixable findings (11 critical) in 31 packages, much of it netty 4.1.134 and jackson-databind 2.21.1 repeated across plugin jars. Measure again after the next release."
+    "note": "Real-time distributed OLAP datastore for low-latency analytics. Re-measured 2026-11-11 at 1.6.0: down to 10 fixable findings in 5 libraries (jackson-core/databind 2.22.2, guava 33.4.8, async-http-client 3.0.13, org.json 20250107), all inside fat or shaded jars: pinot-all and the parquet, orc, confluent-json and hadoop batch plugins, mostly as relocated copies (org.apache.pinot.shaded, pulsar.shade, shaded.parquet). Needs a relocation-aware class swap per jar plus a boot test of every component."
   },
   {
     "name": "Open WebUI",
@@ -482,7 +482,7 @@
     "license": "MPL-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Envoy-based sidecar for Consul. MPL, so cleaner than the BUSL server."
+    "note": "Envoy-based sidecar for Consul. MPL, so cleaner than the BUSL server. Checked 2026-11-11: MPL-2.0, but useful only with the Consul server (BUSL, not in the catalog), and the dataplane bundles Envoy, which is on an upstream hold here."
   },
   {
     "name": "Consul K8s Control Plane",
@@ -490,7 +490,7 @@
     "license": "MPL-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "The operator that makes Consul work on Kubernetes."
+    "note": "The operator that makes Consul work on Kubernetes. Checked 2026-11-11: MPL-2.0, but useful only with the Consul server (BUSL, not in the catalog)."
   },
   {
     "name": "Tinyproxy",
@@ -505,7 +505,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). Researched 2026-11-05: v0.34.0 (2026-11-04). RISK: it embeds an Envoy binary at build time, so it depends on our own Envoy build (see the Wolfi Envoy apk hold on emissary and kgateway) rather than the prebuilt blob, which the scanner cannot see."
   },
   {
