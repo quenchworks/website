@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CatalogList from '../../components/CatalogList.astro';
-import { listedImages as images, eolImages, availableCount, imageTiers, PAGE_SIZE } from '../../data/images';
+import { listedImages as images, eolImages, heldImages, availableCount, imageTiers, PAGE_SIZE } from '../../data/images';
 import { fetchArtifactHub } from '../../data/artifacthub';
 
 // live image (app) versions at build time; falls back gracefully if AH is unreachable.
@@ -39,6 +39,7 @@ const slice = entries.slice(0, PAGE_SIZE);
       tierFilters={tierFilters}
       pageSize={PAGE_SIZE}
       eolCount={eolImages.length}
+      heldCount={heldImages.length}
     />
   </main>
   <Footer />

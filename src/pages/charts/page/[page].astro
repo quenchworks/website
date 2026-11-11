@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
 import CatalogList from '../../../components/CatalogList.astro';
-import { listedCharts as charts, eolCharts, chartCount, chartTiers, PAGE_SIZE } from '../../../data/charts';
+import { listedCharts as charts, eolCharts, heldCharts, chartCount, chartTiers, PAGE_SIZE } from '../../../data/charts';
 import { fetchArtifactHub } from '../../../data/artifacthub';
 
 // Static pages 2..N. Page 1 lives at /charts (index.astro), so it is NOT
@@ -48,6 +48,7 @@ const tierFilters = chartTiers.map((t) => ({ key: t, label: t[0].toUpperCase() +
       tierFilters={tierFilters}
       pageSize={PAGE_SIZE}
       eolCount={eolCharts.length}
+      heldCount={heldCharts.length}
     />
   </main>
   <Footer />

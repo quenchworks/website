@@ -38,10 +38,12 @@ export const ghcr = 'ghcr.io/quenchworks';
 
 export const charts = data as ChartEntry[];
 
-/** Charts of end-of-life apps move off the main list to their own tab; their pages stay. */
+/** Charts of held and end-of-life apps move off the main list to their own tabs; their pages stay. */
 export const isEolChart = (slug: string): boolean => supportOf(slug)?.state === 'eol';
-export const listedCharts = charts.filter((c) => !isEolChart(c.slug));
+export const isHeldChart = (slug: string): boolean => supportOf(slug)?.state === 'held';
+export const listedCharts = charts.filter((c) => !supportOf(c.slug));
 export const eolCharts = charts.filter((c) => isEolChart(c.slug));
+export const heldCharts = charts.filter((c) => isHeldChart(c.slug));
 
 /** Card count per static catalog page (real URL-based pagination). */
 export const PAGE_SIZE = 12;

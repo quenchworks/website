@@ -43,10 +43,12 @@ export const ghcr = 'ghcr.io/quenchworks';
 
 export const images = data as ImageEntry[];
 
-/** End-of-life images move off the main list to their own tab; their detail pages stay. */
+/** Held and end-of-life images move off the main list to their own tabs; their detail pages stay. */
 export const isEol = (slug: string): boolean => supportOf(slug)?.state === 'eol';
-export const listedImages = images.filter((i) => !isEol(i.slug));
+export const isHeld = (slug: string): boolean => supportOf(slug)?.state === 'held';
+export const listedImages = images.filter((i) => !supportOf(i.slug));
 export const eolImages = images.filter((i) => isEol(i.slug));
+export const heldImages = images.filter((i) => isHeld(i.slug));
 
 /**
  * Canonical published versions for an image: the full X.Y.Z leaf tags, newest

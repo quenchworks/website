@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import CatalogList from '../../components/CatalogList.astro';
-import { listedCharts as charts, eolCharts, chartCount, chartTiers, PAGE_SIZE } from '../../data/charts';
+import { listedCharts as charts, eolCharts, heldCharts, chartCount, chartTiers, PAGE_SIZE } from '../../data/charts';
 import { fetchArtifactHub } from '../../data/artifacthub';
 
 // live chart + app versions at build time; falls back gracefully if AH is unreachable.
@@ -35,6 +35,7 @@ const slice = entries.slice(0, PAGE_SIZE);
       tierFilters={tierFilters}
       pageSize={PAGE_SIZE}
       eolCount={eolCharts.length}
+      heldCount={heldCharts.length}
     />
   </main>
   <Footer />
