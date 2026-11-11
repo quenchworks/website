@@ -31,7 +31,20 @@ const daysWithFixable = (() => {
   });
   return Math.round(n);
 })();
-const label = `Fixable findings per nightly scan, ${history.from} to ${history.to}: peak ${peak}, ${daysWithFixable} day${daysWithFixable === 1 ? '' : 's'} with any.`;
+// Time to fix: an episode opens at the first scan with fixable findings and closes at the next
+// scan with none. An episode still open at the last scan is not counted.
+const fixDays: number[] = [];
+let opened: string | null = null;
+for (const [d, f] of series) {
+  if (f > 0 && opened === null) opened = d;
+  else if (f === 0 && opened !== null) { fixDays.push(day(d) - day(opened)); opened = null; }
+}
+fixDays.sort((a, b) => a - b);
+const medianFix = fixDays.length
+  ? Math.round(fixDays.length % 2 ? fixDays[(fixDays.length - 1) / 2] : (fixDays[fixDays.length / 2 - 1] + fixDays[fixDays.length / 2]) / 2)
+  : null;
+const fixText = medianFix === null ? '' : `cleared ${fixDays.length}× · median ${medianFix} day${medianFix === 1 ? '' : 's'} to fix`;
+const label = `Fixable findings per nightly scan, ${history.from} to ${history.to}: peak ${peak}, ${daysWithFixable} day${daysWithFixable === 1 ? '' : 's'} with any${fixText ? `, ${fixText}` : ''}.`;
 ---
 {show && (
   <figure class="mt-4 rounded-lg bg-ink p-3">
@@ -40,7 +53,7 @@ const label = `Fixable findings per nightly scan, ${history.from} to ${history.t
       <path d={path} fill="none" class="stroke-amber-300" stroke-width="1.5" vector-effect="non-scaling-stroke" />
     </svg>
     <figcaption class="mt-2 flex flex-wrap justify-between gap-2 font-mono text-[10px] uppercase tracking-widest text-ash">
-      <span>fixable per nightly scan · peak {peak}</span>
+      <span>fixable per nightly scan · peak {peak}{fixText && ` · ${fixText}`}</span>
       <span>{daysWithFixable} of {Math.round(to - from)} days with any · {history.from} to {history.to}</span>
     </figcaption>
   </figure>
