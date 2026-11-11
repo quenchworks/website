@@ -505,7 +505,7 @@
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Cloudflare Tunnel client: publishes in-cluster services through Cloudflare without opening inbound ports. Researched 2026-11-05: 2026.10.7 (2026-10-30), one static Go binary. Needs a Cloudflare account to be useful; the chart takes a tunnel token Secret."
   },
   {
@@ -515,14 +515,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). Researched 2026-11-05: v0.34.0 (2026-11-04). RISK: it embeds an Envoy binary at build time, so it depends on our own Envoy build (see the Wolfi Envoy apk hold on emissary and kgateway) rather than the prebuilt blob, which the scanner cannot see."
-  },
-  {
-    "name": "Vouch Proxy",
-    "category": "Gateways & proxies",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "SSO for nginx: an auth_request backend that logs users in through OIDC or OAuth and sets a cookie, for apps with no login of their own. Researched 2026-11-05: active (2026-09), versions are git tags without GitHub releases, one static Go binary. Pairs with the nginx and ingress-nginx charts."
   },
   {
     "name": "Odyssey",
