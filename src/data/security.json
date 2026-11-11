@@ -30,6 +30,68 @@
       }
     ]
   },
+  "activemq": {
+    "image": "ghcr.io/quenchworks/images/activemq",
+    "version": "6.3.3",
+    "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "6.3.3",
+        "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "activemq-artemis": {
+    "image": "ghcr.io/quenchworks/images/activemq-artemis",
+    "version": "2.57.0",
+    "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.57.0",
+        "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "adc": {
     "image": "ghcr.io/quenchworks/images/adc",
     "version": "0.27.1",
@@ -305,15 +367,51 @@
     "version": "1.8.0",
     "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
     "critical": 0,
-    "high": 2,
-    "medium": 0,
+    "high": 10,
+    "medium": 6,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
+    "total": 16,
+    "fixable": 15,
     "grade": "D",
-    "score": 70,
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.4.8-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.6.0-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-108106",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+        "targets": [
+          "Java"
+        ]
+      },
       {
         "id": "CVE-2026-113351",
         "severity": "HIGH",
@@ -337,6 +435,66 @@
         "targets": [
           "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
         ]
+      },
+      {
+        "id": "CVE-2026-93451",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-116590",
+        "severity": "MEDIUM",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-118259",
+        "severity": "MEDIUM",
+        "pkg": "io.opentelemetry:opentelemetry-api",
+        "installed": "1.62.0",
+        "fixed": "1.67.0",
+        "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-57914",
+        "severity": "MEDIUM",
+        "pkg": "org.apache.kerby:kerby-asn1",
+        "installed": "2.0.3",
+        "fixed": "2.1.2",
+        "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2025-48924",
+        "severity": "MEDIUM",
+        "pkg": "commons-lang:commons-lang",
+        "installed": "2.6",
+        "fixed": null,
+        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+        "targets": [
+          "Java"
+        ]
       }
     ],
     "versions": [
@@ -344,15 +502,51 @@
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
         "critical": 0,
-        "high": 2,
-        "medium": 0,
+        "high": 10,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 16,
+        "fixable": 15,
         "grade": "D",
-        "score": 70,
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.4.8-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.6.0-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-108106",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+            "targets": [
+              "Java"
+            ]
+          },
           {
             "id": "CVE-2026-113351",
             "severity": "HIGH",
@@ -375,6 +569,66 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
             "targets": [
               "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-93451",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-116590",
+            "severity": "MEDIUM",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-118259",
+            "severity": "MEDIUM",
+            "pkg": "io.opentelemetry:opentelemetry-api",
+            "installed": "1.62.0",
+            "fixed": "1.67.0",
+            "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-57914",
+            "severity": "MEDIUM",
+            "pkg": "org.apache.kerby:kerby-asn1",
+            "installed": "2.0.3",
+            "fixed": "2.1.2",
+            "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2025-48924",
+            "severity": "MEDIUM",
+            "pkg": "commons-lang:commons-lang",
+            "installed": "2.6",
+            "fixed": null,
+            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+            "targets": [
+              "Java"
             ]
           }
         ]
@@ -627,13 +881,13 @@
         "tag": "ghcr.io/quenchworks/images/argo-workflows:4.0.15",
         "critical": 0,
         "high": 3,
-        "medium": 7,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 10,
+        "total": 9,
         "fixable": 0,
         "grade": "D",
-        "score": 42,
+        "score": 46,
         "cves": [
           {
             "id": "CVE-2026-116587",
@@ -674,18 +928,6 @@
             "targets": [
               "usr/bin/argo",
               "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
               "usr/bin/workflow-controller"
             ]
           }
@@ -696,13 +938,13 @@
         "tag": "ghcr.io/quenchworks/images/argo-workflows:3.7.18",
         "critical": 0,
         "high": 3,
-        "medium": 7,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 10,
+        "total": 9,
         "fixable": 0,
         "grade": "D",
-        "score": 42,
+        "score": 46,
         "cves": [
           {
             "id": "CVE-2026-116587",
@@ -743,18 +985,6 @@
             "targets": [
               "usr/bin/argo",
               "usr/bin/argoexec",
-              "usr/bin/workflow-controller"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
               "usr/bin/workflow-controller"
             ]
           }
@@ -1571,80 +1801,42 @@
     "tag": "ghcr.io/quenchworks/images/buildah:1.45.2",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
+    "total": 0,
     "fixable": 0,
-    "grade": "C",
-    "score": 96,
-    "cves": [
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/buildah"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.45.2",
         "tag": "ghcr.io/quenchworks/images/buildah:1.45.2",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
+        "total": 0,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
-        "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/buildah"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.44.1",
         "tag": "ghcr.io/quenchworks/images/buildah:1.44.1",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 2,
+        "total": 1,
         "fixable": 0,
-        "grade": "C",
-        "score": 94,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/buildah"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -2515,8 +2707,8 @@
   },
   "ceph": {
     "image": "ghcr.io/quenchworks/images/ceph",
-    "version": "20.2.4",
-    "tag": "ghcr.io/quenchworks/images/ceph:20.2.4",
+    "version": "20.2.5",
+    "tag": "ghcr.io/quenchworks/images/ceph:20.2.5",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -2529,8 +2721,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "20.2.4",
-        "tag": "ghcr.io/quenchworks/images/ceph:20.2.4",
+        "version": "20.2.5",
+        "tag": "ghcr.io/quenchworks/images/ceph:20.2.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3426,8 +3618,8 @@
   },
   "composer": {
     "image": "ghcr.io/quenchworks/images/composer",
-    "version": "2.11.1",
-    "tag": "ghcr.io/quenchworks/images/composer:2.11.1",
+    "version": "2.11.2",
+    "tag": "ghcr.io/quenchworks/images/composer:2.11.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -3439,6 +3631,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "2.11.2",
+        "tag": "ghcr.io/quenchworks/images/composer:2.11.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "2.11.1",
         "tag": "ghcr.io/quenchworks/images/composer:2.11.1",
@@ -3466,20 +3672,6 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
-      {
-        "version": "2.10.3",
-        "tag": "ghcr.io/quenchworks/images/composer:2.10.3",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
       }
     ]
   },
@@ -3489,28 +3681,14 @@
     "tag": "ghcr.io/quenchworks/images/concourse:8.3.3",
     "critical": 0,
     "high": 0,
-    "medium": 3,
+    "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 4,
+    "total": 1,
     "fixable": 0,
-    "grade": "C",
-    "score": 87,
+    "grade": "B",
+    "score": 99,
     "cves": [
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/local/concourse/resource-bin/registry-image/check",
-          "usr/local/concourse/resource-bin/registry-image/in",
-          "usr/local/concourse/resource-bin/registry-image/out"
-        ]
-      },
       {
         "id": "GHSA-g98v-hv3f-hcfr",
         "severity": "LOW",
@@ -3530,28 +3708,14 @@
         "tag": "ghcr.io/quenchworks/images/concourse:8.3.3",
         "critical": 0,
         "high": 0,
-        "medium": 3,
+        "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 4,
+        "total": 1,
         "fixable": 0,
-        "grade": "C",
-        "score": 87,
+        "grade": "B",
+        "score": 99,
         "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/local/concourse/resource-bin/registry-image/check",
-              "usr/local/concourse/resource-bin/registry-image/in",
-              "usr/local/concourse/resource-bin/registry-image/out"
-            ]
-          },
           {
             "id": "GHSA-g98v-hv3f-hcfr",
             "severity": "LOW",
@@ -3635,51 +3799,15 @@
     "version": "3.13.1",
     "tag": "ghcr.io/quenchworks/images/connaisseur:3.13.1",
     "critical": 0,
-    "high": 2,
-    "medium": 2,
+    "high": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 4,
+    "total": 1,
     "fixable": 0,
-    "grade": "D",
-    "score": 72,
+    "grade": "C",
+    "score": 96,
     "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "app/bin/connaisseur"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "app/bin/connaisseur"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "app/bin/connaisseur"
-        ]
-      },
       {
         "id": "CVE-2026-85747",
         "severity": "MEDIUM",
@@ -3698,51 +3826,15 @@
         "version": "3.13.1",
         "tag": "ghcr.io/quenchworks/images/connaisseur:3.13.1",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 4,
+        "total": 1,
         "fixable": 0,
-        "grade": "D",
-        "score": 72,
+        "grade": "C",
+        "score": 96,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
           {
             "id": "CVE-2026-85747",
             "severity": "MEDIUM",
@@ -3761,51 +3853,15 @@
         "version": "3.12.0",
         "tag": "ghcr.io/quenchworks/images/connaisseur:3.12.0",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 2,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "C",
+        "score": 94,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
           {
             "id": "CVE-2026-85747",
             "severity": "MEDIUM",
@@ -3836,51 +3892,15 @@
         "version": "3.11.1",
         "tag": "ghcr.io/quenchworks/images/connaisseur:3.11.1",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 2,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "C",
+        "score": 94,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "app/bin/connaisseur"
-            ]
-          },
           {
             "id": "CVE-2026-85747",
             "severity": "MEDIUM",
@@ -4853,6 +4873,63 @@
       }
     ]
   },
+  "cube": {
+    "image": "ghcr.io/quenchworks/images/cube",
+    "version": "1.8.21",
+    "tag": "ghcr.io/quenchworks/images/cube:1.8.21",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 1,
+    "unknown": 0,
+    "total": 1,
+    "fixable": 0,
+    "grade": "B",
+    "score": 99,
+    "cves": [
+      {
+        "id": "CVE-2025-14505",
+        "severity": "LOW",
+        "pkg": "elliptic",
+        "installed": "6.6.1",
+        "fixed": null,
+        "title": "elliptic: Key handling flaws in Elliptic",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-14505",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.8.21",
+        "tag": "ghcr.io/quenchworks/images/cube:1.8.21",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 1,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
+        "grade": "B",
+        "score": 99,
+        "cves": [
+          {
+            "id": "CVE-2025-14505",
+            "severity": "LOW",
+            "pkg": "elliptic",
+            "installed": "6.6.1",
+            "fixed": null,
+            "title": "elliptic: Key handling flaws in Elliptic",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-14505",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "dagster": {
     "image": "ghcr.io/quenchworks/images/dagster",
     "version": "1.13.29",
@@ -5333,103 +5410,29 @@
     "version": "0.13.1",
     "tag": "ghcr.io/quenchworks/images/dive:0.13.1",
     "critical": 0,
-    "high": 2,
-    "medium": 1,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 3,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 76,
-    "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/dive"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/dive"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/dive"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.13.1",
         "tag": "ghcr.io/quenchworks/images/dive:0.13.1",
         "critical": 0,
-        "high": 2,
-        "medium": 1,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 3,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 76,
-        "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/dive"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/dive"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/dive"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -7058,127 +7061,29 @@
     "version": "0.45.2",
     "tag": "ghcr.io/quenchworks/images/falco:0.45.2",
     "critical": 0,
-    "high": 2,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 4,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 72,
-    "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/share/falco/plugins/libcontainer.so"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/share/falco/plugins/libcontainer.so"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/share/falco/plugins/libcontainer.so"
-        ]
-      },
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/share/falco/plugins/libcontainer.so"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.45.2",
         "tag": "ghcr.io/quenchworks/images/falco:0.45.2",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 4,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 72,
-        "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/share/falco/plugins/libcontainer.so"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/share/falco/plugins/libcontainer.so"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/share/falco/plugins/libcontainer.so"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/share/falco/plugins/libcontainer.so"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -7974,6 +7879,65 @@
       }
     ]
   },
+  "frp": {
+    "image": "ghcr.io/quenchworks/images/frp",
+    "version": "0.72.0",
+    "tag": "ghcr.io/quenchworks/images/frp:0.72.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 2,
+    "total": 2,
+    "fixable": 2,
+    "grade": "A",
+    "score": 86,
+    "cves": [
+      {
+        "id": "GO-2026-5932",
+        "severity": "UNKNOWN",
+        "pkg": "golang.org/x/crypto",
+        "installed": "v0.58.0",
+        "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
+        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+        "url": "https://go.dev/issue/44226",
+        "targets": [
+          "usr/bin/frpc",
+          "usr/bin/frps"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.72.0",
+        "tag": "ghcr.io/quenchworks/images/frp:0.72.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 2,
+        "total": 2,
+        "fixable": 2,
+        "grade": "A",
+        "score": 86,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.58.0",
+            "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/frpc",
+              "usr/bin/frps"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "frr": {
     "image": "ghcr.io/quenchworks/images/frr",
     "version": "10.6.1",
@@ -8337,27 +8301,14 @@
         "tag": "ghcr.io/quenchworks/images/gitlab-runner:19.3.6",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
+        "total": 0,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
-        "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/gitlab-runner"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -8398,54 +8349,28 @@
     "tag": "ghcr.io/quenchworks/images/gitness:3.3.0",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
+    "total": 0,
     "fixable": 0,
-    "grade": "C",
-    "score": 96,
-    "cves": [
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.2+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/gitness"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "3.3.0",
         "tag": "ghcr.io/quenchworks/images/gitness:3.3.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
+        "total": 0,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
-        "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.2+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/gitness"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -9979,81 +9904,42 @@
     "tag": "ghcr.io/quenchworks/images/harbor-trivy-adapter:2.16.0",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
+    "total": 0,
     "fixable": 0,
-    "grade": "C",
-    "score": 96,
-    "cves": [
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.2+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/scanner-trivy"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "2.16.0",
         "tag": "ghcr.io/quenchworks/images/harbor-trivy-adapter:2.16.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
+        "total": 0,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
-        "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.2+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/scanner-trivy"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "2.15.4",
         "tag": "ghcr.io/quenchworks/images/harbor-trivy-adapter:2.15.4",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
+        "total": 0,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
-        "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.2+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/scanner-trivy"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -13006,71 +12892,15 @@
     "version": "4.0.20",
     "tag": "ghcr.io/quenchworks/images/kubescape:4.0.20",
     "critical": 0,
-    "high": 6,
-    "medium": 6,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 3,
-    "total": 15,
+    "total": 3,
     "fixable": 0,
-    "grade": "D",
-    "score": 10,
+    "grade": "A",
+    "score": 94,
     "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/downloader",
-          "usr/bin/ksserver",
-          "usr/bin/kubescape"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/downloader",
-          "usr/bin/ksserver",
-          "usr/bin/kubescape"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/downloader",
-          "usr/bin/ksserver",
-          "usr/bin/kubescape"
-        ]
-      },
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/downloader",
-          "usr/bin/ksserver",
-          "usr/bin/kubescape"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -13091,71 +12921,15 @@
         "version": "4.0.20",
         "tag": "ghcr.io/quenchworks/images/kubescape:4.0.20",
         "critical": 0,
-        "high": 6,
-        "medium": 6,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 3,
-        "total": 15,
+        "total": 3,
         "fixable": 0,
-        "grade": "D",
-        "score": 10,
+        "grade": "A",
+        "score": 94,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/downloader",
-              "usr/bin/ksserver",
-              "usr/bin/kubescape"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/downloader",
-              "usr/bin/ksserver",
-              "usr/bin/kubescape"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/downloader",
-              "usr/bin/ksserver",
-              "usr/bin/kubescape"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/downloader",
-              "usr/bin/ksserver",
-              "usr/bin/kubescape"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -13179,14 +12953,14 @@
     "version": "0.3.310",
     "tag": "ghcr.io/quenchworks/images/kubescape-node-agent:0.3.310",
     "critical": 0,
-    "high": 6,
-    "medium": 4,
+    "high": 2,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 10,
+    "total": 3,
     "fixable": 0,
     "grade": "D",
-    "score": 24,
+    "score": 76,
     "cves": [
       {
         "id": "CVE-2026-33540",
@@ -13213,45 +12987,6 @@
         ]
       },
       {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/node-agent",
-          "usr/bin/sbom-scanner"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/node-agent",
-          "usr/bin/sbom-scanner"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/node-agent",
-          "usr/bin/sbom-scanner"
-        ]
-      },
-      {
         "id": "CVE-2026-41888",
         "severity": "MEDIUM",
         "pkg": "github.com/distribution/distribution",
@@ -13262,18 +12997,6 @@
         "targets": [
           "usr/bin/node-agent"
         ]
-      },
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/node-agent"
-        ]
       }
     ],
     "versions": [
@@ -13281,14 +13004,14 @@
         "version": "0.3.310",
         "tag": "ghcr.io/quenchworks/images/kubescape-node-agent:0.3.310",
         "critical": 0,
-        "high": 6,
-        "medium": 4,
+        "high": 2,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 10,
+        "total": 3,
         "fixable": 0,
         "grade": "D",
-        "score": 24,
+        "score": 76,
         "cves": [
           {
             "id": "CVE-2026-33540",
@@ -13315,45 +13038,6 @@
             ]
           },
           {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/node-agent",
-              "usr/bin/sbom-scanner"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/node-agent",
-              "usr/bin/sbom-scanner"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/node-agent",
-              "usr/bin/sbom-scanner"
-            ]
-          },
-          {
             "id": "CVE-2026-41888",
             "severity": "MEDIUM",
             "pkg": "github.com/distribution/distribution",
@@ -13361,18 +13045,6 @@
             "fixed": null,
             "title": "github.com/distribution/distribution: Distribution: Security bypass allows unauthorized tag deletion",
             "url": "https://avd.aquasec.com/nvd/cve-2026-41888",
-            "targets": [
-              "usr/bin/node-agent"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
             "targets": [
               "usr/bin/node-agent"
             ]
@@ -13386,199 +13058,29 @@
     "version": "0.2.209",
     "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.209",
     "critical": 0,
-    "high": 4,
-    "medium": 3,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 7,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 48,
-    "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/operator"
-        ]
-      },
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/moby/moby",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/operator"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/operator"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/moby/moby",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/operator"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/operator"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/moby/moby",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/operator"
-        ]
-      },
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/operator"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.2.209",
         "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.209",
         "critical": 0,
-        "high": 4,
-        "medium": 3,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 7,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 48,
-        "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/operator"
-            ]
-          },
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/moby/moby",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/operator"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/operator"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/moby/moby",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/operator"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/operator"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/moby/moby",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/operator"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/operator"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -13587,115 +13089,29 @@
     "version": "0.0.397",
     "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.397",
     "critical": 0,
-    "high": 6,
-    "medium": 3,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 9,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 28,
-    "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/cpexport",
-          "usr/bin/migration",
-          "usr/bin/storage"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/cpexport",
-          "usr/bin/migration",
-          "usr/bin/storage"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/cpexport",
-          "usr/bin/migration",
-          "usr/bin/storage"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.0.397",
         "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.397",
         "critical": 0,
-        "high": 6,
-        "medium": 3,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 9,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 28,
-        "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/cpexport",
-              "usr/bin/migration",
-              "usr/bin/storage"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/cpexport",
-              "usr/bin/migration",
-              "usr/bin/storage"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/cpexport",
-              "usr/bin/migration",
-              "usr/bin/storage"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -13704,109 +13120,29 @@
     "version": "0.0.175",
     "tag": "ghcr.io/quenchworks/images/kubescape-synchronizer:0.0.175",
     "critical": 0,
-    "high": 4,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 6,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 52,
-    "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/client",
-          "usr/bin/server"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/client",
-          "usr/bin/server"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/client",
-          "usr/bin/server"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.0.175",
         "tag": "ghcr.io/quenchworks/images/kubescape-synchronizer:0.0.175",
         "critical": 0,
-        "high": 4,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 6,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 52,
-        "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/client",
-              "usr/bin/server"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/client",
-              "usr/bin/server"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/client",
-              "usr/bin/server"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -13815,109 +13151,29 @@
     "version": "0.3.580",
     "tag": "ghcr.io/quenchworks/images/kubevuln:0.3.580",
     "critical": 0,
-    "high": 4,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 6,
+    "total": 0,
     "fixable": 0,
-    "grade": "D",
-    "score": 52,
-    "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/kubevuln",
-          "usr/bin/sbom-scanner"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/kubevuln",
-          "usr/bin/sbom-scanner"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/kubevuln",
-          "usr/bin/sbom-scanner"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.3.580",
         "tag": "ghcr.io/quenchworks/images/kubevuln:0.3.580",
         "critical": 0,
-        "high": 4,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 6,
+        "total": 0,
         "fixable": 0,
-        "grade": "D",
-        "score": 52,
-        "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/kubevuln",
-              "usr/bin/sbom-scanner"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/kubevuln",
-              "usr/bin/sbom-scanner"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/kubevuln",
-              "usr/bin/sbom-scanner"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -19926,80 +19182,42 @@
     "tag": "ghcr.io/quenchworks/images/podman:6.1.4",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
+    "total": 0,
     "fixable": 0,
-    "grade": "C",
-    "score": 96,
-    "cves": [
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/podman"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "6.1.4",
         "tag": "ghcr.io/quenchworks/images/podman:6.1.4",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
+        "total": 0,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
-        "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/podman"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "6.0.2",
         "tag": "ghcr.io/quenchworks/images/podman:6.0.2",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 2,
+        "total": 1,
         "fixable": 0,
-        "grade": "C",
-        "score": 94,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/podman"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -22179,60 +21397,95 @@
       }
     ]
   },
+  "skipper": {
+    "image": "ghcr.io/quenchworks/images/skipper",
+    "version": "0.28.75",
+    "tag": "ghcr.io/quenchworks/images/skipper:0.28.75",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 3,
+    "total": 3,
+    "fixable": 3,
+    "grade": "A",
+    "score": 79,
+    "cves": [
+      {
+        "id": "GO-2026-5932",
+        "severity": "UNKNOWN",
+        "pkg": "golang.org/x/crypto",
+        "installed": "v0.58.0",
+        "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
+        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+        "url": "https://go.dev/issue/44226",
+        "targets": [
+          "usr/bin/eskip",
+          "usr/bin/routesrv",
+          "usr/bin/skipper"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.28.75",
+        "tag": "ghcr.io/quenchworks/images/skipper:0.28.75",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 3,
+        "total": 3,
+        "fixable": 3,
+        "grade": "A",
+        "score": 79,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto",
+            "installed": "v0.58.0",
+            "fixed": "0.58.1-0.20261009181718-2f1f834330b2",
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/eskip",
+              "usr/bin/routesrv",
+              "usr/bin/skipper"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "skopeo": {
     "image": "ghcr.io/quenchworks/images/skopeo",
     "version": "1.25.1",
     "tag": "ghcr.io/quenchworks/images/skopeo:1.25.1",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
+    "total": 0,
     "fixable": 0,
-    "grade": "C",
-    "score": 96,
-    "cves": [
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/skopeo"
-        ]
-      }
-    ],
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.25.1",
         "tag": "ghcr.io/quenchworks/images/skopeo:1.25.1",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
+        "total": 0,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
-        "cves": [
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/skopeo"
-            ]
-          }
-        ]
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -24629,63 +23882,15 @@
     "version": "3.99.8",
     "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.8",
     "critical": 0,
-    "high": 2,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 5,
+    "total": 1,
     "fixable": 0,
-    "grade": "D",
-    "score": 70,
+    "grade": "A",
+    "score": 98,
     "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/trufflehog"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/trufflehog"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/trufflehog"
-        ]
-      },
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/trufflehog"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -24704,63 +23909,15 @@
         "version": "3.99.8",
         "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.8",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 1,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -24779,63 +23936,15 @@
         "version": "3.98.1",
         "tag": "ghcr.io/quenchworks/images/trufflehog:3.98.1",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 1,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -24854,63 +23963,15 @@
         "version": "3.97.9",
         "tag": "ghcr.io/quenchworks/images/trufflehog:3.97.9",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 1,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/trufflehog"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -26600,63 +25661,15 @@
     "version": "0.37.7",
     "tag": "ghcr.io/quenchworks/images/vcluster:0.37.7",
     "critical": 0,
-    "high": 2,
-    "medium": 2,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 5,
+    "total": 1,
     "fixable": 0,
-    "grade": "D",
-    "score": 70,
+    "grade": "A",
+    "score": 98,
     "cves": [
-      {
-        "id": "CVE-2026-41567",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-        "targets": [
-          "usr/bin/vcluster"
-        ]
-      },
-      {
-        "id": "CVE-2026-42306",
-        "severity": "HIGH",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-        "targets": [
-          "usr/bin/vcluster"
-        ]
-      },
-      {
-        "id": "CVE-2026-41568",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/docker",
-        "installed": "v28.5.2+incompatible",
-        "fixed": null,
-        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-        "targets": [
-          "usr/bin/vcluster"
-        ]
-      },
-      {
-        "id": "CVE-2026-85747",
-        "severity": "MEDIUM",
-        "pkg": "github.com/docker/distribution",
-        "installed": "v2.8.3+incompatible",
-        "fixed": null,
-        "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-        "targets": [
-          "usr/bin/vcluster"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -26675,63 +25688,15 @@
         "version": "0.37.7",
         "tag": "ghcr.io/quenchworks/images/vcluster:0.37.7",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 1,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -26750,63 +25715,15 @@
         "version": "0.36.4",
         "tag": "ghcr.io/quenchworks/images/vcluster:0.36.4",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 1,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.5.2+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -26825,63 +25742,15 @@
         "version": "0.35.5",
         "tag": "ghcr.io/quenchworks/images/vcluster:0.35.5",
         "critical": 0,
-        "high": 2,
-        "medium": 2,
+        "high": 0,
+        "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 5,
+        "total": 1,
         "fixable": 0,
-        "grade": "D",
-        "score": 70,
+        "grade": "A",
+        "score": 98,
         "cves": [
-          {
-            "id": "CVE-2026-41567",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.3.3+incompatible",
-            "fixed": null,
-            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-42306",
-            "severity": "HIGH",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.3.3+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-41568",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/docker",
-            "installed": "v28.3.3+incompatible",
-            "fixed": null,
-            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
-          {
-            "id": "CVE-2026-85747",
-            "severity": "MEDIUM",
-            "pkg": "github.com/docker/distribution",
-            "installed": "v2.8.3+incompatible",
-            "fixed": null,
-            "title": "github.com/distribution/distribution: distribution: Arbitrary container manifest substitution via missing digest verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-85747",
-            "targets": [
-              "usr/bin/vcluster"
-            ]
-          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
