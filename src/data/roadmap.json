@@ -329,7 +329,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Programmable CI/CD engine that runs pipelines in containers. Sized 2026-09-27: the CLI is plain Go, but the engine image bundles runc, CNI plugins and the Go, Python and TypeScript SDK runtimes as builtin content that upstream builds with Dagger itself. A multi-day build; not started."
+    "note": "Programmable CI/CD engine that runs pipelines in containers. Re-sized 2026-11-12 at v0.21.11: upstream's engine image is already Wolfi-based; it carries 152 fixable findings, all Go modules: dagger, dagger-engine and dagger-init (38 to 41 each: containerd/v2 2.2.3, go-git 5.17.2, go-billy 5.8.0), a bundled runc on golang.org/x/net 0.43.0, the CNI plugins and dial-stdio. Plan: build the three Dagger binaries from source with the house Go floors and take runc, the CNI plugins and dial-stdio from Wolfi packages; the engine runs privileged, so the chart is a StatefulSet that clients reach over its socket."
   },
   {
     "name": "KubeVirt",
