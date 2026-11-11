@@ -504,9 +504,9 @@
     "name": "Pomerium",
     "category": "Gateways & proxies",
     "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). Researched 2026-11-05: v0.34.0 (2026-11-04). RISK: it embeds an Envoy binary at build time, so it depends on our own Envoy build (see the Wolfi Envoy apk hold on emissary and kgateway) rather than the prebuilt blob, which the scanner cannot see."
+    "licenseClean": "caution",
+    "priority": "planned",
+    "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). HELD 2026-11-11: the source is Apache-2.0, but official builds released after 2026-11-01 (0.34.0 on) are under the Pomerium Community Edition License 1.0 (free only under US$10M revenue and 100 staff), and the Go binary embeds Pomerium's own prebuilt Envoy, which reports that licence. A clean build needs Envoy built from source, which is itself on an upstream hold here. 0.33.6 (before the change) is the last fully Apache build."
   },
   {
     "name": "PgDog",
@@ -529,7 +529,7 @@
     "category": "Gateways & proxies",
     "license": "MIT",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Web UI that manages nginx proxy hosts, redirects and Let's Encrypt certificates for people who do not want to write nginx config. Researched 2026-11-05: v2.16.0 (2026-09-24). Node backend plus a frontend build on top of our nginx; it needs a database (SQLite or MariaDB)."
   },
   {
