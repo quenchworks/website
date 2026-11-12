@@ -32,6 +32,9 @@ export interface ChartEntry {
   images?: { name: string; image: string }[]; // every image the chart deploys (stacks bundle many)
   upstreams?: string[]; // for stacks: the bundled components' upstream projects
   valuesKeys?: string[]; // top- and second-level values.yaml keys, for search
+  ahCategory?: string; // artifacthub.io/category
+  operator?: boolean; // artifacthub.io/operator
+  crds?: string[]; // CRD kinds from artifacthub.io/crds
 }
 
 export const ghcr = 'ghcr.io/quenchworks';
@@ -42,6 +45,9 @@ export const charts = data as ChartEntry[];
 export const isEolChart = (slug: string): boolean => supportOf(slug)?.state === 'eol';
 export const isHeldChart = (slug: string): boolean => supportOf(slug)?.state === 'held';
 export const listedCharts = charts.filter((c) => !supportOf(c.slug));
+
+/** Listed charts that run a controller with its own CRDs: /operators. Stacks are left to /stacks. */
+export const operatorCharts = listedCharts.filter((c) => !c.stack && (c.operator || c.crds?.length));
 export const eolCharts = charts.filter((c) => isEolChart(c.slug));
 export const heldCharts = charts.filter((c) => isHeldChart(c.slug));
 

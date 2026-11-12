@@ -57,9 +57,11 @@ interface Props {
   eolCount?: number;
   /** How many held entries exist (shown in the tab label). */
   heldCount?: number;
+  /** A filtered view of the charts (e.g. /operators): its own heading, lede and badge noun, no tabs. */
+  view?: { type: string; noun: string; title: string; lede: string };
 }
 
-const { kind, base, all, ah, page, count, categories, tierFilters, pageSize, tab = 'main', eolCount = 0, heldCount = 0 } = Astro.props;
+const { kind, base, all, ah, page, count, categories, tierFilters, pageSize, tab = 'main', eolCount = 0, heldCount = 0, view } = Astro.props;
 const isEolTab = tab === 'eol';
 const isHeldTab = tab === 'held';
 
@@ -73,8 +75,8 @@ const listboxId = `${inputId}-suggest`;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const headerTitle = isImages ? t('catalog.list.headerImages') : t('catalog.list.headerCharts');
-const headerType = isImages ? t('catalog.list.typeImages') : t('catalog.list.typeCharts');
+const headerTitle = view?.title ?? (isImages ? t('catalog.list.headerImages') : t('catalog.list.headerCharts'));
+const headerType = view?.type ?? (isImages ? t('catalog.list.typeImages') : t('catalog.list.typeCharts'));
 const itemBase = localizeUrl(lang, `/${noun}`);
 const pagerBase = localizeUrl(lang, base);
 
@@ -124,10 +126,15 @@ const dataset = all.map((e) => {
   <div class="flex flex-wrap items-center gap-3">
     <p class="font-mono text-xs uppercase tracking-widest text-ash">{headerType}</p>
     <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">
-      <span class="text-base font-bold tabular-nums text-paper">{count}</span> {noun}
+      <span class="text-base font-bold tabular-nums text-paper">{count}</span> {view?.noun ?? noun}
     </span>
   </div>
-  {isHeldTab ? (
+  {view ? (
+    <>
+      <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{view.title}</h1>
+      <p class="mt-4 leading-relaxed text-ash">{view.lede}</p>
+    </>
+  ) : isHeldTab ? (
     <>
       <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">{t('support.held')}</h1>
       <p class="mt-4 leading-relaxed text-ash">{t(isImages ? 'catalog.tabs.heldDescImages' : 'catalog.tabs.heldDescCharts')}</p>
@@ -154,7 +161,7 @@ const dataset = all.map((e) => {
   )}
 </header>
 
-{(
+{!view && (
   <nav class="mt-8 flex gap-1 border-b border-line" aria-label={t('catalog.tabs.label')}>
     {[
       { key: 'main', href: localizeUrl(lang, base), label: t('catalog.tabs.supported') },

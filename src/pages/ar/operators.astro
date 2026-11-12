@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CatalogList from '../../components/CatalogList.astro';
+import { operatorCharts, chartTiers } from '../../data/charts';
+import { fetchArtifactHub } from '../../data/artifacthub';
+import { useTranslations } from '../../i18n/ui';
+
+// The chart catalog filtered to charts that run a controller and install CRDs (operator flag or
+// artifacthub.io/crds, both from Chart.yaml via sync-catalog). One page: the whole set fits.
+const ah = await fetchArtifactHub();
+const t = useTranslations('ar');
+const entries = [...operatorCharts].sort((a, b) => a.name.localeCompare(b.name));
+const categories = [...new Set(entries.map((e) => e.category))].sort();
+const tierFilters = chartTiers.map((x) => ({ key: x, label: x[0].toUpperCase() + x.slice(1) }));
+---
+
+<Base title={`${t('operators.type')} · QuenchWorks`} description={t('operators.desc')}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <CatalogList
+      kind="charts"
+      base="/operators"
+      all={entries}
+      ah={ah}
+      page={{ data: entries, current: 1, total: 1 }}
+      count={entries.length}
+      categories={categories}
+      tierFilters={tierFilters}
+      pageSize={entries.length}
+      view={{ type: t('operators.type'), noun: t('operators.count'), title: t('operators.title'), lede: t('operators.desc') }}
+    />
+  </main>
+  <Footer />
+</Base>
