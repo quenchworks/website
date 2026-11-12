@@ -21,7 +21,7 @@ const ah = await fetchArtifactHub();
 const group = new Map(STACKS.map((s) => [s.slug, t(`stacks.group.${s.group}` as any)]));
 const entries = listedCharts
   .filter((c) => c.stack)
-  .map((c) => ({ ...c, category: group.get(c.slug) ?? c.category }))
+  .map((c) => ({ ...c, category: group.get(c.slug) ?? c.category, operator: STACKS.find((s) => s.slug === c.slug)?.operator ?? c.operator }))
   .sort((a, b) => a.name.localeCompare(b.name));
 const total = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
 const slice = entries.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);

@@ -101,6 +101,8 @@ const dataset = all.map((e) => {
     summary: localizedSummary(lang, kind, e.slug, e.summary),
     version,
     caution: !!e.caution,
+    // charts only: installs CRDs, its own or a component's (stacks pass it in precomputed).
+    operator: !isImages && !!(e.operator || e.crds?.length),
     // images only: newest canonical tag (semver, alias tags dropped), its size,
     // and how many canonical tags exist.
     latest: isImages ? (canon(e)[0]?.version ?? null) : null,
@@ -351,6 +353,7 @@ const dataset = all.map((e) => {
             <span class="rounded bg-ink px-2 py-0.5">{categoryName(lang, e.category)}</span>
             <span class="rounded bg-ink px-2 py-0.5">{e.tier}</span>
             <span class:list={['rounded bg-ink px-2 py-0.5', e.caution ? 'text-amber-400' : '']}>{e.license}</span>
+            {(e.operator || e.crds?.length) && <span class="rounded border border-line px-2 py-0.5">{t('catalog.list.badgeOperator')}</span>}
           </div>
         </a>
       </li>
@@ -376,6 +379,7 @@ const dataset = all.map((e) => {
   data-itembase={itemBase}
   data-page-size={pageSize}
   data-planned={t('catalog.list.badgePlanned')}
+  data-operator={t('catalog.list.badgeOperator')}
   data-unscanned={t('catalog.list.badgeCve')}
   data-versions={t('catalog.list.versions')}
   data-chartv={t('catalog.list.chartV')}
@@ -411,6 +415,7 @@ const dataset = all.map((e) => {
     summary: string;
     version: string | null;
     caution: boolean;
+    operator: boolean;
     latest: string | null;
     size: string | null;
     versionCount: number;
@@ -420,6 +425,7 @@ const dataset = all.map((e) => {
   const kind = dataEl?.getAttribute('data-kind') ?? 'charts';
   const itemBase = dataEl?.getAttribute('data-itembase') ?? `/${kind}`;
   const tPlanned = dataEl?.getAttribute('data-planned') ?? 'Planned';
+  const tOperator = dataEl?.getAttribute('data-operator') ?? 'Operator';
   const tUnscanned = dataEl?.getAttribute('data-unscanned') ?? 'Not scanned';
   const tVersions = dataEl?.getAttribute('data-versions') ?? 'versions';
   const tChartV = dataEl?.getAttribute('data-chartv') ?? 'chart v';
@@ -642,6 +648,7 @@ const dataset = all.map((e) => {
         <span class="rounded bg-ink px-2 py-0.5">${esc(e.categoryLabel)}</span>
         <span class="rounded bg-ink px-2 py-0.5">${esc(e.tier)}</span>
         <span class="${licCls}">${esc(e.license)}</span>
+        ${e.operator ? `<span class="rounded border border-line px-2 py-0.5">${esc(tOperator)}</span>` : ''}
       </div>
     </a></li>`;
   }
