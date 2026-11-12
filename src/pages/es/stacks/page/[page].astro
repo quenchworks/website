@@ -1,0 +1,24 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import StackCatalog from '../../../../components/StackCatalog.astro';
+import { listedCharts, PAGE_SIZE } from '../../../../data/charts';
+import { useTranslations } from '../../../../i18n/ui';
+
+// Pages 2..N; page 1 is /stacks.
+export function getStaticPaths() {
+  const total = Math.max(1, Math.ceil(listedCharts.filter((c) => c.stack).length / PAGE_SIZE));
+  return Array.from({ length: total - 1 }, (_, i) => ({ params: { page: String(i + 2) }, props: { current: i + 2 } }));
+}
+const { current } = Astro.props;
+const t = useTranslations('es');
+---
+
+<Base title={`${t('nav.stacks')} · ${current} · QuenchWorks`} description={t('stacks.lede')}>
+  <Header />
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <StackCatalog current={current} />
+  </main>
+  <Footer />
+</Base>

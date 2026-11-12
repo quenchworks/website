@@ -118,6 +118,7 @@
     transition:
       opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: calc(var(--i, 0) * 50ms);
+    /* capped: on a long list the 30th card would otherwise wait 1.5s before it starts */
+    transition-delay: min(calc(var(--i, 0) * 50ms), 300ms);
   }
 }

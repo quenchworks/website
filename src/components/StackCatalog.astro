@@ -1,0 +1,43 @@
+---
+/**
+ * /stacks in the same browser as /charts: CatalogList over the stack charts, 12 per page
+ * with the real pager, the same search and filters, live versions and CVE grades. The
+ * category filter is the stack's group (from its ArtifactHub category, see data/stacks).
+ */
+import CatalogList from './CatalogList.astro';
+import { listedCharts, chartTiers, PAGE_SIZE } from '../data/charts';
+import { STACKS } from '../data/stacks';
+import { fetchArtifactHub } from '../data/artifacthub';
+import { getLangFromUrl, useTranslations } from '../i18n/ui';
+
+interface Props {
+  /** 1-based page number. */
+  current: number;
+}
+const { current } = Astro.props;
+const t = useTranslations(getLangFromUrl(Astro.url));
+const ah = await fetchArtifactHub();
+
+const group = new Map(STACKS.map((s) => [s.slug, t(`stacks.group.${s.group}` as any)]));
+const entries = listedCharts
+  .filter((c) => c.stack)
+  .map((c) => ({ ...c, category: group.get(c.slug) ?? c.category }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+const total = Math.max(1, Math.ceil(entries.length / PAGE_SIZE));
+const slice = entries.slice((current - 1) * PAGE_SIZE, current * PAGE_SIZE);
+const categories = [...new Set(entries.map((e) => e.category))].sort();
+const tierFilters = chartTiers.map((x) => ({ key: x, label: x[0].toUpperCase() + x.slice(1) }));
+---
+
+<CatalogList
+  kind="charts"
+  base="/stacks"
+  all={entries}
+  ah={ah}
+  page={{ data: slice, current, total }}
+  count={entries.length}
+  categories={categories}
+  tierFilters={tierFilters}
+  pageSize={PAGE_SIZE}
+  view={{ type: t('nav.stacks'), noun: t('stacks.count'), title: t('stacks.title'), lede: t('stacks.lede') }}
+/>

@@ -2,79 +2,16 @@
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import StackList from '../../components/StackList.astro';
-import { STACKS } from '../../data/stacks';
-import { fetchArtifactHub } from '../../data/artifacthub';
+import StackCatalog from '../../components/StackCatalog.astro';
 import { useTranslations } from '../../i18n/ui';
 
-// Live chart versions + Trivy grades at build time; falls back gracefully if AH is unreachable.
-const ah = await fetchArtifactHub();
 const t = useTranslations('ar');
-
-// عبارة القيمة المترجمة لكل حزمة (حسب الـ slug). البيانات البنيوية
-// (الاسم/المكوّنات/الـ slug) مشتركة في ../../data/stacks.
-const prop: Record<string, string> = {
-  'observability-stack': 'مقاييس وتنبيهات ولوحات Kubernetes مُعبّأة من تثبيت واحد.',
-  'lgtm-stack': 'المجموعة الشاملة للسجلّات والمقاييس والتتبّعات، جميعها في لوحة واحدة.',
-  'logging-stack': 'تجميع وتصفّح سجلّات العنقود بالكامل، جاهزة للاستعلام.',
-  'tracing-stack': 'تتبّع موزّع مع بوّابة استقبال OTLP، جاهز لخدماتك.',
-  'identity-stack': 'دخول موحّد عبر OIDC وSAML أمام تطبيقاتك، مع قاعدة بيانات مرفقة.',
-  'postgres-ha-stack': 'عنقود PostgreSQL من 3 عقد ينتقل عند الفشل تلقائيًا، مع تجميع اتصالات ولوحات.',
-  'cache-stack': 'ذاكرة تخزين مؤقت متوافقة مع Redis ومقاييسها جاهزة على لوحة.',
-  'streaming-stack': 'Kafka مع سجلّ مخططات ووكيل REST وواجهة ويب، متّصلة مسبقًا.',
-  'secrets-stack': 'خزنة أسرار تهيّئ نفسها، مع دخول موحّد للأشخاص ورموز للخدمات.',
-  'ml-stack': 'دفاتر Jupyter وتتبّع التجارب ووسم البيانات، وكل دفتر موجَّه مسبقًا إلى MLflow.',
-  'sigstore-stack': 'توقيعك الخاص بدون مفاتيح: سلطة شهادات وسجل شفافية وسلطة ختم زمني لـ cosign.',
-  'gitops-stack': 'نشر مدفوع من Git وإصدارات canary وخطوط معالجة، مع webhooks قادرة مسبقًا على تشغيل workflow.',
-  'llm-stack': 'نماذج محلية خلف واجهة API واحدة متوافقة مع OpenAI، مع قاعدة بيانات متجهات للاسترجاع وتنزيل النماذج عند التثبيت.',
-  'lakehouse-stack': 'استعلامات SQL على جداول Apache Iceberg في تخزين S3 الخاص بك، مع الكتالوج والمفاتيح والـ bucket موصولة مسبقًا.',
-  'backup-stack': 'نسخ احتياطي واستعادة للـ namespaces إلى تخزين S3 مثبّت بجانبها، مع المفاتيح والـ bucket وموقع النسخ الاحتياطي مضبوطة مسبقًا.',
-  'dns-stack': 'يخدم PowerDNS مناطقك ويملؤها external-dns من خدمات Services وIngresses المُعلَّمة، عبر مفتاح API واحد مُولَّد.',
-  'ingress-stack': 'متحكّم ingress مع cert-manager وسلطة شهادات للعنقود، ليحصل أي Ingress على شهادة TLS بتعليق توضيحي واحد.',
-  'supply-chain-stack': 'لا يُسمح إلا بصور QuenchWorks الموقّعة في الـ namespaces التي تضع عليها التسمية، مع التحقق عبر Sigstore، وفحص ما يعمل.',
-};
-
-const quickstartHref = '/ar/docs/chart-quickstart';
-const chartsHref = '/ar/charts';
 ---
 
-<Base
-  title="الحزم · QuenchWorks"
-  description="حزم منسّقة ومُحصّنة للمراقبة والهوية وقواعد البيانات والتخزين المؤقت والبث والأسرار وتعلّم الآلة والنماذج اللغوية وlakehouse وGitOps والنسخ الاحتياطي وingress وDNS وضبط سلسلة التوريد. انشر نظامًا كاملًا بأمر helm install واحد بدلًا من تجميع ستة charts يدويًا."
->
+<Base title={`${t('nav.stacks')} · QuenchWorks`} description={t('stacks.lede')}>
   <Header />
-  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:الحزم">
-    <span hidden data-pagefind-meta="type:Stacks"></span>
-    <div class="flex flex-wrap items-center gap-3">
-      <p class="font-mono text-xs uppercase tracking-widest text-ash">الحزم</p>
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">
-        <span class="text-base font-bold tabular-nums text-paper">{STACKS.length}</span> {t('stacks.count')}
-      </span>
-    </div>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">أنظمة كاملة بأمر helm install واحد</h1>
-    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      الحزم هي charts مظلّية منسّقة تجمع نفس المكوّنات المُحصّنة الموجودة في الـ charts الفردية
-      (صفر CVE، بدون صلاحيات الجذر، موقّعة بـ cosign، مثبّتة بالـ digest، متعددة المعماريات)
-      وتصلها ببعضها مسبقًا. بدلًا من تجميع ستة charts يدويًا ومعرفة كيفية تواصلها معًا، تحصل على
-      نظام جاهز للعمل من تثبيت واحد.
-    </p>
-    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      معظم الحزم بدون مشغّلات: Helm بحت، بدون CRDs وبدون مشغّلات لتشغيلها، وما تنشره هو بالضبط
-      الوصلات التي يمكنك قراءتها في الـ chart. ثمانٍ منها مبنية حول متحكّم وتثبّت الـ CRDs الخاصة به:
-      GitOps (Argo)، والنسخ الاحتياطي (Velero)، وingress وPKI (cert-manager)، والسياسات وسلسلة التوريد
-      (Kyverno)، وCloudNativePG، وMySQL HA (MariaDB Operator).
-    </p>
-
-    <StackList prop={prop} ah={ah} />
-
-    <section class="mt-16 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
-      <p class="text-base text-paper">نفس المكوّنات المُحصّنة، مجمّعة مسبقًا.</p>
-      <p class="mt-2 text-sm text-ash">تصفّح كل الـ charts، أو اقرأ دليل البدء السريع لنشر أوّل واحد.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
-        <a href={chartsHref} class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">تصفّح كل الـ charts</a>
-        <a href={quickstartHref} class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">دليل البدء السريع للـ charts</a>
-      </div>
-    </section>
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <StackCatalog current={1} />
   </main>
   <Footer />
 </Base>

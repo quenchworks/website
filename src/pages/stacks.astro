@@ -2,88 +2,16 @@
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import StackList from '../components/StackList.astro';
-import { STACKS } from '../data/stacks';
-import { fetchArtifactHub } from '../data/artifacthub';
+import StackCatalog from '../components/StackCatalog.astro';
 import { useTranslations } from '../i18n/ui';
 
-// Live chart versions + Trivy grades at build time; falls back gracefully if AH is unreachable.
-const ah = await fetchArtifactHub();
 const t = useTranslations('en');
-
-// Translated one-line value prop per stack (keyed by slug). Structural data
-// (name/components/slug) is shared in ../data/stacks.
-const prop: Record<string, string> = {
-  'observability-stack': 'Metrics, alerting, and populated Kubernetes dashboards from a single install.',
-  'lgtm-stack': 'The logs + metrics + traces superset, all in one pane of glass.',
-  'logging-stack': 'Cluster-wide log aggregation and browsing, ready to query.',
-  'tracing-stack': 'Distributed tracing with an OTLP ingest gateway, ready for your services.',
-  'identity-stack': 'SSO via OIDC and SAML in front of your apps, with a database that comes with it.',
-  'postgres-ha-stack': 'A 3-node PostgreSQL cluster that fails over on its own, with pooling and dashboards.',
-  'cache-stack': 'A Redis-compatible cache with its metrics already on a dashboard.',
-  'streaming-stack': 'Kafka with a schema registry, a REST proxy and a web console, already connected.',
-  'secrets-stack': 'A self-initializing secrets vault with single sign-on for people and tokens for services.',
-  'ml-stack': 'Notebooks, experiment tracking and data labeling, with every notebook already pointed at MLflow.',
-  'sigstore-stack': 'Your own keyless signing: a certificate authority, a transparency log and a timestamp authority for cosign.',
-  'gitops-stack': 'Git-driven deploys, canary releases and pipelines, with webhooks already able to start a workflow.',
-  'llm-stack': 'Local models behind one OpenAI-compatible API, with a vector database for retrieval and the models pulled at install.',
-  'lakehouse-stack': 'SQL over Apache Iceberg tables on your own S3 storage, with the catalog, keys and bucket already wired.',
-  'backup-stack': 'Back up and restore namespaces to S3 storage installed beside it, with the keys, bucket and backup location already set.',
-  'dns-stack': 'PowerDNS serves your zones and external-dns fills them from annotated Services and Ingresses, through one generated API key.',
-  'ingress-stack': 'An ingress controller and cert-manager with a cluster CA, so an Ingress gets a TLS certificate from one annotation.',
-  'supply-chain-stack': 'Admit only signed QuenchWorks images in the namespaces you label, checked against Sigstore, and scan what runs.',
-  'cnpg-stack': 'A replicated PostgreSQL cluster run by the CloudNativePG operator, with automated failover and backups.',
-  'mysql-ha-stack': 'A 3-node Galera cluster run by MariaDB Operator: synchronous multi-primary MySQL-compatible HA.',
-  'search-stack': 'OpenSearch with OpenSearch Dashboards already connected, as one node or an HA cluster.',
-  'profiling-stack': 'Continuous profiling in Pyroscope, browsable in Grafana with the datasource already set.',
-  'cost-stack': 'What each namespace and workload costs, from OpenCost reading its own Prometheus, on a Grafana dashboard.',
-  'pki-stack': 'Your own certificate authority behind cert-manager, with its root distributed to every namespace that asks.',
-  'policy-stack': 'Kyverno admission policies with their reports on a dashboard, plus Polaris best-practice audits.',
-  'runtime-security-stack': 'Falco syscall rules and Tetragon kernel-level tracing, alerting on what containers do at runtime.',
-  'registry-stack': 'Harbor for images and Helm charts with scanning, plus a private Terraform registry, in one install.',
-};
-
-const operatorStacks = STACKS.filter((s) => s.operator);
-const quickstartHref = '/docs/chart-quickstart';
-const chartsHref = '/charts';
 ---
 
-<Base
-  title="Stacks · QuenchWorks"
-  description="Curated, hardened stacks for observability, identity, databases, caching, streaming, secrets, ML and LLMs, lakehouse, GitOps, backup, ingress, DNS and supply-chain control. Deploy a full system with one helm install instead of assembling six charts by hand."
->
+<Base title={`${t('nav.stacks')} · QuenchWorks`} description={t('stacks.lede')}>
   <Header />
-  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks">
-    <span hidden data-pagefind-meta="type:Stacks"></span>
-    <div class="flex flex-wrap items-center gap-3">
-      <p class="font-mono text-xs uppercase tracking-widest text-ash">Stacks</p>
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">
-        <span class="text-base font-bold tabular-nums text-paper">{STACKS.length}</span> {t('stacks.count')}
-      </span>
-    </div>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Full systems, one helm install</h1>
-    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      Stacks are curated umbrella charts that bundle the same hardened building blocks as our
-      individual charts (CVE-gated, nonroot, cosign-signed, digest-pinned, multi-arch) and pre-wire
-      them together. Instead of assembling six charts by hand and figuring out how they talk to
-      each other, you get a working system from a single install.
-    </p>
-    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      Most stacks are operator-free: plain Helm, no CRDs and no operators to run, and what you deploy
-      is exactly the wiring you can read in the chart. {operatorStacks.length} are built around a controller
-      and install its CRDs: {operatorStacks.map((s) => s.name.replace(/ Stack$/, '')).join(', ')}.
-    </p>
-
-    <StackList prop={prop} ah={ah} />
-
-    <section class="mt-16 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
-      <p class="text-base text-paper">Same hardened parts, pre-assembled.</p>
-      <p class="mt-2 text-sm text-ash">Browse every chart, or read the quickstart to deploy your first one.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
-        <a href={chartsHref} class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">Browse all charts</a>
-        <a href={quickstartHref} class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">Chart quickstart</a>
-      </div>
-    </section>
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <StackCatalog current={1} />
   </main>
   <Footer />
 </Base>

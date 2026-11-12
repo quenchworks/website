@@ -2,80 +2,16 @@
 import Base from '../../layouts/Base.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-
-import StackList from '../../components/StackList.astro';
-import { STACKS } from '../../data/stacks';
-import { fetchArtifactHub } from '../../data/artifacthub';
+import StackCatalog from '../../components/StackCatalog.astro';
 import { useTranslations } from '../../i18n/ui';
 
-// Live chart versions + Trivy grades at build time; falls back gracefully if AH is unreachable.
-const ah = await fetchArtifactHub();
 const t = useTranslations('es');
-
-// Propuesta de valor traducida por stack (por slug). Los datos estructurales
-// (nombre/componentes/slug) se comparten en ../../data/stacks.
-const prop: Record<string, string> = {
-  'observability-stack': 'Métricas, alertas y paneles de Kubernetes poblados desde una sola instalación.',
-  'lgtm-stack': 'El superconjunto de logs + métricas + trazas, todo en un solo panel.',
-  'logging-stack': 'Agregación y exploración de logs de todo el clúster, listas para consultar.',
-  'tracing-stack': 'Trazado distribuido con una pasarela de ingesta OTLP, lista para tus servicios.',
-  'identity-stack': 'SSO mediante OIDC y SAML delante de tus aplicaciones, con una base de datos incluida.',
-  'postgres-ha-stack': 'Un clúster PostgreSQL de 3 nodos que conmuta por error solo, con pooling y paneles.',
-  'cache-stack': 'Una caché compatible con Redis con sus métricas ya en un panel.',
-  'streaming-stack': 'Kafka con registro de esquemas, proxy REST y consola web, ya conectados.',
-  'secrets-stack': 'Un almacén de secretos que se inicializa solo, con inicio de sesión único para personas y tokens para servicios.',
-  'ml-stack': 'Notebooks, seguimiento de experimentos y etiquetado de datos, con cada notebook ya apuntando a MLflow.',
-  'sigstore-stack': 'Tu propia firma sin claves: una autoridad de certificación, un registro de transparencia y una autoridad de sellado de tiempo para cosign.',
-  'gitops-stack': 'Despliegues desde Git, lanzamientos canary y pipelines, con webhooks que ya pueden iniciar un workflow.',
-  'llm-stack': 'Modelos locales detrás de una sola API compatible con OpenAI, con una base de datos vectorial para recuperación y los modelos descargados en la instalación.',
-  'lakehouse-stack': 'SQL sobre tablas Apache Iceberg en tu propio almacenamiento S3, con el catálogo, las claves y el bucket ya conectados.',
-  'backup-stack': 'Copias de seguridad y restauración de namespaces en almacenamiento S3 instalado al lado, con las claves, el bucket y la ubicación de respaldo ya configurados.',
-  'dns-stack': 'PowerDNS sirve tus zonas y external-dns las llena desde Services e Ingresses anotados, con una sola clave de API generada.',
-  'ingress-stack': 'Un controlador de ingress y cert-manager con una CA del clúster, para que un Ingress obtenga un certificado TLS con una sola anotación.',
-  'supply-chain-stack': 'Admite solo imágenes de QuenchWorks firmadas en los namespaces que etiquetes, verificadas contra Sigstore, y escanea lo que se ejecuta.',
-};
-
-const quickstartHref = '/es/docs/chart-quickstart';
-const chartsHref = '/es/charts';
 ---
 
-<Base
-  title="Stacks · QuenchWorks"
-  description="Stacks curados y endurecidos para observabilidad, identidad, bases de datos, caché, streaming, secretos, ML y LLM, lakehouse, GitOps, backup, ingress, DNS y control de la cadena de suministro. Despliega un sistema completo con un solo helm install en lugar de ensamblar seis charts a mano."
->
+<Base title={`${t('nav.stacks')} · QuenchWorks`} description={t('stacks.lede')}>
   <Header />
-  <main class="mx-auto max-w-5xl px-5 py-16" data-pagefind-body data-pagefind-meta="title:Stacks">
-    <span hidden data-pagefind-meta="type:Stacks"></span>
-    <div class="flex flex-wrap items-center gap-3">
-      <p class="font-mono text-xs uppercase tracking-widest text-ash">Stacks</p>
-      <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-graphite px-3 py-1 font-mono text-xs uppercase tracking-widest text-ash">
-        <span class="text-base font-bold tabular-nums text-paper">{STACKS.length}</span> {t('stacks.count')}
-      </span>
-    </div>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Sistemas completos, un solo helm install</h1>
-    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      Los stacks son charts paraguas curados que agrupan los mismos componentes endurecidos que
-      nuestros charts individuales (con puerta de CVE, sin root, firmados con cosign, fijados por digest,
-      multi-arquitectura) y los precablean entre sí. En lugar de ensamblar seis charts a mano y
-      averiguar cómo se comunican, obtienes un sistema funcionando con una sola instalación.
-    </p>
-    <p class="mt-4 max-w-2xl leading-relaxed text-ash">
-      La mayoría de los stacks no usan operadores: Helm puro, sin CRDs ni operadores que ejecutar, y lo
-      que despliegas es exactamente el cableado que puedes leer en el chart. Ocho giran en torno a un
-      controlador e instalan sus CRDs: GitOps (Argo), backup (Velero), ingress y PKI (cert-manager),
-      políticas y cadena de suministro (Kyverno), CloudNativePG y MySQL HA (MariaDB Operator).
-    </p>
-
-    <StackList prop={prop} ah={ah} />
-
-    <section class="mt-16 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
-      <p class="text-base text-paper">Las mismas piezas endurecidas, preensambladas.</p>
-      <p class="mt-2 text-sm text-ash">Explora todos los charts, o lee la guía rápida para desplegar el primero.</p>
-      <div class="mt-6 flex flex-wrap justify-center gap-2 font-mono text-xs uppercase tracking-widest">
-        <a href={chartsHref} class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">Explorar todos los charts</a>
-        <a href={quickstartHref} class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">Guía rápida de charts</a>
-      </div>
-    </section>
+  <main class="mx-auto max-w-5xl px-5 py-16">
+    <StackCatalog current={1} />
   </main>
   <Footer />
 </Base>
