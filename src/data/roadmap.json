@@ -797,11 +797,11 @@
     "note": "Unleash + PostgreSQL: feature flags and gradual rollouts with the API token for your services generated at install. Added 2026-11-13 (stacks track): every component already has a QuenchWorks chart."
   },
   {
-    "name": "API Gateway Stack",
+    "name": "APISIX Hybrid Stack",
     "category": "Stacks",
-    "license": "Per component (all OSI)",
+    "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Kong + Keycloak + PostgreSQL: an API gateway with OIDC-protected routes and the gateway database wired. Added 2026-11-13 (stacks track): every component already has a QuenchWorks chart."
+    "priority": "next",
+    "note": "APISIX in decoupled (hybrid) mode, the counterpart of Kong hybrid mode: a control plane serving the Admin API and data planes that only proxy, sharing an HA etcd over mTLS, with the APISIX Ingress Controller writing routes through the control plane. Every part is already a QuenchWorks chart (apisix, etcd, apisix-ingress-controller); the apisix chart gains a role setting (traditional, control_plane, data_plane) first. Added 2026-11-13 as the API gateway stack, in place of a Kong one: Kong OSS is on patch-only 3.9.x releases with no word on support after December 2026."
   }
 ]
