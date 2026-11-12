@@ -493,19 +493,11 @@
     "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). HELD 2026-11-11: the source is Apache-2.0, but official builds released after 2026-11-01 (0.34.0 on) are under the Pomerium Community Edition License 1.0 (free only under US$10M revenue and 100 staff), and the Go binary embeds Pomerium's own prebuilt Envoy, which reports that licence. A clean build needs Envoy built from source, which is itself on an upstream hold here. 0.33.6 (before the change) is the last fully Apache build."
   },
   {
-    "name": "Zoraxy",
-    "category": "Gateways & proxies",
-    "license": "AGPL-3.0",
-    "licenseClean": "agpl",
-    "priority": "next",
-    "note": "General-purpose reverse proxy with a web UI (virtual hosts, ACME, stream proxy, uptime monitor). AGPL-3.0. Sized 2026-11-12 on v3.3.4, the newest stable tag (3.3.5 is still at rc5): Go with an embedded web UI; findings float (x/crypto, x/net, grpc, go-jose v4) except gorilla/csrf 1.7.2. 1.7.3 enforces origin checks on plain HTTP, so the admin UI needs csrf.PlaintextHTTPRequest for non-TLS requests (as Harbor did); CVE-2025-47909 has no fix but only affects TrustedOrigins, which Zoraxy does not set (main.go:125-131): VEX with a build guard."
-  },
-  {
     "name": "3proxy",
     "category": "Gateways & proxies",
     "license": "3proxy Public License",
     "licenseClean": "caution",
-    "priority": "planned",
-    "note": "Tiny multi-protocol proxy suite in C (HTTP, SOCKS4/5, POP3, FTP and TCP/UDP port mapping). Researched 2026-11-05: 1.0.2 (2026-10-24). GitHub reports NOASSERTION: its own \"3proxy 0.9 Public License\" is in LICENSE. Confirm it is OSI-compatible (it may offer a choice of standard licenses) before writing a recipe."
+    "priority": "next",
+    "note": "Tiny multi-protocol proxy suite in C (HTTP, SOCKS4/5, POP3, FTP and TCP/UDP port mapping). License checked 2026-11-12: its own BSD-style 3proxy 0.9 Public License, which also offers Apache-2.0, GPL-2.0+ or LGPL-2.1+ instead, so it ships under Apache-2.0. Researched 2026-11-05 at 1.0.2; C, no bundled dependencies."
   }
 ]
