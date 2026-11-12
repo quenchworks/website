@@ -498,7 +498,7 @@
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
     "priority": "next",
-    "note": "General-purpose reverse proxy with a web UI (virtual hosts, ACME, stream proxy, uptime monitor). Researched 2026-11-05: v3.3.5-rc5 is a prerelease, so ship the newest stable tag. Go with an embedded web UI. AGPL-3.0."
+    "note": "General-purpose reverse proxy with a web UI (virtual hosts, ACME, stream proxy, uptime monitor). AGPL-3.0. Sized 2026-11-12 on v3.3.4, the newest stable tag (3.3.5 is still at rc5): Go with an embedded web UI; findings float (x/crypto, x/net, grpc, go-jose v4) except gorilla/csrf 1.7.2. 1.7.3 enforces origin checks on plain HTTP, so the admin UI needs csrf.PlaintextHTTPRequest for non-TLS requests (as Harbor did); CVE-2025-47909 has no fix but only affects TrustedOrigins, which Zoraxy does not set (main.go:125-131): VEX with a build guard."
   },
   {
     "name": "3proxy",
