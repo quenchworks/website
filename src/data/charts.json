@@ -2142,6 +2142,94 @@
     ]
   },
   {
+    "slug": "blocky",
+    "name": "blocky",
+    "category": "Networking",
+    "summary": "DNS proxy and ad blocker for the local network. Blocklists per client group, custom and conditional DNS, DNS-over-HTTPS/TLS upstreams and listeners, caching and Prometheus metrics. One static binary built from source on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.36.0",
+    "description": "Blocky: a DNS proxy and ad blocker with blocklists, conditional forwarding, DoH/DoT upstreams, caching and Prometheus metrics. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/blocky",
+    "imageDigest": "sha256:229f44fd53da24555b9410e9cca6b8e2a270709a34e26c427547b436c0f1a062",
+    "repositoryID": "10b1df12-50ca-4137-b260-d541361bbb0b",
+    "upstream": "https://0xerr0r.github.io/blocky/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/blocky",
+    "images": [
+      {
+        "name": "blocky",
+        "image": "ghcr.io/quenchworks/images/blocky@sha256:229f44fd53da24555b9410e9cca6b8e2a270709a34e26c427547b436c0f1a062"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "nameOverride",
+      "replicaCount",
+      "config",
+      "config.upstreams",
+      "config.blocking",
+      "config.caching",
+      "config.prometheus",
+      "config.log",
+      "extraArgs",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
+      "resources",
+      "resources.requests",
+      "resources.limits",
+      "service",
+      "service.type",
+      "service.dnsPort",
+      "service.dotPort",
+      "service.dohPort",
+      "service.annotations",
+      "service.externalTrafficPolicy",
+      "podLabels",
+      "podAnnotations",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "topologySpreadConstraints",
+      "priorityClassName",
+      "schedulerName",
+      "terminationGracePeriodSeconds",
+      "updateStrategy",
+      "extraEnvVars",
+      "extraEnvVarsCM",
+      "extraEnvVarsSecret",
+      "extraVolumes",
+      "extraVolumeMounts",
+      "initContainers",
+      "sidecars",
+      "lifecycleHooks",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "livenessProbe",
+      "readinessProbe",
+      "customLivenessProbe",
+      "customReadinessProbe",
+      "customStartupProbe",
+      "serviceAccount",
+      "serviceAccount.create",
+      "serviceAccount.name",
+      "serviceAccount.annotations",
+      "networkPolicy",
+      "networkPolicy.enabled",
+      "networkPolicy.allowExternal",
+      "podDisruptionBudget",
+      "podDisruptionBudget.enabled",
+      "podDisruptionBudget.minAvailable"
+    ]
+  },
+  {
     "slug": "buildkit",
     "name": "buildkit",
     "category": "Security & supply chain",
@@ -8580,7 +8668,7 @@
   {
     "slug": "ghostunnel",
     "name": "ghostunnel",
-    "category": "Security",
+    "category": "Security & supply chain",
     "summary": "TLS proxy with mutual authentication. Server mode wraps a plaintext service in mTLS with CN, SAN or OPA policy checks; client mode connects a plaintext client to an mTLS server. Built from source with PKCS#11 support on a hardened nonroot Wolfi base.",
     "tier": "standard",
     "license": "Apache-2.0",
@@ -8945,11 +9033,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
-    "appVersion": "0.14.3",
+    "chartVersion": "0.0.9",
+    "appVersion": "0.14.4",
     "description": "Gogs, the painless self-hosted Git service: repositories, issues, pull requests, wikis and webhooks over HTTP and a built-in SSH server, on SQLite, PostgreSQL or MySQL. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/gogs",
-    "imageDigest": "sha256:a139ba2d03dfcd269fa139816296c2d3d0039a0c23960c8bacc0c1c5c817e203",
+    "imageDigest": "sha256:3fccdca42df53b910da6cb304a5c2763b9b0e148927603c0b37920fba1969521",
     "repositoryID": "0976f70b-4cee-494b-9ddf-ad92acd9b6d0",
     "port": 3000,
     "upstream": "https://gogs.io",
@@ -8957,7 +9045,7 @@
     "images": [
       {
         "name": "gogs",
-        "image": "ghcr.io/quenchworks/images/gogs@sha256:a139ba2d03dfcd269fa139816296c2d3d0039a0c23960c8bacc0c1c5c817e203"
+        "image": "ghcr.io/quenchworks/images/gogs@sha256:3fccdca42df53b910da6cb304a5c2763b9b0e148927603c0b37920fba1969521"
       }
     ],
     "valuesKeys": [
@@ -10065,11 +10153,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
-    "appVersion": "2.50.8",
+    "chartVersion": "0.0.22",
+    "appVersion": "2.50.9",
     "description": "Hardened Hasura GraphQL Engine (Community Edition) on a CVE-gated nonroot image, with a bundled PostgreSQL metadata database.",
     "imageRepository": "ghcr.io/quenchworks/images/hasura",
-    "imageDigest": "sha256:b37209f3c4acb100f9ebce50829a1f400a3236c91848866b617141f4f0088ad8",
+    "imageDigest": "sha256:427745a422e2f101e3f22896d6117ca47087ec002645dbbf21b9e69415322830",
     "repositoryID": "8682deb1-ac91-4449-8e84-fff3e40de208",
     "port": 8080,
     "upstream": "https://github.com/hasura/graphql-engine",
@@ -10077,7 +10165,7 @@
     "images": [
       {
         "name": "hasura",
-        "image": "ghcr.io/quenchworks/images/hasura@sha256:b37209f3c4acb100f9ebce50829a1f400a3236c91848866b617141f4f0088ad8"
+        "image": "ghcr.io/quenchworks/images/hasura@sha256:427745a422e2f101e3f22896d6117ca47087ec002645dbbf21b9e69415322830"
       },
       {
         "name": "postgresql",
@@ -10939,7 +11027,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "1.0.0",
     "description": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation. Bring your own ACME issuer for public certificates. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "1f0a96f3-a5b0-41c9-b718-a4817e8acd0b",
@@ -10953,7 +11041,7 @@
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:a4af280b3e0d80db02a811cd1ccdb35c1ee5c0917f498fa476c79fb92ae14c9f"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:61a94117a6c67543bc1f10eb3b8bf2a24e508d0c0977412ade08b8da1f3d234c"
       },
       {
         "name": "cert-manager-controller",
@@ -13931,11 +14019,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "1.103.11",
     "description": "LiteLLM proxy: one OpenAI-compatible API to call, route, budget and log 100+ LLM providers. Hardened by QuenchWorks as an MIT-only build (no proprietary enterprise package), nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/litellm",
-    "imageDigest": "sha256:7416ae7adeaed5b83be33378b2e056186dd70cd7cddc010cfb21ffd6452f5b46",
+    "imageDigest": "sha256:b04744116d22934572b7ff8219fc1db0143dc07d206b79a7b87dbb3f1d884d2a",
     "repositoryID": "98d4025d-0f2b-4053-b2fd-27080d87ffc6",
     "port": 4000,
     "upstream": "https://www.litellm.ai",
@@ -13943,7 +14031,7 @@
     "images": [
       {
         "name": "litellm",
-        "image": "ghcr.io/quenchworks/images/litellm@sha256:7416ae7adeaed5b83be33378b2e056186dd70cd7cddc010cfb21ffd6452f5b46"
+        "image": "ghcr.io/quenchworks/images/litellm@sha256:b04744116d22934572b7ff8219fc1db0143dc07d206b79a7b87dbb3f1d884d2a"
       }
     ],
     "valuesKeys": [
@@ -18735,18 +18823,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "3.23.1",
     "description": "OPA Gatekeeper, the Kubernetes admission controller for Rego policies: ConstraintTemplates and Constraints, validating and mutating webhooks, audit of existing resources, and external data. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/opa-gatekeeper",
-    "imageDigest": "sha256:246449afd5139fcb179d6bb649fe5d48e24acc9ae281861d550c24b0645f2951",
+    "imageDigest": "sha256:92ad76883e08670fd7488b80e7571c1c4b7248d5988477a519837591b6f2a5c8",
     "repositoryID": "9d33b3cf-dac0-49a4-945b-396590094326",
     "upstream": "https://open-policy-agent.github.io/gatekeeper",
     "chartRef": "oci://ghcr.io/quenchworks/charts/opa-gatekeeper",
     "images": [
       {
         "name": "opa-gatekeeper",
-        "image": "ghcr.io/quenchworks/images/opa-gatekeeper@sha256:246449afd5139fcb179d6bb649fe5d48e24acc9ae281861d550c24b0645f2951"
+        "image": "ghcr.io/quenchworks/images/opa-gatekeeper@sha256:92ad76883e08670fd7488b80e7571c1c4b7248d5988477a519837591b6f2a5c8"
       }
     ],
     "valuesKeys": [
@@ -29350,11 +29438,11 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.31",
-    "appVersion": "1.1.15",
+    "chartVersion": "0.0.32",
+    "appVersion": "1.1.16",
     "description": "xyOps, a complete workflow-automation and server-monitoring system (job scheduler, monitors, alerting, ticketing) by the creator of Cronicle. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, CVE-gated image, cosign-signed and pinned by digest. Ships an embedded better-sqlite3 store, so it runs as a single-replica StatefulSet with a persistent data volume; no external database.",
     "imageRepository": "ghcr.io/quenchworks/images/xyops",
-    "imageDigest": "sha256:055952369b73aa2144032b939a156ed428ec851e1a5c4c851c82951dad1a8535",
+    "imageDigest": "sha256:db325eb77df83a9af95b008528ff50a8b72152930248136a69b130b20765f4cb",
     "repositoryID": "4d2b242e-e962-40b7-9d13-794f35b54dcc",
     "port": 5522,
     "upstream": "https://github.com/pixlcore/xyops",
@@ -29362,7 +29450,7 @@
     "images": [
       {
         "name": "xyops",
-        "image": "ghcr.io/quenchworks/images/xyops@sha256:055952369b73aa2144032b939a156ed428ec851e1a5c4c851c82951dad1a8535"
+        "image": "ghcr.io/quenchworks/images/xyops@sha256:db325eb77df83a9af95b008528ff50a8b72152930248136a69b130b20765f4cb"
       }
     ],
     "valuesKeys": [
