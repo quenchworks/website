@@ -5,7 +5,7 @@
  * stack is a chart, so each card carries that chart's live version and Trivy grade.
  *
  * Stacks add two things a chart card has not: the wiring (the components, drawn as
- * a tree under the stack) and a copyable `helm install` line. Below the grid, the
+ * a tree under the stack, each linking to its own chart) and a copyable `helm install` line. Below the grid, the
  * component index answers "which stack gives me X": each building block with the
  * number of stacks that include it, and a click filters the grid to them.
  *
@@ -135,7 +135,8 @@ const chip =
             {s.components.map((c, j) => (
               <li class="flex gap-2 text-ash">
                 <span class="select-none text-line" aria-hidden="true">{j === s.components.length - 1 ? '└─' : '├─'}</span>
-                <span>{c}</span>
+                {/* each component is its own chart: link it above the card's stretched link */}
+                <a href={`${chartBase}/${s.componentSlugs[j]}`} class="relative z-10 transition-colors duration-200 hover:text-paper focus-visible:text-paper">{c}</a>
               </li>
             ))}
           </ul>

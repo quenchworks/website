@@ -1,14 +1,19 @@
-// Single source of truth for the curated umbrella stacks shown on /stacks.
-// Only the slug/name/components are here — they are language-neutral (proper
-// nouns + the chart slug). The per-locale value-prop sentence lives in each
-// locale's page, keyed by slug, so prose stays translatable without copying
-// this structural data into every locale file.
+// /stacks is generated from the same catalog data as /charts (charts.json, written by
+// scripts/sync-catalog.mjs from each chart's Chart.yaml): a stack is a chart marked `stack`, its
+// components are its chart dependencies, its group comes from its ArtifactHub category, and it
+// installs CRDs when it or a component carries the ArtifactHub operator flag or declares CRDs. A new stack chart
+// appears here with no edit to this file. Only the translated one-line pitches stay per locale.
+import chartsData from './charts.json';
+
 export type StackGroup = 'observability' | 'data' | 'security' | 'platform' | 'ai';
 
 export type Stack = {
   slug: string;
   name: string;
+  /** Display names of the component charts, in dependency order. */
   components: string[];
+  /** The component charts' slugs, in the same order (for links). */
+  componentSlugs: string[];
   /** Filter facet on /stacks. */
   group: StackGroup;
   /** Built around a controller that installs CRDs (the rest are plain Helm). */
@@ -17,197 +22,31 @@ export type Stack = {
 
 export const STACK_GROUPS: StackGroup[] = ['observability', 'data', 'security', 'platform', 'ai'];
 
-export const STACKS: Stack[] = [
-  {
-    slug: 'observability-stack',
-    name: 'Observability Stack',
-    components: ['Prometheus', 'Grafana', 'Alertmanager', 'kube-state-metrics', 'node-exporter', 'cAdvisor'],
-    group: 'observability',
-  },
-  {
-    slug: 'lgtm-stack',
-    name: 'LGTM Stack',
-    components: ['Loki', 'Grafana', 'Tempo', 'VictoriaMetrics', 'OpenTelemetry Collector', 'Alertmanager'],
-    group: 'observability',
-  },
-  {
-    slug: 'logging-stack',
-    name: 'Logging Stack',
-    components: ['Loki', 'Grafana', 'Vector'],
-    group: 'observability',
-  },
-  {
-    slug: 'tracing-stack',
-    name: 'Tracing Stack',
-    components: ['Tempo', 'Grafana', 'OpenTelemetry Collector'],
-    group: 'observability',
-  },
-  {
-    slug: 'identity-stack',
-    name: 'Identity Stack',
-    components: ['Keycloak', 'PostgreSQL', 'oauth2-proxy'],
-    group: 'security',
-  },
-  {
-    slug: 'postgres-ha-stack',
-    name: 'Postgres HA Stack',
-    components: ['PostgreSQL', 'Patroni', 'PgBouncer', 'postgres_exporter', 'Prometheus', 'Grafana'],
-    group: 'data',
-  },
-  {
-    slug: 'cache-stack',
-    name: 'Cache Stack',
-    components: ['Valkey', 'redis_exporter', 'Prometheus', 'Grafana'],
-    group: 'data',
-  },
-  {
-    slug: 'streaming-stack',
-    name: 'Streaming Stack',
-    components: ['Kafka', 'Karapace', 'AKHQ'],
-    group: 'data',
-  },
-  {
-    slug: 'secrets-stack',
-    name: 'Secrets Stack',
-    components: ['OpenBao', 'Keycloak'],
-    group: 'security',
-  },
-  {
-    slug: 'ml-stack',
-    name: 'ML Stack',
-    components: ['JupyterHub', 'MLflow', 'Label Studio', 'PostgreSQL'],
-    group: 'ai',
-  },
-  {
-    slug: 'sigstore-stack',
-    name: 'Sigstore Stack',
-    components: ['Fulcio', 'Rekor v2', 'Timestamp Authority', 'Caddy'],
-    group: 'security',
-  },
-  {
-    slug: 'gitops-stack',
-    name: 'GitOps Stack',
-    components: ['Argo CD', 'Argo Rollouts', 'Argo Workflows', 'Argo Events', 'NATS'],
-    group: 'platform',
-    operator: true,
-  },
-  {
-    slug: 'llm-stack',
-    name: 'LLM Stack',
-    components: ['Ollama', 'LiteLLM', 'Qdrant'],
-    group: 'ai',
-  },
-  {
-    slug: 'lakehouse-stack',
-    name: 'Lakehouse Stack',
-    components: ['Trino', 'Nessie', 'SeaweedFS', 'Apache Iceberg'],
-    group: 'data',
-  },
-  {
-    slug: 'backup-stack',
-    name: 'Backup Stack',
-    components: ['Velero', 'Velero AWS plugin', 'SeaweedFS'],
-    group: 'data',
-    operator: true,
-  },
-  {
-    slug: 'ingress-stack',
-    name: 'Ingress Stack',
-    components: ['ingress-nginx', 'cert-manager', 'Cluster CA issuer'],
-    group: 'platform',
-    operator: true,
-  },
-  {
-    slug: 'dns-stack',
-    name: 'DNS Stack',
-    components: ['PowerDNS Authoritative', 'external-dns', 'Zone setup Job'],
-    group: 'platform',
-  },
-  {
-    slug: 'mesh-stack',
-    name: 'Mesh Stack',
-    components: ['istiod', 'Istio CNI', 'ztunnel (ambient mTLS)'],
-    group: 'platform',
-  },
-  {
-    slug: 'supply-chain-stack',
-    name: 'Supply Chain Stack',
-    components: ['Kyverno', 'trivy-operator', 'Signed-image policy'],
-    group: 'security',
-    operator: true,
-  },
-  {
-    slug: 'cnpg-stack',
-    name: 'CloudNativePG Stack',
-    components: ['CloudNativePG operator', 'PostgreSQL cluster'],
-    group: 'data',
-    operator: true,
-  },
-  {
-    slug: 'mysql-ha-stack',
-    name: 'MySQL HA Stack',
-    components: ['MariaDB Operator', 'Galera cluster'],
-    group: 'data',
-    operator: true,
-  },
-  {
-    slug: 'search-stack',
-    name: 'Search Stack',
-    components: ['OpenSearch', 'OpenSearch Dashboards'],
-    group: 'data',
-  },
-  {
-    slug: 'profiling-stack',
-    name: 'Profiling Stack',
-    components: ['Pyroscope', 'Grafana'],
-    group: 'observability',
-  },
-  {
-    slug: 'cost-stack',
-    name: 'Cost Stack',
-    components: ['OpenCost', 'Prometheus', 'Grafana'],
-    group: 'observability',
-  },
-  {
-    slug: 'pki-stack',
-    name: 'PKI Stack',
-    components: ['step-ca', 'cert-manager', 'step-issuer', 'trust-manager'],
-    group: 'security',
-    operator: true,
-  },
-  {
-    slug: 'policy-stack',
-    name: 'Policy Stack',
-    components: ['Kyverno', 'Policy Reporter', 'Polaris'],
-    group: 'security',
-    operator: true,
-  },
-  {
-    slug: 'runtime-security-stack',
-    name: 'Runtime Security Stack',
-    components: ['Falco', 'Tetragon'],
-    group: 'security',
-    operator: true,
-  },
-  {
-    slug: 'registry-stack',
-    name: 'Registry Stack',
-    components: ['Harbor', 'Terralist'],
-    group: 'platform',
-  },
-];
+// ArtifactHub category -> /stacks filter group.
+const GROUP: Record<string, StackGroup> = {
+  'monitoring-logging': 'observability',
+  database: 'data',
+  storage: 'data',
+  'streaming-messaging': 'data',
+  security: 'security',
+  'ai-machine-learning': 'ai',
+};
 
-// Every published chart marked as a stack must have an entry here, and nothing else may: the
-// build fails instead of /stacks quietly showing fewer stacks than the catalog (it once showed
-// 19 of 28).
-import chartsData from './charts.json';
-{
-  const list = (Array.isArray(chartsData) ? chartsData : (chartsData as { charts: unknown[] }).charts) as { slug: string; stack?: boolean }[];
-  const published = new Set(list.filter((c) => c.stack).map((c) => c.slug));
-  const listed = new Set(STACKS.map((s) => s.slug));
-  const missing = [...published].filter((s) => !listed.has(s));
-  const extra = [...listed].filter((s) => !published.has(s));
-  if (missing.length || extra.length) {
-    throw new Error(`src/data/stacks.ts is out of step with charts.json: missing ${missing.join(', ') || 'none'}; not published ${extra.join(', ') || 'none'}`);
-  }
-}
+type Entry = { slug: string; name: string; stack?: boolean; operator?: boolean; crds?: string[]; ahCategory?: string; components?: string[] };
+const charts = (Array.isArray(chartsData) ? chartsData : (chartsData as { charts: Entry[] }).charts) as Entry[];
+const bySlug = new Map(charts.map((c) => [c.slug, c]));
+
+export const STACKS: Stack[] = charts
+  .filter((c) => c.stack)
+  .map((c) => {
+    const componentSlugs = c.components ?? [];
+    return {
+      slug: c.slug,
+      name: c.name,
+      components: componentSlugs.map((k) => bySlug.get(k)?.name ?? k),
+      componentSlugs,
+      group: GROUP[c.ahCategory ?? ''] ?? 'platform',
+      operator: [c, ...componentSlugs.map((k) => bySlug.get(k))].some((e) => e?.operator || e?.crds) || undefined,
+    };
+  })
+  .sort((a, b) => STACK_GROUPS.indexOf(a.group) - STACK_GROUPS.indexOf(b.group) || a.name.localeCompare(b.name));

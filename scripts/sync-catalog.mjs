@@ -122,8 +122,14 @@ const NAME = {
   'coolify-app': 'Coolify', 'coolify-helper': 'Coolify Helper', 'coolify-realtime': 'Coolify Realtime',
   busybox: 'BusyBox',
 };
+// Stack charts are named by rule, so a new stack needs no entry anywhere: words title-cased,
+// with these spelled as their projects spell them.
+const STACK_WORD = { lgtm: 'LGTM', ml: 'ML', llm: 'LLM', dns: 'DNS', pki: 'PKI', ha: 'HA', cnpg: 'CloudNativePG', mysql: 'MySQL', gitops: 'GitOps' };
 function prettyName(slug) {
   if (NAME[slug]) return NAME[slug];
+  if (slug.endsWith('-stack')) {
+    return slug.split('-').map((w) => STACK_WORD[w] ?? w[0].toUpperCase() + w.slice(1)).join(' ');
+  }
   if (slug.startsWith('harbor-')) return 'Harbor ' + slug.slice(7);
   return slug;
 }
@@ -286,6 +292,18 @@ for (const slug of chartDirs.sort()) {
     upstream: a.upstream || a.source || (chartYaml?.home ? String(chartYaml.home) : '') || '',
     chartRef: `oci://${ghcr}/charts/${slug}`,
     stack: isStack || undefined,
+    // Chart.yaml annotations the site groups by: ArtifactHub's category and its operator flag
+    // (a controller that installs CRDs). /stacks and /operators read these, not a hand-kept list.
+    ahCategory: chartYaml?.annotations?.['artifacthub.io/category'] ? String(chartYaml.annotations['artifacthub.io/category']) : undefined,
+    operator: String(chartYaml?.annotations?.['artifacthub.io/operator'] ?? '') === 'true' || undefined,
+    // the CRD kinds the chart installs (artifacthub.io/crds), set even where the operator flag is not
+    crds: (() => {
+      try {
+        const k = parseYaml(String(chartYaml?.annotations?.['artifacthub.io/crds'] ?? ''));
+        const kinds = Array.isArray(k) ? k.map((x) => String(x?.kind ?? '')).filter(Boolean) : [];
+        return kinds.length ? kinds : undefined;
+      } catch { return undefined; }
+    })(),
     components: components && components.length ? components : undefined,
     images: chartImages && chartImages.length ? chartImages : undefined,
     upstreams: upstreams && upstreams.length ? upstreams : undefined,
