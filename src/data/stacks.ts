@@ -136,4 +136,78 @@ export const STACKS: Stack[] = [
     group: 'security',
     operator: true,
   },
+  {
+    slug: 'cnpg-stack',
+    name: 'CloudNativePG Stack',
+    components: ['CloudNativePG operator', 'PostgreSQL cluster'],
+    group: 'data',
+    operator: true,
+  },
+  {
+    slug: 'mysql-ha-stack',
+    name: 'MySQL HA Stack',
+    components: ['MariaDB Operator', 'Galera cluster'],
+    group: 'data',
+    operator: true,
+  },
+  {
+    slug: 'search-stack',
+    name: 'Search Stack',
+    components: ['OpenSearch', 'OpenSearch Dashboards'],
+    group: 'data',
+  },
+  {
+    slug: 'profiling-stack',
+    name: 'Profiling Stack',
+    components: ['Pyroscope', 'Grafana'],
+    group: 'observability',
+  },
+  {
+    slug: 'cost-stack',
+    name: 'Cost Stack',
+    components: ['OpenCost', 'Prometheus', 'Grafana'],
+    group: 'observability',
+  },
+  {
+    slug: 'pki-stack',
+    name: 'PKI Stack',
+    components: ['step-ca', 'cert-manager', 'step-issuer', 'trust-manager'],
+    group: 'security',
+    operator: true,
+  },
+  {
+    slug: 'policy-stack',
+    name: 'Policy Stack',
+    components: ['Kyverno', 'Policy Reporter', 'Polaris'],
+    group: 'security',
+    operator: true,
+  },
+  {
+    slug: 'runtime-security-stack',
+    name: 'Runtime Security Stack',
+    components: ['Falco', 'Tetragon'],
+    group: 'security',
+    operator: true,
+  },
+  {
+    slug: 'registry-stack',
+    name: 'Registry Stack',
+    components: ['Harbor', 'Terralist'],
+    group: 'platform',
+  },
 ];
+
+// Every published chart marked as a stack must have an entry here, and nothing else may: the
+// build fails instead of /stacks quietly showing fewer stacks than the catalog (it once showed
+// 19 of 28).
+import chartsData from './charts.json';
+{
+  const list = (Array.isArray(chartsData) ? chartsData : (chartsData as { charts: unknown[] }).charts) as { slug: string; stack?: boolean }[];
+  const published = new Set(list.filter((c) => c.stack).map((c) => c.slug));
+  const listed = new Set(STACKS.map((s) => s.slug));
+  const missing = [...published].filter((s) => !listed.has(s));
+  const extra = [...listed].filter((s) => !published.has(s));
+  if (missing.length || extra.length) {
+    throw new Error(`src/data/stacks.ts is out of step with charts.json: missing ${missing.join(', ') || 'none'}; not published ${extra.join(', ') || 'none'}`);
+  }
+}

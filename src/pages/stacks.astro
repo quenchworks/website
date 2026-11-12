@@ -32,8 +32,18 @@ const prop: Record<string, string> = {
   'dns-stack': 'PowerDNS serves your zones and external-dns fills them from annotated Services and Ingresses, through one generated API key.',
   'ingress-stack': 'An ingress controller and cert-manager with a cluster CA, so an Ingress gets a TLS certificate from one annotation.',
   'supply-chain-stack': 'Admit only signed QuenchWorks images in the namespaces you label, checked against Sigstore, and scan what runs.',
+  'cnpg-stack': 'A replicated PostgreSQL cluster run by the CloudNativePG operator, with automated failover and backups.',
+  'mysql-ha-stack': 'A 3-node Galera cluster run by MariaDB Operator: synchronous multi-primary MySQL-compatible HA.',
+  'search-stack': 'OpenSearch with OpenSearch Dashboards already connected, as one node or an HA cluster.',
+  'profiling-stack': 'Continuous profiling in Pyroscope, browsable in Grafana with the datasource already set.',
+  'cost-stack': 'What each namespace and workload costs, from OpenCost reading its own Prometheus, on a Grafana dashboard.',
+  'pki-stack': 'Your own certificate authority behind cert-manager, with its root distributed to every namespace that asks.',
+  'policy-stack': 'Kyverno admission policies with their reports on a dashboard, plus Polaris best-practice audits.',
+  'runtime-security-stack': 'Falco syscall rules and Tetragon kernel-level tracing, alerting on what containers do at runtime.',
+  'registry-stack': 'Harbor for images and Helm charts with scanning, plus a private Terraform registry, in one install.',
 };
 
+const operatorStacks = STACKS.filter((s) => s.operator);
 const quickstartHref = '/docs/chart-quickstart';
 const chartsHref = '/charts';
 ---
@@ -60,9 +70,8 @@ const chartsHref = '/charts';
     </p>
     <p class="mt-4 max-w-2xl leading-relaxed text-ash">
       Most stacks are operator-free: plain Helm, no CRDs and no operators to run, and what you deploy
-      is exactly the wiring you can read in the chart. Eight are built around a controller and install
-      its CRDs: GitOps (Argo), backup (Velero), ingress and PKI (cert-manager), policy and supply chain
-      (Kyverno), CloudNativePG, and MySQL HA (MariaDB Operator).
+      is exactly the wiring you can read in the chart. {operatorStacks.length} are built around a controller
+      and install its CRDs: {operatorStacks.map((s) => s.name.replace(/ Stack$/, '')).join(', ')}.
     </p>
 
     <StackList prop={prop} ah={ah} />

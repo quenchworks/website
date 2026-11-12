@@ -34,13 +34,16 @@ const chartBySlug = new Map(charts.map((c) => [c.slug, c]));
 
 const cards = STACKS.map((s) => {
   const live = ah[s.slug];
+  // a stack without a translated line falls back to its chart summary's first sentence
+  const line = prop[s.slug] ?? (chartBySlug.get(s.slug)?.summary ?? '').split(': ')[0].replace(/\.$/, '') + '.';
   return {
     ...s,
     version: live?.version ?? chartBySlug.get(s.slug)?.chartVersion ?? null,
     live,
     install: `helm install ${s.slug} oci://ghcr.io/quenchworks/charts/${s.slug}`,
     // Lowercased haystack for the search box: name, slug, components, value prop.
-    haystack: [s.name, s.slug, ...s.components, prop[s.slug] ?? ''].join(' ').toLowerCase(),
+    line,
+    haystack: [s.name, s.slug, ...s.components, line].join(' ').toLowerCase(),
   };
 });
 
@@ -122,7 +125,7 @@ const chip =
           <h2 class="text-lg font-semibold leading-tight">
             <a href={`${chartBase}/${s.slug}`} class="after:absolute after:inset-0 after:rounded-xl focus:outline-none">{s.name}</a>
           </h2>
-          <p class="mt-2 text-sm leading-relaxed text-ash">{prop[s.slug]}</p>
+          <p class="mt-2 text-sm leading-relaxed text-ash">{s.line}</p>
         </div>
 
         {/* The wiring, as a tree: what one install brings up. */}
