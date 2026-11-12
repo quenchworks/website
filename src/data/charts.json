@@ -1,5 +1,90 @@
 [
   {
+    "slug": "3proxy",
+    "name": "3proxy",
+    "category": "Networking",
+    "summary": "3proxy, the tiny multi-protocol proxy suite in C: HTTP and SOCKS4/5 proxies, POP3/FTP proxies and TCP/UDP port mapping. Built from source against Wolfi OpenSSL and PCRE2, plugins included. Ships closed: strong authentication with no users, so nothing is proxied until users are configured. HTTP proxy on 3128, SOCKS on 1080, as uid 1001.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.0.3",
+    "description": "3proxy: a tiny multi-protocol proxy suite (HTTP and SOCKS4/5 proxies, port mapping). Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/3proxy",
+    "imageDigest": "sha256:283fc44a478bbb7ef5e2223a41a755f0b68b46ff55c68a6b4e70d2a6e4ab51f6",
+    "repositoryID": "137ddb57-1a4d-4507-bad5-9452c994de92",
+    "upstream": "https://3proxy.org",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/3proxy",
+    "images": [
+      {
+        "name": "3proxy",
+        "image": "ghcr.io/quenchworks/images/3proxy@sha256:283fc44a478bbb7ef5e2223a41a755f0b68b46ff55c68a6b4e70d2a6e4ab51f6"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "nameOverride",
+      "replicaCount",
+      "http",
+      "http.enabled",
+      "http.port",
+      "socks",
+      "socks.enabled",
+      "socks.port",
+      "auth",
+      "auth.username",
+      "auth.password",
+      "auth.extraUsers",
+      "extraConfig",
+      "extraPorts",
+      "resources",
+      "resources.requests",
+      "resources.limits",
+      "service",
+      "service.type",
+      "service.annotations",
+      "service.externalTrafficPolicy",
+      "podLabels",
+      "podAnnotations",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "topologySpreadConstraints",
+      "priorityClassName",
+      "schedulerName",
+      "terminationGracePeriodSeconds",
+      "updateStrategy",
+      "extraEnvVars",
+      "extraEnvVarsCM",
+      "extraEnvVarsSecret",
+      "extraVolumes",
+      "extraVolumeMounts",
+      "initContainers",
+      "sidecars",
+      "lifecycleHooks",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "livenessProbe",
+      "readinessProbe",
+      "customLivenessProbe",
+      "customReadinessProbe",
+      "customStartupProbe",
+      "serviceAccount",
+      "serviceAccount.create",
+      "serviceAccount.name",
+      "serviceAccount.annotations",
+      "networkPolicy",
+      "networkPolicy.enabled",
+      "networkPolicy.allowExternal",
+      "podDisruptionBudget",
+      "podDisruptionBudget.enabled",
+      "podDisruptionBudget.minAvailable"
+    ]
+  },
+  {
     "slug": "activemq",
     "name": "activemq",
     "category": "Messaging",
@@ -2064,11 +2149,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "0.33.1",
     "description": "BuildKit, the concurrent container image build engine behind docker build, running rootless. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/buildkit",
-    "imageDigest": "sha256:d07edb2008c99c4f2ede8316f95e18734625a04442b9f8528fd25f6593093850",
+    "imageDigest": "sha256:914d4d0945aae780e24981c439fa9cd4ec28d836dbf5a415c404f97f7e091a20",
     "repositoryID": "e7f0d85e-dc99-42c8-bf50-40c820a7148d",
     "port": 1234,
     "upstream": "https://github.com/moby/buildkit",
@@ -2076,7 +2161,7 @@
     "images": [
       {
         "name": "buildkit",
-        "image": "ghcr.io/quenchworks/images/buildkit@sha256:d07edb2008c99c4f2ede8316f95e18734625a04442b9f8528fd25f6593093850"
+        "image": "ghcr.io/quenchworks/images/buildkit@sha256:914d4d0945aae780e24981c439fa9cd4ec28d836dbf5a415c404f97f7e091a20"
       }
     ],
     "valuesKeys": [
@@ -2421,7 +2506,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "3.32.0",
     "description": "Project Calico networking and network policy, installed by the Tigera operator. Hardened by QuenchWorks: the operator and every Calico image built from source on Wolfi, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/tigera-operator",
@@ -2468,7 +2553,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       }
     ],
     "valuesKeys": [
@@ -3538,7 +3623,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "1.30.1",
     "description": "Operator-managed HA PostgreSQL in one install: the CloudNativePG operator + a replicated Cluster (streaming replication, automated failover, built-in metrics) + a PgBouncer Pooler in front of the primary. Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "54fc1458-1892-4ee0-a219-fa310ee6811a",
@@ -3563,7 +3648,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       }
     ],
     "upstreams": [
@@ -3599,18 +3684,18 @@
     "tier": "low",
     "license": "BUSL-1.1",
     "licenseClean": "caution",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "26.3.4",
     "description": "Distributed SQL database with PostgreSQL wire compatibility and automatic horizontal scaling and survivability. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cockroachdb",
-    "imageDigest": "sha256:506f72de7a9c7f00412efd49a9c81a2968255f03ee037b60b0ec5e57a6697478",
+    "imageDigest": "sha256:b850d00bd856a150821592f9b3168d0156ab75c15c98afe975b272c14d3cd43f",
     "repositoryID": "5920d963-0c6f-4c4b-9ece-d3056bc50ef9",
     "upstream": "https://github.com/cockroachdb/cockroach",
     "chartRef": "oci://ghcr.io/quenchworks/charts/cockroachdb",
     "images": [
       {
         "name": "cockroachdb",
-        "image": "ghcr.io/quenchworks/images/cockroachdb@sha256:506f72de7a9c7f00412efd49a9c81a2968255f03ee037b60b0ec5e57a6697478"
+        "image": "ghcr.io/quenchworks/images/cockroachdb@sha256:b850d00bd856a150821592f9b3168d0156ab75c15c98afe975b272c14d3cd43f"
       }
     ],
     "valuesKeys": [
@@ -3790,11 +3875,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.20",
+    "chartVersion": "0.0.21",
     "appVersion": "8.3.3",
     "description": "Hardened Concourse CI (web node and privileged containerd worker) on a CVE-gated image, with a bundled PostgreSQL.",
     "imageRepository": "ghcr.io/quenchworks/images/concourse",
-    "imageDigest": "sha256:c07bd8cbb2e344334fa434849d6e4e4b68ed2933463caedb9d06aa14b161264b",
+    "imageDigest": "sha256:6665626abfb28d4fbef9d77420bd11c12fd9d93cda9f5ae55684d536300784c1",
     "repositoryID": "1d3cdde3-dc64-4198-9515-5cd1fa0d2850",
     "port": 8080,
     "upstream": "https://concourse-ci.org",
@@ -3802,11 +3887,11 @@
     "images": [
       {
         "name": "concourse",
-        "image": "ghcr.io/quenchworks/images/concourse@sha256:c07bd8cbb2e344334fa434849d6e4e4b68ed2933463caedb9d06aa14b161264b"
+        "image": "ghcr.io/quenchworks/images/concourse@sha256:6665626abfb28d4fbef9d77420bd11c12fd9d93cda9f5ae55684d536300784c1"
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       },
       {
         "name": "postgresql",
@@ -4107,7 +4192,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.57",
+    "chartVersion": "0.0.58",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, CVE-gated image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -4125,7 +4210,7 @@
       },
       {
         "name": "coolify-helper",
-        "image": "ghcr.io/quenchworks/images/coolify-helper@sha256:d3a71bd3bdde6fd565be1e1d11575067546c85e19b0c5ff1fc67e5951e2bf7c2"
+        "image": "ghcr.io/quenchworks/images/coolify-helper@sha256:034608bc1fbfeefa3d6ff8cd4c012e972905fa4f3fbea79bff693ea02ad55e91"
       },
       {
         "name": "postgresql-15",
@@ -5251,7 +5336,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "1.7.0.1",
     "description": "Hardened DataHub metadata platform (GMS, React frontend and the SystemUpdate setup job) on CVE-gated nonroot images, with bundled MySQL, Kafka and Elasticsearch.",
     "imageRepository": "ghcr.io/quenchworks/images/datahub",
@@ -5274,7 +5359,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       },
       {
         "name": "mysql",
@@ -8300,11 +8385,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.47",
+    "chartVersion": "0.0.48",
     "appVersion": "6.67.0",
     "description": "Hardened Ghost publishing platform (Node.js CMS + membership/newsletter engine) on a CVE-gated nonroot image, with a bundled MariaDB backend.",
     "imageRepository": "ghcr.io/quenchworks/images/ghost",
-    "imageDigest": "sha256:7828393360fae7c1c4b69c067e47440da60fbd687adde25f98d30b7615e6a565",
+    "imageDigest": "sha256:541c22d74bf3c319f531bdcd73b7f14726af51f61abad311ef15defde1290cd6",
     "repositoryID": "5f3aa248-601d-446c-9838-0dd270fd9b4e",
     "port": 2368,
     "upstream": "https://ghost.org",
@@ -8312,7 +8397,7 @@
     "images": [
       {
         "name": "ghost",
-        "image": "ghcr.io/quenchworks/images/ghost@sha256:7828393360fae7c1c4b69c067e47440da60fbd687adde25f98d30b7615e6a565"
+        "image": "ghcr.io/quenchworks/images/ghost@sha256:541c22d74bf3c319f531bdcd73b7f14726af51f61abad311ef15defde1290cd6"
       },
       {
         "name": "mariadb",
@@ -9285,11 +9370,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.7",
+    "chartVersion": "0.0.8",
     "appVersion": "1.7.22",
     "description": "Grist, the self-hosted spreadsheet-database with Python formulas run in a gVisor sandbox, with SQLite on a PVC. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/grist",
-    "imageDigest": "sha256:172e041f501482a1dd0788b68ada494721b5957fb7305d155d2c42e72c1b8bcd",
+    "imageDigest": "sha256:6a63bec301757de17fb3497813dc93652be914689ed145167c38c3f80e00328d",
     "repositoryID": "fc1b3956-9331-4a13-90d4-72760ed812d7",
     "port": 8484,
     "upstream": "https://www.getgrist.com",
@@ -9297,7 +9382,7 @@
     "images": [
       {
         "name": "grist",
-        "image": "ghcr.io/quenchworks/images/grist@sha256:172e041f501482a1dd0788b68ada494721b5957fb7305d155d2c42e72c1b8bcd"
+        "image": "ghcr.io/quenchworks/images/grist@sha256:6a63bec301757de17fb3497813dc93652be914689ed145167c38c3f80e00328d"
       }
     ],
     "valuesKeys": [
@@ -9560,7 +9645,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.56",
+    "chartVersion": "0.0.57",
     "appVersion": "2.15.2",
     "description": "Cloud-native OCI registry with role-based access control, replication, vulnerability scanning, and image signing. This umbrella chart wires seven QuenchWorks Harbor component images (core, jobservice, registry, registryctl, portal, the optional Trivy scan adapter, and the metrics exporter) over the QuenchWorks PostgreSQL and Valkey charts, each a minimal, nonroot, CVE-gated image pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor",
@@ -9586,7 +9671,7 @@
       },
       {
         "name": "harbor-portal",
-        "image": "ghcr.io/quenchworks/images/harbor-portal@sha256:d014d67b531a6a9abd4a065fcdf58a58206957f211c72cbec8d9bda76f507a1c"
+        "image": "ghcr.io/quenchworks/images/harbor-portal@sha256:79bf785f1b24ea8d5443e21440686296203c694640b22a23ba73af5d02f15580"
       },
       {
         "name": "harbor-trivy-adapter",
@@ -10493,11 +10578,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
+    "chartVersion": "0.0.24",
     "appVersion": "2.9.1",
     "description": "Time-series database purpose-built for ingesting and querying metrics, events, and IoT/sensor data at high write rates. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/influxdb",
-    "imageDigest": "sha256:73de107d305716d47e034a58f5fbe3fb802b22dd6f88c657612e5f7323ec3881",
+    "imageDigest": "sha256:3f04d4392fecf459547336a0bcc0f6c915fc9c6ab47edf3dd918fcbb282c1a2d",
     "repositoryID": "d50fd427-8fa1-4a5f-8d23-71f1c7d61a06",
     "port": 8086,
     "upstream": "https://github.com/influxdata/influxdb",
@@ -10505,7 +10590,7 @@
     "images": [
       {
         "name": "influxdb",
-        "image": "ghcr.io/quenchworks/images/influxdb@sha256:73de107d305716d47e034a58f5fbe3fb802b22dd6f88c657612e5f7323ec3881"
+        "image": "ghcr.io/quenchworks/images/influxdb@sha256:3f04d4392fecf459547336a0bcc0f6c915fc9c6ab47edf3dd918fcbb282c1a2d"
       }
     ],
     "valuesKeys": [
@@ -10601,18 +10686,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "1.15.13",
     "description": "Ingress NGINX Controller: the Kubernetes-maintained Ingress controller built on NGINX. Watches Ingress resources of the nginx IngressClass and configures NGINX to load-balance and route HTTP/HTTPS traffic to backend Services, with a validating admission webhook that rejects malformed Ingress objects before they are persisted. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. The controller runs as a single Deployment; the admission webhook's serving certificate is bootstrapped by a self-contained pre/post-install Job pair (no external cert-manager dependency).",
     "imageRepository": "ghcr.io/quenchworks/images/ingress-nginx",
-    "imageDigest": "sha256:d46d35ce4925de30474f443d96051a24215cdd134dcddda6c9b4c916a8d0caf6",
+    "imageDigest": "sha256:a4af280b3e0d80db02a811cd1ccdb35c1ee5c0917f498fa476c79fb92ae14c9f",
     "repositoryID": "1f5e0727-cf7e-4b35-8cd1-e58c15da8d10",
     "upstream": "https://kubernetes.github.io/ingress-nginx",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ingress-nginx",
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:d46d35ce4925de30474f443d96051a24215cdd134dcddda6c9b4c916a8d0caf6"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:a4af280b3e0d80db02a811cd1ccdb35c1ee5c0917f498fa476c79fb92ae14c9f"
       }
     ],
     "valuesKeys": [
@@ -10675,7 +10760,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.18",
     "appVersion": "1.0.0",
     "description": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation. Bring your own ACME issuer for public certificates. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "1f0a96f3-a5b0-41c9-b718-a4817e8acd0b",
@@ -10689,7 +10774,7 @@
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:d46d35ce4925de30474f443d96051a24215cdd134dcddda6c9b4c916a8d0caf6"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:a4af280b3e0d80db02a811cd1ccdb35c1ee5c0917f498fa476c79fb92ae14c9f"
       },
       {
         "name": "cert-manager-controller",
@@ -10709,7 +10794,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       }
     ],
     "upstreams": [
@@ -12676,7 +12761,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
+    "chartVersion": "0.0.24",
     "appVersion": "0.2.220",
     "description": "Kubescape in-cluster: the operator, the configuration scanner (ksserver), the image vulnerability scanner (kubevuln) and the storage API server that keeps the results as Kubernetes objects. Hardened by QuenchWorks: every component built from source on Wolfi, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/kubescape-operator",
@@ -12698,7 +12783,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       },
       {
         "name": "kubescape-node-agent",
@@ -13046,7 +13131,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "1.19.2",
     "description": "Kyverno: policy as code for Kubernetes. Validates, mutates, generates and cleans up resources from ClusterPolicy/Policy CRs and the CEL-based policies.kyverno.io API, with no new language to learn. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. One image drives four deployments (admission, background, cleanup and reports controllers); the admission controller mints its own CA and serving certificate and registers its own webhook configurations, so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/kyverno",
@@ -13061,7 +13146,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       }
     ],
     "valuesKeys": [
@@ -16413,7 +16498,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "26.10.1",
     "description": "Operator-managed HA MySQL-compatible database in one install: MariaDB Operator + a 3-node Galera cluster (synchronous multi-primary replication, automatic recovery of failed nodes). Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "502d54e3-8eed-4c0b-b134-08dd9bbd124b",
@@ -16438,7 +16523,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       }
     ],
     "upstreams": [
@@ -16555,7 +16640,7 @@
     "tier": "standard",
     "license": "LicenseRef-n8n-Sustainable-Use-License-1.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.30",
+    "chartVersion": "0.1.31",
     "appVersion": "2.40.7",
     "description": "Fair-code workflow automation platform — a visual node editor for building integrations and automations across 400+ apps, with native AI/LLM agent nodes (Node.js). Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/n8n",
@@ -16571,7 +16656,7 @@
       },
       {
         "name": "n8n-runners",
-        "image": "ghcr.io/quenchworks/images/n8n-runners@sha256:6a55fcfd89fe76485c0d8bff31ae535a438d0494820b560ecaf3e6fa578dc090"
+        "image": "ghcr.io/quenchworks/images/n8n-runners@sha256:15d5aa778827d0a4a55686e68d1d12e38a25f3e91825eb1d4e3239af2c0c4124"
       }
     ],
     "valuesKeys": [
@@ -20305,7 +20390,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.17",
+    "chartVersion": "0.0.18",
     "appVersion": "1.0.0",
     "description": "Hardened internal PKI in one install: step-ca (your own certificate authority) + cert-manager (certificate lifecycle) + step-issuer (cert-manager signs through step-ca) + trust-manager (the CA root distributed to every namespace). A post-install Job wires a StepClusterIssuer and a trust Bundle, so a Certificate with issuerRef <release>-step-ca just works and every namespace gets the root in ConfigMap <release>-root-ca. Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "56114c25-6c70-4b4a-bf12-a4b05f8fc21d",
@@ -20349,7 +20434,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       }
     ],
     "upstreams": [
@@ -20759,7 +20844,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
+    "chartVersion": "0.0.25",
     "appVersion": "1.0.0",
     "description": "Hardened Kubernetes policy in one install: Kyverno (admission policies and background scans that write PolicyReports) + Policy Reporter (those results over a REST API, Prometheus metrics and notification targets) + Polaris (a dashboard that audits workloads against configuration best practices). Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "63a71155-efd9-4287-bac1-c22726e51db5",
@@ -20778,7 +20863,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       },
       {
         "name": "policy-reporter",
@@ -21100,11 +21185,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "0.107.0",
     "description": "PostgreSQL 17 plus the open DocumentDB extension, providing BSON document storage and queries. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/postgres-documentdb",
-    "imageDigest": "sha256:23f125e423be7fb9015e72081c1c53146b1bc4e0ca99ec59ce9e1362f680e674",
+    "imageDigest": "sha256:8506f4b4dd9b0f2dbdc7f78f7daa04c4df21c6d98c3c012f6d3b537bf561a89a",
     "repositoryID": "4d6304a8-b68f-41dd-8f4e-4d4faf64acb0",
     "port": 5432,
     "upstream": "https://github.com/FerretDB/documentdb",
@@ -21112,7 +21197,7 @@
     "images": [
       {
         "name": "postgres-documentdb",
-        "image": "ghcr.io/quenchworks/images/postgres-documentdb@sha256:23f125e423be7fb9015e72081c1c53146b1bc4e0ca99ec59ce9e1362f680e674"
+        "image": "ghcr.io/quenchworks/images/postgres-documentdb@sha256:8506f4b4dd9b0f2dbdc7f78f7daa04c4df21c6d98c3c012f6d3b537bf561a89a"
       },
       {
         "name": "postgres-exporter",
@@ -22837,7 +22922,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.26",
     "appVersion": "1.0.0",
     "description": "One self-hosted artifact registry in one install: Harbor (container images and OCI Helm charts, with Trivy scanning) + Terralist (a private Terraform/OpenTofu module and provider registry). Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "b5d83452-d2c5-452a-959c-f6f7fe2da9eb",
@@ -22867,7 +22952,7 @@
       },
       {
         "name": "harbor-portal",
-        "image": "ghcr.io/quenchworks/images/harbor-portal@sha256:d014d67b531a6a9abd4a065fcdf58a58206957f211c72cbec8d9bda76f507a1c"
+        "image": "ghcr.io/quenchworks/images/harbor-portal@sha256:79bf785f1b24ea8d5443e21440686296203c694640b22a23ba73af5d02f15580"
       },
       {
         "name": "harbor-trivy-adapter",
@@ -25179,7 +25264,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.27",
+    "chartVersion": "0.0.29",
     "appVersion": "1.0.0",
     "description": "Admission-time supply-chain control: Kyverno admits only QuenchWorks images signed by the QuenchWorks build workflows (cosign keyless, checked against Sigstore) in the namespaces you label, and trivy-operator scans what runs. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "ab2d955a-bb77-4e26-bdda-c9c058646097",
@@ -25197,7 +25282,7 @@
       },
       {
         "name": "kubectl",
-        "image": "ghcr.io/quenchworks/images/kubectl@sha256:579dddb5e9d550f273c067959215b3360fbd055313a7e9f74e449acf95f0c637"
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:c16ff69d4e03e73ccbdf972fcb5fc8acf7174a63e619f007235119e5dd0eec45"
       },
       {
         "name": "trivy-operator",
@@ -26052,11 +26137,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.31",
     "appVersion": "2.30.2",
     "description": "PostgreSQL 17 with the open-source (Apache-2.0) TimescaleDB extension for time-series workloads: hypertables, continuous aggregates, and native compression. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/timescaledb",
-    "imageDigest": "sha256:69651c240e39cec2cb563ff1f1b99e43c2808ef870553dd68541ebd8ca9f8104",
+    "imageDigest": "sha256:b24489057dc859c76d2515490748fb4082ee3fdfbc0e7342f008a165236c7c81",
     "repositoryID": "ab4e6296-ee14-436f-b273-496d5f46527d",
     "port": 5432,
     "upstream": "https://www.timescale.com",
@@ -26064,7 +26149,7 @@
     "images": [
       {
         "name": "timescaledb",
-        "image": "ghcr.io/quenchworks/images/timescaledb@sha256:69651c240e39cec2cb563ff1f1b99e43c2808ef870553dd68541ebd8ca9f8104"
+        "image": "ghcr.io/quenchworks/images/timescaledb@sha256:b24489057dc859c76d2515490748fb4082ee3fdfbc0e7342f008a165236c7c81"
       },
       {
         "name": "postgres-exporter",
@@ -28049,18 +28134,18 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "1.8.1",
     "description": "Vertical Pod Autoscaler: sizes pod CPU and memory requests from observed usage, with a recommender, an updater and a mutating admission webhook. Hardened by QuenchWorks as one minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/vertical-pod-autoscaler",
-    "imageDigest": "sha256:4e5fadabded1bcbd5444b964814a6734eb8ca82f8badf353de705a67c97bf704",
+    "imageDigest": "sha256:8086c9ca5380d2ebd0191420406bece07c06c7f6338126a62995dbdc75d31e9b",
     "repositoryID": "2a858e0c-88bd-4b12-90a7-f58d6dc7f6b6",
     "upstream": "https://github.com/kubernetes/autoscaler",
     "chartRef": "oci://ghcr.io/quenchworks/charts/vertical-pod-autoscaler",
     "images": [
       {
         "name": "vertical-pod-autoscaler",
-        "image": "ghcr.io/quenchworks/images/vertical-pod-autoscaler@sha256:4e5fadabded1bcbd5444b964814a6734eb8ca82f8badf353de705a67c97bf704"
+        "image": "ghcr.io/quenchworks/images/vertical-pod-autoscaler@sha256:8086c9ca5380d2ebd0191420406bece07c06c7f6338126a62995dbdc75d31e9b"
       }
     ],
     "valuesKeys": [

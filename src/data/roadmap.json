@@ -493,11 +493,27 @@
     "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). HELD 2026-11-11: the source is Apache-2.0, but official builds released after 2026-11-01 (0.34.0 on) are under the Pomerium Community Edition License 1.0 (free only under US$10M revenue and 100 staff), and the Go binary embeds Pomerium's own prebuilt Envoy, which reports that licence. A clean build needs Envoy built from source, which is itself on an upstream hold here. 0.33.6 (before the change) is the last fully Apache build."
   },
   {
-    "name": "3proxy",
+    "name": "chisel",
     "category": "Gateways & proxies",
-    "license": "3proxy Public License",
-    "licenseClean": "caution",
+    "license": "MIT",
+    "licenseClean": "clean",
     "priority": "next",
-    "note": "Tiny multi-protocol proxy suite in C (HTTP, SOCKS4/5, POP3, FTP and TCP/UDP port mapping). License checked 2026-11-12: its own BSD-style 3proxy 0.9 Public License, which also offers Apache-2.0, GPL-2.0+ or LGPL-2.1+ instead, so it ships under Apache-2.0. Researched 2026-11-05 at 1.0.2; C, no bundled dependencies."
+    "note": "Fast TCP/UDP tunnel over HTTP (SSH-encrypted, one Go binary for client and server), for reaching services behind firewalls or exposing them out. Added 2026-11-12: v1.12.0 (2026-08-29), active, MIT."
+  },
+  {
+    "name": "ghostunnel",
+    "category": "Security",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "TLS proxy with mutual authentication: wraps a plaintext service in mTLS, or connects a plaintext client to an mTLS server (a sidecar alternative to stunnel). Added 2026-11-12: v1.11.5 (2026-10-21), active, Apache-2.0, Go."
+  },
+  {
+    "name": "Blocky",
+    "category": "Networking",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "DNS proxy and ad blocker for the local network: blocklists, conditional forwarding, DNS-over-HTTPS/TLS upstreams, caching and Prometheus metrics. Added 2026-11-12: v0.36.0 (2026-11-09), active, Apache-2.0, Go."
   }
 ]
