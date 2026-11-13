@@ -14643,6 +14643,51 @@
     ]
   },
   {
+    "slug": "kueue",
+    "name": "kueue",
+    "category": "Workflow",
+    "summary": "Kueue: job queueing and quota management for batch and AI workloads on Kubernetes. ClusterQueues and LocalQueues decide when a Job, JobSet, RayJob or Kubeflow job may start and on which resource flavors. Built from source; runs as uid 1001.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.20.6",
+    "description": "Kueue: job queueing and quota management for batch and AI workloads on Kubernetes. ClusterQueues, LocalQueues and ResourceFlavors decide when a Job, JobSet, RayJob or Kubeflow job may start and where. Upstream's release manifest with the eleven CRDs, on the QuenchWorks image: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/kueue",
+    "imageDigest": "sha256:505605c066dc33b1088a4ee2cb1a3a4fc3548ffcdb4f1a5b082c3856769caec2",
+    "repositoryID": "7ba01fdb-d7f8-4f1d-ab20-db3f011635a4",
+    "upstream": "https://kueue.sigs.k8s.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kueue",
+    "ahCategory": "integration-delivery",
+    "operator": true,
+    "crds": [
+      "AdmissionCheck",
+      "ClusterQueue",
+      "Cohort",
+      "LocalQueue",
+      "MultiKueueCluster",
+      "MultiKueueConfig",
+      "ProvisioningRequestConfig",
+      "ResourceFlavor",
+      "Topology",
+      "WorkloadPriorityClass",
+      "Workload"
+    ],
+    "images": [
+      {
+        "name": "kueue",
+        "image": "ghcr.io/quenchworks/images/kueue@sha256:505605c066dc33b1088a4ee2cb1a3a4fc3548ffcdb4f1a5b082c3856769caec2"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "replicaCount"
+    ]
+  },
+  {
     "slug": "kuma",
     "name": "kuma",
     "category": "Coordination & mesh",
