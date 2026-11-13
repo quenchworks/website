@@ -517,19 +517,11 @@
     "note": "Light LDAP server for user and group management with a web UI, as an identity backend for apps that speak LDAP. Added 2026-11-12: v0.6.3, maintained, GPL-3.0, Rust with a Rust/WASM frontend. HELD 2026-11-12: the server's auth crate pins opaque-ke 0.7, which needs curve25519-dalek 3.2.0 (CVE-2024-58262, fixed in 4.1.3); upstream main is still on both. opaque-ke 2+ changes the password protocol (stored passwords and the WASM client), so it cannot be bumped in a recipe. Also reqwest 0.11 pulls rustls 0.21 / rustls-webpki 0.101 (GHSA-82j2-j2ch-gfr8). Revisit when upstream moves to opaque-ke 2+."
   },
   {
-    "name": "Shlink",
-    "category": "Apps & productivity",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Self-hosted URL shortener with a REST API, visit tracking, QR codes and multiple domains, on SQLite, PostgreSQL or MySQL. Added 2026-11-12: v5.1.8, active, MIT, PHP on RoadRunner or php-fpm."
-  },
-  {
     "name": "Wiki.js",
     "category": "Apps & productivity",
     "license": "AGPL-3.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Wiki with a Markdown and visual editor, Git sync, search and many auth providers, on PostgreSQL. Added 2026-11-12: 3.3.1, active, AGPL-3.0, Node."
   },
   {
@@ -537,7 +529,7 @@
     "category": "Operators",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "Manages Grafana instances, dashboards, datasources and folders as custom resources. v5.25.0, Go. Added 2026-11-13 (operators track)."
   },
   {
@@ -779,13 +771,5 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Unleash + PostgreSQL: feature flags and gradual rollouts with the API token for your services generated at install. Added 2026-11-13 (stacks track): every component already has a QuenchWorks chart."
-  },
-  {
-    "name": "APISIX Hybrid Stack",
-    "category": "Stacks",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "APISIX in decoupled (hybrid) mode, the counterpart of Kong hybrid mode: a control plane serving the Admin API and data planes that only proxy, sharing an HA etcd over mTLS, with the APISIX Ingress Controller writing routes through the control plane. Every part is already a QuenchWorks chart (apisix, etcd, apisix-ingress-controller); the apisix chart gains a role setting (traditional, control_plane, data_plane) first. Added 2026-11-13 as the API gateway stack, in place of a Kong one: Kong OSS is on patch-only 3.9.x releases with no word on support after December 2026."
   }
 ]
