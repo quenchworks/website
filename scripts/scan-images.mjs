@@ -2,7 +2,7 @@
 // Scan every catalog image with Trivy and write src/data/security.json.
 //
 // Self-contained and independent of ArtifactHub: it reads the image ref + EVERY
-// published version's digest from src/data/images.json (which gen-catalog.py keeps
+// published version's digest from src/data/images.json (which qw gen-catalog keeps
 // aligned to each app's build.conf VERSIONS — no registry major-alias tags), and runs
 // Trivy against each exact digest. Scanning by digest (not tag) pins the result to
 // precisely the artifact we ship.
