@@ -19915,6 +19915,41 @@
     ]
   },
   {
+    "slug": "node-feature-discovery",
+    "name": "node-feature-discovery",
+    "category": "Coordination",
+    "summary": "Node Feature Discovery: labels Kubernetes nodes with their CPU, kernel, PCI, USB, memory and OS features, plus custom labels from NodeFeatureRule resources, so workloads can be scheduled onto the hardware they need. All binaries (master, worker, gc, topology-updater) in one image. Built from source; runs as uid 1001.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.20.1",
+    "description": "Node Feature Discovery: label Kubernetes nodes with their CPU, kernel, PCI, USB, memory and OS features, and add custom labels from NodeFeatureRule resources. Upstream's default deployment (master, worker DaemonSet, garbage collector) with its three CRDs, on the QuenchWorks image: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/node-feature-discovery",
+    "imageDigest": "sha256:5de03190f36053b0f95faaa60a76009487a517cd2943ae3614731865c1678f66",
+    "repositoryID": "c9d53169-1657-4e4a-8530-4cd97bc76ba1",
+    "upstream": "https://kubernetes-sigs.github.io/node-feature-discovery/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/node-feature-discovery",
+    "ahCategory": "integration-delivery",
+    "operator": true,
+    "crds": [
+      "NodeFeatureGroup",
+      "NodeFeatureRule",
+      "NodeFeature"
+    ],
+    "images": [
+      {
+        "name": "node-feature-discovery",
+        "image": "ghcr.io/quenchworks/images/node-feature-discovery@sha256:5de03190f36053b0f95faaa60a76009487a517cd2943ae3614731865c1678f66"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest"
+    ]
+  },
+  {
     "slug": "nsq",
     "name": "nsq",
     "category": "Messaging",
