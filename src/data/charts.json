@@ -4504,11 +4504,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.26",
+    "chartVersion": "0.0.27",
     "appVersion": "4.139.1",
     "description": "code-server (VS Code in the browser) by Coder, hardened by QuenchWorks as a minimal, nonroot, CVE-gated image on Wolfi, cosign-signed and pinned by digest. Runs as a single-replica Deployment with a persistent workspace ($HOME) and PASSWORD login.",
     "imageRepository": "ghcr.io/quenchworks/images/code-server",
-    "imageDigest": "sha256:c9363ccff0c26df8583ea1d2470a711973cbe02db9320010dc2b14ef9bd53b6b",
+    "imageDigest": "sha256:a73dea7d01086612e3d28a0d60d96817a6dccc64ecb75f6f59adefd659b3ce83",
     "repositoryID": "dbd5173d-2b60-41bb-adce-a6a86bf22075",
     "port": 8080,
     "upstream": "https://coder.com",
@@ -4517,7 +4517,7 @@
     "images": [
       {
         "name": "code-server",
-        "image": "ghcr.io/quenchworks/images/code-server@sha256:c9363ccff0c26df8583ea1d2470a711973cbe02db9320010dc2b14ef9bd53b6b"
+        "image": "ghcr.io/quenchworks/images/code-server@sha256:a73dea7d01086612e3d28a0d60d96817a6dccc64ecb75f6f59adefd659b3ce83"
       }
     ],
     "valuesKeys": [
@@ -4930,7 +4930,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.60",
+    "chartVersion": "0.0.61",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, CVE-gated image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -4945,7 +4945,7 @@
       },
       {
         "name": "coolify-realtime",
-        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:3a2aeb88264903375ca8f3137b478bff37dca1624b2959ad416f8ae423d86479"
+        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:cb9f8e13de4f0c6bda7ed936542a370cb3302db3580baac6f61954f5f34778f2"
       },
       {
         "name": "coolify-helper",
@@ -5065,11 +5065,11 @@
     "tier": "standard",
     "license": "AGPL-3.0+",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "1.0.18",
     "description": "Coolify's realtime component: a Pusher-compatible soketi WebSocket server (:6001) plus a node-pty terminal bridge (:6002), the pub/sub tier the Coolify UI subscribes to. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify-realtime",
-    "imageDigest": "sha256:3a2aeb88264903375ca8f3137b478bff37dca1624b2959ad416f8ae423d86479",
+    "imageDigest": "sha256:cb9f8e13de4f0c6bda7ed936542a370cb3302db3580baac6f61954f5f34778f2",
     "repositoryID": "bbc3aa3f-f63d-4d77-8293-70d4c8b05435",
     "upstream": "https://github.com/coollabsio/coolify",
     "chartRef": "oci://ghcr.io/quenchworks/charts/coolify-realtime",
@@ -5077,7 +5077,7 @@
     "images": [
       {
         "name": "coolify-realtime",
-        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:3a2aeb88264903375ca8f3137b478bff37dca1624b2959ad416f8ae423d86479"
+        "image": "ghcr.io/quenchworks/images/coolify-realtime@sha256:cb9f8e13de4f0c6bda7ed936542a370cb3302db3580baac6f61954f5f34778f2"
       }
     ],
     "valuesKeys": [
@@ -5799,11 +5799,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
+    "chartVersion": "0.0.2",
     "appVersion": "1.8.21",
     "description": "Cube, the semantic layer server: REST, GraphQL and a Postgres-protocol SQL API over your database, driven by a data model. Hardened by QuenchWorks: built from source (native addon with cargo auditable), nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cube",
-    "imageDigest": "sha256:ad504273da124c0d72d212cf89dabb8d76b5fd988bdd854bbc20c7d3af099bd5",
+    "imageDigest": "sha256:9a253a00d73d1fe4525ca9b574ff2331ee29acb25f9ba80be9a882f8bdec52e9",
     "repositoryID": "510f0b84-9ec4-4327-9831-cb45934b81ce",
     "port": 4000,
     "upstream": "https://cube.dev",
@@ -5812,7 +5812,7 @@
     "images": [
       {
         "name": "cube",
-        "image": "ghcr.io/quenchworks/images/cube@sha256:ad504273da124c0d72d212cf89dabb8d76b5fd988bdd854bbc20c7d3af099bd5"
+        "image": "ghcr.io/quenchworks/images/cube@sha256:9a253a00d73d1fe4525ca9b574ff2331ee29acb25f9ba80be9a882f8bdec52e9"
       }
     ],
     "valuesKeys": [
@@ -10859,11 +10859,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "1.7.22",
     "description": "Grist, the self-hosted spreadsheet-database with Python formulas run in a gVisor sandbox, with SQLite on a PVC. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/grist",
-    "imageDigest": "sha256:6a63bec301757de17fb3497813dc93652be914689ed145167c38c3f80e00328d",
+    "imageDigest": "sha256:15a0f2400ebc8c4bfb9d6dcf5a7b8784837358fa612b80721b6db7f75167ebff",
     "repositoryID": "fc1b3956-9331-4a13-90d4-72760ed812d7",
     "port": 8484,
     "upstream": "https://www.getgrist.com",
@@ -10872,7 +10872,7 @@
     "images": [
       {
         "name": "grist",
-        "image": "ghcr.io/quenchworks/images/grist@sha256:6a63bec301757de17fb3497813dc93652be914689ed145167c38c3f80e00328d"
+        "image": "ghcr.io/quenchworks/images/grist@sha256:15a0f2400ebc8c4bfb9d6dcf5a7b8784837358fa612b80721b6db7f75167ebff"
       }
     ],
     "valuesKeys": [
@@ -18901,6 +18901,73 @@
     ]
   },
   {
+    "slug": "nats-jetstream-controller",
+    "name": "nats-jetstream-controller",
+    "category": "Messaging",
+    "summary": "The NATS JetStream Controller (NACK): manages JetStream streams, consumers, key-value and object stores and accounts on a NATS server from Kubernetes custom resources. Built from source; runs as uid 1001.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.25.0",
+    "description": "NATS JetStream Controller (NACK): manage JetStream streams, consumers, key-value and object stores and accounts on a NATS server from Kubernetes custom resources. The six CRDs ship with the chart. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/nats-jetstream-controller",
+    "imageDigest": "sha256:3500fa4cc58cf85c83ff8989ce76186e72d79cc3d783e420dfe7951fc4fabb9f",
+    "repositoryID": "d53a708d-b5c9-4251-a3ae-3be9a682f7ee",
+    "upstream": "https://github.com/nats-io/nack",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/nats-jetstream-controller",
+    "ahCategory": "streaming-messaging",
+    "operator": true,
+    "crds": [
+      "Stream",
+      "Consumer",
+      "StreamTemplate",
+      "Account",
+      "KeyValue",
+      "ObjectStore"
+    ],
+    "images": [
+      {
+        "name": "nats-jetstream-controller",
+        "image": "ghcr.io/quenchworks/images/nats-jetstream-controller@sha256:3500fa4cc58cf85c83ff8989ce76186e72d79cc3d783e420dfe7951fc4fabb9f"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "nameOverride",
+      "natsUrl",
+      "crdConnect",
+      "controlLoop",
+      "watchNamespace",
+      "readOnly",
+      "extraArgs",
+      "resources",
+      "resources.requests",
+      "resources.limits",
+      "podLabels",
+      "podAnnotations",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "topologySpreadConstraints",
+      "priorityClassName",
+      "schedulerName",
+      "terminationGracePeriodSeconds",
+      "extraEnvVars",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "serviceAccount",
+      "serviceAccount.create",
+      "serviceAccount.name",
+      "serviceAccount.annotations",
+      "rbac",
+      "rbac.create"
+    ]
+  },
+  {
     "slug": "navidrome",
     "name": "navidrome",
     "category": "Media & streaming",
@@ -19687,11 +19754,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.3",
     "appVersion": "2.16.0",
     "description": "Nginx Proxy Manager, the web UI that manages nginx proxy hosts, redirections, streams and Let's Encrypt certificates, with SQLite and nginx config on a PVC. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/nginx-proxy-manager",
-    "imageDigest": "sha256:3892e607fd5022df8fc28b3b5f782a665c9dd00514880d2674c162054e4968c3",
+    "imageDigest": "sha256:fc3b0d5cbb0001b0e6ea4036dfebb697b4116e90a6d471d9ee78d5ccfeda709c",
     "repositoryID": "0a9c1508-9469-4ed3-b25d-bd4c3af6bd15",
     "upstream": "https://nginxproxymanager.com",
     "chartRef": "oci://ghcr.io/quenchworks/charts/nginx-proxy-manager",
@@ -19699,7 +19766,7 @@
     "images": [
       {
         "name": "nginx-proxy-manager",
-        "image": "ghcr.io/quenchworks/images/nginx-proxy-manager@sha256:3892e607fd5022df8fc28b3b5f782a665c9dd00514880d2674c162054e4968c3"
+        "image": "ghcr.io/quenchworks/images/nginx-proxy-manager@sha256:fc3b0d5cbb0001b0e6ea4036dfebb697b4116e90a6d471d9ee78d5ccfeda709c"
       }
     ],
     "valuesKeys": [
@@ -32889,11 +32956,11 @@
     "tier": "standard",
     "license": "BSD-3-Clause",
     "licenseClean": "clean",
-    "chartVersion": "0.0.32",
+    "chartVersion": "0.0.33",
     "appVersion": "1.1.16",
     "description": "xyOps, a complete workflow-automation and server-monitoring system (job scheduler, monitors, alerting, ticketing) by the creator of Cronicle. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, CVE-gated image, cosign-signed and pinned by digest. Ships an embedded better-sqlite3 store, so it runs as a single-replica StatefulSet with a persistent data volume; no external database.",
     "imageRepository": "ghcr.io/quenchworks/images/xyops",
-    "imageDigest": "sha256:db325eb77df83a9af95b008528ff50a8b72152930248136a69b130b20765f4cb",
+    "imageDigest": "sha256:6a05c6222c43c6fa730a515f98845f3e5b32cb72938601bce60e45d80fe2c1f2",
     "repositoryID": "4d2b242e-e962-40b7-9d13-794f35b54dcc",
     "port": 5522,
     "upstream": "https://github.com/pixlcore/xyops",
@@ -32902,7 +32969,7 @@
     "images": [
       {
         "name": "xyops",
-        "image": "ghcr.io/quenchworks/images/xyops@sha256:db325eb77df83a9af95b008528ff50a8b72152930248136a69b130b20765f4cb"
+        "image": "ghcr.io/quenchworks/images/xyops@sha256:6a05c6222c43c6fa730a515f98845f3e5b32cb72938601bce60e45d80fe2c1f2"
       }
     ],
     "valuesKeys": [
