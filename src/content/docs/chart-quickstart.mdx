@@ -59,6 +59,10 @@ cosign verify ghcr.io/quenchworks/charts/redis:0.0.35 \
 
 A valid result prints the workflow that built the chart and its Rekor log entry. To verify a specific build instead of the tag, pass an `@sha256:...` digest. See [Verify a signature](/docs/verify) and [Pin by digest](/docs/pin-by-digest).
 
+## Chart versions
+
+Chart versions are `0.0.N`, and `N` goes up on every release: a new image digest after a rebuild, a new app version, or a chart change. The `0.0` says nothing about maturity. The app version is the chart's `appVersion`, and each release lists what changed in its ArtifactHub "Changes" section. Read that before an upgrade: a release that changes a value or a generated Secret says so there.
+
 ## Upgrade and roll back
 
 Upgrade to a newer chart version with the same reference:

@@ -59,6 +59,10 @@ cosign verify ghcr.io/quenchworks/charts/redis:0.0.35 \
 
 Un resultado válido imprime el flujo de trabajo que construyó el chart y su entrada en el registro Rekor. Para verificar una construcción específica en lugar de la etiqueta, pasa un digest `@sha256:...`. Consulta [Verificar una firma](/es/docs/verify) y [Fijar por digest](/es/docs/pin-by-digest).
 
+## Versiones del chart
+
+Las versiones de los charts son `0.0.N`, y `N` sube en cada release: un digest de imagen nuevo tras una reconstrucción, una versión nueva de la aplicación o un cambio en el chart. El `0.0` no indica madurez. La versión de la aplicación es el `appVersion` del chart, y cada release enumera lo que cambió en su sección "Changes" de ArtifactHub. Léela antes de actualizar: un release que cambia un valor o un Secret generado lo indica ahí.
+
 ## Actualizar y revertir
 
 Actualiza a una versión más reciente del chart con la misma referencia:
