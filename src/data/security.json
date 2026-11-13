@@ -61,6 +61,113 @@
       }
     ]
   },
+  "activemq": {
+    "image": "ghcr.io/quenchworks/images/activemq",
+    "version": "6.3.3",
+    "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "6.3.3",
+        "tag": "ghcr.io/quenchworks/images/activemq:6.3.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:activemq",
+        "tag": "ghcr.io/quenchworks/images/activemq:chart:activemq",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "activemq-artemis": {
+    "image": "ghcr.io/quenchworks/images/activemq-artemis",
+    "version": "2.57.0",
+    "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.57.0",
+        "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "actual": {
+    "image": "ghcr.io/quenchworks/images/actual",
+    "version": "26.11.0",
+    "tag": "ghcr.io/quenchworks/images/actual:26.11.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "26.11.0",
+        "tag": "ghcr.io/quenchworks/images/actual:26.11.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "adc": {
     "image": "ghcr.io/quenchworks/images/adc",
     "version": "0.27.1",
@@ -183,6 +290,37 @@
       {
         "version": "3.3.2",
         "tag": "ghcr.io/quenchworks/images/airflow:3.3.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "akhq": {
+    "image": "ghcr.io/quenchworks/images/akhq",
+    "version": "0.28.0",
+    "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.28.0",
+        "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -328,6 +466,183 @@
         "grade": "A+",
         "score": 100,
         "cves": []
+      }
+    ]
+  },
+  "apache-polaris": {
+    "image": "ghcr.io/quenchworks/images/apache-polaris",
+    "version": "1.8.0",
+    "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
+    "critical": 0,
+    "high": 2,
+    "medium": 4,
+    "low": 0,
+    "unknown": 0,
+    "total": 6,
+    "fixable": 6,
+    "grade": "D",
+    "score": 34,
+    "cves": [
+      {
+        "id": "CVE-2026-113351",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-115506",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "glibc-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "glibc-2.44-locale-posix",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "ld-linux-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "libcrypt1-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.8.0",
+        "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
+        "critical": 0,
+        "high": 2,
+        "medium": 4,
+        "low": 0,
+        "unknown": 0,
+        "total": 6,
+        "fixable": 6,
+        "grade": "D",
+        "score": 34,
+        "cves": [
+          {
+            "id": "CVE-2026-113351",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-115506",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "glibc-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "glibc-2.44-locale-posix",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "ld-linux-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "libcrypt1-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -995,6 +1310,37 @@
       }
     ]
   },
+  "bookstack": {
+    "image": "ghcr.io/quenchworks/images/bookstack",
+    "version": "26.09.3",
+    "tag": "ghcr.io/quenchworks/images/bookstack:26.09.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "26.09.3",
+        "tag": "ghcr.io/quenchworks/images/bookstack:26.09.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "buildah": {
     "image": "ghcr.io/quenchworks/images/buildah",
     "version": "1.45.2",
@@ -1048,11 +1394,11 @@
     "high": 0,
     "medium": 0,
     "low": 1,
-    "unknown": 2,
-    "total": 3,
-    "fixable": 2,
+    "unknown": 0,
+    "total": 1,
+    "fixable": 0,
     "grade": "B",
-    "score": 85,
+    "score": 99,
     "cves": [
       {
         "id": "GHSA-g98v-hv3f-hcfr",
@@ -1065,30 +1411,6 @@
         "targets": [
           "usr/share/doc/libpathrs/Cargo.lock"
         ]
-      },
-      {
-        "id": "CVE-2026-97054",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "v1.27.3",
-        "fixed": "1.26.11, 1.27.4",
-        "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-        "targets": [
-          "usr/bin/runc"
-        ]
-      },
-      {
-        "id": "CVE-2026-97054",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "1.27.3",
-        "fixed": "1.26.11, 1.27.4",
-        "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-        "targets": [
-          "var/lib/db/sbom/runc-1.5.2-r8.spdx.json"
-        ]
       }
     ],
     "versions": [
@@ -1099,11 +1421,11 @@
         "high": 0,
         "medium": 0,
         "low": 1,
-        "unknown": 2,
-        "total": 3,
-        "fixable": 2,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
         "grade": "B",
-        "score": 85,
+        "score": 99,
         "cves": [
           {
             "id": "GHSA-g98v-hv3f-hcfr",
@@ -1115,30 +1437,6 @@
             "url": "https://github.com/advisories/GHSA-g98v-hv3f-hcfr",
             "targets": [
               "usr/share/doc/libpathrs/Cargo.lock"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "usr/bin/runc"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "var/lib/db/sbom/runc-1.5.2-r8.spdx.json"
             ]
           }
         ]
@@ -1150,11 +1448,11 @@
         "high": 0,
         "medium": 0,
         "low": 1,
-        "unknown": 2,
-        "total": 3,
-        "fixable": 2,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
         "grade": "B",
-        "score": 85,
+        "score": 99,
         "cves": [
           {
             "id": "GHSA-g98v-hv3f-hcfr",
@@ -1166,30 +1464,6 @@
             "url": "https://github.com/advisories/GHSA-g98v-hv3f-hcfr",
             "targets": [
               "usr/share/doc/libpathrs/Cargo.lock"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "usr/bin/runc"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "var/lib/db/sbom/runc-1.5.2-r8.spdx.json"
             ]
           }
         ]
@@ -1201,11 +1475,11 @@
         "high": 0,
         "medium": 0,
         "low": 1,
-        "unknown": 2,
-        "total": 3,
-        "fixable": 2,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
         "grade": "B",
-        "score": 85,
+        "score": 99,
         "cves": [
           {
             "id": "GHSA-g98v-hv3f-hcfr",
@@ -1217,30 +1491,6 @@
             "url": "https://github.com/advisories/GHSA-g98v-hv3f-hcfr",
             "targets": [
               "usr/share/doc/libpathrs/Cargo.lock"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "usr/bin/runc"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "var/lib/db/sbom/runc-1.5.2-r8.spdx.json"
             ]
           }
         ]
@@ -1795,8 +2045,8 @@
   },
   "camel-k": {
     "image": "ghcr.io/quenchworks/images/camel-k",
-    "version": "2.10.2",
-    "tag": "ghcr.io/quenchworks/images/camel-k:2.10.2",
+    "version": "2.11.0",
+    "tag": "ghcr.io/quenchworks/images/camel-k:2.11.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -1808,6 +2058,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "2.11.0",
+        "tag": "ghcr.io/quenchworks/images/camel-k:2.11.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "2.10.2",
         "tag": "ghcr.io/quenchworks/images/camel-k:2.10.2",
@@ -2229,6 +2493,37 @@
       }
     ]
   },
+  "changedetection": {
+    "image": "ghcr.io/quenchworks/images/changedetection",
+    "version": "0.70.3",
+    "tag": "ghcr.io/quenchworks/images/changedetection:0.70.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.70.3",
+        "tag": "ghcr.io/quenchworks/images/changedetection:0.70.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "chartmuseum": {
     "image": "ghcr.io/quenchworks/images/chartmuseum",
     "version": "0.16.6",
@@ -2262,8 +2557,8 @@
   },
   "checkov": {
     "image": "ghcr.io/quenchworks/images/checkov",
-    "version": "3.4.4",
-    "tag": "ghcr.io/quenchworks/images/checkov:3.4.4",
+    "version": "3.4.5",
+    "tag": "ghcr.io/quenchworks/images/checkov:3.4.5",
     "critical": 0,
     "high": 1,
     "medium": 0,
@@ -2289,8 +2584,8 @@
     ],
     "versions": [
       {
-        "version": "3.4.4",
-        "tag": "ghcr.io/quenchworks/images/checkov:3.4.4",
+        "version": "3.4.5",
+        "tag": "ghcr.io/quenchworks/images/checkov:3.4.5",
         "critical": 0,
         "high": 1,
         "medium": 0,
@@ -2558,8 +2853,8 @@
   },
   "cloudflared": {
     "image": "ghcr.io/quenchworks/images/cloudflared",
-    "version": "2026.10.7",
-    "tag": "ghcr.io/quenchworks/images/cloudflared:2026.10.7",
+    "version": "2026.11.0",
+    "tag": "ghcr.io/quenchworks/images/cloudflared:2026.11.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -2572,8 +2867,36 @@
     "cves": [],
     "versions": [
       {
+        "version": "2026.11.0",
+        "tag": "ghcr.io/quenchworks/images/cloudflared:2026.11.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
         "version": "2026.10.7",
         "tag": "ghcr.io/quenchworks/images/cloudflared:2026.10.7",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:cloudflared",
+        "tag": "ghcr.io/quenchworks/images/cloudflared:chart:cloudflared",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -2768,14 +3091,38 @@
     "tag": "ghcr.io/quenchworks/images/code-server:4.145.2",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "total": 3,
+    "fixable": 2,
+    "grade": "C",
+    "score": 81,
     "cves": [
+      {
+        "id": "CVE-2026-126345",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.4",
+        "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126346",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.3",
+        "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "GHSA-wx77-rp39-c6vg",
         "severity": "LOW",
@@ -2795,14 +3142,38 @@
         "tag": "ghcr.io/quenchworks/images/code-server:4.145.2",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 3,
+        "fixable": 2,
+        "grade": "C",
+        "score": 81,
         "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -2822,14 +3193,38 @@
         "tag": "ghcr.io/quenchworks/images/code-server:4.144.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 3,
+        "fixable": 2,
+        "grade": "C",
+        "score": 81,
         "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -2849,14 +3244,38 @@
         "tag": "ghcr.io/quenchworks/images/code-server:4.139.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 3,
+        "fixable": 2,
+        "grade": "C",
+        "score": 81,
         "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -2940,11 +3359,11 @@
     "high": 0,
     "medium": 0,
     "low": 1,
-    "unknown": 2,
-    "total": 3,
-    "fixable": 2,
+    "unknown": 0,
+    "total": 1,
+    "fixable": 0,
     "grade": "B",
-    "score": 85,
+    "score": 99,
     "cves": [
       {
         "id": "GHSA-g98v-hv3f-hcfr",
@@ -2957,30 +3376,6 @@
         "targets": [
           "usr/share/doc/libpathrs/Cargo.lock"
         ]
-      },
-      {
-        "id": "CVE-2026-97054",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "v1.27.3",
-        "fixed": "1.26.11, 1.27.4",
-        "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-        "targets": [
-          "usr/bin/runc"
-        ]
-      },
-      {
-        "id": "CVE-2026-97054",
-        "severity": "UNKNOWN",
-        "pkg": "stdlib",
-        "installed": "1.27.3",
-        "fixed": "1.26.11, 1.27.4",
-        "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-        "targets": [
-          "var/lib/db/sbom/runc-1.5.2-r8.spdx.json"
-        ]
       }
     ],
     "versions": [
@@ -2991,11 +3386,11 @@
         "high": 0,
         "medium": 0,
         "low": 1,
-        "unknown": 2,
-        "total": 3,
-        "fixable": 2,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
         "grade": "B",
-        "score": 85,
+        "score": 99,
         "cves": [
           {
             "id": "GHSA-g98v-hv3f-hcfr",
@@ -3007,30 +3402,6 @@
             "url": "https://github.com/advisories/GHSA-g98v-hv3f-hcfr",
             "targets": [
               "usr/share/doc/libpathrs/Cargo.lock"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "v1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "usr/bin/runc"
-            ]
-          },
-          {
-            "id": "CVE-2026-97054",
-            "severity": "UNKNOWN",
-            "pkg": "stdlib",
-            "installed": "1.27.3",
-            "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
-            "targets": [
-              "var/lib/db/sbom/runc-1.5.2-r8.spdx.json"
             ]
           }
         ]
@@ -3333,14 +3704,38 @@
     "tag": "ghcr.io/quenchworks/images/coolify-realtime:1.0.18",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "total": 3,
+    "fixable": 2,
+    "grade": "C",
+    "score": 81,
     "cves": [
+      {
+        "id": "CVE-2026-126345",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.4",
+        "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126346",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.3",
+        "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "GHSA-j965-2qgj-vjmq",
         "severity": "LOW",
@@ -3360,14 +3755,38 @@
         "tag": "ghcr.io/quenchworks/images/coolify-realtime:1.0.18",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 3,
+        "fixable": 2,
+        "grade": "C",
+        "score": 81,
         "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-j965-2qgj-vjmq",
             "severity": "LOW",
@@ -4181,15 +4600,51 @@
     "version": "1.8.21",
     "tag": "ghcr.io/quenchworks/images/cube:1.8.21",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 1,
+    "medium": 2,
     "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "total": 4,
+    "fixable": 3,
+    "grade": "D",
+    "score": 66,
     "cves": [
+      {
+        "id": "CVE-2026-123863",
+        "severity": "HIGH",
+        "pkg": "nodejs-24",
+        "installed": "24.22.2-r2",
+        "fixed": "24.22.3-r0",
+        "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+        "targets": [
+          "ghcr.io/quenchworks/images/cube@sha256:ad504273da124c0d72d212cf89dabb8d76b5fd988bdd854bbc20c7d3af099bd5 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-126345",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.4",
+        "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126346",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.3",
+        "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2025-14505",
         "severity": "LOW",
@@ -4208,15 +4663,51 @@
         "version": "1.8.21",
         "tag": "ghcr.io/quenchworks/images/cube:1.8.21",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 1,
+        "medium": 2,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 4,
+        "fixable": 3,
+        "grade": "D",
+        "score": 66,
         "cves": [
+          {
+            "id": "CVE-2026-123863",
+            "severity": "HIGH",
+            "pkg": "nodejs-24",
+            "installed": "24.22.2-r2",
+            "fixed": "24.22.3-r0",
+            "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+            "targets": [
+              "ghcr.io/quenchworks/images/cube@sha256:ad504273da124c0d72d212cf89dabb8d76b5fd988bdd854bbc20c7d3af099bd5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2025-14505",
             "severity": "LOW",
@@ -4352,8 +4843,8 @@
   },
   "dagster": {
     "image": "ghcr.io/quenchworks/images/dagster",
-    "version": "1.13.29",
-    "tag": "ghcr.io/quenchworks/images/dagster:1.13.29",
+    "version": "1.13.30",
+    "tag": "ghcr.io/quenchworks/images/dagster:1.13.30",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -4366,8 +4857,22 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.13.29",
-        "tag": "ghcr.io/quenchworks/images/dagster:1.13.29",
+        "version": "1.13.30",
+        "tag": "ghcr.io/quenchworks/images/dagster:1.13.30",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:dagster",
+        "tag": "ghcr.io/quenchworks/images/dagster:chart:dagster",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -7364,8 +7869,8 @@
   },
   "flyway": {
     "image": "ghcr.io/quenchworks/images/flyway",
-    "version": "13.12.1",
-    "tag": "ghcr.io/quenchworks/images/flyway:13.12.1",
+    "version": "13.12.2",
+    "tag": "ghcr.io/quenchworks/images/flyway:13.12.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -7378,8 +7883,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "13.12.1",
-        "tag": "ghcr.io/quenchworks/images/flyway:13.12.1",
+        "version": "13.12.2",
+        "tag": "ghcr.io/quenchworks/images/flyway:13.12.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -7425,6 +7930,37 @@
       {
         "version": "15.0.11",
         "tag": "ghcr.io/quenchworks/images/forgejo:15.0.11",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "freshrss": {
+    "image": "ghcr.io/quenchworks/images/freshrss",
+    "version": "1.30.4",
+    "tag": "ghcr.io/quenchworks/images/freshrss:1.30.4",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.30.4",
+        "tag": "ghcr.io/quenchworks/images/freshrss:1.30.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -7634,83 +8170,262 @@
       }
     ]
   },
-  "ghost": {
-    "image": "ghcr.io/quenchworks/images/ghost",
-    "version": "6.76.0",
-    "tag": "ghcr.io/quenchworks/images/ghost:6.76.0",
+  "gatus": {
+    "image": "ghcr.io/quenchworks/images/gatus",
+    "version": "5.38.0",
+    "tag": "ghcr.io/quenchworks/images/gatus:5.38.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 0,
-    "total": 0,
+    "unknown": 1,
+    "total": 1,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "A",
+    "score": 98,
+    "cves": [
+      {
+        "id": "GO-2026-5932",
+        "severity": "UNKNOWN",
+        "pkg": "golang.org/x/crypto/openpgp",
+        "installed": "v0.1.0-deprecated",
+        "fixed": null,
+        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+        "url": "https://go.dev/issue/44226",
+        "targets": [
+          "usr/bin/gatus"
+        ]
+      }
+    ],
     "versions": [
       {
-        "version": "6.76.0",
-        "tag": "ghcr.io/quenchworks/images/ghost:6.76.0",
+        "version": "5.38.0",
+        "tag": "ghcr.io/quenchworks/images/gatus:5.38.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "6.75.0",
-        "tag": "ghcr.io/quenchworks/images/ghost:6.75.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 1,
-        "low": 0,
-        "unknown": 0,
+        "unknown": 1,
         "total": 1,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
+        "grade": "A",
+        "score": 98,
         "cves": [
           {
-            "id": "GHSA-984p-xq9m-4rjw",
-            "severity": "MEDIUM",
-            "pkg": "express-brute",
-            "installed": "1.0.1",
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto/openpgp",
+            "installed": "v0.1.0-deprecated",
             "fixed": null,
-            "title": "Rate Limiting Bypass in express-brute",
-            "url": "https://github.com/advisories/GHSA-984p-xq9m-4rjw",
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
             "targets": [
-              "Node.js"
+              "usr/bin/gatus"
             ]
           }
         ]
       },
       {
-        "version": "6.74.0",
-        "tag": "ghcr.io/quenchworks/images/ghost:6.74.0",
+        "version": "5.37.0",
+        "tag": "ghcr.io/quenchworks/images/gatus:5.37.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
-        "unknown": 0,
+        "unknown": 1,
         "total": 1,
         "fixable": 0,
-        "grade": "C",
-        "score": 96,
+        "grade": "A",
+        "score": 98,
         "cves": [
           {
-            "id": "GHSA-984p-xq9m-4rjw",
-            "severity": "MEDIUM",
-            "pkg": "express-brute",
-            "installed": "1.0.1",
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto/openpgp",
+            "installed": "v0.1.0-deprecated",
             "fixed": null,
-            "title": "Rate Limiting Bypass in express-brute",
-            "url": "https://github.com/advisories/GHSA-984p-xq9m-4rjw",
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/gatus"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "5.36.0",
+        "tag": "ghcr.io/quenchworks/images/gatus:5.36.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto/openpgp",
+            "installed": "v0.1.0-deprecated",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/gatus"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "ghost": {
+    "image": "ghcr.io/quenchworks/images/ghost",
+    "version": "6.77.0",
+    "tag": "ghcr.io/quenchworks/images/ghost:6.77.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 4,
+    "low": 1,
+    "unknown": 0,
+    "total": 5,
+    "fixable": 5,
+    "grade": "C",
+    "score": 58,
+    "cves": [
+      {
+        "id": "CVE-2026-126355",
+        "severity": "MEDIUM",
+        "pkg": "hono",
+        "installed": "4.13.11",
+        "fixed": "4.13.16",
+        "title": "Hono: `csrf()` does not check requests sent by hyperlink auditing (`text/ping`)",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126355",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126356",
+        "severity": "MEDIUM",
+        "pkg": "hono",
+        "installed": "4.13.11",
+        "fixed": "4.13.16",
+        "title": "Hono: `validator('form')` skips validation for `multipart/form-data` requests with extra parameters",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126356",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126357",
+        "severity": "MEDIUM",
+        "pkg": "hono",
+        "installed": "4.13.11",
+        "fixed": "4.13.16",
+        "title": "Hono: `mount()` and `app.mount()` can forward a path that bypasses middleware scoped inside the mount prefix",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126357",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126358",
+        "severity": "MEDIUM",
+        "pkg": "hono",
+        "installed": "4.13.11",
+        "fixed": "4.13.16",
+        "title": "Hono: RegExpRouter skips wildcard middleware for some route sets and for paths with an encoded line terminator",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126358",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126359",
+        "severity": "LOW",
+        "pkg": "hono",
+        "installed": "4.13.11",
+        "fixed": "4.13.16",
+        "title": "Hono: `css` helper does not escape a closing tag split between the template and an interpolated value, allowing HTML injection",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126359",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "6.77.0",
+        "tag": "ghcr.io/quenchworks/images/ghost:6.77.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 4,
+        "low": 1,
+        "unknown": 0,
+        "total": 5,
+        "fixable": 5,
+        "grade": "C",
+        "score": 58,
+        "cves": [
+          {
+            "id": "CVE-2026-126355",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `csrf()` does not check requests sent by hyperlink auditing (`text/ping`)",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126355",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126356",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `validator('form')` skips validation for `multipart/form-data` requests with extra parameters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126356",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126357",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `mount()` and `app.mount()` can forward a path that bypasses middleware scoped inside the mount prefix",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126357",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126358",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: RegExpRouter skips wildcard middleware for some route sets and for paths with an encoded line terminator",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126358",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126359",
+            "severity": "LOW",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `css` helper does not escape a closing tag split between the template and an interpolated value, allowing HTML injection",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126359",
             "targets": [
               "Node.js"
             ]
@@ -7722,13 +8437,13 @@
         "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
         "critical": 0,
         "high": 2,
-        "medium": 1,
-        "low": 0,
+        "medium": 5,
+        "low": 1,
         "unknown": 0,
-        "total": 3,
-        "fixable": 0,
+        "total": 8,
+        "fixable": 5,
         "grade": "D",
-        "score": 76,
+        "score": 34,
         "cves": [
           {
             "id": "CVE-2026-19693",
@@ -7755,6 +8470,54 @@
             ]
           },
           {
+            "id": "CVE-2026-126355",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `csrf()` does not check requests sent by hyperlink auditing (`text/ping`)",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126355",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126356",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `validator('form')` skips validation for `multipart/form-data` requests with extra parameters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126356",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126357",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `mount()` and `app.mount()` can forward a path that bypasses middleware scoped inside the mount prefix",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126357",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126358",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: RegExpRouter skips wildcard middleware for some route sets and for paths with an encoded line terminator",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126358",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
             "id": "GHSA-984p-xq9m-4rjw",
             "severity": "MEDIUM",
             "pkg": "express-brute",
@@ -7762,6 +8525,129 @@
             "fixed": null,
             "title": "Rate Limiting Bypass in express-brute",
             "url": "https://github.com/advisories/GHSA-984p-xq9m-4rjw",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126359",
+            "severity": "LOW",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `css` helper does not escape a closing tag split between the template and an interpolated value, allowing HTML injection",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126359",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "chart:ghost",
+        "tag": "ghcr.io/quenchworks/images/ghost:chart:ghost",
+        "critical": 0,
+        "high": 2,
+        "medium": 5,
+        "low": 1,
+        "unknown": 0,
+        "total": 8,
+        "fixable": 5,
+        "grade": "D",
+        "score": 34,
+        "cves": [
+          {
+            "id": "CVE-2026-19693",
+            "severity": "HIGH",
+            "pkg": "extract-zip",
+            "installed": "2.0.1",
+            "fixed": null,
+            "title": "extract-zip: extract-zip: Arbitrary file write via symlink in archive",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-19693",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-56876",
+            "severity": "HIGH",
+            "pkg": "extract-zip",
+            "installed": "2.0.1",
+            "fixed": null,
+            "title": "extract-zip: github.com/maxogden/extract-zip: extract-zip: Arbitrary file write and information disclosure via symlink validation bypass",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-56876",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126355",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `csrf()` does not check requests sent by hyperlink auditing (`text/ping`)",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126355",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126356",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `validator('form')` skips validation for `multipart/form-data` requests with extra parameters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126356",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126357",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `mount()` and `app.mount()` can forward a path that bypasses middleware scoped inside the mount prefix",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126357",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126358",
+            "severity": "MEDIUM",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: RegExpRouter skips wildcard middleware for some route sets and for paths with an encoded line terminator",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126358",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-984p-xq9m-4rjw",
+            "severity": "MEDIUM",
+            "pkg": "express-brute",
+            "installed": "1.0.1",
+            "fixed": null,
+            "title": "Rate Limiting Bypass in express-brute",
+            "url": "https://github.com/advisories/GHSA-984p-xq9m-4rjw",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126359",
+            "severity": "LOW",
+            "pkg": "hono",
+            "installed": "4.13.11",
+            "fixed": "4.13.16",
+            "title": "Hono: `css` helper does not escape a closing tag split between the template and an interpolated value, allowing HTML injection",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126359",
             "targets": [
               "Node.js"
             ]
@@ -7967,6 +8853,37 @@
       }
     ]
   },
+  "glance": {
+    "image": "ghcr.io/quenchworks/images/glance",
+    "version": "0.8.8",
+    "tag": "ghcr.io/quenchworks/images/glance:0.8.8",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.8.8",
+        "tag": "ghcr.io/quenchworks/images/glance:0.8.8",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "go": {
     "image": "ghcr.io/quenchworks/images/go",
     "version": "1.27.4",
@@ -7999,6 +8916,37 @@
       {
         "version": "1.26.11",
         "tag": "ghcr.io/quenchworks/images/go:1.26.11",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "goaccess": {
+    "image": "ghcr.io/quenchworks/images/goaccess",
+    "version": "1.12",
+    "tag": "ghcr.io/quenchworks/images/goaccess:1.12",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.12",
+        "tag": "ghcr.io/quenchworks/images/goaccess:1.12",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -8410,14 +9358,26 @@
     "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "total": 2,
+    "fixable": 1,
+    "grade": "C",
+    "score": 90,
     "cves": [
+      {
+        "id": "CVE-2026-126345",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.3",
+        "fixed": "6.2.4",
+        "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2025-14505",
         "severity": "LOW",
@@ -8437,14 +9397,26 @@
         "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 2,
+        "fixable": 1,
+        "grade": "C",
+        "score": 90,
         "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.3",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2025-14505",
             "severity": "LOW",
@@ -9604,10 +10576,10 @@
       }
     ]
   },
-  "homepage": {
-    "image": "ghcr.io/quenchworks/images/homepage",
-    "version": "2.7.0",
-    "tag": "ghcr.io/quenchworks/images/homepage:2.7.0",
+  "homebox": {
+    "image": "ghcr.io/quenchworks/images/homebox",
+    "version": "0.27.1",
+    "tag": "ghcr.io/quenchworks/images/homebox:0.27.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -9620,8 +10592,39 @@
     "cves": [],
     "versions": [
       {
-        "version": "2.7.0",
-        "tag": "ghcr.io/quenchworks/images/homepage:2.7.0",
+        "version": "0.27.1",
+        "tag": "ghcr.io/quenchworks/images/homebox:0.27.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "homepage": {
+    "image": "ghcr.io/quenchworks/images/homepage",
+    "version": "2.8.0",
+    "tag": "ghcr.io/quenchworks/images/homepage:2.8.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.8.0",
+        "tag": "ghcr.io/quenchworks/images/homepage:2.8.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -9636,6 +10639,20 @@
       {
         "version": "2.4.0",
         "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:homepage",
+        "tag": "ghcr.io/quenchworks/images/homepage:chart:homepage",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10720,8 +11737,8 @@
   },
   "k6": {
     "image": "ghcr.io/quenchworks/images/k6",
-    "version": "2.3.0",
-    "tag": "ghcr.io/quenchworks/images/k6:2.3.0",
+    "version": "chart:k6",
+    "tag": "ghcr.io/quenchworks/images/k6:chart:k6",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -10733,6 +11750,34 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "chart:k6",
+        "tag": "ghcr.io/quenchworks/images/k6:chart:k6",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "2.4.0",
+        "tag": "ghcr.io/quenchworks/images/k6:2.4.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "2.3.0",
         "tag": "ghcr.io/quenchworks/images/k6:2.3.0",
@@ -10826,6 +11871,37 @@
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/kafka-exporter:1.8.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "kanboard": {
+    "image": "ghcr.io/quenchworks/images/kanboard",
+    "version": "1.2.57",
+    "tag": "ghcr.io/quenchworks/images/kanboard:1.2.57",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.2.57",
+        "tag": "ghcr.io/quenchworks/images/kanboard:1.2.57",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -12078,14 +13154,27 @@
         "tag": "ghcr.io/quenchworks/images/ko:0.18.1",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-39395",
+            "severity": "MEDIUM",
+            "pkg": "github.com/sigstore/cosign/v2",
+            "installed": "v2.6.2",
+            "fixed": "2.6.3",
+            "title": "github.com/sigstore/cosign: Cosign: Incorrect attestation verification due to malformed payloads or mismatched predicate types",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-39395",
+            "targets": [
+              "usr/bin/ko"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -12093,135 +13182,6 @@
     "image": "ghcr.io/quenchworks/images/kong",
     "version": "3.9.4",
     "tag": "ghcr.io/quenchworks/images/kong:3.9.4",
-    "critical": 0,
-    "high": 0,
-    "medium": 4,
-    "low": 0,
-    "unknown": 0,
-    "total": 4,
-    "fixable": 4,
-    "grade": "C",
-    "score": 64,
-    "cves": [
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44-locale-posix",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "ld-linux-2.44",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "libcrypt1-2.44",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-        ]
-      }
-    ],
-    "versions": [
-      {
-        "version": "3.9.4",
-        "tag": "ghcr.io/quenchworks/images/kong:3.9.4",
-        "critical": 0,
-        "high": 0,
-        "medium": 4,
-        "low": 0,
-        "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "C",
-        "score": 64,
-        "cves": [
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/kong@sha256:68fcc9163db3e4fc2af9adab40ddd940c721d1fb30f40bcc5077b2dfea094bdd (wolfi 20230201)"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "krakend": {
-    "image": "ghcr.io/quenchworks/images/krakend",
-    "version": "3.0.3",
-    "tag": "ghcr.io/quenchworks/images/krakend:3.0.3",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -12234,8 +13194,39 @@
     "cves": [],
     "versions": [
       {
-        "version": "3.0.3",
-        "tag": "ghcr.io/quenchworks/images/krakend:3.0.3",
+        "version": "3.9.4",
+        "tag": "ghcr.io/quenchworks/images/kong:3.9.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "krakend": {
+    "image": "ghcr.io/quenchworks/images/krakend",
+    "version": "3.0.4",
+    "tag": "ghcr.io/quenchworks/images/krakend:3.0.4",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.0.4",
+        "tag": "ghcr.io/quenchworks/images/krakend:3.0.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -12250,6 +13241,20 @@
       {
         "version": "2.13.11",
         "tag": "ghcr.io/quenchworks/images/krakend:2.13.11",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:krakend",
+        "tag": "ghcr.io/quenchworks/images/krakend:chart:krakend",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -12944,8 +13949,8 @@
   },
   "kubescape-storage": {
     "image": "ghcr.io/quenchworks/images/kubescape-storage",
-    "version": "0.0.398",
-    "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.398",
+    "version": "0.0.402",
+    "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.402",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -12958,8 +13963,22 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.0.398",
-        "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.398",
+        "version": "0.0.402",
+        "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.402",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:kubescape-operator",
+        "tag": "ghcr.io/quenchworks/images/kubescape-storage:chart:kubescape-operator",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13231,8 +14250,8 @@
   },
   "kyverno": {
     "image": "ghcr.io/quenchworks/images/kyverno",
-    "version": "1.19.2",
-    "tag": "ghcr.io/quenchworks/images/kyverno:1.19.2",
+    "version": "1.20.0",
+    "tag": "ghcr.io/quenchworks/images/kyverno:1.20.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13245,8 +14264,36 @@
     "cves": [],
     "versions": [
       {
+        "version": "1.20.0",
+        "tag": "ghcr.io/quenchworks/images/kyverno:1.20.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
         "version": "1.19.2",
         "tag": "ghcr.io/quenchworks/images/kyverno:1.19.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:kyverno",
+        "tag": "ghcr.io/quenchworks/images/kyverno:chart:kyverno",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13278,6 +14325,37 @@
       {
         "version": "1.23.2",
         "tag": "ghcr.io/quenchworks/images/label-studio:1.23.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "linkding": {
+    "image": "ghcr.io/quenchworks/images/linkding",
+    "version": "1.47.0",
+    "tag": "ghcr.io/quenchworks/images/linkding:1.47.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.47.0",
+        "tag": "ghcr.io/quenchworks/images/linkding:1.47.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -14226,8 +15304,8 @@
   },
   "mariadb": {
     "image": "ghcr.io/quenchworks/images/mariadb",
-    "version": "12.3.3",
-    "tag": "ghcr.io/quenchworks/images/mariadb:12.3.3",
+    "version": "12.3.4",
+    "tag": "ghcr.io/quenchworks/images/mariadb:12.3.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -14239,6 +15317,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "12.3.4",
+        "tag": "ghcr.io/quenchworks/images/mariadb:12.3.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "12.3.3",
         "tag": "ghcr.io/quenchworks/images/mariadb:12.3.3",
@@ -14254,8 +15346,8 @@
         "cves": []
       },
       {
-        "version": "11.8.9",
-        "tag": "ghcr.io/quenchworks/images/mariadb:11.8.9",
+        "version": "11.8.10",
+        "tag": "ghcr.io/quenchworks/images/mariadb:11.8.10",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -14268,8 +15360,22 @@
         "cves": []
       },
       {
-        "version": "11.4.13",
-        "tag": "ghcr.io/quenchworks/images/mariadb:11.4.13",
+        "version": "11.4.14",
+        "tag": "ghcr.io/quenchworks/images/mariadb:11.4.14",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:friendica",
+        "tag": "ghcr.io/quenchworks/images/mariadb:chart:friendica",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -14347,29 +15453,55 @@
     "version": "4.7.5",
     "tag": "ghcr.io/quenchworks/images/mastodon:4.7.5",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-126366",
+        "severity": "HIGH",
+        "pkg": "msgpack",
+        "installed": "1.8.4",
+        "fixed": "1.8.7",
+        "title": "msgpack-ruby JRuby decoder makes uncapped header-count allocations; a 5-byte message forces multi-GiB OOM",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126366",
+        "targets": [
+          "Ruby"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.7.5",
         "tag": "ghcr.io/quenchworks/images/mastodon:4.7.5",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-126366",
+            "severity": "HIGH",
+            "pkg": "msgpack",
+            "installed": "1.8.4",
+            "fixed": "1.8.7",
+            "title": "msgpack-ruby JRuby decoder makes uncapped header-count allocations; a 5-byte message forces multi-GiB OOM",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126366",
+            "targets": [
+              "Ruby"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -14526,6 +15658,37 @@
       {
         "version": "3.9.16",
         "tag": "ghcr.io/quenchworks/images/maven:3.9.16",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "mealie": {
+    "image": "ghcr.io/quenchworks/images/mealie",
+    "version": "3.30.0",
+    "tag": "ghcr.io/quenchworks/images/mealie:3.30.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.30.0",
+        "tag": "ghcr.io/quenchworks/images/mealie:3.30.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -15271,14 +16434,38 @@
     "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
     "critical": 0,
     "high": 0,
-    "medium": 4,
+    "medium": 6,
     "low": 0,
     "unknown": 0,
-    "total": 4,
-    "fixable": 0,
+    "total": 6,
+    "fixable": 2,
     "grade": "C",
-    "score": 84,
+    "score": 66,
     "cves": [
+      {
+        "id": "CVE-2026-126210",
+        "severity": "MEDIUM",
+        "pkg": "@hono/node-server",
+        "installed": "2.1.3",
+        "fixed": "2.1.6, 1.19.18",
+        "title": "@hono/node-server: Backslash in the request path is parsed as a path separator, bypassing path-based access control at a reverse proxy",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126210",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126343",
+        "severity": "MEDIUM",
+        "pkg": "@hono/node-server",
+        "installed": "2.1.3",
+        "fixed": "2.1.6",
+        "title": "@hono/node-server: Unhandled `ECONNRESET` on the socket during an asynchronous WebSocket upgrade crashes the process",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126343",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2024-1899",
         "severity": "MEDIUM",
@@ -15334,14 +16521,38 @@
         "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
         "critical": 0,
         "high": 0,
-        "medium": 4,
+        "medium": 6,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 0,
+        "total": 6,
+        "fixable": 2,
         "grade": "C",
-        "score": 84,
+        "score": 66,
         "cves": [
+          {
+            "id": "CVE-2026-126210",
+            "severity": "MEDIUM",
+            "pkg": "@hono/node-server",
+            "installed": "2.1.3",
+            "fixed": "2.1.6, 1.19.18",
+            "title": "@hono/node-server: Backslash in the request path is parsed as a path separator, bypassing path-based access control at a reverse proxy",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126210",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126343",
+            "severity": "MEDIUM",
+            "pkg": "@hono/node-server",
+            "installed": "2.1.3",
+            "fixed": "2.1.6",
+            "title": "@hono/node-server: Unhandled `ECONNRESET` on the socket during an asynchronous WebSocket upgrade crashes the process",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126343",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2024-1899",
             "severity": "MEDIUM",
@@ -15728,8 +16939,8 @@
   },
   "nextcloud": {
     "image": "ghcr.io/quenchworks/images/nextcloud",
-    "version": "34.0.5",
-    "tag": "ghcr.io/quenchworks/images/nextcloud:34.0.5",
+    "version": "34.0.6",
+    "tag": "ghcr.io/quenchworks/images/nextcloud:34.0.6",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -15742,8 +16953,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "34.0.5",
-        "tag": "ghcr.io/quenchworks/images/nextcloud:34.0.5",
+        "version": "34.0.6",
+        "tag": "ghcr.io/quenchworks/images/nextcloud:34.0.6",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -15758,6 +16969,20 @@
       {
         "version": "34.0.4",
         "tag": "ghcr.io/quenchworks/images/nextcloud:34.0.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:nextcloud",
+        "tag": "ghcr.io/quenchworks/images/nextcloud:chart:nextcloud",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -15922,32 +17147,172 @@
   },
   "nginx-proxy-manager": {
     "image": "ghcr.io/quenchworks/images/nginx-proxy-manager",
-    "version": "2.16.0",
-    "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:2.16.0",
+    "version": "2.17.0",
+    "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:2.17.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 82,
+    "cves": [
+      {
+        "id": "CVE-2026-126345",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.4",
+        "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126346",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.3",
+        "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
+      {
+        "version": "2.17.0",
+        "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:2.17.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "unknown": 0,
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
+      },
       {
         "version": "2.16.0",
         "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:2.16.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
+      },
+      {
+        "version": "chart:nginx-proxy-manager",
+        "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:chart:nginx-proxy-manager",
+        "critical": 0,
+        "high": 1,
+        "medium": 2,
+        "low": 0,
+        "unknown": 0,
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 67,
+        "cves": [
+          {
+            "id": "CVE-2026-123863",
+            "severity": "HIGH",
+            "pkg": "nodejs-24",
+            "installed": "24.22.2-r2",
+            "fixed": "24.22.3-r0",
+            "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+            "targets": [
+              "ghcr.io/quenchworks/images/nginx-proxy-manager@sha256:688d3a728eb27203c503b47339caf99948b4c4822f2206b723e1c13c4e2d9c34 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -15984,8 +17349,8 @@
   },
   "node": {
     "image": "ghcr.io/quenchworks/images/node",
-    "version": "26.13.0",
-    "tag": "ghcr.io/quenchworks/images/node:26.13.0",
+    "version": "26.13.1",
+    "tag": "ghcr.io/quenchworks/images/node:26.13.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -15998,8 +17363,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "26.13.0",
-        "tag": "ghcr.io/quenchworks/images/node:26.13.0",
+        "version": "26.13.1",
+        "tag": "ghcr.io/quenchworks/images/node:26.13.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16012,8 +17377,8 @@
         "cves": []
       },
       {
-        "version": "24.22.2",
-        "tag": "ghcr.io/quenchworks/images/node:24.22.2",
+        "version": "24.22.3",
+        "tag": "ghcr.io/quenchworks/images/node:24.22.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16026,8 +17391,8 @@
         "cves": []
       },
       {
-        "version": "22.23.4",
-        "tag": "ghcr.io/quenchworks/images/node:22.23.4",
+        "version": "22.23.5",
+        "tag": "ghcr.io/quenchworks/images/node:22.23.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16375,8 +17740,8 @@
   },
   "opa": {
     "image": "ghcr.io/quenchworks/images/opa",
-    "version": "1.22.3",
-    "tag": "ghcr.io/quenchworks/images/opa:1.22.3",
+    "version": "1.22.4",
+    "tag": "ghcr.io/quenchworks/images/opa:1.22.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -16389,8 +17754,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.22.3",
-        "tag": "ghcr.io/quenchworks/images/opa:1.22.3",
+        "version": "1.22.4",
+        "tag": "ghcr.io/quenchworks/images/opa:1.22.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16405,6 +17770,20 @@
       {
         "version": "1.21.4",
         "tag": "ghcr.io/quenchworks/images/opa:1.21.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:opa",
+        "tag": "ghcr.io/quenchworks/images/opa:chart:opa",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16663,189 +18042,42 @@
     "tag": "ghcr.io/quenchworks/images/openresty:1.31.8.1",
     "critical": 0,
     "high": 0,
-    "medium": 4,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 4,
-    "fixable": 4,
-    "grade": "C",
-    "score": 64,
-    "cves": [
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44",
-        "installed": "2.44-r11",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44-locale-posix",
-        "installed": "2.44-r11",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "ld-linux-2.44",
-        "installed": "2.44-r11",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "libcrypt1-2.44",
-        "installed": "2.44-r11",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.31.8.1",
         "tag": "ghcr.io/quenchworks/images/openresty:1.31.8.1",
         "critical": 0,
         "high": 0,
-        "medium": 4,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "C",
-        "score": 64,
-        "cves": [
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:91b0e3a14c0ca2d37d9938f88e72488672e3975e3b2ca80d0b2d723fbbc4ccf8 (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.29.2.5",
         "tag": "ghcr.io/quenchworks/images/openresty:1.29.2.5",
         "critical": 0,
         "high": 0,
-        "medium": 4,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "C",
-        "score": 64,
-        "cves": [
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:dab632fb62359da55cfa0712a722ec2fc5a59af33df6bf130a2bd6b1d186b18b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:dab632fb62359da55cfa0712a722ec2fc5a59af33df6bf130a2bd6b1d186b18b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:dab632fb62359da55cfa0712a722ec2fc5a59af33df6bf130a2bd6b1d186b18b (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r11",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/openresty@sha256:dab632fb62359da55cfa0712a722ec2fc5a59af33df6bf130a2bd6b1d186b18b (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -16930,12 +18162,12 @@
     "version": "3.8.0",
     "tag": "ghcr.io/quenchworks/images/opensearch-dashboards:3.8.0",
     "critical": 11,
-    "high": 23,
+    "high": 24,
     "medium": 21,
     "low": 18,
     "unknown": 0,
-    "total": 73,
-    "fixable": 72,
+    "total": 74,
+    "fixable": 73,
     "grade": "F",
     "score": 0,
     "cves": [
@@ -17213,6 +18445,18 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-119202",
         "targets": [
           "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-123863",
+        "severity": "HIGH",
+        "pkg": "nodejs-22",
+        "installed": "22.23.2-r1",
+        "fixed": "22.23.5-r0",
+        "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+        "targets": [
+          "ghcr.io/quenchworks/images/opensearch-dashboards@sha256:fe8e7e8565296ddd38037ff9c31590fe5901b70cf3b257d5a14ea9552a4edd38 (wolfi 20230201)"
         ]
       },
       {
@@ -17617,12 +18861,12 @@
         "version": "3.8.0",
         "tag": "ghcr.io/quenchworks/images/opensearch-dashboards:3.8.0",
         "critical": 11,
-        "high": 23,
+        "high": 24,
         "medium": 21,
         "low": 18,
         "unknown": 0,
-        "total": 73,
-        "fixable": 72,
+        "total": 74,
+        "fixable": 73,
         "grade": "F",
         "score": 0,
         "cves": [
@@ -17900,6 +19144,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-119202",
             "targets": [
               "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-123863",
+            "severity": "HIGH",
+            "pkg": "nodejs-22",
+            "installed": "22.23.2-r1",
+            "fixed": "22.23.5-r0",
+            "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+            "targets": [
+              "ghcr.io/quenchworks/images/opensearch-dashboards@sha256:fe8e7e8565296ddd38037ff9c31590fe5901b70cf3b257d5a14ea9552a4edd38 (wolfi 20230201)"
             ]
           },
           {
@@ -18760,6 +20016,37 @@
       }
     ]
   },
+  "owncast": {
+    "image": "ghcr.io/quenchworks/images/owncast",
+    "version": "0.3.0",
+    "tag": "ghcr.io/quenchworks/images/owncast:0.3.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.3.0",
+        "tag": "ghcr.io/quenchworks/images/owncast:0.3.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "percona-xtradb-cluster-operator": {
     "image": "ghcr.io/quenchworks/images/percona-xtradb-cluster-operator",
     "version": "1.20.0",
@@ -19027,8 +20314,8 @@
   },
   "pgdog": {
     "image": "ghcr.io/quenchworks/images/pgdog",
-    "version": "0.1.64",
-    "tag": "ghcr.io/quenchworks/images/pgdog:0.1.64",
+    "version": "0.1.65",
+    "tag": "ghcr.io/quenchworks/images/pgdog:0.1.65",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -19041,8 +20328,36 @@
     "cves": [],
     "versions": [
       {
+        "version": "0.1.65",
+        "tag": "ghcr.io/quenchworks/images/pgdog:0.1.65",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
         "version": "0.1.64",
         "tag": "ghcr.io/quenchworks/images/pgdog:0.1.64",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:pgdog",
+        "tag": "ghcr.io/quenchworks/images/pgdog:chart:pgdog",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -19748,8 +21063,8 @@
   },
   "postgresql": {
     "image": "ghcr.io/quenchworks/images/postgresql",
-    "version": "18.6",
-    "tag": "ghcr.io/quenchworks/images/postgresql:18.6",
+    "version": "18.7",
+    "tag": "ghcr.io/quenchworks/images/postgresql:18.7",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -19761,6 +21076,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "18.7",
+        "tag": "ghcr.io/quenchworks/images/postgresql:18.7",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "18.6",
         "tag": "ghcr.io/quenchworks/images/postgresql:18.6",
@@ -19776,8 +21105,8 @@
         "cves": []
       },
       {
-        "version": "17.11",
-        "tag": "ghcr.io/quenchworks/images/postgresql:17.11",
+        "version": "17.12",
+        "tag": "ghcr.io/quenchworks/images/postgresql:17.12",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -19790,8 +21119,22 @@
         "cves": []
       },
       {
-        "version": "16.15",
-        "tag": "ghcr.io/quenchworks/images/postgresql:16.15",
+        "version": "16.16",
+        "tag": "ghcr.io/quenchworks/images/postgresql:16.16",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:airflow",
+        "tag": "ghcr.io/quenchworks/images/postgresql:chart:airflow",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -19807,8 +21150,8 @@
   },
   "postgresql-15": {
     "image": "ghcr.io/quenchworks/images/postgresql-15",
-    "version": "15.19",
-    "tag": "ghcr.io/quenchworks/images/postgresql-15:15.19",
+    "version": "15.20",
+    "tag": "ghcr.io/quenchworks/images/postgresql-15:15.20",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -19820,6 +21163,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "15.20",
+        "tag": "ghcr.io/quenchworks/images/postgresql-15:15.20",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "15.19",
         "tag": "ghcr.io/quenchworks/images/postgresql-15:15.19",
@@ -19835,22 +21192,8 @@
         "cves": []
       },
       {
-        "version": "15.18",
-        "tag": "ghcr.io/quenchworks/images/postgresql-15:15.18",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "15.17",
-        "tag": "ghcr.io/quenchworks/images/postgresql-15:15.17",
+        "version": "chart:coolify",
+        "tag": "ghcr.io/quenchworks/images/postgresql-15:chart:coolify",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -20103,6 +21446,37 @@
       }
     ]
   },
+  "prometheus-config-reloader": {
+    "image": "ghcr.io/quenchworks/images/prometheus-config-reloader",
+    "version": "0.95.2",
+    "tag": "ghcr.io/quenchworks/images/prometheus-config-reloader:0.95.2",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.95.2",
+        "tag": "ghcr.io/quenchworks/images/prometheus-config-reloader:0.95.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "prometheus-nats-exporter": {
     "image": "ghcr.io/quenchworks/images/prometheus-nats-exporter",
     "version": "0.20.3",
@@ -20121,6 +21495,68 @@
       {
         "version": "0.20.3",
         "tag": "ghcr.io/quenchworks/images/prometheus-nats-exporter:0.20.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "prometheus-operator": {
+    "image": "ghcr.io/quenchworks/images/prometheus-operator",
+    "version": "0.95.2",
+    "tag": "ghcr.io/quenchworks/images/prometheus-operator:0.95.2",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.95.2",
+        "tag": "ghcr.io/quenchworks/images/prometheus-operator:0.95.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "promxy": {
+    "image": "ghcr.io/quenchworks/images/promxy",
+    "version": "0.0.97",
+    "tag": "ghcr.io/quenchworks/images/promxy:0.0.97",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.0.97",
+        "tag": "ghcr.io/quenchworks/images/promxy:0.0.97",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -20198,8 +21634,8 @@
   },
   "pulumi": {
     "image": "ghcr.io/quenchworks/images/pulumi",
-    "version": "3.274.1",
-    "tag": "ghcr.io/quenchworks/images/pulumi:3.274.1",
+    "version": "3.276.0",
+    "tag": "ghcr.io/quenchworks/images/pulumi:3.276.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -20212,8 +21648,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "3.274.1",
-        "tag": "ghcr.io/quenchworks/images/pulumi:3.274.1",
+        "version": "3.276.0",
+        "tag": "ghcr.io/quenchworks/images/pulumi:3.276.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -20226,8 +21662,8 @@
         "cves": []
       },
       {
-        "version": "3.273.0",
-        "tag": "ghcr.io/quenchworks/images/pulumi:3.273.0",
+        "version": "3.275.0",
+        "tag": "ghcr.io/quenchworks/images/pulumi:3.275.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -20238,38 +21674,27 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
+      }
+    ]
+  },
+  "pushgateway": {
+    "image": "ghcr.io/quenchworks/images/pushgateway",
+    "version": "1.11.4",
+    "tag": "ghcr.io/quenchworks/images/pushgateway:1.11.4",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
       {
-        "version": "3.271.0",
-        "tag": "ghcr.io/quenchworks/images/pulumi:3.271.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "3.270.0",
-        "tag": "ghcr.io/quenchworks/images/pulumi:3.270.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "3.268.0",
-        "tag": "ghcr.io/quenchworks/images/pulumi:3.268.0",
+        "version": "1.11.4",
+        "tag": "ghcr.io/quenchworks/images/pushgateway:1.11.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -21071,8 +22496,8 @@
   },
   "renovate": {
     "image": "ghcr.io/quenchworks/images/renovate",
-    "version": "44.235.1",
-    "tag": "ghcr.io/quenchworks/images/renovate:44.235.1",
+    "version": "44.236.4",
+    "tag": "ghcr.io/quenchworks/images/renovate:44.236.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -21085,8 +22510,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "44.235.1",
-        "tag": "ghcr.io/quenchworks/images/renovate:44.235.1",
+        "version": "44.236.4",
+        "tag": "ghcr.io/quenchworks/images/renovate:44.236.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -22081,10 +23506,10 @@
       }
     ]
   },
-  "skipper": {
-    "image": "ghcr.io/quenchworks/images/skipper",
-    "version": "0.28.75",
-    "tag": "ghcr.io/quenchworks/images/skipper:0.28.75",
+  "sish": {
+    "image": "ghcr.io/quenchworks/images/sish",
+    "version": "4.0.0",
+    "tag": "ghcr.io/quenchworks/images/sish:4.0.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -22097,8 +23522,67 @@
     "cves": [],
     "versions": [
       {
+        "version": "4.0.0",
+        "tag": "ghcr.io/quenchworks/images/sish:4.0.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "skipper": {
+    "image": "ghcr.io/quenchworks/images/skipper",
+    "version": "0.28.76",
+    "tag": "ghcr.io/quenchworks/images/skipper:0.28.76",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.28.76",
+        "tag": "ghcr.io/quenchworks/images/skipper:0.28.76",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
         "version": "0.28.75",
         "tag": "ghcr.io/quenchworks/images/skipper:0.28.75",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:skipper",
+        "tag": "ghcr.io/quenchworks/images/skipper:chart:skipper",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -22161,6 +23645,37 @@
       {
         "version": "11.0.0",
         "tag": "ghcr.io/quenchworks/images/skywalking:11.0.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "smokescreen": {
+    "image": "ghcr.io/quenchworks/images/smokescreen",
+    "version": "0.1.0",
+    "tag": "ghcr.io/quenchworks/images/smokescreen:0.1.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.1.0",
+        "tag": "ghcr.io/quenchworks/images/smokescreen:0.1.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -22887,6 +24402,51 @@
       {
         "version": "1.56.0",
         "tag": "ghcr.io/quenchworks/images/syft:1.56.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "syncthing": {
+    "image": "ghcr.io/quenchworks/images/syncthing",
+    "version": "2.1.7",
+    "tag": "ghcr.io/quenchworks/images/syncthing:2.1.7",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.1.7",
+        "tag": "ghcr.io/quenchworks/images/syncthing:2.1.7",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "2.0.16",
+        "tag": "ghcr.io/quenchworks/images/syncthing:2.0.16",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -23994,8 +25554,8 @@
   },
   "timescaledb": {
     "image": "ghcr.io/quenchworks/images/timescaledb",
-    "version": "2.31.0",
-    "tag": "ghcr.io/quenchworks/images/timescaledb:2.31.0",
+    "version": "2.32.0",
+    "tag": "ghcr.io/quenchworks/images/timescaledb:2.32.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -24008,8 +25568,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "2.31.0",
-        "tag": "ghcr.io/quenchworks/images/timescaledb:2.31.0",
+        "version": "2.32.0",
+        "tag": "ghcr.io/quenchworks/images/timescaledb:2.32.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -24024,6 +25584,20 @@
       {
         "version": "2.30.2",
         "tag": "ghcr.io/quenchworks/images/timescaledb:2.30.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "chart:timescaledb",
+        "tag": "ghcr.io/quenchworks/images/timescaledb:chart:timescaledb",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -24234,6 +25808,51 @@
       }
     ]
   },
+  "trickster": {
+    "image": "ghcr.io/quenchworks/images/trickster",
+    "version": "2.2.1",
+    "tag": "ghcr.io/quenchworks/images/trickster:2.2.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.2.1",
+        "tag": "ghcr.io/quenchworks/images/trickster:2.2.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "2.1.0",
+        "tag": "ghcr.io/quenchworks/images/trickster:2.1.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "trino": {
     "image": "ghcr.io/quenchworks/images/trino",
     "version": "484",
@@ -24416,8 +26035,8 @@
   },
   "trufflehog": {
     "image": "ghcr.io/quenchworks/images/trufflehog",
-    "version": "3.99.8",
-    "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.8",
+    "version": "3.99.9",
+    "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.9",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -24430,36 +26049,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "3.99.8",
-        "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.8",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "3.98.1",
-        "tag": "ghcr.io/quenchworks/images/trufflehog:3.98.1",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "3.97.9",
-        "tag": "ghcr.io/quenchworks/images/trufflehog:3.97.9",
+        "version": "3.99.9",
+        "tag": "ghcr.io/quenchworks/images/trufflehog:3.99.9",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -24533,6 +26124,37 @@
       {
         "version": "0.23.0",
         "tag": "ghcr.io/quenchworks/images/trust-manager:0.23.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "tusd": {
+    "image": "ghcr.io/quenchworks/images/tusd",
+    "version": "2.10.1",
+    "tag": "ghcr.io/quenchworks/images/tusd:2.10.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.10.1",
+        "tag": "ghcr.io/quenchworks/images/tusd:2.10.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -24860,6 +26482,37 @@
       }
     ]
   },
+  "umami": {
+    "image": "ghcr.io/quenchworks/images/umami",
+    "version": "3.5.0",
+    "tag": "ghcr.io/quenchworks/images/umami:3.5.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.5.0",
+        "tag": "ghcr.io/quenchworks/images/umami:3.5.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "unbound": {
     "image": "ghcr.io/quenchworks/images/unbound",
     "version": "1.26.2",
@@ -24955,12 +26608,12 @@
     "version": "2.5.6",
     "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.6",
     "critical": 0,
-    "high": 6,
+    "high": 7,
     "medium": 17,
     "low": 1,
     "unknown": 0,
-    "total": 24,
-    "fixable": 24,
+    "total": 25,
+    "fixable": 25,
     "grade": "D",
     "score": 0,
     "cves": [
@@ -25022,6 +26675,18 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
         "targets": [
           "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-123863",
+        "severity": "HIGH",
+        "pkg": "nodejs-24",
+        "installed": "24.22.1-r2",
+        "fixed": "24.22.3-r0",
+        "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+        "targets": [
+          "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
         ]
       },
       {
@@ -25246,12 +26911,12 @@
         "version": "2.5.6",
         "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.6",
         "critical": 0,
-        "high": 6,
+        "high": 7,
         "medium": 17,
         "low": 1,
         "unknown": 0,
-        "total": 24,
-        "fixable": 24,
+        "total": 25,
+        "fixable": 25,
         "grade": "D",
         "score": 0,
         "cves": [
@@ -25313,6 +26978,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
             "targets": [
               "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-123863",
+            "severity": "HIGH",
+            "pkg": "nodejs-24",
+            "installed": "24.22.1-r2",
+            "fixed": "24.22.3-r0",
+            "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+            "targets": [
+              "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
             ]
           },
           {
@@ -25537,12 +27214,12 @@
         "version": "2.5.5",
         "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.5",
         "critical": 4,
-        "high": 12,
+        "high": 13,
         "medium": 20,
         "low": 2,
         "unknown": 0,
-        "total": 38,
-        "fixable": 38,
+        "total": 39,
+        "fixable": 39,
         "grade": "F",
         "score": 0,
         "cves": [
@@ -25724,6 +27401,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
             "targets": [
               "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-123863",
+            "severity": "HIGH",
+            "pkg": "nodejs-24",
+            "installed": "24.21.0-r4",
+            "fixed": "24.22.3-r0",
+            "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
+            "targets": [
+              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
             ]
           },
           {
@@ -25996,8 +27685,8 @@
   },
   "uv": {
     "image": "ghcr.io/quenchworks/images/uv",
-    "version": "0.13.7",
-    "tag": "ghcr.io/quenchworks/images/uv:0.13.7",
+    "version": "0.13.8",
+    "tag": "ghcr.io/quenchworks/images/uv:0.13.8",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -26010,8 +27699,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.13.7",
-        "tag": "ghcr.io/quenchworks/images/uv:0.13.7",
+        "version": "0.13.8",
+        "tag": "ghcr.io/quenchworks/images/uv:0.13.8",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -26196,6 +27885,37 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "vaultwarden": {
+    "image": "ghcr.io/quenchworks/images/vaultwarden",
+    "version": "1.37.5",
+    "tag": "ghcr.io/quenchworks/images/vaultwarden:1.37.5",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.37.5",
+        "tag": "ghcr.io/quenchworks/images/vaultwarden:1.37.5",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -27075,28 +28795,78 @@
     "tag": "ghcr.io/quenchworks/images/xyops:1.1.16",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "C",
+    "score": 82,
+    "cves": [
+      {
+        "id": "CVE-2026-126345",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.4",
+        "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-126346",
+        "severity": "MEDIUM",
+        "pkg": "basic-ftp",
+        "installed": "6.2.1",
+        "fixed": "6.2.3",
+        "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.1.16",
         "tag": "ghcr.io/quenchworks/images/xyops:1.1.16",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "C",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-126345",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.4",
+            "title": "basic-ftp: Uncaught TypeError in MLSD directory-listing parser via __proto__ fact name causes DoS in Client.list()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126345",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-126346",
+            "severity": "MEDIUM",
+            "pkg": "basic-ftp",
+            "installed": "6.2.1",
+            "fixed": "6.2.3",
+            "title": "basic-ftp: Uncaught exception crashes the Node.js process when a password (or resumed-download path) contains CR/LF",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-126346",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
