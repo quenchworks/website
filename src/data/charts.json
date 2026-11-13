@@ -6943,6 +6943,67 @@
     "cleanAlternative": "Valkey (BSD-3-Clause) — the truly-open Redis-compatible cache."
   },
   {
+    "slug": "dragonfly-operator",
+    "name": "dragonfly-operator",
+    "category": "Cache",
+    "summary": "The Dragonfly Operator: runs Dragonfly (a Redis- and Memcached-compatible in-memory store) from Kubernetes Dragonfly resources, with replication and failover, snapshots to a volume or S3, and TLS. Built from source; runs as uid 1001.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.8.0",
+    "description": "Dragonfly Operator: run Dragonfly, the Redis- and Memcached-compatible in-memory store, from Kubernetes Dragonfly resources, with replication and failover, snapshots and TLS. The CRD ships with the chart and Dragonfly pods default to the QuenchWorks dragonfly image. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/dragonfly-operator",
+    "imageDigest": "sha256:b4361b58bdbd8a3b9e2cce25cb062e641dc87254a10632606473ddc9062c8fa7",
+    "repositoryID": "4db9b020-9f88-452d-8de2-0e72dc6ac3e2",
+    "upstream": "https://www.dragonflydb.io/docs/getting-started/kubernetes-operator",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/dragonfly-operator",
+    "ahCategory": "database",
+    "operator": true,
+    "crds": [
+      "Dragonfly"
+    ],
+    "images": [
+      {
+        "name": "dragonfly-operator",
+        "image": "ghcr.io/quenchworks/images/dragonfly-operator@sha256:b4361b58bdbd8a3b9e2cce25cb062e641dc87254a10632606473ddc9062c8fa7"
+      },
+      {
+        "name": "dragonfly",
+        "image": "ghcr.io/quenchworks/images/dragonfly@sha256:bec2cfa7cfee8969f8deb1922107443cda389cad8b6d5665b3bf56f623cbd77b"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "dragonflyImage",
+      "dragonflyImage.repository",
+      "dragonflyImage.tag",
+      "dragonflyImage.digest",
+      "nameOverride",
+      "watchCurrentNamespace",
+      "replicaCount",
+      "extraArgs",
+      "resources",
+      "resources.requests",
+      "resources.limits",
+      "podLabels",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "topologySpreadConstraints",
+      "priorityClassName",
+      "schedulerName",
+      "terminationGracePeriodSeconds",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "rbac",
+      "rbac.create"
+    ]
+  },
+  {
     "slug": "drupal",
     "name": "drupal",
     "category": "Apps & productivity",
