@@ -13918,6 +13918,40 @@
     ]
   },
   {
+    "slug": "knative-operator",
+    "name": "knative-operator",
+    "category": "Workflow",
+    "summary": "Knative Operator: installs and upgrades Knative Serving and Eventing from KnativeServing and KnativeEventing resources. Ships the release manifests it installs (Knative's own images); the operator and its webhook are built from source and run as uid 1001.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.24.1",
+    "description": "Knative Operator: installs and upgrades Knative Serving (serverless containers that scale to zero) and Knative Eventing from KnativeServing and KnativeEventing resources. Hardened by QuenchWorks: the operator and its webhook built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/knative-operator",
+    "imageDigest": "sha256:2da8de8a64d9d08562ae33bbfdc74def28f2826871510fef97a435a714faa707",
+    "repositoryID": "e3304e33-c8b7-4830-b7c1-33c355abbf9a",
+    "upstream": "https://knative.dev/docs/install/operator/knative-with-operators/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/knative-operator",
+    "ahCategory": "integration-delivery",
+    "operator": true,
+    "crds": [
+      "KnativeEventing",
+      "KnativeServing"
+    ],
+    "images": [
+      {
+        "name": "knative-operator",
+        "image": "ghcr.io/quenchworks/images/knative-operator@sha256:2da8de8a64d9d08562ae33bbfdc74def28f2826871510fef97a435a714faa707"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest"
+    ]
+  },
+  {
     "slug": "kong",
     "name": "kong",
     "category": "Gateway",
