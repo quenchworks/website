@@ -224,7 +224,9 @@ try {
       // entries look like "name: x" / "image: ghcr.io/...@sha256:..."
       const raw = typeof i === 'string' ? i : (i.image || '');
       const m = /^(\S+)@(sha256:[0-9a-f]{64})$/.exec(raw);
-      if (m) refs.push({ image: m[1], digest: m[2] });
+      // a pin can carry a tag too (repo:0.75.0@sha256:...): the slug, and the
+      // published file names built from it, must not contain the ":"
+      if (m) refs.push({ image: m[1].replace(/:[^/]*$/, ''), digest: m[2] });
     }
     for (const r of refs) {
       if (seenDigests.has(r.digest)) continue;      // already covered by the catalog
