@@ -14580,6 +14580,49 @@
     ]
   },
   {
+    "slug": "kubeflow-trainer",
+    "name": "kubeflow-trainer",
+    "category": "Workflow",
+    "summary": "Kubeflow Trainer: the controller for distributed training on Kubernetes (PyTorch, JAX, MPI), running TrainJob resources on TrainingRuntime templates. The trainer-controller-manager; the initializer and trainer images run inside jobs. Built from source; runs as uid 1001.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.4.0",
+    "description": "Kubeflow Trainer: distributed training on Kubernetes (PyTorch, JAX, MPI) as TrainJob resources on TrainingRuntime templates, run through JobSet. The trainer controller, the JobSet controller and their CRDs ship with the chart. Hardened by QuenchWorks: both controllers built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/kubeflow-trainer",
+    "imageDigest": "sha256:51a3299b36c3e6d48fe75e6796f5e3a0fd6b52476414acd1871e6dd8a06be3ab",
+    "repositoryID": "55f6d3c1-882e-4e20-87bb-135603e1e655",
+    "upstream": "https://www.kubeflow.org/docs/components/trainer/",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/kubeflow-trainer",
+    "ahCategory": "integration-delivery",
+    "operator": true,
+    "crds": [
+      "ClusterTrainingRuntime",
+      "JobSet",
+      "OptimizationJob",
+      "TrainingRuntime",
+      "TrainJob"
+    ],
+    "images": [
+      {
+        "name": "kubeflow-trainer",
+        "image": "ghcr.io/quenchworks/images/kubeflow-trainer@sha256:51a3299b36c3e6d48fe75e6796f5e3a0fd6b52476414acd1871e6dd8a06be3ab"
+      },
+      {
+        "name": "jobset",
+        "image": "ghcr.io/quenchworks/images/jobset@sha256:4d3033aa13bf1fa470e0ec15ad93b732e03394f7539b93329b93eaf5f486afec"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "jobset",
+      "jobset.image"
+    ]
+  },
+  {
     "slug": "kuberay",
     "name": "kuberay",
     "category": "Machine learning & AI",
