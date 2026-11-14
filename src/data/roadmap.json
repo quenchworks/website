@@ -498,7 +498,7 @@
     "license": "MIT",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Bookmark manager with readable offline archives, a web UI and a CLI. Held 2026-11-12: v1.8.0 (2025-09) links disintegration/imaging 1.6.2, which has no fixed release for CVE-2023-36308 (panic in imaging's scanner on a crafted TIFF). The path is reachable: imaging registers the TIFF decoder, Shiori decodes fetched thumbnails with image.Decode (format by magic bytes, not the content type it checks) and then calls imaging.Fill/Fit. Unblock: imaging fixed or replaced upstream."
+    "note": "Bookmark manager with readable offline archives, a web UI and a CLI. Held 2026-11-12: v1.8.0 (2025-09) links disintegration/imaging 1.6.2, which has no fixed release for CVE-2023-36308 (panic in imaging's scanner on a crafted TIFF). The path is reachable: imaging registers the TIFF decoder, Shiori decodes fetched thumbnails with image.Decode (format by magic bytes, not the content type it checks) and then calls imaging.Fill/Fit. Unblock: imaging fixed or replaced upstream. Update 2026-11-14: x/image 0.38 now rejects the original TIFF PoC, but a crafted BMP (x/image/bmp allows a palette shorter than the pixel indexes, and imaging registers that decoder) still panics imaging's scanner inside a goroutine, which kills the process. Unblock path: patch the palette bounds check into imaging at build time and VEX the finding with the patch as evidence."
   },
   {
     "name": "Memos",
@@ -506,7 +506,15 @@
     "license": "MIT",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Self-hosted note-taking and micro-journal (Markdown memos, tags, timeline, API). Held 2026-11-12: 26.11.0 links disintegration/imaging 1.6.2, which has no fixed release for CVE-2023-36308 (panic in imaging's scanner on a crafted TIFF). Reachable: Memos decodes uploaded attachments with imaging.Decode for thumbnails and EXIF stripping, TIFF included. Unblock: imaging fixed or replaced upstream. Also needs a pnpm 11 / Node 24 frontend build (web/, release mode)."
+    "note": "Self-hosted note-taking and micro-journal (Markdown memos, tags, timeline, API). Held 2026-11-12: 26.11.0 links disintegration/imaging 1.6.2, which has no fixed release for CVE-2023-36308 (panic in imaging's scanner on a crafted TIFF). Reachable: Memos decodes uploaded attachments with imaging.Decode for thumbnails and EXIF stripping, TIFF included. Unblock: imaging fixed or replaced upstream. Also needs a pnpm 11 / Node 24 frontend build (web/, release mode). Update 2026-11-14: x/image 0.38 now rejects the original TIFF PoC, but a crafted BMP (x/image/bmp allows a palette shorter than the pixel indexes, and imaging registers that decoder) still panics imaging's scanner inside a goroutine, which kills the process. Unblock path: patch the palette bounds check into imaging at build time and VEX the finding with the patch as evidence."
+  },
+  {
+    "name": "listmonk",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Self-hosted newsletter and mailing-list manager (single Go binary with an embedded Vue UI) on PostgreSQL. Measured 2026-11-14 at 6.2.0 (7.0 is still beta): 103 Go-module findings, mostly echo 4.13 and go-jose 4.1 that a dependency float closes, plus disintegration/imaging 1.6.2 (CVE-2023-36308, no upstream fix), the same hold as Memos and Shiori. Builds after the imaging patch lands."
   },
   {
     "name": "LLDAP",
