@@ -493,22 +493,6 @@
     "note": "Identity-aware access proxy (zero-trust access to internal apps with SSO and per-route policy). HELD 2026-11-11: the source is Apache-2.0, but official builds released after 2026-11-01 (0.34.0 on) are under the Pomerium Community Edition License 1.0 (free only under US$10M revenue and 100 staff), and the Go binary embeds Pomerium's own prebuilt Envoy, which reports that licence. A clean build needs Envoy built from source, which is itself on an upstream hold here. 0.33.6 (before the change) is the last fully Apache build."
   },
   {
-    "name": "Memos",
-    "category": "Apps & productivity",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Self-hosted note-taking and micro-journal (Markdown memos, tags, timeline, API). Held 2026-11-12: 26.11.0 links disintegration/imaging 1.6.2, which has no fixed release for CVE-2023-36308 (panic in imaging's scanner on a crafted TIFF). Reachable: Memos decodes uploaded attachments with imaging.Decode for thumbnails and EXIF stripping, TIFF included. Unblock: imaging fixed or replaced upstream. Also needs a pnpm 11 / Node 24 frontend build (web/, release mode). Update 2026-11-14: x/image 0.38 now rejects the original TIFF PoC, but a crafted BMP (x/image/bmp allows a palette shorter than the pixel indexes, and imaging registers that decoder) still panics imaging's scanner inside a goroutine, which kills the process. Unblock path: patch the palette bounds check into imaging at build time and VEX the finding with the patch as evidence. Update 2026-11-15: the fix shipped with Shiori (x/image floor v0.47.0 plus the imaging palette patch, proven by a crafted-BMP smoke test); this app is next to reuse it."
-  },
-  {
-    "name": "listmonk",
-    "category": "Apps & productivity",
-    "license": "AGPL-3.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Self-hosted newsletter and mailing-list manager (single Go binary with an embedded Vue UI) on PostgreSQL. Measured 2026-11-14 at 6.2.0 (7.0 is still beta): 103 Go-module findings, mostly echo 4.13 and go-jose 4.1 that a dependency float closes, plus disintegration/imaging 1.6.2 (CVE-2023-36308, no upstream fix), the same hold as Memos and Shiori. Builds after the imaging patch lands. Update 2026-11-15: the fix shipped with Shiori (x/image floor v0.47.0 plus the imaging palette patch, proven by a crafted-BMP smoke test); this app is next to reuse it."
-  },
-  {
     "name": "LLDAP",
     "category": "Identity",
     "license": "GPL-3.0",
@@ -563,5 +547,37 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Mattermost + PostgreSQL + Keycloak: team chat with single sign-on already configured. Added 2026-11-13 (stacks track): every component already has a QuenchWorks chart. Held 2026-11-14: Mattermost's OpenID Connect sign-in (which Keycloak would use) is a Professional/Enterprise feature, and Mattermost v11 removes GitLab SSO, the only provider Team Edition had, so the stack cannot ship single sign-on on the free edition. Revisit if Mattermost Entry ships SSO under terms the catalog can carry."
+  },
+  {
+    "name": "Pocket ID",
+    "category": "Identity",
+    "license": "BSD-2-Clause",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Simple OIDC provider that signs users in with passkeys only (Go backend, SvelteKit frontend, SQLite or PostgreSQL). Added 2026-11-15: v2.19.2, active."
+  },
+  {
+    "name": "Beszel",
+    "category": "Observability",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Lightweight server monitoring: a hub (PocketBase plus a web UI) and small agents that report CPU, memory, disk, network and Docker stats. Added 2026-11-15: v0.21.2, active."
+  },
+  {
+    "name": "Opengist",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Self-hosted pastebin backed by Git, with a web UI, search and OAuth sign-in (Go, Vue). Added 2026-11-15: v1.15.3, active."
+  },
+  {
+    "name": "HedgeDoc",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Collaborative real-time Markdown editor (Node, yarn 4). Measured 2026-11-15 at 1.12.2: the release tarball ships the built frontend; its yarn.lock has 71 findings (babel-traverse 6, form-data 1.0.0-rc3, qs 2.3.3, reveal.js 3.9.2, select2 3.5.2 among them), many build-only. A production install must be measured before it can be next."
   }
 ]

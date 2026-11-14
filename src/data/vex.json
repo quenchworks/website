@@ -2287,6 +2287,32 @@
     }
   },
   {
+    "slug": "listmonk",
+    "path": "vex/listmonk/2026-11-15",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/listmonk/2026-11-15",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-15T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2023-36308"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/disintegration/imaging@v1.6.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "inline_mitigations_already_exist",
+          "impact_statement": "Measured 2026-11-15. imaging 1.6.2 has no fixed release (upstream inactive since 2020); its scanner indexes the palette table with raw pixel values (scanner.go:242), so an image.Paletted whose pixel indexes exceed its palette panics it. listmonk decodes every media upload with imaging.Decode (cmd/media.go:219) and thumbnails it with imaging.Resize (:226). The decoders this binary registers cannot produce such an image: the recipe floors golang.org/x/image at v0.47.0 (apps/listmonk/melange.yaml FLOOR), whose bmp reader rejects out-of-range palette indexes (fixed in v0.41.0, 'bmp: reject input with invalid palette index') and whose tiff reader rejects them ('invalid color index'); Go's gif decoder rejects bad pixels and its png decoder grows the palette to fit. The recipe also patches imaging's scanner.go at build time to size the palette table for every uint8 index (apps/listmonk/melange.yaml, go mod vendor + sed, asserted by grep). Proven by the smoke test (tools/qw/internal/smoke/servers85.go): a 62-byte BMP with a 2-entry palette and pixel index 70, uploaded as evil.png through POST /api/media, is refused with the server still serving, while a valid PNG gets a thumbnail; the same test kills the upstream v6.2.0 image (x/image v0.38.0) with 'index out of range [70] with length 2'. Revisit if listmonk drops the floor or adds a decoder."
+        }
+      ]
+    }
+  },
+  {
     "slug": "litellm",
     "path": "vex/litellm/2026-10-13",
     "doc": {
@@ -2399,6 +2425,32 @@
           "status": "not_affected",
           "justification": "vulnerable_code_not_in_execute_path",
           "impact_statement": "The advisory: ZipArchive::extract preallocates a symlink target from an attacker-controlled ZIP64 size. ZipArchive::extract is never called here. zip 7.2.0 is linked into /usr/bin/meilisearch only through candle-core 0.9.2 (checksum c15b675b80d994b2eadb20a4bbe434eabeb454eac3ee5e2b4cf6f147ee9be091), the sole dependent of zip 7.2.0 in the v1.53.3, v1.55.0 and v1.56.0 Cargo.lock files (meilisearch's own zip 6.0.0 is a build-dependency of crates/meilisearch/build.rs for the mini-dashboard and is not in the binary). candle-core declares zip ^7.2.0 with default-features = false and no features (crates.io dependency table for 0.9.2), so the unified feature set of this copy is empty. candle-core reads archives only with zip::ZipArchive::new plus by-name entry reads (src/npy.rs:286, :308, :383, :411, :425; src/pickle.rs:677, :773) and writes with zip::ZipWriter (src/npy.rs:359). Verified 2026-11-01 on the crates.io 0.9.2 source: grep -rnE 'ZipStreamReader|read_zipfile_from_stream|\\.extract|extract_unwrapped' over src returned nothing. No fixed 7.x release exists (fix 9.x); candle-core 0.11.1 still requires zip ^7.2.0. "
+        }
+      ]
+    }
+  },
+  {
+    "slug": "memos",
+    "path": "vex/memos/2026-11-15",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/memos/2026-11-15",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-15T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2023-36308"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/disintegration/imaging@v1.6.2"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "inline_mitigations_already_exist",
+          "impact_statement": "Measured 2026-11-15. imaging 1.6.2 has no fixed release (upstream inactive since 2020); its scanner indexes the palette table with raw pixel values (scanner.go:242), so an image.Paletted whose pixel indexes exceed its palette panics it. Memos strips EXIF from JPEG, TIFF, WebP and HEIC uploads with imaging.Decode (server/api/attachment_service_image.go:111), sniffing the content as well as the declared type. The decoders this binary registers cannot produce such an image: golang.org/x/image is at v0.47.0 (Memos 26.11.0 already requires v0.45.0; the recipe floors v0.47.0 in apps/memos/melange.yaml), whose bmp reader rejects out-of-range palette indexes (fixed in v0.41.0, 'bmp: reject input with invalid palette index') and whose tiff reader rejects them ('invalid color index'); Go's gif decoder rejects bad pixels and its png decoder grows the palette to fit. The recipe also patches imaging's scanner.go at build time to size the palette table for every uint8 index (go mod vendor + sed, asserted by grep). Proven by the smoke test (tools/qw/internal/smoke/servers86.go): a 62-byte BMP with a 2-entry palette and pixel index 70, uploaded as image/jpeg through POST /api/attachments, goes through the EXIF strip and the server keeps serving. Revisit if Memos lowers x/image below v0.41.0 or adds a decoder."
         }
       ]
     }
