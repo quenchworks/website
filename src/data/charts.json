@@ -33789,6 +33789,60 @@
     ]
   },
   {
+    "slug": "workflow-stack",
+    "name": "Workflow Stack",
+    "category": "Stacks",
+    "summary": "Temporal with PostgreSQL and the Temporal UI: durable workflow orchestration with the schema created at install, the default namespace registered, and the UI wired to the frontend.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.32.2",
+    "description": "Temporal with PostgreSQL and the Temporal UI: durable workflow orchestration with the schema created at install, the default namespace registered, and the UI wired to the frontend. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
+    "repositoryID": "e8c679be-af91-4f73-af98-747e2e79ae93",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/workflow-stack",
+    "stack": true,
+    "ahCategory": "integration-delivery",
+    "components": [
+      "temporal",
+      "temporal-ui"
+    ],
+    "images": [
+      {
+        "name": "temporal",
+        "image": "ghcr.io/quenchworks/images/temporal@sha256:2b3bb5c88022d808b87369837f2c4de5055dfab055954c81f11a49eea78bfba6"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:f2aadd3d9651056f67735ec100ce255fabc86121bfa45f20fa2a06df82886d46"
+      },
+      {
+        "name": "temporal-ui",
+        "image": "ghcr.io/quenchworks/images/temporal-ui@sha256:8d5ebbf3e961a3c305846cb973b2781e4f19b8ce0aeecb952c4775e1eeea2714"
+      },
+      {
+        "name": "temporal-cli",
+        "image": "ghcr.io/quenchworks/images/temporal-cli@sha256:e13d335ffd8f17214009e98e6f143970fbd396ba5d9a47a8b81d93677a4ddbae"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/temporalio/temporal",
+      "https://github.com/temporalio/ui-server"
+    ],
+    "valuesKeys": [
+      "temporal",
+      "temporal.fullnameOverride",
+      "temporal-ui",
+      "temporal-ui.enabled",
+      "temporal-ui.temporal",
+      "temporal-ui.defaultNamespace",
+      "namespaces",
+      "cli",
+      "cli.image"
+    ]
+  },
+  {
     "slug": "xyops",
     "name": "xyops",
     "category": "Workflow",
