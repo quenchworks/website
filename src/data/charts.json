@@ -8124,6 +8124,43 @@
     ]
   },
   {
+    "slug": "feature-flags-stack",
+    "name": "Feature Flags Stack",
+    "category": "Stacks",
+    "summary": "Unleash with PostgreSQL: feature flags and gradual rollouts, with the API tokens your services and front ends use generated at install and kept across upgrades.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "8.2.1",
+    "description": "Unleash with PostgreSQL: feature flags and gradual rollouts, with the API tokens your services and front ends use generated at install and kept across upgrades. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
+    "repositoryID": "29c7efdb-afe2-468e-8fda-0a9a9888fb42",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/feature-flags-stack",
+    "stack": true,
+    "ahCategory": "integration-delivery",
+    "components": [
+      "unleash"
+    ],
+    "images": [
+      {
+        "name": "unleash",
+        "image": "ghcr.io/quenchworks/images/unleash@sha256:b7463614105ffe5a24e76dd9408d6a93d685800ee4e2fe2956a7dff945afe26a"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:f2aadd3d9651056f67735ec100ce255fabc86121bfa45f20fa2a06df82886d46"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/Unleash/unleash"
+    ],
+    "valuesKeys": [
+      "unleash",
+      "unleash.extraEnvVars"
+    ]
+  },
+  {
     "slug": "ferretdb",
     "name": "FerretDB",
     "category": "Document",
