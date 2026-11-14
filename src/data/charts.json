@@ -34291,6 +34291,64 @@
     ]
   },
   {
+    "slug": "zero-trust-access-stack",
+    "name": "Zero Trust Access Stack",
+    "category": "Stacks",
+    "summary": "Headscale (a self-hosted Tailscale control server) with Authentik (identity provider): a private WireGuard mesh whose devices are registered by people signing in through Authentik, with the OIDC client created and wired at install.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.29.7",
+    "description": "Headscale (a self-hosted Tailscale control server) with Authentik (identity provider): a private WireGuard mesh whose devices are registered by people signing in through Authentik, with the OIDC client created and wired at install. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
+    "repositoryID": "330e9c1d-df81-44d3-a615-4842659ff562",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/zero-trust-access-stack",
+    "stack": true,
+    "ahCategory": "security",
+    "components": [
+      "headscale",
+      "authentik"
+    ],
+    "images": [
+      {
+        "name": "headscale",
+        "image": "ghcr.io/quenchworks/images/headscale@sha256:eac41eed3213ef14aee54144efc66ffffa1b5c97fde25e9136b1e9134a7c6f38"
+      },
+      {
+        "name": "authentik",
+        "image": "ghcr.io/quenchworks/images/authentik@sha256:5c5e36ff38b88e82fc5ee5d5e88486b76702f7056ebfbb5f21314ceaa548691c"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:f2aadd3d9651056f67735ec100ce255fabc86121bfa45f20fa2a06df82886d46"
+      },
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:5ff5a0ea89c59eb1e731d2741642349d2009579863a9bc28ade66706af95f6a0"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/juanfont/headscale",
+      "https://github.com/goauthentik/authentik"
+    ],
+    "valuesKeys": [
+      "headscale",
+      "headscale.fullnameOverride",
+      "headscale.serverUrl",
+      "headscale.oidcIssuer",
+      "headscale.extraVolumes",
+      "headscale.extraVolumeMounts",
+      "headscale.initContainers",
+      "headscale.config",
+      "authentik",
+      "authentik.fullnameOverride",
+      "authentik.extraEnvVars",
+      "authentik.extraVolumes",
+      "authentik.extraVolumeMounts"
+    ]
+  },
+  {
     "slug": "zipkin",
     "name": "zipkin",
     "category": "Observability",
