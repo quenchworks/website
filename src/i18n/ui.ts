@@ -127,6 +127,10 @@ export const ui = {
       'No paywall and no lock-in. Pull an image, check the signature yourself, then install the chart. You never have to take our word for it.',
     'cta.primary': 'Browse the charts',
     'cta.request': 'Request an app',
+    'adopters.title': 'Who uses QuenchWorks',
+    'adopters.body': 'Organizations running QuenchWorks images or charts, listed with their permission.',
+    'adopters.empty': 'Running QuenchWorks in production? Tell us and we will list your organization here, with your permission.',
+    'adopters.add': 'Add your organization',
     // --- Catalog list (CatalogList.astro) ---
     'catalog.list.headerImages': 'All images',
     'catalog.list.headerCharts': 'All charts',
@@ -475,6 +479,10 @@ export const ui = {
       'دون جدار دفع ودون احتكار. اسحب صورة، وتحقّق من التوقيع بنفسك، ثم ثبّت المخطط. لا داعي لأن تأخذ كلامنا على عِلّاته.',
     'cta.primary': 'تصفّح المخططات',
     'cta.request': 'اطلب تطبيقًا',
+    'adopters.title': 'من يستخدم QuenchWorks',
+    'adopters.body': 'مؤسسات تشغّل صور QuenchWorks أو مخططاته، مذكورة بإذنها.',
+    'adopters.empty': 'هل تشغّل QuenchWorks في بيئة الإنتاج؟ أخبرنا وسنذكر مؤسستك هنا بإذنك.',
+    'adopters.add': 'أضف مؤسستك',
     // --- قائمة الكتالوج (CatalogList.astro) ---
     'catalog.list.headerImages': 'جميع الصور',
     'catalog.list.headerCharts': 'جميع المخططات',
@@ -824,6 +832,10 @@ export const ui = {
       'Sin muro de pago y sin dependencia forzosa. Descarga una imagen, comprueba tú mismo la firma y luego instala el chart. Nunca tienes que fiarte de nuestra palabra.',
     'cta.primary': 'Explorar los charts',
     'cta.request': 'Solicitar una aplicación',
+    'adopters.title': 'Quién usa QuenchWorks',
+    'adopters.body': 'Organizaciones que ejecutan imágenes o charts de QuenchWorks, mencionadas con su permiso.',
+    'adopters.empty': '¿Ejecutas QuenchWorks en producción? Escríbenos y añadiremos tu organización aquí, con tu permiso.',
+    'adopters.add': 'Añadir tu organización',
     // --- Lista del catálogo (CatalogList.astro) ---
     'catalog.list.headerImages': 'Todas las imágenes',
     'catalog.list.headerCharts': 'Todos los charts',
