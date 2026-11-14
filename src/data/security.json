@@ -289,37 +289,6 @@
       }
     ]
   },
-  "akhq": {
-    "image": "ghcr.io/quenchworks/images/akhq",
-    "version": "0.28.0",
-    "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
-    "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
-    "versions": [
-      {
-        "version": "0.28.0",
-        "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      }
-    ]
-  },
   "alertmanager": {
     "image": "ghcr.io/quenchworks/images/alertmanager",
     "version": "0.35.0",
@@ -482,375 +451,6 @@
       }
     ]
   },
-  "apache-polaris": {
-    "image": "ghcr.io/quenchworks/images/apache-polaris",
-    "version": "1.8.0",
-    "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
-    "critical": 0,
-    "high": 10,
-    "medium": 10,
-    "low": 0,
-    "unknown": 0,
-    "total": 20,
-    "fixable": 19,
-    "grade": "D",
-    "score": 0,
-    "cves": [
-      {
-        "id": "CVE-2026-102554",
-        "severity": "HIGH",
-        "pkg": "com.google.guava:guava",
-        "installed": "33.4.8-jre",
-        "fixed": "33.7.2",
-        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
-        "targets": [
-          "Java"
-        ]
-      },
-      {
-        "id": "CVE-2026-102554",
-        "severity": "HIGH",
-        "pkg": "com.google.guava:guava",
-        "installed": "33.6.0-jre",
-        "fixed": "33.7.2",
-        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
-        "targets": [
-          "Java"
-        ]
-      },
-      {
-        "id": "CVE-2026-108106",
-        "severity": "HIGH",
-        "pkg": "org.xerial.snappy:snappy-java",
-        "installed": "1.1.10.8",
-        "fixed": "1.1.10.9",
-        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
-        "targets": [
-          "Java"
-        ]
-      },
-      {
-        "id": "CVE-2026-113351",
-        "severity": "HIGH",
-        "pkg": "libexpat1",
-        "installed": "2.9.0-r0",
-        "fixed": "2.10.0-r0",
-        "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
-        "targets": [
-          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-115506",
-        "severity": "HIGH",
-        "pkg": "libexpat1",
-        "installed": "2.9.0-r0",
-        "fixed": "2.10.0-r0",
-        "title": "expat: expat: Denial of Service via delayed entity amplification detection",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
-        "targets": [
-          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-93451",
-        "severity": "HIGH",
-        "pkg": "org.xerial.snappy:snappy-java",
-        "installed": "1.1.10.8",
-        "fixed": "1.1.10.9",
-        "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
-        "targets": [
-          "Java"
-        ]
-      },
-      {
-        "id": "CVE-2026-116590",
-        "severity": "MEDIUM",
-        "pkg": "org.xerial.snappy:snappy-java",
-        "installed": "1.1.10.8",
-        "fixed": "1.1.10.9",
-        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
-        "targets": [
-          "Java"
-        ]
-      },
-      {
-        "id": "CVE-2026-118259",
-        "severity": "MEDIUM",
-        "pkg": "io.opentelemetry:opentelemetry-api",
-        "installed": "1.62.0",
-        "fixed": "1.67.0",
-        "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
-        "targets": [
-          "Java"
-        ]
-      },
-      {
-        "id": "CVE-2026-57914",
-        "severity": "MEDIUM",
-        "pkg": "org.apache.kerby:kerby-asn1",
-        "installed": "2.0.3",
-        "fixed": "2.1.2",
-        "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
-        "targets": [
-          "Java"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44-locale-posix",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "ld-linux-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "libcrypt1-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2025-48924",
-        "severity": "MEDIUM",
-        "pkg": "commons-lang:commons-lang",
-        "installed": "2.6",
-        "fixed": null,
-        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
-        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
-        "targets": [
-          "Java"
-        ]
-      }
-    ],
-    "versions": [
-      {
-        "version": "1.8.0",
-        "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
-        "critical": 0,
-        "high": 10,
-        "medium": 10,
-        "low": 0,
-        "unknown": 0,
-        "total": 20,
-        "fixable": 19,
-        "grade": "D",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-102554",
-            "severity": "HIGH",
-            "pkg": "com.google.guava:guava",
-            "installed": "33.4.8-jre",
-            "fixed": "33.7.2",
-            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
-            "targets": [
-              "Java"
-            ]
-          },
-          {
-            "id": "CVE-2026-102554",
-            "severity": "HIGH",
-            "pkg": "com.google.guava:guava",
-            "installed": "33.6.0-jre",
-            "fixed": "33.7.2",
-            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
-            "targets": [
-              "Java"
-            ]
-          },
-          {
-            "id": "CVE-2026-108106",
-            "severity": "HIGH",
-            "pkg": "org.xerial.snappy:snappy-java",
-            "installed": "1.1.10.8",
-            "fixed": "1.1.10.9",
-            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
-            "targets": [
-              "Java"
-            ]
-          },
-          {
-            "id": "CVE-2026-113351",
-            "severity": "HIGH",
-            "pkg": "libexpat1",
-            "installed": "2.9.0-r0",
-            "fixed": "2.10.0-r0",
-            "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
-            "targets": [
-              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-115506",
-            "severity": "HIGH",
-            "pkg": "libexpat1",
-            "installed": "2.9.0-r0",
-            "fixed": "2.10.0-r0",
-            "title": "expat: expat: Denial of Service via delayed entity amplification detection",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
-            "targets": [
-              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-93451",
-            "severity": "HIGH",
-            "pkg": "org.xerial.snappy:snappy-java",
-            "installed": "1.1.10.8",
-            "fixed": "1.1.10.9",
-            "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
-            "targets": [
-              "Java"
-            ]
-          },
-          {
-            "id": "CVE-2026-116590",
-            "severity": "MEDIUM",
-            "pkg": "org.xerial.snappy:snappy-java",
-            "installed": "1.1.10.8",
-            "fixed": "1.1.10.9",
-            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
-            "targets": [
-              "Java"
-            ]
-          },
-          {
-            "id": "CVE-2026-118259",
-            "severity": "MEDIUM",
-            "pkg": "io.opentelemetry:opentelemetry-api",
-            "installed": "1.62.0",
-            "fixed": "1.67.0",
-            "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
-            "targets": [
-              "Java"
-            ]
-          },
-          {
-            "id": "CVE-2026-57914",
-            "severity": "MEDIUM",
-            "pkg": "org.apache.kerby:kerby-asn1",
-            "installed": "2.0.3",
-            "fixed": "2.1.2",
-            "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
-            "targets": [
-              "Java"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2025-48924",
-            "severity": "MEDIUM",
-            "pkg": "commons-lang:commons-lang",
-            "installed": "2.6",
-            "fixed": null,
-            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
-            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
-            "targets": [
-              "Java"
-            ]
-          }
-        ]
-      }
-    ]
-  },
   "apisix": {
     "image": "ghcr.io/quenchworks/images/apisix",
     "version": "3.19.0",
@@ -919,54 +519,28 @@
     "tag": "ghcr.io/quenchworks/images/argo-events:1.9.11",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.44.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/argo-events"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.9.11",
         "tag": "ghcr.io/quenchworks/images/argo-events:1.9.11",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/argo-events"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -2128,54 +1702,28 @@
     "tag": "ghcr.io/quenchworks/images/caddy:2.11.9",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/sdk/log",
-        "installed": "v0.22.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/caddy"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "2.11.9",
         "tag": "ghcr.io/quenchworks/images/caddy:2.11.9",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/sdk/log",
-            "installed": "v0.22.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/caddy"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -3535,54 +3083,28 @@
     "tag": "ghcr.io/quenchworks/images/cephcsi:3.18.2",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.44.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/local/bin/cephcsi"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "3.18.2",
         "tag": "ghcr.io/quenchworks/images/cephcsi:3.18.2",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/local/bin/cephcsi"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -3978,123 +3500,56 @@
     "tag": "ghcr.io/quenchworks/images/cilium:1.20.4",
     "critical": 0,
     "high": 0,
-    "medium": 5,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 5,
-    "fixable": 5,
-    "grade": "C",
-    "score": 55,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "opt/cni/bin/cilium-cni",
-          "usr/bin/cilium-agent",
-          "usr/bin/cilium-dbg",
-          "usr/bin/cilium-health",
-          "usr/bin/hubble"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.20.4",
         "tag": "ghcr.io/quenchworks/images/cilium:1.20.4",
         "critical": 0,
         "high": 0,
-        "medium": 5,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 5,
-        "fixable": 5,
-        "grade": "C",
-        "score": 55,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "opt/cni/bin/cilium-cni",
-              "usr/bin/cilium-agent",
-              "usr/bin/cilium-dbg",
-              "usr/bin/cilium-health",
-              "usr/bin/hubble"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.19.10",
         "tag": "ghcr.io/quenchworks/images/cilium:1.19.10",
         "critical": 0,
         "high": 0,
-        "medium": 5,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 5,
-        "fixable": 5,
-        "grade": "C",
-        "score": 55,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "opt/cni/bin/cilium-cni",
-              "usr/bin/cilium-agent",
-              "usr/bin/cilium-dbg",
-              "usr/bin/cilium-health",
-              "usr/bin/hubble"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.18.16",
         "tag": "ghcr.io/quenchworks/images/cilium:1.18.16",
         "critical": 0,
         "high": 0,
-        "medium": 4,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "C",
-        "score": 64,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "opt/cni/bin/cilium-cni",
-              "usr/bin/cilium-agent",
-              "usr/bin/cilium-dbg",
-              "usr/bin/cilium-health"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -4104,108 +3559,56 @@
     "tag": "ghcr.io/quenchworks/images/cilium-operator:1.20.4",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/cilium-operator-generic"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.20.4",
         "tag": "ghcr.io/quenchworks/images/cilium-operator:1.20.4",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/cilium-operator-generic"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.19.10",
         "tag": "ghcr.io/quenchworks/images/cilium-operator:1.19.10",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/cilium-operator-generic"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.18.16",
         "tag": "ghcr.io/quenchworks/images/cilium-operator:1.18.16",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/cilium-operator-generic"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -4757,40 +4160,14 @@
     "tag": "ghcr.io/quenchworks/images/concourse:8.3.3",
     "critical": 0,
     "high": 0,
-    "medium": 4,
+    "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 5,
-    "fixable": 4,
-    "grade": "C",
-    "score": 63,
+    "total": 1,
+    "fixable": 0,
+    "grade": "B",
+    "score": 99,
     "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/sdk",
-        "installed": "v1.46.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/containerd"
-        ]
-      },
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.46.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/containerd",
-          "usr/bin/ctr",
-          "var/lib/db/sbom/ctr-2-2.4.2-r7.spdx.json"
-        ]
-      },
       {
         "id": "GHSA-g98v-hv3f-hcfr",
         "severity": "LOW",
@@ -4810,40 +4187,14 @@
         "tag": "ghcr.io/quenchworks/images/concourse:8.3.3",
         "critical": 0,
         "high": 0,
-        "medium": 4,
+        "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 5,
-        "fixable": 4,
-        "grade": "C",
-        "score": 63,
+        "total": 1,
+        "fixable": 0,
+        "grade": "B",
+        "score": 99,
         "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/sdk",
-            "installed": "v1.46.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/containerd"
-            ]
-          },
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.46.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/containerd",
-              "usr/bin/ctr",
-              "var/lib/db/sbom/ctr-2-2.4.2-r7.spdx.json"
-            ]
-          },
           {
             "id": "GHSA-g98v-hv3f-hcfr",
             "severity": "LOW",
@@ -9630,117 +8981,42 @@
     "tag": "ghcr.io/quenchworks/images/fulcio:1.8.8",
     "critical": 0,
     "high": 0,
-    "medium": 2,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
-    "grade": "C",
-    "score": 82,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/sdk",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/fulcio"
-        ]
-      },
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/fulcio"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.8.8",
         "tag": "ghcr.io/quenchworks/images/fulcio:1.8.8",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
-        "grade": "C",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/sdk",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/fulcio"
-            ]
-          },
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/fulcio"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.7.1",
         "tag": "ghcr.io/quenchworks/images/fulcio:1.7.1",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
-        "grade": "C",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/sdk",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/fulcio"
-            ]
-          },
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/fulcio"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -12234,108 +11510,56 @@
     "tag": "ghcr.io/quenchworks/images/hubble-relay:1.20.4",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/hubble-relay"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.20.4",
         "tag": "ghcr.io/quenchworks/images/hubble-relay:1.20.4",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/hubble-relay"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.19.10",
         "tag": "ghcr.io/quenchworks/images/hubble-relay:1.19.10",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/hubble-relay"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.18.16",
         "tag": "ghcr.io/quenchworks/images/hubble-relay:1.18.16",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/hubble-relay"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -16024,78 +15248,28 @@
     "tag": "ghcr.io/quenchworks/images/kueue:0.20.6",
     "critical": 0,
     "high": 0,
-    "medium": 2,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
-    "grade": "C",
-    "score": 82,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/sdk",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/kueue"
-        ]
-      },
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/kueue"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.20.6",
         "tag": "ghcr.io/quenchworks/images/kueue:0.20.6",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
-        "grade": "C",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/sdk",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/kueue"
-            ]
-          },
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/kueue"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -17119,108 +16293,56 @@
     "tag": "ghcr.io/quenchworks/images/longhorn-manager:1.13.0",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.44.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/local/sbin/longhorn-manager"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.13.0",
         "tag": "ghcr.io/quenchworks/images/longhorn-manager:1.13.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/local/sbin/longhorn-manager"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.12.1",
         "tag": "ghcr.io/quenchworks/images/longhorn-manager:1.12.1",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/local/sbin/longhorn-manager"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.11.3",
         "tag": "ghcr.io/quenchworks/images/longhorn-manager:1.11.3",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/local/sbin/longhorn-manager"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -18964,81 +18086,42 @@
     "tag": "ghcr.io/quenchworks/images/netdata:2.12.3",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.44.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/libexec/netdata/plugins.d/go.d.plugin"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "2.12.3",
         "tag": "ghcr.io/quenchworks/images/netdata:2.12.3",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/libexec/netdata/plugins.d/go.d.plugin"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "2.11.1",
         "tag": "ghcr.io/quenchworks/images/netdata:2.11.1",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/libexec/netdata/plugins.d/go.d.plugin"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -19408,80 +18491,28 @@
     "tag": "ghcr.io/quenchworks/images/node-feature-discovery:0.20.1",
     "critical": 0,
     "high": 0,
-    "medium": 3,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 3,
-    "fixable": 3,
-    "grade": "C",
-    "score": 73,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/nfd-master",
-          "usr/bin/nfd-topology-updater"
-        ]
-      },
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/sdk",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/nfd-topology-updater"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "0.20.1",
         "tag": "ghcr.io/quenchworks/images/node-feature-discovery:0.20.1",
         "critical": 0,
         "high": 0,
-        "medium": 3,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 3,
-        "fixable": 3,
-        "grade": "C",
-        "score": 73,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/nfd-master",
-              "usr/bin/nfd-topology-updater"
-            ]
-          },
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/sdk",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/nfd-topology-updater"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -25545,261 +24576,42 @@
     "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.52.0",
     "critical": 0,
     "high": 0,
-    "medium": 6,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 6,
-    "fixable": 6,
-    "grade": "C",
-    "score": 46,
-    "cves": [
-      {
-        "id": "CVE-2026-115906",
-        "severity": "MEDIUM",
-        "pkg": "geckodriver",
-        "installed": "0.37.1-r6",
-        "fixed": "0.37.1-r7",
-        "title": "zip: zip: Integrity verification bypass via unverified authentication tag",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-115906",
-        "targets": [
-          "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-115909",
-        "severity": "MEDIUM",
-        "pkg": "geckodriver",
-        "installed": "0.37.1-r6",
-        "fixed": "0.37.1-r7",
-        "title": "zip: zip: Denial of Service via excessive memory allocation in symbolic link extraction",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-115909",
-        "targets": [
-          "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44-locale-posix",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "ld-linux-2.44",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "libcrypt1-2.44",
-        "installed": "2.44-r13",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "4.52.0",
         "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.52.0",
         "critical": 0,
         "high": 0,
-        "medium": 6,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 6,
-        "fixable": 6,
-        "grade": "C",
-        "score": 46,
-        "cves": [
-          {
-            "id": "CVE-2026-115906",
-            "severity": "MEDIUM",
-            "pkg": "geckodriver",
-            "installed": "0.37.1-r6",
-            "fixed": "0.37.1-r7",
-            "title": "zip: zip: Integrity verification bypass via unverified authentication tag",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115906",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-115909",
-            "severity": "MEDIUM",
-            "pkg": "geckodriver",
-            "installed": "0.37.1-r6",
-            "fixed": "0.37.1-r7",
-            "title": "zip: zip: Denial of Service via excessive memory allocation in symbolic link extraction",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115909",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:83a2757bb19faeeed44e8cb3808b88806097efaa98c17e3c1ac904eb07bd8c59 (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "4.51.0",
         "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.51.0",
         "critical": 0,
         "high": 0,
-        "medium": 6,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 6,
-        "fixable": 6,
-        "grade": "C",
-        "score": 46,
-        "cves": [
-          {
-            "id": "CVE-2026-115906",
-            "severity": "MEDIUM",
-            "pkg": "geckodriver",
-            "installed": "0.37.1-r6",
-            "fixed": "0.37.1-r7",
-            "title": "zip: zip: Integrity verification bypass via unverified authentication tag",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115906",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:7ec277f2cde02b3a2380909549500eef77ecad8f0aec5ef5344ddcb613d61c67 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-115909",
-            "severity": "MEDIUM",
-            "pkg": "geckodriver",
-            "installed": "0.37.1-r6",
-            "fixed": "0.37.1-r7",
-            "title": "zip: zip: Denial of Service via excessive memory allocation in symbolic link extraction",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-115909",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:7ec277f2cde02b3a2380909549500eef77ecad8f0aec5ef5344ddcb613d61c67 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:7ec277f2cde02b3a2380909549500eef77ecad8f0aec5ef5344ddcb613d61c67 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:7ec277f2cde02b3a2380909549500eef77ecad8f0aec5ef5344ddcb613d61c67 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:7ec277f2cde02b3a2380909549500eef77ecad8f0aec5ef5344ddcb613d61c67 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r13",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/selenium-node-firefox@sha256:7ec277f2cde02b3a2380909549500eef77ecad8f0aec5ef5344ddcb613d61c67 (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -27745,84 +26557,42 @@
     "tag": "ghcr.io/quenchworks/images/tetragon:1.8.0",
     "critical": 0,
     "high": 0,
-    "medium": 2,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
-    "grade": "C",
-    "score": 82,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "go.opentelemetry.io/otel/trace",
-        "installed": "v1.45.0",
-        "fixed": "1.47.0",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "usr/bin/tetra",
-          "usr/bin/tetragon"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/tetragon:1.8.0",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
-        "grade": "C",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.45.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/tetra",
-              "usr/bin/tetragon"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "1.7.1",
         "tag": "ghcr.io/quenchworks/images/tetragon:1.7.1",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
-        "grade": "C",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.44.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/tetra",
-              "usr/bin/tetragon"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
