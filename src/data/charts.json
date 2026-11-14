@@ -6496,6 +6496,85 @@
     ]
   },
   {
+    "slug": "dev-platform-stack",
+    "name": "Dev Platform Stack",
+    "category": "Stacks",
+    "summary": "Forgejo (Git hosting) with Woodpecker CI, PostgreSQL and Valkey: repositories, pull requests and pipelines in one install, with Forgejo on PostgreSQL and Valkey and the Forgejo OAuth app for Woodpecker created at install.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "15.0.11",
+    "description": "Forgejo (Git hosting) with Woodpecker CI, PostgreSQL and Valkey: repositories, pull requests and pipelines in one install, with Forgejo on PostgreSQL and Valkey and the Forgejo OAuth app for Woodpecker created at install. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
+    "repositoryID": "ce4a9f05-a166-4c57-b0c5-931f569fa46c",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/dev-platform-stack",
+    "stack": true,
+    "ahCategory": "integration-delivery",
+    "components": [
+      "forgejo",
+      "woodpecker",
+      "postgresql",
+      "valkey"
+    ],
+    "images": [
+      {
+        "name": "forgejo",
+        "image": "ghcr.io/quenchworks/images/forgejo@sha256:b07e41f0cb9d14c07ea19615858c5c9361592a3ad8de77b0daa7b10f1c6ec2d8"
+      },
+      {
+        "name": "woodpecker",
+        "image": "ghcr.io/quenchworks/images/woodpecker@sha256:6be82e92c7d2ebf80c41031f98664ba621e1be533eef9510108bc763f1224471"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:f2aadd3d9651056f67735ec100ce255fabc86121bfa45f20fa2a06df82886d46"
+      },
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:5ff5a0ea89c59eb1e731d2741642349d2009579863a9bc28ade66706af95f6a0"
+      },
+      {
+        "name": "kubectl",
+        "image": "ghcr.io/quenchworks/images/kubectl@sha256:3e927b57c5edfc14cdfeec6c80d8b30973c732023c203b18b02344e8f310e211"
+      }
+    ],
+    "upstreams": [
+      "https://codeberg.org/forgejo/forgejo",
+      "https://github.com/woodpecker-ci/woodpecker"
+    ],
+    "valuesKeys": [
+      "urls",
+      "urls.forgejo",
+      "urls.woodpecker",
+      "admin",
+      "admin.username",
+      "admin.email",
+      "forgejo",
+      "forgejo.fullnameOverride",
+      "forgejo.config",
+      "forgejo.database",
+      "forgejo.redis",
+      "forgejo.admin",
+      "woodpecker",
+      "woodpecker.fullnameOverride",
+      "woodpecker.host",
+      "woodpecker.agentSecret",
+      "woodpecker.extraEnvVars",
+      "woodpecker.extraVolumes",
+      "woodpecker.initContainers",
+      "postgresql",
+      "postgresql.fullnameOverride",
+      "postgresql.auth",
+      "valkey",
+      "valkey.fullnameOverride",
+      "valkey.auth",
+      "oauthJob",
+      "oauthJob.forgejoImage",
+      "oauthJob.kubectlImage"
+    ]
+  },
+  {
     "slug": "dex",
     "name": "dex",
     "category": "Identity",
@@ -9079,7 +9158,7 @@
     "tier": "standard",
     "license": "GPL-3.0+",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.22",
+    "chartVersion": "0.0.23",
     "appVersion": "15.0.11",
     "description": "Self-hosted Git forge (Forgejo, a community Gitea fork; Go + embedded web UI). Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/forgejo",
@@ -9108,6 +9187,20 @@
       "config.rootUrl",
       "config.logLevel",
       "config.ssh",
+      "database",
+      "database.type",
+      "database.postgres",
+      "redis",
+      "redis.enabled",
+      "redis.host",
+      "redis.db",
+      "redis.existingSecret",
+      "redis.passwordKey",
+      "admin",
+      "admin.username",
+      "admin.email",
+      "admin.existingSecret",
+      "admin.passwordKey",
       "persistence",
       "persistence.enabled",
       "persistence.mountPath",
