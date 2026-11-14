@@ -6147,6 +6147,52 @@
     ]
   },
   {
+    "slug": "data-orchestration-stack",
+    "name": "Data Orchestration Stack",
+    "category": "Stacks",
+    "summary": "Dagster with PostgreSQL and Garage: data pipelines with run storage in PostgreSQL and an S3 bucket for assets created at install, with its credentials in a Secret for your code locations.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.13.30",
+    "description": "Dagster with PostgreSQL and Garage: data pipelines with run storage in PostgreSQL and an S3 bucket for assets created at install, with its credentials in a Secret for your code locations. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
+    "repositoryID": "f2428a58-f041-406a-a776-3138f1f8258b",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/data-orchestration-stack",
+    "stack": true,
+    "ahCategory": "integration-delivery",
+    "components": [
+      "dagster",
+      "garage"
+    ],
+    "images": [
+      {
+        "name": "dagster",
+        "image": "ghcr.io/quenchworks/images/dagster@sha256:e14a840cf3159f918677d94346f860d4cb01fc62e183ae539163b3a9c29b977f"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:f2aadd3d9651056f67735ec100ce255fabc86121bfa45f20fa2a06df82886d46"
+      },
+      {
+        "name": "garage",
+        "image": "ghcr.io/quenchworks/images/garage@sha256:d500f175013e55718186c07a42d1791c0436e18745810530db7b7f0224fb0918"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/dagster-io/dagster",
+      "https://git.deuxfleurs.fr/Deuxfleurs/garage"
+    ],
+    "valuesKeys": [
+      "dagster",
+      "dagster.extraEnvVars",
+      "garage",
+      "garage.fullnameOverride",
+      "garage.config"
+    ]
+  },
+  {
     "slug": "datahub",
     "name": "datahub",
     "category": "Datastore",
