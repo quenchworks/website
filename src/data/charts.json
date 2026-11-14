@@ -2017,6 +2017,65 @@
     ]
   },
   {
+    "slug": "automation-stack",
+    "name": "Automation Stack",
+    "category": "Stacks",
+    "summary": "n8n in queue mode with PostgreSQL and Valkey: workflow automation that scales out, with the main instance taking webhooks and the editor, workers running executions, and the database, queue and shared secrets wired at install.",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "2.40.7",
+    "description": "n8n in queue mode with PostgreSQL and Valkey: workflow automation that scales out, with the main instance taking webhooks and the editor, workers running executions, and the database, queue and shared secrets wired at install. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
+    "repositoryID": "8fbb3bbc-2ba8-4a90-b82e-a2af68a96990",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/automation-stack",
+    "stack": true,
+    "ahCategory": "integration-delivery",
+    "components": [
+      "n8n",
+      "postgresql",
+      "valkey"
+    ],
+    "images": [
+      {
+        "name": "n8n",
+        "image": "ghcr.io/quenchworks/images/n8n@sha256:be42e5bebe77affa5d80091dad768355c71288b10c4081984fbca4a9b46f75bd"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:f2aadd3d9651056f67735ec100ce255fabc86121bfa45f20fa2a06df82886d46"
+      },
+      {
+        "name": "valkey",
+        "image": "ghcr.io/quenchworks/images/valkey@sha256:5ff5a0ea89c59eb1e731d2741642349d2009579863a9bc28ade66706af95f6a0"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/n8n-io/n8n"
+    ],
+    "valuesKeys": [
+      "n8n",
+      "n8n.n8n",
+      "n8n.database",
+      "n8n.extraEnvVars",
+      "worker",
+      "worker.replicas",
+      "worker.concurrency",
+      "worker.image",
+      "worker.resources",
+      "worker.nodeSelector",
+      "worker.tolerations",
+      "worker.affinity",
+      "postgresql",
+      "postgresql.fullnameOverride",
+      "postgresql.auth",
+      "valkey",
+      "valkey.fullnameOverride",
+      "valkey.auth"
+    ]
+  },
+  {
     "slug": "backdrop",
     "name": "backdrop",
     "category": "Apps & productivity",
