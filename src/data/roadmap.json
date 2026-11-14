@@ -55,7 +55,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Scalable distributed object store (S3 + HDFS). Measured 2026-09-28: the 2.2.1 distribution carries 143 fixable findings in 22 jars. Most swap on their own line (netty 4.1.137, jackson 2.21.5, log4j 2.26.1), but jetty-server 9.4 is fixed only in 12.1, spring-core 5.3.39 only in 7.0 and aircompressor 0.27 only in 2.x. Needs an upstream move off those lines."
+    "note": "Scalable distributed object store (S3 + HDFS). Measured 2026-09-28: the 2.2.1 distribution carries 143 fixable findings in 22 jars. Most swap on their own line (netty 4.1.137, jackson 2.21.5, log4j 2.26.1), but jetty-server 9.4 is fixed only in 12.1, spring-core 5.3.39 only in 7.0 and aircompressor 0.27 only in 2.x. Needs an upstream move off those lines. Re-checked 2026-11-14: 2.2.2 still pins jetty 9.4.58 and spring 5.3.39."
   },
   {
     "name": "SonarQube",
@@ -63,7 +63,7 @@
     "license": "LGPL-3.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Continuous code-quality and security inspection. Measured 2026-09-28: the 26.9 Community distribution carries 72 findings (4 critical), most inside its bundled Elasticsearch 9.4.3 (x-pack modules, transport-netty4) and in fat jars (sonar-application, the scanner engine). Needs the embedded Elasticsearch rebuilt or swapped before it can gate clean."
+    "note": "Continuous code-quality and security inspection. Measured 2026-09-28: the 26.9 Community distribution carries 72 findings (4 critical), most inside its bundled Elasticsearch 9.4.3 (x-pack modules, transport-netty4) and in fat jars (sonar-application, the scanner engine). Needs the embedded Elasticsearch rebuilt or swapped before it can gate clean. Re-measured 2026-11-14 at 26.11 (Elasticsearch 9.4.7): 66 findings (3 critical). Every fix is now on its own line, and the Elasticsearch module jars (netty 4.1.137, lz4 1.11.4, jackson 2.18.11, guava) swap in place, but shaded copies sit inside three jars that need repacking: sonar-application (guava, jakarta.mail, ognl, org.json), the scanner engine (sshd 2.9.2) and elasticsearch-x-content (jackson-core 2.18.9)."
   },
   {
     "name": "Dokploy",
@@ -337,7 +337,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "API and schema registry for Kafka, Avro, and Protobuf. Measured 2026-09-25: the 3.3.3 app distribution carries 467 findings; 26 in-place jar swaps clear all but opentelemetry-api 1.57.0 (CVE-2026-45292, fixed only in 1.62.0), which adds packages the prebuilt Quarkus index cannot load. Needs a source build that regenerates the index."
+    "note": "API and schema registry for Kafka, Avro, and Protobuf. Measured 2026-09-25: the 3.3.3 app distribution carries 467 findings; 26 in-place jar swaps clear all but opentelemetry-api 1.57.0 (CVE-2026-45292, fixed only in 1.62.0), which adds packages the prebuilt Quarkus index cannot load. Needs a source build that regenerates the index. Re-checked 2026-11-14: 3.3.4 still builds on Quarkus 3.33.4.1, whose BOM pins opentelemetry-api 1.57.0."
   },
   {
     "name": "Couchbase",
