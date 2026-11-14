@@ -1885,11 +1885,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.63",
+    "chartVersion": "0.1.64",
     "appVersion": "2026.8.5",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a CVE-gated image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
-    "imageDigest": "sha256:b69f3035b490f862290a034259f91db08c0c622b0e214e02379d0acd500ddfd7",
+    "imageDigest": "sha256:9ad62893d7e2ca6c3a7970acd1c0050cadaaa0d86e96c4160f61ac449059768c",
     "repositoryID": "50bb4aa5-5b51-4158-bafa-3e0a9204ef5b",
     "port": 80,
     "upstream": "https://goauthentik.io",
@@ -1898,7 +1898,7 @@
     "images": [
       {
         "name": "authentik",
-        "image": "ghcr.io/quenchworks/images/authentik@sha256:b69f3035b490f862290a034259f91db08c0c622b0e214e02379d0acd500ddfd7"
+        "image": "ghcr.io/quenchworks/images/authentik@sha256:9ad62893d7e2ca6c3a7970acd1c0050cadaaa0d86e96c4160f61ac449059768c"
       },
       {
         "name": "postgresql",
@@ -2024,7 +2024,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.4",
     "appVersion": "2.40.7",
     "description": "n8n in queue mode with PostgreSQL and Valkey: workflow automation that scales out, with the main instance taking webhooks and the editor, workers running executions, and the database, queue and shared secrets wired at install. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "8fbb3bbc-2ba8-4a90-b82e-a2af68a96990",
@@ -2040,7 +2040,7 @@
     "images": [
       {
         "name": "n8n",
-        "image": "ghcr.io/quenchworks/images/n8n@sha256:74efdce8319a82d821cf8105ad9c4df11eaeccdadfb8b68a42e470a0151ebd2e"
+        "image": "ghcr.io/quenchworks/images/n8n@sha256:d2308902b2ab156c1a0c0eb0017402dbc0fe6f7ecad19bede23658fd69f8242b"
       },
       {
         "name": "postgresql",
@@ -12946,7 +12946,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.25",
+    "chartVersion": "0.0.27",
     "appVersion": "1.0.0",
     "description": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation. Bring your own ACME issuer for public certificates. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "1f0a96f3-a5b0-41c9-b718-a4817e8acd0b",
@@ -12961,7 +12961,7 @@
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:318f7d34955f4b064a74668adc511e4ce62e664773539122366da39464fc2b6e"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:312bb68a00a3b8b914039e03d4c7f15e7c7729c67316259866e4395ed882f3d8"
       },
       {
         "name": "cert-manager-controller",
@@ -13011,11 +13011,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "1.15.13",
     "description": "Ingress NGINX Controller: the Kubernetes-maintained Ingress controller built on NGINX. Watches Ingress resources of the nginx IngressClass and configures NGINX to load-balance and route HTTP/HTTPS traffic to backend Services, with a validating admission webhook that rejects malformed Ingress objects before they are persisted. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. The controller runs as a single Deployment; the admission webhook's serving certificate is bootstrapped by a self-contained pre/post-install Job pair (no external cert-manager dependency).",
     "imageRepository": "ghcr.io/quenchworks/images/ingress-nginx",
-    "imageDigest": "sha256:318f7d34955f4b064a74668adc511e4ce62e664773539122366da39464fc2b6e",
+    "imageDigest": "sha256:312bb68a00a3b8b914039e03d4c7f15e7c7729c67316259866e4395ed882f3d8",
     "repositoryID": "1f5e0727-cf7e-4b35-8cd1-e58c15da8d10",
     "upstream": "https://kubernetes.github.io/ingress-nginx",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ingress-nginx",
@@ -13023,7 +13023,7 @@
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:318f7d34955f4b064a74668adc511e4ce62e664773539122366da39464fc2b6e"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:312bb68a00a3b8b914039e03d4c7f15e7c7729c67316259866e4395ed882f3d8"
       }
     ],
     "valuesKeys": [
@@ -19522,11 +19522,11 @@
     "tier": "standard",
     "license": "LicenseRef-n8n-Sustainable-Use-License-1.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.35",
+    "chartVersion": "0.1.36",
     "appVersion": "2.40.7",
     "description": "Fair-code workflow automation platform — a visual node editor for building integrations and automations across 400+ apps, with native AI/LLM agent nodes (Node.js). Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/n8n",
-    "imageDigest": "sha256:74efdce8319a82d821cf8105ad9c4df11eaeccdadfb8b68a42e470a0151ebd2e",
+    "imageDigest": "sha256:d2308902b2ab156c1a0c0eb0017402dbc0fe6f7ecad19bede23658fd69f8242b",
     "repositoryID": "7329d01d-e6f6-4410-a265-bde59581da96",
     "port": 5678,
     "upstream": "https://n8n.io",
@@ -19535,7 +19535,7 @@
     "images": [
       {
         "name": "n8n",
-        "image": "ghcr.io/quenchworks/images/n8n@sha256:74efdce8319a82d821cf8105ad9c4df11eaeccdadfb8b68a42e470a0151ebd2e"
+        "image": "ghcr.io/quenchworks/images/n8n@sha256:d2308902b2ab156c1a0c0eb0017402dbc0fe6f7ecad19bede23658fd69f8242b"
       },
       {
         "name": "n8n-runners",
@@ -27222,7 +27222,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.13",
+    "chartVersion": "0.0.15",
     "appVersion": "1.0.0",
     "description": "Hardened runtime security in one install: Falco (syscall rules with the modern eBPF probe, JSON alerts naming the container) + Tetragon (kernel-level process, file and network events with TracingPolicy hooks and enforcement). Every image is QuenchWorks-hardened, built from source, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "a10189a3-8435-4f6d-aed8-14d16566281c",
@@ -27245,7 +27245,7 @@
       },
       {
         "name": "tetragon-operator",
-        "image": "ghcr.io/quenchworks/images/tetragon-operator@sha256:cbc70ba87d7a4407ddf1f094db4ca824190eea4ca1c2682aa9a5e9426f7c04ac"
+        "image": "ghcr.io/quenchworks/images/tetragon-operator@sha256:291d564a9107aad5bc4e5af3d4af5a5523dae0f93ea5fcbba143ccca089c0be0"
       }
     ],
     "upstreams": [
@@ -28019,6 +28019,98 @@
       "ingress.servicePort",
       "ingress.hosts",
       "ingress.tls"
+    ]
+  },
+  {
+    "slug": "shiori",
+    "name": "shiori",
+    "category": "Apps & productivity",
+    "summary": "Bookmark manager with readable offline archives, a web UI, a REST API and a CLI, on SQLite, PostgreSQL or MySQL. One static binary built from source on a hardened nonroot Wolfi base; data and archives in /shiori.",
+    "tier": "standard",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.8.0",
+    "description": "Shiori: a bookmark manager with readable offline archives, a web UI, a REST API and a CLI, on SQLite, PostgreSQL or MySQL. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/shiori",
+    "imageDigest": "sha256:87b96025ea29c03074fd47717466b7f175c2d2d41704404b5e8c110774561aff",
+    "repositoryID": "cce99e60-0e16-4f3b-9526-7eb3386850cd",
+    "port": 8080,
+    "upstream": "https://github.com/go-shiori/shiori",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/shiori",
+    "ahCategory": "skip-prediction",
+    "images": [
+      {
+        "name": "shiori",
+        "image": "ghcr.io/quenchworks/images/shiori@sha256:87b96025ea29c03074fd47717466b7f175c2d2d41704404b5e8c110774561aff"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "nameOverride",
+      "replicaCount",
+      "updateStrategy",
+      "updateStrategy.type",
+      "owner",
+      "owner.username",
+      "owner.password",
+      "owner.existingSecret",
+      "database",
+      "database.existingSecret",
+      "database.urlKey",
+      "settings",
+      "persistence",
+      "persistence.enabled",
+      "persistence.existingClaim",
+      "persistence.accessModes",
+      "persistence.size",
+      "persistence.storageClass",
+      "persistence.annotations",
+      "resources",
+      "resources.requests",
+      "resources.limits",
+      "service",
+      "service.type",
+      "service.port",
+      "service.annotations",
+      "service.externalTrafficPolicy",
+      "podLabels",
+      "podAnnotations",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "topologySpreadConstraints",
+      "priorityClassName",
+      "schedulerName",
+      "terminationGracePeriodSeconds",
+      "extraEnvVars",
+      "extraEnvVarsCM",
+      "extraEnvVarsSecret",
+      "extraVolumes",
+      "extraVolumeMounts",
+      "initContainers",
+      "sidecars",
+      "lifecycleHooks",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "livenessProbe",
+      "readinessProbe",
+      "customLivenessProbe",
+      "customReadinessProbe",
+      "customStartupProbe",
+      "serviceAccount",
+      "serviceAccount.create",
+      "serviceAccount.name",
+      "serviceAccount.annotations",
+      "networkPolicy",
+      "networkPolicy.enabled",
+      "networkPolicy.allowExternal",
+      "podDisruptionBudget",
+      "podDisruptionBudget.enabled",
+      "podDisruptionBudget.minAvailable"
     ]
   },
   {
@@ -30180,7 +30272,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.8.0",
     "description": "Tetragon eBPF runtime security: an agent on every node that sees process execution, file access and network activity in the kernel, with TracingPolicy CRDs for custom hooks and enforcement. Hardened by QuenchWorks, images built from source, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/tetragon",
@@ -30196,7 +30288,7 @@
       },
       {
         "name": "tetragon-operator",
-        "image": "ghcr.io/quenchworks/images/tetragon-operator@sha256:cbc70ba87d7a4407ddf1f094db4ca824190eea4ca1c2682aa9a5e9426f7c04ac"
+        "image": "ghcr.io/quenchworks/images/tetragon-operator@sha256:291d564a9107aad5bc4e5af3d4af5a5523dae0f93ea5fcbba143ccca089c0be0"
       }
     ],
     "valuesKeys": [
@@ -34640,7 +34732,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.2",
+    "chartVersion": "0.0.4",
     "appVersion": "0.29.7",
     "description": "Headscale (a self-hosted Tailscale control server) with Authentik (identity provider): a private WireGuard mesh whose devices are registered by people signing in through Authentik, with the OIDC client created and wired at install. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "330e9c1d-df81-44d3-a615-4842659ff562",
@@ -34659,7 +34751,7 @@
       },
       {
         "name": "authentik",
-        "image": "ghcr.io/quenchworks/images/authentik@sha256:b69f3035b490f862290a034259f91db08c0c622b0e214e02379d0acd500ddfd7"
+        "image": "ghcr.io/quenchworks/images/authentik@sha256:9ad62893d7e2ca6c3a7970acd1c0050cadaaa0d86e96c4160f61ac449059768c"
       },
       {
         "name": "postgresql",
