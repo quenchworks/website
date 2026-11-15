@@ -3680,6 +3680,32 @@
     "knownIssue": "Ships .NET 9 and .NET 10 only. The .NET 8 band is held out: dotnet-8-runtime/aspnet-8-runtime 8.0.127-r0 carries CVE-2026-47304 (Critical) plus three High DoS advisories, all fixed only in 8.0.129-r1, which Wolfi has not packaged (verified against the APKINDEX on 2026-08-27). The band returns as soon as that revision lands."
   },
   {
+    "slug": "dozzle",
+    "name": "dozzle",
+    "category": "Observability",
+    "summary": "Real-time log viewer for containers, reading the Docker socket or pod logs through the Kubernetes API, with search and a web UI. One static binary built from source with its UI embedded, on a hardened nonroot Wolfi base.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "11.4.3",
+    "versions": [
+      {
+        "version": "11.4.3",
+        "size": "27.4 MB",
+        "published": "2026-11-15T01:38:51Z",
+        "digest": "sha256:56a3ee6c6dbb1b940a2e4e3a2f214fef206fd289ad77b9f40d79ad835cc1c965"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://dozzle.dev",
+    "source": "https://github.com/amir20/dozzle",
+    "image": "ghcr.io/quenchworks/images/dozzle"
+  },
+  {
     "slug": "dragonfly",
     "name": "Dragonfly",
     "category": "Cache",
