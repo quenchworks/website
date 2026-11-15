@@ -269,8 +269,8 @@
     "category": "CI/CD & registry",
     "license": "MIT",
     "licenseClean": "caution",
-    "priority": "exploring",
-    "note": "Full DevOps platform (Git forge + CI/CD + registry). Heavy fit: a large Ruby monolith that bundles PostgreSQL, Redis, Gitaly, Sidekiq and Workhorse, and the gitlab-org/gitlab repo is mostly EE-proprietary, only the CE-flagged code is MIT. Far from the minimal one-purpose hardened model.",
+    "priority": "planned",
+    "note": "Full DevOps platform (Git forge, CI/CD, registry). Sized 2026-11-15 at 19.5.5 (user asked for it): built from the MIT gitlab-foss source, it needs about seven images (webservice/Rails, sidekiq, workhorse, gitaly, gitlab-shell, toolbox for migrations, exporter) plus an umbrella chart on the catalog PostgreSQL, Valkey and registry. The Rails asset compile is the heaviest build in the catalog and the gem and npm trees are the largest CVE surface. Queued after the current next rows; expect a multi-day build.",
     "cleanAlternative": "Gitea or Forgejo, lightweight, fully-open Git forges that drop straight into the gitops-stack."
   },
   {
@@ -511,19 +511,11 @@
     "note": "Wiki with a Markdown and visual editor, Git sync, search and many auth providers, on PostgreSQL. Added 2026-11-12: 3.3.1, active, AGPL-3.0, Node."
   },
   {
-    "name": "dufs",
-    "category": "Apps & productivity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "A distinctive file server: browse, upload, search and zip folders in a web UI, with WebDAV, resumable uploads and per-path access control (Rust). Added 2026-11-15 at v0.47.0: the release binary carries no cargo-auditable data, so it scans empty; its Cargo.lock has one finding (zip 9.0.4, CVE-2026-115905, fixed in 9.0.5), which a from-source build with cargo auditable clears."
-  },
-  {
     "name": "SFTPGo",
     "category": "Apps & productivity",
     "license": "AGPL-3.0",
     "licenseClean": "clean",
-    "priority": "planned",
+    "priority": "next",
     "note": "File transfer server for SFTP, FTP/S, HTTP/S and WebDAV with a web admin and client UI, virtual users and local, S3, GCS or Azure storage backends (Go). Added 2026-11-15 at v2.7.6: active, AGPL-3.0; the community edition only, on SQLite or PostgreSQL."
   },
   {
