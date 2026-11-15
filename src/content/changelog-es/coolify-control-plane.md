@@ -1,7 +1,7 @@
 ---
 title: Coolify llega como una oleada de plano de control reforzada
 date: 2026-06-14
-summary: La pila de Coolify ya está en el catálogo como imágenes reforzadas y sin CVE (0-CVE) y un chart paraguas que puedes desplegar como una sola unidad.
+summary: La pila de Coolify ya está en el catálogo como imágenes reforzadas y filtradas por CVE en la compilación y un chart paraguas que puedes desplegar como una sola unidad.
 tags: ["images", "charts", "coolify"]
 ---
 

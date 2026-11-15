@@ -25,7 +25,7 @@ export interface RoadmapItem {
   cleanAlternative?: string;
   // Tested but HELD: the image builds, but the app cannot reach zero fixable CVEs
   // because the app itself pins a dependency below the version that fixes a CVE.
-  // We do not ship anything that isn't 0-CVE, so it waits until upstream relaxes
+  // We do not ship anything that fails the CVE gate, so it waits until upstream relaxes
   // the pin or backports the fix. blockedReason states the specific pin conflict.
   blocked?: boolean;
   blockedReason?: string;

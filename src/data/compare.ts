@@ -711,7 +711,7 @@ export const vendorIntro: Record<string, { headline: L; body: L }> = {
       es: 'Una alternativa desde el código fuente a RapidFort',
     },
     body: {
-      en: 'RapidFort curates and optimizes upstream images to strip attack surface, as a commercial platform. QuenchWorks instead builds each app from source on Wolfi to a 0-CVE gate and ships signed Helm charts pinned by digest: free, public, and fully verifiable.',
+      en: 'RapidFort curates and optimizes upstream images to strip attack surface, as a commercial platform. QuenchWorks instead builds each app from source on Wolfi behind a CVE gate that fails on any fixable finding, and ships signed Helm charts pinned by digest: free, public, and fully verifiable.',
       ar: 'تُنسّق RapidFort الصور الرسمية وتُحسّنها لإزالة سطح الهجوم، كمنصّة تجارية. أمّا QuenchWorks فيبني كل تطبيق من المصدر على Wolfi حتى بوابة صفر ثغرات ويطرح مخططات Helm موقّعة مثبّتة بالبصمة الرقمية، وهو مجاني وعام وقابل للتحقّق بالكامل.',
       es: 'RapidFort cura y optimiza imágenes oficiales para recortar la superficie de ataque, como plataforma comercial. QuenchWorks, en cambio, compila cada app desde el código fuente en Wolfi hasta una puerta de cero CVE y ofrece charts de Helm firmados fijados por digest: gratuito, público y totalmente verificable.',
     },
@@ -745,7 +745,7 @@ export const ui: Record<string, L> = {
     es: '¿Cambias desde otro proveedor?',
   },
   hubIntro: {
-    en: 'Whatever hardened-image catalog you use today, QuenchWorks gives you a free, fully public, no-account alternative: images compiled from source on Wolfi to a 0-CVE gate, and signed Helm charts pinned by digest. Pick your current provider below to see how the two line up, feature by feature.',
+    en: 'Whatever hardened-image catalog you use today, QuenchWorks gives you a free, fully public, no-account alternative: images compiled from source on Wolfi behind a CVE gate that fails on any fixable finding, and signed Helm charts pinned by digest. Pick your current provider below to see how the two line up, feature by feature.',
     ar: 'أيًّا كان كتالوج الصور المُحصّنة الذي تستخدمه اليوم، يمنحك QuenchWorks بديلًا مجانيًا وعامًا بالكامل ودون حساب: صور مُجمّعة من المصدر على Wolfi حتى بوابة صفر ثغرات، ومخططات Helm موقّعة مثبّتة بالبصمة الرقمية. اختر مزوّدك الحالي أدناه لترى كيف يصطفّ الاثنان، ميزة بميزة.',
     es: 'Sea cual sea el catálogo de imágenes reforzadas que uses hoy, QuenchWorks te da una alternativa gratuita, totalmente pública y sin cuenta: imágenes compiladas desde el código fuente en Wolfi hasta una puerta de cero CVE, y charts de Helm firmados fijados por digest. Elige tu proveedor actual abajo para ver cómo se comparan los dos, característica a característica.',
   },

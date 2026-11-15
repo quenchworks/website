@@ -7,4 +7,4 @@ tags: ["charts", "observability", "harbor"]
 
 Vigilar un registro de Harbor ya no implica montar la pila de monitorización a mano. El nuevo meta-chart de observabilidad despliega Prometheus y Grafana juntos y entrega un dashboard de Harbor precargado en Grafana, de modo que un registro nuevo arranca ya instrumentado para tasas de peticiones, almacenamiento y salud de la replicación.
 
-Ambas imágenes de respaldo son las compilaciones reforzadas y sin CVE (0-CVE) del catálogo, fijadas por digest. La compilación de Grafana es la release OSS (AGPL) v13.0.2 en el puerto 3000.
+Ambas imágenes de respaldo son las compilaciones reforzadas del catálogo que superaron la puerta de CVE, fijadas por digest. La compilación de Grafana es la release OSS (AGPL) v13.0.2 en el puerto 3000.

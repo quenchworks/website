@@ -154,7 +154,7 @@
     "license": "MIT",
     "licenseClean": "clean",
     "priority": "planned",
-    "note": "Visual builder for LLM applications and agent workflows. Measured 2026-09-28: 1.12.3 resolves to 457 packages (2.3 GB). The scanner reports only chromadb 1.5.9 (no fix), but the wheels carry what it cannot see: OpenSSL 3.5.1 (ibm_db.libs), OpenSSL 3.6.2 and libcurl 8.20.0 inside pyarrow, BoringSSL in grpcio and hf_xet, and 7 bundled .libs directories (numpy, scipy, pillow, cassandra-driver). Wolfi has py3.13 pyarrow, grpcio, numpy, tokenizers and orjson, but no onnxruntime, chromadb or ibm_db, so an honest 0-CVE build needs those built from source or dropped."
+    "note": "Visual builder for LLM applications and agent workflows. Measured 2026-09-28: 1.12.3 resolves to 457 packages (2.3 GB). The scanner reports only chromadb 1.5.9 (no fix), but the wheels carry what it cannot see: OpenSSL 3.5.1 (ibm_db.libs), OpenSSL 3.6.2 and libcurl 8.20.0 inside pyarrow, BoringSSL in grpcio and hf_xet, and 7 bundled .libs directories (numpy, scipy, pillow, cassandra-driver). Wolfi has py3.13 pyarrow, grpcio, numpy, tokenizers and orjson, but no onnxruntime, chromadb or ibm_db, so a build that passes the CVE gate honestly needs those built from source or dropped."
   },
   {
     "name": "Langfuse",
@@ -312,8 +312,10 @@
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
     "priority": "planned",
-    "note": "S3-compatible object storage; relicensed to AGPL-3.0. Held 2026-10-08: minio/minio is archived (README: no longer maintained; the alternatives are the proprietary AIStor editions), last release RELEASE.2025-10-15T17-29-55Z. An archived server gets no CVE fixes. SeaweedFS, Garage, RustFS and Ceph (RGW) are the S3 options in the catalog.",
-    "cleanAlternative": "SeaweedFS / Garage / RustFS (Apache-2.0), all already shipped."
+    "note": "S3-compatible object storage, AGPL-3.0. Will not ship: minio/minio was archived on 2026-04-25 and minio/mc earlier (read-only, no maintenance; upstream points to its proprietary AIStor editions). The last server release is RELEASE.2025-10-15T17-29-55Z, and an archived server gets no CVE fixes.",
+    "cleanAlternative": "SeaweedFS, Garage, RustFS or Ceph RGW (all in the catalog)",
+    "blocked": true,
+    "blockedReason": "Archived upstream on 2026-04-25: no releases or CVE fixes."
   },
   {
     "name": "Kaniko",
@@ -378,7 +380,7 @@
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "exploring",
-    "note": "ML pipeline orchestration on Kubernetes. Partly built 2026-10-20 (2.17.2): api-server, persistence agent, scheduled workflow controller, driver, launcher and frontend images ship 0-CVE (images 405e86c8). The chart is held: v2 runs need the ML Metadata store server, whose binary (Wolfi 1.17.1, upstream 1.21.0) statically links sqlite 3.39.2, zlib 1.2.12, gRPC 1.46.3, MariaDB Connector/C 3.0.8 and libpq 12.1, invisible to the scanner. Unblock: an MLMD release on current libraries, or our own Bazel build against Wolfi system libraries."
+    "note": "ML pipeline orchestration on Kubernetes. Partly built 2026-10-20 (2.17.2): api-server, persistence agent, scheduled workflow controller, driver, launcher and frontend images passed the CVE gate (images 405e86c8). The chart is held: v2 runs need the ML Metadata store server, whose binary (Wolfi 1.17.1, upstream 1.21.0) statically links sqlite 3.39.2, zlib 1.2.12, gRPC 1.46.3, MariaDB Connector/C 3.0.8 and libpq 12.1, invisible to the scanner. Unblock: an MLMD release on current libraries, or our own Bazel build against Wolfi system libraries."
   },
   {
     "name": "TensorFlow Serving",

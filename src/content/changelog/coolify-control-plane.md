@@ -1,7 +1,7 @@
 ---
 title: Coolify lands as a hardened control-plane wave
 date: 2026-06-14
-summary: The Coolify stack is now in the catalog as hardened, 0-CVE images and an umbrella chart you can deploy as one unit.
+summary: The Coolify stack is now in the catalog as hardened, CVE-gated images and an umbrella chart you can deploy as one unit.
 tags: ["images", "charts", "coolify"]
 ---
 
