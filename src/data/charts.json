@@ -2548,7 +2548,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "0.63.22",
     "description": "Metabase (dashboards and questions) with ClickHouse (columnar analytics database) and PostgreSQL (Metabase's application database): Metabase is set up at install with an administrator and ClickHouse as a data source. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "d9d5809d-8e2e-4583-b095-04cf08941860",
@@ -2567,7 +2567,7 @@
       },
       {
         "name": "clickhouse",
-        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:1014ee83d6f517697ec894348426f3330ee2a04d39c7ce31747ac7c73b496eec"
+        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:c52fc2af46b2f9ff22e37d0397f8b64afb4826217fcbd77b3feb0abc7db49720"
       },
       {
         "name": "postgresql",
@@ -10130,7 +10130,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "2.9.5",
     "description": "Flux, the CNCF GitOps toolkit: source, kustomize, helm and notification controllers with their CRDs, reconciling a cluster from Git, OCI and Helm repositories. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/flux",
@@ -10153,7 +10153,7 @@
       },
       {
         "name": "flux-notification-controller",
-        "image": "ghcr.io/quenchworks/images/flux-notification-controller@sha256:2afc67825bbbeb88493607c34caab56f558da0b6432e414c14a3fc66e5c59be1"
+        "image": "ghcr.io/quenchworks/images/flux-notification-controller@sha256:e6f69756eb6220f2498253f90f15c2c1e4020a8ba92c04fd90ff3e7a159e033f"
       },
       {
         "name": "flux-image-reflector-controller",
@@ -14667,11 +14667,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.25",
+    "chartVersion": "0.0.26",
     "appVersion": "1.15.13",
     "description": "Ingress NGINX Controller: the Kubernetes-maintained Ingress controller built on NGINX. Watches Ingress resources of the nginx IngressClass and configures NGINX to load-balance and route HTTP/HTTPS traffic to backend Services, with a validating admission webhook that rejects malformed Ingress objects before they are persisted. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. The controller runs as a single Deployment; the admission webhook's serving certificate is bootstrapped by a self-contained pre/post-install Job pair (no external cert-manager dependency).",
     "imageRepository": "ghcr.io/quenchworks/images/ingress-nginx",
-    "imageDigest": "sha256:881c1819659a7320aedfdf5bc0449517100614269f504caab391de87e407991f",
+    "imageDigest": "sha256:6c257065b8ff6228e811b33e0dac826fd423c83a642e85f5336b79fe90513830",
     "repositoryID": "1f5e0727-cf7e-4b35-8cd1-e58c15da8d10",
     "upstream": "https://kubernetes.github.io/ingress-nginx",
     "chartRef": "oci://ghcr.io/quenchworks/charts/ingress-nginx",
@@ -14679,7 +14679,7 @@
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:881c1819659a7320aedfdf5bc0449517100614269f504caab391de87e407991f"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:6c257065b8ff6228e811b33e0dac826fd423c83a642e85f5336b79fe90513830"
       }
     ],
     "valuesKeys": [
@@ -14742,11 +14742,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.10",
+    "chartVersion": "0.0.11",
     "appVersion": "1.30.8",
     "description": "Istio CNI node agent for ambient mode: a DaemonSet that chains the istio-cni plugin into the node's CNI configuration and redirects each ambient pod's traffic to the node's ztunnel. Pairs with the QuenchWorks istiod and ztunnel charts. Hardened by QuenchWorks: built from source on Wolfi, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/istio-cni",
-    "imageDigest": "sha256:e0d99295493cba3dd896b0d4c78bacbdd140f29e6bd8624e8135f05a5d8107b8",
+    "imageDigest": "sha256:a46f1e82011d318e6fa352d9ec3c8f2d5bd03a479ca66388ec37d27fdf17dbed",
     "repositoryID": "e71ee2c1-47a0-49e9-a73d-a63455f4804e",
     "upstream": "https://istio.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/istio-cni",
@@ -14754,7 +14754,7 @@
     "images": [
       {
         "name": "istio-cni",
-        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:e0d99295493cba3dd896b0d4c78bacbdd140f29e6bd8624e8135f05a5d8107b8"
+        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:a46f1e82011d318e6fa352d9ec3c8f2d5bd03a479ca66388ec37d27fdf17dbed"
       }
     ],
     "valuesKeys": [
@@ -24162,11 +24162,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "1.21.0",
     "description": "OpenFGA, the CNCF fine-grained authorization service (Zanzibar-style ReBAC) with HTTP and gRPC APIs. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/openfga",
-    "imageDigest": "sha256:997de39b8825fd52615e95a054845732aa9cb486b2de80b4465e467e5cf0c405",
+    "imageDigest": "sha256:762b7823a76a18962caaa487e72e3089dcafd62efbe61d8c6078a05702564886",
     "repositoryID": "ebb121df-d83a-4d90-9f04-4e2cc016c66b",
     "upstream": "https://openfga.dev",
     "chartRef": "oci://ghcr.io/quenchworks/charts/openfga",
@@ -24174,7 +24174,7 @@
     "images": [
       {
         "name": "openfga",
-        "image": "ghcr.io/quenchworks/images/openfga@sha256:997de39b8825fd52615e95a054845732aa9cb486b2de80b4465e467e5cf0c405"
+        "image": "ghcr.io/quenchworks/images/openfga@sha256:762b7823a76a18962caaa487e72e3089dcafd62efbe61d8c6078a05702564886"
       }
     ],
     "valuesKeys": [
@@ -27572,11 +27572,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.28",
+    "chartVersion": "0.0.29",
     "appVersion": "3.15.1",
     "description": "Metrics collection, storage, and alerting system that scrapes targets and runs PromQL queries. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/prometheus",
-    "imageDigest": "sha256:8e9254d8deac559c2520e0c295da15d86e099c444b762bfc11682278cc7bca7b",
+    "imageDigest": "sha256:04a726bcdaf7f8484d360674236a9e90c4b924e82d4d99b4516c5218013fcb45",
     "repositoryID": "a1ea88ca-6c90-4a7d-b020-53879714aecb",
     "port": 9090,
     "upstream": "https://github.com/prometheus/prometheus",
@@ -27585,7 +27585,7 @@
     "images": [
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:8e9254d8deac559c2520e0c295da15d86e099c444b762bfc11682278cc7bca7b"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:04a726bcdaf7f8484d360674236a9e90c4b924e82d4d99b4516c5218013fcb45"
       }
     ],
     "valuesKeys": [
@@ -37827,6 +37827,104 @@
       "namespaces",
       "cli",
       "cli.image"
+    ]
+  },
+  {
+    "slug": "writefreely",
+    "name": "writefreely",
+    "category": "Apps & productivity",
+    "summary": "WriteFreely: a minimalist publishing platform with ActivityPub federation, Markdown and collections, on SQLite or MySQL. Built from source with Wolfi's SQLite library; runs as uid 1001 with the database and keys on a volume and the web UI on 8080.",
+    "tier": "standard",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.17.3",
+    "description": "WriteFreely: a minimalist federated blogging platform with Markdown and ActivityPub, an admin generated at install and SQLite on a volume. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/writefreely",
+    "imageDigest": "sha256:465cfc2257f20284d3a1446cac642895c9aef9a5ddd9ac0300ae9faa3f2acfbb",
+    "repositoryID": "5df2c436-033f-47e7-b54b-d5337c233af4",
+    "port": 8080,
+    "upstream": "https://github.com/writefreely/writefreely",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/writefreely",
+    "ahCategory": "skip-prediction",
+    "images": [
+      {
+        "name": "writefreely",
+        "image": "ghcr.io/quenchworks/images/writefreely@sha256:465cfc2257f20284d3a1446cac642895c9aef9a5ddd9ac0300ae9faa3f2acfbb"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "nameOverride",
+      "replicaCount",
+      "updateStrategy",
+      "updateStrategy.type",
+      "host",
+      "siteName",
+      "siteDescription",
+      "admin",
+      "admin.username",
+      "admin.password",
+      "admin.existingSecret",
+      "singleUser",
+      "openRegistration",
+      "maxBlogs",
+      "federation",
+      "private",
+      "localTimeline",
+      "extraConfig",
+      "persistence",
+      "persistence.enabled",
+      "persistence.existingClaim",
+      "persistence.accessModes",
+      "persistence.size",
+      "persistence.storageClass",
+      "persistence.annotations",
+      "resources",
+      "resources.requests",
+      "resources.limits",
+      "service",
+      "service.type",
+      "service.port",
+      "service.annotations",
+      "service.externalTrafficPolicy",
+      "podLabels",
+      "podAnnotations",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "topologySpreadConstraints",
+      "priorityClassName",
+      "schedulerName",
+      "terminationGracePeriodSeconds",
+      "extraEnvVars",
+      "extraEnvVarsCM",
+      "extraEnvVarsSecret",
+      "extraVolumes",
+      "extraVolumeMounts",
+      "initContainers",
+      "sidecars",
+      "lifecycleHooks",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "livenessProbe",
+      "readinessProbe",
+      "customLivenessProbe",
+      "customReadinessProbe",
+      "customStartupProbe",
+      "serviceAccount",
+      "serviceAccount.create",
+      "serviceAccount.name",
+      "serviceAccount.annotations",
+      "networkPolicy",
+      "networkPolicy.enabled",
+      "networkPolicy.allowExternal",
+      "podDisruptionBudget",
+      "podDisruptionBudget.enabled",
+      "podDisruptionBudget.minAvailable"
     ]
   },
   {
