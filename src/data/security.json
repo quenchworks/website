@@ -227,6 +227,37 @@
       }
     ]
   },
+  "akhq": {
+    "image": "ghcr.io/quenchworks/images/akhq",
+    "version": "0.28.0",
+    "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.28.0",
+        "tag": "ghcr.io/quenchworks/images/akhq:0.28.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "alertmanager": {
     "image": "ghcr.io/quenchworks/images/alertmanager",
     "version": "0.35.0",
@@ -386,6 +417,375 @@
         "grade": "A+",
         "score": 100,
         "cves": []
+      }
+    ]
+  },
+  "apache-polaris": {
+    "image": "ghcr.io/quenchworks/images/apache-polaris",
+    "version": "1.8.0",
+    "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
+    "critical": 0,
+    "high": 10,
+    "medium": 10,
+    "low": 0,
+    "unknown": 0,
+    "total": 20,
+    "fixable": 19,
+    "grade": "D",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.4.8-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.6.0-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-108106",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-113351",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-115506",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-93451",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-116590",
+        "severity": "MEDIUM",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-118259",
+        "severity": "MEDIUM",
+        "pkg": "io.opentelemetry:opentelemetry-api",
+        "installed": "1.62.0",
+        "fixed": "1.67.0",
+        "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-57914",
+        "severity": "MEDIUM",
+        "pkg": "org.apache.kerby:kerby-asn1",
+        "installed": "2.0.3",
+        "fixed": "2.1.2",
+        "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "glibc-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "glibc-2.44-locale-posix",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "ld-linux-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "libcrypt1-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-48924",
+        "severity": "MEDIUM",
+        "pkg": "commons-lang:commons-lang",
+        "installed": "2.6",
+        "fixed": null,
+        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.8.0",
+        "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
+        "critical": 0,
+        "high": 10,
+        "medium": 10,
+        "low": 0,
+        "unknown": 0,
+        "total": 20,
+        "fixable": 19,
+        "grade": "D",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.4.8-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.6.0-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-108106",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-113351",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-115506",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-93451",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-116590",
+            "severity": "MEDIUM",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-118259",
+            "severity": "MEDIUM",
+            "pkg": "io.opentelemetry:opentelemetry-api",
+            "installed": "1.62.0",
+            "fixed": "1.67.0",
+            "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-57914",
+            "severity": "MEDIUM",
+            "pkg": "org.apache.kerby:kerby-asn1",
+            "installed": "2.0.3",
+            "fixed": "2.1.2",
+            "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "glibc-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "glibc-2.44-locale-posix",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "ld-linux-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "libcrypt1-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-48924",
+            "severity": "MEDIUM",
+            "pkg": "commons-lang:commons-lang",
+            "installed": "2.6",
+            "fixed": null,
+            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -874,6 +1274,37 @@
       {
         "version": "1.11.3",
         "tag": "ghcr.io/quenchworks/images/backing-image-manager:1.11.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "beszel": {
+    "image": "ghcr.io/quenchworks/images/beszel",
+    "version": "0.21.2",
+    "tag": "ghcr.io/quenchworks/images/beszel:0.21.2",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.21.2",
+        "tag": "ghcr.io/quenchworks/images/beszel:0.21.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3571,8 +4002,8 @@
   },
   "clickhouse": {
     "image": "ghcr.io/quenchworks/images/clickhouse",
-    "version": "26.9.25.15",
-    "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.25.15",
+    "version": "26.10.4.207",
+    "tag": "ghcr.io/quenchworks/images/clickhouse:26.10.4.207",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -3585,8 +4016,22 @@
     "cves": [],
     "versions": [
       {
-        "version": "26.9.25.15",
-        "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.25.15",
+        "version": "26.10.4.207",
+        "tag": "ghcr.io/quenchworks/images/clickhouse:26.10.4.207",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "26.9.28.166",
+        "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.28.166",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4786,6 +5231,37 @@
       {
         "version": "6.4.7",
         "tag": "ghcr.io/quenchworks/images/cratedb:6.4.7",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "croc": {
+    "image": "ghcr.io/quenchworks/images/croc",
+    "version": "11.6.5",
+    "tag": "ghcr.io/quenchworks/images/croc:11.6.5",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "11.6.5",
+        "tag": "ghcr.io/quenchworks/images/croc:11.6.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -6117,6 +6593,37 @@
       {
         "version": "10.0.114",
         "tag": "ghcr.io/quenchworks/images/dotnet-runtime:10.0.114",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "dozzle": {
+    "image": "ghcr.io/quenchworks/images/dozzle",
+    "version": "11.4.3",
+    "tag": "ghcr.io/quenchworks/images/dozzle:11.4.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "11.4.3",
+        "tag": "ghcr.io/quenchworks/images/dozzle:11.4.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -9543,6 +10050,37 @@
       }
     ]
   },
+  "glauth": {
+    "image": "ghcr.io/quenchworks/images/glauth",
+    "version": "2.5.4",
+    "tag": "ghcr.io/quenchworks/images/glauth:2.5.4",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.5.4",
+        "tag": "ghcr.io/quenchworks/images/glauth:2.5.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "go": {
     "image": "ghcr.io/quenchworks/images/go",
     "version": "1.27.4",
@@ -9668,6 +10206,37 @@
       {
         "version": "0.14.4",
         "tag": "ghcr.io/quenchworks/images/gogs:0.14.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "gokapi": {
+    "image": "ghcr.io/quenchworks/images/gokapi",
+    "version": "2.2.4",
+    "tag": "ghcr.io/quenchworks/images/gokapi:2.2.4",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.2.4",
+        "tag": "ghcr.io/quenchworks/images/gokapi:2.2.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -11259,6 +11828,37 @@
       }
     ]
   },
+  "healthchecks": {
+    "image": "ghcr.io/quenchworks/images/healthchecks",
+    "version": "5.0.3",
+    "tag": "ghcr.io/quenchworks/images/healthchecks:5.0.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "5.0.3",
+        "tag": "ghcr.io/quenchworks/images/healthchecks:5.0.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "homebox": {
     "image": "ghcr.io/quenchworks/images/homebox",
     "version": "0.27.1",
@@ -11679,6 +12279,37 @@
       }
     ]
   },
+  "inbucket": {
+    "image": "ghcr.io/quenchworks/images/inbucket",
+    "version": "3.2.0",
+    "tag": "ghcr.io/quenchworks/images/inbucket:3.2.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.2.0",
+        "tag": "ghcr.io/quenchworks/images/inbucket:3.2.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "influxdb": {
     "image": "ghcr.io/quenchworks/images/influxdb",
     "version": "2.9.1",
@@ -11716,28 +12347,54 @@
     "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.13",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-128085",
+        "severity": "MEDIUM",
+        "pkg": "ingress-nginx-controller-1.15",
+        "installed": "1.15.13-r1",
+        "fixed": "1.15.13-r2",
+        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
+        "targets": [
+          "ghcr.io/quenchworks/images/ingress-nginx@sha256:312bb68a00a3b8b914039e03d4c7f15e7c7729c67316259866e4395ed882f3d8 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.15.13",
         "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.13",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-128085",
+            "severity": "MEDIUM",
+            "pkg": "ingress-nginx-controller-1.15",
+            "installed": "1.15.13-r1",
+            "fixed": "1.15.13-r2",
+            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
+            "targets": [
+              "ghcr.io/quenchworks/images/ingress-nginx@sha256:312bb68a00a3b8b914039e03d4c7f15e7c7729c67316259866e4395ed882f3d8 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -14193,6 +14850,37 @@
       }
     ]
   },
+  "kopia": {
+    "image": "ghcr.io/quenchworks/images/kopia",
+    "version": "0.23.1",
+    "tag": "ghcr.io/quenchworks/images/kopia:0.23.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.23.1",
+        "tag": "ghcr.io/quenchworks/images/kopia:0.23.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "krakend": {
     "image": "ghcr.io/quenchworks/images/krakend",
     "version": "3.0.4",
@@ -14616,14 +15304,26 @@
     "tag": "ghcr.io/quenchworks/images/kubectl:1.37.2",
     "critical": 0,
     "high": 0,
-    "medium": 2,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 2,
-    "fixable": 2,
+    "total": 3,
+    "fixable": 3,
     "grade": "C",
-    "score": 82,
+    "score": 73,
     "cves": [
+      {
+        "id": "CVE-2026-128085",
+        "severity": "MEDIUM",
+        "pkg": "kubectl-1.37",
+        "installed": "1.37.2-r4",
+        "fixed": "1.37.2-r5",
+        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
+        "targets": [
+          "ghcr.io/quenchworks/images/kubectl@sha256:384e143e11f13da2a35a3fab2ef6b3f0869582da90ea18486243d7ef5f0d7dfb (wolfi 20230201)"
+        ]
+      },
       {
         "id": "CVE-2026-128085",
         "severity": "MEDIUM",
@@ -14644,14 +15344,26 @@
         "tag": "ghcr.io/quenchworks/images/kubectl:1.37.2",
         "critical": 0,
         "high": 0,
-        "medium": 2,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 2,
-        "fixable": 2,
+        "total": 3,
+        "fixable": 3,
         "grade": "C",
-        "score": 82,
+        "score": 73,
         "cves": [
+          {
+            "id": "CVE-2026-128085",
+            "severity": "MEDIUM",
+            "pkg": "kubectl-1.37",
+            "installed": "1.37.2-r4",
+            "fixed": "1.37.2-r5",
+            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
+            "targets": [
+              "ghcr.io/quenchworks/images/kubectl@sha256:384e143e11f13da2a35a3fab2ef6b3f0869582da90ea18486243d7ef5f0d7dfb (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-128085",
             "severity": "MEDIUM",
@@ -14928,8 +15640,8 @@
   },
   "kubescape-storage": {
     "image": "ghcr.io/quenchworks/images/kubescape-storage",
-    "version": "0.0.407",
-    "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.407",
+    "version": "0.0.408",
+    "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.408",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -14941,6 +15653,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "0.0.408",
+        "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.408",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "0.0.407",
         "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.407",
@@ -15853,6 +16579,37 @@
       }
     ]
   },
+  "listmonk": {
+    "image": "ghcr.io/quenchworks/images/listmonk",
+    "version": "6.2.0",
+    "tag": "ghcr.io/quenchworks/images/listmonk:6.2.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "6.2.0",
+        "tag": "ghcr.io/quenchworks/images/listmonk:6.2.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "litellm": {
     "image": "ghcr.io/quenchworks/images/litellm",
     "version": "1.109.1",
@@ -15883,8 +16640,8 @@
         "cves": []
       },
       {
-        "version": "1.106.9",
-        "tag": "ghcr.io/quenchworks/images/litellm:1.106.9",
+        "version": "1.106.10",
+        "tag": "ghcr.io/quenchworks/images/litellm:1.106.10",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16485,32 +17242,92 @@
     "high": 0,
     "medium": 0,
     "low": 0,
-    "unknown": 2,
-    "total": 2,
-    "fixable": 2,
+    "unknown": 7,
+    "total": 7,
+    "fixable": 7,
     "grade": "A",
-    "score": 86,
+    "score": 51,
     "cves": [
       {
-        "id": "GHSA-599p-54q3-ff89",
+        "id": "GHSA-86xc-wrr9-xmmq",
         "severity": "UNKNOWN",
-        "pkg": "sanitize",
-        "installed": "7.0.1",
-        "fixed": ">= 7.0.2",
-        "title": "Namespace confusion after removing `<math>` or `<svg>` elements may allow XSS",
-        "url": "https://github.com/advisories/GHSA-599p-54q3-ff89",
+        "pkg": "puma",
+        "installed": "8.0.2",
+        "fixed": "~> 7.2.2, >= 8.0.3",
+        "title": "pumactl does not verify the TLS identity of SSL control servers",
+        "url": "https://github.com/advisories/GHSA-86xc-wrr9-xmmq",
         "targets": [
           "Ruby"
         ]
       },
       {
-        "id": "GHSA-mg79-gw37-jxx7",
+        "id": "GHSA-jm4r-w4xx-qxw7",
         "severity": "UNKNOWN",
-        "pkg": "sanitize",
-        "installed": "7.0.1",
-        "fixed": ">= 7.0.2",
-        "title": "Raw text elements inside `<template>` inside `<select>` may allow XSS",
-        "url": "https://github.com/advisories/GHSA-mg79-gw37-jxx7",
+        "pkg": "puma",
+        "installed": "8.0.2",
+        "fixed": "~> 7.2.2, >= 8.0.3",
+        "title": "Graceful shutdown waits indefinitely on trickled request bodies",
+        "url": "https://github.com/advisories/GHSA-jm4r-w4xx-qxw7",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-m5xw-3hrw-qcmf",
+        "severity": "UNKNOWN",
+        "pkg": "puma",
+        "installed": "8.0.2",
+        "fixed": "~> 7.2.2, >= 8.0.3",
+        "title": "Reactor timeout queue loses order, letting a slow client keep other connections open past their timeout",
+        "url": "https://github.com/advisories/GHSA-m5xw-3hrw-qcmf",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-r885-m39c-939g",
+        "severity": "UNKNOWN",
+        "pkg": "puma",
+        "installed": "8.0.2",
+        "fixed": "~> 7.2.2, >= 8.0.3",
+        "title": "ssl_cipher_filter values containing `+` are decoded to a wider cipher list",
+        "url": "https://github.com/advisories/GHSA-r885-m39c-939g",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-rf6g-xhmp-gm7v",
+        "severity": "UNKNOWN",
+        "pkg": "puma",
+        "installed": "8.0.2",
+        "fixed": "~> 7.2.2, >= 8.0.3",
+        "title": "Accept loop retries without pausing when out of file descriptors, flooding the log",
+        "url": "https://github.com/advisories/GHSA-rf6g-xhmp-gm7v",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-x646-wp7c-h9mg",
+        "severity": "UNKNOWN",
+        "pkg": "puma",
+        "installed": "8.0.2",
+        "fixed": "~> 7.2.2, >= 8.0.3",
+        "title": "Client that stops reading a TLS or file response holds a worker thread indefinitely",
+        "url": "https://github.com/advisories/GHSA-x646-wp7c-h9mg",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-xw3h-pgr9-3vg7",
+        "severity": "UNKNOWN",
+        "pkg": "puma",
+        "installed": "8.0.2",
+        "fixed": "~> 7.2.2, >= 8.0.3",
+        "title": "Reactor blocks on `100 Continue` writes to clients that stop reading, stalling other connections",
+        "url": "https://github.com/advisories/GHSA-xw3h-pgr9-3vg7",
         "targets": [
           "Ruby"
         ]
@@ -16524,32 +17341,92 @@
         "high": 0,
         "medium": 0,
         "low": 0,
-        "unknown": 2,
-        "total": 2,
-        "fixable": 2,
+        "unknown": 7,
+        "total": 7,
+        "fixable": 7,
         "grade": "A",
-        "score": 86,
+        "score": 51,
         "cves": [
           {
-            "id": "GHSA-599p-54q3-ff89",
+            "id": "GHSA-86xc-wrr9-xmmq",
             "severity": "UNKNOWN",
-            "pkg": "sanitize",
-            "installed": "7.0.1",
-            "fixed": ">= 7.0.2",
-            "title": "Namespace confusion after removing `<math>` or `<svg>` elements may allow XSS",
-            "url": "https://github.com/advisories/GHSA-599p-54q3-ff89",
+            "pkg": "puma",
+            "installed": "8.0.2",
+            "fixed": "~> 7.2.2, >= 8.0.3",
+            "title": "pumactl does not verify the TLS identity of SSL control servers",
+            "url": "https://github.com/advisories/GHSA-86xc-wrr9-xmmq",
             "targets": [
               "Ruby"
             ]
           },
           {
-            "id": "GHSA-mg79-gw37-jxx7",
+            "id": "GHSA-jm4r-w4xx-qxw7",
             "severity": "UNKNOWN",
-            "pkg": "sanitize",
-            "installed": "7.0.1",
-            "fixed": ">= 7.0.2",
-            "title": "Raw text elements inside `<template>` inside `<select>` may allow XSS",
-            "url": "https://github.com/advisories/GHSA-mg79-gw37-jxx7",
+            "pkg": "puma",
+            "installed": "8.0.2",
+            "fixed": "~> 7.2.2, >= 8.0.3",
+            "title": "Graceful shutdown waits indefinitely on trickled request bodies",
+            "url": "https://github.com/advisories/GHSA-jm4r-w4xx-qxw7",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-m5xw-3hrw-qcmf",
+            "severity": "UNKNOWN",
+            "pkg": "puma",
+            "installed": "8.0.2",
+            "fixed": "~> 7.2.2, >= 8.0.3",
+            "title": "Reactor timeout queue loses order, letting a slow client keep other connections open past their timeout",
+            "url": "https://github.com/advisories/GHSA-m5xw-3hrw-qcmf",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-r885-m39c-939g",
+            "severity": "UNKNOWN",
+            "pkg": "puma",
+            "installed": "8.0.2",
+            "fixed": "~> 7.2.2, >= 8.0.3",
+            "title": "ssl_cipher_filter values containing `+` are decoded to a wider cipher list",
+            "url": "https://github.com/advisories/GHSA-r885-m39c-939g",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-rf6g-xhmp-gm7v",
+            "severity": "UNKNOWN",
+            "pkg": "puma",
+            "installed": "8.0.2",
+            "fixed": "~> 7.2.2, >= 8.0.3",
+            "title": "Accept loop retries without pausing when out of file descriptors, flooding the log",
+            "url": "https://github.com/advisories/GHSA-rf6g-xhmp-gm7v",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-x646-wp7c-h9mg",
+            "severity": "UNKNOWN",
+            "pkg": "puma",
+            "installed": "8.0.2",
+            "fixed": "~> 7.2.2, >= 8.0.3",
+            "title": "Client that stops reading a TLS or file response holds a worker thread indefinitely",
+            "url": "https://github.com/advisories/GHSA-x646-wp7c-h9mg",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-xw3h-pgr9-3vg7",
+            "severity": "UNKNOWN",
+            "pkg": "puma",
+            "installed": "8.0.2",
+            "fixed": "~> 7.2.2, >= 8.0.3",
+            "title": "Reactor blocks on `100 Continue` writes to clients that stop reading, stalling other connections",
+            "url": "https://github.com/advisories/GHSA-xw3h-pgr9-3vg7",
             "targets": [
               "Ruby"
             ]
@@ -16936,6 +17813,37 @@
       {
         "version": "1.6.45",
         "tag": "ghcr.io/quenchworks/images/memcached:1.6.45",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "memos": {
+    "image": "ghcr.io/quenchworks/images/memos",
+    "version": "26.11.0",
+    "tag": "ghcr.io/quenchworks/images/memos:26.11.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "26.11.0",
+        "tag": "ghcr.io/quenchworks/images/memos:26.11.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -18470,8 +19378,8 @@
   },
   "ntfy": {
     "image": "ghcr.io/quenchworks/images/ntfy",
-    "version": "2.37.2",
-    "tag": "ghcr.io/quenchworks/images/ntfy:2.37.2",
+    "version": "2.38.0",
+    "tag": "ghcr.io/quenchworks/images/ntfy:2.38.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -18483,6 +19391,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "2.38.0",
+        "tag": "ghcr.io/quenchworks/images/ntfy:2.38.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "2.37.2",
         "tag": "ghcr.io/quenchworks/images/ntfy:2.37.2",
@@ -18512,8 +19434,8 @@
         "cves": []
       },
       {
-        "version": "2.30.0",
-        "tag": "ghcr.io/quenchworks/images/ntfy:2.30.0",
+        "version": "2.28.0",
+        "tag": "ghcr.io/quenchworks/images/ntfy:2.28.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -18524,45 +19446,6 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
-      {
-        "version": "2.28.0",
-        "tag": "ghcr.io/quenchworks/images/ntfy:2.28.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 2,
-        "low": 0,
-        "unknown": 0,
-        "total": 2,
-        "fixable": 2,
-        "grade": "C",
-        "score": 82,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/sdk",
-            "installed": "v1.46.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/ntfy"
-            ]
-          },
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "go.opentelemetry.io/otel/trace",
-            "installed": "v1.46.0",
-            "fixed": "1.47.0",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "usr/bin/ntfy"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -18599,8 +19482,8 @@
   },
   "odoo": {
     "image": "ghcr.io/quenchworks/images/odoo",
-    "version": "19.0.20261113",
-    "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261113",
+    "version": "19.0.20261114",
+    "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261114",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -18613,8 +19496,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "19.0.20261113",
-        "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261113",
+        "version": "19.0.20261114",
+        "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261114",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -18990,6 +19873,37 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "opengist": {
+    "image": "ghcr.io/quenchworks/images/opengist",
+    "version": "1.15.3",
+    "tag": "ghcr.io/quenchworks/images/opengist:1.15.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.15.3",
+        "tag": "ghcr.io/quenchworks/images/opengist:1.15.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -21578,8 +22492,8 @@
   },
   "pinniped": {
     "image": "ghcr.io/quenchworks/images/pinniped",
-    "version": "0.47.0",
-    "tag": "ghcr.io/quenchworks/images/pinniped:0.47.0",
+    "version": "0.48.0",
+    "tag": "ghcr.io/quenchworks/images/pinniped:0.48.0",
     "critical": 0,
     "high": 2,
     "medium": 4,
@@ -21631,6 +22545,60 @@
       }
     ],
     "versions": [
+      {
+        "version": "0.48.0",
+        "tag": "ghcr.io/quenchworks/images/pinniped:0.48.0",
+        "critical": 0,
+        "high": 2,
+        "medium": 4,
+        "low": 0,
+        "unknown": 0,
+        "total": 6,
+        "fixable": 0,
+        "grade": "D",
+        "score": 64,
+        "cves": [
+          {
+            "id": "CVE-2026-116587",
+            "severity": "HIGH",
+            "pkg": "github.com/go-jose/go-jose/v3",
+            "installed": "v3.0.5",
+            "fixed": null,
+            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
+            "targets": [
+              "usr/local/bin/pinniped",
+              "usr/local/bin/pinniped-server"
+            ]
+          },
+          {
+            "id": "CVE-2026-116585",
+            "severity": "MEDIUM",
+            "pkg": "github.com/go-jose/go-jose/v3",
+            "installed": "v3.0.5",
+            "fixed": null,
+            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
+            "targets": [
+              "usr/local/bin/pinniped",
+              "usr/local/bin/pinniped-server"
+            ]
+          },
+          {
+            "id": "CVE-2026-116586",
+            "severity": "MEDIUM",
+            "pkg": "github.com/go-jose/go-jose/v3",
+            "installed": "v3.0.5",
+            "fixed": null,
+            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
+            "targets": [
+              "usr/local/bin/pinniped",
+              "usr/local/bin/pinniped-server"
+            ]
+          }
+        ]
+      },
       {
         "version": "0.47.0",
         "tag": "ghcr.io/quenchworks/images/pinniped:0.47.0",
@@ -21760,6 +22728,63 @@
         "grade": "A+",
         "score": 100,
         "cves": []
+      }
+    ]
+  },
+  "pocket-id": {
+    "image": "ghcr.io/quenchworks/images/pocket-id",
+    "version": "2.19.2",
+    "tag": "ghcr.io/quenchworks/images/pocket-id:2.19.2",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 1,
+    "total": 1,
+    "fixable": 0,
+    "grade": "A",
+    "score": 98,
+    "cves": [
+      {
+        "id": "GO-2026-5932",
+        "severity": "UNKNOWN",
+        "pkg": "golang.org/x/crypto/openpgp",
+        "installed": "v0.1.0-deprecated",
+        "fixed": null,
+        "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+        "url": "https://go.dev/issue/44226",
+        "targets": [
+          "usr/bin/pocket-id"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "2.19.2",
+        "tag": "ghcr.io/quenchworks/images/pocket-id:2.19.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto/openpgp",
+            "installed": "v0.1.0-deprecated",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/pocket-id"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -22466,6 +23491,37 @@
       {
         "version": "3.8.8",
         "tag": "ghcr.io/quenchworks/images/prefect:3.8.8",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "privatebin": {
+    "image": "ghcr.io/quenchworks/images/privatebin",
+    "version": "2.1.1",
+    "tag": "ghcr.io/quenchworks/images/privatebin:2.1.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.1.1",
+        "tag": "ghcr.io/quenchworks/images/privatebin:2.1.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -26821,6 +27877,111 @@
       }
     ]
   },
+  "tinyauth": {
+    "image": "ghcr.io/quenchworks/images/tinyauth",
+    "version": "5.2.0",
+    "tag": "ghcr.io/quenchworks/images/tinyauth:5.2.0",
+    "critical": 0,
+    "high": 2,
+    "medium": 1,
+    "low": 0,
+    "unknown": 0,
+    "total": 3,
+    "fixable": 0,
+    "grade": "D",
+    "score": 76,
+    "cves": [
+      {
+        "id": "CVE-2026-41567",
+        "severity": "HIGH",
+        "pkg": "github.com/docker/docker",
+        "installed": "v28.5.2+incompatible",
+        "fixed": null,
+        "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
+        "targets": [
+          "usr/bin/tinyauth"
+        ]
+      },
+      {
+        "id": "CVE-2026-42306",
+        "severity": "HIGH",
+        "pkg": "github.com/docker/docker",
+        "installed": "v28.5.2+incompatible",
+        "fixed": null,
+        "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
+        "targets": [
+          "usr/bin/tinyauth"
+        ]
+      },
+      {
+        "id": "CVE-2026-41568",
+        "severity": "MEDIUM",
+        "pkg": "github.com/docker/docker",
+        "installed": "v28.5.2+incompatible",
+        "fixed": null,
+        "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+        "targets": [
+          "usr/bin/tinyauth"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "5.2.0",
+        "tag": "ghcr.io/quenchworks/images/tinyauth:5.2.0",
+        "critical": 0,
+        "high": 2,
+        "medium": 1,
+        "low": 0,
+        "unknown": 0,
+        "total": 3,
+        "fixable": 0,
+        "grade": "D",
+        "score": 76,
+        "cves": [
+          {
+            "id": "CVE-2026-41567",
+            "severity": "HIGH",
+            "pkg": "github.com/docker/docker",
+            "installed": "v28.5.2+incompatible",
+            "fixed": null,
+            "title": "docker: Moby/Docker Engine: Arbitrary Code Execution via malicious container image and compressed archive upload",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-41567",
+            "targets": [
+              "usr/bin/tinyauth"
+            ]
+          },
+          {
+            "id": "CVE-2026-42306",
+            "severity": "HIGH",
+            "pkg": "github.com/docker/docker",
+            "installed": "v28.5.2+incompatible",
+            "fixed": null,
+            "title": "github.com/docker/docker: github.com/moby/moby: Moby container framework: Host file overwrite via race condition in docker cp mount setup",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
+            "targets": [
+              "usr/bin/tinyauth"
+            ]
+          },
+          {
+            "id": "CVE-2026-41568",
+            "severity": "MEDIUM",
+            "pkg": "github.com/docker/docker",
+            "installed": "v28.5.2+incompatible",
+            "fixed": null,
+            "title": "github.com/docker/docker: github.com/moby/moby: Moby: Denial of Service via race condition in docker cp mount setup",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-41568",
+            "targets": [
+              "usr/bin/tinyauth"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "tomcat": {
     "image": "ghcr.io/quenchworks/images/tomcat",
     "version": "11.0.29",
@@ -29811,6 +30972,111 @@
       }
     ]
   },
+  "wakapi": {
+    "image": "ghcr.io/quenchworks/images/wakapi",
+    "version": "2.18.2",
+    "tag": "ghcr.io/quenchworks/images/wakapi:2.18.2",
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 0,
+    "unknown": 0,
+    "total": 3,
+    "fixable": 0,
+    "grade": "D",
+    "score": 82,
+    "cves": [
+      {
+        "id": "CVE-2026-116587",
+        "severity": "HIGH",
+        "pkg": "github.com/go-jose/go-jose/v3",
+        "installed": "v3.0.5",
+        "fixed": null,
+        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
+        "targets": [
+          "usr/bin/wakapi"
+        ]
+      },
+      {
+        "id": "CVE-2026-116585",
+        "severity": "MEDIUM",
+        "pkg": "github.com/go-jose/go-jose/v3",
+        "installed": "v3.0.5",
+        "fixed": null,
+        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
+        "targets": [
+          "usr/bin/wakapi"
+        ]
+      },
+      {
+        "id": "CVE-2026-116586",
+        "severity": "MEDIUM",
+        "pkg": "github.com/go-jose/go-jose/v3",
+        "installed": "v3.0.5",
+        "fixed": null,
+        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
+        "targets": [
+          "usr/bin/wakapi"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "2.18.2",
+        "tag": "ghcr.io/quenchworks/images/wakapi:2.18.2",
+        "critical": 0,
+        "high": 1,
+        "medium": 2,
+        "low": 0,
+        "unknown": 0,
+        "total": 3,
+        "fixable": 0,
+        "grade": "D",
+        "score": 82,
+        "cves": [
+          {
+            "id": "CVE-2026-116587",
+            "severity": "HIGH",
+            "pkg": "github.com/go-jose/go-jose/v3",
+            "installed": "v3.0.5",
+            "fixed": null,
+            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
+            "targets": [
+              "usr/bin/wakapi"
+            ]
+          },
+          {
+            "id": "CVE-2026-116585",
+            "severity": "MEDIUM",
+            "pkg": "github.com/go-jose/go-jose/v3",
+            "installed": "v3.0.5",
+            "fixed": null,
+            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
+            "targets": [
+              "usr/bin/wakapi"
+            ]
+          },
+          {
+            "id": "CVE-2026-116586",
+            "severity": "MEDIUM",
+            "pkg": "github.com/go-jose/go-jose/v3",
+            "installed": "v3.0.5",
+            "fixed": null,
+            "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
+            "targets": [
+              "usr/bin/wakapi"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "weaviate": {
     "image": "ghcr.io/quenchworks/images/weaviate",
     "version": "1.40.5",
@@ -30052,8 +31318,8 @@
   },
   "xyops": {
     "image": "ghcr.io/quenchworks/images/xyops",
-    "version": "1.1.16",
-    "tag": "ghcr.io/quenchworks/images/xyops:1.1.16",
+    "version": "1.1.17",
+    "tag": "ghcr.io/quenchworks/images/xyops:1.1.17",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -30065,6 +31331,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.1.17",
+        "tag": "ghcr.io/quenchworks/images/xyops:1.1.17",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.1.16",
         "tag": "ghcr.io/quenchworks/images/xyops:1.1.16",
@@ -30127,6 +31407,37 @@
       {
         "version": "1.22.22",
         "tag": "ghcr.io/quenchworks/images/yarn:1.22.22",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "yarr": {
+    "image": "ghcr.io/quenchworks/images/yarr",
+    "version": "2.9",
+    "tag": "ghcr.io/quenchworks/images/yarr:2.9",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.9",
+        "tag": "ghcr.io/quenchworks/images/yarr:2.9",
         "critical": 0,
         "high": 0,
         "medium": 0,
