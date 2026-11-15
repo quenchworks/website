@@ -54,8 +54,12 @@ const blockedGrouped = catsOf(blockedList);
       <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">What is shipped, what is next</h1>
       <p class="mt-4 leading-relaxed text-ash">
         {shipped.length} datastores and tools are hardened and shipping today. Below is what is on
-        deck, OSI-clean options first. Every entry is built from source on Wolfi, scanned to zero
-        fixable CVEs, signed, and pinned by digest before it moves to available.
+        deck, OSI-clean options first. Every entry is built from source on Wolfi, passes the CVE gate (no
+        fixable CVEs at build), is signed, and is pinned by digest before it moves to available.
+      </p>
+      <p class="mt-3 leading-relaxed text-ash">
+        Each row has a ticket, and what is being built right now is on
+        <a href="https://github.com/orgs/quenchworks/projects/1" class="text-paper underline decoration-line underline-offset-4 hover:decoration-paper">the live project board</a>.
       </p>
     </header>
 
