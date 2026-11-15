@@ -557,5 +557,21 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Collaborative real-time Markdown editor (Node, yarn 4). HELD 2026-11-15: 1.12.1 and 1.12.2 are withdrawn upstream (\"might break your instance\"), so 1.12.0 is the release. Its production install (yarn workspaces focus --production) carries 146 fixable and 163 total findings. HedgeDoc itself pins sequelize 5 (fixes need 6, a breaking major for its models and migrations), and request 2.88 and xmldom 0.1.31 have no fix at all; dozens of transitive pins (undici, tar 6, axios, qs, markdown-it) would need swaps on top. Revisit when upstream moves to sequelize 6 or HedgeDoc 2 ships."
+  },
+  {
+    "name": "Kanidm",
+    "category": "Identity",
+    "license": "MPL-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Identity management server: users, groups, OAuth2/OIDC, LDAPS read access, passkeys and RADIUS, with a server-rendered web UI (Rust). Added 2026-11-15 at v1.12.1; building (ticket github.com/quenchworks/images/issues/38). Lockfile has zip 3.0.0 and rpassword 5.0.1 on build-script and client crates; the cargo-auditable build shows whether they reach kanidmd."
+  },
+  {
+    "name": "Semaphore UI",
+    "category": "CI/CD & registry",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Web UI and API for running Ansible, Terraform/OpenTofu and shell tasks with schedules, inventories and secrets (Go with a Vue frontend). Added 2026-11-15 at v2.20.23: active, MIT; the image needs Ansible beside the binary, which the catalog already builds."
   }
 ]
