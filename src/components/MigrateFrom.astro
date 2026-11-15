@@ -1,0 +1,39 @@
+---
+// "Migrate from <vendor>": the shared steps from compare.ts, then the vendor's own notes.
+import { migrateSteps, vendorMigration, migrateUi, vendorSlug, pick, type Lang } from '../data/compare';
+
+interface Props { name: string; lang: Lang; prefix: string }
+const { name, lang, prefix } = Astro.props;
+const m = vendorMigration[vendorSlug(name)];
+const t = (k: string) => pick(migrateUi[k], lang).replace(/\{vendor\}/g, name);
+const issues = 'https://github.com/quenchworks/images/issues/new';
+---
+
+{m && (
+  <section id="migrate" class="mt-14 scroll-mt-24">
+    <h2 class="text-2xl font-semibold tracking-tight">{t('title')}</h2>
+    <pre class="mt-4 overflow-x-auto rounded-xl border border-line bg-graphite p-4 font-mono text-xs leading-relaxed text-ash" dir="ltr"><span class="text-ash/70"># {t('before')}</span>
+{m.from}
+<span class="text-ash/70"># {t('after')}</span>
+ghcr.io/quenchworks/images/&lt;app&gt;@sha256:&lt;digest&gt;</pre>
+    <ol class="mt-6 space-y-4">
+      {migrateSteps.map((s, i) => (
+        <li class="flex gap-4">
+          <span class="mt-0.5 font-mono text-xs text-ash">{i + 1}</span>
+          <div>
+            <p class="text-sm font-semibold text-paper">{pick(s.title, lang)}</p>
+            <p class="mt-1 text-sm leading-relaxed text-ash">{pick(s.body, lang)}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <h3 class="mt-8 text-base font-semibold text-paper">{t('differs')}</h3>
+    <ul class="mt-3 list-disc space-y-2 ps-5 text-sm leading-relaxed text-ash">
+      {m.notes.map((n) => <li>{pick(n, lang)}</li>)}
+    </ul>
+    <div class="mt-6 flex flex-wrap gap-3 text-sm">
+      {m.guide && <a href={prefix + m.guide} class="text-paper underline decoration-line underline-offset-4 hover:decoration-paper">{t('guide')}</a>}
+      <a href={issues} class="text-ash underline decoration-line underline-offset-4 hover:text-paper">{t('help')}</a>
+    </div>
+  </section>
+)}

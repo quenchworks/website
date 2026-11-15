@@ -36,6 +36,10 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
         Lo que se publicó en el catálogo, lo más reciente primero. Nuevas imágenes reforzadas,
         charts firmados y cambios en cómo se construye y verifica todo. Síguelo por RSS.
       </p>
+      <p class="mt-3 leading-relaxed text-ash">
+        Lo que se construye ahora, lo que sigue y lo que está retenido, ticket por ticket:
+        <a href="https://github.com/orgs/quenchworks/projects/1" class="text-paper underline decoration-line underline-offset-4 hover:decoration-paper">el tablero del proyecto en vivo</a>.
+      </p>
     </header>
 
     <ol class="mt-12 space-y-10">
@@ -50,6 +54,9 @@ const iso = (d: Date) => d.toISOString().slice(0, 10);
             </time>
             <h2 class="mt-2 text-xl font-semibold tracking-tight">{entry.data.title}</h2>
             <p class="mt-2 leading-relaxed text-ash">{entry.data.summary}</p>
+            {entry.data.issue && (
+              <a href={entry.data.issue} class="mt-2 inline-block font-mono text-xs text-ash underline decoration-line underline-offset-4 hover:text-paper">Ticket #{entry.data.issue.split('/').pop()}</a>
+            )}
             {entry.data.tags && entry.data.tags.length > 0 && (
               <div class="mt-3 flex flex-wrap gap-1.5 font-mono text-[10px] uppercase tracking-widest text-ash">
                 {entry.data.tags.map((t) => (

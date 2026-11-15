@@ -9,6 +9,8 @@ const changelogSchema = z.object({
   date: z.coerce.date(),
   summary: z.string(),
   tags: z.array(z.string()).optional(),
+  // the GitHub issue that tracked this work (shown as a ticket link; the board is linked in the header)
+  issue: z.string().url().optional(),
 });
 
 const changelog = defineCollection({

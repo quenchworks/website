@@ -897,3 +897,122 @@ export const liveCopy: Record<string, L> = {
   scanned: { en: 'scanned {n}', ar: 'فُحصت في {n}', es: 'escaneado el {n}' },
   report: { en: 'Security report', ar: 'تقرير الأمان', es: 'Informe de seguridad' },
 };
+
+// Per-vendor migration: shared steps every move follows, then what differs for that vendor.
+// `from` is the reference shape people run today; facts a reader can check themselves are
+// shown as commands (docker inspect) instead of claims about another vendor's images.
+export const migrateSteps: { title: L; body: L }[] = [
+  {
+    title: { en: 'Swap the reference', es: 'Cambia la referencia', ar: 'استبدل المرجع' },
+    body: {
+      en: 'Find the same app on the images page and point your manifest, Dockerfile or values at ghcr.io/quenchworks/images/<app>, pinned by the digest shown there.',
+      es: 'Busca la misma app en la página de imágenes y apunta tu manifiesto, Dockerfile o values a ghcr.io/quenchworks/images/<app>, fijada por el digest que se muestra allí.',
+      ar: 'ابحث عن التطبيق نفسه في صفحة الصور، ووجّه ملف البيان أو Dockerfile أو القيم إلى ghcr.io/quenchworks/images/<app> مثبّتًا بالبصمة المعروضة هناك.',
+    },
+  },
+  {
+    title: { en: 'Match the user', es: 'Ajusta el usuario', ar: 'طابِق المستخدم' },
+    body: {
+      en: 'QuenchWorks images run as uid 1001. Check yours with docker inspect -f "{{.Config.User}}" <old-image>. If it differs, give existing volumes to 1001: set fsGroup: 1001 on the pod, or chown the volume once.',
+      es: 'Las imágenes de QuenchWorks se ejecutan con el uid 1001. Comprueba el tuyo con docker inspect -f "{{.Config.User}}" <imagen-anterior>. Si difiere, entrega los volúmenes existentes a 1001: fsGroup: 1001 en el pod, o un chown único del volumen.',
+      ar: 'تعمل صور QuenchWorks بالمعرّف uid 1001. تحقّق من معرّف صورتك عبر docker inspect -f "{{.Config.User}}" <الصورة-السابقة>. إن اختلف، فامنح المجلدات الموجودة للمعرّف 1001: اضبط fsGroup: 1001 في الـ pod، أو نفّذ chown للمجلد مرة واحدة.',
+    },
+  },
+  {
+    title: { en: 'Check the entrypoint', es: 'Revisa el entrypoint', ar: 'تحقّق من نقطة الدخول' },
+    body: {
+      en: 'Compare docker inspect -f "{{json .Config.Entrypoint}} {{json .Config.Cmd}}" for both images. Most QuenchWorks images have no shell, so a command that wraps the app in sh -c should call the binary directly.',
+      es: 'Compara docker inspect -f "{{json .Config.Entrypoint}} {{json .Config.Cmd}}" de ambas imágenes. La mayoría de las imágenes de QuenchWorks no tienen shell, así que un comando que envuelve la app en sh -c debe llamar al binario directamente.',
+      ar: 'قارن ناتج docker inspect -f "{{json .Config.Entrypoint}} {{json .Config.Cmd}}" للصورتين. معظم صور QuenchWorks بلا shell، لذا فالأمر الذي يغلّف التطبيق في sh -c يجب أن يستدعي الملف التنفيذي مباشرة.',
+    },
+  },
+  {
+    title: { en: 'Verify, then deploy', es: 'Verifica y despliega', ar: 'تحقّق ثم انشر' },
+    body: {
+      en: 'Run cosign verify on the new image (the command is on every image page), then roll out with the same release name and volume, so the data stays where it is.',
+      es: 'Ejecuta cosign verify sobre la nueva imagen (el comando está en cada página de imagen) y despliega con el mismo nombre de release y el mismo volumen, para que los datos se queden donde están.',
+      ar: 'شغّل cosign verify على الصورة الجديدة (الأمر موجود في صفحة كل صورة)، ثم انشر بالاسم نفسه والمجلد نفسه حتى تبقى البيانات في مكانها.',
+    },
+  },
+  {
+    title: { en: 'Prefer the chart', es: 'Prefiere el chart', ar: 'فضّل المخطط' },
+    body: {
+      en: 'Running hand-written manifests? Most apps have a signed chart at oci://ghcr.io/quenchworks/charts/<app> with the image pinned, probes, a NetworkPolicy and generated passwords. Install it with --wait against your existing volume.',
+      es: '¿Usas manifiestos escritos a mano? La mayoría de las apps tiene un chart firmado en oci://ghcr.io/quenchworks/charts/<app> con la imagen fijada, sondas, una NetworkPolicy y contraseñas generadas. Instálalo con --wait sobre tu volumen existente.',
+      ar: 'هل تستخدم ملفات بيان مكتوبة يدويًا؟ لمعظم التطبيقات مخطط موقّع في oci://ghcr.io/quenchworks/charts/<app> فيه الصورة مثبّتة، وفحوص الجاهزية، وNetworkPolicy، وكلمات مرور مولّدة. ثبّته مع --wait على مجلدك الحالي.',
+    },
+  },
+];
+
+export const vendorMigration: Record<string, { from: string; notes: L[]; guide?: string }> = {
+  bitnami: {
+    from: 'oci://registry-1.docker.io/bitnamicharts/redis  /  docker.io/bitnami/redis',
+    guide: '/docs/migrate',
+    notes: [
+      {
+        en: 'Bitnami ships charts as well as images, so the chart values change too: persistence is one flat block, the image is pinned by digest, and the global toggles and permission init containers are gone. The full guide covers values, bundled databases and moving stateful data.',
+        es: 'Bitnami publica charts además de imágenes, así que los values también cambian: la persistencia es un único bloque, la imagen se fija por digest y desaparecen los ajustes global y los init containers de permisos. La guía completa cubre values, bases de datos incluidas y el traslado de datos con estado.',
+        ar: 'تنشر Bitnami مخططات إضافة إلى الصور، لذا تتغير قيم المخطط أيضًا: التخزين كتلة واحدة مسطّحة، والصورة مثبّتة بالبصمة، ولا توجد إعدادات global ولا حاويات تهيئة الأذونات. يغطي الدليل الكامل القيم وقواعد البيانات المضمّنة ونقل البيانات ذات الحالة.',
+      },
+    ],
+  },
+  chainguard: {
+    from: 'cgr.dev/chainguard/redis:latest',
+    notes: [
+      {
+        en: 'If you pull the free :latest tags, switch to a version tag plus its digest: QuenchWorks publishes a tag for each supported version line, so an upgrade is a choice you make, not a pull that moves.',
+        es: 'Si usas las etiquetas gratuitas :latest, pasa a una etiqueta de versión con su digest: QuenchWorks publica una etiqueta por cada línea de versión soportada, así que actualizar es una decisión tuya y no un pull que cambia solo.',
+        ar: 'إن كنت تسحب وسوم :latest المجانية، فانتقل إلى وسم إصدار مع بصمته: تنشر QuenchWorks وسمًا لكل خط إصدار مدعوم، فيصبح التحديث قرارًا تتخذه لا سحبًا يتغيّر وحده.',
+      },
+      {
+        en: 'Step 2 matters most here: compare the uid of your current image with 1001 before pointing it at an existing volume.',
+        es: 'Aquí el paso 2 es el que más importa: compara el uid de tu imagen actual con 1001 antes de usar un volumen existente.',
+        ar: 'الخطوة 2 هي الأهم هنا: قارن معرّف المستخدم في صورتك الحالية بالمعرّف 1001 قبل ربطها بمجلد موجود.',
+      },
+    ],
+  },
+  docker: {
+    from: 'dhi.io/redis:<version>',
+    notes: [
+      {
+        en: 'QuenchWorks images pull anonymously from GHCR. If your cluster holds a registry login or pull secret only for hardened images, you can drop it after the switch.',
+        es: 'Las imágenes de QuenchWorks se descargan de GHCR sin autenticación. Si tu clúster guarda un login o pull secret solo para las imágenes reforzadas, puedes quitarlo tras el cambio.',
+        ar: 'تُسحب صور QuenchWorks من GHCR دون تسجيل دخول. إن كان عنقودك يحتفظ ببيانات دخول أو pull secret للصور المُحصّنة فقط، فيمكنك حذفها بعد الانتقال.',
+      },
+      {
+        en: 'If you use a -dev variant for its shell, check whether you still need one: QuenchWorks images that need a shell carry busybox, and the rest are built without one.',
+        es: 'Si usas una variante -dev por su shell, comprueba si aún la necesitas: las imágenes de QuenchWorks que requieren shell incluyen busybox y el resto se construye sin él.',
+        ar: 'إن كنت تستخدم نسخة -dev من أجل الـ shell، فتحقّق إن كنت ما زلت تحتاجه: صور QuenchWorks التي تحتاج shell تتضمن busybox، والبقية تُبنى من دونه.',
+      },
+    ],
+  },
+  rapidfort: {
+    from: '<your RapidFort image>',
+    notes: [
+      {
+        en: 'A hardened copy of an upstream image keeps that image\'s file layout and environment variables. QuenchWorks images are built from source with their own layout, so read the image page or chart README for the config paths and variables before you switch.',
+        es: 'Una copia reforzada de una imagen upstream conserva su estructura de archivos y sus variables de entorno. Las imágenes de QuenchWorks se construyen desde el código con su propia estructura, así que revisa la página de la imagen o el README del chart para rutas y variables antes de cambiar.',
+        ar: 'تحتفظ النسخة المُحصّنة من صورة upstream ببنية ملفاتها ومتغيّرات بيئتها. أما صور QuenchWorks فتُبنى من المصدر ببنية خاصة بها، لذا راجع صفحة الصورة أو README المخطط لمعرفة مسارات الإعداد والمتغيّرات قبل الانتقال.',
+      },
+    ],
+  },
+  minimus: {
+    from: '<your Minimus image>',
+    notes: [
+      {
+        en: 'Minimal images on both sides: once the user (step 2) and the entrypoint (step 3) match, the move is a reference swap.',
+        es: 'Imágenes mínimas en ambos lados: cuando el usuario (paso 2) y el entrypoint (paso 3) coinciden, el cambio es solo de referencia.',
+        ar: 'صور مصغّرة في الجانبين: بعد مطابقة المستخدم (الخطوة 2) ونقطة الدخول (الخطوة 3)، يصبح الانتقال مجرد استبدال للمرجع.',
+      },
+    ],
+  },
+};
+
+export const migrateUi: Record<string, L> = {
+  title: { en: 'Migrate from {vendor}', es: 'Migrar desde {vendor}', ar: 'الترحيل من {vendor}' },
+  before: { en: 'Before', es: 'Antes', ar: 'قبل' },
+  after: { en: 'After', es: 'Después', ar: 'بعد' },
+  differs: { en: 'What is different for {vendor}', es: 'Qué cambia con {vendor}', ar: 'ما المختلف مع {vendor}' },
+  guide: { en: 'Full {vendor} migration guide', es: 'Guía completa de migración desde {vendor}', ar: 'دليل الترحيل الكامل من {vendor}' },
+  help: { en: 'Stuck on a step? Open an issue and it lands on the project board.', es: '¿Atascado en un paso? Abre un issue y llegará al tablero del proyecto.', ar: 'هل علقت في خطوة؟ افتح issue وسيظهر في لوحة المشروع.' },
+};

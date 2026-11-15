@@ -5,6 +5,7 @@
 import Base from '../../../layouts/Base.astro';
 import Header from '../../../components/Header.astro';
 import Footer from '../../../components/Footer.astro';
+import MigrateFrom from '../../../components/MigrateFrom.astro';
 import { getLangFromUrl } from '../../../i18n/ui';
 import { vendors, rows, vendorMeta, vendorSlug, vendorIntro, tone, pick, ui, verdictLabel } from '../../../data/compare';
 
@@ -52,7 +53,7 @@ const jsonLd = {
 
     <div class="mt-6 flex flex-wrap gap-2 font-mono text-xs uppercase tracking-widest">
       <a href="/es/charts" class="rounded-lg border border-paper/40 px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['browseCharts'], lang)}</a>
-      <a href="/es/docs/migrate" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['migrate'], lang)}</a>
+      <a href="#migrate" class="rounded-lg border border-line px-4 py-2.5 text-paper transition-colors hover:bg-ink">{pick(ui['migrate'], lang)}</a>
     </div>
 
     <!-- Feature-by-feature: QuenchWorks vs this vendor -->
@@ -80,6 +81,8 @@ const jsonLd = {
     </div>
 
     <p class="mt-4 text-sm leading-relaxed text-ash">{pick(ui['conservative'], lang).replace(/\{vendor\}/g, name)}</p>
+
+    <MigrateFrom name={name} lang={lang} prefix="/es" />
 
     <section class="mt-12 rounded-2xl border border-line bg-graphite px-6 py-10 text-center">
       <p class="text-base text-paper">{pick(ui['ctaTitle'], lang)}</p>
