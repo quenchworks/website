@@ -3073,7 +3073,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.31",
     "appVersion": "1.0.0",
     "description": "Hardened cache stack with metrics: Valkey (Redis-compatible) with a redis_exporter sidecar, Prometheus discovering it in the release namespace, and Grafana with the Prometheus datasource and the redis_exporter dashboard provisioned. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "dc949220-7ad8-4196-b8c7-ad40cc8ad907",
@@ -3097,7 +3097,7 @@
       },
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:8e9254d8deac559c2520e0c295da15d86e099c444b762bfc11682278cc7bca7b"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:04a726bcdaf7f8484d360674236a9e90c4b924e82d4d99b4516c5218013fcb45"
       },
       {
         "name": "grafana",
@@ -6015,7 +6015,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.18",
+    "chartVersion": "0.0.19",
     "appVersion": "1.121.3",
     "description": "Hardened Kubernetes cost monitoring stack: OpenCost (the CNCF cost model) reading cluster metrics from a bundled Prometheus, plus Grafana with that Prometheus provisioned as a datasource. Prometheus scrapes container usage from the kubelet (cAdvisor) and OpenCost's own pricing and allocation metrics; OpenCost serves cost allocation on <release>-opencost:9003. No operator, no CRDs. Every image is QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "66cf44d2-4e47-4d64-97f7-3df014556359",
@@ -6035,7 +6035,7 @@
       },
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:8e9254d8deac559c2520e0c295da15d86e099c444b762bfc11682278cc7bca7b"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:04a726bcdaf7f8484d360674236a9e90c4b924e82d4d99b4516c5218013fcb45"
       },
       {
         "name": "grafana",
@@ -13451,7 +13451,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.32",
+    "chartVersion": "0.0.33",
     "appVersion": "2.14.4",
     "description": "Monitoring stack for a QuenchWorks Harbor registry. This meta-chart deploys the QuenchWorks Prometheus and Grafana charts preconfigured for Harbor, with Prometheus scraping the harbor-exporter and the core, registry, and jobservice metrics endpoints, and Grafana provisioned with a Prometheus datasource and a Harbor dashboard covering request rate, component health, garbage collection, quota, and the task queue. All images are nonroot, CVE-gated, and pinned by digest through the sub-charts.",
     "imageRepository": "ghcr.io/quenchworks/images/harbor-observability",
@@ -13462,7 +13462,7 @@
     "images": [
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:8e9254d8deac559c2520e0c295da15d86e099c444b762bfc11682278cc7bca7b"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:04a726bcdaf7f8484d360674236a9e90c4b924e82d4d99b4516c5218013fcb45"
       },
       {
         "name": "grafana",
@@ -14602,7 +14602,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.31",
     "appVersion": "1.0.0",
     "description": "Hardened ingress with TLS out of the box: ingress-nginx as the default IngressClass and cert-manager with a cluster CA issuer the stack creates, so an Ingress gets a certificate from a single annotation. Bring your own ACME issuer for public certificates. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "1f0a96f3-a5b0-41c9-b718-a4817e8acd0b",
@@ -14617,7 +14617,7 @@
     "images": [
       {
         "name": "ingress-nginx-controller",
-        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:881c1819659a7320aedfdf5bc0449517100614269f504caab391de87e407991f"
+        "image": "ghcr.io/quenchworks/images/ingress-nginx@sha256:6c257065b8ff6228e811b33e0dac826fd423c83a642e85f5336b79fe90513830"
       },
       {
         "name": "cert-manager-controller",
@@ -20299,7 +20299,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "1.30.8",
     "description": "Istio ambient mesh in one install: istiod (control plane and certificate authority), the istio-cni node agent and ztunnel, wired for ambient so every pod in a labelled namespace talks mutual TLS with a SPIFFE identity, with no sidecars. All QuenchWorks images are CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "d980b7c9-f12e-42f4-8608-89b535e6c96a",
@@ -20319,7 +20319,7 @@
       },
       {
         "name": "istio-cni",
-        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:e0d99295493cba3dd896b0d4c78bacbdd140f29e6bd8624e8135f05a5d8107b8"
+        "image": "ghcr.io/quenchworks/images/istio-cni@sha256:a46f1e82011d318e6fa352d9ec3c8f2d5bd03a479ca66388ec37d27fdf17dbed"
       },
       {
         "name": "ztunnel",
@@ -23399,7 +23399,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.44",
+    "chartVersion": "0.0.45",
     "appVersion": "2.20.0",
     "description": "Hardened, operator-free observability stack: Prometheus + Grafana + Alertmanager + kube-state-metrics + node-exporter + cAdvisor, wired together for metrics, alerting, and populated Kubernetes dashboards. No Prometheus Operator, no CRDs. All components are QuenchWorks-hardened, nonroot, CVE-gated images pinned by digest and cosign-signed. node-exporter and cAdvisor take host access by design (the stack's purpose is node + container observability); both are toggleable.",
     "repositoryID": "b35aa9cc-1558-4053-b967-ae9f74250035",
@@ -23415,7 +23415,7 @@
     "images": [
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:8e9254d8deac559c2520e0c295da15d86e099c444b762bfc11682278cc7bca7b"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:04a726bcdaf7f8484d360674236a9e90c4b924e82d4d99b4516c5218013fcb45"
       },
       {
         "name": "grafana",
@@ -26679,7 +26679,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.33",
+    "chartVersion": "0.0.34",
     "appVersion": "1.0.0",
     "description": "Hardened PostgreSQL HA stack: a 3-node Patroni cluster with automatic failover, PgBouncer pooling in front of the elected leader, postgres_exporter on the leader, and Prometheus + Grafana with the postgres_exporter overview dashboard. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "9d95ad7a-c488-4051-8849-1f81533342e4",
@@ -26708,7 +26708,7 @@
       },
       {
         "name": "prometheus",
-        "image": "ghcr.io/quenchworks/images/prometheus@sha256:8e9254d8deac559c2520e0c295da15d86e099c444b762bfc11682278cc7bca7b"
+        "image": "ghcr.io/quenchworks/images/prometheus@sha256:04a726bcdaf7f8484d360674236a9e90c4b924e82d4d99b4516c5218013fcb45"
       },
       {
         "name": "grafana",
