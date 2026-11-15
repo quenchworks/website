@@ -25,7 +25,7 @@ const roadmapPct = 100 - shippedPct - blockedPct;
 
 const priorityLabel: Record<string, string> = { next: 'next', planned: 'planned', exploring: 'exploring' };
 // Priority is NOT security state, so it's distinguished within the monochrome ramp
-// (border style + tone), never by hue — hue stays reserved for CVE severity. next
+// (border style + tone), never by hue, hue stays reserved for CVE severity. next
 // is loudest (solid bright border), planned is a solid line, exploring is dashed
 // (reads as tentative). Scannable at a glance without a legend.
 const priorityBadge: Record<string, string> = {
@@ -68,7 +68,7 @@ const blockedGrouped = catsOf(blockedList);
         <div class="font-mono text-2xl font-bold tabular-nums">{shippedPct}%<span class="text-ash"> shipped</span></div>
       </div>
       {/* Three-segment meter: shipped + on-roadmap + blocked partition the total (=100%). */}
-      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% shipped, ${roadmapPct}% on the roadmap, ${blockedPct}% held/blocked — ${total} total`}>
+      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% shipped, ${roadmapPct}% on the roadmap, ${blockedPct}% held/blocked, ${total} total`}>
         <div class="h-full bg-paper" style={`width:${shippedPct}%`}></div>
         <div class="h-full bg-ash/40" style={`width:${roadmapPct}%`}></div>
         <div class="h-full bg-red-500/70" style={`width:${blockedPct}%`}></div>
@@ -438,7 +438,7 @@ const blockedGrouped = catsOf(blockedList);
     const title = document.getElementById('bd-title');
     const reason = document.getElementById('bd-reason');
     if (dlg && title && reason) {
-      // Render the reason with `backtick` spans as inline <code> — built as DOM
+      // Render the reason with `backtick` spans as inline <code>, built as DOM
       // nodes (textContent), so no markdown lib and no innerHTML injection.
       const render = (text: string) => {
         reason.replaceChildren();

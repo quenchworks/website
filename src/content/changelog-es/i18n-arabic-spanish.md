@@ -1,7 +1,7 @@
 ---
 title: El sitio ahora habla árabe y español
 date: 2026-06-22
-summary: Todo el sitio — catálogo, documentación y hoja de ruta — ya está disponible en árabe (RTL) y español, conmutable desde la cabecera.
+summary: Todo el sitio, catálogo, documentación y hoja de ruta, ya está disponible en árabe (RTL) y español, conmutable desde la cabecera.
 tags: ["website", "i18n"]
 ---
 

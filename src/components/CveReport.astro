@@ -1,6 +1,6 @@
 ---
 // "Full report" trigger + a <dialog> holding the per-CVE table for ONE image version,
-// fed by security.json `cves[]` (the nightly Trivy scan, scripts/scan-images.mjs) —
+// fed by security.json `cves[]` (the nightly Trivy scan, scripts/scan-images.mjs):
 // never a hardcoded list. Rows are SERVER-RENDERED (a page carries exactly one list),
 // so the script only opens/closes the native dialog: no data-* payloads, no innerHTML.
 // <dialog>.showModal() supplies the focus trap, Escape-to-close, and centering; the
@@ -21,7 +21,7 @@ export interface CveRow {
 
 interface Props {
   cves?: CveRow[];
-  /** What this report covers, e.g. "redis 8.2.1" — shown beside the dialog title. */
+  /** What this report covers, e.g. "redis 8.2.1", shown beside the dialog title. */
   subject: string;
 }
 const { cves = [], subject } = Astro.props;
@@ -36,7 +36,7 @@ const chip = (s: string) =>
       ? 'border-amber-500/40 bg-amber-500/10 text-amber-300'
       : 'border-line bg-ink text-ash';
 
-// The targets a finding was seen in (deduped rows union them) — supplementary detail,
+// The targets a finding was seen in (deduped rows union them), supplementary detail,
 // so it rides along as a tooltip instead of a seventh column.
 const where = (r: CveRow) =>
   r.targets?.length ? r.targets.join(', ') + (r.targetsMore ? ` +${r.targetsMore} more` : '') : undefined;
@@ -88,14 +88,14 @@ const where = (r: CveRow) =>
                   <td class="py-2.5 pe-4">
                     <span class:list={['inline-flex items-center rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest', chip(r.severity)]}>{r.severity}</span>
                   </td>
-                  <td class="py-2.5 pe-4 font-mono text-xs text-ash" title={where(r)}>{r.pkg ?? '—'}</td>
-                  <td class="py-2.5 pe-4 font-mono text-xs tabular-nums text-ash">{r.installed ?? '—'}</td>
+                  <td class="py-2.5 pe-4 font-mono text-xs text-ash" title={where(r)}>{r.pkg ?? ', '}</td>
+                  <td class="py-2.5 pe-4 font-mono text-xs tabular-nums text-ash">{r.installed ?? ', '}</td>
                   <td class="py-2.5 pe-4 font-mono text-xs tabular-nums">
                     {r.fixed
                       ? <span class="text-paper">{r.fixed}</span>
-                      : <span class="text-ash">— <span class="uppercase tracking-widest text-[10px] text-ash/70">{t('detail.security.notFixable')}</span></span>}
+                      : <span class="text-ash">, <span class="uppercase tracking-widest text-[10px] text-ash/70">{t('detail.security.notFixable')}</span></span>}
                   </td>
-                  <td class="py-2.5 text-ash">{r.title ?? '—'}</td>
+                  <td class="py-2.5 text-ash">{r.title ?? ', '}</td>
                 </tr>
               ))}
             </tbody>

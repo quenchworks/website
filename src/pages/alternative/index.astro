@@ -1,7 +1,7 @@
 ---
 // Hub for the per-competitor alternative pages. One card per vendor with a
-// factual at-a-glance summary — where QuenchWorks leads and where the vendor
-// holds up — derived from the same comparison matrix that drives /compare and
+// factual at-a-glance summary, where QuenchWorks leads and where the vendor
+// holds up, derived from the same comparison matrix that drives /compare and
 // each /alternative/<vendor> page. Nothing here is hand-maintained: edit
 // src/data/compare.ts and these summaries follow, in every language.
 import Base from '../../layouts/Base.astro';
@@ -15,8 +15,8 @@ const lang = getLangFromUrl(Astro.url);
 // A "strong" verdict is one tone() renders in paper (Yes / Free); everything
 // else (No, Paid, Partial, Varies, n/a) is muted. We compare QuenchWorks
 // (column 0) against each vendor column to split the rows into:
-//   leads  — QuenchWorks strong, the vendor not (a QuenchWorks advantage)
-//   parity — the vendor is strong too (where they hold up)
+//   leads , QuenchWorks strong, the vendor not (a QuenchWorks advantage)
+//   parity, the vendor is strong too (where they hold up)
 const strong = (v: string) => tone(v) === 'text-paper';
 
 const summaries = vendors

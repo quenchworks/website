@@ -59,7 +59,7 @@ const NOTES: Record<string, string> = {
 
 // Eagerly load every Dockerfile body as raw text, keyed by slug (basename).
 // Eagerly load every real per-version Dockerfile body as raw text. The layout is
-// ./dockerfiles/<slug>/<version>.dockerfile — one directory per runtime, one
+// ./dockerfiles/<slug>/<version>.dockerfile, one directory per runtime, one
 // file per supported version with the version baked in literally (no templating).
 const rawBodies = import.meta.glob('./dockerfiles/**/*.dockerfile', {
   query: '?raw',

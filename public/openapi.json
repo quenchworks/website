@@ -91,7 +91,7 @@
       "get": {
         "tags": ["Pagination"],
         "summary": "One page of a collection",
-        "description": "One prerendered page of a collection (24 items each), with a meta + `links` envelope. The page number is part of the path — there is no `?page` query.",
+        "description": "One prerendered page of a collection (24 items each), with a meta + `links` envelope. The page number is part of the path, there is no `?page` query.",
         "operationId": "getResourcePage",
         "parameters": [
           {
@@ -126,7 +126,7 @@
       "get": {
         "tags": ["Security"],
         "summary": "Security summary",
-        "description": "The catalog-wide CVE summary: grand total, a severity rollup, and a per-image record (with per-version detail). Sourced from the QuenchWorks nightly Trivy scan of each published image digest, so it refreshes on every scan/deploy — never a hardcoded value.\n\nCounts only: each record carries an `href` to its full per-CVE detail at `/api/v1/security/{image}.json`.",
+        "description": "The catalog-wide CVE summary: grand total, a severity rollup, and a per-image record (with per-version detail). Sourced from the QuenchWorks nightly Trivy scan of each published image digest, so it refreshes on every scan/deploy, never a hardcoded value.\n\nCounts only: each record carries an `href` to its full per-CVE detail at `/api/v1/security/{image}.json`.",
         "operationId": "getSecurity",
         "responses": {
           "200": {
@@ -207,7 +207,7 @@
       "get": {
         "tags": ["Badges"],
         "summary": "shields.io endpoint badge",
-        "description": "A shields.io `endpoint` badge payload. Embed live in any README — shields fetches it on render and it refreshes each deploy:\n\n```md\n![images](https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/images.json)\n```\n\n`style`, `namedLogo`, and colors ship in the payload, so the for-the-badge look renders with no extra query params. `images` / `charts` / `cves` are live from the catalog data + scan snapshot; the rest are fixed project facts.",
+        "description": "A shields.io `endpoint` badge payload. Embed live in any README, shields fetches it on render and it refreshes each deploy:\n\n```md\n![images](https://img.shields.io/endpoint?url=https://quench-works.com/api/v1/badge/images.json)\n```\n\n`style`, `namedLogo`, and colors ship in the payload, so the for-the-badge look renders with no extra query params. `images` / `charts` / `cves` are live from the catalog data + scan snapshot; the rest are fixed project facts.",
         "operationId": "getBadge",
         "parameters": [
           {
@@ -379,7 +379,7 @@
           "low": { "type": "integer" },
           "unknown": { "type": "integer" },
           "total": { "type": "integer" },
-          "fixable": { "type": "integer", "description": "CVEs with an available fix — what a rebuild clears." },
+          "fixable": { "type": "integer", "description": "CVEs with an available fix, what a rebuild clears." },
           "grade": { "type": "string", "enum": ["A+", "A", "B", "C", "D", "F"] },
           "score": { "type": "integer", "minimum": 0, "maximum": 100 },
           "cves": { "type": "array", "description": "Per-CVE detail. Present on the /api/v1/security/{image}[/{version}].json endpoints; omitted from the counts-only rollup.", "items": { "$ref": "#/components/schemas/Cve" } }

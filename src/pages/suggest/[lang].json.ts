@@ -1,4 +1,4 @@
-// GET /suggest/{en,ar,es}.json — the build-time autocomplete index behind the
+// GET /suggest/{en,ar,es}.json, the build-time autocomplete index behind the
 // catalog search box (CatalogList.astro). Covers BOTH kinds, so typing "redis"
 // on /images also surfaces the redis chart.
 //

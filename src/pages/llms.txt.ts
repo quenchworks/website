@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { charts, chartCount } from '../data/charts';
 import { availableImages, availableCount } from '../data/images';
 
-// /llms.txt — a machine-readable map of the site for LLMs (https://llmstxt.org).
+// /llms.txt, a machine-readable map of the site for LLMs (https://llmstxt.org).
 // Generated from the catalog data so it never drifts from what actually shipped.
 const SITE = 'https://quench-works.com';
 

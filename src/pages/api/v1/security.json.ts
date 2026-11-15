@@ -50,7 +50,7 @@ export const GET: APIRoute = () => {
     resource: 'security',
     source: SECURITY_SOURCE,
     total,
-    fixable, // CVEs with an available fix — these are what a rebuild clears
+    fixable, // CVEs with an available fix, these are what a rebuild clears
     bySeverity,
     imagesWithCves: counted.filter((r) => Number(r.total) > 0).length,
     imagesNeedingRebuild: counted.filter((r) => Number(r.fixable) > 0).length,

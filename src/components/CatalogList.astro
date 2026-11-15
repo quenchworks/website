@@ -534,7 +534,7 @@ const dataset = all.map((e) => {
     const cls = GRADE_CHIP[gradeTone(g, has)];
     const label = g ? `${g}${has ? '&nbsp;' + tot : ''}` : (has ? `${tot}&nbsp;CVE${tot === 1 ? '' : 's'}` : esc(tUnscanned));
     const note = gradeNote(g);
-    const title = esc(`Trivy scan: grade ${g ?? (has ? '–' : 'A+')}${has ? ` · ${tot} CVE${tot === 1 ? '' : 's'}` : typeof tot === 'number' ? ' · no CVEs' : ' · not scanned'}${fixable ? ` · ${fixable} fixable` : ''}${note ? ` · ${note}` : ''}`);
+    const title = esc(`Trivy scan: grade ${g ?? (has ? '-' : 'A+')}${has ? ` · ${tot} CVE${tot === 1 ? '' : 's'}` : typeof tot === 'number' ? ' · no CVEs' : ' · not scanned'}${fixable ? ` · ${fixable} fixable` : ''}${note ? ` · ${note}` : ''}`);
     return `<span class="inline-flex items-center rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest tabular-nums ${cls}" role="img" aria-label="${title}" title="${title}">${label}</span>`;
   };
 
@@ -756,13 +756,13 @@ const dataset = all.map((e) => {
   // ── Suggestions (autocomplete) ─────────────────────────────────────────────
   // Layered ON TOP of the filtering above, which is untouched: typing still
   // filters the grid and still rewrites ?q= exactly as before. The popup is an
-  // extra way OUT of this page — picking a suggestion navigates straight to that
+  // extra way OUT of this page, picking a suggestion navigates straight to that
   // item's detail page, and it spans BOTH kinds, so "redis" on /images also
   // offers the redis chart.
   //
   // The index is the build-time file at /suggest/<lang>.json
   // (src/pages/suggest/[lang].json.ts), fetched once on first use and then
-  // browser-cached — deliberately NOT inlined, so no catalog page pays for it.
+  // browser-cached, deliberately NOT inlined, so no catalog page pays for it.
   // The row layout and the match ranking come from the ONE shared module in
   // src/data/suggest.ts (same trick as grade.ts above), so this client copy can
   // never drift from the index the endpoint emits.

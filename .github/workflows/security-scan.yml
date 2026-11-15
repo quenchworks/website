@@ -1,7 +1,7 @@
 name: security-scan
 
 # Nightly Trivy scan of every catalog image, straight from the published GHCR digests
-# (the image packages are public). Writes src/data/security.json — the authoritative,
+# (the image packages are public). Writes src/data/security.json, the authoritative,
 # ArtifactHub-independent source of the catalog's CVE numbers and per-image grades.
 # Pushing the refreshed file triggers the normal site redeploy.
 on:
@@ -108,7 +108,7 @@ jobs:
         run: |
           set -euo pipefail
           if git diff --quiet src/data/security.json; then
-            echo "security.json unchanged — nothing to commit."
+            echo "security.json unchanged, nothing to commit."
             exit 0
           fi
           git config user.name "QuenchWorks"

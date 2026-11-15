@@ -3,13 +3,13 @@
 //
 // Self-contained and independent of ArtifactHub: it reads the image ref + EVERY
 // published version's digest from src/data/images.json (which qw gen-catalog keeps
-// aligned to each app's build.conf VERSIONS — no registry major-alias tags), and runs
+// aligned to each app's build.conf VERSIONS, no registry major-alias tags), and runs
 // Trivy against each exact digest. Scanning by digest (not tag) pins the result to
 // precisely the artifact we ship.
 //
-// Per version: severity breakdown, a `fixable` count (CVEs with a FixedVersion — what
+// Per version: severity breakdown, a `fixable` count (CVEs with a FixedVersion, what
 // our 0-CVE gate and a rebuild would clear), a letter `grade`, a numeric `score`, and
-// `cves[]` — the deduped per-CVE detail (id/severity/pkg/installed/fixed/title/url/targets)
+// `cves[]`, the deduped per-CVE detail (id/severity/pkg/installed/fixed/title/url/targets)
 // the detail pages render in their full-report table.
 // Each image's top-level summary mirrors its LATEST version, which is what a card or
 // badge shows and what a new deployment gets, plus a `versions` array with the per-tag
@@ -67,10 +67,10 @@ function scoreOf(c) {
 // was, so total/fixable/grade/score never move.
 //
 // ROWS are DEDUPED by `id|pkg|installed`: the same CVE routinely repeats across dozens
-// of targets (one bundled jar CVE x every jar that ships it — opensearch reports ~49
+// of targets (one bundled jar CVE x every jar that ships it, opensearch reports ~49
 // findings that are a handful of real CVEs), and a 49-row table of the same ID is noise.
 // Duplicates merge into one row whose `targets` is the union (capped, with `targetsMore`).
-// Sorted severity-first, then fixable-first, then id — worst + actionable at the top.
+// Sorted severity-first, then fixable-first, then id, worst + actionable at the top.
 function parseReport(data) {
   const c = { critical: 0, high: 0, medium: 0, low: 0, unknown: 0, fixable: 0 };
   const rows = new Map();
@@ -155,7 +155,7 @@ function summarize(version, image, c) {
   return e;
 }
 
-// `node scripts/scan-images.mjs --selftest` — checks parseReport (counts stay raw,
+// `node scripts/scan-images.mjs --selftest`, checks parseReport (counts stay raw,
 // rows dedupe/sort/cap) without pulling a single image. Runs in ms; no Trivy needed.
 if (only[0] === '--selftest') {
   const dupe = (target) => ({

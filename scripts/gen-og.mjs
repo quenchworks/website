@@ -1,4 +1,4 @@
-// gen-og.mjs — generate per-app Open Graph images for the QuenchWorks website.
+// gen-og.mjs, generate per-app Open Graph images for the QuenchWorks website.
 //
 // Reads the app list from src/data/charts.json + src/data/images.json and writes
 // one 1200x630 PNG per unique slug to public/og/<slug>.png, matching the brand

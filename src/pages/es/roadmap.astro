@@ -58,7 +58,7 @@ const blockedGrouped = catsOf(blockedList);
         <div class="font-mono text-2xl font-bold tabular-nums">{shippedPct}%<span class="text-ash"> publicado</span></div>
       </div>
       {/* Barra de tres segmentos: publicado + en la hoja de ruta + bloqueadas = 100% del total. */}
-      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% publicado, ${roadmapPct}% en la hoja de ruta, ${blockedPct}% retenido/bloqueado — ${total} en total`}>
+      <div class="mt-4 flex h-1.5 overflow-hidden rounded-full bg-ink" role="img" aria-label={`${shippedPct}% publicado, ${roadmapPct}% en la hoja de ruta, ${blockedPct}% retenido/bloqueado, ${total} en total`}>
         <div class="h-full bg-paper" style={`width:${shippedPct}%`}></div>
         <div class="h-full bg-ash/40" style={`width:${roadmapPct}%`}></div>
         <div class="h-full bg-red-500/70" style={`width:${blockedPct}%`}></div>

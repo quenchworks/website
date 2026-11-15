@@ -46,7 +46,7 @@ export function suggestScore(r: SuggestRow, q: string): number {
 /**
  * The best `limit` matches for `q` (must already be lowercased and trimmed).
  * Ties break, in order:
- *   1. toward `prefer` — the kind of catalog the user is already browsing;
+ *   1. toward `prefer`, the kind of catalog the user is already browsing;
  *   2. shorter name first, i.e. the name closest to what was typed, so
  *      "postgres" leads with PostgreSQL rather than postgres-exporter;
  *   3. alphabetically, so the list never reshuffles between keystrokes.

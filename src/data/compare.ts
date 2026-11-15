@@ -28,7 +28,7 @@ export const vendorSlug = (name: string): string => name.toLowerCase().replace(/
 export function tone(v: string): string {
   const yes = v.toLowerCase();
   if (yes === 'yes' || yes === 'free') return 'text-paper';
-  // Everything else (No, Paid, Partial, Varies, Freemium, n/a, —) is muted.
+  // Everything else (No, Paid, Partial, Varies, Freemium, n/a, ) is muted.
   return 'text-ash';
 }
 
@@ -75,7 +75,7 @@ export const verdictLabel: Record<Lang, Record<string, string>> = {
 
 // Each cell is { v: short verdict, n?: localized note }. Be factual, conservative,
 // and fair. Where a fact could not be confirmed from a primary source, the verdict
-// is hedged ("Varies", "Partial", "—") with a neutral note rather than a hard claim.
+// is hedged ("Varies", "Partial", ", ") with a neutral note rather than a hard claim.
 export type Cell = { v: string; n?: L };
 export type Row = { label: L; cells: Cell[] };
 

@@ -100,7 +100,7 @@ const ld = {
 };
 
 // The Trivy report (from security.json) applies to the image regardless of which
-// version tab is open, so show it on every line — same as the chart detail page.
+// version tab is open, so show it on every line, same as the chart detail page.
 const sevs = sec
   ? ([
       [t('detail.security.critical'), sec.critical],
@@ -209,9 +209,9 @@ const sevs = sec
                       <span class="ms-2 rounded border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] uppercase tracking-widest text-ash">{t('detail.versions.latest')}</span>
                     )}
                   </td>
-                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.size ?? '—'}</td>
-                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : '—'}</td>
-                  <td class="py-2.5 font-mono text-xs text-ash" title={v.digest}>{v.digest ? `${v.digest.slice(0, 19)}…` : '—'}</td>
+                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.size ?? ', '}</td>
+                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : ', '}</td>
+                  <td class="py-2.5 font-mono text-xs text-ash" title={v.digest}>{v.digest ? `${v.digest.slice(0, 19)}…` : ', '}</td>
                 </tr>
               ))}
             </tbody>
@@ -312,17 +312,17 @@ const sevs = sec
       <p class="mt-2 text-sm leading-relaxed text-ash">
         {t('detail.verify.introPull')}
       </p>
-      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature — built and signed by QuenchWorks CI</span>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature, built and signed by QuenchWorks CI</span>
 cosign verify {verifyRef} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
-<span class="text-ash"># 2. SLSA build provenance — which workflow built it, from what</span>
+<span class="text-ash"># 2. SLSA build provenance, which workflow built it, from what</span>
 cosign verify-attestation --type https://slsa.dev/provenance/v1 {verifyRef} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
-<span class="text-ash"># 3. SPDX SBOM — the package inventory</span>
+<span class="text-ash"># 3. SPDX SBOM, the package inventory</span>
 cosign verify-attestation --type https://spdx.dev/Document/v2.3 {verifyRef} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>

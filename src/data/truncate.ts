@@ -1,6 +1,6 @@
 // The single card-description truncation helper. Card grids (CatalogList,
 // CategoryCatalog) all truncate at the same character budget so every card's
-// text renders at a uniform length and the grid doesn't go ragged — while the
+// text renders at a uniform length and the grid doesn't go ragged, while the
 // full untruncated string (from images.json/charts.json) stays untouched for
 // detail pages, <meta description>, and search matching.
 //

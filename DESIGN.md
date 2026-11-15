@@ -88,7 +88,7 @@ components:
 **Creative North Star: "The Ledger of Receipts"**
 
 QuenchWorks is a verifiable catalog, not a sales page, and the system reads like an
-audit trail: every claim sits next to the artifact that proves it — a sha256 digest,
+audit trail: every claim sits next to the artifact that proves it, a sha256 digest,
 a Trivy grade, a cosign signature, a live CVE count. The surface is a dark, matte,
 terminal-native monochrome; energy comes from high contrast, decisive typography, and
 tabular precision, never from hue. Numbers line up. Metadata is set in monospace like
@@ -106,7 +106,7 @@ text). Dark here is quiet command, not spectacle.
 **Key Characteristics:**
 - Monochrome ink + paper + neutral ramp; color appears only to encode security severity.
 - Inter for structure, JetBrains Mono for every piece of metadata, code, and label.
-- Flat by default — depth comes from tonal surfaces and 1px borders, never shadow.
+- Flat by default: depth comes from tonal surfaces and 1px borders, never shadow.
 - Tabular figures everywhere numbers appear (versions, CVE counts, sizes).
 - WCAG-AA verified; keyboard, reduced-motion, increased-contrast, and RTL all first-class.
 
@@ -118,21 +118,21 @@ A single monochrome ramp from near-black to near-white, plus one functional traf
 - **Paper** (`#fafafa`): primary text and the inverted-fill CTA. The brightest ink on the page; used for anything that must be read first.
 
 ### Neutral
-- **Ink** (`#0b0b0c`): the page background. Near-black, chroma-free — the matte base the whole system sits on.
+- **Ink** (`#0b0b0c`): the page background. Near-black, chroma-free: the matte base the whole system sits on.
 - **Graphite** (`#141417`): surfaces and cards. One step up from ink; the only way a container separates from the page (no shadow does it).
 - **Line** (`#26262b`): borders and dividers. Every card, chip, and section edge is a 1px line, not a shadow.
 - **Ash** (`#b0b0ba`): muted / secondary text, labels, and metadata. Tuned to 9.15:1 on ink and 8.55:1 on graphite so even `ash/70` clears 4.5:1.
 
 ### Tertiary (functional status only)
 - **Status OK** (`#10b981`, emerald): rendered as a `/10` fill + `/40` border + `-300` text on the CVE grade chip when an image has NO findings at all (grade A+).
-- **Status Unknown** (`#0ea5e9`, sky): the same chip treatment for grade A — findings exist, but every one is UNKNOWN severity, so nothing is known to be exploitable. Blue reads informational rather than safe or alarming, which is exactly the claim: not yet triaged. A distinct hue rather than a second green so "proven clean" and "severity unknown" are never mistaken for each other, and so the difference survives greyscale and colour-vision deficiency.
+- **Status Unknown** (`#0ea5e9`, sky): the same chip treatment for grade A: findings exist, but every one is UNKNOWN severity, so nothing is known to be exploitable. Blue reads informational rather than safe or alarming, which is exactly the claim: not yet triaged. A distinct hue rather than a second green so "proven clean" and "severity unknown" are never mistaken for each other, and so the difference survives greyscale and colour-vision deficiency.
 - **Status Warn** (`#f59e0b`, amber): the same chip treatment for low/medium severity (grade B/C).
 - **Status Bad** (`#ef4444`, red): the same treatment for high/critical (grade D/F).
 
 ### Named Rules
 **The Monochrome Rule.** The brand is ink + paper + the neutral ramp. No decorative hue, no brand accent color. Energy is contrast and type, never color. If a swatch isn't in the neutral ramp, it must be justified as security state.
 
-**The Functional-Color-Only Rule.** The emerald/sky/amber/red set appears ONLY to encode CVE severity state, and it is never the sole signal — the letter grade (A+ → F) and an aria-label always carry the same meaning as text. Color that isn't encoding severity is prohibited. The single source of truth for grade → colour is `src/data/grade.ts`; no component may hand-roll its own mapping.
+**The Functional-Color-Only Rule.** The emerald/sky/amber/red set appears ONLY to encode CVE severity state, and it is never the sole signal, the letter grade (A+ → F) and an aria-label always carry the same meaning as text. Color that isn't encoding severity is prohibited. The single source of truth for grade → colour is `src/data/grade.ts`; no component may hand-roll its own mapping.
 
 ## 3. Typography
 
@@ -140,47 +140,47 @@ A single monochrome ramp from near-black to near-white, plus one functional traf
 **Body Font:** Inter Variable
 **Label/Mono Font:** JetBrains Mono Variable (with ui-monospace fallback)
 
-**Character:** One humanist-sans workhorse across the whole hierarchy, paired on a contrast axis with a mechanical monospace that carries every piece of machine metadata. Inter states things; JetBrains Mono timestamps and versions them. The split is semantic, not decorative — prose is Inter, anything a machine emitted is mono.
+**Character:** One humanist-sans workhorse across the whole hierarchy, paired on a contrast axis with a mechanical monospace that carries every piece of machine metadata. Inter states things; JetBrains Mono timestamps and versions them. The split is semantic, not decorative, prose is Inter, anything a machine emitted is mono.
 
 ### Hierarchy
 - **Display** (Inter 700, `clamp(2.25rem, 5vw, 3.75rem)`, 1.05, -0.02em): page/hero headlines only. Tight tracking; never exceeds ~3.75rem.
 - **Headline** (Inter 600, 1.5rem, 1.2): section headings.
 - **Title** (Inter 600, 1.125rem, 1.3): card names, sub-section titles.
-- **Body** (Inter 400, 1rem, 1.6): prose; capped at 65–75ch measure.
+- **Body** (Inter 400, 1rem, 1.6): prose; capped at 65-75ch measure.
 - **Label** (JetBrains Mono 500, 0.6875rem, +0.1em, UPPERCASE): eyebrows, nav links, chips, versions, code, stats.
 
 ### Named Rules
 **The Mono-for-Metadata Rule.** JetBrains Mono is reserved for machine-adjacent text: versions, digests, CVE counts, labels, nav, code. It is not a decorative display face. Prose is always Inter.
 
-**The Tabular Rule.** Any digit that could shift between renders — versions, CVE counts, sizes, scores — uses tabular figures so columns never jitter.
+**The Tabular Rule.** Any digit that could shift between renders, versions, CVE counts, sizes, scores, uses tabular figures so columns never jitter.
 
 ## 4. Elevation
 
 Flat by default. There are no drop shadows anywhere in the system. Depth is expressed tonally: `ink` is the page, `graphite` is a surface one step lighter, and a 1px `line` border draws every edge. A card is "raised" because it is a lighter tone inside a border, not because it floats.
 
 ### Named Rules
-**The Border-Not-Shadow Rule.** Separation is a 1px `line` border and a tonal step (ink → graphite), never a `box-shadow`. If a surface needs to feel distinct, lighten its tone or draw its border — do not add a shadow.
+**The Border-Not-Shadow Rule.** Separation is a 1px `line` border and a tonal step (ink → graphite), never a `box-shadow`. If a surface needs to feel distinct, lighten its tone or draw its border, do not add a shadow.
 
 **The State-Reveals-Depth Rule.** At rest, surfaces are flat. The only "lift" is a state change: on hover a card's border shifts from `line` to `paper/40`. Motion and border, not elevation, signal interactivity.
 
 ## 5. Components
 
-Precise and restrained — sharp edges of information on quiet surfaces, nothing decorative, density only where it earns its place.
+Precise and restrained, sharp edges of information on quiet surfaces, nothing decorative, density only where it earns its place.
 
 ### Buttons
 - **Shape:** gently rounded (`rounded-lg`, 12px).
-- **Primary:** inverted fill — `paper` background, `ink` text (≥7:1). Padding ~8px 14px. This is the one loud element; used once per view.
+- **Primary:** inverted fill: `paper` background, `ink` text (≥7:1). Padding ~8px 14px. This is the one loud element; used once per view.
 - **Ghost / Secondary:** transparent on `ink`, `paper` text, 1px `line` border. Hover shifts the border to `paper/40`.
-- **Hover / Focus:** 150–300ms ease-out, hover scale ≤1.02; `:focus-visible` is a 2px `paper` outline with 2px offset — never removed.
+- **Hover / Focus:** 150-300ms ease-out, hover scale ≤1.02; `:focus-visible` is a 2px `paper` outline with 2px offset, never removed.
 
 ### Chips / Badges
 - **Style:** JetBrains Mono, uppercase, `text-[10px]`, 1px border, `rounded` (4px), `px-2 py-0.5`. Default is `ash` text on `ink` inside a `line` border (category / tier / license tags).
-- **CVE status chip (signature):** leads with the letter grade (A+ → F), count alongside; colored by the functional set (`/10` fill, `/40` border, `-300` text) — green no findings, sky-blue findings of UNKNOWN severity only, amber low/medium, red high/critical. Grade is always text; color never stands alone.
+- **CVE status chip (signature):** leads with the letter grade (A+ → F), count alongside; colored by the functional set (`/10` fill, `/40` border, `-300` text), green no findings, sky-blue findings of UNKNOWN severity only, amber low/medium, red high/critical. Grade is always text; color never stands alone.
 
 ### Cards / Containers
 - **Corner Style:** `rounded-xl` (16px).
 - **Background:** `graphite` on the `ink` page.
-- **Shadow Strategy:** none — see Elevation. Tonal step + border only.
+- **Shadow Strategy:** none: see Elevation. Tonal step + border only.
 - **Border:** 1px `line`; hover → `paper/40`.
 - **Internal Padding:** 20px (`p-5`). Never nest a card inside a card.
 
@@ -202,8 +202,8 @@ Precise and restrained — sharp edges of information on quiet surfaces, nothing
 
 ### Don't:
 - **Don't** introduce a decorative brand accent or any hue that isn't encoding security severity (**The Monochrome Rule**).
-- **Don't** use gradient text (`background-clip: text`), decorative glassmorphism, or neon-on-black — the **crypto/AI-hype-dark** cliché is forbidden.
+- **Don't** use gradient text (`background-clip: text`), decorative glassmorphism, or neon-on-black, the **crypto/AI-hype-dark** cliché is forbidden.
 - **Don't** ship a **generic-SaaS** hero: no gradient hero, no cream/sand background, no hero-metric template, no identical icon-card grids, no uppercase eyebrow above every section.
-- **Don't** adopt the **corporate/enterprise-vendor** look QuenchWorks replaces — no heavy chrome, stock imagery, or "contact sales" framing.
-- **Don't** go **playful/consumer** — no mascots, bright multi-color, or illustration-heavy warmth.
+- **Don't** adopt the **corporate/enterprise-vendor** look QuenchWorks replaces: no heavy chrome, stock imagery, or "contact sales" framing.
+- **Don't** go **playful/consumer**: no mascots, bright multi-color, or illustration-heavy warmth.
 - **Don't** use a `border-left`/`border-right` colored side-stripe as an accent, add drop shadows for depth, or nest cards inside cards.

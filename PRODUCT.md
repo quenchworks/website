@@ -12,7 +12,7 @@ arrive skeptical, evaluating whether QuenchWorks' hardened images and charts are
 a credible replacement for the Bitnami catalog (or their own base images). Their
 context is a browser tab open next to a terminal: they want to find an app,
 verify it's actually 0-CVE and signed, read exactly how it's built, and copy a
-pull/install command. The job is trust-then-adopt — they will not take a claim
+pull/install command. The job is trust-then-adopt, they will not take a claim
 on faith, so the site's job is to let them verify everything themselves.
 
 ## Product Purpose
@@ -20,7 +20,7 @@ on faith, so the site's job is to let them verify everything themselves.
 The public face of QuenchWorks: a free, independent catalog of hardened, 0-CVE
 container images and signed Helm charts, built from source on Wolfi, cosign-signed,
 and pinned by digest. The site exists to make that catalog browsable and its
-guarantees verifiable — per-image Trivy security grades, sha256 digests, SBOM and
+guarantees verifiable, per-image Trivy security grades, sha256 digests, SBOM and
 SLSA provenance, an honest roadmap, and a live API. Success is an engineer landing
 skeptical and leaving convinced enough to `helm install`, because the evidence was
 in front of them, not because they were sold.
@@ -37,19 +37,19 @@ calm and declarative; the reader's time and skepticism are respected.
 - **Generic SaaS**: gradient hero, cream/sand background, the hero-metric template,
   identical icon-card grids, a tracked uppercase eyebrow above every section.
 - **Corporate/enterprise vendor**: the Bitnami/VMware/big-vendor look QuenchWorks
-  is replacing — heavy chrome, stock imagery, salesy framing, "contact sales".
+  is replacing, heavy chrome, stock imagery, salesy framing, "contact sales".
 - **Playful/consumer**: mascots, bright multi-color, illustration-heavy warmth that
   would undercut the security-serious credibility.
 - **Crypto/AI-hype dark**: neon-on-black, decorative glassmorphism everywhere,
-  gradient text — the other saturated "dark technical" cliché. Dark here is
+  gradient text, the other saturated "dark technical" cliché. Dark here is
   terminal-native restraint, not spectacle.
 
 ## Design Principles
 
 - **Security as substance, not theater.** Every claim is backed by a verifiable
   artifact (live CVE counts, digests, signatures, SBOMs). No badge we can't prove.
-- **Show the receipts.** Surface the real data — per-image Trivy grades, pinned
-  digests, provenance — instead of asking to be trusted.
+- **Show the receipts.** Surface the real data: per-image Trivy grades, pinned
+  digests, provenance, instead of asking to be trusted.
 - **Engineer-to-engineer.** Copy and UI assume a technical, skeptical reader:
   precise, dense where density helps, no filler. Respect their time.
 - **Restraint is the credibility signal.** Monochrome, quiet, typographic. The

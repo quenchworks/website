@@ -1,6 +1,6 @@
 ---
 // Per-image security indicator, fed by the nightly Trivy scan (scripts/scan-images.mjs)
-// via security.json — never a hardcoded value. Leads with a letter GRADE (A+ clean →
+// via security.json, never a hardcoded value. Leads with a letter GRADE (A+ clean →
 // F critical) so the signal is readable without relying on colour alone; colour, the
 // CVE count, and the fixable count reinforce it. Two shapes: a compact `dot` chip for
 // catalog cards and a fuller badge for detail pages. Falls back to the neutral clean
@@ -43,7 +43,7 @@ const verPart = sec?.version ? ` (version ${sec.version})` : '';
 const fixPart = fixable > 0 ? `; ${fixable} fixable, a rebuild clears ${fixable === 1 ? 'it' : 'them'}` : '';
 const note = gradeNote(grade);
 const notePart = note ? `; ${note}` : '';
-const title = `Trivy scan: grade ${grade ?? (has ? '–' : 'A+')}${sec?.score != null ? ` (score ${sec.score}/100)` : ''}${verPart} — ${breakdown}${fixPart}${notePart}`;
+const title = `Trivy scan: grade ${grade ?? (has ? '-' : 'A+')}${sec?.score != null ? ` (score ${sec.score}/100)` : ''}${verPart}, ${breakdown}${fixPart}${notePart}`;
 
 // Visible text: grade leads; the count tags along when there are CVEs.
 const countText = has ? `${total}` : '';
@@ -63,7 +63,7 @@ const chipColor = GRADE_CHIP[tone];
       {supportLabel}
     </span>
   ) : dot ? (
-    <span class="inline-flex items-center gap-1.5" role="img" aria-label={`Security ${label} — ${title}`} title={title}>
+    <span class="inline-flex items-center gap-1.5" role="img" aria-label={`Security ${label}, ${title}`} title={title}>
       <span class:list={['inline-block size-1.5 shrink-0 rounded-full', dotColor]} aria-hidden="true" />
       <span class="font-mono text-[10px] font-semibold tabular-nums tracking-wide">{label}</span>
     </span>
@@ -71,7 +71,7 @@ const chipColor = GRADE_CHIP[tone];
     <span
       class:list={['inline-flex items-center gap-1 rounded border px-2 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-widest tabular-nums', chipColor]}
       role="img"
-      aria-label={`Security ${label} — ${title}`}
+      aria-label={`Security ${label}, ${title}`}
       title={title}
     >
       {label}

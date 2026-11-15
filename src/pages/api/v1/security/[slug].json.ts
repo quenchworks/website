@@ -3,7 +3,7 @@
 // package, installed/fixed version, title, advisory URL, affected targets). Sourced from
 // the nightly Trivy scan snapshot (scripts/scan-images.mjs).
 //
-// Prerendered (no SSR adapter — see _data.ts), so the slug is a static path built from
+// Prerendered (no SSR adapter, see _data.ts), so the slug is a static path built from
 // security.json's keys. An unscanned slug has no path and therefore 404s: correct, we
 // don't fabricate an empty record.
 import type { APIRoute } from 'astro';

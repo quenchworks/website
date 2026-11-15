@@ -117,7 +117,7 @@ export const ui = {
     'catalog.bodyPre': 'hardened images and',
     'catalog.bodyMid': 'signed charts across',
     'catalog.bodyPost':
-      'categories: relational and document stores, caches, search, streaming, coordination, observability, object storage, gateways, and a registry — plus hardened base images to build FROM, all under',
+      'categories: relational and document stores, caches, search, streaming, coordination, observability, object storage, gateways, and a registry, plus hardened base images to build FROM, all under',
     'catalog.bodyImages': 'images',
     'catalog.browsePre': 'Browse all',
     'catalog.browsePost': 'charts',
@@ -357,7 +357,7 @@ export const ui = {
     'versions.note':
       'The latest line lives at the base page; older lines have their own page so you can pin and verify exactly that version.',
     'versions.olderHidden':
-      'Only the most recent releases are listed — an older chart pins an older image digest.',
+      'Only the most recent releases are listed, an older chart pins an older image digest.',
     // --- Docs chrome (Docs.astro sidebar + page nav) ---
     'docs.index': 'Docs',
     'docs.group.Guides': 'Guides',
@@ -469,7 +469,7 @@ export const ui = {
     'catalog.bodyPre': 'صورة مُحصّنة و',
     'catalog.bodyMid': 'مخطط موقّع عبر',
     'catalog.bodyPost':
-      'فئات: مخازن علائقية ومستندية، وذاكرات تخزين مؤقت، وبحث، وبث، وتنسيق، ومراقبة، وتخزين كائنات، وبوابات، وسجلّ — إضافة إلى صور أساس مُحصّنة للبناء منها (FROM)، وكلها ضمن',
+      'فئات: مخازن علائقية ومستندية، وذاكرات تخزين مؤقت، وبحث، وبث، وتنسيق، ومراقبة، وتخزين كائنات، وبوابات، وسجلّ، إضافة إلى صور أساس مُحصّنة للبناء منها (FROM)، وكلها ضمن',
     'catalog.bodyImages': 'الصور',
     'catalog.browsePre': 'تصفّح كل',
     'catalog.browsePost': 'مخطط',
@@ -709,7 +709,7 @@ export const ui = {
     'versions.note':
       'يعيش الخط الأحدث في الصفحة الأساسية؛ وللخطوط الأقدم صفحاتها الخاصة لتتمكّن من تثبيت ذلك الإصدار بالضبط والتحقق منه.',
     'versions.olderHidden':
-      'تُدرج الإصدارات الأحدث فقط — فالمخطط الأقدم يثبّت بصمة صورة أقدم.',
+      'تُدرج الإصدارات الأحدث فقط، فالمخطط الأقدم يثبّت بصمة صورة أقدم.',
     // --- توثيق: عناصر الواجهة (شريط جانبي + تنقّل الصفحة) ---
     'docs.index': 'التوثيق',
     'docs.group.Guides': 'الأدلّة',
@@ -1062,7 +1062,7 @@ export const ui = {
     'versions.note':
       'La línea más reciente vive en la página base; las líneas más antiguas tienen su propia página para que puedas fijar y verificar exactamente esa versión.',
     'versions.olderHidden':
-      'Solo se listan las versiones más recientes — un chart más antiguo fija un digest de imagen más antiguo.',
+      'Solo se listan las versiones más recientes, un chart más antiguo fija un digest de imagen más antiguo.',
     // --- Documentación: chrome (barra lateral + navegación de página) ---
     'docs.index': 'Documentación',
     'docs.group.Guides': 'Guías',

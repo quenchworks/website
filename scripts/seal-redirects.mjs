@@ -1,4 +1,4 @@
-// seal-redirects.mjs — wrap Astro's redirect stub pages in <html> so Pagefind
+// seal-redirects.mjs, wrap Astro's redirect stub pages in <html> so Pagefind
 // stops warning ("185 pages found without an <html> element").
 //
 // Astro 7 emits redirect pages as a bare `<!doctype html><title>…<meta refresh>…

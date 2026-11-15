@@ -23,9 +23,9 @@ const T: Record<string, Record<Lang, string>> = {
   eyebrow: { en: 'API · REFERENCE', ar: 'الواجهة · مرجع', es: 'API · REFERENCIA' },
   title: { en: 'API reference', ar: 'مرجع الواجهة', es: 'Referencia de la API' },
   intro: {
-    en: 'An interactive reference for the read-only JSON API, driven by the OpenAPI spec. Expand any endpoint and use "Try it out" to send a live request and read the real response — no key, no auth, same-origin.',
-    ar: 'مرجع تفاعلي لواجهة JSON البرمجية للقراءة فقط، مبني على مواصفة OpenAPI. وسِّع أي نقطة نهاية واستخدم «Try it out» لإرسال طلب حيّ وقراءة الاستجابة الفعلية — بلا مفتاح ولا مصادقة ومن نفس النطاق.',
-    es: 'Una referencia interactiva de la API JSON de solo lectura, generada a partir de la especificación OpenAPI. Expande cualquier endpoint y usa «Try it out» para enviar una petición en vivo y leer la respuesta real — sin clave, sin autenticación, mismo origen.',
+    en: 'An interactive reference for the read-only JSON API, driven by the OpenAPI spec. Expand any endpoint and use "Try it out" to send a live request and read the real response, no key, no auth, same-origin.',
+    ar: 'مرجع تفاعلي لواجهة JSON البرمجية للقراءة فقط، مبني على مواصفة OpenAPI. وسِّع أي نقطة نهاية واستخدم «Try it out» لإرسال طلب حيّ وقراءة الاستجابة الفعلية، بلا مفتاح ولا مصادقة ومن نفس النطاق.',
+    es: 'Una referencia interactiva de la API JSON de solo lectura, generada a partir de la especificación OpenAPI. Expande cualquier endpoint y usa «Try it out» para enviar una petición en vivo y leer la respuesta real, sin clave, sin autenticación, mismo origen.',
   },
   docsLink: { en: 'Prose API docs', ar: 'توثيق الواجهة النصي', es: 'Documentación de la API' },
   specLink: { en: 'Raw OpenAPI spec', ar: 'مواصفة OpenAPI الخام', es: 'Especificación OpenAPI' },
@@ -40,7 +40,7 @@ const tr = (k: string) => T[k][lang as Lang] ?? T[k].en;
 
 <Base
   title="API reference · QuenchWorks"
-  description="Interactive OpenAPI reference for the free QuenchWorks JSON API — expand any endpoint and Try it out against live, same-origin data."
+  description="Interactive OpenAPI reference for the free QuenchWorks JSON API, expand any endpoint and Try it out against live, same-origin data."
 >
   <Header />
   <!-- Chrome (heading + links) inherits the page dir; the Swagger widget itself
@@ -76,7 +76,7 @@ const tr = (k: string) => T[k][lang as Lang] ?? T[k].en;
   <link rel="stylesheet" href={`/vendor/swagger/swagger-ui.css?v=${SWAGGER_VERSION}`} />
   <script is:inline src={`/vendor/swagger/swagger-ui-bundle.js?v=${SWAGGER_VERSION}`}></script>
   <script is:inline>
-    // BaseLayout (from the apis preset) has no top URL bar — we point straight at
+    // BaseLayout (from the apis preset) has no top URL bar, we point straight at
     // the same-origin spec. supportedSubmitMethods is GET-only: the whole API is
     // read-only, so Try-it-out never offers a mutating verb.
     window.addEventListener('DOMContentLoaded', function () {
@@ -112,7 +112,7 @@ const tr = (k: string) => T[k][lang as Lang] ?? T[k].en;
       font-family: var(--font-sans);
     }
     .swagger-ui .wrapper { padding: 0; max-width: none; }
-    /* No shadows anywhere — separation is tone + 1px line. */
+    /* No shadows anywhere, separation is tone + 1px line. */
     .swagger-ui,
     .swagger-ui * { box-shadow: none !important; text-shadow: none !important; }
 
@@ -167,7 +167,7 @@ const tr = (k: string) => T[k][lang as Lang] ?? T[k].en;
     .swagger-ui .opblock-tag small { color: var(--color-ash); }
     .swagger-ui .opblock-tag:hover { background: var(--color-graphite); }
 
-    /* Operation blocks — flatten every method variant to the mono ramp */
+    /* Operation blocks, flatten every method variant to the mono ramp */
     .swagger-ui .opblock {
       background: var(--color-graphite);
       border: 1px solid var(--color-line);
@@ -298,7 +298,7 @@ const tr = (k: string) => T[k][lang as Lang] ?? T[k].en;
 
     /* ── Readability floor ──────────────────────────────────────────────
        Swagger's stock CSS colours a lot of text #3b4151 (dark slate) and
-       gives some containers light backgrounds — both vanish on the ink page.
+       gives some containers light backgrounds, both vanish on the ink page.
        These order-last rules guarantee everything is legible: force all text
        to ash, strip residual light backgrounds, then re-assert paper for the
        elements that must read first. ash is 9.15:1 on ink (AA). */
@@ -384,7 +384,7 @@ const tr = (k: string) => T[k][lang as Lang] ?? T[k].en;
     .swagger-ui .btn.authorize svg { fill: var(--color-ash) !important; }
 
     /* Native <select> dropdowns (Servers, media-type, content-type) were
-       white-on-white — force a dark fill + dark option list so the value and
+       white-on-white, force a dark fill + dark option list so the value and
        the opened list are both legible. */
     .swagger-ui select {
       -webkit-appearance: none !important;

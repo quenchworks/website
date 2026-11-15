@@ -1,4 +1,4 @@
-// check-dist-files.mjs — fail the build when dist nears Cloudflare Pages' 20,000-file
+// check-dist-files.mjs, fail the build when dist nears Cloudflare Pages' 20,000-file
 // cap. Past the cap a deploy fails silently and the live site stays on the old build.
 // Runs last in `pnpm build`, after Pagefind has written its fragments.
 import { readdirSync } from 'node:fs';

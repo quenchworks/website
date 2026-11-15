@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 
-// /rss.xml — the changelog as a feed, newest first.
+// /rss.xml, the changelog as a feed, newest first.
 export async function GET(context: APIContext) {
   const entries = (await getCollection('changelog')).sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime(),

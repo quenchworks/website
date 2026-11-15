@@ -1,4 +1,4 @@
-// gen-dockerfiles.mjs — regenerate src/data/dockerfiles/<slug>/<version>.dockerfile
+// gen-dockerfiles.mjs, regenerate src/data/dockerfiles/<slug>/<version>.dockerfile
 // so there is one file per CANONICAL published version of each runtime, each
 // pinning full-version FROM tags (its own image + cross-referenced bases like
 // jre/node/static). Bodies differ only by the pinned tags, so one on-disk file

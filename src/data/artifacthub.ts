@@ -143,7 +143,7 @@ async function fetchPackageDetailUncached(slug: string): Promise<AhDetail | null
   const repo = repoOf(slug);
   // Always have the Trivy snapshot ready: some images (e.g. coolify-realtime, a
   // sub-image of the coolify chart) have no chart of their own, so the AH call 404s
-  // — but we still know their CVE grade from security.json and must surface it.
+  //, but we still know their CVE grade from security.json and must surface it.
   const snap = snapshotSecurity(slug);
   const snapOnly = (): AhDetail | null =>
     snap.securityTotal !== undefined

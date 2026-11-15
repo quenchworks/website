@@ -18,7 +18,7 @@ export default defineConfig({
   integrations: [
     // Docs MDX shortcodes (Steps, Notice, Tabs, ...) are provided to each page
     // via the native <Content components={shortcodes} /> prop in
-    // src/pages/**/docs/[...slug].astro — see src/components/shortcodes/index.ts.
+    // src/pages/**/docs/[...slug].astro, see src/components/shortcodes/index.ts.
     // (Replaced astro-auto-import, which doesn't support Astro 7.)
     // Expressive Code must precede mdx() so it can pre-process fenced code
     // blocks before MDX compiles each page. Config lives in ec.config.mjs.

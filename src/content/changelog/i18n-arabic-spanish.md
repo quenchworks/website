@@ -1,7 +1,7 @@
 ---
 title: The site now speaks Arabic and Spanish
 date: 2026-06-22
-summary: The whole site — catalog, docs, and roadmap — is now available in Arabic (RTL) and Spanish, switchable from the header.
+summary: The whole site, catalog, docs, and roadmap, is now available in Arabic (RTL) and Spanish, switchable from the header.
 tags: ["website", "i18n"]
 ---
 

@@ -53,7 +53,7 @@ export const heldImages = images.filter((i) => isHeld(i.slug));
 /**
  * Canonical published versions for an image: the full X.Y.Z leaf tags, newest
  * first. Floating alias tags (e.g. `10` or `10.0` when `10.0.100` exists) are
- * dropped — they point at the same digest as their full leaf, so showing both
+ * dropped, they point at the same digest as their full leaf, so showing both
  * is noise and the alias is never the "latest". These drive the version table,
  * the version switcher, and which detail pages get generated.
  */

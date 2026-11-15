@@ -75,7 +75,7 @@ const fresh = vmeta?.published ? freshness(vmeta.published) : undefined;
 // the nightly scan (security.json). Umbrella stacks with no single matching image
 // simply omit the section.
 const secAll = (security as Record<string, any>)[entry.slug];
-// the chart deploys the image at appVersion — show that version's report (falls back to latest)
+// the chart deploys the image at appVersion, show that version's report (falls back to latest)
 const secRec = secAll?.versions?.find((v: any) => v.version === appVersion) ?? secAll;
 const sevs: [string, number][] = secRec
   ? [

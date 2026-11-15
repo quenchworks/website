@@ -4,7 +4,7 @@
 // from the JSON and surface under "Available now" instead.
 //
 // licenseClean: clean (OSI permissive/copyleft) | agpl (AGPL/GPL-3) | caution
-// (source-available, NOT OSI — carried only with a loud note + a clean alternative).
+// (source-available, NOT OSI, carried only with a loud note + a clean alternative).
 // priority: next (strongest candidates) | planned | exploring.
 import roadmapData from './roadmap.json';
 

@@ -67,7 +67,7 @@ const appVersion = ah?.appVersion ?? entry.version;
 const guide = BUILD_GUIDE[entry.slug] ?? { slug: 'build-images', label: t('runtime.guide.buildImages') };
 
 // The version list driving the page is the published canonical tags (full
-// X.Y.Z leaves, newest first), same as the routes — so the switcher, table, and
+// X.Y.Z leaves, newest first), same as the routes, so the switcher, table, and
 // generated pages all line up. The Dockerfile is best-effort per version: pick
 // the variant matching the selected version, else the newest variant.
 const allVersions = canonicalVersions(entry.versions);
@@ -245,9 +245,9 @@ const ld = {
                       <span class="ms-2 rounded border border-line px-1.5 py-0.5 align-middle font-mono text-[10px] uppercase tracking-widest text-ash">{t('detail.versions.latest')}</span>
                     )}
                   </td>
-                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.size ?? '—'}</td>
-                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : '—'}</td>
-                  <td class="py-2.5 font-mono text-xs text-ash" title={v.digest}>{v.digest ? `${v.digest.slice(0, 19)}…` : '—'}</td>
+                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.size ?? ', '}</td>
+                  <td class="py-2.5 pe-4 tabular-nums text-ash">{v.published ? v.published.slice(0, 10) : ', '}</td>
+                  <td class="py-2.5 font-mono text-xs text-ash" title={v.digest}>{v.digest ? `${v.digest.slice(0, 19)}…` : ', '}</td>
                 </tr>
               ))}
             </tbody>
@@ -280,17 +280,17 @@ const ld = {
       <p class="mt-2 text-sm leading-relaxed text-ash">
         {t('detail.verify.introBuild')}
       </p>
-      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature — built and signed by QuenchWorks CI</span>
+      <pre class="mt-2 overflow-x-auto rounded-xl border border-line bg-ink p-4 font-mono text-xs text-paper"><code><span class="text-ash"># 1. signature, built and signed by QuenchWorks CI</span>
 cosign verify {ref} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
-<span class="text-ash"># 2. SLSA build provenance — which workflow built it, from what</span>
+<span class="text-ash"># 2. SLSA build provenance, which workflow built it, from what</span>
 cosign verify-attestation --type https://slsa.dev/provenance/v1 {ref} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 
-<span class="text-ash"># 3. SPDX SBOM — the package inventory</span>
+<span class="text-ash"># 3. SPDX SBOM, the package inventory</span>
 cosign verify-attestation --type https://spdx.dev/Document/v2.3 {ref} \
   --certificate-identity-regexp 'https://github.com/quenchworks/.+' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com</code></pre>

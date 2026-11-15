@@ -1,4 +1,4 @@
-// check-suggest.mjs — the one runnable check behind the catalog search
+// check-suggest.mjs, the one runnable check behind the catalog search
 // suggestions. Asserts the ranking contract in src/data/suggest.ts (name before
 // category before summary; ties toward the catalog you're on; the `name === slug`
 // shorthand) and, if `dist/` has been built, that the emitted index still
@@ -71,7 +71,7 @@ assert.deepEqual(
 );
 
 // All three "cache" hits rank equally (category match), so the tiebreaks decide:
-// this catalog's kind first, then shorter name, then alphabetically — stable
+// this catalog's kind first, then shorter name, then alphabetically, stable
 // across keystrokes.
 assert.deepEqual(
   rankSuggestions(rows, 'cache', IMG).map((r) => [r[0], r[1]]),
@@ -112,7 +112,7 @@ if (existsSync(built)) {
   }
   assert.ok(index.some((r) => r[0] === 0), 'index has images');
   assert.ok(index.some((r) => r[0] === 1), 'index has charts');
-  console.log(`ok — ranking contract + ${index.length} built rows`);
+  console.log(`ok, ranking contract + ${index.length} built rows`);
 } else {
-  console.log('ok — ranking contract (dist/ not built, skipped the emitted index)');
+  console.log('ok, ranking contract (dist/ not built, skipped the emitted index)');
 }
