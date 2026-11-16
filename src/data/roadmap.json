@@ -637,5 +637,23 @@
     "note": "Reading server for manga, comics and ebooks with a web reader, OPDS and user libraries (.NET). HELD 2026-11-16 at v0.9.1.4: the release bundles the .NET 10.0.3 runtime (many HIGH/CRITICAL fixed in 10.0.13+), so it needs a from-source build on Wolfi dotnet-10, and it uses AutoMapper 12, whose fixes are in 15.x/16.x, where AutoMapper moved to a commercial license. Re-check when Kavita replaces or upgrades AutoMapper. Komga (shipped 2026-11-16) covers the same need.",
     "blocked": true,
     "blockedReason": "AutoMapper 12 has HIGH findings fixed only in 15.x/16.x (commercial license); the bundled .NET 10.0.3 runtime needs a from-source build."
+  },
+  {
+    "name": "Fider",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Feedback and feature-voting portal (Go + React, PostgreSQL). Sized 2026-11-16 at v0.40.0: the Go module needs only the usual x/* floors, but server-side rendering runs on rogchap.com/v8go v0.9.0 (released 2023-03, upstream inactive since 2024-08), which links a 2023 V8 statically; scanners cannot see that V8 and a recipe cannot patch it. HELD until Fider moves to a maintained JS engine or v8go fork.",
+    "blocked": true,
+    "blockedReason": "Statically linked V8 from v8go 0.9.0 (2023), invisible to scanners and not patchable in a recipe."
+  },
+  {
+    "name": "GoatCounter",
+    "category": "Observability",
+    "license": "EUPL-1.2 (modified)",
+    "licenseClean": "caution",
+    "priority": "planned",
+    "note": "Privacy-friendly web analytics (Go, SQLite or PostgreSQL). Sized 2026-11-16 at v2.7.0: buildable (house golang.org/x floors plus go-chi 5.4.0 clear every finding). The license is EUPL-1.2 with a trimmed Compatible Licenses appendix, so it is not an OSI-approved text; caution until that is reviewed."
   }
 ]
