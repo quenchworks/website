@@ -2493,7 +2493,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
+    "chartVersion": "0.0.24",
     "appVersion": "1.0.0",
     "description": "Hardened Kubernetes backup: Velero with its AWS plugin, backing up to SeaweedFS over S3 in the same install, with generated keys, a bucket created at install and the backup location already configured. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "37f18e5b-c2a2-4ef9-8e60-bdc9a2c4d5cb",
@@ -2516,7 +2516,7 @@
       },
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:8d225b663b6429b66946e56dc1151c8fd3ca2d39c65673cafb15a159d31dc63d"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:20d6e9154245f24d170958bcad488d6eef1cb243e2eab5b7fbc996a01f63d4e7"
       },
       {
         "name": "rclone",
@@ -13587,11 +13587,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "5.25.0",
     "description": "Grafana Operator: run Grafana instances and manage their dashboards, datasources, folders, alert rules, contact points and notification policies from Kubernetes custom resources, also against a Grafana it does not run. The thirteen CRDs ship with the chart and new Grafana instances default to the QuenchWorks Grafana image. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/grafana-operator",
-    "imageDigest": "sha256:93ab82b07bb59c3c5ee011543246714515311aa485894e3be9485ff8ea989d15",
+    "imageDigest": "sha256:76d1872f527edcc0bbaf0f045e561533f8547ca952c7ba436e08fe779cdb33b8",
     "repositoryID": "22d69dc8-9cab-432e-b567-0f12e20c32f4",
     "port": 8080,
     "upstream": "https://grafana.github.io/grafana-operator",
@@ -13616,7 +13616,7 @@
     "images": [
       {
         "name": "grafana-operator",
-        "image": "ghcr.io/quenchworks/images/grafana-operator@sha256:93ab82b07bb59c3c5ee011543246714515311aa485894e3be9485ff8ea989d15"
+        "image": "ghcr.io/quenchworks/images/grafana-operator@sha256:76d1872f527edcc0bbaf0f045e561533f8547ca952c7ba436e08fe779cdb33b8"
       },
       {
         "name": "grafana",
@@ -17075,11 +17075,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
-    "appVersion": "2.21.0",
+    "chartVersion": "0.0.15",
+    "appVersion": "2.21.1",
     "description": "KEDA: Kubernetes Event-Driven Autoscaling. Scales any workload from 0 to N off event sources (queues, streams, databases, Prometheus, cron and 60+ more) by driving a standard HorizontalPodAutoscaler through the ScaledObject/ScaledJob CRDs. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. Runs the operator and the external-metrics adapter as two deployments from one image; the adapter backs the aggregated v1beta1.external.metrics.k8s.io APIService, whose serving certificates the chart issues itself so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/keda",
-    "imageDigest": "sha256:6aabb44ddb5cb508777c73624b1c643787a6d824aa15f82832591fda8dae74ac",
+    "imageDigest": "sha256:90ffa51293013e7f7f00d9003e9677df784a69c28f1861e4a0a2d72b06b0c7b7",
     "repositoryID": "bc8e701f-5454-4aa9-a992-9e7d4008d737",
     "upstream": "https://keda.sh",
     "chartRef": "oci://ghcr.io/quenchworks/charts/keda",
@@ -17096,7 +17096,7 @@
     "images": [
       {
         "name": "keda",
-        "image": "ghcr.io/quenchworks/images/keda@sha256:6aabb44ddb5cb508777c73624b1c643787a6d824aa15f82832591fda8dae74ac"
+        "image": "ghcr.io/quenchworks/images/keda@sha256:90ffa51293013e7f7f00d9003e9677df784a69c28f1861e4a0a2d72b06b0c7b7"
       }
     ],
     "valuesKeys": [
@@ -19283,7 +19283,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.35",
+    "chartVersion": "0.0.36",
     "appVersion": "1.0.0",
     "description": "Hardened open lakehouse: Trino queries Apache Iceberg tables cataloged by Nessie and stored in SeaweedFS over S3, wired together with generated S3 keys and a bucket created at install. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "1ee7f195-4485-4dc4-bfe7-991a1c23e4b9",
@@ -19307,7 +19307,7 @@
       },
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:8d225b663b6429b66946e56dc1151c8fd3ca2d39c65673cafb15a159d31dc63d"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:20d6e9154245f24d170958bcad488d6eef1cb243e2eab5b7fbc996a01f63d4e7"
       },
       {
         "name": "rclone",
@@ -21655,11 +21655,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.1",
-    "appVersion": "26.11.0",
+    "chartVersion": "0.0.2",
+    "appVersion": "26.11.1",
     "description": "Memos: self-hosted note-taking and micro-journal with Markdown memos, tags, a timeline and an API, on SQLite, PostgreSQL or MySQL, with the admin declared at install. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/memos",
-    "imageDigest": "sha256:5b1d251bec25c7931294b6170862ad73ba8837ace44f6ec8d0057e08734fb415",
+    "imageDigest": "sha256:69ce51459ce99a557033c500c4f39573c1553fbd602f9601977a668c6a67cd4f",
     "repositoryID": "1150efa3-daee-4d82-9519-3ed0ace16c28",
     "port": 5230,
     "upstream": "https://usememos.com",
@@ -21668,7 +21668,7 @@
     "images": [
       {
         "name": "memos",
-        "image": "ghcr.io/quenchworks/images/memos@sha256:5b1d251bec25c7931294b6170862ad73ba8837ace44f6ec8d0057e08734fb415"
+        "image": "ghcr.io/quenchworks/images/memos@sha256:69ce51459ce99a557033c500c4f39573c1553fbd602f9601977a668c6a67cd4f"
       }
     ],
     "valuesKeys": [
@@ -24919,11 +24919,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
+    "chartVersion": "0.0.22",
     "appVersion": "2.28.0",
     "description": "ntfy, the simple pub/sub HTTP notification server for sending push notifications to your phone or desktop from any script. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/ntfy",
-    "imageDigest": "sha256:bbe7f2ea8761e77ad9b8bfd76e07c7467ce60379a9146b077497710cc750ed76",
+    "imageDigest": "sha256:2d8d2e7c7ab19e658bf102169edf60757a6b11c621251215c0b9e7a77e1abeab",
     "repositoryID": "2a61f84a-eeb6-41a9-8b34-d730105b7701",
     "port": 8080,
     "upstream": "https://ntfy.sh",
@@ -24932,7 +24932,7 @@
     "images": [
       {
         "name": "ntfy",
-        "image": "ghcr.io/quenchworks/images/ntfy@sha256:bbe7f2ea8761e77ad9b8bfd76e07c7467ce60379a9146b077497710cc750ed76"
+        "image": "ghcr.io/quenchworks/images/ntfy@sha256:2d8d2e7c7ab19e658bf102169edf60757a6b11c621251215c0b9e7a77e1abeab"
       }
     ],
     "valuesKeys": [
@@ -25126,7 +25126,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.45",
+    "chartVersion": "0.0.46",
     "appVersion": "2.20.0",
     "description": "Hardened, operator-free observability stack: Prometheus + Grafana + Alertmanager + kube-state-metrics + node-exporter + cAdvisor, wired together for metrics, alerting, and populated Kubernetes dashboards. No Prometheus Operator, no CRDs. All components are QuenchWorks-hardened, nonroot, CVE-gated images pinned by digest and cosign-signed. node-exporter and cAdvisor take host access by design (the stack's purpose is node + container observability); both are toggleable.",
     "repositoryID": "b35aa9cc-1558-4053-b967-ae9f74250035",
@@ -25162,7 +25162,7 @@
       },
       {
         "name": "cadvisor",
-        "image": "ghcr.io/quenchworks/images/cadvisor@sha256:d9fba43dd1acd1382b8b9a3370ae0b5ea1792b32eb5a6bc8c85dd7d427a7ebc2"
+        "image": "ghcr.io/quenchworks/images/cadvisor@sha256:3d808458835957f7135ac0dfc54da56219f9af8f77ad27c500c40f541b027853"
       }
     ],
     "upstreams": [
@@ -31874,11 +31874,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.31",
+    "chartVersion": "0.0.32",
     "appVersion": "10.3.7",
     "description": "Lightweight distributed relational database built on SQLite with Raft consensus (Go). Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rqlite",
-    "imageDigest": "sha256:4e9b37cf8de9761d01cb798196d908b3b0f2bc3d2b12df85838aa39ae50b15c9",
+    "imageDigest": "sha256:ce51dac9b087f4766245e2dd251664a8efb776c25fdb7b4e90df157fb7214762",
     "repositoryID": "e66bc57f-d10d-4e7c-a13d-a663d33c3d32",
     "upstream": "https://rqlite.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/rqlite",
@@ -31886,7 +31886,7 @@
     "images": [
       {
         "name": "rqlite",
-        "image": "ghcr.io/quenchworks/images/rqlite@sha256:4e9b37cf8de9761d01cb798196d908b3b0f2bc3d2b12df85838aa39ae50b15c9"
+        "image": "ghcr.io/quenchworks/images/rqlite@sha256:ce51dac9b087f4766245e2dd251664a8efb776c25fdb7b4e90df157fb7214762"
       }
     ],
     "valuesKeys": [
@@ -32107,11 +32107,11 @@
     "tier": "low",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "1.0.5",
     "description": "S3-compatible, high-performance object store written in Rust with a zero-master architecture, positioned as an Apache-2.0 MinIO alternative. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rustfs",
-    "imageDigest": "sha256:12f4a4e90cd42709d8094389ea8c044fcc1fe9a521c345713f5517e469311637",
+    "imageDigest": "sha256:5a06bae8c4c8ee84593652e6e60c8976067683cb972b639688ace22b811ea530",
     "repositoryID": "304c53e5-aaac-42f5-b1bb-aa702aaf1596",
     "port": 9000,
     "upstream": "https://github.com/rustfs/rustfs",
@@ -32120,7 +32120,7 @@
     "images": [
       {
         "name": "rustfs",
-        "image": "ghcr.io/quenchworks/images/rustfs@sha256:12f4a4e90cd42709d8094389ea8c044fcc1fe9a521c345713f5517e469311637"
+        "image": "ghcr.io/quenchworks/images/rustfs@sha256:5a06bae8c4c8ee84593652e6e60c8976067683cb972b639688ace22b811ea530"
       }
     ],
     "valuesKeys": [
@@ -32567,11 +32567,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.34",
+    "chartVersion": "0.0.35",
     "appVersion": "4.48",
     "description": "Fast distributed storage for blobs, objects, and files (S3 API) built on Facebook's Haystack design, with O(1) disk seeks for billions of small files. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/seaweedfs",
-    "imageDigest": "sha256:8d225b663b6429b66946e56dc1151c8fd3ca2d39c65673cafb15a159d31dc63d",
+    "imageDigest": "sha256:20d6e9154245f24d170958bcad488d6eef1cb243e2eab5b7fbc996a01f63d4e7",
     "repositoryID": "c0e22525-4794-4f13-a436-671e0a536544",
     "port": 8333,
     "upstream": "https://github.com/seaweedfs/seaweedfs",
@@ -32580,7 +32580,7 @@
     "images": [
       {
         "name": "seaweedfs",
-        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:8d225b663b6429b66946e56dc1151c8fd3ca2d39c65673cafb15a159d31dc63d"
+        "image": "ghcr.io/quenchworks/images/seaweedfs@sha256:20d6e9154245f24d170958bcad488d6eef1cb243e2eab5b7fbc996a01f63d4e7"
       }
     ],
     "valuesKeys": [
@@ -33500,11 +33500,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "4.0.0",
     "description": "sish: self-hosted HTTP(S), WebSocket and TCP tunnels over plain SSH, an ngrok alternative where clients need only ssh -R. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/sish",
-    "imageDigest": "sha256:5ae003e3c8f992c68d5211b959796314ec3b8162e8502cf0af38ee033482ca5f",
+    "imageDigest": "sha256:a0790f561256a5a481a803c8d7b7d9aab63eb7aedfab180061689b16d575d763",
     "repositoryID": "2b3df385-aa9a-47c5-8878-0fa6aa3be6af",
     "upstream": "https://docs.ssi.sh",
     "chartRef": "oci://ghcr.io/quenchworks/charts/sish",
@@ -33512,7 +33512,7 @@
     "images": [
       {
         "name": "sish",
-        "image": "ghcr.io/quenchworks/images/sish@sha256:5ae003e3c8f992c68d5211b959796314ec3b8162e8502cf0af38ee033482ca5f"
+        "image": "ghcr.io/quenchworks/images/sish@sha256:a0790f561256a5a481a803c8d7b7d9aab63eb7aedfab180061689b16d575d763"
       }
     ],
     "valuesKeys": [
@@ -34503,7 +34503,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
+    "chartVersion": "0.0.4",
     "appVersion": "5.38.0",
     "description": "Gatus (status page and endpoint checks) with ntfy (push notifications) and Uptime Kuma (uptime monitors with a UI): Gatus alerts through ntfy and watches ntfy and Uptime Kuma from the first install. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "d2920a9d-e4a5-45f4-b177-324e6b335e72",
@@ -34523,7 +34523,7 @@
       },
       {
         "name": "ntfy",
-        "image": "ghcr.io/quenchworks/images/ntfy@sha256:bbe7f2ea8761e77ad9b8bfd76e07c7467ce60379a9146b077497710cc750ed76"
+        "image": "ghcr.io/quenchworks/images/ntfy@sha256:2d8d2e7c7ab19e658bf102169edf60757a6b11c621251215c0b9e7a77e1abeab"
       },
       {
         "name": "uptime-kuma",
@@ -40400,7 +40400,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.5",
     "appVersion": "1.32.2",
     "description": "Temporal with PostgreSQL and the Temporal UI: durable workflow orchestration with the schema created at install, the default namespace registered, and the UI wired to the frontend. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "e8c679be-af91-4f73-af98-747e2e79ae93",
@@ -40427,7 +40427,7 @@
       },
       {
         "name": "temporal-cli",
-        "image": "ghcr.io/quenchworks/images/temporal-cli@sha256:7755b4a4c097aa8de1291d5867ac22c0914a4cb6cbbfb6f7727254e6c4a9d148"
+        "image": "ghcr.io/quenchworks/images/temporal-cli@sha256:c70e78d0e421033eeb37bc5f34cce0cd2c145c1ae71744f58550a828fd0f972c"
       }
     ],
     "upstreams": [
