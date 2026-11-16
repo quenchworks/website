@@ -591,5 +591,15 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Real-time collaborative document editor with plugins. v3.3.17, Node (pnpm workspace). Sized 2026-11-16: the production install carries 60 findings in about 15 packages, several needing majors (tar 6 to 7, basic-ftp 5 to 6, @azure/msal-node 5 to 7, image-size 1 to 2) and recent fixes still inside npm's 14-day cooldown. Revisit with overrides once the fixes clear."
+  },
+  {
+    "name": "RustDesk Server",
+    "category": "Networking",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "blocked": true,
+    "blockedReason": "1.1.16 locks rustls 0.20/0.21, sqlx 0.6, jsonwebtoken 8 and ring 0.16; their fixes are major upgrades the server code would need to adopt.",
+    "note": "Self-hosted rendezvous (hbbs) and relay (hbbr) servers for RustDesk remote desktop. v1.1.16, Rust. HELD 2026-11-16: the Cargo.lock carries rustls 0.20/0.21, sqlx 0.6, jsonwebtoken 8 and other old crates whose fixes need major upgrades. Re-check at the next release."
   }
 ]
