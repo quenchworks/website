@@ -923,6 +923,110 @@
     }
   },
   {
+    "slug": "envoy",
+    "path": "vex/envoy/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/envoy/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84303"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84304"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84445"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-111497"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/brotli@1.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. Envoy builds brotli at commit 42a2ed4355bc (2026-09-30), labelled 1.2.0-260930-42a2ed4.envoy. The fix on brotli's main branch is commit 0ed4268a4401 (2026-02-27), an ancestor of 42a2ed4 (GitHub compare 0ed4268...42a2ed4: ahead, behind_by=0). The 2026-10-21 commits 50a9b70a, b418fa81 and da980636 are its backports to the v1.2, v1.1 and v1.0 release branches, which is why the advisory names only release versions (1.2.1, 1.1.1, 1.0.10). The vulnerable code is therefore not in the build."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-27135"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/nghttp2@1.66.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. Envoy takes nghttp2 from its own Bazel registry as module 1.66.0.envoy (envoyproxy/bazel-registry 8ef390e1, modules/nghttp2/1.66.0.envoy/source.json), which applies nghttp2-CVE-2026-27135_part1.patch to _part4.patch over the v1.66.0 release tarball. The vulnerable code is therefore not in the build."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-85229"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/skywalking-data-collect-protocol@10.4.0"
+            }
+          ],
+          "status": "not_affected",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for the Apache SkyWalking server (web page generation in the UI). Envoy links only skywalking-data-collect-protocol, the protobuf definitions its envoy.tracers.skywalking extension (via cpp2sky) uses to send spans; no SkyWalking server, UI or alarm code is built into envoy-static.",
+          "justification": "vulnerable_code_not_present"
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-71216"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/skywalking-data-collect-protocol@10.4.0"
+            }
+          ],
+          "status": "not_affected",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for the Apache SkyWalking server (the PagerDuty alarm hook). Envoy links only skywalking-data-collect-protocol, the protobuf definitions its envoy.tracers.skywalking extension (via cpp2sky) uses to send spans; no SkyWalking server, UI or alarm code is built into envoy-static.",
+          "justification": "vulnerable_code_not_present"
+        }
+      ]
+    }
+  },
+  {
     "slug": "external-secrets",
     "path": "vex/external-secrets/2026-10-13",
     "doc": {
@@ -2818,6 +2922,136 @@
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
           "impact_statement": "The advisory: minimatch before 11.0.1 expands attacker-controlled **/.. segments in firstPhasePreProcess() and compares them pairwise in secondPhasePreProcess(), run at optimizationLevel 2 or higher. Those functions and the optimizationLevel option arrived with the minimatch 7+ rewrite; 3.1.5 is the old single-file implementation. Verified 2026-11-01 on the npm tarball minimatch-3.1.5.tgz: grep -c 'firstPhasePreProcess\\|optimizationLevel' package/minimatch.js returned 0. The minimatch 10 copies are overridden to 11.0.1 instead (melange.yaml)."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "netbird",
+    "path": "vex/netbird/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/netbird/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54909"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/pion/stun/v3@v3.1.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on NetBird v0.83.1. The fix (pion/stun commit fa9f074a33, 'Fix panic on short XOR-MAPPED-ADDRESS value', released in 3.1.5) moves the len(value) <= 4 check in XORMappedAddress.GetFromAs ahead of the read of the address family. Every fixed stun release moves to pion/transport v4, whose types NetBird's client passes into stun (client/internal/relay/relay.go), so the module stays at v3.1.0 and the build applies that exact change to the vendored copy: apps/<image>/stun-v3.1.0-xoraddr.patch, patched in melange.yaml with go mod vendor and built with -mod=vendor, and the build fails unless the check sits before the family read. The vulnerable code is therefore not in the binary. Revisit when NetBird moves to pion/stun 3.1.5 or later."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "netbird-nblink",
+    "path": "vex/netbird-nblink/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/netbird-nblink/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54909"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/pion/stun/v3@v3.1.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on NetBird v0.83.1. The fix (pion/stun commit fa9f074a33, 'Fix panic on short XOR-MAPPED-ADDRESS value', released in 3.1.5) moves the len(value) <= 4 check in XORMappedAddress.GetFromAs ahead of the read of the address family. Every fixed stun release moves to pion/transport v4, whose types NetBird's client passes into stun (client/internal/relay/relay.go), so the module stays at v3.1.0 and the build applies that exact change to the vendored copy: apps/<image>/stun-v3.1.0-xoraddr.patch, patched in melange.yaml with go mod vendor and built with -mod=vendor, and the build fails unless the check sits before the family read. The vulnerable code is therefore not in the binary. Revisit when NetBird moves to pion/stun 3.1.5 or later."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "netbird-relay",
+    "path": "vex/netbird-relay/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/netbird-relay/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54909"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/pion/stun/v3@v3.1.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on NetBird v0.83.1. The fix (pion/stun commit fa9f074a33, 'Fix panic on short XOR-MAPPED-ADDRESS value', released in 3.1.5) moves the len(value) <= 4 check in XORMappedAddress.GetFromAs ahead of the read of the address family. Every fixed stun release moves to pion/transport v4, whose types NetBird's client passes into stun (client/internal/relay/relay.go), so the module stays at v3.1.0 and the build applies that exact change to the vendored copy: apps/<image>/stun-v3.1.0-xoraddr.patch, patched in melange.yaml with go mod vendor and built with -mod=vendor, and the build fails unless the check sits before the family read. The vulnerable code is therefore not in the binary. Revisit when NetBird moves to pion/stun 3.1.5 or later."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "netbird-reverse-proxy",
+    "path": "vex/netbird-reverse-proxy/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/netbird-reverse-proxy/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54909"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/pion/stun/v3@v3.1.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on NetBird v0.83.1. The fix (pion/stun commit fa9f074a33, 'Fix panic on short XOR-MAPPED-ADDRESS value', released in 3.1.5) moves the len(value) <= 4 check in XORMappedAddress.GetFromAs ahead of the read of the address family. Every fixed stun release moves to pion/transport v4, whose types NetBird's client passes into stun (client/internal/relay/relay.go), so the module stays at v3.1.0 and the build applies that exact change to the vendored copy: apps/<image>/stun-v3.1.0-xoraddr.patch, patched in melange.yaml with go mod vendor and built with -mod=vendor, and the build fails unless the check sits before the family read. The vulnerable code is therefore not in the binary. Revisit when NetBird moves to pion/stun 3.1.5 or later."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "netbird-server",
+    "path": "vex/netbird-server/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/netbird-server/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-54909"
+          },
+          "products": [
+            {
+              "@id": "pkg:golang/github.com/pion/stun/v3@v3.1.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on NetBird v0.83.1. The fix (pion/stun commit fa9f074a33, 'Fix panic on short XOR-MAPPED-ADDRESS value', released in 3.1.5) moves the len(value) <= 4 check in XORMappedAddress.GetFromAs ahead of the read of the address family. Every fixed stun release moves to pion/transport v4, whose types NetBird's client passes into stun (client/internal/relay/relay.go), so the module stays at v3.1.0 and the build applies that exact change to the vendored copy: apps/<image>/stun-v3.1.0-xoraddr.patch, patched in melange.yaml with go mod vendor and built with -mod=vendor, and the build fails unless the check sits before the family read. The vulnerable code is therefore not in the binary. Revisit when NetBird moves to pion/stun 3.1.5 or later."
         }
       ]
     }
