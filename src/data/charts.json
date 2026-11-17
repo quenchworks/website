@@ -40164,6 +40164,62 @@
     ]
   },
   {
+    "slug": "vpn-stack",
+    "name": "Vpn Stack",
+    "category": "Stacks",
+    "summary": "A self-hosted VPN: NetBird (WireGuard mesh with single sign-on, access policies and routing peers) on a highly available PostgreSQL (a 3-member Patroni cluster that fails over on its own).",
+    "tier": "standard",
+    "license": "Unknown",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "0.83.1",
+    "description": "A self-hosted VPN: NetBird (WireGuard mesh with single sign-on, access policies and routing peers) on a highly available PostgreSQL (a 3-member Patroni cluster that fails over on its own). All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
+    "repositoryID": "5bbeed46-2f2c-4b6f-8fa9-36674b8d66f8",
+    "upstream": "https://quench-works.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/vpn-stack",
+    "stack": true,
+    "ahCategory": "networking",
+    "components": [
+      "netbird"
+    ],
+    "images": [
+      {
+        "name": "netbird-management",
+        "image": "ghcr.io/quenchworks/images/netbird-management@sha256:7d040af372ec5f6fce277c4d2d69c28aa7a39b61790e484701e41d00c2f113b7"
+      },
+      {
+        "name": "netbird-signal",
+        "image": "ghcr.io/quenchworks/images/netbird-signal@sha256:b7e5a9603dbacb16873f6af4b7b77ce7f044092101cfd507b8c3695b798e6f39"
+      },
+      {
+        "name": "netbird-relay",
+        "image": "ghcr.io/quenchworks/images/netbird-relay@sha256:4c1b9e1c34288ca7188a094c2011852d93417618580785fd772717ae55e8d8a5"
+      },
+      {
+        "name": "netbird-dashboard",
+        "image": "ghcr.io/quenchworks/images/netbird-dashboard@sha256:c771bc5b4c39575267fbc7aa1944ed47775d2d7c8e376b4c68662cca74fe5d8f"
+      },
+      {
+        "name": "netbird",
+        "image": "ghcr.io/quenchworks/images/netbird@sha256:bc9cfcab715c779695abbe59164ca74bd341cea3c0777a2cb5271bf0e6d8ef7b"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:f2aadd3d9651056f67735ec100ce255fabc86121bfa45f20fa2a06df82886d46"
+      }
+    ],
+    "upstreams": [
+      "https://github.com/netbirdio/netbird"
+    ],
+    "valuesKeys": [
+      "netbird",
+      "netbird.domain",
+      "netbird.postgresql",
+      "netbird.dashboard",
+      "netbird.ingress"
+    ]
+  },
+  {
     "slug": "wakapi",
     "name": "wakapi",
     "category": "Observability",
