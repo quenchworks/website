@@ -8,6 +8,14 @@
     "note": "Collaborative bookmark manager that archives each page as a screenshot, PDF and single HTML file (Next.js + a Node worker, PostgreSQL). HELD 2026-11-17: every archive format goes through Chromium, and public Wolfi chromium has been frozen at 149.0.7827.53 since June 2026 with over 1,600 fixable findings, the same wall that holds Gotenberg. The recipe builds and is kept ready; re-check when a scannable Chromium source exists."
   },
   {
+    "name": "Ghostfolio",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Wealth management and portfolio tracker for stocks, ETFs and crypto (NestJS + Angular, PostgreSQL and Redis, Prisma). Sized 2026-11-17 at 3.100.0: runs on Node 24 (engines >=22.23.5); the lockfile has 83 findings in 17 packages, 82 fixable with overrides (several are the Prisma dev-server set seen in Rallly). One has no fix: node-forge 1.4.0 CVE-2026-85393 (RSA PKCS#1 v1.5 signature verification), reached only through google-p12-pem, which converts PKCS#12 keys to PEM and verifies no signatures; a VEX with file:line evidence is the plan, to prove when the recipe is written."
+  },
+  {
     "name": "Kener",
     "category": "Observability",
     "license": "MIT",
