@@ -8,6 +8,14 @@
     "note": "Collaborative bookmark manager that archives each page as a screenshot, PDF and single HTML file (Next.js + a Node worker, PostgreSQL). HELD 2026-11-17: every archive format goes through Chromium, and public Wolfi chromium has been frozen at 149.0.7827.53 since June 2026 with over 1,600 fixable findings, the same wall that holds Gotenberg. The recipe builds and is kept ready; re-check when a scannable Chromium source exists."
   },
   {
+    "name": "Paperless-ngx",
+    "category": "Apps & productivity",
+    "license": "GPL-3.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Document management that scans, OCRs and indexes paper documents (Django, Celery, Angular; PostgreSQL and Redis). Sized 2026-11-17 at v3.4.2: uv.lock has 15 fixable findings in 3 packages (nltk, oauthlib, tornado), none without a fix; the UI lockfile is clean. The OCR stack is in Wolfi (tesseract with language packs, ghostscript, qpdf, pngquant, poppler, ImageMagick, libmagic, zbar) except unpaper, so the image turns the OCR clean step off (PAPERLESS_OCR_CLEAN=none) and says so."
+  },
+  {
     "name": "Kener",
     "category": "Observability",
     "license": "MIT",
