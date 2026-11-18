@@ -24,6 +24,9 @@ const sections = [
     p: 'Charts reference images by sha256 digest, never a moving tag. What you install is exactly the artifact that passed the gate and was signed, with no room for a tag to drift underneath you.',
   },
 ];
+import securityHistory from '../data/security-history.json';
+import { catalogFixStats, type Point } from '../lib/fix-episodes';
+const fix = catalogFixStats(securityHistory.images as Record<string, Point[]>);
 ---
 
 <Base title="Security · QuenchWorks" description="How QuenchWorks gates images on fixable CVEs: built from source, signed with cosign, pinned by digest, rescanned nightly, with every open CVE published.">
@@ -83,6 +86,11 @@ docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:{redis.appVers
         until its rebuild, or until upstream ships a fix. The live counts, per image, are in the
         security report and at <a href="/api/v1/security.json" class="underline underline-offset-4 hover:text-paper">/api/v1/security.json</a>.
       </p>
+      {fix.median !== null && (
+        <p class="mt-3 text-sm leading-relaxed text-ash tabular-nums">
+          Across the nightly scans from {securityHistory.from} to {securityHistory.to}, an image's fixable findings were cleared {fix.episodes} times; the median time from the first scan that found them to the next clean scan was {fix.median} {fix.median === 1 ? 'day' : 'days'}, and nine in ten were cleared within {fix.p90} {fix.p90 === 1 ? 'day' : 'days'}. Findings still open at the last scan are not counted here; they are in the report.
+        </p>
+      )}
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">

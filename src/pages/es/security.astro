@@ -24,6 +24,9 @@ const sections = [
     p: 'Los charts referencian las imágenes por digest sha256, nunca por una etiqueta móvil. Lo que instalas es exactamente el artefacto que pasó la puerta de control y fue firmado, sin margen para que una etiqueta se desplace por debajo.',
   },
 ];
+import securityHistory from '../../data/security-history.json';
+import { catalogFixStats, type Point } from '../../lib/fix-episodes';
+const fix = catalogFixStats(securityHistory.images as Record<string, Point[]>);
 ---
 
 <Base title="Seguridad · QuenchWorks" description="Cómo QuenchWorks controla las imágenes frente a CVE corregibles: compiladas desde el código fuente, firmadas con cosign, fijadas por digest, reanalizadas cada noche y con cada CVE abierto publicado.">
@@ -84,6 +87,11 @@ docker buildx imagetools inspect ghcr.io/quenchworks/images/redis:{redis.appVers
         puede tener CVE hasta su recompilación, o hasta que el upstream publique una corrección. Los
         recuentos en vivo, por imagen, están en el informe de seguridad y en <a href="/api/v1/security.json" class="underline underline-offset-4 hover:text-paper">/api/v1/security.json</a>.
       </p>
+      {fix.median !== null && (
+        <p class="mt-3 text-sm leading-relaxed text-ash tabular-nums">
+          En los análisis nocturnos del {securityHistory.from} al {securityHistory.to}, los hallazgos corregibles de una imagen se resolvieron {fix.episodes} veces; la mediana entre el primer análisis que los detectó y el siguiente análisis limpio fue de {fix.median} {fix.median === 1 ? 'día' : 'días'}, y nueve de cada diez se resolvieron en {fix.p90} {fix.p90 === 1 ? 'día' : 'días'} o menos. Los hallazgos que siguen abiertos en el último análisis no se cuentan aquí; están en el informe.
+        </p>
+      )}
     </section>
 
     <section class="mt-10 rounded-xl border border-line bg-graphite p-6">

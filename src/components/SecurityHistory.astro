@@ -5,11 +5,12 @@
 // had a fixable finding at some point, since a flat zero line says nothing the grade
 // does not already say.
 import history from '../data/security-history.json';
+import { fixDays, quantile, type Point } from '../lib/fix-episodes';
 
 interface Props { slug: string }
 const { slug } = Astro.props;
 
-const series: [string, number, number][] = (history.images as Record<string, [string, number, number][]>)[slug] ?? [];
+const series: Point[] = (history.images as Record<string, Point[]>)[slug] ?? [];
 const day = (d: string) => Date.parse(d + 'T00:00:00Z') / 86400000;
 const from = day(history.from), to = day(history.to);
 const peak = Math.max(0, ...series.map((p) => p[1]));
@@ -31,19 +32,10 @@ const daysWithFixable = (() => {
   });
   return Math.round(n);
 })();
-// Time to fix: an episode opens at the first scan with fixable findings and closes at the next
-// scan with none. An episode still open at the last scan is not counted.
-const fixDays: number[] = [];
-let opened: string | null = null;
-for (const [d, f] of series) {
-  if (f > 0 && opened === null) opened = d;
-  else if (f === 0 && opened !== null) { fixDays.push(day(d) - day(opened)); opened = null; }
-}
-fixDays.sort((a, b) => a - b);
-const medianFix = fixDays.length
-  ? Math.round(fixDays.length % 2 ? fixDays[(fixDays.length - 1) / 2] : (fixDays[fixDays.length / 2 - 1] + fixDays[fixDays.length / 2]) / 2)
-  : null;
-const fixText = medianFix === null ? '' : `cleared ${fixDays.length}× · median ${medianFix} day${medianFix === 1 ? '' : 's'} to fix`;
+// Time to fix: src/lib/fix-episodes.ts (episodes still open at the last scan are not counted).
+const fixDaysSorted = fixDays(series).sort((a, b) => a - b);
+const medianFix = quantile(fixDaysSorted, 0.5);
+const fixText = medianFix === null ? '' : `cleared ${fixDaysSorted.length}× · median ${medianFix} day${medianFix === 1 ? '' : 's'} to fix`;
 const label = `Fixable findings per nightly scan, ${history.from} to ${history.to}: peak ${peak}, ${daysWithFixable} day${daysWithFixable === 1 ? '' : 's'} with any${fixText ? `, ${fixText}` : ''}.`;
 ---
 {show && (
