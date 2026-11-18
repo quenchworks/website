@@ -493,8 +493,8 @@
     "category": "Coordination & mesh",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Cilium's own patched Envoy; not reusable from our stock envoy image. Measured 2026-10-19: Wolfi packages only cilium-envoy-1.19 at 1.19.3, behind our cilium lines (1.18.15, 1.19.9, 1.20.3), and cilium/proxy builds Envoy with Bazel (hours per arch, past the CI budget). Hold until Wolfi tracks each cilium line; the cilium chart keeps L7 proxy off until then."
+    "priority": "next",
+    "note": "Cilium's own patched Envoy, the L7 proxy the cilium chart keeps off without it. In progress 2026-11-18 (images#111): cilium 1.20.5 pairs with cilium-envoy on Envoy 1.39.6 (cilium/proxy dee711ff, Bazel 8.7), the Envoy line our envoy image now builds from source on CI in about 2h per arch, which lifts the old CI-budget hold."
   },
   {
     "name": "Consul Dataplane",
