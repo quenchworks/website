@@ -824,11 +824,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
+    "chartVersion": "0.0.6",
     "appVersion": "1.6.0",
     "description": "Apache Pinot, the real-time distributed OLAP datastore: controller, broker, server and optional minion on a bundled ZooKeeper. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image built from source, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/apache-pinot",
-    "imageDigest": "sha256:6113aa6876b7cca51ee85da2fd30c22ce7d6245d3ffddca9f3eb34d446cd723e",
+    "imageDigest": "sha256:7bb1f7c1185766ac7aa1ce20f6b2f0a870960e66f56912a8ddd519c64b684c31",
     "repositoryID": "57b2b9d7-0344-4439-9257-be81376f8bdf",
     "upstream": "https://pinot.apache.org",
     "chartRef": "oci://ghcr.io/quenchworks/charts/apache-pinot",
@@ -836,7 +836,7 @@
     "images": [
       {
         "name": "apache-pinot",
-        "image": "ghcr.io/quenchworks/images/apache-pinot@sha256:6113aa6876b7cca51ee85da2fd30c22ce7d6245d3ffddca9f3eb34d446cd723e"
+        "image": "ghcr.io/quenchworks/images/apache-pinot@sha256:7bb1f7c1185766ac7aa1ce20f6b2f0a870960e66f56912a8ddd519c64b684c31"
       }
     ],
     "valuesKeys": [
@@ -984,11 +984,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.23",
-    "appVersion": "3.19.0",
+    "chartVersion": "0.0.24",
+    "appVersion": "3.20.0",
     "description": "Apache APISIX, the cloud-native API gateway built on OpenResty/LuaJIT: dynamic routing, load balancing, authentication and observability driven by an etcd-backed control plane and a REST Admin API. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/apisix",
-    "imageDigest": "sha256:f978d032d1b1e66383a4046b022b89d286857537709a7efe7d3a32998d86e36c",
+    "imageDigest": "sha256:c180c8d6c51ce8c9028be12a995d9908fad8b084e605e2392e6f27d2039e02f1",
     "repositoryID": "e06a4948-6fb6-4fe8-be15-107ec13a9b7b",
     "port": 9080,
     "upstream": "https://apisix.apache.org",
@@ -997,7 +997,7 @@
     "images": [
       {
         "name": "apisix",
-        "image": "ghcr.io/quenchworks/images/apisix@sha256:f978d032d1b1e66383a4046b022b89d286857537709a7efe7d3a32998d86e36c"
+        "image": "ghcr.io/quenchworks/images/apisix@sha256:c180c8d6c51ce8c9028be12a995d9908fad8b084e605e2392e6f27d2039e02f1"
       },
       {
         "name": "etcd",
@@ -4676,7 +4676,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.19",
+    "chartVersion": "0.0.20",
     "appVersion": "1.20.5",
     "description": "Cilium networking for Kubernetes: the eBPF agent DaemonSet (CNI, IPAM through CiliumNodes, network policy, VXLAN overlay) with the QuenchWorks Cilium Operator as a dependency. Hardened by QuenchWorks: the agent built from source on Wolfi, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/cilium",
@@ -4689,6 +4689,10 @@
       {
         "name": "cilium",
         "image": "ghcr.io/quenchworks/images/cilium@sha256:7eac76074b4835d027999799aaaea6b99214d216fa74f694182bf09d41b25bc9"
+      },
+      {
+        "name": "cilium-envoy",
+        "image": "ghcr.io/quenchworks/images/cilium-envoy@sha256:1257e804bf086214ea45a10aa9e1311ca40bd8920e5f96831ad6f6a861b3094e"
       },
       {
         "name": "cilium-operator",
@@ -10058,11 +10062,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.24",
+    "chartVersion": "0.0.25",
     "appVersion": "2.15.0",
     "description": "External Secrets Operator: syncs secrets from external APIs (Vault, cloud secret managers, and more) into Kubernetes Secrets via ExternalSecret/SecretStore CRDs. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. Runs the single ESO binary as three deployments (controller, webhook, cert-controller); the cert-controller manages the webhook's self-signed CA, so no cert-manager dependency is required.",
     "imageRepository": "ghcr.io/quenchworks/images/external-secrets",
-    "imageDigest": "sha256:fcd141b9a5cbd525f297317ce06107748810ed384f29dcb9660c52d1ec0287cb",
+    "imageDigest": "sha256:3d4cf2f4fa083ae6dfbad65873ff2f0ec21fb9abe62f6d048f85f907cafb021f",
     "repositoryID": "a43cf3cf-e802-4bd6-8910-40e27275bb18",
     "upstream": "https://external-secrets.io",
     "chartRef": "oci://ghcr.io/quenchworks/charts/external-secrets",
@@ -10079,7 +10083,7 @@
     "images": [
       {
         "name": "external-secrets",
-        "image": "ghcr.io/quenchworks/images/external-secrets@sha256:fcd141b9a5cbd525f297317ce06107748810ed384f29dcb9660c52d1ec0287cb"
+        "image": "ghcr.io/quenchworks/images/external-secrets@sha256:3d4cf2f4fa083ae6dfbad65873ff2f0ec21fb9abe62f6d048f85f907cafb021f"
       }
     ],
     "valuesKeys": [
@@ -10833,11 +10837,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.8",
+    "chartVersion": "0.0.9",
     "appVersion": "2.3.0",
     "description": "Apache Flink session cluster: stateful stream and batch processing with one jobmanager and scalable taskmanagers. Hardened by QuenchWorks on the official binary distribution with log4j fixed, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/flink",
-    "imageDigest": "sha256:a34b20a605b2eb8337b17425b7e889799717851ffc10fe9e571d8cbcfd9d6d24",
+    "imageDigest": "sha256:6aebed8879d5b7fc8582fb43d731ba71250b7132b034d80763f2dff51b9a312e",
     "repositoryID": "37ff4f3e-fe74-4f72-a795-081c6898a446",
     "port": 8081,
     "upstream": "https://flink.apache.org",
@@ -10846,7 +10850,7 @@
     "images": [
       {
         "name": "flink",
-        "image": "ghcr.io/quenchworks/images/flink@sha256:a34b20a605b2eb8337b17425b7e889799717851ffc10fe9e571d8cbcfd9d6d24"
+        "image": "ghcr.io/quenchworks/images/flink@sha256:6aebed8879d5b7fc8582fb43d731ba71250b7132b034d80763f2dff51b9a312e"
       }
     ],
     "valuesKeys": [
@@ -11273,7 +11277,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "2.9.5",
     "description": "Flux, the CNCF GitOps toolkit: source, kustomize, helm and notification controllers with their CRDs, reconciling a cluster from Git, OCI and Helm repositories. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/flux",
@@ -11292,7 +11296,7 @@
       },
       {
         "name": "flux-helm-controller",
-        "image": "ghcr.io/quenchworks/images/flux-helm-controller@sha256:49579bf6f7a8135b2d9134b06fbbbc55b7fd27ad46f1c1336dff7c0dd8175d29"
+        "image": "ghcr.io/quenchworks/images/flux-helm-controller@sha256:46a4d4f33b5af0239e270a3106c1499e12624a9cdb73310698c637bc769dd92b"
       },
       {
         "name": "flux-notification-controller",
@@ -11300,11 +11304,11 @@
       },
       {
         "name": "flux-image-reflector-controller",
-        "image": "ghcr.io/quenchworks/images/flux-image-reflector-controller@sha256:14570e3d57ac244eb94dd2f38aefcb4ecf3ca473b76e56105fcf637e710a36dc"
+        "image": "ghcr.io/quenchworks/images/flux-image-reflector-controller@sha256:623f2e8a409236aed5b1c2c8981a3f1a4a117e3ceb6ed7d2598e571ab54221ec"
       },
       {
         "name": "flux-image-automation-controller",
-        "image": "ghcr.io/quenchworks/images/flux-image-automation-controller@sha256:530bd2434a6eb962d72a55db88f9bdb2ae807f324cbbe597ecfcb3264e73ca8a"
+        "image": "ghcr.io/quenchworks/images/flux-image-automation-controller@sha256:dacf60e04c19ebba2b4e8f0ad4e4325434ffdd17c870ddcb065ff154a43b04a7"
       },
       {
         "name": "flux-source-watcher",
@@ -39929,11 +39933,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.21",
-    "appVersion": "0.32.0",
+    "chartVersion": "0.0.22",
+    "appVersion": "0.34.0",
     "description": "vLLM, the high-throughput OpenAI-compatible inference/serving engine for open LLMs. Hardened by QuenchWorks as a minimal, nonroot, read-only-rootfs, CVE-gated image, cosign-signed and pinned by digest. CPU-only; runs as a StatefulSet that serves a user-supplied model over an OpenAI-compatible REST API, with a persistent Hugging Face cache volume.",
     "imageRepository": "ghcr.io/quenchworks/images/vllm",
-    "imageDigest": "sha256:1bc27726a5d6611569a4aa7538480377c18ec706e703a8a5faf19f585284cbd4",
+    "imageDigest": "sha256:4951271dd9aa7af2dcb61e46ffd6d8e0e1236a4163122f5efe9044b5f6f06231",
     "repositoryID": "6953f63b-89cf-4793-8f39-75b8287c2f7f",
     "port": 8000,
     "upstream": "https://docs.vllm.ai",
@@ -39942,7 +39946,7 @@
     "images": [
       {
         "name": "vllm",
-        "image": "ghcr.io/quenchworks/images/vllm@sha256:1bc27726a5d6611569a4aa7538480377c18ec706e703a8a5faf19f585284cbd4"
+        "image": "ghcr.io/quenchworks/images/vllm@sha256:4951271dd9aa7af2dcb61e46ffd6d8e0e1236a4163122f5efe9044b5f6f06231"
       }
     ],
     "valuesKeys": [
