@@ -165,6 +165,11 @@ for (const [slug, a] of Object.entries(lockApps)) {
     published: v.published ?? undefined,
     digest: v.digest ?? undefined,
   }));
+  // a new app is in the lock before its first build publishes; its page would offer ":undefined" as the pull tag
+  if (!versions.length) {
+    console.warn(`! ${slug} has no published version yet: left out.`);
+    continue;
+  }
 
   const entry = {
     slug,

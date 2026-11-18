@@ -1111,7 +1111,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "3.19.0",
     "description": "Apache APISIX in decoupled (hybrid) mode: a control plane that owns the Admin API, data planes that only proxy, a 3-member etcd they share over mutual TLS, and the APISIX Ingress Controller writing routes through the control plane. The stack generates the etcd CA, server and client certificates and keeps them across upgrades. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "46706803-2cc8-4b2e-919e-4d05735f4502",
@@ -1129,7 +1129,7 @@
     "images": [
       {
         "name": "apisix",
-        "image": "ghcr.io/quenchworks/images/apisix@sha256:f978d032d1b1e66383a4046b022b89d286857537709a7efe7d3a32998d86e36c"
+        "image": "ghcr.io/quenchworks/images/apisix@sha256:c180c8d6c51ce8c9028be12a995d9908fad8b084e605e2392e6f27d2039e02f1"
       },
       {
         "name": "etcd",
@@ -5876,7 +5876,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.14",
+    "chartVersion": "0.0.15",
     "appVersion": "1.33.8",
     "description": "Project Contour, the CNCF Kubernetes ingress controller that programs an Envoy data plane over xDS. Serves the networking.k8s.io Ingress API plus Contour's own HTTPProxy CRD (delegation, rate limiting, per-route TLS). Hardened by QuenchWorks as minimal, nonroot, CVE-gated images, cosign-signed and pinned by digest. Runs the Contour control plane as a Deployment and the Envoy data plane as a DaemonSet, with the xDS mTLS keypairs minted in-cluster by a `contour certgen` hook Job.",
     "imageRepository": "ghcr.io/quenchworks/images/contour",
@@ -5898,7 +5898,7 @@
       },
       {
         "name": "envoy",
-        "image": "ghcr.io/quenchworks/images/envoy@sha256:0482b98a651a3eedec07f3ffeca9cb8d51435c5782f22db57481d209fc7a88fe"
+        "image": "ghcr.io/quenchworks/images/envoy@sha256:ec71c22ab4c46c7bbde1a82c4ec45d5e85c249763e1feb8d35c83dbbd22f9c2a"
       }
     ],
     "valuesKeys": [
@@ -9485,11 +9485,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.40.2",
     "description": "Envoy, the CNCF high-performance L7 edge/service proxy. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. Ships a sensible default bootstrap so the pod is useful out-of-the-box.",
     "imageRepository": "ghcr.io/quenchworks/images/envoy",
-    "imageDigest": "sha256:0482b98a651a3eedec07f3ffeca9cb8d51435c5782f22db57481d209fc7a88fe",
+    "imageDigest": "sha256:ec71c22ab4c46c7bbde1a82c4ec45d5e85c249763e1feb8d35c83dbbd22f9c2a",
     "repositoryID": "54d769f7-dfed-4af0-b906-13ea462e9f0a",
     "port": 10000,
     "upstream": "https://www.envoyproxy.io",
@@ -9498,7 +9498,7 @@
     "images": [
       {
         "name": "envoy",
-        "image": "ghcr.io/quenchworks/images/envoy@sha256:0482b98a651a3eedec07f3ffeca9cb8d51435c5782f22db57481d209fc7a88fe"
+        "image": "ghcr.io/quenchworks/images/envoy@sha256:ec71c22ab4c46c7bbde1a82c4ec45d5e85c249763e1feb8d35c83dbbd22f9c2a"
       }
     ],
     "valuesKeys": [
@@ -9575,7 +9575,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "1.9.4",
     "description": "Envoy Gateway, the CNCF Gateway API control plane that provisions and configures fleets of Envoy proxies from GatewayClass/Gateway/HTTPRoute and its own gateway.envoyproxy.io policy CRDs. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. Ships only Envoy Gateway's own CRDs -- the Gateway API CRDs are owned by the separate quench gateway-api-crds chart and must be installed first.",
     "imageRepository": "ghcr.io/quenchworks/images/envoy-gateway",
@@ -9602,7 +9602,7 @@
       },
       {
         "name": "envoy",
-        "image": "ghcr.io/quenchworks/images/envoy@sha256:0482b98a651a3eedec07f3ffeca9cb8d51435c5782f22db57481d209fc7a88fe"
+        "image": "ghcr.io/quenchworks/images/envoy@sha256:ec71c22ab4c46c7bbde1a82c4ec45d5e85c249763e1feb8d35c83dbbd22f9c2a"
       }
     ],
     "valuesKeys": [
@@ -17515,11 +17515,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
-    "appVersion": "2.4.7",
+    "chartVersion": "0.0.13",
+    "appVersion": "2.5.2",
     "description": "kgateway, the CNCF Gateway API control plane that succeeded Gloo Edge. Watches Gateway, HTTPRoute, GRPCRoute and its own gateway.kgateway.dev policy CRDs, programs Envoy over xDS and provisions the proxy fleet into each Gateway's own namespace. Hardened by QuenchWorks as minimal, nonroot, CVE-gated images, cosign-signed and pinned by digest -- both the controller and the Envoy data plane. Ships only kgateway's own CRDs; the Gateway API CRDs are owned by the separate quench gateway-api-crds chart and must be installed first.",
     "imageRepository": "ghcr.io/quenchworks/images/kgateway",
-    "imageDigest": "sha256:b0d9194572efc6097bcd83807a238b8f1ee97411c78d77dde01b3524794a2416",
+    "imageDigest": "sha256:5de2d6051888fb1be6fd03f451744374cf75c86b373ac41735d6b6ed146d5724",
     "repositoryID": "21dbf9a0-81db-4f2c-a2c4-041fc863d03b",
     "upstream": "https://kgateway.dev",
     "chartRef": "oci://ghcr.io/quenchworks/charts/kgateway",
@@ -17537,11 +17537,11 @@
     "images": [
       {
         "name": "kgateway",
-        "image": "ghcr.io/quenchworks/images/kgateway@sha256:b0d9194572efc6097bcd83807a238b8f1ee97411c78d77dde01b3524794a2416"
+        "image": "ghcr.io/quenchworks/images/kgateway@sha256:5de2d6051888fb1be6fd03f451744374cf75c86b373ac41735d6b6ed146d5724"
       },
       {
         "name": "kgateway-envoy",
-        "image": "ghcr.io/quenchworks/images/kgateway-envoy@sha256:6a8f24ba9e10e8e94d39cfc5b5d12bc0e9a3bf21c523f75cf9b887cdbbd69801"
+        "image": "ghcr.io/quenchworks/images/kgateway-envoy@sha256:072266f2e259312379f9ebe2175f179a833f1ee3607df56449126363337c682f"
       }
     ],
     "valuesKeys": [
