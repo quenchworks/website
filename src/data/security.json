@@ -351,6 +351,37 @@
       }
     ]
   },
+  "akhq": {
+    "image": "ghcr.io/quenchworks/images/akhq",
+    "version": "0.29.0",
+    "tag": "ghcr.io/quenchworks/images/akhq:0.29.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.29.0",
+        "tag": "ghcr.io/quenchworks/images/akhq:0.29.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "alertmanager": {
     "image": "ghcr.io/quenchworks/images/alertmanager",
     "version": "0.35.0",
@@ -398,8 +429,8 @@
   },
   "ansible": {
     "image": "ghcr.io/quenchworks/images/ansible",
-    "version": "14.6.0",
-    "tag": "ghcr.io/quenchworks/images/ansible:14.6.0",
+    "version": "15.0.0",
+    "tag": "ghcr.io/quenchworks/images/ansible:15.0.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -412,36 +443,22 @@
     "cves": [],
     "versions": [
       {
+        "version": "15.0.0",
+        "tag": "ghcr.io/quenchworks/images/ansible:15.0.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
         "version": "14.6.0",
         "tag": "ghcr.io/quenchworks/images/ansible:14.6.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "14.5.0",
-        "tag": "ghcr.io/quenchworks/images/ansible:14.5.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "14.4.0",
-        "tag": "ghcr.io/quenchworks/images/ansible:14.4.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -1147,29 +1164,175 @@
     "version": "10.0.114",
     "tag": "ghcr.io/quenchworks/images/aspnet:10.0.114",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 3,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 6,
+    "fixable": 6,
+    "grade": "D",
+    "score": 28,
+    "cves": [
+      {
+        "id": "CVE-2026-114149",
+        "severity": "HIGH",
+        "pkg": "aspnet-10-runtime",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114149",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114149",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-118747",
+        "severity": "MEDIUM",
+        "pkg": "aspnet-10-runtime",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-118747",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-118747",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+        "targets": [
+          "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "10.0.114",
         "tag": "ghcr.io/quenchworks/images/aspnet:10.0.114",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 3,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 6,
+        "fixable": 6,
+        "grade": "D",
+        "score": 28,
+        "cves": [
+          {
+            "id": "CVE-2026-114149",
+            "severity": "HIGH",
+            "pkg": "aspnet-10-runtime",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114149",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114149",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-118747",
+            "severity": "MEDIUM",
+            "pkg": "aspnet-10-runtime",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-118747",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-118747",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+            "targets": [
+              "ghcr.io/quenchworks/images/aspnet@sha256:aa3dba9d9e692c4d6f373e6d954edab2bbc64b8d693fa9d4bdb5906faba8b403 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1434,7 +1597,7 @@
         "severity": "UNKNOWN",
         "pkg": "symfony/yaml",
         "installed": "v7.4.21",
-        "fixed": "7.4.23, 8.1.11, 5.0.0, 5.4.0, 7.2.0, 5.2.0, 8.1.0, 3.0.0, 4.0.0, 5.4.56, 6.1.0, 6.2.0, 6.3.0, 6.4.0, 7.4.0, 5.1.0, 5.3.0, 6.4.50, 7.1.0, 7.3.0",
+        "fixed": "5.4.56, 6.3.0, 7.4.23, 5.1.0, 6.1.0, 6.2.0, 6.4.0, 6.4.50, 7.3.0, 5.3.0, 7.4.0, 5.4.0, 7.1.0, 7.2.0, 8.1.0, 8.1.11, 3.0.0, 4.0.0, 5.0.0, 5.2.0",
         "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
         "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
         "targets": [
@@ -1461,7 +1624,7 @@
             "severity": "UNKNOWN",
             "pkg": "symfony/yaml",
             "installed": "v7.4.21",
-            "fixed": "7.4.23, 8.1.11, 5.0.0, 5.4.0, 7.2.0, 5.2.0, 8.1.0, 3.0.0, 4.0.0, 5.4.56, 6.1.0, 6.2.0, 6.3.0, 6.4.0, 7.4.0, 5.1.0, 5.3.0, 6.4.50, 7.1.0, 7.3.0",
+            "fixed": "5.4.56, 6.3.0, 7.4.23, 5.1.0, 6.1.0, 6.2.0, 6.4.0, 6.4.50, 7.3.0, 5.3.0, 7.4.0, 5.4.0, 7.1.0, 7.2.0, 8.1.0, 8.1.11, 3.0.0, 4.0.0, 5.0.0, 5.2.0",
             "title": "The Symfony Yaml componentsInlineandParser, parse some YAML documents  ...",
             "url": "https://avd.aquasec.com/nvd/cve-2026-123792",
             "targets": [
@@ -1858,8 +2021,8 @@
   },
   "buildkite-agent": {
     "image": "ghcr.io/quenchworks/images/buildkite-agent",
-    "version": "4.10.2",
-    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.10.2",
+    "version": "4.11.0",
+    "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.11.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -1872,36 +2035,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "4.10.2",
-        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.10.2",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "4.9.0",
-        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.9.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "4.8.1",
-        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.8.1",
+        "version": "4.11.0",
+        "tag": "ghcr.io/quenchworks/images/buildkite-agent:4.11.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -2259,28 +2394,54 @@
     "tag": "ghcr.io/quenchworks/images/calico-node:3.32.0",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-128085",
+        "severity": "MEDIUM",
+        "pkg": "calico-node-3.32",
+        "installed": "3.32.0-r4",
+        "fixed": "3.32.4-r1",
+        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
+        "targets": [
+          "ghcr.io/quenchworks/images/calico-node@sha256:9b3be360c9b620830d9789edaef60323de8c3af413b334434cfd033a44b0a4e1 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.32.0",
         "tag": "ghcr.io/quenchworks/images/calico-node:3.32.0",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-128085",
+            "severity": "MEDIUM",
+            "pkg": "calico-node-3.32",
+            "installed": "3.32.0-r4",
+            "fixed": "3.32.4-r1",
+            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
+            "targets": [
+              "ghcr.io/quenchworks/images/calico-node@sha256:9b3be360c9b620830d9789edaef60323de8c3af413b334434cfd033a44b0a4e1 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -2379,8 +2540,8 @@
   },
   "camel-k": {
     "image": "ghcr.io/quenchworks/images/camel-k",
-    "version": "2.10.2",
-    "tag": "ghcr.io/quenchworks/images/camel-k:2.10.2",
+    "version": "2.11.0",
+    "tag": "ghcr.io/quenchworks/images/camel-k:2.11.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -2392,6 +2553,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "2.11.0",
+        "tag": "ghcr.io/quenchworks/images/camel-k:2.11.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "2.10.2",
         "tag": "ghcr.io/quenchworks/images/camel-k:2.10.2",
@@ -3884,8 +4059,8 @@
   },
   "cilium": {
     "image": "ghcr.io/quenchworks/images/cilium",
-    "version": "1.20.4",
-    "tag": "ghcr.io/quenchworks/images/cilium:1.20.4",
+    "version": "1.20.5",
+    "tag": "ghcr.io/quenchworks/images/cilium:1.20.5",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -3898,8 +4073,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.20.4",
-        "tag": "ghcr.io/quenchworks/images/cilium:1.20.4",
+        "version": "1.20.5",
+        "tag": "ghcr.io/quenchworks/images/cilium:1.20.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3912,8 +4087,8 @@
         "cves": []
       },
       {
-        "version": "1.19.10",
-        "tag": "ghcr.io/quenchworks/images/cilium:1.19.10",
+        "version": "1.19.11",
+        "tag": "ghcr.io/quenchworks/images/cilium:1.19.11",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3926,8 +4101,8 @@
         "cves": []
       },
       {
-        "version": "1.18.16",
-        "tag": "ghcr.io/quenchworks/images/cilium:1.18.16",
+        "version": "1.18.17",
+        "tag": "ghcr.io/quenchworks/images/cilium:1.18.17",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3943,8 +4118,8 @@
   },
   "cilium-operator": {
     "image": "ghcr.io/quenchworks/images/cilium-operator",
-    "version": "1.20.4",
-    "tag": "ghcr.io/quenchworks/images/cilium-operator:1.20.4",
+    "version": "1.20.5",
+    "tag": "ghcr.io/quenchworks/images/cilium-operator:1.20.5",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -3957,8 +4132,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.20.4",
-        "tag": "ghcr.io/quenchworks/images/cilium-operator:1.20.4",
+        "version": "1.20.5",
+        "tag": "ghcr.io/quenchworks/images/cilium-operator:1.20.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3971,8 +4146,8 @@
         "cves": []
       },
       {
-        "version": "1.19.10",
-        "tag": "ghcr.io/quenchworks/images/cilium-operator:1.19.10",
+        "version": "1.19.11",
+        "tag": "ghcr.io/quenchworks/images/cilium-operator:1.19.11",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -3985,8 +4160,8 @@
         "cves": []
       },
       {
-        "version": "1.18.16",
-        "tag": "ghcr.io/quenchworks/images/cilium-operator:1.18.16",
+        "version": "1.18.17",
+        "tag": "ghcr.io/quenchworks/images/cilium-operator:1.18.17",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4047,8 +4222,8 @@
   },
   "clickhouse": {
     "image": "ghcr.io/quenchworks/images/clickhouse",
-    "version": "26.10.4.207",
-    "tag": "ghcr.io/quenchworks/images/clickhouse:26.10.4.207",
+    "version": "26.10.5.57",
+    "tag": "ghcr.io/quenchworks/images/clickhouse:26.10.5.57",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -4061,8 +4236,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "26.10.4.207",
-        "tag": "ghcr.io/quenchworks/images/clickhouse:26.10.4.207",
+        "version": "26.10.5.57",
+        "tag": "ghcr.io/quenchworks/images/clickhouse:26.10.5.57",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4075,8 +4250,8 @@
         "cves": []
       },
       {
-        "version": "26.9.30.7",
-        "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.30.7",
+        "version": "26.9.31.21",
+        "tag": "ghcr.io/quenchworks/images/clickhouse:26.9.31.21",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4168,8 +4343,8 @@
   },
   "cloudflared": {
     "image": "ghcr.io/quenchworks/images/cloudflared",
-    "version": "2026.11.0",
-    "tag": "ghcr.io/quenchworks/images/cloudflared:2026.11.0",
+    "version": "2026.11.1",
+    "tag": "ghcr.io/quenchworks/images/cloudflared:2026.11.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -4182,8 +4357,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "2026.11.0",
-        "tag": "ghcr.io/quenchworks/images/cloudflared:2026.11.0",
+        "version": "2026.11.1",
+        "tag": "ghcr.io/quenchworks/images/cloudflared:2026.11.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4213,8 +4388,8 @@
   },
   "cloudnative-pg": {
     "image": "ghcr.io/quenchworks/images/cloudnative-pg",
-    "version": "1.30.1",
-    "tag": "ghcr.io/quenchworks/images/cloudnative-pg:1.30.1",
+    "version": "1.30.2",
+    "tag": "ghcr.io/quenchworks/images/cloudnative-pg:1.30.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -4227,36 +4402,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.30.1",
-        "tag": "ghcr.io/quenchworks/images/cloudnative-pg:1.30.1",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "1.29.3",
-        "tag": "ghcr.io/quenchworks/images/cloudnative-pg:1.29.3",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "1.28.4",
-        "tag": "ghcr.io/quenchworks/images/cloudnative-pg:1.28.4",
+        "version": "1.30.2",
+        "tag": "ghcr.io/quenchworks/images/cloudnative-pg:1.30.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -4422,15 +4569,27 @@
     "version": "4.145.2",
     "tag": "ghcr.io/quenchworks/images/code-server:4.145.2",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "grade": "D",
+    "score": 89,
     "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.4",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "GHSA-wx77-rp39-c6vg",
         "severity": "LOW",
@@ -4449,15 +4608,27 @@
         "version": "4.145.2",
         "tag": "ghcr.io/quenchworks/images/code-server:4.145.2",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "grade": "D",
+        "score": 89,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.4",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -4476,15 +4647,27 @@
         "version": "4.144.0",
         "tag": "ghcr.io/quenchworks/images/code-server:4.144.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "grade": "D",
+        "score": 89,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.4",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -4503,15 +4686,27 @@
         "version": "4.139.1",
         "tag": "ghcr.io/quenchworks/images/code-server:4.139.1",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "grade": "D",
+        "score": 89,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.4",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-wx77-rp39-c6vg",
             "severity": "LOW",
@@ -4970,15 +5165,27 @@
     "version": "1.0.18",
     "tag": "ghcr.io/quenchworks/images/coolify-realtime:1.0.18",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "grade": "D",
+    "score": 89,
     "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "GHSA-j965-2qgj-vjmq",
         "severity": "LOW",
@@ -4997,15 +5204,27 @@
         "version": "1.0.18",
         "tag": "ghcr.io/quenchworks/images/coolify-realtime:1.0.18",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "grade": "D",
+        "score": 89,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "GHSA-j965-2qgj-vjmq",
             "severity": "LOW",
@@ -5100,8 +5319,8 @@
   },
   "coroot": {
     "image": "ghcr.io/quenchworks/images/coroot",
-    "version": "1.29.2",
-    "tag": "ghcr.io/quenchworks/images/coroot:1.29.2",
+    "version": "1.29.3",
+    "tag": "ghcr.io/quenchworks/images/coroot:1.29.3",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -5114,36 +5333,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.29.2",
-        "tag": "ghcr.io/quenchworks/images/coroot:1.29.2",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "1.28.1",
-        "tag": "ghcr.io/quenchworks/images/coroot:1.28.1",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "1.27.4",
-        "tag": "ghcr.io/quenchworks/images/coroot:1.27.4",
+        "version": "1.29.3",
+        "tag": "ghcr.io/quenchworks/images/coroot:1.29.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5338,6 +5529,37 @@
       {
         "version": "0.22.1",
         "tag": "ghcr.io/quenchworks/images/crane:0.22.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "cratedb": {
+    "image": "ghcr.io/quenchworks/images/cratedb",
+    "version": "6.4.7",
+    "tag": "ghcr.io/quenchworks/images/cratedb:6.4.7",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "6.4.7",
+        "tag": "ghcr.io/quenchworks/images/cratedb:6.4.7",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5800,15 +6022,27 @@
     "version": "1.8.21",
     "tag": "ghcr.io/quenchworks/images/cube:1.8.21",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "grade": "D",
+    "score": 89,
     "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2025-14505",
         "severity": "LOW",
@@ -5827,15 +6061,27 @@
         "version": "1.8.21",
         "tag": "ghcr.io/quenchworks/images/cube:1.8.21",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "grade": "D",
+        "score": 89,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2025-14505",
             "severity": "LOW",
@@ -5885,8 +6131,8 @@
   },
   "dagger": {
     "image": "ghcr.io/quenchworks/images/dagger",
-    "version": "0.21.11",
-    "tag": "ghcr.io/quenchworks/images/dagger:0.21.11",
+    "version": "0.21.12",
+    "tag": "ghcr.io/quenchworks/images/dagger:0.21.12",
     "critical": 0,
     "high": 6,
     "medium": 3,
@@ -5942,8 +6188,8 @@
     ],
     "versions": [
       {
-        "version": "0.21.11",
-        "tag": "ghcr.io/quenchworks/images/dagger:0.21.11",
+        "version": "0.21.12",
+        "tag": "ghcr.io/quenchworks/images/dagger:0.21.12",
         "critical": 0,
         "high": 6,
         "medium": 3,
@@ -6078,8 +6324,8 @@
   },
   "datahub-frontend": {
     "image": "ghcr.io/quenchworks/images/datahub-frontend",
-    "version": "1.8.0",
-    "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.8.0",
+    "version": "1.9.0",
+    "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.9.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6091,6 +6337,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.9.0",
+        "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.9.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-frontend:1.8.0",
@@ -6123,8 +6383,8 @@
   },
   "datahub-gms": {
     "image": "ghcr.io/quenchworks/images/datahub-gms",
-    "version": "1.8.0",
-    "tag": "ghcr.io/quenchworks/images/datahub-gms:1.8.0",
+    "version": "1.9.0",
+    "tag": "ghcr.io/quenchworks/images/datahub-gms:1.9.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6136,6 +6396,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.9.0",
+        "tag": "ghcr.io/quenchworks/images/datahub-gms:1.9.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-gms:1.8.0",
@@ -6168,8 +6442,8 @@
   },
   "datahub-upgrade": {
     "image": "ghcr.io/quenchworks/images/datahub-upgrade",
-    "version": "1.8.0",
-    "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.8.0",
+    "version": "1.9.0",
+    "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.9.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6181,6 +6455,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.9.0",
+        "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.9.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.8.0",
@@ -6780,29 +7068,127 @@
     "version": "10.0.114",
     "tag": "ghcr.io/quenchworks/images/dotnet-runtime:10.0.114",
     "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "high": 2,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 4,
+    "fixable": 4,
+    "grade": "D",
+    "score": 52,
+    "cves": [
+      {
+        "id": "CVE-2026-114149",
+        "severity": "HIGH",
+        "pkg": "dotnet-10",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114149",
+        "severity": "HIGH",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-118747",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-118747",
+        "severity": "MEDIUM",
+        "pkg": "dotnet-10-runtime",
+        "installed": "10.0.114-r1",
+        "fixed": "10.0.115-r0",
+        "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+        "targets": [
+          "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "10.0.114",
         "tag": "ghcr.io/quenchworks/images/dotnet-runtime:10.0.114",
         "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "high": 2,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 4,
+        "fixable": 4,
+        "grade": "D",
+        "score": 52,
+        "cves": [
+          {
+            "id": "CVE-2026-114149",
+            "severity": "HIGH",
+            "pkg": "dotnet-10",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114149",
+            "severity": "HIGH",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "dotnet11.0: dotnet8.0: dotnet9.0: dotnet10.0: ASP.NET Core Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114149",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-118747",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-118747",
+            "severity": "MEDIUM",
+            "pkg": "dotnet-10-runtime",
+            "installed": "10.0.114-r1",
+            "fixed": "10.0.115-r0",
+            "title": "Microsoft Security Advisory CVE-2026-118747 - .NET Denial of Service Vulnerability",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118747",
+            "targets": [
+              "ghcr.io/quenchworks/images/dotnet-runtime@sha256:0d6d36f034d92967b87e7ba773def84468670cc1e5ccace802d94bdd00fc4015 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -6943,8 +7329,8 @@
   },
   "drawio": {
     "image": "ghcr.io/quenchworks/images/drawio",
-    "version": "32.6.10",
-    "tag": "ghcr.io/quenchworks/images/drawio:32.6.10",
+    "version": "32.7.4",
+    "tag": "ghcr.io/quenchworks/images/drawio:32.7.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -6956,6 +7342,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "32.7.4",
+        "tag": "ghcr.io/quenchworks/images/drawio:32.7.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "32.6.10",
         "tag": "ghcr.io/quenchworks/images/drawio:32.6.10",
@@ -7795,280 +8195,32 @@
   },
   "envoy": {
     "image": "ghcr.io/quenchworks/images/envoy",
-    "version": "1.38.1",
-    "tag": "ghcr.io/quenchworks/images/envoy:1.38.1",
-    "critical": 1,
-    "high": 1,
-    "medium": 3,
+    "version": "1.40.2",
+    "tag": "ghcr.io/quenchworks/images/envoy:1.40.2",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 5,
-    "fixable": 5,
-    "grade": "F",
-    "score": 28,
-    "cves": [
-      {
-        "id": "CVE-2026-111497",
-        "severity": "CRITICAL",
-        "pkg": "envoy-1.38",
-        "installed": "1.38.1-r0",
-        "fixed": "1.38.6-r0",
-        "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-        "targets": [
-          "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-111943",
-        "severity": "HIGH",
-        "pkg": "envoy-1.38",
-        "installed": "1.38.1-r0",
-        "fixed": "1.38.9-r1",
-        "title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111943",
-        "targets": [
-          "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44-locale-posix",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "ld-linux-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
-        "version": "1.38.1",
-        "tag": "ghcr.io/quenchworks/images/envoy:1.38.1",
-        "critical": 1,
-        "high": 1,
-        "medium": 3,
-        "low": 0,
-        "unknown": 0,
-        "total": 5,
-        "fixable": 5,
-        "grade": "F",
-        "score": 28,
-        "cves": [
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "envoy-1.38",
-            "installed": "1.38.1-r0",
-            "fixed": "1.38.6-r0",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111943",
-            "severity": "HIGH",
-            "pkg": "envoy-1.38",
-            "installed": "1.38.1-r0",
-            "fixed": "1.38.9-r1",
-            "title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111943",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:e2e212944a2ca83cf99ed024d99da049b22d45f8b8a72ed1ed2bd69455501b87 (wolfi 20230201)"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "1.37.1",
-        "tag": "ghcr.io/quenchworks/images/envoy:1.37.1",
-        "critical": 1,
+        "version": "1.40.2",
+        "tag": "ghcr.io/quenchworks/images/envoy:1.40.2",
+        "critical": 0,
         "high": 0,
-        "medium": 3,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "F",
-        "score": 43,
-        "cves": [
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "envoy-1.37",
-            "installed": "1.37.1-r3",
-            "fixed": "1.37.8-r0",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:dbcfad0fd63bb140423371438751a346ca7a34a51923ad0ba4f7d88183797c3a (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:dbcfad0fd63bb140423371438751a346ca7a34a51923ad0ba4f7d88183797c3a (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:dbcfad0fd63bb140423371438751a346ca7a34a51923ad0ba4f7d88183797c3a (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:dbcfad0fd63bb140423371438751a346ca7a34a51923ad0ba4f7d88183797c3a (wolfi 20230201)"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "1.36.4",
-        "tag": "ghcr.io/quenchworks/images/envoy:1.36.4",
-        "critical": 1,
-        "high": 0,
-        "medium": 3,
-        "low": 0,
-        "unknown": 0,
-        "total": 4,
-        "fixable": 4,
-        "grade": "F",
-        "score": 43,
-        "cves": [
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "envoy-1.36",
-            "installed": "1.36.4-r0",
-            "fixed": "1.36.12-r0",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:aadca44bad6e1c896bde12b6cdf9ad39e4a8d4f461009d4b48c7ebe308db09e2 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:aadca44bad6e1c896bde12b6cdf9ad39e4a8d4f461009d4b48c7ebe308db09e2 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:aadca44bad6e1c896bde12b6cdf9ad39e4a8d4f461009d4b48c7ebe308db09e2 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/envoy@sha256:aadca44bad6e1c896bde12b6cdf9ad39e4a8d4f461009d4b48c7ebe308db09e2 (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -8102,8 +8254,8 @@
         "cves": []
       },
       {
-        "version": "1.9.3",
-        "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.9.3",
+        "version": "1.9.4",
+        "tag": "ghcr.io/quenchworks/images/envoy-gateway:1.9.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -9908,46 +10060,120 @@
   },
   "ghost": {
     "image": "ghcr.io/quenchworks/images/ghost",
-    "version": "6.77.0",
-    "tag": "ghcr.io/quenchworks/images/ghost:6.77.0",
+    "version": "6.78.0",
+    "tag": "ghcr.io/quenchworks/images/ghost:6.78.0",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 2,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 80,
+    "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.7",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
-        "version": "6.77.0",
-        "tag": "ghcr.io/quenchworks/images/ghost:6.77.0",
+        "version": "6.78.0",
+        "tag": "ghcr.io/quenchworks/images/ghost:6.78.0",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 2,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 80,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "6.67.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
         "critical": 0,
-        "high": 2,
+        "high": 4,
         "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 3,
+        "total": 5,
         "fixable": 0,
         "grade": "D",
-        "score": 76,
+        "score": 56,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.5",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2026-19693",
             "severity": "HIGH",
@@ -10052,8 +10278,8 @@
   },
   "gitaly": {
     "image": "ghcr.io/quenchworks/images/gitaly",
-    "version": "19.5.5",
-    "tag": "ghcr.io/quenchworks/images/gitaly:19.5.5",
+    "version": "19.5.6",
+    "tag": "ghcr.io/quenchworks/images/gitaly:19.5.6",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -10066,8 +10292,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "19.5.5",
-        "tag": "ghcr.io/quenchworks/images/gitaly:19.5.5",
+        "version": "19.5.6",
+        "tag": "ghcr.io/quenchworks/images/gitaly:19.5.6",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10187,8 +10413,8 @@
   },
   "gitlab-shell": {
     "image": "ghcr.io/quenchworks/images/gitlab-shell",
-    "version": "14.61.0",
-    "tag": "ghcr.io/quenchworks/images/gitlab-shell:14.61.0",
+    "version": "14.62.0",
+    "tag": "ghcr.io/quenchworks/images/gitlab-shell:14.62.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -10201,8 +10427,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "14.61.0",
-        "tag": "ghcr.io/quenchworks/images/gitlab-shell:14.61.0",
+        "version": "14.62.0",
+        "tag": "ghcr.io/quenchworks/images/gitlab-shell:14.62.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -10218,8 +10444,8 @@
   },
   "gitlab-workhorse": {
     "image": "ghcr.io/quenchworks/images/gitlab-workhorse",
-    "version": "19.5.5",
-    "tag": "ghcr.io/quenchworks/images/gitlab-workhorse:19.5.5",
+    "version": "19.5.6",
+    "tag": "ghcr.io/quenchworks/images/gitlab-workhorse:19.5.6",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -10232,8 +10458,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "19.5.5",
-        "tag": "ghcr.io/quenchworks/images/gitlab-workhorse:19.5.5",
+        "version": "19.5.6",
+        "tag": "ghcr.io/quenchworks/images/gitlab-workhorse:19.5.6",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -11087,15 +11313,27 @@
     "version": "1.7.22",
     "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 1,
+    "total": 2,
     "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "grade": "D",
+    "score": 89,
     "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.4",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2025-14505",
         "severity": "LOW",
@@ -11114,15 +11352,27 @@
         "version": "1.7.22",
         "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
+        "total": 2,
         "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "grade": "D",
+        "score": 89,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.4",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2025-14505",
             "severity": "LOW",
@@ -12457,14 +12707,26 @@
     "tag": "ghcr.io/quenchworks/images/homepage:2.8.0",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
+    "total": 2,
+    "fixable": 2,
     "grade": "C",
-    "score": 91,
+    "score": 82,
     "cves": [
+      {
+        "id": "CVE-2026-119351",
+        "severity": "MEDIUM",
+        "pkg": "next",
+        "installed": "16.4.1",
+        "fixed": "16.4.5",
+        "title": "Next.js: Cache leak across root param values in nested 'use cache' functions via delayed inner stream metadata",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-119351",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2026-119790",
         "severity": "MEDIUM",
@@ -12484,14 +12746,26 @@
         "tag": "ghcr.io/quenchworks/images/homepage:2.8.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 2,
+        "fixable": 2,
         "grade": "C",
-        "score": 91,
+        "score": 82,
         "cves": [
+          {
+            "id": "CVE-2026-119351",
+            "severity": "MEDIUM",
+            "pkg": "next",
+            "installed": "16.4.1",
+            "fixed": "16.4.5",
+            "title": "Next.js: Cache leak across root param values in nested 'use cache' functions via delayed inner stream metadata",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-119351",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2026-119790",
             "severity": "MEDIUM",
@@ -12511,14 +12785,26 @@
         "tag": "ghcr.io/quenchworks/images/homepage:2.4.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 2,
+        "fixable": 2,
         "grade": "C",
-        "score": 91,
+        "score": 82,
         "cves": [
+          {
+            "id": "CVE-2026-119351",
+            "severity": "MEDIUM",
+            "pkg": "next",
+            "installed": "16.4.1",
+            "fixed": "16.4.5",
+            "title": "Next.js: Cache leak across root param values in nested 'use cache' functions via delayed inner stream metadata",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-119351",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2026-119790",
             "severity": "MEDIUM",
@@ -12568,8 +12854,8 @@
   },
   "hubble-relay": {
     "image": "ghcr.io/quenchworks/images/hubble-relay",
-    "version": "1.20.4",
-    "tag": "ghcr.io/quenchworks/images/hubble-relay:1.20.4",
+    "version": "1.20.5",
+    "tag": "ghcr.io/quenchworks/images/hubble-relay:1.20.5",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -12582,8 +12868,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.20.4",
-        "tag": "ghcr.io/quenchworks/images/hubble-relay:1.20.4",
+        "version": "1.20.5",
+        "tag": "ghcr.io/quenchworks/images/hubble-relay:1.20.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -12596,8 +12882,8 @@
         "cves": []
       },
       {
-        "version": "1.19.10",
-        "tag": "ghcr.io/quenchworks/images/hubble-relay:1.19.10",
+        "version": "1.19.11",
+        "tag": "ghcr.io/quenchworks/images/hubble-relay:1.19.11",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -12610,8 +12896,8 @@
         "cves": []
       },
       {
-        "version": "1.18.16",
-        "tag": "ghcr.io/quenchworks/images/hubble-relay:1.18.16",
+        "version": "1.18.17",
+        "tag": "ghcr.io/quenchworks/images/hubble-relay:1.18.17",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -12689,8 +12975,8 @@
   },
   "hugo": {
     "image": "ghcr.io/quenchworks/images/hugo",
-    "version": "0.170.0",
-    "tag": "ghcr.io/quenchworks/images/hugo:0.170.0",
+    "version": "0.170.1",
+    "tag": "ghcr.io/quenchworks/images/hugo:0.170.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -12703,36 +12989,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.170.0",
-        "tag": "ghcr.io/quenchworks/images/hugo:0.170.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.169.0",
-        "tag": "ghcr.io/quenchworks/images/hugo:0.169.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.168.0",
-        "tag": "ghcr.io/quenchworks/images/hugo:0.168.0",
+        "version": "0.170.1",
+        "tag": "ghcr.io/quenchworks/images/hugo:0.170.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13002,8 +13260,8 @@
   },
   "ingress-nginx": {
     "image": "ghcr.io/quenchworks/images/ingress-nginx",
-    "version": "1.15.13",
-    "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.13",
+    "version": "1.15.14",
+    "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.14",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13016,8 +13274,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.15.13",
-        "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.13",
+        "version": "1.15.14",
+        "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.14",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13092,8 +13350,8 @@
   },
   "istio-proxyv2": {
     "image": "ghcr.io/quenchworks/images/istio-proxyv2",
-    "version": "1.31.4",
-    "tag": "ghcr.io/quenchworks/images/istio-proxyv2:1.31.4",
+    "version": "1.32.0",
+    "tag": "ghcr.io/quenchworks/images/istio-proxyv2:1.32.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13105,6 +13363,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.32.0",
+        "tag": "ghcr.io/quenchworks/images/istio-proxyv2:1.32.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.31.4",
         "tag": "ghcr.io/quenchworks/images/istio-proxyv2:1.31.4",
@@ -13123,8 +13395,8 @@
   },
   "istiod": {
     "image": "ghcr.io/quenchworks/images/istiod",
-    "version": "1.31.4",
-    "tag": "ghcr.io/quenchworks/images/istiod:1.31.4",
+    "version": "1.32.0",
+    "tag": "ghcr.io/quenchworks/images/istiod:1.32.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13136,6 +13408,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "1.32.0",
+        "tag": "ghcr.io/quenchworks/images/istiod:1.32.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "1.31.4",
         "tag": "ghcr.io/quenchworks/images/istiod:1.31.4",
@@ -13153,20 +13439,6 @@
       {
         "version": "1.30.8",
         "tag": "ghcr.io/quenchworks/images/istiod:1.30.8",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "1.29.10",
-        "tag": "ghcr.io/quenchworks/images/istiod:1.29.10",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13241,8 +13513,8 @@
   },
   "jdk": {
     "image": "ghcr.io/quenchworks/images/jdk",
-    "version": "25.0.5.0.3",
-    "tag": "ghcr.io/quenchworks/images/jdk:25.0.5.0.3",
+    "version": "25.0.5.1",
+    "tag": "ghcr.io/quenchworks/images/jdk:25.0.5.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13255,8 +13527,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "25.0.5.0.3",
-        "tag": "ghcr.io/quenchworks/images/jdk:25.0.5.0.3",
+        "version": "25.0.5.1",
+        "tag": "ghcr.io/quenchworks/images/jdk:25.0.5.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13269,8 +13541,8 @@
         "cves": []
       },
       {
-        "version": "21.0.13.0.3",
-        "tag": "ghcr.io/quenchworks/images/jdk:21.0.13.0.3",
+        "version": "21.0.13.1",
+        "tag": "ghcr.io/quenchworks/images/jdk:21.0.13.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13283,8 +13555,8 @@
         "cves": []
       },
       {
-        "version": "17.0.21.0.3",
-        "tag": "ghcr.io/quenchworks/images/jdk:17.0.21.0.3",
+        "version": "17.0.21.1",
+        "tag": "ghcr.io/quenchworks/images/jdk:17.0.21.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13609,8 +13881,8 @@
   },
   "jre": {
     "image": "ghcr.io/quenchworks/images/jre",
-    "version": "25.0.5.0.3",
-    "tag": "ghcr.io/quenchworks/images/jre:25.0.5.0.3",
+    "version": "25.0.5.1",
+    "tag": "ghcr.io/quenchworks/images/jre:25.0.5.1",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -13623,8 +13895,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "25.0.5.0.3",
-        "tag": "ghcr.io/quenchworks/images/jre:25.0.5.0.3",
+        "version": "25.0.5.1",
+        "tag": "ghcr.io/quenchworks/images/jre:25.0.5.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13637,8 +13909,8 @@
         "cves": []
       },
       {
-        "version": "21.0.13.0.3",
-        "tag": "ghcr.io/quenchworks/images/jre:21.0.13.0.3",
+        "version": "21.0.13.1",
+        "tag": "ghcr.io/quenchworks/images/jre:21.0.13.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13651,8 +13923,8 @@
         "cves": []
       },
       {
-        "version": "17.0.21.0.3",
-        "tag": "ghcr.io/quenchworks/images/jre:17.0.21.0.3",
+        "version": "17.0.21.1",
+        "tag": "ghcr.io/quenchworks/images/jre:17.0.21.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -14236,43 +14508,82 @@
     "version": "2.18.0",
     "tag": "ghcr.io/quenchworks/images/kfp-frontend:2.18.0",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 1,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 90,
+    "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.18.0",
         "tag": "ghcr.io/quenchworks/images/kfp-frontend:2.18.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 1,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 90,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "2.17.3",
         "tag": "ghcr.io/quenchworks/images/kfp-frontend:2.17.3",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 1,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 90,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -16306,8 +16617,8 @@
   },
   "kubescape-operator": {
     "image": "ghcr.io/quenchworks/images/kubescape-operator",
-    "version": "0.2.224",
-    "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.224",
+    "version": "0.2.240",
+    "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.240",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -16320,8 +16631,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.2.224",
-        "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.224",
+        "version": "0.2.240",
+        "tag": "ghcr.io/quenchworks/images/kubescape-operator:0.2.240",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16337,8 +16648,8 @@
   },
   "kubescape-storage": {
     "image": "ghcr.io/quenchworks/images/kubescape-storage",
-    "version": "0.0.408",
-    "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.408",
+    "version": "0.0.411",
+    "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.411",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -16351,22 +16662,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.0.408",
-        "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.408",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.0.407",
-        "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.407",
+        "version": "0.0.411",
+        "tag": "ghcr.io/quenchworks/images/kubescape-storage:0.0.411",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -16382,8 +16679,8 @@
   },
   "kubescape-synchronizer": {
     "image": "ghcr.io/quenchworks/images/kubescape-synchronizer",
-    "version": "0.0.184",
-    "tag": "ghcr.io/quenchworks/images/kubescape-synchronizer:0.0.184",
+    "version": "0.0.185",
+    "tag": "ghcr.io/quenchworks/images/kubescape-synchronizer:0.0.185",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -16396,8 +16693,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.0.184",
-        "tag": "ghcr.io/quenchworks/images/kubescape-synchronizer:0.0.184",
+        "version": "0.0.185",
+        "tag": "ghcr.io/quenchworks/images/kubescape-synchronizer:0.0.185",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -17819,8 +18116,8 @@
   },
   "mailpit": {
     "image": "ghcr.io/quenchworks/images/mailpit",
-    "version": "1.33.1",
-    "tag": "ghcr.io/quenchworks/images/mailpit:1.33.1",
+    "version": "1.34.0",
+    "tag": "ghcr.io/quenchworks/images/mailpit:1.34.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -17833,8 +18130,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.33.1",
-        "tag": "ghcr.io/quenchworks/images/mailpit:1.33.1",
+        "version": "1.34.0",
+        "tag": "ghcr.io/quenchworks/images/mailpit:1.34.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -18117,8 +18414,8 @@
   },
   "mattermost": {
     "image": "ghcr.io/quenchworks/images/mattermost",
-    "version": "12.0.2",
-    "tag": "ghcr.io/quenchworks/images/mattermost:12.0.2",
+    "version": "12.1.0",
+    "tag": "ghcr.io/quenchworks/images/mattermost:12.1.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -18130,6 +18427,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "12.1.0",
+        "tag": "ghcr.io/quenchworks/images/mattermost:12.1.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "12.0.2",
         "tag": "ghcr.io/quenchworks/images/mattermost:12.0.2",
@@ -18328,8 +18639,8 @@
   },
   "meilisearch": {
     "image": "ghcr.io/quenchworks/images/meilisearch",
-    "version": "1.56.2",
-    "tag": "ghcr.io/quenchworks/images/meilisearch:1.56.2",
+    "version": "1.57.0",
+    "tag": "ghcr.io/quenchworks/images/meilisearch:1.57.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -18342,8 +18653,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.56.2",
-        "tag": "ghcr.io/quenchworks/images/meilisearch:1.56.2",
+        "version": "1.57.0",
+        "tag": "ghcr.io/quenchworks/images/meilisearch:1.57.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -18356,8 +18667,8 @@
         "cves": []
       },
       {
-        "version": "1.55.1",
-        "tag": "ghcr.io/quenchworks/images/meilisearch:1.55.1",
+        "version": "1.56.2",
+        "tag": "ghcr.io/quenchworks/images/meilisearch:1.56.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -19063,8 +19374,8 @@
   },
   "mosquitto": {
     "image": "ghcr.io/quenchworks/images/mosquitto",
-    "version": "2.1.2",
-    "tag": "ghcr.io/quenchworks/images/mosquitto:2.1.2",
+    "version": "2.1.4",
+    "tag": "ghcr.io/quenchworks/images/mosquitto:2.1.4",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -19077,36 +19388,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "2.1.2",
-        "tag": "ghcr.io/quenchworks/images/mosquitto:2.1.2",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "2.1.1",
-        "tag": "ghcr.io/quenchworks/images/mosquitto:2.1.1",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "2.1.0",
-        "tag": "ghcr.io/quenchworks/images/mosquitto:2.1.0",
+        "version": "2.1.4",
+        "tag": "ghcr.io/quenchworks/images/mosquitto:2.1.4",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -19215,15 +19498,39 @@
     "version": "2.40.7",
     "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 4,
     "low": 0,
     "unknown": 0,
-    "total": 4,
+    "total": 6,
     "fixable": 0,
-    "grade": "C",
-    "score": 84,
+    "grade": "D",
+    "score": 64,
     "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.7",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2024-1899",
         "severity": "MEDIUM",
@@ -19278,15 +19585,39 @@
         "version": "2.40.7",
         "tag": "ghcr.io/quenchworks/images/n8n:2.40.7",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 4,
+        "total": 6,
         "fixable": 0,
-        "grade": "C",
-        "score": 84,
+        "grade": "D",
+        "score": 64,
         "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2024-1899",
             "severity": "MEDIUM",
@@ -19344,29 +19675,79 @@
     "version": "2.40.7",
     "tag": "ghcr.io/quenchworks/images/n8n-runners:2.40.7",
     "critical": 0,
-    "high": 0,
+    "high": 3,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 3,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.7",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.40.7",
         "tag": "ghcr.io/quenchworks/images/n8n-runners:2.40.7",
         "critical": 0,
-        "high": 0,
+        "high": 3,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 3,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -19657,6 +20038,487 @@
       }
     ]
   },
+  "netbird": {
+    "image": "ghcr.io/quenchworks/images/netbird",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 0,
+    "unknown": 0,
+    "total": 2,
+    "fixable": 0,
+    "grade": "C",
+    "score": 92,
+    "cves": [
+      {
+        "id": "CVE-2026-26014",
+        "severity": "MEDIUM",
+        "pkg": "github.com/pion/dtls/v2",
+        "installed": "v2.2.10",
+        "fixed": null,
+        "title": "github.com/pion/dtls: Pion DTLS uses random nonce generation with AES GCM ciphers risks leaking the authentication key",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-26014",
+        "targets": [
+          "usr/bin/netbird"
+        ]
+      },
+      {
+        "id": "CVE-2026-54909",
+        "severity": "MEDIUM",
+        "pkg": "github.com/pion/stun/v2",
+        "installed": "v2.0.0",
+        "fixed": null,
+        "title": "pion/stun is a Go implementation of STUN. Prior to 3.1.3, XORMappedAdd ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54909",
+        "targets": [
+          "usr/bin/netbird"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "unknown": 0,
+        "total": 2,
+        "fixable": 0,
+        "grade": "C",
+        "score": 92,
+        "cves": [
+          {
+            "id": "CVE-2026-26014",
+            "severity": "MEDIUM",
+            "pkg": "github.com/pion/dtls/v2",
+            "installed": "v2.2.10",
+            "fixed": null,
+            "title": "github.com/pion/dtls: Pion DTLS uses random nonce generation with AES GCM ciphers risks leaking the authentication key",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-26014",
+            "targets": [
+              "usr/bin/netbird"
+            ]
+          },
+          {
+            "id": "CVE-2026-54909",
+            "severity": "MEDIUM",
+            "pkg": "github.com/pion/stun/v2",
+            "installed": "v2.0.0",
+            "fixed": null,
+            "title": "pion/stun is a Go implementation of STUN. Prior to 3.1.3, XORMappedAdd ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54909",
+            "targets": [
+              "usr/bin/netbird"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "netbird-dashboard": {
+    "image": "ghcr.io/quenchworks/images/netbird-dashboard",
+    "version": "2.97.0",
+    "tag": "ghcr.io/quenchworks/images/netbird-dashboard:2.97.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.97.0",
+        "tag": "ghcr.io/quenchworks/images/netbird-dashboard:2.97.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "netbird-management": {
+    "image": "ghcr.io/quenchworks/images/netbird-management",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird-management:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0,
+    "unknown": 0,
+    "total": 1,
+    "fixable": 0,
+    "grade": "C",
+    "score": 96,
+    "cves": [
+      {
+        "id": "CVE-2024-28180",
+        "severity": "MEDIUM",
+        "pkg": "gopkg.in/square/go-jose.v2",
+        "installed": "v2.6.0",
+        "fixed": null,
+        "title": "jose-go: improper handling of highly compressed data",
+        "url": "https://avd.aquasec.com/nvd/cve-2024-28180",
+        "targets": [
+          "usr/bin/netbird-mgmt"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird-management:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
+        "grade": "C",
+        "score": 96,
+        "cves": [
+          {
+            "id": "CVE-2024-28180",
+            "severity": "MEDIUM",
+            "pkg": "gopkg.in/square/go-jose.v2",
+            "installed": "v2.6.0",
+            "fixed": null,
+            "title": "jose-go: improper handling of highly compressed data",
+            "url": "https://avd.aquasec.com/nvd/cve-2024-28180",
+            "targets": [
+              "usr/bin/netbird-mgmt"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "netbird-nblink": {
+    "image": "ghcr.io/quenchworks/images/netbird-nblink",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird-nblink:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 0,
+    "unknown": 0,
+    "total": 2,
+    "fixable": 0,
+    "grade": "C",
+    "score": 92,
+    "cves": [
+      {
+        "id": "CVE-2026-26014",
+        "severity": "MEDIUM",
+        "pkg": "github.com/pion/dtls/v2",
+        "installed": "v2.2.10",
+        "fixed": null,
+        "title": "github.com/pion/dtls: Pion DTLS uses random nonce generation with AES GCM ciphers risks leaking the authentication key",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-26014",
+        "targets": [
+          "usr/bin/nblink"
+        ]
+      },
+      {
+        "id": "CVE-2026-54909",
+        "severity": "MEDIUM",
+        "pkg": "github.com/pion/stun/v2",
+        "installed": "v2.0.0",
+        "fixed": null,
+        "title": "pion/stun is a Go implementation of STUN. Prior to 3.1.3, XORMappedAdd ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54909",
+        "targets": [
+          "usr/bin/nblink"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird-nblink:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "unknown": 0,
+        "total": 2,
+        "fixable": 0,
+        "grade": "C",
+        "score": 92,
+        "cves": [
+          {
+            "id": "CVE-2026-26014",
+            "severity": "MEDIUM",
+            "pkg": "github.com/pion/dtls/v2",
+            "installed": "v2.2.10",
+            "fixed": null,
+            "title": "github.com/pion/dtls: Pion DTLS uses random nonce generation with AES GCM ciphers risks leaking the authentication key",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-26014",
+            "targets": [
+              "usr/bin/nblink"
+            ]
+          },
+          {
+            "id": "CVE-2026-54909",
+            "severity": "MEDIUM",
+            "pkg": "github.com/pion/stun/v2",
+            "installed": "v2.0.0",
+            "fixed": null,
+            "title": "pion/stun is a Go implementation of STUN. Prior to 3.1.3, XORMappedAdd ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54909",
+            "targets": [
+              "usr/bin/nblink"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "netbird-relay": {
+    "image": "ghcr.io/quenchworks/images/netbird-relay",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird-relay:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird-relay:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "netbird-reverse-proxy": {
+    "image": "ghcr.io/quenchworks/images/netbird-reverse-proxy",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird-reverse-proxy:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 0,
+    "unknown": 0,
+    "total": 2,
+    "fixable": 0,
+    "grade": "C",
+    "score": 92,
+    "cves": [
+      {
+        "id": "CVE-2026-26014",
+        "severity": "MEDIUM",
+        "pkg": "github.com/pion/dtls/v2",
+        "installed": "v2.2.10",
+        "fixed": null,
+        "title": "github.com/pion/dtls: Pion DTLS uses random nonce generation with AES GCM ciphers risks leaking the authentication key",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-26014",
+        "targets": [
+          "usr/bin/netbird-proxy"
+        ]
+      },
+      {
+        "id": "CVE-2026-54909",
+        "severity": "MEDIUM",
+        "pkg": "github.com/pion/stun/v2",
+        "installed": "v2.0.0",
+        "fixed": null,
+        "title": "pion/stun is a Go implementation of STUN. Prior to 3.1.3, XORMappedAdd ...",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-54909",
+        "targets": [
+          "usr/bin/netbird-proxy"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird-reverse-proxy:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 2,
+        "low": 0,
+        "unknown": 0,
+        "total": 2,
+        "fixable": 0,
+        "grade": "C",
+        "score": 92,
+        "cves": [
+          {
+            "id": "CVE-2026-26014",
+            "severity": "MEDIUM",
+            "pkg": "github.com/pion/dtls/v2",
+            "installed": "v2.2.10",
+            "fixed": null,
+            "title": "github.com/pion/dtls: Pion DTLS uses random nonce generation with AES GCM ciphers risks leaking the authentication key",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-26014",
+            "targets": [
+              "usr/bin/netbird-proxy"
+            ]
+          },
+          {
+            "id": "CVE-2026-54909",
+            "severity": "MEDIUM",
+            "pkg": "github.com/pion/stun/v2",
+            "installed": "v2.0.0",
+            "fixed": null,
+            "title": "pion/stun is a Go implementation of STUN. Prior to 3.1.3, XORMappedAdd ...",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-54909",
+            "targets": [
+              "usr/bin/netbird-proxy"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "netbird-server": {
+    "image": "ghcr.io/quenchworks/images/netbird-server",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird-server:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0,
+    "unknown": 0,
+    "total": 1,
+    "fixable": 0,
+    "grade": "C",
+    "score": 96,
+    "cves": [
+      {
+        "id": "CVE-2024-28180",
+        "severity": "MEDIUM",
+        "pkg": "gopkg.in/square/go-jose.v2",
+        "installed": "v2.6.0",
+        "fixed": null,
+        "title": "jose-go: improper handling of highly compressed data",
+        "url": "https://avd.aquasec.com/nvd/cve-2024-28180",
+        "targets": [
+          "usr/bin/netbird-server"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird-server:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
+        "grade": "C",
+        "score": 96,
+        "cves": [
+          {
+            "id": "CVE-2024-28180",
+            "severity": "MEDIUM",
+            "pkg": "gopkg.in/square/go-jose.v2",
+            "installed": "v2.6.0",
+            "fixed": null,
+            "title": "jose-go: improper handling of highly compressed data",
+            "url": "https://avd.aquasec.com/nvd/cve-2024-28180",
+            "targets": [
+              "usr/bin/netbird-server"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "netbird-signal": {
+    "image": "ghcr.io/quenchworks/images/netbird-signal",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird-signal:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird-signal:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "netbird-upload": {
+    "image": "ghcr.io/quenchworks/images/netbird-upload",
+    "version": "0.83.1",
+    "tag": "ghcr.io/quenchworks/images/netbird-upload:0.83.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.83.1",
+        "tag": "ghcr.io/quenchworks/images/netbird-upload:0.83.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "netdata": {
     "image": "ghcr.io/quenchworks/images/netdata",
     "version": "2.12.3",
@@ -19901,43 +20763,82 @@
     "version": "2.17.0",
     "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:2.17.0",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 1,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 90,
+    "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.7",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.17.0",
         "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:2.17.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 1,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 90,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "2.16.0",
         "tag": "ghcr.io/quenchworks/images/nginx-proxy-manager:2.16.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 1,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 90,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.5",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -19977,57 +20878,109 @@
     "version": "26.13.1",
     "tag": "ghcr.io/quenchworks/images/node:26.13.1",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 2,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 80,
+    "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.7",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "26.13.1",
         "tag": "ghcr.io/quenchworks/images/node:26.13.1",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 2,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 80,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "24.22.3",
         "tag": "ghcr.io/quenchworks/images/node:24.22.3",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 2,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 80,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       },
       {
         "version": "22.23.5",
         "tag": "ghcr.io/quenchworks/images/node:22.23.5",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 2,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 80,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -20261,8 +21214,8 @@
   },
   "odoo": {
     "image": "ghcr.io/quenchworks/images/odoo",
-    "version": "19.0.20261115",
-    "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261115",
+    "version": "19.0.20261117",
+    "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261117",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -20275,8 +21228,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "19.0.20261115",
-        "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261115",
+        "version": "19.0.20261117",
+        "tag": "ghcr.io/quenchworks/images/odoo:19.0.20261117",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -20807,11 +21760,11 @@
     "version": "3.8.0",
     "tag": "ghcr.io/quenchworks/images/opensearch-dashboards:3.8.0",
     "critical": 11,
-    "high": 24,
+    "high": 25,
     "medium": 21,
     "low": 18,
     "unknown": 0,
-    "total": 74,
+    "total": 75,
     "fixable": 73,
     "grade": "F",
     "score": 0,
@@ -21112,6 +22065,18 @@
         "fixed": "3.4.17",
         "title": "DOMPurify IN_PLACE: hook that removes a parent or sibling leaves the detached subtree's event handlers armed (incomplete fix for GHSA-p98j-92pf-mc4p)",
         "url": "https://github.com/advisories/GHSA-mrv2-3pqr-j5jr",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
         "targets": [
           "Node.js"
         ]
@@ -21506,11 +22471,11 @@
         "version": "3.8.0",
         "tag": "ghcr.io/quenchworks/images/opensearch-dashboards:3.8.0",
         "critical": 11,
-        "high": 24,
+        "high": 25,
         "medium": 21,
         "low": 18,
         "unknown": 0,
-        "total": 74,
+        "total": 75,
         "fixable": 73,
         "grade": "F",
         "score": 0,
@@ -21811,6 +22776,18 @@
             "fixed": "3.4.17",
             "title": "DOMPurify IN_PLACE: hook that removes a parent or sibling leaves the detached subtree's event handlers armed (incomplete fix for GHSA-p98j-92pf-mc4p)",
             "url": "https://github.com/advisories/GHSA-mrv2-3pqr-j5jr",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
             "targets": [
               "Node.js"
             ]
@@ -22416,8 +23393,8 @@
   },
   "oras": {
     "image": "ghcr.io/quenchworks/images/oras",
-    "version": "1.3.6",
-    "tag": "ghcr.io/quenchworks/images/oras:1.3.6",
+    "version": "1.4.0",
+    "tag": "ghcr.io/quenchworks/images/oras:1.4.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -22430,8 +23407,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.3.6",
-        "tag": "ghcr.io/quenchworks/images/oras:1.3.6",
+        "version": "1.4.0",
+        "tag": "ghcr.io/quenchworks/images/oras:1.4.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -22747,6 +23724,37 @@
       {
         "version": "0.3.0",
         "tag": "ghcr.io/quenchworks/images/owncast:0.3.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "paperless-ngx": {
+    "image": "ghcr.io/quenchworks/images/paperless-ngx",
+    "version": "3.5.0",
+    "tag": "ghcr.io/quenchworks/images/paperless-ngx:3.5.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.5.0",
+        "tag": "ghcr.io/quenchworks/images/paperless-ngx:3.5.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -23448,15 +24456,28 @@
         "version": "11.28.11",
         "tag": "ghcr.io/quenchworks/images/pnpm:11.28.11",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 1,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 90,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -23873,8 +24894,8 @@
   },
   "postgres-exporter": {
     "image": "ghcr.io/quenchworks/images/postgres-exporter",
-    "version": "0.20.1",
-    "tag": "ghcr.io/quenchworks/images/postgres-exporter:0.20.1",
+    "version": "0.21.0",
+    "tag": "ghcr.io/quenchworks/images/postgres-exporter:0.21.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -23886,6 +24907,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "0.21.0",
+        "tag": "ghcr.io/quenchworks/images/postgres-exporter:0.21.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "0.20.1",
         "tag": "ghcr.io/quenchworks/images/postgres-exporter:0.20.1",
@@ -24022,8 +25057,8 @@
   },
   "postgrest": {
     "image": "ghcr.io/quenchworks/images/postgrest",
-    "version": "16.5",
-    "tag": "ghcr.io/quenchworks/images/postgrest:16.5",
+    "version": "16.6",
+    "tag": "ghcr.io/quenchworks/images/postgrest:16.6",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -24035,6 +25070,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "16.6",
+        "tag": "ghcr.io/quenchworks/images/postgrest:16.6",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "16.5",
         "tag": "ghcr.io/quenchworks/images/postgrest:16.5",
@@ -24052,20 +25101,6 @@
       {
         "version": "16.4",
         "tag": "ghcr.io/quenchworks/images/postgrest:16.4",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "16.3",
-        "tag": "ghcr.io/quenchworks/images/postgrest:16.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -24689,8 +25724,8 @@
   },
   "qdrant": {
     "image": "ghcr.io/quenchworks/images/qdrant",
-    "version": "1.20.1",
-    "tag": "ghcr.io/quenchworks/images/qdrant:1.20.1",
+    "version": "1.20.2",
+    "tag": "ghcr.io/quenchworks/images/qdrant:1.20.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -24703,8 +25738,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.20.1",
-        "tag": "ghcr.io/quenchworks/images/qdrant:1.20.1",
+        "version": "1.20.2",
+        "tag": "ghcr.io/quenchworks/images/qdrant:1.20.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -25118,8 +26153,8 @@
   },
   "radicale": {
     "image": "ghcr.io/quenchworks/images/radicale",
-    "version": "3.9.1",
-    "tag": "ghcr.io/quenchworks/images/radicale:3.9.1",
+    "version": "3.9.2",
+    "tag": "ghcr.io/quenchworks/images/radicale:3.9.2",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -25132,8 +26167,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "3.9.1",
-        "tag": "ghcr.io/quenchworks/images/radicale:3.9.1",
+        "version": "3.9.2",
+        "tag": "ghcr.io/quenchworks/images/radicale:3.9.2",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -25149,58 +26184,32 @@
   },
   "rallly": {
     "image": "ghcr.io/quenchworks/images/rallly",
-    "version": "4.17.0",
-    "tag": "ghcr.io/quenchworks/images/rallly:4.17.0",
+    "version": "4.17.1",
+    "tag": "ghcr.io/quenchworks/images/rallly:4.17.1",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-119790",
-        "severity": "MEDIUM",
-        "pkg": "next",
-        "installed": "16.4.2",
-        "fixed": "16.4.5",
-        "title": "Next.js: Information disclosure across root params when a 'use cache' function is called through unstable_cache()",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-119790",
-        "targets": [
-          "Node.js"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
-        "version": "4.17.0",
-        "tag": "ghcr.io/quenchworks/images/rallly:4.17.0",
+        "version": "4.17.1",
+        "tag": "ghcr.io/quenchworks/images/rallly:4.17.1",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-119790",
-            "severity": "MEDIUM",
-            "pkg": "next",
-            "installed": "16.4.2",
-            "fixed": "16.4.5",
-            "title": "Next.js: Information disclosure across root params when a 'use cache' function is called through unstable_cache()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-119790",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -25552,32 +26561,82 @@
   },
   "renovate": {
     "image": "ghcr.io/quenchworks/images/renovate",
-    "version": "44.239.1",
-    "tag": "ghcr.io/quenchworks/images/renovate:44.239.1",
+    "version": "44.251.0",
+    "tag": "ghcr.io/quenchworks/images/renovate:44.251.0",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 2,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 80,
+    "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.7",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
-        "version": "44.239.1",
-        "tag": "ghcr.io/quenchworks/images/renovate:44.239.1",
+        "version": "44.251.0",
+        "tag": "ghcr.io/quenchworks/images/renovate:44.251.0",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 2,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 80,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -25707,8 +26766,8 @@
   },
   "rqlite": {
     "image": "ghcr.io/quenchworks/images/rqlite",
-    "version": "10.7.2",
-    "tag": "ghcr.io/quenchworks/images/rqlite:10.7.2",
+    "version": "10.7.3",
+    "tag": "ghcr.io/quenchworks/images/rqlite:10.7.3",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -25721,8 +26780,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "10.7.2",
-        "tag": "ghcr.io/quenchworks/images/rqlite:10.7.2",
+        "version": "10.7.3",
+        "tag": "ghcr.io/quenchworks/images/rqlite:10.7.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -26303,8 +27362,8 @@
   },
   "selenium-node-firefox": {
     "image": "ghcr.io/quenchworks/images/selenium-node-firefox",
-    "version": "4.52.0",
-    "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.52.0",
+    "version": "4.53.0",
+    "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.53.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -26317,22 +27376,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "4.52.0",
-        "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.52.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "4.51.0",
-        "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.51.0",
+        "version": "4.53.0",
+        "tag": "ghcr.io/quenchworks/images/selenium-node-firefox:4.53.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -26348,8 +27393,8 @@
   },
   "selenium-server": {
     "image": "ghcr.io/quenchworks/images/selenium-server",
-    "version": "4.52.0",
-    "tag": "ghcr.io/quenchworks/images/selenium-server:4.52.0",
+    "version": "4.53.0",
+    "tag": "ghcr.io/quenchworks/images/selenium-server:4.53.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -26362,22 +27407,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "4.52.0",
-        "tag": "ghcr.io/quenchworks/images/selenium-server:4.52.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "4.51.0",
-        "tag": "ghcr.io/quenchworks/images/selenium-server:4.51.0",
+        "version": "4.53.0",
+        "tag": "ghcr.io/quenchworks/images/selenium-server:4.53.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -27852,63 +28883,18 @@
   },
   "teleport": {
     "image": "ghcr.io/quenchworks/images/teleport",
-    "version": "18.10.0",
-    "tag": "ghcr.io/quenchworks/images/teleport:18.10.0",
+    "version": "18.11.10",
+    "tag": "ghcr.io/quenchworks/images/teleport:18.11.10",
     "critical": 0,
-    "high": 4,
-    "medium": 8,
+    "high": 0,
+    "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 13,
+    "total": 1,
     "fixable": 0,
-    "grade": "D",
-    "score": 26,
+    "grade": "A",
+    "score": 98,
     "cves": [
-      {
-        "id": "CVE-2026-116587",
-        "severity": "HIGH",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via crafted RSA parameters in JWKs",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116587",
-        "targets": [
-          "usr/bin/tbot",
-          "usr/bin/tctl",
-          "usr/bin/teleport",
-          "usr/bin/tsh"
-        ]
-      },
-      {
-        "id": "CVE-2026-116585",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via empty ciphertext buffer during JWE decryption",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116585",
-        "targets": [
-          "usr/bin/tbot",
-          "usr/bin/tctl",
-          "usr/bin/teleport",
-          "usr/bin/tsh"
-        ]
-      },
-      {
-        "id": "CVE-2026-116586",
-        "severity": "MEDIUM",
-        "pkg": "github.com/go-jose/go-jose/v3",
-        "installed": "v3.0.5",
-        "fixed": null,
-        "title": "github.com/go-jose/go-jose: go-jose: Denial of Service via deeply nested JSON parsing",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116586",
-        "targets": [
-          "usr/bin/tbot",
-          "usr/bin/tctl",
-          "usr/bin/teleport",
-          "usr/bin/tsh"
-        ]
-      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -27923,6 +28909,33 @@
       }
     ],
     "versions": [
+      {
+        "version": "18.11.10",
+        "tag": "ghcr.io/quenchworks/images/teleport:18.11.10",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 1,
+        "total": 1,
+        "fixable": 0,
+        "grade": "A",
+        "score": 98,
+        "cves": [
+          {
+            "id": "GO-2026-5932",
+            "severity": "UNKNOWN",
+            "pkg": "golang.org/x/crypto/openpgp",
+            "installed": "v0.1.0-deprecated",
+            "fixed": null,
+            "title": "The golang.org/x/crypto/openpgp package is unmaintained, unsafe by design, and has known security issues",
+            "url": "https://go.dev/issue/44226",
+            "targets": [
+              "usr/bin/teleport"
+            ]
+          }
+        ]
+      },
       {
         "version": "18.10.0",
         "tag": "ghcr.io/quenchworks/images/teleport:18.10.0",
@@ -28298,54 +29311,28 @@
     "tag": "ghcr.io/quenchworks/images/tetragon-operator:1.8.0",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-128085",
-        "severity": "MEDIUM",
-        "pkg": "tetragon-operator",
-        "installed": "1.8.0-r1",
-        "fixed": "1.8.0-r2",
-        "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-        "targets": [
-          "ghcr.io/quenchworks/images/tetragon-operator@sha256:291d564a9107aad5bc4e5af3d4af5a5523dae0f93ea5fcbba143ccca089c0be0 (wolfi 20230201)"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/tetragon-operator:1.8.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-128085",
-            "severity": "MEDIUM",
-            "pkg": "tetragon-operator",
-            "installed": "1.8.0-r1",
-            "fixed": "1.8.0-r2",
-            "title": "go.opentelemetry.io/otel/sdk: go.opentelemetry.io/otel/sdk/log: go.opentelemetry.io/otel/trace: OpenTelemetry-Go: Denial of Service via attribute truncation bypass using Unicode replacement characters",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-128085",
-            "targets": [
-              "ghcr.io/quenchworks/images/tetragon-operator@sha256:291d564a9107aad5bc4e5af3d4af5a5523dae0f93ea5fcbba143ccca089c0be0 (wolfi 20230201)"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -29709,14 +30696,26 @@
     "tag": "ghcr.io/quenchworks/images/umami:3.5.0",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 2,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
+    "total": 2,
+    "fixable": 2,
     "grade": "C",
-    "score": 91,
+    "score": 82,
     "cves": [
+      {
+        "id": "CVE-2026-119351",
+        "severity": "MEDIUM",
+        "pkg": "next",
+        "installed": "16.4.2",
+        "fixed": "16.4.5",
+        "title": "Next.js: Cache leak across root param values in nested 'use cache' functions via delayed inner stream metadata",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-119351",
+        "targets": [
+          "Node.js"
+        ]
+      },
       {
         "id": "CVE-2026-119790",
         "severity": "MEDIUM",
@@ -29736,14 +30735,26 @@
         "tag": "ghcr.io/quenchworks/images/umami:3.5.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 2,
+        "fixable": 2,
         "grade": "C",
-        "score": 91,
+        "score": 82,
         "cves": [
+          {
+            "id": "CVE-2026-119351",
+            "severity": "MEDIUM",
+            "pkg": "next",
+            "installed": "16.4.2",
+            "fixed": "16.4.5",
+            "title": "Next.js: Cache leak across root param values in nested 'use cache' functions via delayed inner stream metadata",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-119351",
+            "targets": [
+              "Node.js"
+            ]
+          },
           {
             "id": "CVE-2026-119790",
             "severity": "MEDIUM",
@@ -29852,1088 +30863,8 @@
   },
   "uptime-kuma": {
     "image": "ghcr.io/quenchworks/images/uptime-kuma",
-    "version": "2.5.6",
-    "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.6",
-    "critical": 0,
-    "high": 7,
-    "medium": 17,
-    "low": 1,
-    "unknown": 0,
-    "total": 25,
-    "fixable": 25,
-    "grade": "D",
-    "score": 0,
-    "cves": [
-      {
-        "id": "CVE-2026-109383",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109461",
-        "severity": "HIGH",
-        "pkg": "@azure/msal-node",
-        "installed": "5.6.0",
-        "fixed": "7.1.0",
-        "title": "MSAL Node authorization code flow may disclose parameters to an attacker-controlled endpoint",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109461",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109869",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-111181",
-        "severity": "HIGH",
-        "pkg": "body-parser",
-        "installed": "1.20.8",
-        "fixed": "2.4.0, 1.20.9",
-        "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-116689",
-        "severity": "HIGH",
-        "pkg": "follow-redirects",
-        "installed": "1.16.1",
-        "fixed": "1.16.2",
-        "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-123863",
-        "severity": "HIGH",
-        "pkg": "nodejs-24",
-        "installed": "24.22.1-r2",
-        "fixed": "24.22.3-r0",
-        "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
-        "targets": [
-          "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-87018",
-        "severity": "HIGH",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109924",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-109932",
-        "severity": "MEDIUM",
-        "pkg": "undici",
-        "installed": "6.28.1",
-        "fixed": "6.29.1, 7.30.1, 8.12.2",
-        "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-110816",
-        "severity": "MEDIUM",
-        "pkg": "qs",
-        "installed": "6.16.0",
-        "fixed": "6.16.1",
-        "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-111997",
-        "severity": "MEDIUM",
-        "pkg": "ip-address",
-        "installed": "10.7.2",
-        "fixed": "10.7.4",
-        "title": "ip-address: ip-address: Denial of Service via excessive percent characters in IPv6 address input",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-111997",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-118764",
-        "severity": "MEDIUM",
-        "pkg": "minimatch",
-        "installed": "9.0.7",
-        "fixed": "11.0.1",
-        "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-118773",
-        "severity": "MEDIUM",
-        "pkg": "glob",
-        "installed": "10.5.0",
-        "fixed": "14.0.2",
-        "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-2950",
-        "severity": "MEDIUM",
-        "pkg": "lodash",
-        "installed": "4.18.0",
-        "fixed": "4.18.1",
-        "title": "lodash: Lodash: Prototype pollution allows deletion of built-in prototype properties via array path bypass",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-2950",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "glibc-2.44-locale-posix",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "ld-linux-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "CVE-2026-84243",
-        "severity": "MEDIUM",
-        "pkg": "libcrypt1-2.44",
-        "installed": "2.44-r9",
-        "fixed": "2.44-r16",
-        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-        "targets": [
-          "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-        ]
-      },
-      {
-        "id": "GHSA-4ffr-jq9g-5ffx",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.0.13",
-        "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-        "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-85x2-q946-cp5h",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-        "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-8c8m-p3m8-cjg8",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-        "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-g73g-hqqh-jr95",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.0.13",
-        "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-        "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "GHSA-m943-m63m-w62w",
-        "severity": "MEDIUM",
-        "pkg": "nodemailer",
-        "installed": "10.0.10",
-        "fixed": "10.1.4",
-        "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-        "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-        "targets": [
-          "Node.js"
-        ]
-      },
-      {
-        "id": "CVE-2026-126066",
-        "severity": "LOW",
-        "pkg": "fast-xml-parser",
-        "installed": "5.8.0",
-        "fixed": "5.12.0",
-        "title": "fast-xml-parser: fast-xml-parser: Denial of Service via quadratic rescanning of unterminated tags",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-126066",
-        "targets": [
-          "Node.js"
-        ]
-      }
-    ],
-    "versions": [
-      {
-        "version": "2.5.6",
-        "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.6",
-        "critical": 0,
-        "high": 7,
-        "medium": 17,
-        "low": 1,
-        "unknown": 0,
-        "total": 25,
-        "fixable": 25,
-        "grade": "D",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109461",
-            "severity": "HIGH",
-            "pkg": "@azure/msal-node",
-            "installed": "5.6.0",
-            "fixed": "7.1.0",
-            "title": "MSAL Node authorization code flow may disclose parameters to an attacker-controlled endpoint",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109461",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111181",
-            "severity": "HIGH",
-            "pkg": "body-parser",
-            "installed": "1.20.8",
-            "fixed": "2.4.0, 1.20.9",
-            "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-116689",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.1",
-            "fixed": "1.16.2",
-            "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-123863",
-            "severity": "HIGH",
-            "pkg": "nodejs-24",
-            "installed": "24.22.1-r2",
-            "fixed": "24.22.3-r0",
-            "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110816",
-            "severity": "MEDIUM",
-            "pkg": "qs",
-            "installed": "6.16.0",
-            "fixed": "6.16.1",
-            "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111997",
-            "severity": "MEDIUM",
-            "pkg": "ip-address",
-            "installed": "10.7.2",
-            "fixed": "10.7.4",
-            "title": "ip-address: ip-address: Denial of Service via excessive percent characters in IPv6 address input",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111997",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118764",
-            "severity": "MEDIUM",
-            "pkg": "minimatch",
-            "installed": "9.0.7",
-            "fixed": "11.0.1",
-            "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118773",
-            "severity": "MEDIUM",
-            "pkg": "glob",
-            "installed": "10.5.0",
-            "fixed": "14.0.2",
-            "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-2950",
-            "severity": "MEDIUM",
-            "pkg": "lodash",
-            "installed": "4.18.0",
-            "fixed": "4.18.1",
-            "title": "lodash: Lodash: Prototype pollution allows deletion of built-in prototype properties via array path bypass",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-2950",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r9",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:76bb9db001b076cfa4a015150ade642dfb7bc05f2d49a810abe9897bbc203a87 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "GHSA-4ffr-jq9g-5ffx",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-            "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-85x2-q946-cp5h",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-            "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-8c8m-p3m8-cjg8",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-            "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-g73g-hqqh-jr95",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-            "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-m943-m63m-w62w",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-            "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-126066",
-            "severity": "LOW",
-            "pkg": "fast-xml-parser",
-            "installed": "5.8.0",
-            "fixed": "5.12.0",
-            "title": "fast-xml-parser: fast-xml-parser: Denial of Service via quadratic rescanning of unterminated tags",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-126066",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
-      },
-      {
-        "version": "2.5.5",
-        "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.5",
-        "critical": 4,
-        "high": 13,
-        "medium": 20,
-        "low": 2,
-        "unknown": 0,
-        "total": 39,
-        "fixable": 39,
-        "grade": "F",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlicommon1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlidec1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-111497",
-            "severity": "CRITICAL",
-            "pkg": "libbrotlienc1",
-            "installed": "1.2.0-r5",
-            "fixed": "1.2.0-r7",
-            "title": "brotli: Out-of-Bounds Write in Google Brotli Decoder",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111497",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-91403",
-            "severity": "CRITICAL",
-            "pkg": "ca-certificates-bundle",
-            "installed": "20260909-r2",
-            "fixed": "20260909-r3",
-            "title": "OpenJDK: Distrust eMudhra intermediate CA certificates due to security concerns",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-91403",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-105482",
-            "severity": "HIGH",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.1-r0",
-            "title": "nodejs: nodejs: dns.resolve truncates hostnames containing a NUL character",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105482",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-105483",
-            "severity": "HIGH",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.1-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via fullwidth-digit IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105483",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106069",
-            "severity": "HIGH",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.1-r0",
-            "title": "nodejs: nodejs: TLS certificate hostname bypass via non-canonical IP hostnames",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106069",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109383",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Certificate validation bypass via dropped TLS options in Agent",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109383",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109461",
-            "severity": "HIGH",
-            "pkg": "@azure/msal-node",
-            "installed": "5.6.0",
-            "fixed": "7.1.0",
-            "title": "MSAL Node authorization code flow may disclose parameters to an attacker-controlled endpoint",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109461",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109869",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unhandled stream error on excessive content encodings",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109869",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111181",
-            "severity": "HIGH",
-            "pkg": "body-parser",
-            "installed": "1.20.6",
-            "fixed": "2.4.0, 1.20.9",
-            "title": "body-parser: body-parser: Denial of Service via unhandled decompression stream error",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111181",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111755",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.0",
-            "fixed": "1.16.1",
-            "title": "follow-redirects: follow-redirects: Information disclosure via improper regular expression escaping in sensitive header filtering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111755",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111756",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.0",
-            "fixed": "1.16.1",
-            "title": "follow-redirects: follow-redirects: Information disclosure via array-formatted headers during cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111756",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111943",
-            "severity": "HIGH",
-            "pkg": "ca-certificates-bundle",
-            "installed": "20260909-r2",
-            "fixed": "20260909-r3",
-            "title": "crypto/x509: golang: crypto/x509: Man-in-the-middle attacks via untrusted intermediate certificates",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111943",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-116689",
-            "severity": "HIGH",
-            "pkg": "follow-redirects",
-            "installed": "1.16.0",
-            "fixed": "1.16.2",
-            "title": "follow-redirects: follow-redirects: Information disclosure via cross-origin redirects",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-116689",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-123863",
-            "severity": "HIGH",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.3-r0",
-            "title": "nodejs: Node.js: Denial of Service via improper HTTP/2 session teardown",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-123863",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-87018",
-            "severity": "HIGH",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via TLS renegotiation with mismatched certificate",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-87018",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-105481",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.1-r0",
-            "title": "nodejs: nodejs: Response desynchronization via improper HTTP keep-alive connection reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-105481",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106072",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.1-r0",
-            "title": "nodejs: nodejs: Authentication bypass via non-canonical IPv4 hostname verification",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106072",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-106074",
-            "severity": "MEDIUM",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.1-r0",
-            "title": "nodejs: nodejs: predictable random values via snapshot entropy cache reuse",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106074",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-109924",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via memory exhaustion in EventSource client",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109924",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-109932",
-            "severity": "MEDIUM",
-            "pkg": "undici",
-            "installed": "6.28.1",
-            "fixed": "6.29.1, 7.30.1, 8.12.2",
-            "title": "undici: undici: Denial of Service via unbounded WebSocket PONG buffering",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-109932",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-110816",
-            "severity": "MEDIUM",
-            "pkg": "qs",
-            "installed": "6.16.0",
-            "fixed": "6.16.1",
-            "title": "qs: qs: Denial of Service via unhandled exception during array serialization",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-110816",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-111997",
-            "severity": "MEDIUM",
-            "pkg": "ip-address",
-            "installed": "10.7.1",
-            "fixed": "10.7.4",
-            "title": "ip-address: ip-address: Denial of Service via excessive percent characters in IPv6 address input",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-111997",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118764",
-            "severity": "MEDIUM",
-            "pkg": "minimatch",
-            "installed": "9.0.7",
-            "fixed": "11.0.1",
-            "title": "minimatch: minimatch: Denial of Service via crafted glob pattern expansion",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118764",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-118773",
-            "severity": "MEDIUM",
-            "pkg": "glob",
-            "installed": "10.5.0",
-            "fixed": "14.0.2",
-            "title": "glob: glob: Denial of Service (DoS) via incomplete traversal cancellation",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-118773",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-2950",
-            "severity": "MEDIUM",
-            "pkg": "lodash",
-            "installed": "4.18.0",
-            "fixed": "4.18.1",
-            "title": "lodash: Lodash: Prototype pollution allows deletion of built-in prototype properties via array path bypass",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-2950",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44",
-            "installed": "2.44-r8",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "glibc-2.44-locale-posix",
-            "installed": "2.44-r8",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "ld-linux-2.44",
-            "installed": "2.44-r8",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-84243",
-            "severity": "MEDIUM",
-            "pkg": "libcrypt1-2.44",
-            "installed": "2.44-r8",
-            "fixed": "2.44-r16",
-            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "GHSA-4ffr-jq9g-5ffx",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: Quadratic backtracking in SMTP AUTH mechanism detection regexes allows pre-auth remote denial of service",
-            "url": "https://github.com/advisories/GHSA-4ffr-jq9g-5ffx",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-85x2-q946-cp5h",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \">\" inside a quoted local part ends an angle-addr early in addressparser, delivering to a domain the header does not name",
-            "url": "https://github.com/advisories/GHSA-85x2-q946-cp5h",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-8c8m-p3m8-cjg8",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A nested comment ends early in addressparser, releasing the rest of the comment as a recipient",
-            "url": "https://github.com/advisories/GHSA-8c8m-p3m8-cjg8",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-g73g-hqqh-jr95",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.0.13",
-            "title": "Nodemailer: RFC 5322 comment inside an angle-bracket address is never stripped",
-            "url": "https://github.com/advisories/GHSA-g73g-hqqh-jr95",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "GHSA-m943-m63m-w62w",
-            "severity": "MEDIUM",
-            "pkg": "nodemailer",
-            "installed": "10.0.10",
-            "fixed": "10.1.4",
-            "title": "Nodemailer: A \";\" inside a quoted string or comment ends an address group early in addressparser, turning display text into a recipient",
-            "url": "https://github.com/advisories/GHSA-m943-m63m-w62w",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-106073",
-            "severity": "LOW",
-            "pkg": "nodejs-24",
-            "installed": "24.21.0-r4",
-            "fixed": "24.22.1-r0",
-            "title": "nodejs: Node.js: Filesystem read permission bypass via fs.realpathSync()",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-106073",
-            "targets": [
-              "ghcr.io/quenchworks/images/uptime-kuma@sha256:af63046e94e29b2c908da20ed72e7704e8f835e4cc982e4636106099e80f60d9 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-126066",
-            "severity": "LOW",
-            "pkg": "fast-xml-parser",
-            "installed": "5.8.0",
-            "fixed": "5.12.0",
-            "title": "fast-xml-parser: fast-xml-parser: Denial of Service via quadratic rescanning of unterminated tags",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-126066",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "uv": {
-    "image": "ghcr.io/quenchworks/images/uv",
-    "version": "0.13.8",
-    "tag": "ghcr.io/quenchworks/images/uv:0.13.8",
+    "version": "2.5.12",
+    "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.12",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -30946,8 +30877,39 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.13.8",
-        "tag": "ghcr.io/quenchworks/images/uv:0.13.8",
+        "version": "2.5.12",
+        "tag": "ghcr.io/quenchworks/images/uptime-kuma:2.5.12",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "uv": {
+    "image": "ghcr.io/quenchworks/images/uv",
+    "version": "0.13.9",
+    "tag": "ghcr.io/quenchworks/images/uv:0.13.9",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.13.9",
+        "tag": "ghcr.io/quenchworks/images/uv:0.13.9",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -31168,8 +31130,8 @@
   },
   "vcluster": {
     "image": "ghcr.io/quenchworks/images/vcluster",
-    "version": "0.37.7",
-    "tag": "ghcr.io/quenchworks/images/vcluster:0.37.7",
+    "version": "0.38.0",
+    "tag": "ghcr.io/quenchworks/images/vcluster:0.38.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -31182,36 +31144,22 @@
     "cves": [],
     "versions": [
       {
+        "version": "0.38.0",
+        "tag": "ghcr.io/quenchworks/images/vcluster:0.38.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
         "version": "0.37.7",
         "tag": "ghcr.io/quenchworks/images/vcluster:0.37.7",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.36.4",
-        "tag": "ghcr.io/quenchworks/images/vcluster:0.36.4",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.35.5",
-        "tag": "ghcr.io/quenchworks/images/vcluster:0.35.5",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -31227,8 +31175,8 @@
   },
   "vector": {
     "image": "ghcr.io/quenchworks/images/vector",
-    "version": "0.61.0",
-    "tag": "ghcr.io/quenchworks/images/vector:0.61.0",
+    "version": "0.62.0",
+    "tag": "ghcr.io/quenchworks/images/vector:0.62.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -31241,22 +31189,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "0.61.0",
-        "tag": "ghcr.io/quenchworks/images/vector:0.61.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
-      },
-      {
-        "version": "0.60.0",
-        "tag": "ghcr.io/quenchworks/images/vector:0.60.0",
+        "version": "0.62.0",
+        "tag": "ghcr.io/quenchworks/images/vector:0.62.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -32057,6 +31991,37 @@
       }
     ]
   },
+  "warpgate": {
+    "image": "ghcr.io/quenchworks/images/warpgate",
+    "version": "0.30.4",
+    "tag": "ghcr.io/quenchworks/images/warpgate:0.30.4",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.30.4",
+        "tag": "ghcr.io/quenchworks/images/warpgate:0.30.4",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "weaviate": {
     "image": "ghcr.io/quenchworks/images/weaviate",
     "version": "1.40.5",
@@ -32825,36 +32790,86 @@
     "version": "4.8.3",
     "tag": "ghcr.io/quenchworks/images/zipline:4.8.3",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 2,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 80,
+    "cves": [
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "2.3.2",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      },
+      {
+        "id": "CVE-2026-112366",
+        "severity": "HIGH",
+        "pkg": "picomatch",
+        "installed": "4.0.7",
+        "fixed": null,
+        "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.8.3",
         "tag": "ghcr.io/quenchworks/images/zipline:4.8.3",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 2,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 80,
+        "cves": [
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "2.3.2",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          },
+          {
+            "id": "CVE-2026-112366",
+            "severity": "HIGH",
+            "pkg": "picomatch",
+            "installed": "4.0.7",
+            "fixed": null,
+            "title": "picomatch: picomatch: Denial of Service via single-branch repeated extglob patterns",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-112366",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
   "zitadel": {
     "image": "ghcr.io/quenchworks/images/zitadel",
-    "version": "4.20.3",
-    "tag": "ghcr.io/quenchworks/images/zitadel:4.20.3",
+    "version": "4.20.4",
+    "tag": "ghcr.io/quenchworks/images/zitadel:4.20.4",
     "critical": 0,
     "high": 0,
     "medium": 1,
@@ -32880,8 +32895,8 @@
     ],
     "versions": [
       {
-        "version": "4.20.3",
-        "tag": "ghcr.io/quenchworks/images/zitadel:4.20.3",
+        "version": "4.20.4",
+        "tag": "ghcr.io/quenchworks/images/zitadel:4.20.4",
         "critical": 0,
         "high": 0,
         "medium": 1,
