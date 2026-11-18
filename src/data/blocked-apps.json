@@ -42,18 +42,6 @@
     "status": "kener: Kener (rajnandan1/kener, MIT), a status page and incident manager: HTTP, TCP, DNS, ping and SSL\nmonitors, incidents, maintenance windows, badges and a public page. Images issue #58."
   },
   {
-    "slug": "kgateway",
-    "state": "held",
-    "measured": "2026-11-16",
-    "status": "Re-measured 2026-11-16: public Wolfi still tops out at envoy-1.37 1.37.1-r3 (fixed 1.37.8-r0 absent). Hold. The 2026-11-16 scan adds Wolfi drift (ca-certificates-bundle r3, glibc r16) on the published tags; a rebuild waits for the hold (#71).\nRe-measured 2026-11-11: emissary v4.2.0 and kgateway v2.5.1 are out, but the public Wolfi APKINDEX still tops out at envoy-1.37 1.37.1-r3 and envoy-1.38 1.38.1-r0 (envoy-1.3x is frozen in public Wolfi). Hold.\nkgateway: from-source via melange (Go control plane built from the release tarball).\nThis is the CONTROL PLANE only -- it implements Gateway API and programs Envoy over\nxDS. The data plane is the companion `kgateway-envoy` image (our hardened Wolfi envoy\nplus kgateway's own `envoyinit` bootstrap shim); see apps/kgateway-envoy."
-  },
-  {
-    "slug": "kgateway-envoy",
-    "state": "held",
-    "measured": "2026-11-16",
-    "status": "Re-measured 2026-11-16: public Wolfi still tops out at envoy-1.37 1.37.1-r3 (fixed 1.37.8-r0 absent). Hold. The 2026-11-16 scan adds Wolfi drift (ca-certificates-bundle r3, glibc r16) on the published tags; a rebuild waits for the hold (#71).\nRe-measured 2026-11-11: emissary v4.2.0 and kgateway v2.5.1 are out, but the public Wolfi APKINDEX still tops out at envoy-1.37 1.37.1-r3 and envoy-1.38 1.38.1-r0 (envoy-1.3x is frozen in public Wolfi). Hold.\nkgateway-envoy: the kgateway DATA PLANE. This is upstream's `envoy-wrapper` image,\nrebuilt clean-room: our own hardened Wolfi envoy apk (the same one behind the quench\n`envoy` image) plus kgateway's `envoyinit` bootstrap shim built from source."
-  },
-  {
     "slug": "linkwarden",
     "state": "held",
     "measured": null,

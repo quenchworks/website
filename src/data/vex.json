@@ -364,6 +364,119 @@
     }
   },
   {
+    "slug": "cilium-envoy",
+    "path": "vex/envoy/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/envoy/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84303"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84304"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84445"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-111497"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/brotli@1.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. Envoy builds brotli at commit 42a2ed4355bc (2026-09-30), labelled 1.2.0-260930-42a2ed4.envoy. The fix on brotli's main branch is commit 0ed4268a4401 (2026-02-27), an ancestor of 42a2ed4 (GitHub compare 0ed4268...42a2ed4: ahead, behind_by=0). The 2026-10-21 commits 50a9b70a, b418fa81 and da980636 are its backports to the v1.2, v1.1 and v1.0 release branches, which is why the advisory names only release versions (1.2.1, 1.1.1, 1.0.10). The vulnerable code is therefore not in the build."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-27135"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/nghttp2@1.66.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. Envoy takes nghttp2 from its own Bazel registry as module 1.66.0.envoy (envoyproxy/bazel-registry 8ef390e1, modules/nghttp2/1.66.0.envoy/source.json), which applies nghttp2-CVE-2026-27135_part1.patch to _part4.patch over the v1.66.0 release tarball. The vulnerable code is therefore not in the build."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-85229"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/skywalking-data-collect-protocol@10.4.0"
+            }
+          ],
+          "status": "not_affected",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for the Apache SkyWalking server (web page generation in the UI). Envoy links only skywalking-data-collect-protocol, the protobuf definitions its envoy.tracers.skywalking extension (via cpp2sky) uses to send spans; no SkyWalking server, UI or alarm code is built into envoy-static.",
+          "justification": "vulnerable_code_not_present"
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-71216"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/skywalking-data-collect-protocol@10.4.0"
+            }
+          ],
+          "status": "not_affected",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for the Apache SkyWalking server (the PagerDuty alarm hook). Envoy links only skywalking-data-collect-protocol, the protobuf definitions its envoy.tracers.skywalking extension (via cpp2sky) uses to send spans; no SkyWalking server, UI or alarm code is built into envoy-static.",
+          "justification": "vulnerable_code_not_present"
+        }
+      ]
+    }
+  },
+  {
     "slug": "cloudreve",
     "path": "vex/cloudreve/2026-11-15",
     "doc": {
@@ -939,11 +1052,14 @@
           "products": [
             {
               "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
             }
           ],
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
-          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears."
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
         },
         {
           "vulnerability": {
@@ -952,11 +1068,14 @@
           "products": [
             {
               "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
             }
           ],
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
-          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears."
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
         },
         {
           "vulnerability": {
@@ -965,11 +1084,14 @@
           "products": [
             {
               "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
             }
           ],
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
-          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears."
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
         },
         {
           "vulnerability": {
@@ -1786,12 +1908,12 @@
           },
           "products": [
             {
-              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20261029165818-11c1ab520145"
             }
           ],
           "status": "not_affected",
           "justification": "component_not_present",
-          "impact_statement": "PROVEN false-positive. The advisory is against istio/envoy -- Istio's FORK of the Envoy C++ proxy -- and is a denial of service from mishandled regular expressions on long URIs. This image ships no Istio Envoy and no istio-proxy: its data plane binary is Wolfi's stock envoy apk, and the control-plane image carries that same stock envoy only for `envoy --mode validate`. Verified on the built artifact rather than reasoned about: `strings` over usr/bin/kgateway returns 0 matches for istio.io/istio/pkg/envoy and 0 for istio.io/istio/istioctl, and the image contains no istio-proxy binary at all. The vulnerable component is a different program in a different language. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
+          "impact_statement": "PROVEN false-positive. The advisory is against istio/envoy -- Istio's FORK of the Envoy C++ proxy -- and is a denial of service from mishandled regular expressions on long URIs. This image ships no Istio Envoy and no istio-proxy: its data plane binary is a stock upstream Envoy built from source (the quench envoy image), and the control-plane image carries that same stock envoy only for `envoy --mode validate`. Verified on the built artifact rather than reasoned about: `strings` over usr/bin/kgateway returns 0 matches for istio.io/istio/pkg/envoy and 0 for istio.io/istio/istioctl, and the image contains no istio-proxy binary at all. The vulnerable component is a different program in a different language. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
         },
         {
           "vulnerability": {
@@ -1799,7 +1921,7 @@
           },
           "products": [
             {
-              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20261029165818-11c1ab520145"
             }
           ],
           "status": "not_affected",
@@ -1812,7 +1934,7 @@
           },
           "products": [
             {
-              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20261029165818-11c1ab520145"
             }
           ],
           "status": "not_affected",
@@ -1825,7 +1947,7 @@
           },
           "products": [
             {
-              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20261029165818-11c1ab520145"
             }
           ],
           "status": "not_affected",
@@ -1838,12 +1960,125 @@
           },
           "products": [
             {
-              "@id": "pkg:golang/istio.io/istio@v0.0.0-20260605182440-f18fd540c0e8"
+              "@id": "pkg:golang/istio.io/istio@v0.0.0-20261029165818-11c1ab520145"
             }
           ],
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
           "impact_statement": "PROVEN false-positive, of the 'scanner read the version metadata, not the artifact' kind. The advisory is the sibling of CVE-2021-39155: a URI fragment let a request bypass AuthorizationPolicy path rules, fixed in the same 1.9.8 / 1.10.4 / 1.11.1 releases (2021-08). The istio authz tree linked into this binary is from master at f18fd540c0e8 (2026-06-05), roughly five years and about 10,277 commits past the 1.11.1 fix line, so the pre-fix path matcher is not the code that ships. Verified what is actually linked rather than assuming: `strings` over usr/bin/kgateway shows only pilot/pkg/security/authz/{model,builder,matcher} plus pilot/pkg/{model,serviceregistry,security,util}, i.e. the translation library kgateway's waypoint integration uses; istiod itself is absent (0 matches for pilot/cmd, 0 for pilot-discovery, 0 for istioctl), so there is no Istio request path in this image to bypass. The metadata is also unfixable by any pin, permanently: istio tags its releases as `1.14.1` with no `v` prefix, so the Go module proxy publishes no semver versions at all -- `go list -m -versions istio.io/istio` printed an EMPTY list, and `go get istio.io/istio@v1.14.1` cannot resolve. A pseudo-version is therefore the only obtainable form of this module, and v0.0.0-<date>-<sha> sorts below every number the advisory calls fixed, by construction rather than by staleness. Checked the dates too: the pinned commit f18fd540c0e86dae7596e144759caadb477f8ff2 is 'Do not parse dry-run if there is no value (#60480)' on istio master, committer date 2026-06-05T18:24:40Z, while the newest fix release named across these five advisories is 1.14.1, tagged 2022-06-09T19:09:15Z (and 1.11.1 2021-08-24, 1.2.4 and 1.1.13 2019-08-06). The code linked here postdates every one of them by about four years."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "kgateway-envoy",
+    "path": "vex/envoy/2026-11-17",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/envoy/2026-11-17",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-17T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84303"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84304"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-84445"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/grpc@1.83.0"
+            },
+            {
+              "@id": "pkg:generic/com_github_grpc_grpc@1.81.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for gRPC-Go (GHSA ecosystem go, package google.golang.org/grpc, fixed in 1.83.1/1.83.2). Envoy links gRPC C++ core (Bazel module grpc 1.83.0.envoy from Envoy's registry) and contains no Go code; the inventory scan matches it only through the shared CPE cpe:2.3:a:grpc:grpc. Revisit if a gRPC C++ advisory with the same identifier appears. Envoy 1.39.6 links gRPC C++ 1.81.1 (repository com_github_grpc_grpc), same reasoning."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-111497"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/brotli@1.2.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. Envoy builds brotli at commit 42a2ed4355bc (2026-09-30), labelled 1.2.0-260930-42a2ed4.envoy. The fix on brotli's main branch is commit 0ed4268a4401 (2026-02-27), an ancestor of 42a2ed4 (GitHub compare 0ed4268...42a2ed4: ahead, behind_by=0). The 2026-10-21 commits 50a9b70a, b418fa81 and da980636 are its backports to the v1.2, v1.1 and v1.0 release branches, which is why the advisory names only release versions (1.2.1, 1.1.1, 1.0.10). The vulnerable code is therefore not in the build."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-27135"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/nghttp2@1.66.0"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_present",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. Envoy takes nghttp2 from its own Bazel registry as module 1.66.0.envoy (envoyproxy/bazel-registry 8ef390e1, modules/nghttp2/1.66.0.envoy/source.json), which applies nghttp2-CVE-2026-27135_part1.patch to _part4.patch over the v1.66.0 release tarball. The vulnerable code is therefore not in the build."
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-85229"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/skywalking-data-collect-protocol@10.4.0"
+            }
+          ],
+          "status": "not_affected",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for the Apache SkyWalking server (web page generation in the UI). Envoy links only skywalking-data-collect-protocol, the protobuf definitions its envoy.tracers.skywalking extension (via cpp2sky) uses to send spans; no SkyWalking server, UI or alarm code is built into envoy-static.",
+          "justification": "vulnerable_code_not_present"
+        },
+        {
+          "vulnerability": {
+            "name": "CVE-2026-71216"
+          },
+          "products": [
+            {
+              "@id": "pkg:generic/skywalking-data-collect-protocol@10.4.0"
+            }
+          ],
+          "status": "not_affected",
+          "impact_statement": "Measured 2026-11-17 on Envoy 1.40.2. The advisory is for the Apache SkyWalking server (the PagerDuty alarm hook). Envoy links only skywalking-data-collect-protocol, the protobuf definitions its envoy.tracers.skywalking extension (via cpp2sky) uses to send spans; no SkyWalking server, UI or alarm code is built into envoy-static.",
+          "justification": "vulnerable_code_not_present"
         }
       ]
     }
