@@ -191,6 +191,22 @@
     "note": "Visual builder for LLM applications and agent workflows. Measured 2026-09-28: 1.12.3 resolves to 457 packages (2.3 GB). The scanner reports only chromadb 1.5.9 (no fix), but the wheels carry what it cannot see: OpenSSL 3.5.1 (ibm_db.libs), OpenSSL 3.6.2 and libcurl 8.20.0 inside pyarrow, BoringSSL in grpcio and hf_xet, and 7 bundled .libs directories (numpy, scipy, pillow, cassandra-driver). Wolfi has py3.13 pyarrow, grpcio, numpy, tokenizers and orjson, but no onnxruntime, chromadb or ibm_db, so a build that passes the CVE gate honestly needs those built from source or dropped."
   },
   {
+    "name": "Sim",
+    "category": "Machine learning",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Visual builder for AI agent workflows, a maintained replacement for Flowise (archived upstream on 2026-08-13). Next.js app on PostgreSQL with pgvector, shipped upstream as four images: the app, a realtime server, migrations and cron. Needs pgvector in our PostgreSQL chart."
+  },
+  {
+    "name": "Dify",
+    "category": "Machine learning",
+    "license": "Dify Open Source License (modified Apache-2.0)",
+    "licenseClean": "caution",
+    "priority": "exploring",
+    "note": "LLM application platform, another Flowise replacement. The license adds two conditions to Apache-2.0: no multi-tenant service without a written grant, and the console logo and copyright must stay. A rebuilt image keeps the frontend unmodified to meet the second; the first limits how users can run it, so this needs a decision before any work."
+  },
+  {
     "name": "Langfuse",
     "category": "Machine learning",
     "license": "MIT",
