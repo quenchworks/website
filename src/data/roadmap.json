@@ -312,7 +312,7 @@
     "license": "MIT",
     "licenseClean": "caution",
     "priority": "next",
-    "note": "Full DevOps platform (Git forge, CI/CD, registry). Sized 2026-11-15 at 19.5.5 (user asked for it): built from the MIT gitlab-foss source, it needs about seven images (webservice/Rails, sidekiq, workhorse, gitaly, gitlab-shell, toolbox for migrations, exporter) plus an umbrella chart on the catalog PostgreSQL, Valkey and registry. The Rails asset compile is the heaviest build in the catalog and the gem and npm trees are the largest CVE surface. Building since 2026-11-15 (user asked): gitlab-shell 14.61.0 shipped; workhorse and gitaly next; the Rails image waits for 19.6 (Rails 8). Ticket: github.com/quenchworks/images/issues/20.",
+    "note": "Full DevOps platform (Git forge, CI/CD, registry). Sized 2026-11-15 at 19.5.5 (user asked for it): built from the MIT gitlab-foss source, it needs about seven images (webservice/Rails, sidekiq, workhorse, gitaly, gitlab-shell, toolbox for migrations, exporter) plus an umbrella chart on the catalog PostgreSQL, Valkey and registry. The Rails asset compile is the heaviest build in the catalog and the gem and npm trees are the largest CVE surface. Building since 2026-11-15 (user asked): gitlab-shell 14.61.0, workhorse 19.6.0 and gitaly 19.6.0 shipped; the Rails image (webservice, sidekiq and toolbox in one) on 19.6.0 (Rails 8.0) is in its first CI build since 2026-11-19; the umbrella chart follows. Ticket: github.com/quenchworks/images/issues/20.",
     "cleanAlternative": "Gitea or Forgejo, lightweight, fully-open Git forges that drop straight into the gitops-stack."
   },
   {
