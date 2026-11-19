@@ -1587,9 +1587,9 @@
     "versions": [
       {
         "version": "5.0.9",
-        "size": "140.6 MB",
-        "published": "2026-11-11T20:11:45Z",
-        "digest": "sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca"
+        "size": "140.7 MB",
+        "published": "2026-11-19T11:44:51Z",
+        "digest": "sha256:d7804a66d9bf2d8488dac6ec3040d262e14707f6c20f8d4fc38fb4cae6d34747"
       }
     ],
     "arches": [
@@ -5717,9 +5717,9 @@
     "versions": [
       {
         "version": "19.6.0",
-        "size": "283.6 MB",
-        "published": "2026-11-18T23:13:54Z",
-        "digest": "sha256:37c1aa74fc11811a53a8bff46e9c0458cab67cb1613830aaaedddcdb09bf17dd"
+        "size": "283.9 MB",
+        "published": "2026-11-19T12:46:22Z",
+        "digest": "sha256:8911d77b99c439bbe870efaab1467e18df649bdc6159599646d38db53323cd40"
       }
     ],
     "arches": [
@@ -5761,6 +5761,32 @@
     "upstream": "https://github.com/go-gitea/gitea",
     "source": "https://github.com/go-gitea/gitea",
     "image": "ghcr.io/quenchworks/images/gitea"
+  },
+  {
+    "slug": "gitlab-rails",
+    "name": "gitlab-rails",
+    "category": "CI/CD & registry",
+    "summary": "GitLab CE Rails (Puma web, Sidekiq and the rake toolbox in one image, chosen by command) from the MIT gitlab-foss release tag. Every native gem (grpc, nokogiri, re2, pg, rugged, the Rust markdown extension) built from source against Wolfi libraries; frontend assets compiled at build time. Part of the GitLab CE image set; the GitLab chart uses it.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "19.6.0",
+    "versions": [
+      {
+        "version": "19.6.0",
+        "size": "853.0 MB",
+        "published": "2026-11-19T11:31:21Z",
+        "digest": "sha256:b43c498a4cb1c0851714b0a242d76a9a8775a8b9118cafcc8519b32a08334cfd"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://gitlab.com/gitlab-org/gitlab-foss",
+    "source": "https://gitlab.com/gitlab-org/gitlab-foss/-/tags",
+    "image": "ghcr.io/quenchworks/images/gitlab-rails"
   },
   {
     "slug": "gitlab-runner",
@@ -7588,25 +7614,25 @@
     "status": "available",
     "license": "MIT",
     "licenseClean": "clean",
-    "version": "2.564, 2.566, 2.565",
+    "version": "2.566, 2.565, 2.564",
     "versions": [
       {
-        "version": "2.564",
-        "size": "149.7 MB",
-        "published": "2026-11-11T19:33:42Z",
-        "digest": "sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5"
-      },
-      {
         "version": "2.566",
-        "size": "149.7 MB",
-        "published": "2026-11-11T19:29:35Z",
-        "digest": "sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6"
+        "size": "149.8 MB",
+        "published": "2026-11-19T11:40:18Z",
+        "digest": "sha256:a550a0cd4feabede846855389c3686867fdaec388966d3ea52dbd990694a541b"
       },
       {
         "version": "2.565",
-        "size": "149.7 MB",
-        "published": "2026-11-11T19:29:01Z",
-        "digest": "sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170"
+        "size": "149.8 MB",
+        "published": "2026-11-19T11:40:16Z",
+        "digest": "sha256:0674b91d22100bbcbf7c84f28913953f554dfef8a97aa8a2edb37c1e8286e38b"
+      },
+      {
+        "version": "2.564",
+        "size": "149.8 MB",
+        "published": "2026-11-19T11:40:12Z",
+        "digest": "sha256:aca8c8f253bdfe44b54a60d7b6543cad40181155877e8713127335a7f253b44e"
       }
     ],
     "arches": [
@@ -8066,6 +8092,32 @@
     "upstream": "https://keda.sh",
     "source": "https://github.com/kedacore/keda",
     "image": "ghcr.io/quenchworks/images/keda"
+  },
+  {
+    "slug": "kener",
+    "name": "kener",
+    "category": "Observability",
+    "summary": "Kener: a status page and incident manager with HTTP, TCP, DNS, ping and SSL monitors, incidents, maintenance windows and badges. Built from source on Wolfi Node 24 with its native modules compiled locally; runs as uid 1001 with SQLite on a volume, Redis required (REDIS_URL), web UI on 3000.",
+    "tier": "standard",
+    "status": "available",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "version": "4.2.2",
+    "versions": [
+      {
+        "version": "4.2.2",
+        "size": "128.9 MB",
+        "published": "2026-11-19T13:18:34Z",
+        "digest": "sha256:9c5f7e5ae24523bbe0890f3e9e26ac7e0eb31465dd7dc4d8c5e1d8fc0c85b89b"
+      }
+    ],
+    "arches": [
+      "amd64",
+      "arm64"
+    ],
+    "upstream": "https://github.com/rajnandan1/kener",
+    "source": "https://github.com/rajnandan1/kener",
+    "image": "ghcr.io/quenchworks/images/kener"
   },
   {
     "slug": "keycloak",
@@ -16488,9 +16540,9 @@
     "versions": [
       {
         "version": "11.0.29",
-        "size": "87.4 MB",
-        "published": "2026-11-13T23:26:43Z",
-        "digest": "sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518"
+        "size": "87.3 MB",
+        "published": "2026-11-19T11:40:29Z",
+        "digest": "sha256:94ec5c17b6c80f47aa15638d991978726171d781f0bf79dec658654a18d44012"
       }
     ],
     "arches": [
