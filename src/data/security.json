@@ -92,6 +92,37 @@
       }
     ]
   },
+  "activemq-artemis": {
+    "image": "ghcr.io/quenchworks/images/activemq-artemis",
+    "version": "2.57.0",
+    "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.57.0",
+        "tag": "ghcr.io/quenchworks/images/activemq-artemis:2.57.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "actual": {
     "image": "ghcr.io/quenchworks/images/actual",
     "version": "26.11.0",
@@ -476,16 +507,28 @@
     "image": "ghcr.io/quenchworks/images/apache-polaris",
     "version": "1.8.0",
     "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
-    "critical": 0,
-    "high": 10,
-    "medium": 10,
+    "critical": 1,
+    "high": 14,
+    "medium": 14,
     "low": 0,
     "unknown": 0,
-    "total": 20,
-    "fixable": 19,
-    "grade": "D",
+    "total": 29,
+    "fixable": 28,
+    "grade": "F",
     "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-114938",
+        "severity": "CRITICAL",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
       {
         "id": "CVE-2026-102554",
         "severity": "HIGH",
@@ -535,6 +578,54 @@
         ]
       },
       {
+        "id": "CVE-2026-114939",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114940",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114941",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve integer compression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114942",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance vector masks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
         "id": "CVE-2026-115506",
         "severity": "HIGH",
         "pkg": "libexpat1",
@@ -556,6 +647,54 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
         "targets": [
           "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-114943",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114944",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114945",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114946",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance loop handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
         ]
       },
       {
@@ -659,16 +798,28 @@
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
-        "critical": 0,
-        "high": 10,
-        "medium": 10,
+        "critical": 1,
+        "high": 14,
+        "medium": 14,
         "low": 0,
         "unknown": 0,
-        "total": 20,
-        "fixable": 19,
-        "grade": "D",
+        "total": 29,
+        "fixable": 28,
+        "grade": "F",
         "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
           {
             "id": "CVE-2026-102554",
             "severity": "HIGH",
@@ -718,6 +869,54 @@
             ]
           },
           {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
             "id": "CVE-2026-115506",
             "severity": "HIGH",
             "pkg": "libexpat1",
@@ -739,6 +938,54 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
             "targets": [
               "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
             ]
           },
           {
@@ -2403,30 +2650,224 @@
     "image": "ghcr.io/quenchworks/images/cassandra",
     "version": "5.0.9",
     "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "critical": 1,
+    "high": 3,
+    "medium": 4,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 8,
+    "fixable": 8,
+    "grade": "F",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-114938",
+        "severity": "CRITICAL",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114939",
+        "severity": "HIGH",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114940",
+        "severity": "HIGH",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114942",
+        "severity": "HIGH",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance vector masks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114943",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114944",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114945",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114946",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-17-jre",
+        "installed": "17.0.21.0.3-r0",
+        "fixed": "17.0.21.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance loop handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+        "targets": [
+          "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "5.0.9",
         "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "critical": 1,
+        "high": 3,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 8,
+        "fixable": 8,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-17-jre",
+            "installed": "17.0.21.0.3-r0",
+            "fixed": "17.0.21.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/cassandra@sha256:fc7d9889192c53d66637a2be840b30435cbd72f9268ecdbbe01925275669a7ca (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -4289,18 +4730,18 @@
     "version": "26.3.4",
     "tag": "ghcr.io/quenchworks/images/cockroachdb:26.3.4",
     "critical": 0,
-    "high": 1,
-    "medium": 0,
+    "high": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
     "total": 1,
     "fixable": 1,
-    "grade": "D",
-    "score": 85,
+    "grade": "C",
+    "score": 91,
     "cves": [
       {
         "id": "CVE-2026-97054",
-        "severity": "HIGH",
+        "severity": "MEDIUM",
         "pkg": "stdlib",
         "installed": "v1.26.10",
         "fixed": "1.26.11, 1.27.4",
@@ -4316,18 +4757,18 @@
         "version": "26.3.4",
         "tag": "ghcr.io/quenchworks/images/cockroachdb:26.3.4",
         "critical": 0,
-        "high": 1,
-        "medium": 0,
+        "high": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
         "total": 1,
         "fixable": 1,
-        "grade": "D",
-        "score": 85,
+        "grade": "C",
+        "score": 91,
         "cves": [
           {
             "id": "CVE-2026-97054",
-            "severity": "HIGH",
+            "severity": "MEDIUM",
             "pkg": "stdlib",
             "installed": "v1.26.10",
             "fixed": "1.26.11, 1.27.4",
@@ -6125,58 +6566,542 @@
     "image": "ghcr.io/quenchworks/images/datahub-upgrade",
     "version": "1.9.0",
     "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.9.0",
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
-    "low": 0,
+    "critical": 1,
+    "high": 4,
+    "medium": 4,
+    "low": 1,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 10,
+    "fixable": 10,
+    "grade": "F",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-114938",
+        "severity": "CRITICAL",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114939",
+        "severity": "HIGH",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114940",
+        "severity": "HIGH",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114941",
+        "severity": "HIGH",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve integer compression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114942",
+        "severity": "HIGH",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance vector masks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114943",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114944",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114945",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114946",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance loop handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114947",
+        "severity": "LOW",
+        "pkg": "openjdk-25-jre",
+        "installed": "25.0.5.0.3-r1",
+        "fixed": "25.0.5.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance TLS connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114947",
+        "targets": [
+          "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.9.0",
         "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.9.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
+        "critical": 1,
+        "high": 4,
+        "medium": 4,
+        "low": 1,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 10,
+        "fixable": 10,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114947",
+            "severity": "LOW",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance TLS connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114947",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.8.0",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
+        "critical": 1,
+        "high": 4,
+        "medium": 4,
+        "low": 1,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 10,
+        "fixable": 10,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114947",
+            "severity": "LOW",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance TLS connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114947",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:0c2eeb11aebce42477615f9930cd69705836ddc0a51b3c5edbeadbf2c7ed324e (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "1.7.0.1",
         "tag": "ghcr.io/quenchworks/images/datahub-upgrade:1.7.0.1",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
+        "critical": 1,
+        "high": 4,
+        "medium": 4,
+        "low": 1,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 10,
+        "fixable": 10,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114947",
+            "severity": "LOW",
+            "pkg": "openjdk-25-jre",
+            "installed": "25.0.5.0.3-r1",
+            "fixed": "25.0.5.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance TLS connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114947",
+            "targets": [
+              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:5b2db3b4229108d11a955ba93e82c613aae4818f354965b33270e19001cee485 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -7866,18 +8791,18 @@
     "version": "2.63.23",
     "tag": "ghcr.io/quenchworks/images/filebrowser:2.63.23",
     "critical": 0,
-    "high": 1,
-    "medium": 0,
+    "high": 0,
+    "medium": 1,
     "low": 1,
     "unknown": 0,
     "total": 2,
     "fixable": 1,
-    "grade": "D",
-    "score": 84,
+    "grade": "C",
+    "score": 90,
     "cves": [
       {
         "id": "CVE-2026-97054",
-        "severity": "HIGH",
+        "severity": "MEDIUM",
         "pkg": "stdlib",
         "installed": "v1.26.10",
         "fixed": "1.26.11, 1.27.4",
@@ -7905,18 +8830,18 @@
         "version": "2.63.23",
         "tag": "ghcr.io/quenchworks/images/filebrowser:2.63.23",
         "critical": 0,
-        "high": 1,
-        "medium": 0,
+        "high": 0,
+        "medium": 1,
         "low": 1,
         "unknown": 0,
         "total": 2,
         "fixable": 1,
-        "grade": "D",
-        "score": 84,
+        "grade": "C",
+        "score": 90,
         "cves": [
           {
             "id": "CVE-2026-97054",
-            "severity": "HIGH",
+            "severity": "MEDIUM",
             "pkg": "stdlib",
             "installed": "v1.26.10",
             "fixed": "1.26.11, 1.27.4",
@@ -7944,18 +8869,18 @@
         "version": "2.63.22",
         "tag": "ghcr.io/quenchworks/images/filebrowser:2.63.22",
         "critical": 0,
-        "high": 1,
-        "medium": 0,
+        "high": 0,
+        "medium": 1,
         "low": 1,
         "unknown": 0,
         "total": 2,
         "fixable": 1,
-        "grade": "D",
-        "score": 84,
+        "grade": "C",
+        "score": 90,
         "cves": [
           {
             "id": "CVE-2026-97054",
-            "severity": "HIGH",
+            "severity": "MEDIUM",
             "pkg": "stdlib",
             "installed": "v1.26.10",
             "fixed": "1.26.11, 1.27.4",
@@ -12535,58 +13460,926 @@
     "image": "ghcr.io/quenchworks/images/jenkins-inbound-agent",
     "version": "2.566",
     "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.566",
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "critical": 2,
+    "high": 8,
+    "medium": 8,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 18,
+    "fixable": 18,
+    "grade": "F",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-114938",
+        "severity": "CRITICAL",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114938",
+        "severity": "CRITICAL",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114939",
+        "severity": "HIGH",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114939",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114940",
+        "severity": "HIGH",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114940",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114941",
+        "severity": "HIGH",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve integer compression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114941",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve integer compression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114942",
+        "severity": "HIGH",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance vector masks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114942",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance vector masks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114943",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114943",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114944",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114944",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114945",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114945",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114946",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance loop handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114946",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-default-jdk",
+        "installed": "21.0.13.0.3-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance loop handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+        "targets": [
+          "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "2.566",
         "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.566",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "critical": 2,
+        "high": 8,
+        "medium": 8,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 18,
+        "fixable": 18,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:4e8c921ca04e482514631f57d9fd1979cd17b99b2bb872feee29a4ed2b312fa6 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "2.565",
         "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.565",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "critical": 2,
+        "high": 8,
+        "medium": 8,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 18,
+        "fixable": 18,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:8f9b1ade2266c3de03249b00ed21004794540d58e8071f0ed2a89cf2d07d1170 (wolfi 20230201)"
+            ]
+          }
+        ]
       },
       {
         "version": "2.564",
         "tag": "ghcr.io/quenchworks/images/jenkins-inbound-agent:2.564",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "critical": 2,
+        "high": 8,
+        "medium": 8,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 18,
+        "fixable": 18,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-default-jdk",
+            "installed": "21.0.13.0.3-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/jenkins-inbound-agent@sha256:bad7ab2b1cf6567389390cf8bec6a6c3fb6b4aec02770d6c4961d4a9f3625dc5 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -26300,30 +28093,248 @@
     "image": "ghcr.io/quenchworks/images/tomcat",
     "version": "11.0.29",
     "tag": "ghcr.io/quenchworks/images/tomcat:11.0.29",
-    "critical": 0,
-    "high": 0,
-    "medium": 0,
+    "critical": 1,
+    "high": 4,
+    "medium": 4,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 9,
+    "fixable": 9,
+    "grade": "F",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-114938",
+        "severity": "CRITICAL",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114939",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114940",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114941",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve integer compression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114942",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance vector masks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114943",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114944",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114945",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114946",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13.0.3-r1",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance loop handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+        "targets": [
+          "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "11.0.29",
         "tag": "ghcr.io/quenchworks/images/tomcat:11.0.29",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
+        "critical": 1,
+        "high": 4,
+        "medium": 4,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 9,
+        "fixable": 9,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13.0.3-r1",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/tomcat@sha256:4533f9e402b123edcd713cf58e0beac3a9944a3316463e71f07822f2021b7518 (wolfi 20230201)"
+            ]
+          }
+        ]
       }
     ]
   },
