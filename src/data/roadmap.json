@@ -299,15 +299,6 @@
     "note": "Modern Redis/Valkey desktop GUI (Wails/Go+Vue). A desktop client, not a deployable server, so it falls outside the hardened in-cluster image model, a web Redis UI (e.g. redis-commander) would be the cache-stack UI instead."
   },
   {
-    "name": "GitLab CE",
-    "category": "CI/CD & registry",
-    "license": "MIT",
-    "licenseClean": "caution",
-    "priority": "next",
-    "note": "Full DevOps platform (Git forge, CI/CD, registry). Sized 2026-11-15 at 19.5.5 (user asked for it): built from the MIT gitlab-foss source, it needs about seven images (webservice/Rails, sidekiq, workhorse, gitaly, gitlab-shell, toolbox for migrations, exporter) plus an umbrella chart on the catalog PostgreSQL, Valkey and registry. The Rails asset compile is the heaviest build in the catalog and the gem and npm trees are the largest CVE surface. Building since 2026-11-15 (user asked): gitlab-shell 14.61.0, workhorse 19.6.0 and gitaly 19.6.0 shipped; the Rails image (webservice, sidekiq and toolbox in one) on 19.6.0 (Rails 8.0) is in its first CI build since 2026-11-19; the umbrella chart follows. Ticket: github.com/quenchworks/images/issues/20.",
-    "cleanAlternative": "Gitea or Forgejo, lightweight, fully-open Git forges that drop straight into the gitops-stack."
-  },
-  {
     "name": "OneDev",
     "category": "CI/CD & registry",
     "license": "MIT",
@@ -609,7 +600,7 @@
     "category": "Apps & productivity",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "priority": "planned",
+    "priority": "next",
     "note": "Project management for non-project-managers: tasks, kanban, timesheets, goals, ideas. v3.15.3, PHP / Laravel 12, MySQL. Sized 2026-11-16: the release tarball ships vendor/ without composer.json, and its vendor tree needs patch updates (laravel/framework 12.71.0, symfony http stack 7.4.22-7.4.23, phpseclib 3.0.57), so the image needs a from-source build (composer and the front-end build) to float them."
   },
   {
