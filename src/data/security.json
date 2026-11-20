@@ -1496,6 +1496,37 @@
       }
     ]
   },
+  "audiobookshelf": {
+    "image": "ghcr.io/quenchworks/images/audiobookshelf",
+    "version": "2.38.0",
+    "tag": "ghcr.io/quenchworks/images/audiobookshelf:2.38.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "2.38.0",
+        "tag": "ghcr.io/quenchworks/images/audiobookshelf:2.38.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "authelia": {
     "image": "ghcr.io/quenchworks/images/authelia",
     "version": "4.39.28",
@@ -2052,15 +2083,28 @@
         "version": "0.33.1",
         "tag": "ghcr.io/quenchworks/images/buildkit:0.33.1",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 3,
+        "fixable": 2,
+        "grade": "D",
+        "score": 69,
         "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.3.6",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/buildctl",
+              "usr/bin/buildkitd"
+            ]
+          },
           {
             "id": "GHSA-g98v-hv3f-hcfr",
             "severity": "LOW",
@@ -2620,29 +2664,55 @@
     "version": "1.33.1",
     "tag": "ghcr.io/quenchworks/images/cass-operator:1.33.1",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 1,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 90,
+    "cves": [
+      {
+        "id": "CVE-2026-76101",
+        "severity": "HIGH",
+        "pkg": "github.com/pavel-v-chernykh/keystore-go",
+        "installed": "v2.1.0+incompatible",
+        "fixed": null,
+        "title": "keystore-go: Keystore integrity and password verification bypass via stripped trailing digest in Decode()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-76101",
+        "targets": [
+          "manager"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.33.1",
         "tag": "ghcr.io/quenchworks/images/cass-operator:1.33.1",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 1,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 90,
+        "cves": [
+          {
+            "id": "CVE-2026-76101",
+            "severity": "HIGH",
+            "pkg": "github.com/pavel-v-chernykh/keystore-go",
+            "installed": "v2.1.0+incompatible",
+            "fixed": null,
+            "title": "keystore-go: Keystore integrity and password verification bypass via stripped trailing digest in Decode()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-76101",
+            "targets": [
+              "manager"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -4763,15 +4833,27 @@
     "version": "8.3.3",
     "tag": "ghcr.io/quenchworks/images/concourse:8.3.3",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 1,
-    "fixable": 0,
-    "grade": "B",
-    "score": 99,
+    "total": 2,
+    "fixable": 1,
+    "grade": "D",
+    "score": 84,
     "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.3.6",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/local/concourse/bin/concourse"
+        ]
+      },
       {
         "id": "GHSA-g98v-hv3f-hcfr",
         "severity": "LOW",
@@ -4790,15 +4872,27 @@
         "version": "8.3.3",
         "tag": "ghcr.io/quenchworks/images/concourse:8.3.3",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "B",
-        "score": 99,
+        "total": 2,
+        "fixable": 1,
+        "grade": "D",
+        "score": 84,
         "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.3.6",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/local/concourse/bin/concourse"
+            ]
+          },
           {
             "id": "GHSA-g98v-hv3f-hcfr",
             "severity": "LOW",
@@ -5110,29 +5204,57 @@
     "version": "1.0.19",
     "tag": "ghcr.io/quenchworks/images/coolify-helper:1.0.19",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "D",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.4.1",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/libexec/docker/cli-plugins/docker-buildx",
+          "usr/libexec/docker/cli-plugins/docker-compose"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.0.19",
         "tag": "ghcr.io/quenchworks/images/coolify-helper:1.0.19",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "D",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/libexec/docker/cli-plugins/docker-buildx",
+              "usr/libexec/docker/cli-plugins/docker-compose"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -6062,15 +6184,29 @@
     "version": "0.21.12",
     "tag": "ghcr.io/quenchworks/images/dagger:0.21.12",
     "critical": 0,
-    "high": 6,
+    "high": 9,
     "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 9,
-    "fixable": 0,
+    "total": 12,
+    "fixable": 3,
     "grade": "D",
-    "score": 28,
+    "score": 0,
     "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.3.6",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/local/bin/dagger",
+          "usr/local/bin/dagger-engine",
+          "usr/local/bin/dagger-init"
+        ]
+      },
       {
         "id": "CVE-2026-41567",
         "severity": "HIGH",
@@ -6119,15 +6255,29 @@
         "version": "0.21.12",
         "tag": "ghcr.io/quenchworks/images/dagger:0.21.12",
         "critical": 0,
-        "high": 6,
+        "high": 9,
         "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 9,
-        "fixable": 0,
+        "total": 12,
+        "fixable": 3,
         "grade": "D",
-        "score": 28,
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.3.6",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/local/bin/dagger",
+              "usr/local/bin/dagger-engine",
+              "usr/local/bin/dagger-init"
+            ]
+          },
           {
             "id": "CVE-2026-41567",
             "severity": "HIGH",
@@ -6237,6 +6387,37 @@
       {
         "version": "1.17.19",
         "tag": "ghcr.io/quenchworks/images/dapr:1.17.19",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "dashy": {
+    "image": "ghcr.io/quenchworks/images/dashy",
+    "version": "4.9.0",
+    "tag": "ghcr.io/quenchworks/images/dashy:4.9.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "4.9.0",
+        "tag": "ghcr.io/quenchworks/images/dashy:4.9.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -6424,141 +6605,6 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
-      {
-        "version": "chart:datahub",
-        "tag": "ghcr.io/quenchworks/images/datahub-upgrade:chart:datahub",
-        "critical": 1,
-        "high": 4,
-        "medium": 4,
-        "low": 1,
-        "unknown": 0,
-        "total": 10,
-        "fixable": 10,
-        "grade": "F",
-        "score": 0,
-        "cves": [
-          {
-            "id": "CVE-2026-114938",
-            "severity": "CRITICAL",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114939",
-            "severity": "HIGH",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114940",
-            "severity": "HIGH",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114941",
-            "severity": "HIGH",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Improve integer compression",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114942",
-            "severity": "HIGH",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Enhance vector masks",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114943",
-            "severity": "MEDIUM",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114944",
-            "severity": "MEDIUM",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114945",
-            "severity": "MEDIUM",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114946",
-            "severity": "MEDIUM",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Enhance loop handling",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          },
-          {
-            "id": "CVE-2026-114947",
-            "severity": "LOW",
-            "pkg": "openjdk-25-jre",
-            "installed": "25.0.5.0.3-r1",
-            "fixed": "25.0.5.1-r0",
-            "title": "OpenJDK: OpenJDK: Enhance TLS connections",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-114947",
-            "targets": [
-              "ghcr.io/quenchworks/images/datahub-upgrade@sha256:6c92b8635801f1f33907cc814e219bc736ffc7a833d23e294efec5acf000b243 (wolfi 20230201)"
-            ]
-          }
-        ]
       }
     ]
   },
@@ -8186,29 +8232,55 @@
     "version": "0.45.2",
     "tag": "ghcr.io/quenchworks/images/falco:0.45.2",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.2.9",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/share/falco/plugins/libcontainer.so"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.45.2",
         "tag": "ghcr.io/quenchworks/images/falco:0.45.2",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.2.9",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/share/falco/plugins/libcontainer.so"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -9563,29 +9635,55 @@
     "version": "3.100.0",
     "tag": "ghcr.io/quenchworks/images/ghostfolio:3.100.0",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-121707",
+        "severity": "HIGH",
+        "pkg": "effect",
+        "installed": "3.20.0",
+        "fixed": "3.22.1",
+        "title": "Effect: ReDoS in Schema.TemplateLiteral compiled regex",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-121707",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.100.0",
         "tag": "ghcr.io/quenchworks/images/ghostfolio:3.100.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-121707",
+            "severity": "HIGH",
+            "pkg": "effect",
+            "installed": "3.20.0",
+            "fixed": "3.22.1",
+            "title": "Effect: ReDoS in Schema.TemplateLiteral compiled regex",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121707",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -12864,8 +12962,8 @@
   },
   "ingress-nginx": {
     "image": "ghcr.io/quenchworks/images/ingress-nginx",
-    "version": "1.15.15",
-    "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.15",
+    "version": "1.15.16",
+    "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.16",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -12878,8 +12976,8 @@
     "cves": [],
     "versions": [
       {
-        "version": "1.15.15",
-        "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.15",
+        "version": "1.15.16",
+        "tag": "ghcr.io/quenchworks/images/ingress-nginx:1.15.16",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -13651,29 +13749,55 @@
     "version": "1.34.0",
     "tag": "ghcr.io/quenchworks/images/k8ssandra-operator:1.34.0",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
+    "total": 1,
     "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "grade": "D",
+    "score": 90,
+    "cves": [
+      {
+        "id": "CVE-2026-76101",
+        "severity": "HIGH",
+        "pkg": "github.com/pavel-v-chernykh/keystore-go",
+        "installed": "v2.1.0+incompatible",
+        "fixed": null,
+        "title": "keystore-go: Keystore integrity and password verification bypass via stripped trailing digest in Decode()",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-76101",
+        "targets": [
+          "manager"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "1.34.0",
         "tag": "ghcr.io/quenchworks/images/k8ssandra-operator:1.34.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
+        "total": 1,
         "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "grade": "D",
+        "score": 90,
+        "cves": [
+          {
+            "id": "CVE-2026-76101",
+            "severity": "HIGH",
+            "pkg": "github.com/pavel-v-chernykh/keystore-go",
+            "installed": "v2.1.0+incompatible",
+            "fixed": null,
+            "title": "keystore-go: Keystore integrity and password verification bypass via stripped trailing digest in Decode()",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-76101",
+            "targets": [
+              "manager"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -13682,15 +13806,27 @@
     "version": "0.51.0",
     "tag": "ghcr.io/quenchworks/images/k9s:0.51.0",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 1,
     "low": 0,
     "unknown": 1,
-    "total": 2,
-    "fixable": 0,
-    "grade": "C",
-    "score": 94,
+    "total": 3,
+    "fixable": 1,
+    "grade": "D",
+    "score": 79,
     "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.2.9",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/bin/k9s"
+        ]
+      },
       {
         "id": "CVE-2026-85747",
         "severity": "MEDIUM",
@@ -13721,15 +13857,27 @@
         "version": "0.51.0",
         "tag": "ghcr.io/quenchworks/images/k9s:0.51.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 1,
         "low": 0,
         "unknown": 1,
-        "total": 2,
-        "fixable": 0,
-        "grade": "C",
-        "score": 94,
+        "total": 3,
+        "fixable": 1,
+        "grade": "D",
+        "score": 79,
         "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.2.9",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/k9s"
+            ]
+          },
           {
             "id": "CVE-2026-85747",
             "severity": "MEDIUM",
@@ -15184,29 +15332,59 @@
     "version": "4.0.21",
     "tag": "ghcr.io/quenchworks/images/kubescape:4.0.21",
     "critical": 0,
-    "high": 0,
+    "high": 3,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 3,
+    "fixable": 3,
+    "grade": "D",
+    "score": 55,
+    "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.4.1",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/bin/downloader",
+          "usr/bin/ksserver",
+          "usr/bin/kubescape"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.0.21",
         "tag": "ghcr.io/quenchworks/images/kubescape:4.0.21",
         "critical": 0,
-        "high": 0,
+        "high": 3,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 3,
+        "fixable": 3,
+        "grade": "D",
+        "score": 55,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/downloader",
+              "usr/bin/ksserver",
+              "usr/bin/kubescape"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -15413,29 +15591,57 @@
     "version": "0.3.585",
     "tag": "ghcr.io/quenchworks/images/kubevuln:0.3.585",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "D",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.4.1",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/bin/kubevuln",
+          "usr/bin/sbom-scanner"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.3.585",
         "tag": "ghcr.io/quenchworks/images/kubevuln:0.3.585",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "D",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/kubevuln",
+              "usr/bin/sbom-scanner"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -15664,6 +15870,63 @@
       }
     ]
   },
+  "kutt": {
+    "image": "ghcr.io/quenchworks/images/kutt",
+    "version": "3.2.6",
+    "tag": "ghcr.io/quenchworks/images/kutt:3.2.6",
+    "critical": 0,
+    "high": 0,
+    "medium": 1,
+    "low": 0,
+    "unknown": 0,
+    "total": 1,
+    "fixable": 0,
+    "grade": "C",
+    "score": 96,
+    "cves": [
+      {
+        "id": "CVE-2021-32822",
+        "severity": "MEDIUM",
+        "pkg": "hbs",
+        "installed": "4.2.1",
+        "fixed": null,
+        "title": "hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Information to an Unauthorized Actor",
+        "url": "https://avd.aquasec.com/nvd/cve-2021-32822",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "3.2.6",
+        "tag": "ghcr.io/quenchworks/images/kutt:3.2.6",
+        "critical": 0,
+        "high": 0,
+        "medium": 1,
+        "low": 0,
+        "unknown": 0,
+        "total": 1,
+        "fixable": 0,
+        "grade": "C",
+        "score": 96,
+        "cves": [
+          {
+            "id": "CVE-2021-32822",
+            "severity": "MEDIUM",
+            "pkg": "hbs",
+            "installed": "4.2.1",
+            "fixed": null,
+            "title": "hbs: Insertion of Sensitive Information into Externally-Accessible File or Directory and Exposure of Sensitive Information to an Unauthorized Actor",
+            "url": "https://avd.aquasec.com/nvd/cve-2021-32822",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "kvrocks": {
     "image": "ghcr.io/quenchworks/images/kvrocks",
     "version": "2.17.0",
@@ -15758,6 +16021,37 @@
       {
         "version": "1.23.2",
         "tag": "ghcr.io/quenchworks/images/label-studio:1.23.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "leantime": {
+    "image": "ghcr.io/quenchworks/images/leantime",
+    "version": "3.15.3",
+    "tag": "ghcr.io/quenchworks/images/leantime:3.15.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.15.3",
+        "tag": "ghcr.io/quenchworks/images/leantime:3.15.3",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -23673,29 +23967,55 @@
     "version": "4.17.1",
     "tag": "ghcr.io/quenchworks/images/rallly:4.17.1",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-121707",
+        "severity": "HIGH",
+        "pkg": "effect",
+        "installed": "3.20.0",
+        "fixed": "3.22.1",
+        "title": "Effect: ReDoS in Schema.TemplateLiteral compiled regex",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-121707",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "4.17.1",
         "tag": "ghcr.io/quenchworks/images/rallly:4.17.1",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-121707",
+            "severity": "HIGH",
+            "pkg": "effect",
+            "installed": "3.20.0",
+            "fixed": "3.22.1",
+            "title": "Effect: ReDoS in Schema.TemplateLiteral compiled regex",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121707",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -23930,28 +24250,54 @@
     "tag": "ghcr.io/quenchworks/images/redmine:7.0.3",
     "critical": 0,
     "high": 0,
-    "medium": 0,
+    "medium": 1,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "C",
+    "score": 91,
+    "cves": [
+      {
+        "id": "CVE-2026-115472",
+        "severity": "MEDIUM",
+        "pkg": "doorkeeper",
+        "installed": "5.8.2",
+        "fixed": "5.9.1",
+        "title": "Doorkeeper: When using public clients, any client can revoke any access token",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115472",
+        "targets": [
+          "Ruby"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "7.0.3",
         "tag": "ghcr.io/quenchworks/images/redmine:7.0.3",
         "critical": 0,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "C",
+        "score": 91,
+        "cves": [
+          {
+            "id": "CVE-2026-115472",
+            "severity": "MEDIUM",
+            "pkg": "doorkeeper",
+            "installed": "5.8.2",
+            "fixed": "5.9.1",
+            "title": "Doorkeeper: When using public clients, any client can revoke any access token",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-115472",
+            "targets": [
+              "Ruby"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -24796,6 +25142,37 @@
       }
     ]
   },
+  "seerr": {
+    "image": "ghcr.io/quenchworks/images/seerr",
+    "version": "3.5.2",
+    "tag": "ghcr.io/quenchworks/images/seerr:3.5.2",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "3.5.2",
+        "tag": "ghcr.io/quenchworks/images/seerr:3.5.2",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "selenium-node-firefox": {
     "image": "ghcr.io/quenchworks/images/selenium-node-firefox",
     "version": "4.53.0",
@@ -25270,43 +25647,85 @@
     "version": "0.28.76",
     "tag": "ghcr.io/quenchworks/images/skipper:0.28.76",
     "critical": 0,
-    "high": 0,
+    "high": 2,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 2,
+    "fixable": 2,
+    "grade": "D",
+    "score": 70,
+    "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.4.1",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/bin/routesrv",
+          "usr/bin/skipper"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.28.76",
         "tag": "ghcr.io/quenchworks/images/skipper:0.28.76",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "D",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/routesrv",
+              "usr/bin/skipper"
+            ]
+          }
+        ]
       },
       {
         "version": "0.28.75",
         "tag": "ghcr.io/quenchworks/images/skipper:0.28.75",
         "critical": 0,
-        "high": 0,
+        "high": 2,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 2,
+        "fixable": 2,
+        "grade": "D",
+        "score": 70,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/routesrv",
+              "usr/bin/skipper"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -26468,15 +26887,39 @@
         "version": "1.38.4",
         "tag": "ghcr.io/quenchworks/images/telegraf:1.38.4",
         "critical": 0,
-        "high": 0,
-        "medium": 1,
+        "high": 1,
+        "medium": 2,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 0,
-        "grade": "C",
-        "score": 96,
+        "total": 3,
+        "fixable": 2,
+        "grade": "D",
+        "score": 72,
         "cves": [
+          {
+            "id": "CVE-2026-58213",
+            "severity": "HIGH",
+            "pkg": "github.com/nats-io/nats-server/v2",
+            "installed": "v2.14.0",
+            "fixed": "2.12.9, 2.14.1",
+            "title": "nats-server: NATS Server: Protocol stream corruption and unintended operation injection via MQTT client subscription filters",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-58213",
+            "targets": [
+              "usr/bin/telegraf"
+            ]
+          },
+          {
+            "id": "CVE-2026-58214",
+            "severity": "MEDIUM",
+            "pkg": "github.com/nats-io/nats-server/v2",
+            "installed": "v2.14.0",
+            "fixed": "2.12.12, 2.14.3",
+            "title": "nats-server: NATS Server: Information disclosure via MQTT client subscription bypass",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-58214",
+            "targets": [
+              "usr/bin/telegraf"
+            ]
+          },
           {
             "id": "CVE-2026-86597",
             "severity": "MEDIUM",
@@ -26498,15 +26941,30 @@
     "version": "18.11.10",
     "tag": "ghcr.io/quenchworks/images/teleport:18.11.10",
     "critical": 0,
-    "high": 0,
+    "high": 4,
     "medium": 0,
     "low": 0,
     "unknown": 1,
-    "total": 1,
-    "fixable": 0,
-    "grade": "A",
-    "score": 98,
+    "total": 5,
+    "fixable": 4,
+    "grade": "D",
+    "score": 38,
     "cves": [
+      {
+        "id": "CVE-2026-128073",
+        "severity": "HIGH",
+        "pkg": "github.com/russellhaering/gosaml2",
+        "installed": "v0.11.0",
+        "fixed": "0.12.0",
+        "title": "gosaml2: Unauthenticated panic decrypting an EncryptedAssertion with a short or empty CipherValue",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-128073",
+        "targets": [
+          "usr/bin/tbot",
+          "usr/bin/tctl",
+          "usr/bin/teleport",
+          "usr/bin/tsh"
+        ]
+      },
       {
         "id": "GO-2026-5932",
         "severity": "UNKNOWN",
@@ -26525,15 +26983,30 @@
         "version": "18.11.10",
         "tag": "ghcr.io/quenchworks/images/teleport:18.11.10",
         "critical": 0,
-        "high": 0,
+        "high": 4,
         "medium": 0,
         "low": 0,
         "unknown": 1,
-        "total": 1,
-        "fixable": 0,
-        "grade": "A",
-        "score": 98,
+        "total": 5,
+        "fixable": 4,
+        "grade": "D",
+        "score": 38,
         "cves": [
+          {
+            "id": "CVE-2026-128073",
+            "severity": "HIGH",
+            "pkg": "github.com/russellhaering/gosaml2",
+            "installed": "v0.11.0",
+            "fixed": "0.12.0",
+            "title": "gosaml2: Unauthenticated panic decrypting an EncryptedAssertion with a short or empty CipherValue",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-128073",
+            "targets": [
+              "usr/bin/tbot",
+              "usr/bin/tctl",
+              "usr/bin/teleport",
+              "usr/bin/tsh"
+            ]
+          },
           {
             "id": "GO-2026-5932",
             "severity": "UNKNOWN",
@@ -26552,15 +27025,30 @@
         "version": "18.10.0",
         "tag": "ghcr.io/quenchworks/images/teleport:18.10.0",
         "critical": 0,
-        "high": 4,
+        "high": 8,
         "medium": 8,
         "low": 0,
         "unknown": 1,
-        "total": 13,
-        "fixable": 0,
+        "total": 17,
+        "fixable": 4,
         "grade": "D",
-        "score": 26,
+        "score": 0,
         "cves": [
+          {
+            "id": "CVE-2026-128073",
+            "severity": "HIGH",
+            "pkg": "github.com/russellhaering/gosaml2",
+            "installed": "v0.11.0",
+            "fixed": "0.12.0",
+            "title": "gosaml2: Unauthenticated panic decrypting an EncryptedAssertion with a short or empty CipherValue",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-128073",
+            "targets": [
+              "usr/bin/tbot",
+              "usr/bin/tctl",
+              "usr/bin/teleport",
+              "usr/bin/tsh"
+            ]
+          },
           {
             "id": "CVE-2026-116587",
             "severity": "HIGH",
@@ -27754,57 +28242,109 @@
     "version": "0.36.1",
     "tag": "ghcr.io/quenchworks/images/trivy-operator:0.36.1",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-95839",
+        "severity": "HIGH",
+        "pkg": "github.com/containerd/containerd/v2",
+        "installed": "v2.4.1",
+        "fixed": "2.2.10, 2.3.7, 2.4.2",
+        "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+        "targets": [
+          "usr/bin/trivy-operator"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "0.36.1",
         "tag": "ghcr.io/quenchworks/images/trivy-operator:0.36.1",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/trivy-operator"
+            ]
+          }
+        ]
       },
       {
         "version": "0.35.0",
         "tag": "ghcr.io/quenchworks/images/trivy-operator:0.35.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/trivy-operator"
+            ]
+          }
+        ]
       },
       {
         "version": "0.34.0",
         "tag": "ghcr.io/quenchworks/images/trivy-operator:0.34.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.3.6",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/trivy-operator"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -27841,15 +28381,28 @@
         "version": "0.75.0",
         "tag": "ghcr.io/quenchworks/images/trivy-scanner:0.75.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-95839",
+            "severity": "HIGH",
+            "pkg": "github.com/containerd/containerd/v2",
+            "installed": "v2.4.1",
+            "fixed": "2.2.10, 2.3.7, 2.4.2",
+            "title": "containerd image-triggered daemon crash via malformed digest in subject-annotated descriptor",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-95839",
+            "targets": [
+              "usr/bin/trivy"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -28307,29 +28860,55 @@
     "version": "3.5.0",
     "tag": "ghcr.io/quenchworks/images/umami:3.5.0",
     "critical": 0,
-    "high": 0,
+    "high": 1,
     "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 0,
-    "fixable": 0,
-    "grade": "A+",
-    "score": 100,
-    "cves": [],
+    "total": 1,
+    "fixable": 1,
+    "grade": "D",
+    "score": 85,
+    "cves": [
+      {
+        "id": "CVE-2026-121707",
+        "severity": "HIGH",
+        "pkg": "effect",
+        "installed": "3.20.0",
+        "fixed": "3.22.1",
+        "title": "Effect: ReDoS in Schema.TemplateLiteral compiled regex",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-121707",
+        "targets": [
+          "Node.js"
+        ]
+      }
+    ],
     "versions": [
       {
         "version": "3.5.0",
         "tag": "ghcr.io/quenchworks/images/umami:3.5.0",
         "critical": 0,
-        "high": 0,
+        "high": 1,
         "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
+        "total": 1,
+        "fixable": 1,
+        "grade": "D",
+        "score": 85,
+        "cves": [
+          {
+            "id": "CVE-2026-121707",
+            "severity": "HIGH",
+            "pkg": "effect",
+            "installed": "3.20.0",
+            "fixed": "3.22.1",
+            "title": "Effect: ReDoS in Schema.TemplateLiteral compiled regex",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-121707",
+            "targets": [
+              "Node.js"
+            ]
+          }
+        ]
       }
     ]
   },
