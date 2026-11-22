@@ -4009,11 +4009,14 @@
             },
             {
               "@id": "pkg:composer/phpseclib/phpseclib@2.0.56"
+            },
+            {
+              "@id": "pkg:composer/phpseclib/phpseclib@2.0.57"
             }
           ],
           "status": "not_affected",
           "justification": "vulnerable_code_not_present",
-          "impact_statement": "PROVEN false-positive, measured 2026-09-30 on the published nextcloud 34.0.4 image. CVE-2026-84308 (GHSA-q97c-8qh3-fpc6) is a timing leak in phpseclib's pure-PHP X25519 scalar multiplication: the advisory names phpseclib/Math/PrimeField/Integer.php, phpseclib/Crypt/EC/BaseCurves/Montgomery.php, and the Crypt/EC/Formats/Keys/MontgomeryPrivate.php and PKCS8.php key paths. Elliptic-curve support only exists from phpseclib 3.0. Nextcloud 34 requires phpseclib ^2.0.55 (nextcloud/3rdparty v34.0.4 composer.json), and the image ships phpseclib 2.0.55 under var/www/html/3rdparty/phpseclib/phpseclib/phpseclib. Verified on the exported image filesystem: its Crypt directory holds only AES, Base, Blowfish, DES, Hash, Random, RC2, RC4, Rijndael, RSA, TripleDES and Twofish, and `find` for Montgomery*.php, any Crypt/EC path or any PrimeField path returns 0 matches. The vulnerable code is not in the image. The advisory's fixed versions are 3.0.57 and 4.0.1 only: no 2.0.x release fixes it because 2.0.x never had the code. Nextcloud 35 moves to phpseclib ^3.0.55, where this statement stops applying and the real fix is required. Re-measured 2026-11-03 on a local build of nextcloud 34.0.5, which ships phpseclib 2.0.56: the exported image's phpseclib/Crypt directory holds the same 12 files and no Crypt/EC, Math/PrimeField or Montgomery*.php path."
+          "impact_statement": "PROVEN false-positive, measured 2026-09-30 on the published nextcloud 34.0.4 image. CVE-2026-84308 (GHSA-q97c-8qh3-fpc6) is a timing leak in phpseclib's pure-PHP X25519 scalar multiplication: the advisory names phpseclib/Math/PrimeField/Integer.php, phpseclib/Crypt/EC/BaseCurves/Montgomery.php, and the Crypt/EC/Formats/Keys/MontgomeryPrivate.php and PKCS8.php key paths. Elliptic-curve support only exists from phpseclib 3.0. Nextcloud 34 requires phpseclib ^2.0.55 (nextcloud/3rdparty v34.0.4 composer.json), and the image ships phpseclib 2.0.55 under var/www/html/3rdparty/phpseclib/phpseclib/phpseclib. Verified on the exported image filesystem: its Crypt directory holds only AES, Base, Blowfish, DES, Hash, Random, RC2, RC4, Rijndael, RSA, TripleDES and Twofish, and `find` for Montgomery*.php, any Crypt/EC path or any PrimeField path returns 0 matches. The vulnerable code is not in the image. The advisory's fixed versions are 3.0.57 and 4.0.1 only: no 2.0.x release fixes it because 2.0.x never had the code. Nextcloud 35 moves to phpseclib ^3.0.55, where this statement stops applying and the real fix is required. Re-measured 2026-11-03 on a local build of nextcloud 34.0.5, which ships phpseclib 2.0.56: the exported image's phpseclib/Crypt directory holds the same 12 files and no Crypt/EC, Math/PrimeField or Montgomery*.php path. Re-checked 2026-11-22 for phpseclib 2.0.57 (Nextcloud 34.0.4/34.0.6 rebuilds): the 2.0.57 release tree's phpseclib/Crypt holds the same 12 files and no EC, Curve25519 or PrimeField path (GitHub tree at tag 2.0.57), while 3.0.57 has Crypt/EC/Curves/Curve25519.php."
         }
       ]
     }
@@ -5319,6 +5322,32 @@
           "status": "not_affected",
           "justification": "vulnerable_code_not_in_execute_path",
           "impact_statement": "The advisory: a client records the server-selected key-exchange group from an unauthenticated ServerHello. rustls 0.21.12 (vector 0.58.0 only) comes in only through hyper-rustls 0.24.2 <- aws-smithy-http-client 1.2.0, the default hyper-0.14 client of aws-smithy-runtime, measured 2026-11-01 with cargo tree --locked -e all --target all --no-default-features --features <this recipe's FEATURES> -i rustls@0.21.12 on v0.58.0 (with -e normal,build it prints nothing). Vector never sends traffic through that client: src/aws/mod.rs:109-125 (fn connector) wraps vector's hyper-openssl connector (src/http.rs:260 build_tls_connector) and every SDK config and credential provider gets that client (src/aws/mod.rs:143-144 and :224, src/aws/auth.rs:254, :334, :419-421); grep for aws_config::defaults|load_defaults|load_from_env|from_env over src and lib returned 0 matches. No rustls 0.21 connection is ever constructed, so no handshake or session store runs on this copy. The recipe fails the build if a default AWS loader appears or the OpenSSL connector changes. No fixed 0.21.x release exists (fix 0.23.46)."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "zap",
+    "path": "vex/zap/2026-11-22",
+    "doc": {
+      "@context": "https://openvex.dev/ns/v0.2.0",
+      "@id": "https://quench-works.com/vex/zap/2026-11-22",
+      "author": "QuenchWorks <info@quench-works.com>",
+      "timestamp": "2026-11-22T00:00:00Z",
+      "version": 1,
+      "statements": [
+        {
+          "vulnerability": {
+            "name": "CVE-2012-5783"
+          },
+          "products": [
+            {
+              "@id": "pkg:maven/commons-httpclient/commons-httpclient@3.1"
+            }
+          ],
+          "status": "not_affected",
+          "justification": "vulnerable_code_not_in_execute_path",
+          "impact_statement": "CVE-2012-5783 is commons-httpclient 3.1's TLS socket factory not checking the server hostname against the certificate. In ZAP 2.17.0 only the legacy sender uses it: org.parosproxy.paros.network.HttpSender defaults to HttpSenderParos (commons-httpclient) and exposes setImpl (zaproxy zap/src/main/java/org/parosproxy/paros/network/HttpSender.java:165-182, tag v2.17.0). The bundled network add-on (plugin/network-beta-0.25.0.zap) replaces it on start with its own httpclient5-based sender (zap-extensions addOns/network/src/main/java/org/zaproxy/addon/network/ExtensionNetwork.java:254, HttpSender.setImpl(httpSenderNetwork), tag network-v0.25.0), so requests do not go through the vulnerable factory. Verified on 2026-11-22 by reading both files at those tags, and on every build by the smoke test, which requires the running daemon to serve the network add-on's API component. The deprecated Paros path also trusts every certificate on purpose, as an attack proxy must reach targets with any certificate (SSLConnector.java:271, RelaxedX509TrustManager). The melange recipe fails the build if a release stops bundling the network add-on. The only fixed line is the httpclient 4.x rewrite, which ZAP's core API still depends on."
         }
       ]
     }
