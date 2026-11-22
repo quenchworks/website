@@ -22112,11 +22112,11 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.43",
+    "chartVersion": "0.0.44",
     "appVersion": "4.7.6",
     "description": "Mastodon, the federated social network server: web, sidekiq and streaming on QuenchWorks images, with the bundled PostgreSQL and Valkey (or external ones), the schema prepared on every start, media on a PVC, and the Rails secrets generated once and kept across upgrades. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/mastodon",
-    "imageDigest": "sha256:dbe8a25025ec4b2cee94f35efd0d9afb9b33601250c84438af6f2c7a3be9659a",
+    "imageDigest": "sha256:d75fa97db9cd51be067864ca4e96f8751dfe3cb1ed0adbe6bada25f420b740b3",
     "repositoryID": "6d89ce95-fcaf-4acc-9bd0-5c80c92ea795",
     "port": 3000,
     "upstream": "https://joinmastodon.org",
@@ -22125,7 +22125,7 @@
     "images": [
       {
         "name": "mastodon",
-        "image": "ghcr.io/quenchworks/images/mastodon@sha256:dbe8a25025ec4b2cee94f35efd0d9afb9b33601250c84438af6f2c7a3be9659a"
+        "image": "ghcr.io/quenchworks/images/mastodon@sha256:d75fa97db9cd51be067864ca4e96f8751dfe3cb1ed0adbe6bada25f420b740b3"
       },
       {
         "name": "mastodon-streaming",
@@ -34085,6 +34085,52 @@
       "ingress.servicePort",
       "ingress.hosts",
       "ingress.tls"
+    ]
+  },
+  {
+    "slug": "scylla-operator",
+    "name": "scylla-operator",
+    "category": "Databases & engines",
+    "summary": "ScyllaDB Operator for Kubernetes. Runs ScyllaDB clusters from ScyllaCluster resources (racks, scaling, rolling upgrades, repairs with Scylla Manager); the one binary also serves the webhook and the sidecar inside Scylla pods.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "1.23.0",
+    "description": "ScyllaDB Operator: runs ScyllaDB clusters on Kubernetes from ScyllaCluster resources, with its CRDs and admission webhook. Hardened by QuenchWorks: built from source, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/scylla-operator",
+    "imageDigest": "sha256:5d0ca839db27bf238cd9d0c85f12688ae5b529f56d450291e68428004a067c58",
+    "repositoryID": "67b3bb38-9012-48e9-a7d2-cb83339c0112",
+    "upstream": "https://operator.docs.scylladb.com",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/scylla-operator",
+    "ahCategory": "database",
+    "operator": true,
+    "images": [
+      {
+        "name": "scylla-operator",
+        "image": "ghcr.io/quenchworks/images/scylla-operator@sha256:5d0ca839db27bf238cd9d0c85f12688ae5b529f56d450291e68428004a067c58"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "nameOverride",
+      "logLevel",
+      "operator",
+      "operator.replicaCount",
+      "operator.resources",
+      "webhook",
+      "webhook.replicaCount",
+      "webhook.resources",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "priorityClassName",
+      "extraEnvVars"
     ]
   },
   {
