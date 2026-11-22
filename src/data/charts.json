@@ -502,7 +502,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.1.57",
+    "chartVersion": "0.1.58",
     "appVersion": "3.3.2",
     "description": "Hardened Apache Airflow 3 workflow orchestration (api-server + scheduler + dag-processor + triggerer, optional Celery workers) on a CVE-gated image",
     "imageRepository": "ghcr.io/quenchworks/images/airflow",
@@ -527,7 +527,7 @@
       },
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       }
     ],
     "valuesKeys": [
@@ -1678,7 +1678,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.40",
+    "chartVersion": "0.0.41",
     "appVersion": "3.4.14",
     "description": "Argo CD, the declarative GitOps continuous-delivery controller for Kubernetes. Ships the API server with its embedded React console, the repo server (git + helm + kustomize), the application controller and the applicationset controller, all from ONE hardened multi-call image. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/argocd",
@@ -1700,7 +1700,7 @@
       },
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       }
     ],
     "valuesKeys": [
@@ -2230,7 +2230,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.58",
+    "chartVersion": "0.0.59",
     "appVersion": "4.39.28",
     "description": "Hardened Authelia authentication and authorization server on a CVE-gated image",
     "imageRepository": "ghcr.io/quenchworks/images/authelia",
@@ -2255,7 +2255,7 @@
       },
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       }
     ],
     "valuesKeys": [
@@ -2376,7 +2376,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.1.71",
+    "chartVersion": "0.1.72",
     "appVersion": "2026.8.6",
     "description": "Hardened Authentik identity provider (OIDC/SAML/LDAP/SCIM) on a CVE-gated image",
     "imageRepository": "ghcr.io/quenchworks/images/authentik",
@@ -2401,7 +2401,7 @@
       },
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       }
     ],
     "valuesKeys": [
@@ -2949,7 +2949,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "0.63.22",
     "description": "Metabase (dashboards and questions) with ClickHouse (columnar analytics database) and PostgreSQL (Metabase's application database): Metabase is set up at install with an administrator and ClickHouse as a data source. All component images are QuenchWorks-hardened, nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "d9d5809d-8e2e-4583-b095-04cf08941860",
@@ -2968,7 +2968,7 @@
       },
       {
         "name": "clickhouse",
-        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:1b1c6ba852724796055e7101a227e84a2d0e4fc60d88ca02bfcde937fd13de06"
+        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:e50d44d641d26fbbed2322fc89e3cbd36fb01f396d6c3257df657af2337e818a"
       },
       {
         "name": "postgresql",
@@ -3241,6 +3241,118 @@
       "schedulerName",
       "terminationGracePeriodSeconds",
       "updateStrategy",
+      "extraEnvVars",
+      "extraEnvVarsCM",
+      "extraEnvVarsSecret",
+      "extraVolumes",
+      "extraVolumeMounts",
+      "initContainers",
+      "sidecars",
+      "lifecycleHooks",
+      "podSecurityContext",
+      "containerSecurityContext",
+      "livenessProbe",
+      "readinessProbe",
+      "customLivenessProbe",
+      "customReadinessProbe",
+      "customStartupProbe",
+      "serviceAccount",
+      "serviceAccount.create",
+      "serviceAccount.name",
+      "serviceAccount.annotations",
+      "networkPolicy",
+      "networkPolicy.enabled",
+      "networkPolicy.allowExternal",
+      "podDisruptionBudget",
+      "podDisruptionBudget.enabled",
+      "podDisruptionBudget.minAvailable"
+    ]
+  },
+  {
+    "slug": "bloodhound",
+    "name": "bloodhound",
+    "category": "Security & supply chain",
+    "summary": "BloodHound Community Edition, attack-path analysis for Active Directory and Entra ID. Go API with the React UI embedded; the graph runs on PostgreSQL (pg graph driver) or Neo4j. Collector binaries (SharpHound, AzureHound) are not bundled.",
+    "tier": "standard",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "chartVersion": "0.0.1",
+    "appVersion": "9.10.1",
+    "description": "BloodHound Community Edition: attack-path analysis for Active Directory and Entra ID, with the graph on the bundled PostgreSQL (pg graph driver). Hardened by QuenchWorks: built from source, CVE-gated, cosign-signed and pinned by digest.",
+    "imageRepository": "ghcr.io/quenchworks/images/bloodhound",
+    "imageDigest": "sha256:c9fbc15af65cf856cbc9ae16597af47a9835b1e1950463da5ef1966369937793",
+    "repositoryID": "76f0c383-a273-4e5e-abc7-dc8c20ff189d",
+    "port": 8080,
+    "upstream": "https://bloodhound.specterops.io",
+    "chartRef": "oci://ghcr.io/quenchworks/charts/bloodhound",
+    "ahCategory": "security",
+    "images": [
+      {
+        "name": "bloodhound",
+        "image": "ghcr.io/quenchworks/images/bloodhound@sha256:c9fbc15af65cf856cbc9ae16597af47a9835b1e1950463da5ef1966369937793"
+      },
+      {
+        "name": "postgresql",
+        "image": "ghcr.io/quenchworks/images/postgresql@sha256:ac303563d1da4869033100b3b23bd7884b1a81a83e0beb07a3f238dd64e6b654"
+      }
+    ],
+    "valuesKeys": [
+      "image",
+      "image.repository",
+      "image.digest",
+      "image.pullPolicy",
+      "nameOverride",
+      "rootURL",
+      "admin",
+      "admin.user",
+      "admin.email",
+      "admin.password",
+      "admin.expireNow",
+      "secret",
+      "secret.existingSecret",
+      "workSizeLimit",
+      "replicaCount",
+      "updateStrategy",
+      "postgresql",
+      "postgresql.enabled",
+      "postgresql.auth",
+      "postgresql.primary",
+      "externalDatabase",
+      "externalDatabase.host",
+      "externalDatabase.database",
+      "externalDatabase.username",
+      "externalDatabase.existingSecret",
+      "externalDatabase.existingSecretPasswordKey",
+      "settings",
+      "resources",
+      "resources.requests",
+      "resources.limits",
+      "service",
+      "service.type",
+      "service.port",
+      "service.annotations",
+      "service.externalTrafficPolicy",
+      "tls",
+      "tls.enabled",
+      "tls.existingSecret",
+      "tls.certManager",
+      "tls.selfSigned",
+      "ingress",
+      "ingress.enabled",
+      "ingress.className",
+      "ingress.annotations",
+      "ingress.servicePort",
+      "ingress.hosts",
+      "ingress.tls",
+      "podLabels",
+      "podAnnotations",
+      "nodeSelector",
+      "affinity",
+      "tolerations",
+      "topologySpreadConstraints",
+      "priorityClassName",
+      "schedulerName",
+      "terminationGracePeriodSeconds",
       "extraEnvVars",
       "extraEnvVarsCM",
       "extraEnvVarsSecret",
@@ -5106,11 +5218,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.45",
+    "chartVersion": "0.0.46",
     "appVersion": "26.7.37.6",
     "description": "Column-oriented OLAP database for real-time analytical queries over very large datasets, with high ingest rates and fast aggregations. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/clickhouse",
-    "imageDigest": "sha256:1b1c6ba852724796055e7101a227e84a2d0e4fc60d88ca02bfcde937fd13de06",
+    "imageDigest": "sha256:e50d44d641d26fbbed2322fc89e3cbd36fb01f396d6c3257df657af2337e818a",
     "repositoryID": "1ad6f385-dcc4-4892-b1f9-f3fb12a906e0",
     "upstream": "https://github.com/ClickHouse/ClickHouse",
     "chartRef": "oci://ghcr.io/quenchworks/charts/clickhouse",
@@ -5118,7 +5230,7 @@
     "images": [
       {
         "name": "clickhouse",
-        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:1b1c6ba852724796055e7101a227e84a2d0e4fc60d88ca02bfcde937fd13de06"
+        "image": "ghcr.io/quenchworks/images/clickhouse@sha256:e50d44d641d26fbbed2322fc89e3cbd36fb01f396d6c3257df657af2337e818a"
       }
     ],
     "valuesKeys": [
@@ -6294,7 +6406,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.70",
+    "chartVersion": "0.0.71",
     "appVersion": "4.3.4",
     "description": "Self-hostable platform-as-a-service and open alternative to Heroku and Netlify. This umbrella chart wires the QuenchWorks Coolify control-plane images (the PHP/Laravel app running php-fpm, nginx, Horizon, and the scheduler under supervisord, plus the realtime tier of soketi and a terminal bridge) over bundled QuenchWorks PostgreSQL 15 and Redis, each a minimal, nonroot, CVE-gated image pinned by digest. Coolify manages external Docker hosts over SSH, so the privileged helper and proxy build tier runs on those managed hosts, not in this cluster.",
     "imageRepository": "ghcr.io/quenchworks/images/coolify",
@@ -6321,7 +6433,7 @@
       },
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       }
     ],
     "valuesKeys": [
@@ -8718,11 +8830,11 @@
     "tier": "standard",
     "license": "ISC",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
-    "appVersion": "2.1.20",
+    "chartVersion": "0.0.4",
+    "appVersion": "2.1.21",
     "description": "dnscrypt-proxy: a DNS proxy that sends queries to upstream resolvers over DNSCrypt, DNS-over-HTTPS or Oblivious DoH, with filtering, cloaking and caching. Hardened by QuenchWorks: built from source, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/dnscrypt-proxy",
-    "imageDigest": "sha256:65b0460ba7ddde5691e21227950a6672be34e7c5bc5516c11d766aff8fb9b3c7",
+    "imageDigest": "sha256:251ddfe6632ee0f021bf3c82521d5626ab07d6a02294aa3f85a14e77967975cc",
     "repositoryID": "c5dbf0fc-2535-4367-b4ef-508df5669552",
     "upstream": "https://dnscrypt.info/",
     "chartRef": "oci://ghcr.io/quenchworks/charts/dnscrypt-proxy",
@@ -8730,7 +8842,7 @@
     "images": [
       {
         "name": "dnscrypt-proxy",
-        "image": "ghcr.io/quenchworks/images/dnscrypt-proxy@sha256:65b0460ba7ddde5691e21227950a6672be34e7c5bc5516c11d766aff8fb9b3c7"
+        "image": "ghcr.io/quenchworks/images/dnscrypt-proxy@sha256:251ddfe6632ee0f021bf3c82521d5626ab07d6a02294aa3f85a14e77967975cc"
       }
     ],
     "valuesKeys": [
@@ -10313,11 +10425,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.3",
-    "appVersion": "3.3.21",
+    "chartVersion": "0.0.4",
+    "appVersion": "3.3.22",
     "description": "Etherpad: real-time collaborative document editing with plugins, an HTTP API and an admin UI, on the bundled PostgreSQL. Hardened by QuenchWorks: built from source, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/etherpad",
-    "imageDigest": "sha256:8ef03f249692907d246ddfc77f9a852e8894625a7bb1a1ec06ed1b884d2924ef",
+    "imageDigest": "sha256:a56015480728007fde4e0de2c53f31f6d78703efd8f3d1fdfcbe1a230f7181b8",
     "repositoryID": "62392f06-fdb9-47ac-8cdb-420abcc98fb0",
     "port": 9001,
     "upstream": "https://github.com/ether/etherpad",
@@ -10326,7 +10438,7 @@
     "images": [
       {
         "name": "etherpad",
-        "image": "ghcr.io/quenchworks/images/etherpad@sha256:8ef03f249692907d246ddfc77f9a852e8894625a7bb1a1ec06ed1b884d2924ef"
+        "image": "ghcr.io/quenchworks/images/etherpad@sha256:a56015480728007fde4e0de2c53f31f6d78703efd8f3d1fdfcbe1a230f7181b8"
       },
       {
         "name": "postgresql",
@@ -12338,11 +12450,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.12",
+    "chartVersion": "0.0.13",
     "appVersion": "1.8.8",
     "description": "Fulcio, the Sigstore certificate authority: short-lived code-signing certificates bound to OIDC identities, for keyless signing with cosign. An ephemeral CA for testing, a file CA from a Secret, or KMS, Tink and Google CA. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/fulcio",
-    "imageDigest": "sha256:8bc595b578fe81087221441d6e3b281840f4dc7e1b18beddf561be3c48492049",
+    "imageDigest": "sha256:97fb290fb82002cae1fe4fcf0134027afb8253eece324e3ee0ac23cee3fc99ed",
     "repositoryID": "48cebadf-fcf9-4365-a4fb-c6a1ff688f39",
     "port": 8080,
     "upstream": "https://github.com/sigstore/fulcio",
@@ -12351,7 +12463,7 @@
     "images": [
       {
         "name": "fulcio",
-        "image": "ghcr.io/quenchworks/images/fulcio@sha256:8bc595b578fe81087221441d6e3b281840f4dc7e1b18beddf561be3c48492049"
+        "image": "ghcr.io/quenchworks/images/fulcio@sha256:97fb290fb82002cae1fe4fcf0134027afb8253eece324e3ee0ac23cee3fc99ed"
       }
     ],
     "valuesKeys": [
@@ -12963,7 +13075,7 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.55",
+    "chartVersion": "0.0.56",
     "appVersion": "1.27.3",
     "description": "Lightweight self-hosted Git service with repositories, issues, pull requests, and built-in CI/CD (Actions). Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/gitea",
@@ -13254,7 +13366,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.47",
+    "chartVersion": "0.0.48",
     "appVersion": "1.0.0",
     "description": "Hardened GitOps and delivery stack: Argo CD for GitOps sync, Argo Rollouts for canary and blue-green releases, Argo Workflows for pipelines, and Argo Events to start them from webhooks, with a sensor ServiceAccount already allowed to submit workflows. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "de6a254c-cbaa-4b14-88cc-30670ebc943f",
@@ -13275,7 +13387,7 @@
       },
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       },
       {
         "name": "argo-rollouts",
@@ -14566,11 +14678,11 @@
     "tier": "standard",
     "license": "MIT",
     "licenseClean": "clean",
-    "chartVersion": "0.0.4",
-    "appVersion": "2.2.32",
+    "chartVersion": "0.0.5",
+    "appVersion": "2.2.33",
     "description": "Grav: a flat-file CMS with a web admin, Markdown pages, themes and plugins, with the first admin created at install and the site content on a volume. Hardened by QuenchWorks: nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/grav",
-    "imageDigest": "sha256:1511222f0fc0ecf76540cec9d04f389ff0dd3d972b69841b6335f70aa6337b06",
+    "imageDigest": "sha256:a7dadbd8fd8f0e1a26a5d8ce2f2d9f093dcd30ecdca66dd8a40def8b54274cac",
     "repositoryID": "b9c5b928-07cc-419b-a9d7-d83ed5aa09a3",
     "port": 8080,
     "upstream": "https://github.com/getgrav/grav",
@@ -14579,7 +14691,7 @@
     "images": [
       {
         "name": "grav",
-        "image": "ghcr.io/quenchworks/images/grav@sha256:1511222f0fc0ecf76540cec9d04f389ff0dd3d972b69841b6335f70aa6337b06"
+        "image": "ghcr.io/quenchworks/images/grav@sha256:a7dadbd8fd8f0e1a26a5d8ce2f2d9f093dcd30ecdca66dd8a40def8b54274cac"
       }
     ],
     "valuesKeys": [
@@ -19597,7 +19709,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.39",
+    "chartVersion": "0.0.40",
     "appVersion": "0.2.240",
     "description": "Kubescape in-cluster: the operator, the configuration scanner (ksserver), the image vulnerability scanner (kubevuln) and the storage API server that keeps the results as Kubernetes objects. Hardened by QuenchWorks: every component built from source on Wolfi, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/kubescape-operator",
@@ -19628,7 +19740,7 @@
       },
       {
         "name": "kubescape-storage",
-        "image": "ghcr.io/quenchworks/images/kubescape-storage@sha256:5ced0c48098f4f71fd109300fcf595a874b0a8217c9571b175f625fb2c8550ec"
+        "image": "ghcr.io/quenchworks/images/kubescape-storage@sha256:afc88865201a2d94eed3bb0854ccee9058e090fd3c51a39174836b11d157cc9b"
       }
     ],
     "valuesKeys": [
@@ -20777,7 +20889,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.1.11",
+    "chartVersion": "0.1.12",
     "appVersion": "26.8.4",
     "description": "Linkerd service mesh, control plane and data plane (edge release line): destination with the policy server, identity (the mesh CA) and the proxy injector, each running its own proxy, so annotated workloads get mutual TLS. Uses the QuenchWorks linkerd-cni chart instead of linkerd-init. Hardened by QuenchWorks: built from source, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/linkerd",
@@ -20796,7 +20908,7 @@
       },
       {
         "name": "linkerd-proxy",
-        "image": "ghcr.io/quenchworks/images/linkerd-proxy@sha256:a287217c4b9a4524a0c222756b46aaeda2ea5701dbb8329a19dc4f0492e5ed78"
+        "image": "ghcr.io/quenchworks/images/linkerd-proxy@sha256:2a964ef8684ce5d10db8ad47bfa9fac11c1f8bf0d253804ebbc4a2fcf428163a"
       }
     ],
     "valuesKeys": [
@@ -23910,7 +24022,7 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.51",
+    "chartVersion": "0.0.52",
     "appVersion": "3.16.1",
     "description": "Hardened MLflow Tracking Server (experiment tracking + model registry) on a CVE-gated nonroot image, with a bundled PostgreSQL backend store.",
     "imageRepository": "ghcr.io/quenchworks/images/mlflow",
@@ -32617,11 +32729,11 @@
     "tier": "critical",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.39",
+    "chartVersion": "0.0.40",
     "appVersion": "8.10.3",
     "description": "In-memory key-value store used as a cache, message broker, and ephemeral datastore. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/redis",
-    "imageDigest": "sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528",
+    "imageDigest": "sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5",
     "repositoryID": "8bef6dc9-50b6-406e-928b-c50115e83c02",
     "port": 6379,
     "upstream": "https://github.com/redis/redis",
@@ -32630,7 +32742,7 @@
     "images": [
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       },
       {
         "name": "redis-exporter",
@@ -33124,11 +33236,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.15",
+    "chartVersion": "0.0.16",
     "appVersion": "2.3.0",
     "description": "Rekor v2, the Sigstore transparency log on Trillian Tessera tiles: a StatefulSet with the log on a PVC, a generated ed25519 checkpoint key, and Caddy serving the tiles as the read API. No Trillian or MySQL. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/rekor-tiles",
-    "imageDigest": "sha256:2e706f5f9cca1318513adb50bcf78fb47fb3fd511a36085388738dde3b694851",
+    "imageDigest": "sha256:d40fbcc7203d0ada75a36d8f5e58f7142958f714b11d2716972dc22ea266d140",
     "repositoryID": "dc1505c6-77e8-46fc-8d50-b93b22de0195",
     "port": 3000,
     "upstream": "https://github.com/sigstore/rekor-tiles",
@@ -33137,7 +33249,7 @@
     "images": [
       {
         "name": "rekor-tiles",
-        "image": "ghcr.io/quenchworks/images/rekor-tiles@sha256:2e706f5f9cca1318513adb50bcf78fb47fb3fd511a36085388738dde3b694851"
+        "image": "ghcr.io/quenchworks/images/rekor-tiles@sha256:d40fbcc7203d0ada75a36d8f5e58f7142958f714b11d2716972dc22ea266d140"
       },
       {
         "name": "caddy",
@@ -33983,11 +34095,11 @@
     "tier": "low",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.23",
-    "appVersion": "2026.3.4",
+    "chartVersion": "0.0.24",
+    "appVersion": "2026.3.6",
     "description": "High-throughput, low-latency wide-column store, API-compatible with Apache Cassandra and DynamoDB. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/scylladb",
-    "imageDigest": "sha256:a1d5725d265c16100d9f6e50c0b1104ae81481cd96dd3f157d0e2b79e46e1c3e",
+    "imageDigest": "sha256:ea340564c4241f7f2850c864c88823e3986facf862cda01e355992289f1697e1",
     "repositoryID": "c7b3870a-4c0f-47a7-a129-f34c038e1614",
     "upstream": "https://github.com/scylladb/scylladb",
     "chartRef": "oci://ghcr.io/quenchworks/charts/scylladb",
@@ -33995,7 +34107,7 @@
     "images": [
       {
         "name": "scylladb",
-        "image": "ghcr.io/quenchworks/images/scylladb@sha256:a1d5725d265c16100d9f6e50c0b1104ae81481cd96dd3f157d0e2b79e46e1c3e"
+        "image": "ghcr.io/quenchworks/images/scylladb@sha256:ea340564c4241f7f2850c864c88823e3986facf862cda01e355992289f1697e1"
       }
     ],
     "valuesKeys": [
@@ -35101,7 +35213,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.30",
+    "chartVersion": "0.0.31",
     "appVersion": "1.0.0",
     "description": "Self-hosted Sigstore: the Fulcio certificate authority, the Rekor v2 transparency log and the Timestamp Authority in one install, for keyless signing with cosign against your own infrastructure. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "4cfa0c3a-d87f-44a2-a39f-ec380e014b4a",
@@ -35117,11 +35229,11 @@
     "images": [
       {
         "name": "fulcio",
-        "image": "ghcr.io/quenchworks/images/fulcio@sha256:8bc595b578fe81087221441d6e3b281840f4dc7e1b18beddf561be3c48492049"
+        "image": "ghcr.io/quenchworks/images/fulcio@sha256:97fb290fb82002cae1fe4fcf0134027afb8253eece324e3ee0ac23cee3fc99ed"
       },
       {
         "name": "rekor-tiles",
-        "image": "ghcr.io/quenchworks/images/rekor-tiles@sha256:2e706f5f9cca1318513adb50bcf78fb47fb3fd511a36085388738dde3b694851"
+        "image": "ghcr.io/quenchworks/images/rekor-tiles@sha256:d40fbcc7203d0ada75a36d8f5e58f7142958f714b11d2716972dc22ea266d140"
       },
       {
         "name": "caddy",
@@ -35129,7 +35241,7 @@
       },
       {
         "name": "timestamp-authority",
-        "image": "ghcr.io/quenchworks/images/timestamp-authority@sha256:0a4540e48228d3e7eaf862975361b48a88f7f9b873910bacf9bb6706eff1516b"
+        "image": "ghcr.io/quenchworks/images/timestamp-authority@sha256:a49392f6d223d1d3eb369b4522c1012ffa5606a3a75acc0285279a80ae318a9a"
       }
     ],
     "upstreams": [
@@ -36824,7 +36936,7 @@
     "tier": "standard",
     "license": "Unknown",
     "licenseClean": "clean",
-    "chartVersion": "0.0.45",
+    "chartVersion": "0.0.46",
     "appVersion": "1.0.0",
     "description": "Admission-time supply-chain control: Kyverno admits only QuenchWorks images signed by the QuenchWorks build workflows (cosign keyless, checked against Sigstore) in the namespaces you label, and trivy-operator scans what runs. All QuenchWorks images are nonroot, CVE-gated, pinned by digest and cosign-signed.",
     "repositoryID": "ab2d955a-bb77-4e26-bdda-c9c058646097",
@@ -38172,11 +38284,11 @@
     "tier": "standard",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.16",
+    "chartVersion": "0.0.17",
     "appVersion": "2.1.6",
     "description": "The Sigstore Timestamp Authority: an RFC 3161 timestamping server that countersigns artifact hashes, with an in-memory signer for testing and a file signer from a Secret. Hardened by QuenchWorks, nonroot, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/timestamp-authority",
-    "imageDigest": "sha256:0a4540e48228d3e7eaf862975361b48a88f7f9b873910bacf9bb6706eff1516b",
+    "imageDigest": "sha256:a49392f6d223d1d3eb369b4522c1012ffa5606a3a75acc0285279a80ae318a9a",
     "repositoryID": "8584da66-7c6d-44f7-9d7e-b395edbbaa07",
     "port": 3000,
     "upstream": "https://github.com/sigstore/timestamp-authority",
@@ -38185,7 +38297,7 @@
     "images": [
       {
         "name": "timestamp-authority",
-        "image": "ghcr.io/quenchworks/images/timestamp-authority@sha256:0a4540e48228d3e7eaf862975361b48a88f7f9b873910bacf9bb6706eff1516b"
+        "image": "ghcr.io/quenchworks/images/timestamp-authority@sha256:a49392f6d223d1d3eb369b4522c1012ffa5606a3a75acc0285279a80ae318a9a"
       }
     ],
     "valuesKeys": [
@@ -39439,7 +39551,7 @@
     "tier": "standard",
     "license": "MPL-2.0",
     "licenseClean": "clean",
-    "chartVersion": "0.0.42",
+    "chartVersion": "0.0.43",
     "appVersion": "5.14.0",
     "description": "Tyk Gateway (open-source), a fast, Go-based API gateway backed by Redis. Hardened by QuenchWorks as a minimal, nonroot, CVE-gated image, cosign-signed and pinned by digest. Ships a bundled Redis by default for a self-contained install.",
     "imageRepository": "ghcr.io/quenchworks/images/tyk",
@@ -39456,7 +39568,7 @@
       },
       {
         "name": "redis",
-        "image": "ghcr.io/quenchworks/images/redis@sha256:908b51c85087f89df471b259dcf117f85eadcf4288ece23704b1aa7b3a2f9528"
+        "image": "ghcr.io/quenchworks/images/redis@sha256:5bd8e281d4f830afb7f63f46312cc73c145ad8cb6c0b90e13d8f71cf028573f5"
       }
     ],
     "valuesKeys": [
@@ -42032,11 +42144,11 @@
     "tier": "standard",
     "license": "AGPL-3.0",
     "licenseClean": "agpl",
-    "chartVersion": "0.0.6",
+    "chartVersion": "0.0.7",
     "appVersion": "3.4.0",
     "description": "Wiki.js: a wiki with Markdown and visual editors, Git sync and many auth providers, on the bundled PostgreSQL, with the first administrator from a generated Secret. Hardened by QuenchWorks: built from source, CVE-gated, cosign-signed and pinned by digest.",
     "imageRepository": "ghcr.io/quenchworks/images/wikijs",
-    "imageDigest": "sha256:455809d82754a0bbe1d0f6649a7b98864ef60678caee6b9728a014464c3f93e7",
+    "imageDigest": "sha256:789df36ea642e1904dff64564907823082299197d9856d434be7f2f9871fb74b",
     "repositoryID": "da823ec3-06fc-4a3f-b3a4-038b94be43f0",
     "port": 3000,
     "upstream": "https://github.com/requarks/wiki",
@@ -42045,7 +42157,7 @@
     "images": [
       {
         "name": "wikijs",
-        "image": "ghcr.io/quenchworks/images/wikijs@sha256:455809d82754a0bbe1d0f6649a7b98864ef60678caee6b9728a014464c3f93e7"
+        "image": "ghcr.io/quenchworks/images/wikijs@sha256:789df36ea642e1904dff64564907823082299197d9856d434be7f2f9871fb74b"
       },
       {
         "name": "postgresql",
