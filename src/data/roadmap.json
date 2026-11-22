@@ -540,8 +540,8 @@
     "category": "Operators",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "ScyllaDB clusters on Kubernetes from ScyllaCluster resources. v1.23.0, Go. The scylladb image itself is held on wasmtime. Added 2026-11-13 (operators track)."
+    "priority": "next",
+    "note": "ScyllaDB clusters on Kubernetes from ScyllaCluster resources. v1.23.0, Go. The scylladb image itself is held on wasmtime. Added 2026-11-13 (operators track). Sized 2026-11-23 at v1.23.0 (go 1.27.0): stdlib, x/net and otel trace clear with Wolfi Go and the house floors; docker/docker v28.5.1+incompatible has no fix on that module path (VEX candidate if only the client is linked, as for dive)."
   },
   {
     "name": "Team Chat Stack",
@@ -632,14 +632,6 @@
     "name": "LinkStack",
     "note": "Self-hosted link-in-bio page (a Linktree alternative) with themes and an admin panel, PHP / Laravel. HELD 2026-11-19: 4.8.8 is on Laravel 9.52 (end of life); its 56 lockfile findings in 15 packages include laravel/framework advisories fixed only on 10 and later, so it cannot pass the CVE gate without a framework major. Re-check when LinkStack moves to Laravel 11 or 12.",
     "priority": "exploring"
-  },
-  {
-    "name": "Strix",
-    "category": "Security & supply chain",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "AI agents that find and validate vulnerabilities in web apps and code (dynamic testing with proof-of-concept exploits), run from a CLI or CI. Python, v1.7.1 (2026-11-10). Requested 2026-11-22 alongside ARTEX. For authorized testing only. Sized 2026-11-23 at 1.7.1: the Go TUI (go 1.24 stdlib, x/sys, x/text) clears with a current-Go rebuild and the house floors; uv.lock needs same-major floors (pypdf, pyjwt, urllib3, cryptography 49, mcp 1.30, litellm) plus two transitive majors (pillow 13, filelock 4). Agents run their tools in a Docker sandbox, like PentAGI."
   },
   {
     "name": "Shannon",
