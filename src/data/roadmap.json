@@ -645,9 +645,9 @@
     "name": "PentAGI",
     "category": "Security & supply chain",
     "license": "MIT",
-    "licenseClean": "clean",
+    "licenseClean": "caution",
     "priority": "next",
-    "note": "Autonomous AI agents that run penetration tests in an isolated sandbox: planner, researcher and executor agents drive nmap, metasploit, sqlmap and other tools, with memory in PostgreSQL + pgvector and a web UI. Go backend + React UI, v2.2.0 (2026-10-05). Requested 2026-11-22 alongside ARTEX. For authorized testing only."
+    "note": "Autonomous AI agents that run penetration tests in an isolated sandbox: planner, researcher and executor agents drive nmap, metasploit, sqlmap and other tools, with memory in PostgreSQL + pgvector and a web UI. Go backend + React UI, v2.2.0 (2026-10-05). Requested 2026-11-22 alongside ARTEX. For authorized testing only. Sized 2026-11-22: the source is MIT, but EULA.md limits use to lawful penetration testing (redistribution of the MIT source and its derivatives is allowed, so an image can ship with the EULA alongside). The agents start their tool containers (Kali and friends) through the Docker API: DOCKER_HOST takes tcp:// with TLS, so the chart pairs the server with a TLS Docker-in-Docker sidecar (privileged, or rootless DinD) instead of the host socket. Build: Node 24 + pnpm frontend and a Go 1.26 backend (CGO off); needs PostgreSQL with pgvector."
   },
   {
     "name": "Strix",
