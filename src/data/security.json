@@ -17106,7 +17106,7 @@
         "pkg": "stdlib",
         "installed": "v1.26.10",
         "fixed": "1.26.11, 1.27.4",
-        "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
+        "title": "net/http: golang: net/http: Denial of Service via race condition when handling oversized HTTP/1 requests",
         "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
         "targets": [
           "usr/bin/cockroach"
@@ -17133,7 +17133,7 @@
             "pkg": "stdlib",
             "installed": "v1.26.10",
             "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
+            "title": "net/http: golang: net/http: Denial of Service via race condition when handling oversized HTTP/1 requests",
             "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
             "targets": [
               "usr/bin/cockroach"
@@ -31576,7 +31576,7 @@
         "pkg": "stdlib",
         "installed": "v1.26.10",
         "fixed": "1.26.11, 1.27.4",
-        "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
+        "title": "net/http: golang: net/http: Denial of Service via race condition when handling oversized HTTP/1 requests",
         "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
         "targets": [
           "usr/bin/filebrowser"
@@ -31615,7 +31615,7 @@
             "pkg": "stdlib",
             "installed": "v1.26.10",
             "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
+            "title": "net/http: golang: net/http: Denial of Service via race condition when handling oversized HTTP/1 requests",
             "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
             "targets": [
               "usr/bin/filebrowser"
@@ -31654,7 +31654,7 @@
             "pkg": "stdlib",
             "installed": "v1.26.10",
             "fixed": "1.26.11, 1.27.4",
-            "title": "For HTTP/1 servers, when MaxBytesReader's limit is exceeded, \"Connecti ...",
+            "title": "net/http: golang: net/http: Denial of Service via race condition when handling oversized HTTP/1 requests",
             "url": "https://avd.aquasec.com/nvd/cve-2026-97054",
             "targets": [
               "usr/bin/filebrowser"
@@ -32434,20 +32434,6 @@
         "grade": "A+",
         "score": 100,
         "cves": []
-      },
-      {
-        "version": "15.0.12",
-        "tag": "ghcr.io/quenchworks/images/forgejo:15.0.12",
-        "critical": 0,
-        "high": 0,
-        "medium": 0,
-        "low": 0,
-        "unknown": 0,
-        "total": 0,
-        "fixable": 0,
-        "grade": "A+",
-        "score": 100,
-        "cves": []
       }
     ]
   },
@@ -33041,13 +33027,13 @@
     "tag": "ghcr.io/quenchworks/images/gitlab-rails:19.6.0",
     "critical": 0,
     "high": 2,
-    "medium": 2,
+    "medium": 3,
     "low": 2,
-    "unknown": 7,
-    "total": 13,
-    "fixable": 7,
+    "unknown": 9,
+    "total": 16,
+    "fixable": 10,
     "grade": "D",
-    "score": 21,
+    "score": 0,
     "cves": [
       {
         "id": "CVE-2026-41567",
@@ -33071,6 +33057,18 @@
         "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
         "targets": [
           "srv/gitlab/vendor/bundle/ruby/3.4.0/gems/devfile-0.5.5/out/devfile-amd64-linux"
+        ]
+      },
+      {
+        "id": "GHSA-5f8h-c2xc-j37j",
+        "severity": "MEDIUM",
+        "pkg": "graphql",
+        "installed": "2.6.15",
+        "fixed": ">= 2.6.16",
+        "title": "Crafted query strings can cause exponential backtracking in the Ruby lexer on older Rubies",
+        "url": "https://github.com/advisories/GHSA-5f8h-c2xc-j37j",
+        "targets": [
+          "Ruby"
         ]
       },
       {
@@ -33119,6 +33117,18 @@
         "url": "https://github.com/advisories/GHSA-wx77-rp39-c6vg",
         "targets": [
           "Node.js"
+        ]
+      },
+      {
+        "id": "GHSA-492h-6x29-69mq",
+        "severity": "UNKNOWN",
+        "pkg": "graphql",
+        "installed": "2.6.15",
+        "fixed": ">= 2.6.16",
+        "title": "Authorization - `.authorized?` skipped after crafted connection cursors",
+        "url": "https://github.com/advisories/GHSA-492h-6x29-69mq",
+        "targets": [
+          "Ruby"
         ]
       },
       {
@@ -33182,6 +33192,18 @@
         ]
       },
       {
+        "id": "GHSA-wqwf-8p4q-mwqj",
+        "severity": "UNKNOWN",
+        "pkg": "graphql",
+        "installed": "2.6.15",
+        "fixed": ">= 2.6.16",
+        "title": "Exponential time when calculating complexity",
+        "url": "https://github.com/advisories/GHSA-wqwf-8p4q-mwqj",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
         "id": "GHSA-x646-wp7c-h9mg",
         "severity": "UNKNOWN",
         "pkg": "puma",
@@ -33212,13 +33234,13 @@
         "tag": "ghcr.io/quenchworks/images/gitlab-rails:19.6.0",
         "critical": 0,
         "high": 2,
-        "medium": 2,
+        "medium": 3,
         "low": 2,
-        "unknown": 7,
-        "total": 13,
-        "fixable": 7,
+        "unknown": 9,
+        "total": 16,
+        "fixable": 10,
         "grade": "D",
-        "score": 21,
+        "score": 0,
         "cves": [
           {
             "id": "CVE-2026-41567",
@@ -33242,6 +33264,18 @@
             "url": "https://avd.aquasec.com/nvd/cve-2026-42306",
             "targets": [
               "srv/gitlab/vendor/bundle/ruby/3.4.0/gems/devfile-0.5.5/out/devfile-amd64-linux"
+            ]
+          },
+          {
+            "id": "GHSA-5f8h-c2xc-j37j",
+            "severity": "MEDIUM",
+            "pkg": "graphql",
+            "installed": "2.6.15",
+            "fixed": ">= 2.6.16",
+            "title": "Crafted query strings can cause exponential backtracking in the Ruby lexer on older Rubies",
+            "url": "https://github.com/advisories/GHSA-5f8h-c2xc-j37j",
+            "targets": [
+              "Ruby"
             ]
           },
           {
@@ -33290,6 +33324,18 @@
             "url": "https://github.com/advisories/GHSA-wx77-rp39-c6vg",
             "targets": [
               "Node.js"
+            ]
+          },
+          {
+            "id": "GHSA-492h-6x29-69mq",
+            "severity": "UNKNOWN",
+            "pkg": "graphql",
+            "installed": "2.6.15",
+            "fixed": ">= 2.6.16",
+            "title": "Authorization - `.authorized?` skipped after crafted connection cursors",
+            "url": "https://github.com/advisories/GHSA-492h-6x29-69mq",
+            "targets": [
+              "Ruby"
             ]
           },
           {
@@ -33348,6 +33394,18 @@
             "fixed": "~> 7.2.2, >= 8.0.3",
             "title": "Accept loop retries without pausing when out of file descriptors, flooding the log",
             "url": "https://github.com/advisories/GHSA-rf6g-xhmp-gm7v",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-wqwf-8p4q-mwqj",
+            "severity": "UNKNOWN",
+            "pkg": "graphql",
+            "installed": "2.6.15",
+            "fixed": ">= 2.6.16",
+            "title": "Exponential time when calculating complexity",
+            "url": "https://github.com/advisories/GHSA-wqwf-8p4q-mwqj",
             "targets": [
               "Ruby"
             ]
@@ -48616,7 +48674,7 @@
         "pkg": "php-8.5",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48628,7 +48686,7 @@
         "pkg": "php-8.5-bcmath",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48640,7 +48698,7 @@
         "pkg": "php-8.5-bcmath-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48652,7 +48710,7 @@
         "pkg": "php-8.5-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48664,7 +48722,7 @@
         "pkg": "php-8.5-ctype",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48676,7 +48734,7 @@
         "pkg": "php-8.5-ctype-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48688,7 +48746,7 @@
         "pkg": "php-8.5-curl",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48700,7 +48758,7 @@
         "pkg": "php-8.5-curl-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48712,7 +48770,7 @@
         "pkg": "php-8.5-dom",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48724,7 +48782,7 @@
         "pkg": "php-8.5-dom-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48736,7 +48794,7 @@
         "pkg": "php-8.5-fileinfo",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48748,7 +48806,7 @@
         "pkg": "php-8.5-fileinfo-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48760,7 +48818,7 @@
         "pkg": "php-8.5-gd",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48772,7 +48830,7 @@
         "pkg": "php-8.5-gd-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48784,7 +48842,7 @@
         "pkg": "php-8.5-iconv",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48796,7 +48854,7 @@
         "pkg": "php-8.5-iconv-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48808,7 +48866,7 @@
         "pkg": "php-8.5-intl",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48820,7 +48878,7 @@
         "pkg": "php-8.5-intl-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48832,7 +48890,7 @@
         "pkg": "php-8.5-mbstring",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48844,7 +48902,7 @@
         "pkg": "php-8.5-mbstring-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48856,7 +48914,7 @@
         "pkg": "php-8.5-mysqlnd",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48868,7 +48926,7 @@
         "pkg": "php-8.5-mysqlnd-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48880,7 +48938,7 @@
         "pkg": "php-8.5-openssl",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48892,7 +48950,7 @@
         "pkg": "php-8.5-openssl-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48904,7 +48962,7 @@
         "pkg": "php-8.5-pdo",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48916,7 +48974,7 @@
         "pkg": "php-8.5-pdo-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48928,7 +48986,7 @@
         "pkg": "php-8.5-pdo_mysql",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48940,7 +48998,7 @@
         "pkg": "php-8.5-pdo_mysql-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48952,7 +49010,7 @@
         "pkg": "php-8.5-pdo_pgsql",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48964,7 +49022,7 @@
         "pkg": "php-8.5-pdo_pgsql-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48976,7 +49034,7 @@
         "pkg": "php-8.5-pdo_sqlite",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -48988,7 +49046,7 @@
         "pkg": "php-8.5-pdo_sqlite-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49000,7 +49058,7 @@
         "pkg": "php-8.5-phar",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49012,7 +49070,7 @@
         "pkg": "php-8.5-phar-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49024,7 +49082,7 @@
         "pkg": "php-8.5-simplexml",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49036,7 +49094,7 @@
         "pkg": "php-8.5-simplexml-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49048,7 +49106,7 @@
         "pkg": "php-8.5-sockets",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49060,7 +49118,7 @@
         "pkg": "php-8.5-sockets-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49072,7 +49130,7 @@
         "pkg": "php-8.5-sodium",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49084,7 +49142,7 @@
         "pkg": "php-8.5-sodium-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49096,7 +49154,7 @@
         "pkg": "php-8.5-xml",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49108,7 +49166,7 @@
         "pkg": "php-8.5-xml-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49120,7 +49178,7 @@
         "pkg": "php-8.5-xmlreader",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49132,7 +49190,7 @@
         "pkg": "php-8.5-xmlreader-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49144,7 +49202,7 @@
         "pkg": "php-8.5-xmlwriter",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49156,7 +49214,7 @@
         "pkg": "php-8.5-xmlwriter-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49168,7 +49226,7 @@
         "pkg": "php-8.5-zip",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -49180,7 +49238,7 @@
         "pkg": "php-8.5-zip-config",
         "installed": "8.5.12-r1",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -58999,7 +59057,7 @@
             "pkg": "php-8.5",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59011,7 +59069,7 @@
             "pkg": "php-8.5-bcmath",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59023,7 +59081,7 @@
             "pkg": "php-8.5-bcmath-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59035,7 +59093,7 @@
             "pkg": "php-8.5-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59047,7 +59105,7 @@
             "pkg": "php-8.5-ctype",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59059,7 +59117,7 @@
             "pkg": "php-8.5-ctype-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59071,7 +59129,7 @@
             "pkg": "php-8.5-curl",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59083,7 +59141,7 @@
             "pkg": "php-8.5-curl-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59095,7 +59153,7 @@
             "pkg": "php-8.5-dom",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59107,7 +59165,7 @@
             "pkg": "php-8.5-dom-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59119,7 +59177,7 @@
             "pkg": "php-8.5-fileinfo",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59131,7 +59189,7 @@
             "pkg": "php-8.5-fileinfo-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59143,7 +59201,7 @@
             "pkg": "php-8.5-gd",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59155,7 +59213,7 @@
             "pkg": "php-8.5-gd-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59167,7 +59225,7 @@
             "pkg": "php-8.5-iconv",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59179,7 +59237,7 @@
             "pkg": "php-8.5-iconv-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59191,7 +59249,7 @@
             "pkg": "php-8.5-intl",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59203,7 +59261,7 @@
             "pkg": "php-8.5-intl-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59215,7 +59273,7 @@
             "pkg": "php-8.5-mbstring",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59227,7 +59285,7 @@
             "pkg": "php-8.5-mbstring-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59239,7 +59297,7 @@
             "pkg": "php-8.5-mysqlnd",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59251,7 +59309,7 @@
             "pkg": "php-8.5-mysqlnd-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59263,7 +59321,7 @@
             "pkg": "php-8.5-openssl",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59275,7 +59333,7 @@
             "pkg": "php-8.5-openssl-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59287,7 +59345,7 @@
             "pkg": "php-8.5-pdo",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59299,7 +59357,7 @@
             "pkg": "php-8.5-pdo-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59311,7 +59369,7 @@
             "pkg": "php-8.5-pdo_mysql",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59323,7 +59381,7 @@
             "pkg": "php-8.5-pdo_mysql-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59335,7 +59393,7 @@
             "pkg": "php-8.5-pdo_pgsql",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59347,7 +59405,7 @@
             "pkg": "php-8.5-pdo_pgsql-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59359,7 +59417,7 @@
             "pkg": "php-8.5-pdo_sqlite",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59371,7 +59429,7 @@
             "pkg": "php-8.5-pdo_sqlite-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59383,7 +59441,7 @@
             "pkg": "php-8.5-phar",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59395,7 +59453,7 @@
             "pkg": "php-8.5-phar-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59407,7 +59465,7 @@
             "pkg": "php-8.5-simplexml",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59419,7 +59477,7 @@
             "pkg": "php-8.5-simplexml-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59431,7 +59489,7 @@
             "pkg": "php-8.5-sockets",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59443,7 +59501,7 @@
             "pkg": "php-8.5-sockets-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59455,7 +59513,7 @@
             "pkg": "php-8.5-sodium",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59467,7 +59525,7 @@
             "pkg": "php-8.5-sodium-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59479,7 +59537,7 @@
             "pkg": "php-8.5-xml",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59491,7 +59549,7 @@
             "pkg": "php-8.5-xml-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59503,7 +59561,7 @@
             "pkg": "php-8.5-xmlreader",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59515,7 +59573,7 @@
             "pkg": "php-8.5-xmlreader-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59527,7 +59585,7 @@
             "pkg": "php-8.5-xmlwriter",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59539,7 +59597,7 @@
             "pkg": "php-8.5-xmlwriter-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59551,7 +59609,7 @@
             "pkg": "php-8.5-zip",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -59563,7 +59621,7 @@
             "pkg": "php-8.5-zip-config",
             "installed": "8.5.12-r1",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/php@sha256:e48a0152ad6deeaf5f9070b8007ecb9b7648b77bfa793d3bcebe7cf9eaaa7056 (wolfi 20230201)"
@@ -83783,22 +83841,46 @@
     "tag": "ghcr.io/quenchworks/images/redmine:7.0.3",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 3,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
+    "total": 3,
+    "fixable": 3,
     "grade": "C",
-    "score": 91,
+    "score": 73,
     "cves": [
       {
         "id": "CVE-2026-115472",
         "severity": "MEDIUM",
         "pkg": "doorkeeper",
         "installed": "5.8.2",
-        "fixed": "5.9.1",
-        "title": "Doorkeeper: When using public clients, any client can revoke any access token",
+        "fixed": ">= 5.9.1",
+        "title": "Doorkeeper - When using public clients, any client can revoke any access token",
         "url": "https://avd.aquasec.com/nvd/cve-2026-115472",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-86wh-7qgj-4px7",
+        "severity": "MEDIUM",
+        "pkg": "doorkeeper",
+        "installed": "5.8.2",
+        "fixed": "~> 5.9.9, >= 6.0.0.rc2",
+        "title": "Open redirect in the authorization endpoint's deny path",
+        "url": "https://github.com/advisories/GHSA-86wh-7qgj-4px7",
+        "targets": [
+          "Ruby"
+        ]
+      },
+      {
+        "id": "GHSA-q735-3ffp-vv6j",
+        "severity": "MEDIUM",
+        "pkg": "doorkeeper",
+        "installed": "5.8.2",
+        "fixed": "~> 5.9.9, >= 6.0.0.rc2",
+        "title": "Authorized-applications endpoints act on a nil resource owner",
+        "url": "https://github.com/advisories/GHSA-q735-3ffp-vv6j",
         "targets": [
           "Ruby"
         ]
@@ -83810,22 +83892,46 @@
         "tag": "ghcr.io/quenchworks/images/redmine:7.0.3",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 3,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
+        "total": 3,
+        "fixable": 3,
         "grade": "C",
-        "score": 91,
+        "score": 73,
         "cves": [
           {
             "id": "CVE-2026-115472",
             "severity": "MEDIUM",
             "pkg": "doorkeeper",
             "installed": "5.8.2",
-            "fixed": "5.9.1",
-            "title": "Doorkeeper: When using public clients, any client can revoke any access token",
+            "fixed": ">= 5.9.1",
+            "title": "Doorkeeper - When using public clients, any client can revoke any access token",
             "url": "https://avd.aquasec.com/nvd/cve-2026-115472",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-86wh-7qgj-4px7",
+            "severity": "MEDIUM",
+            "pkg": "doorkeeper",
+            "installed": "5.8.2",
+            "fixed": "~> 5.9.9, >= 6.0.0.rc2",
+            "title": "Open redirect in the authorization endpoint's deny path",
+            "url": "https://github.com/advisories/GHSA-86wh-7qgj-4px7",
+            "targets": [
+              "Ruby"
+            ]
+          },
+          {
+            "id": "GHSA-q735-3ffp-vv6j",
+            "severity": "MEDIUM",
+            "pkg": "doorkeeper",
+            "installed": "5.8.2",
+            "fixed": "~> 5.9.9, >= 6.0.0.rc2",
+            "title": "Authorized-applications endpoints act on a nil resource owner",
+            "url": "https://github.com/advisories/GHSA-q735-3ffp-vv6j",
             "targets": [
               "Ruby"
             ]
@@ -108232,7 +108338,7 @@
         "pkg": "php-8.5",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108244,7 +108350,7 @@
         "pkg": "php-8.5-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108256,7 +108362,7 @@
         "pkg": "php-8.5-ctype",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108268,7 +108374,7 @@
         "pkg": "php-8.5-ctype-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108280,7 +108386,7 @@
         "pkg": "php-8.5-curl",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108292,7 +108398,7 @@
         "pkg": "php-8.5-curl-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108304,7 +108410,7 @@
         "pkg": "php-8.5-dom",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108316,7 +108422,7 @@
         "pkg": "php-8.5-dom-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108328,7 +108434,7 @@
         "pkg": "php-8.5-fileinfo",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108340,7 +108446,7 @@
         "pkg": "php-8.5-fileinfo-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108352,7 +108458,7 @@
         "pkg": "php-8.5-fpm",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108364,7 +108470,7 @@
         "pkg": "php-8.5-fpm-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108376,7 +108482,7 @@
         "pkg": "php-8.5-gd",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108388,7 +108494,7 @@
         "pkg": "php-8.5-gd-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108400,7 +108506,7 @@
         "pkg": "php-8.5-iconv",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108412,7 +108518,7 @@
         "pkg": "php-8.5-iconv-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108424,7 +108530,7 @@
         "pkg": "php-8.5-intl",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108436,7 +108542,7 @@
         "pkg": "php-8.5-intl-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108448,7 +108554,7 @@
         "pkg": "php-8.5-mbstring",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108460,7 +108566,7 @@
         "pkg": "php-8.5-mbstring-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108472,7 +108578,7 @@
         "pkg": "php-8.5-openssl",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108484,7 +108590,7 @@
         "pkg": "php-8.5-openssl-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108496,7 +108602,7 @@
         "pkg": "php-8.5-zip",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -108508,7 +108614,7 @@
         "pkg": "php-8.5-zip-config",
         "installed": "8.5.12-r2",
         "fixed": "8.5.13-r0",
-        "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+        "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
         "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
         "targets": [
           "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113431,7 +113537,7 @@
             "pkg": "php-8.5",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113443,7 +113549,7 @@
             "pkg": "php-8.5-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113455,7 +113561,7 @@
             "pkg": "php-8.5-ctype",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113467,7 +113573,7 @@
             "pkg": "php-8.5-ctype-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113479,7 +113585,7 @@
             "pkg": "php-8.5-curl",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113491,7 +113597,7 @@
             "pkg": "php-8.5-curl-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113503,7 +113609,7 @@
             "pkg": "php-8.5-dom",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113515,7 +113621,7 @@
             "pkg": "php-8.5-dom-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113527,7 +113633,7 @@
             "pkg": "php-8.5-fileinfo",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113539,7 +113645,7 @@
             "pkg": "php-8.5-fileinfo-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113551,7 +113657,7 @@
             "pkg": "php-8.5-fpm",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113563,7 +113669,7 @@
             "pkg": "php-8.5-fpm-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113575,7 +113681,7 @@
             "pkg": "php-8.5-gd",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113587,7 +113693,7 @@
             "pkg": "php-8.5-gd-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113599,7 +113705,7 @@
             "pkg": "php-8.5-iconv",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113611,7 +113717,7 @@
             "pkg": "php-8.5-iconv-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113623,7 +113729,7 @@
             "pkg": "php-8.5-intl",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113635,7 +113741,7 @@
             "pkg": "php-8.5-intl-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113647,7 +113753,7 @@
             "pkg": "php-8.5-mbstring",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113659,7 +113765,7 @@
             "pkg": "php-8.5-mbstring-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113671,7 +113777,7 @@
             "pkg": "php-8.5-openssl",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113683,7 +113789,7 @@
             "pkg": "php-8.5-openssl-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113695,7 +113801,7 @@
             "pkg": "php-8.5-zip",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
@@ -113707,7 +113813,7 @@
             "pkg": "php-8.5-zip-config",
             "installed": "8.5.12-r2",
             "fixed": "8.5.13-r0",
-            "title": "Package updates are available for Amazon Linux 2023 that fix the following vulnerabilities:\n\"\"\n\nCVE-2026-48841:\n\tInteger overflow in uriparser ComposeQueryEngin",
+            "title": "Amazon Linux 2023 - ALAS2023-2026-3506: Critical priority package update for php8.5",
             "url": "https://avd.aquasec.com/nvd/cve-2026-48841",
             "targets": [
               "ghcr.io/quenchworks/images/wallos@sha256:39aea9d98bddc7e7b82797c6890c29087af5fe88e8f3629a124f3cb56e094509 (wolfi 20230201)"
