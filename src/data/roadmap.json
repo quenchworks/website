@@ -232,7 +232,7 @@
     "license": "LGPL-2.1-or-later",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Enterprise PKI certificate authority (Community Edition) backed by a relational database. Measured 2026-10-04 on r9.6.3 (source only, no release assets): 167 vendored jars in lib/ that Trivy identifies none of, so its scan is blind there; by filename bcprov 1.84 (CVE-2026-8763, fixed 1.85) and freemarker 2.3.34 (CVE-2026-84939, fixed 2.3.35) need swaps. Buildable with Gradle on our WildFly image; a multi-session job, not a hold."
+    "note": "Enterprise PKI certificate authority (Community Edition) backed by a relational database. Measured 2026-10-04 on r9.6.3 (source only, no release assets): 166 vendored jars in lib/. Buildable with Gradle on our WildFly image; a multi-session job, not a hold. Re-measured 2026-11-23: 139 of the jars carry Maven metadata and `trivy rootfs lib` sees 267 packages with 53 fixable (the earlier blind result came from `trivy fs`); the shipped ones are bouncycastle, jackson, freemarker, guava, log4j-api, commons-configuration2, jakarta.mail, cxf-core, kerby-asn1, plus org.json shaded in primefaces. In progress: quenchworks/images#142."
   },
   {
     "name": "KeyDB",
