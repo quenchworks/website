@@ -299,12 +299,20 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
+    "name": "Hoppscotch",
+    "category": "Developer tools / IDE",
+    "license": "MIT",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Open-source API development platform (REST, GraphQL, WebSocket, SSE, MQTT clients) with a self-hosted backend (NestJS, PostgreSQL, Prisma), web app and admin dashboard. 2026.11.0 (2026-11-23), monthly releases. Size the Prisma engines and the three front ends first. Added 2026-11-25 as next after OwnTracks Recorder was held."
+  },
+  {
     "name": "OwnTracks Recorder",
     "category": "Apps & productivity",
     "license": "GPL-2.0",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Stores and serves location data from OwnTracks apps (HTTP or MQTT), with a map UI and an API (C, LMDB). 1.0.7 (2026-11-19). Pairs with Traccar. Added 2026-11-25 as next after the IT-Tools fork shipped."
+    "priority": "planned",
+    "note": "Stores and serves location data from OwnTracks apps (HTTP or MQTT), with a map UI and an API (C, LMDB). 1.0.7 (2026-11-19). Pairs with Traccar. Added 2026-11-25 as next after the IT-Tools fork shipped. HELD 2026-11-25: its HTTP server is a vendored copy of Cesanta Mongoose 5.6 (2014), invisible to the scanner and many security releases behind; newer Mongoose changed the API, so a swap means rewriting the HTTP layer. Re-check when upstream moves off Mongoose 5.6."
   },
   {
     "name": "Rundeck",
