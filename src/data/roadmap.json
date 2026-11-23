@@ -227,14 +227,6 @@
     "cleanAlternative": "Vector (MPL-2.0) or Fluentd (Apache-2.0), both open pipelines."
   },
   {
-    "name": "EJBCA",
-    "category": "Secrets & identity",
-    "license": "LGPL-2.1-or-later",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Enterprise PKI certificate authority (Community Edition) backed by a relational database. Measured 2026-10-04 on r9.6.3 (source only, no release assets): 166 vendored jars in lib/. Buildable with Gradle on our WildFly image; a multi-session job, not a hold. Re-measured 2026-11-23: 139 of the jars carry Maven metadata and `trivy rootfs lib` sees 267 packages with 53 fixable (the earlier blind result came from `trivy fs`); the shipped ones are bouncycastle, jackson, freemarker, guava, log4j-api, commons-configuration2, jakarta.mail, cxf-core, kerby-asn1, plus org.json shaded in primefaces. In progress: quenchworks/images#142."
-  },
-  {
     "name": "KeyDB",
     "category": "Databases & engines",
     "license": "BSD-3-Clause",
@@ -303,8 +295,8 @@
     "category": "CI/CD & registry",
     "license": "MIT",
     "licenseClean": "clean",
-    "priority": "exploring",
-    "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option. Measured 2026-10-07 at 16.8.5 (47 findings): jackson-databind/core 2.22.2 in lib/ swap cleanly, but Hazelcast 5.7.0 (its newest release) relocates jackson 2.21.2 and tools.jackson 3.1.2 under com/hazelcast/shaded/, which needs a bytecode relocation rewrite or a Hazelcast release; logback 1.4.14 needs the 1.5 line; boot/ ships prebuilt Tanuki wrapper binaries."
+    "priority": "next",
+    "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option. Measured 2026-10-07 at 16.8.5 (47 findings): jackson-databind/core 2.22.2 in lib/ swap cleanly, but Hazelcast 5.7.0 (its newest release) relocates jackson 2.21.2 and tools.jackson 3.1.2 under com/hazelcast/shaded/, which needs a bytecode relocation rewrite or a Hazelcast release; logback 1.4.14 needs the 1.5 line; boot/ ships prebuilt Tanuki wrapper binaries. Promoted to next 2026-11-23: re-size against the newest Hazelcast (a relocated-class overlay from a newer shaded release, as done for EJBCA's PrimeFaces org.json) and logback 1.5."
   },
   {
     "name": "Percona XtraDB Cluster Operator",
