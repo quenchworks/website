@@ -307,12 +307,20 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "Rundeck",
+    "name": "Kestra",
     "category": "Workflow & data",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Runbook automation and job scheduler: run scripts and commands across nodes with access control, a web UI and an API (Java/Grails). 6.3.0. Added 2026-11-23 as next after CommaFeed shipped; not yet sized."
+    "note": "Declarative event-driven orchestration platform: YAML flows, a plugin catalog, a web UI and an API (Java). 2.0.11; the release uber-jar carries one finding, org.json 20231013 shaded inside posthog-java 1.2.0 (the newest), so the fix is a relocated rebuild of org.json 20260719. Added 2026-11-23 as next."
+  },
+  {
+    "name": "Rundeck",
+    "category": "Workflow & data",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "planned",
+    "note": "Runbook automation and job scheduler: run scripts and commands across nodes with access control, a web UI and an API (Java/Grails). 6.3.0. Added 2026-11-23 as next after CommaFeed shipped. HELD 2026-11-23: 6.3.0 has no fetchable release artifact (Maven Central stops at 6.0.1, GitHub releases carry no assets, download.rundeck.org refuses automated fetches), so it means a full Grails + Vue source build. Re-check when a pinnable war is published."
   },
   {
     "name": "Conduit",
