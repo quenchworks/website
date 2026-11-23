@@ -307,12 +307,12 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "Soft Serve",
-    "category": "CI/CD & registry",
-    "license": "MIT",
+    "name": "OTS",
+    "category": "Security & supply chain",
+    "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Self-hostable Git server with an SSH TUI, Git over SSH, HTTP and the git daemon, access control and LFS, in one Go binary (Charm). v0.12.4; go-jose v3 (three DoS CVEs, fixed only in v4) is used in one file (pkg/jwk), so a small v4 port. Added 2026-11-23 as next after PairDrop shipped."
+    "note": "One-time secret sharing: secrets are encrypted in the browser and the link self-destructs after one read (Go server, embedded Vue frontend, memory or Redis storage). v1.24.0; go.mod and pnpm-lock scan clean. Added 2026-11-23 as next after Soft Serve shipped."
   },
   {
     "name": "Rundeck",
