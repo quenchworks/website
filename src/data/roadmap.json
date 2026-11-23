@@ -175,14 +175,6 @@
     "note": "Self-hosted web UI for chatting with local and remote LLMs. Checked 2026-09-27: the license is BSD-3-Clause plus a branding clause (the Open WebUI branding may not be altered for deployments above 50 users without permission), so it is not OSI. 0.11.4 also pins sentence-transformers, transformers, onnxruntime and opencv."
   },
   {
-    "name": "Langflow",
-    "category": "Machine learning",
-    "license": "MIT",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Visual builder for LLM applications and agent workflows. Measured 2026-09-28: 1.12.3 resolves to 457 packages (2.3 GB). The scanner reports only chromadb 1.5.9 (no fix), but the wheels carry what it cannot see: OpenSSL 3.5.1 (ibm_db.libs), OpenSSL 3.6.2 and libcurl 8.20.0 inside pyarrow, BoringSSL in grpcio and hf_xet, and 7 bundled .libs directories (numpy, scipy, pillow, cassandra-driver). Wolfi has py3.13 pyarrow, grpcio, numpy, tokenizers and orjson, but no onnxruntime, chromadb or ibm_db, so a build that passes the CVE gate honestly needs those built from source or dropped. Added 2026-11-24 as next after garak shipped: the garak recipe takes every compiled dependency Wolfi carries (pyarrow, grpcio, hf-xet included) from Wolfi and fails the build on any other bundled native library, which is the path for these wheels."
-  },
-  {
     "name": "Dify",
     "category": "Machine learning",
     "license": "Dify Open Source License (modified Apache-2.0)",
@@ -305,6 +297,14 @@
     "licenseClean": "clean",
     "priority": "next",
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
+  },
+  {
+    "name": "Traccar",
+    "category": "Apps & productivity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "GPS tracking server: 200+ device protocols, live maps, geofences, reports and notifications, with a React web UI and a REST API (Java). v6.17.0 (2026-11-01) ships a platform-neutral traccar-other zip (server jar, libraries, web UI). Added 2026-11-24 as next after Langflow shipped."
   },
   {
     "name": "Rundeck",
