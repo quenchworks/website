@@ -307,12 +307,12 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "Nautobot",
-    "category": "Networking",
-    "license": "Apache-2.0",
+    "name": "mox",
+    "category": "Apps & productivity",
+    "license": "MIT",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Network source of truth and automation platform (a Django fork of NetBox with Jobs, GraphQL and Git-backed data), on PostgreSQL and Redis with a Celery worker. v3.2.9. Added 2026-11-23 as next after pgAdmin 4 shipped; the NetBox recipe is the template."
+    "note": "Modern full-featured mail server (SMTP with SPF/DKIM/DMARC/MTA-STS, IMAP4, webmail, admin and account web UIs, ACME) in one Go binary. v0.0.17. Added 2026-11-23 as next after Nautobot shipped (images#147)."
   },
   {
     "name": "MongoDB Community Operator",
