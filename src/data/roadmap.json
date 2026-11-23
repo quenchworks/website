@@ -179,8 +179,8 @@
     "category": "Machine learning",
     "license": "MIT",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Visual builder for LLM applications and agent workflows. Measured 2026-09-28: 1.12.3 resolves to 457 packages (2.3 GB). The scanner reports only chromadb 1.5.9 (no fix), but the wheels carry what it cannot see: OpenSSL 3.5.1 (ibm_db.libs), OpenSSL 3.6.2 and libcurl 8.20.0 inside pyarrow, BoringSSL in grpcio and hf_xet, and 7 bundled .libs directories (numpy, scipy, pillow, cassandra-driver). Wolfi has py3.13 pyarrow, grpcio, numpy, tokenizers and orjson, but no onnxruntime, chromadb or ibm_db, so a build that passes the CVE gate honestly needs those built from source or dropped."
+    "priority": "next",
+    "note": "Visual builder for LLM applications and agent workflows. Measured 2026-09-28: 1.12.3 resolves to 457 packages (2.3 GB). The scanner reports only chromadb 1.5.9 (no fix), but the wheels carry what it cannot see: OpenSSL 3.5.1 (ibm_db.libs), OpenSSL 3.6.2 and libcurl 8.20.0 inside pyarrow, BoringSSL in grpcio and hf_xet, and 7 bundled .libs directories (numpy, scipy, pillow, cassandra-driver). Wolfi has py3.13 pyarrow, grpcio, numpy, tokenizers and orjson, but no onnxruntime, chromadb or ibm_db, so a build that passes the CVE gate honestly needs those built from source or dropped. Added 2026-11-24 as next after garak shipped: the garak recipe takes every compiled dependency Wolfi carries (pyarrow, grpcio, hf-xet included) from Wolfi and fails the build on any other bundled native library, which is the path for these wheels."
   },
   {
     "name": "Dify",
@@ -664,14 +664,6 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "AI-assisted penetration testing harness: a terminal assistant that runs and interprets security tools and keeps notes. Python, nebula-v3.0.46 (2026-11-09). Not the Nebula mesh VPN already in the catalog. Requested 2026-11-22 alongside ARTEX. HELD 2026-11-23 at nebula-v3.0.46: its browser daemon and knowledge tools drive Chromium through Playwright (src/nebula/v3/browserd.py, knowledge.py), and public Wolfi chromium is frozen with 1,600+ fixable findings. The Python locks otherwise clear with floors."
-  },
-  {
-    "name": "garak",
-    "category": "Security & supply chain",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "NVIDIA's LLM vulnerability scanner: probes models for prompt injection, jailbreaks, data leakage and toxicity. Python, v0.17.1 (2026-10-16). Pairs with the catalog's LLM serving images. Requested 2026-11-22 alongside ARTEX. Added 2026-11-24 as next after MITRE Caldera shipped."
   },
   {
     "name": "Faraday",
