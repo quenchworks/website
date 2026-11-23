@@ -39,7 +39,14 @@ const latest = versions[0];
 const capped = max && versions.length > max ? versions.slice(0, max) : versions;
 const shown = capped.includes(current) ? capped : [...capped, current];
 const hidden = versions.length - shown.length;
-const hrefFor = (v: string) => localizeUrl(lang, v === latest ? `/${section}/${slug}` : `/${section}/${slug}/${v}`);
+// Older chart versions are published in English only (the ar/es copies of every re-pin pushed the site toward
+// Cloudflare's 20,000-file cap), so their chips leave the locale; the newest stays localized.
+const hrefFor = (v: string) =>
+  v === latest
+    ? localizeUrl(lang, `/${section}/${slug}`)
+    : section === 'charts'
+      ? `/${section}/${slug}/${v}`
+      : localizeUrl(lang, `/${section}/${slug}/${v}`);
 ---
 
 {shown.length > 1 && (
