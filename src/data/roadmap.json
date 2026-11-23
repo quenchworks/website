@@ -307,12 +307,12 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "NetBox",
-    "category": "Networking",
-    "license": "Apache-2.0",
+    "name": "pgAdmin 4",
+    "category": "Databases & engines",
+    "license": "PostgreSQL",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Source of truth for network and data-center infrastructure: IPAM, DCIM, circuits and a REST/GraphQL API (Django on PostgreSQL and Redis). Added 2026-11-23 as next after OneDev was held."
+    "note": "Web administration and development platform for PostgreSQL (Python/Flask, served by gunicorn), the companion UI for the catalog's PostgreSQL. 9.19 (tag REL-9_19). Added 2026-11-23 as next after NetBox shipped."
   },
   {
     "name": "MongoDB Community Operator",
