@@ -307,12 +307,12 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "Kestra",
-    "category": "Workflow & data",
-    "license": "Apache-2.0",
+    "name": "Glances",
+    "category": "Observability",
+    "license": "LGPL-3.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Declarative event-driven orchestration platform: YAML flows, a plugin catalog, a web UI and an API (Java). 2.0.11; the release uber-jar carries one finding, org.json 20231013 shaded inside posthog-java 1.2.0 (the newest), so the fix is a relocated rebuild of org.json 20260719. Added 2026-11-23 as next."
+    "note": "Cross-platform system monitoring with a web UI, a REST API and exporters (Prometheus, InfluxDB...), in Python. v4.5.9. Added 2026-11-23 as next after Kestra shipped."
   },
   {
     "name": "Rundeck",
