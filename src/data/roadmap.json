@@ -295,8 +295,8 @@
     "category": "CI/CD & registry",
     "license": "MIT",
     "licenseClean": "clean",
-    "priority": "next",
-    "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option. Measured 2026-10-07 at 16.8.5 (47 findings): jackson-databind/core 2.22.2 in lib/ swap cleanly, but Hazelcast 5.7.0 (its newest release) relocates jackson 2.21.2 and tools.jackson 3.1.2 under com/hazelcast/shaded/, which needs a bytecode relocation rewrite or a Hazelcast release; logback 1.4.14 needs the 1.5 line; boot/ ships prebuilt Tanuki wrapper binaries. Promoted to next 2026-11-23: re-size against the newest Hazelcast (a relocated-class overlay from a newer shaded release, as done for EJBCA's PrimeFaces org.json) and logback 1.5."
+    "priority": "exploring",
+    "note": "Self-hosted Git server with built-in CI/CD, issues and kanban (Java). Heavier than Gitea/Gogs but far lighter than GitLab; an all-in-one gitops-stack backend option. Measured 2026-10-07 at 16.8.5 (47 findings): jackson-databind/core 2.22.2 in lib/ swap cleanly, but Hazelcast 5.7.0 (its newest release) relocates jackson 2.21.2 and tools.jackson 3.1.2 under com/hazelcast/shaded/, which needs a bytecode relocation rewrite or a Hazelcast release; logback 1.4.14 needs the 1.5 line; boot/ ships prebuilt Tanuki wrapper binaries. HELD 2026-11-23: OneDev 17.x cannot ship as open source. The MIT repo's ce profile builds, but the server does not boot: Guice finds no implementation for ClusterService, AuditService, StorageService, SubscriptionService and JobTerminalService, which live in the server-ee git submodule (https://code.onedev.io/onedev/server-ee.git, private: clone asks for credentials). The upstream distribution bundles io.onedev.server-ee-17.2.2.jar with license-key classes. Prepared and kept for a re-check: Hazelcast 5.7.0 rebuilt from source with jackson 2.21.7/3.1.7 and org.json 20260719 scans 0. Re-check when server-ee becomes public or the core services move back into server-core."
   },
   {
     "name": "Percona XtraDB Cluster Operator",
@@ -305,6 +305,14 @@
     "licenseClean": "clean",
     "priority": "next",
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
+  },
+  {
+    "name": "NetBox",
+    "category": "Networking",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "next",
+    "note": "Source of truth for network and data-center infrastructure: IPAM, DCIM, circuits and a REST/GraphQL API (Django on PostgreSQL and Redis). Added 2026-11-23 as next after OneDev was held."
   },
   {
     "name": "MongoDB Community Operator",
