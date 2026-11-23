@@ -307,12 +307,20 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "Conduit",
+    "name": "CommaFeed",
     "category": "Apps & productivity",
     "license": "Apache-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Lightweight Matrix chat homeserver in one Rust binary with an embedded database (RocksDB). v0.10.17 (GitLab famedly/conduit). Added 2026-11-23 as next after mox shipped."
+    "note": "Self-hosted RSS reader inspired by Google Reader (Quarkus, PostgreSQL). 7.5.3; the postgresql-jvm distribution carries one finding (guava 33.6.0, fixed in 33.7.2, a same-name jar swap). Added 2026-11-23 as next after Conduit was held."
+  },
+  {
+    "name": "Conduit",
+    "category": "Apps & productivity",
+    "license": "Apache-2.0",
+    "licenseClean": "clean",
+    "priority": "exploring",
+    "note": "Lightweight Matrix chat homeserver in one Rust binary with an embedded database (RocksDB). v0.10.17 (GitLab famedly/conduit). Added 2026-11-23 as next after mox shipped. HELD 2026-11-23 (images#148): needs hickory-resolver 0.26, jsonwebtoken 10.3+, opentelemetry 0.32 and a newer reqwest, which upstream has not taken; with them bumped, axum-server 0.7.2 no longer compiles against the updated hyper stack. Re-check when upstream moves."
   },
   {
     "name": "MongoDB Community Operator",
