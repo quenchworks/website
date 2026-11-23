@@ -307,14 +307,6 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "Homer",
-    "category": "Apps & productivity",
-    "license": "Apache-2.0",
-    "licenseClean": "clean",
-    "priority": "next",
-    "note": "Static application dashboard (start page) configured from one YAML file, with service cards, search and status checks. v26.11.4 built from source with pnpm (the lockfile scans clean), served by nginx. Added 2026-11-23 as next after OTS shipped."
-  },
-  {
     "name": "Rundeck",
     "category": "Workflow & data",
     "license": "Apache-2.0",
@@ -686,8 +678,8 @@
     "category": "Security & supply chain",
     "license": "Apache-2.0",
     "licenseClean": "clean",
-    "priority": "planned",
-    "note": "Automated adversary emulation platform (ATT&CK-mapped operations with agents) for red and purple teaming. Python + Vue, 5.3.0 (2025-04-24). Requested 2026-11-22 alongside ARTEX. For authorized testing only."
+    "priority": "next",
+    "note": "Automated adversary emulation platform (ATT&CK-mapped operations with agents) for red and purple teaming. Python + Vue, 5.3.0 (2025-04-24). Requested 2026-11-22 alongside ARTEX. For authorized testing only. Added 2026-11-23 as next after Homer shipped. Plugins (including the magma Vue UI) are git submodules: the build needs the pinned submodule commits, not the release tarball alone."
   },
   {
     "name": "Faraday",
