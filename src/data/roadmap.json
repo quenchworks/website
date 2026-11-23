@@ -299,12 +299,12 @@
     "note": "Operator for Percona XtraDB Cluster (MySQL): synchronous multi-primary HA via Galera, with automated backups and point-in-time recovery. Image SHIPPED 2026-09-27 (1.18.0, 1.19.1, 1.20.0; it is also the pods' init image). Chart HELD: in the kind gate the operator creates the cluster and its init containers complete, but the Percona 8.4.8 database pod starts mysqld with wsrep provider none and never becomes ready, and it does the same with upstream's init image and with the 8.0 database image. Percona's forum reports the same failure in kind and minikube on Linux; the chart waits for a gate on a non-kind cluster."
   },
   {
-    "name": "Actual Budget",
+    "name": "OwnTracks Recorder",
     "category": "Apps & productivity",
-    "license": "MIT",
+    "license": "GPL-2.0",
     "licenseClean": "clean",
     "priority": "next",
-    "note": "Local-first personal finance app (envelope budgeting, bank sync, rules, reports) with a sync server (Node, SQLite). v26.11.0 (2026-11-02), monthly releases. Added 2026-11-25 as next after the IT-Tools fork shipped."
+    "note": "Stores and serves location data from OwnTracks apps (HTTP or MQTT), with a map UI and an API (C, LMDB). 1.0.7 (2026-11-19). Pairs with Traccar. Added 2026-11-25 as next after the IT-Tools fork shipped."
   },
   {
     "name": "Rundeck",
@@ -672,5 +672,21 @@
     "licenseClean": "clean",
     "priority": "planned",
     "note": "Collaborative pentest and vulnerability management workspace that aggregates tool output (Nmap, Burp, Nessus, ...). Python on PostgreSQL, v5.25.4 (2026-10-29). Requested 2026-11-22 alongside ARTEX. HELD 2026-11-23 at 5.25.4: pyproject pins flask<3, bleach<5 and flask-limiter<3, while the uv.lock findings need Werkzeug 3 (8 CVEs), bleach 6 and Pillow 13 (56 CVEs at 12.2). Re-check when Faraday moves to Flask 3."
+  },
+  {
+    "name": "Stirling-PDF",
+    "category": "Apps & productivity",
+    "license": "MIT + proprietary",
+    "licenseClean": "caution",
+    "priority": "exploring",
+    "note": "Self-hosted PDF toolbox (merge, split, OCR, convert, sign). Checked 2026-11-25 at v3.5.0: open-core: app/proprietary, app/saas, engine/ and several frontend/src directories are under separate non-MIT licenses, and the released Stirling-PDF-server.jar includes them. Shipping needs a build without those directories."
+  },
+  {
+    "name": "Tandoor Recipes",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0 + Commons Clause",
+    "licenseClean": "blocked",
+    "priority": "exploring",
+    "note": "Recipe manager and meal planner (Django). Checked 2026-11-25 at 2.7.6: AGPL-3.0 with the Commons Clause, which forbids selling the software, so it is not OSI open source. Will not ship unless relicensed."
   }
 ]
