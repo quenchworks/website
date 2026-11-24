@@ -393,6 +393,37 @@
       }
     ]
   },
+  "akhq": {
+    "image": "ghcr.io/quenchworks/images/akhq",
+    "version": "0.29.0",
+    "tag": "ghcr.io/quenchworks/images/akhq:0.29.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.29.0",
+        "tag": "ghcr.io/quenchworks/images/akhq:0.29.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "alertmanager": {
     "image": "ghcr.io/quenchworks/images/alertmanager",
     "version": "0.35.0",
@@ -480,6 +511,622 @@
         "grade": "A+",
         "score": 100,
         "cves": []
+      }
+    ]
+  },
+  "apache-pinot": {
+    "image": "ghcr.io/quenchworks/images/apache-pinot",
+    "version": "1.6.0",
+    "tag": "ghcr.io/quenchworks/images/apache-pinot:1.6.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "1.6.0",
+        "tag": "ghcr.io/quenchworks/images/apache-pinot:1.6.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "apache-polaris": {
+    "image": "ghcr.io/quenchworks/images/apache-polaris",
+    "version": "1.8.0",
+    "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
+    "critical": 1,
+    "high": 14,
+    "medium": 14,
+    "low": 0,
+    "unknown": 0,
+    "total": 29,
+    "fixable": 28,
+    "grade": "F",
+    "score": 0,
+    "cves": [
+      {
+        "id": "CVE-2026-114938",
+        "severity": "CRITICAL",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.4.8-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-102554",
+        "severity": "HIGH",
+        "pkg": "com.google.guava:guava",
+        "installed": "33.6.0-jre",
+        "fixed": "33.7.2",
+        "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-108106",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-113351",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114939",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114940",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114941",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Improve integer compression",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114942",
+        "severity": "HIGH",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance vector masks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-115506",
+        "severity": "HIGH",
+        "pkg": "libexpat1",
+        "installed": "2.9.0-r0",
+        "fixed": "2.10.0-r0",
+        "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-93451",
+        "severity": "HIGH",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-114943",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114944",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114945",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-114946",
+        "severity": "MEDIUM",
+        "pkg": "openjdk-21-jre",
+        "installed": "21.0.13-r0",
+        "fixed": "21.0.13.1-r0",
+        "title": "OpenJDK: OpenJDK: Enhance loop handling",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-116590",
+        "severity": "MEDIUM",
+        "pkg": "org.xerial.snappy:snappy-java",
+        "installed": "1.1.10.8",
+        "fixed": "1.1.10.9",
+        "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-118259",
+        "severity": "MEDIUM",
+        "pkg": "io.opentelemetry:opentelemetry-api",
+        "installed": "1.62.0",
+        "fixed": "1.67.0",
+        "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-57914",
+        "severity": "MEDIUM",
+        "pkg": "org.apache.kerby:kerby-asn1",
+        "installed": "2.0.3",
+        "fixed": "2.1.2",
+        "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+        "targets": [
+          "Java"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "glibc-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "glibc-2.44-locale-posix",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "ld-linux-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2026-84243",
+        "severity": "MEDIUM",
+        "pkg": "libcrypt1-2.44",
+        "installed": "2.44-r9",
+        "fixed": "2.44-r16",
+        "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+        "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+        "targets": [
+          "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+        ]
+      },
+      {
+        "id": "CVE-2025-48924",
+        "severity": "MEDIUM",
+        "pkg": "commons-lang:commons-lang",
+        "installed": "2.6",
+        "fixed": null,
+        "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+        "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+        "targets": [
+          "Java"
+        ]
+      }
+    ],
+    "versions": [
+      {
+        "version": "1.8.0",
+        "tag": "ghcr.io/quenchworks/images/apache-polaris:1.8.0",
+        "critical": 1,
+        "high": 14,
+        "medium": 14,
+        "low": 0,
+        "unknown": 0,
+        "total": 29,
+        "fixable": 28,
+        "grade": "F",
+        "score": 0,
+        "cves": [
+          {
+            "id": "CVE-2026-114938",
+            "severity": "CRITICAL",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: remote code execution via memory corruption on x86-64 systems with AVX-512 VBMI",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114938",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.4.8-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-102554",
+            "severity": "HIGH",
+            "pkg": "com.google.guava:guava",
+            "installed": "33.6.0-jre",
+            "fixed": "33.7.2",
+            "title": "com.google.guava/guava: Google Guava: Denial of Service via unthrottled memory allocation during deserialization",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-102554",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-108106",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via unbounded memory allocation during decompression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-108106",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-113351",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via improper memory tracking in XML_ParserReset",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-113351",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114939",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: The acceptor does not properly implement RFC 4120 requirements for handling cross-realm tickets.",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114939",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114940",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve TLS client connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114940",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114941",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Improve integer compression",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114941",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114942",
+            "severity": "HIGH",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance vector masks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114942",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-115506",
+            "severity": "HIGH",
+            "pkg": "libexpat1",
+            "installed": "2.9.0-r0",
+            "fixed": "2.10.0-r0",
+            "title": "expat: expat: Denial of Service via delayed entity amplification detection",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-115506",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-93451",
+            "severity": "HIGH",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial/snappy-java: snappy-java: Buffer overflow via malformed compressed input",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-93451",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-114943",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JFR Events",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114943",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114944",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance JMX Connections",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114944",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114945",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance StringBuilder checks",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114945",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-114946",
+            "severity": "MEDIUM",
+            "pkg": "openjdk-21-jre",
+            "installed": "21.0.13-r0",
+            "fixed": "21.0.13.1-r0",
+            "title": "OpenJDK: OpenJDK: Enhance loop handling",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-114946",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-116590",
+            "severity": "MEDIUM",
+            "pkg": "org.xerial.snappy:snappy-java",
+            "installed": "1.1.10.8",
+            "fixed": "1.1.10.9",
+            "title": "org.xerial.snappy/snappy-java: snappy-java: Denial of Service via out-of-bounds memory access",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-116590",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-118259",
+            "severity": "MEDIUM",
+            "pkg": "io.opentelemetry:opentelemetry-api",
+            "installed": "1.62.0",
+            "fixed": "1.67.0",
+            "title": "opentelemetry-java: Quadratic CPU consumption in W3C tracestate parsing",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-118259",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-57914",
+            "severity": "MEDIUM",
+            "pkg": "org.apache.kerby:kerby-asn1",
+            "installed": "2.0.3",
+            "fixed": "2.1.2",
+            "title": "apache-kerby: org.apache.kerby/kerby-asn1: Apache Kerby: Denial of Service via deeply nested ASN.1 structure",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-57914",
+            "targets": [
+              "Java"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "glibc-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "glibc-2.44-locale-posix",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "ld-linux-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2026-84243",
+            "severity": "MEDIUM",
+            "pkg": "libcrypt1-2.44",
+            "installed": "2.44-r9",
+            "fixed": "2.44-r16",
+            "title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
+            "url": "https://avd.aquasec.com/nvd/cve-2026-84243",
+            "targets": [
+              "ghcr.io/quenchworks/images/apache-polaris@sha256:29d5fe2ada88eff4d5ca96b111d1a049e770b60bca9cc6ac783004ec52386d55 (wolfi 20230201)"
+            ]
+          },
+          {
+            "id": "CVE-2025-48924",
+            "severity": "MEDIUM",
+            "pkg": "commons-lang:commons-lang",
+            "installed": "2.6",
+            "fixed": null,
+            "title": "commons-lang/commons-lang: org.apache.commons/commons-lang3: Uncontrolled Recursion vulnerability in Apache Commons Lang",
+            "url": "https://avd.aquasec.com/nvd/cve-2025-48924",
+            "targets": [
+              "Java"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -2173,8 +2820,8 @@
   },
   "camel-k": {
     "image": "ghcr.io/quenchworks/images/camel-k",
-    "version": "2.10.2",
-    "tag": "ghcr.io/quenchworks/images/camel-k:2.10.2",
+    "version": "2.11.0",
+    "tag": "ghcr.io/quenchworks/images/camel-k:2.11.0",
     "critical": 0,
     "high": 0,
     "medium": 0,
@@ -2186,6 +2833,20 @@
     "score": 100,
     "cves": [],
     "versions": [
+      {
+        "version": "2.11.0",
+        "tag": "ghcr.io/quenchworks/images/camel-k:2.11.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
       {
         "version": "2.10.2",
         "tag": "ghcr.io/quenchworks/images/camel-k:2.10.2",
@@ -2256,6 +2917,37 @@
             ]
           }
         ]
+      }
+    ]
+  },
+  "cassandra": {
+    "image": "ghcr.io/quenchworks/images/cassandra",
+    "version": "5.0.9",
+    "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "5.0.9",
+        "tag": "ghcr.io/quenchworks/images/cassandra:5.0.9",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       }
     ]
   },
@@ -4346,6 +5038,37 @@
       }
     ]
   },
+  "commafeed": {
+    "image": "ghcr.io/quenchworks/images/commafeed",
+    "version": "7.5.3",
+    "tag": "ghcr.io/quenchworks/images/commafeed:7.5.3",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "7.5.3",
+        "tag": "ghcr.io/quenchworks/images/commafeed:7.5.3",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
   "composer": {
     "image": "ghcr.io/quenchworks/images/composer",
     "version": "2.11.2",
@@ -4665,6 +5388,37 @@
       {
         "version": "1.33.8",
         "tag": "ghcr.io/quenchworks/images/contour:1.33.8",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "convertx": {
+    "image": "ghcr.io/quenchworks/images/convertx",
+    "version": "0.20.0",
+    "tag": "ghcr.io/quenchworks/images/convertx:0.20.0",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "0.20.0",
+        "tag": "ghcr.io/quenchworks/images/convertx:0.20.0",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5085,6 +5839,51 @@
       {
         "version": "0.22.1",
         "tag": "ghcr.io/quenchworks/images/crane:0.22.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      }
+    ]
+  },
+  "cratedb": {
+    "image": "ghcr.io/quenchworks/images/cratedb",
+    "version": "6.5.1",
+    "tag": "ghcr.io/quenchworks/images/cratedb:6.5.1",
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "unknown": 0,
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
+    "versions": [
+      {
+        "version": "6.5.1",
+        "tag": "ghcr.io/quenchworks/images/cratedb:6.5.1",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "6.4.7",
+        "tag": "ghcr.io/quenchworks/images/cratedb:6.4.7",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -5959,6 +6758,20 @@
       {
         "version": "1.8.0",
         "tag": "ghcr.io/quenchworks/images/datahub-gms:1.8.0",
+        "critical": 0,
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "unknown": 0,
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
+      },
+      {
+        "version": "1.7.0.1",
+        "tag": "ghcr.io/quenchworks/images/datahub-gms:1.7.0.1",
         "critical": 0,
         "high": 0,
         "medium": 0,
@@ -9215,67 +10028,41 @@
     "tag": "ghcr.io/quenchworks/images/ghost:6.78.0",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 0,
     "unknown": 0,
-    "total": 1,
-    "fixable": 1,
-    "grade": "C",
-    "score": 91,
-    "cves": [
-      {
-        "id": "CVE-2026-63402",
-        "severity": "MEDIUM",
-        "pkg": "i18next",
-        "installed": "23.16.8",
-        "fixed": "26.3.4",
-        "title": "i18next: i18next: Denial of Service via unsafe recursive object merging",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-63402",
-        "targets": [
-          "Node.js"
-        ]
-      }
-    ],
+    "total": 0,
+    "fixable": 0,
+    "grade": "A+",
+    "score": 100,
+    "cves": [],
     "versions": [
       {
         "version": "6.78.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.78.0",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 0,
         "unknown": 0,
-        "total": 1,
-        "fixable": 1,
-        "grade": "C",
-        "score": 91,
-        "cves": [
-          {
-            "id": "CVE-2026-63402",
-            "severity": "MEDIUM",
-            "pkg": "i18next",
-            "installed": "23.16.8",
-            "fixed": "26.3.4",
-            "title": "i18next: i18next: Denial of Service via unsafe recursive object merging",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-63402",
-            "targets": [
-              "Node.js"
-            ]
-          }
-        ]
+        "total": 0,
+        "fixable": 0,
+        "grade": "A+",
+        "score": 100,
+        "cves": []
       },
       {
         "version": "6.67.0",
         "tag": "ghcr.io/quenchworks/images/ghost:6.67.0",
         "critical": 0,
         "high": 2,
-        "medium": 2,
+        "medium": 1,
         "low": 0,
         "unknown": 0,
-        "total": 4,
-        "fixable": 1,
+        "total": 3,
+        "fixable": 0,
         "grade": "D",
-        "score": 67,
+        "score": 76,
         "cves": [
           {
             "id": "CVE-2026-19693",
@@ -9297,18 +10084,6 @@
             "fixed": null,
             "title": "extract-zip: github.com/maxogden/extract-zip: extract-zip: Arbitrary file write and information disclosure via symlink validation bypass",
             "url": "https://avd.aquasec.com/nvd/cve-2026-56876",
-            "targets": [
-              "Node.js"
-            ]
-          },
-          {
-            "id": "CVE-2026-63402",
-            "severity": "MEDIUM",
-            "pkg": "i18next",
-            "installed": "23.16.8",
-            "fixed": "26.3.4",
-            "title": "i18next: i18next: Denial of Service via unsafe recursive object merging",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-63402",
             "targets": [
               "Node.js"
             ]
@@ -10678,26 +11453,14 @@
     "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
     "critical": 0,
     "high": 0,
-    "medium": 1,
+    "medium": 0,
     "low": 1,
     "unknown": 0,
-    "total": 2,
-    "fixable": 1,
-    "grade": "C",
-    "score": 90,
+    "total": 1,
+    "fixable": 0,
+    "grade": "B",
+    "score": 99,
     "cves": [
-      {
-        "id": "CVE-2026-63402",
-        "severity": "MEDIUM",
-        "pkg": "i18next",
-        "installed": "21.9.1",
-        "fixed": "26.3.4",
-        "title": "i18next: i18next: Denial of Service via unsafe recursive object merging",
-        "url": "https://avd.aquasec.com/nvd/cve-2026-63402",
-        "targets": [
-          "Node.js"
-        ]
-      },
       {
         "id": "CVE-2025-14505",
         "severity": "LOW",
@@ -10717,26 +11480,14 @@
         "tag": "ghcr.io/quenchworks/images/grist:1.7.22",
         "critical": 0,
         "high": 0,
-        "medium": 1,
+        "medium": 0,
         "low": 1,
         "unknown": 0,
-        "total": 2,
-        "fixable": 1,
-        "grade": "C",
-        "score": 90,
+        "total": 1,
+        "fixable": 0,
+        "grade": "B",
+        "score": 99,
         "cves": [
-          {
-            "id": "CVE-2026-63402",
-            "severity": "MEDIUM",
-            "pkg": "i18next",
-            "installed": "21.9.1",
-            "fixed": "26.3.4",
-            "title": "i18next: i18next: Denial of Service via unsafe recursive object merging",
-            "url": "https://avd.aquasec.com/nvd/cve-2026-63402",
-            "targets": [
-              "Node.js"
-            ]
-          },
           {
             "id": "CVE-2025-14505",
             "severity": "LOW",
