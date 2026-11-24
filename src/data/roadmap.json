@@ -792,5 +792,13 @@
     "licenseClean": "caution",
     "priority": "planned",
     "note": "Bans IPs from log patterns with host firewall rules. 1.1.1 (2026-08-15). Built for nodes and VMs (it edits the host's iptables/nftables), so it does not fit a container catalog; CrowdSec covers the in-cluster case. Added 2026-11-24 from an attack-protection review (IP blocking, WAF, rate limiting); the shipped Envoy Gateway, Traefik, HAProxy, Cilium and KEDA cover the rest."
+  },
+  {
+    "name": "Fleetbase",
+    "category": "Apps & productivity",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "planned",
+    "note": "Logistics and supply-chain platform: fleet and order management, dispatch, driver app backend, storefront. v0.8.3 (2026-11-24). Laravel API on PHP 8.2-8.4 (one image runs the API, the queue worker and the scheduler), an Ember console, a SocketCluster realtime server and Caddy, on MySQL 8 and Redis. Its modules (core-api, fleetops-api, storefront-api, ...) are separate AGPL Composer packages. Size the PHP vendor tree's CVE findings and the Ember build first. Added 2026-11-24 on request."
   }
 ]
