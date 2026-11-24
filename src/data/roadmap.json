@@ -13,14 +13,14 @@
     "license": "AGPL-3.0",
     "licenseClean": "caution",
     "priority": "planned",
-    "note": "Collaborative wiki and documentation with real-time editing (Node + PostgreSQL + Redis). Sized 2026-11-16 at v0.97.0: CVE-light (7 fixable lockfile findings in 6 packages, none without a fix), but apps/server/src/ee, apps/client/src/ee and packages/ee are under the Docmost Enterprise License, which allows production use only with a paid subscription, and upstream builds them into the server. Shipping needs a build without the ee code; re-check whether the core app builds and runs with those directories removed."
+    "note": "Collaborative wiki and documentation with real-time editing (Node + PostgreSQL + Redis). Sized 2026-11-16 at v0.97.0: CVE-light (7 fixable lockfile findings in 6 packages, none without a fix), but apps/server/src/ee, apps/client/src/ee and packages/ee are under the Docmost Enterprise License, which allows production use only with a paid subscription, and upstream builds them into the server. Shipping needs a build without the ee code; re-check whether the core app builds and runs with those directories removed. HELD 2026-11-24 (v0.98.0): the release has an empty apps/server/src/ee and loads EeModule optionally, so the server core builds alone, but 70 files of the core client import apps/client/src/ee (26 modules, Docmost Enterprise License, production use needs a subscription). Shipping the web app means distributing that code or keeping a fork."
   },
   {
     "name": "wallabag",
     "category": "Apps & productivity",
     "license": "MIT",
     "licenseClean": "clean",
-    "priority": "next",
+    "priority": "planned",
     "note": "Read-it-later service that saves web articles for offline reading, with tags, annotations, e-book export and mobile apps. v2.6.17, PHP (Symfony) on PostgreSQL, MySQL or SQLite. Added 2026-11-15. HELD 2026-11-15: 2.6.x is on Symfony 4.4 (EOL) and guzzle 5 (157 findings, framework majors). Re-check when 2.7.0 (Symfony 5.4) is released.",
     "blocked": true,
     "blockedReason": "2.6.17 runs on Symfony 4.4 (EOL) and guzzle 5: 157 findings that need framework major upgrades, not dependency floats. 2.7.0 (Symfony 5.4) is alpha.1 as of 2026-11-15."
@@ -688,5 +688,13 @@
     "licenseClean": "blocked",
     "priority": "exploring",
     "note": "Recipe manager and meal planner (Django). Checked 2026-11-25 at 2.7.6: AGPL-3.0 with the Commons Clause, which forbids selling the software, so it is not OSI open source. Will not ship unless relicensed."
+  },
+  {
+    "name": "Plausible Analytics",
+    "category": "Observability",
+    "license": "AGPL-3.0",
+    "licenseClean": "agpl",
+    "priority": "next",
+    "note": "Privacy-friendly web analytics (Community Edition): Elixir/Phoenix on PostgreSQL and ClickHouse (both in the catalog). v3.2.2 (2026-11-23). Build MIX_ENV=ce from source with extra/ deleted first (proprietary, no rights granted; the CE build does not compile it). Toolchain: Erlang 28 (Wolfi erlang-28) and Elixir 1.20.4 (Wolfi has 1.19: build Elixir from source). Added 2026-11-24 as next after wallabag (held on Symfony 4.4) and Docmost (client imports Enterprise code)."
   }
 ]
